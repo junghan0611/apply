@@ -1,0 +1,121 @@
+% -*- bibtex -*-
+% NHN AX 제출문서 참고문헌 — IEEE 번호 인용 대상.
+% 정책(PM/GLG): 공식 문서·프로토콜·방법론뿐 아니라, 주장 검증에 쓰는 공개 repo/commit/PR/
+% live URL도 번호 인용한다. "증명 가능한 URL 목록" 자체가 제출물의 기능이다.
+% citeproc 호환 위해 전부 @misc 로 통일하되 title/note/url 를 충실히. note 에 유형 라벨을 둔다.
+% 사내(비공개) 증거는 공개 URL이 없으므로 인용하지 않고 본문에서 [사내] 라벨로 구분한다.
+
+%% ════════ 공식 문서 · 프로토콜 · 방법론 ════════
+
+@misc{claude-code,
+  author = {{Anthropic}}, title = {Claude Code Documentation}, year = {2026},
+  url = {https://docs.claude.com/en/docs/claude-code/overview},
+  note = {official · 2026-07-15 확인},
+}
+@misc{mcp-spec,
+  author = {{Anthropic}}, title = {Model Context Protocol Specification}, year = {2025},
+  url = {https://modelcontextprotocol.io/specification}, note = {protocol},
+}
+@misc{acp-spec,
+  author = {{Zed Industries}}, title = {Agent Client Protocol}, year = {2025},
+  url = {https://agentclientprotocol.com/}, note = {protocol},
+}
+@misc{openai-codex,
+  author = {{OpenAI}}, title = {Codex CLI}, year = {2025},
+  url = {https://developers.openai.com/codex/cli/}, note = {official},
+}
+@misc{bmad-method,
+  author = {{BMad Code}}, title = {BMAD-METHOD: Breakthrough Method for Agile AI-Driven Development},
+  year = {2025}, url = {https://github.com/bmad-code-org/BMAD-METHOD}, note = {method},
+}
+@misc{qwen3-embedding,
+  author = {{Qwen Team, Alibaba}}, title = {Qwen3 Embedding: Advancing Text Embedding and Reranking},
+  year = {2025}, url = {https://qwenlm.github.io/blog/qwen3-embedding/}, note = {official model},
+}
+@misc{lancedb,
+  author = {{LanceDB}}, title = {LanceDB — Open-source Vector Database}, year = {2025},
+  url = {https://lancedb.github.io/lancedb/}, note = {software},
+}
+@misc{bm25-robertson,
+  author = {Robertson, Stephen and Zaragoza, Hugo},
+  title = {The Probabilistic Relevance Framework: BM25 and Beyond}, year = {2009},
+  url = {https://doi.org/10.1561/1500000019}, note = {method · FnTIR 3(4):333-389},
+}
+@misc{pgvector,
+  author = {{pgvector}}, title = {pgvector — Vector Similarity Search for Postgres}, year = {2025},
+  url = {https://github.com/pgvector/pgvector}, note = {software},
+}
+@misc{nixos,
+  author = {{NixOS}}, title = {NixOS — Declarative Builds and Deployments}, year = {2025},
+  url = {https://nixos.org/}, note = {official},
+}
+@misc{yocto,
+  author = {{Yocto Project}}, title = {The Yocto Project — Embedded Linux Build System}, year = {2025},
+  url = {https://www.yoctoproject.org/}, note = {official},
+}
+@misc{temporal-durable,
+  author = {{Temporal}}, title = {Durable Execution}, year = {2025},
+  url = {https://assets.temporal.io/durable-execution.pdf}, note = {method},
+}
+@misc{saga-pattern,
+  author = {Richardson, Chris}, title = {Pattern: Saga}, year = {2023},
+  url = {https://microservices.io/patterns/data/saga.html}, note = {method},
+}
+@misc{forgejo,
+  author = {{Forgejo}}, title = {Forgejo — Self-hosted Lightweight Software Forge}, year = {2025},
+  url = {https://forgejo.org/}, note = {software},
+}
+
+%% ════════ 공개 저장소 (자체 증거 · software/repo) ════════
+
+@misc{repo-entwurf,
+  author = {Kim, Junghan}, title = {entwurf — 하네스 간 디스패치·연속성 기층}, year = {2026},
+  url = {https://github.com/junghan0611/entwurf}, note = {public repo · 2026-07-15 확인},
+}
+@misc{repo-andenken,
+  author = {Kim, Junghan}, title = {andenken — 세션·지식 시맨틱 메모리 (벡터+BM25 하이브리드)}, year = {2026},
+  url = {https://github.com/junghan0611/andenken}, note = {public repo},
+}
+@misc{repo-forge-config,
+  author = {Kim, Junghan}, title = {forge-config — 검토 가능한 개발 루프·sweeper}, year = {2026},
+  url = {https://github.com/junghan0611/forge-config}, note = {public repo},
+}
+@misc{repo-nixos-config,
+  author = {Kim, Junghan}, title = {nixos-config — 노트북·서버·ARM 선언적 관리}, year = {2026},
+  url = {https://github.com/junghan0611/nixos-config}, note = {public repo},
+}
+@misc{repo-homeagent-config,
+  author = {Kim, Junghan}, title = {homeagent-config — 임베디드·엣지 에이전트}, year = {2026},
+  url = {https://github.com/junghan0611/homeagent-config}, note = {public repo},
+}
+
+%% ════════ 수용(reception) · PR ════════
+
+@misc{pr-entwurf-40,
+  author = {{External contributor}}, title = {entwurf PR \#40 — Snowflake Cortex Code ACP 백엔드 기여},
+  year = {2026}, url = {https://github.com/junghan0611/entwurf/pull/40},
+  note = {reception · 외부 개발자가 확장 경계에 연 기여 · head 3dd6f5f},
+}
+@misc{pr-ghostel-343,
+  author = {Kim, Junghan}, title = {ghostel PR \#343 — 상류 프로젝트에 받아들여진 기여}, year = {2026},
+  url = {https://github.com/dakra/ghostel/pull/343}, note = {reception},
+}
+@misc{pr-ghostel-510,
+  author = {Kim, Junghan}, title = {ghostel PR \#510 — 상류 프로젝트에 받아들여진 기여}, year = {2026},
+  url = {https://github.com/dakra/ghostel/pull/510}, note = {reception},
+}
+
+%% ════════ 라이브 표면 · 통계 (live/stat) ════════
+
+@misc{live-garden,
+  author = {Kim, Junghan}, title = {Digital Garden — 공개 지식·문서 체계 (notes.junghanacs.com)},
+  year = {2026}, url = {https://notes.junghanacs.com}, note = {live surface},
+}
+@misc{live-agenda,
+  author = {Kim, Junghan}, title = {Agenda — 라이브 작업·통계 표면}, year = {2026},
+  url = {https://agenda.junghanacs.com}, note = {live surface},
+}
+@misc{live-agenda-stats,
+  author = {Kim, Junghan}, title = {Agenda 라이브 통계 API (/api/stats)}, year = {2026},
+  url = {https://agenda.junghanacs.com/api/stats}, note = {live stat · 재현 가능 집계},
+}

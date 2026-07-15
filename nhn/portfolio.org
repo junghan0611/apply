@@ -1,0 +1,253 @@
+#+title: 포트폴리오 — 조직 AX 전환과 에이전트 플랫폼 운영
+#+author: 김정한 (Junghan Kim)
+#+email: [email removed]
+#+language: ko
+#+options: toc:nil num:nil author:nil date:nil broken-links:t
+#+bibliography: references.bib
+#+cite_export: csl ieee.csl
+
+# gitignore된 제출본. 회사명·고객사·사내 사실 포함. 추천인·지원 경로 제외.
+# 강조는 Org =굵게**= (Markdown =**= 아님). 조사가 붙으면 구절 단위로 문장부호 앞에서 닫는다.
+# 인용: 공개 증거(repo/PR/live/공식문서)는 [cite:@key] 번호 인용. 사내 비공개 수치는 [사내]·[운영 기록] 라벨.
+# 프로젝트 공통 문법: 맥락/문제 → 내 역할 → 아키텍처 이미지 → 핵심 판단 → 운영·성과 수치 → 인계/협업 → JD 관련성 → 핵심 증거.
+
+*김정한 (Junghan Kim)* · [email removed] · [[https://github.com/junghan0611][github.com/junghan0611]] · [[https://notes.junghanacs.com][notes.junghanacs.com]] · [[https://agenda.junghanacs.com][agenda.junghanacs.com]]
+
+이 포트폴리오는 다섯 개의 프로젝트를 같은 문법으로 정리했습니다. *먼저 오는 것은 조직에서 수행한 AX입니다* — 기존 시스템에 AI 접점을 붙이고 운영·제품·개발 조직이 이어받게 만든 일. *그 뒤가 공개 검증 축입니다* — 회사 코드는 공개할 수 없으므로, 같은 능력을 공개 저장소·인시던트·제3자의 기여로 증명합니다.
+
+각 프로젝트에서 사내 사실은 =[사내]= , 공개 검증은 =[공개]= 로 구분했습니다. *공개 증거가 없는 항목은 회사 코드라서 없는 것이고,* 그 옆에 같은 능력의 공개 저장소를 나란히 둡니다. 본문의 번호는 문서 끝 「참고자료」의 클릭 가능한 URL로 이어지며, *그 URL 목록 자체가 이 제출물의 검증 기능입니다.*
+
+* 프로젝트 1 — 사내 업무 시스템에 AX 접점 구축 (주력)
+:PROPERTIES:
+:CUSTOM_ID: p1
+:END:
+
+/기간 2025–2026 (진행 중) · 역할 설계·구현·운영 단독 · 대상 운영·QA·제품·개발 조직 · 스택 Clojure, Python, GPU·컨테이너, PostgreSQL·pgvector, Kafka, n8n, AWS·Oracle Cloud/
+
+*맥락과 문제.* 스마트홈 IoT 플랫폼(헤이홈, 약 140만 사용자)은 이미 대규모로 돌아가는 운영 시스템입니다. 여기서 AX 전환은 시스템을 갈아엎는 일이 아니라, *도메인의 주인이 자기 데이터를 자기 언어로 안전하게 물을 수 있는 접점을 붙이고, 그 답을 원자료까지 역추적할 수 있게 만드는 일이라고* 봤습니다.
+
+*내 역할.* 사내 AI 인프라와 업무 데이터 접점을 설계·구현·운영하는 단독 담당입니다.
+
+*아키텍처.* 두 층으로 나눴습니다.
+
+#+caption: 사내 AX 접점 아키텍처 — 업무 원천에서 읽기 전용 워크벤치, 도메인 질의, 근거 역추적까지
+#+name: fig-company-ax
+#+attr_odt: :width 15
+[[file:images/company-ax-arch.png]]
+
+- *AI 인프라(서빙 계층).* 문서 임베딩과 리랭킹을 외부 API에 의존하지 않고 *GPU·컨테이너 위에서 직접 서빙합니다*. 사내 지식(문서 임베딩 2,945건)을 벡터 검색면으로 다루고 [사내], 벡터 저장은 PostgreSQL·pgvector [cite:@pgvector], 원천 수집은 n8n 40+ 노드와 데이터 파이프라인으로 자동화합니다. *파인튜닝 중심이 아니라 임베딩·리랭킹·검색 품질·프롬프트 설계라는 실서비스 최적화 축이고*, 이 감각은 공개 저장소 andenken에서 그대로 검증됩니다 [cite:@repo-andenken].
+- *읽기 전용 에이전트 워크벤치.* 기존 IoT·상담 시스템을 교체하지 않고 접점만 붙였습니다.
+  - =incidentcli= (Clojure) [사내] — 운영 장애와 VOC→디바이스 추적을 *하나의 KST 단일 시간축으로 회수·정렬합니다*. Slack 알림·API 모니터 DB·Kafka·클라우드 트레일·IoT 디바이스 로그·런타임 미러를 9개 수집기로 묶되, *모든 외부 호출은 읽기 전용이고 덤프를 쌓지 않습니다.* 수집 결과는 SPEC envelope로 검증하고 인시던트 기록은 append-only이며, =phone/email → uid → device → session/event/status= 를 잇습니다.
+  - =voscli= (Clojure) [사내] — 운영팀이 매일 보는 상담 데이터 위에서 *숫자의 단위·기간·포함정책을 고정하고, 모든 근거를 개별 상담 id까지 역추적하게* 만들고, 평소와 다른 신호를 자동 검출해 운영팀이 읽는 Markdown 표면으로 고정합니다.
+
+*핵심 판단 — 권한과 경계를 먼저 그었습니다.* 이 접점들은 실제 고객 개인정보와 자격증명을 다룹니다. 그래서 설계에 경계를 문장으로 박았습니다 — *자격증명은 에이전트가 취급하지 않고,* 변경·실행(mutation) 경로는 차단하며, 원시 개인정보는 표준입력 seam으로만 흐르고 문서·커밋에 남기지 않습니다. *"자연어를 실데이터로 잇되 읽기 전용 경계를 절대 넘지 않는다"* 가 이 프로젝트의 규율입니다.
+
+*운영·성과.* voscli는 "고도화보다 운영자가 쓰고 싶게 만드는 것이 먼저"라는 원칙으로 *운영팀 일상 사용에 진입했고*, 1년치 상담 원자료를 운영자·봇 워크스페이스가 =git pull= 한 번으로 쓰도록 backfill했습니다 [운영 기록]. 별도 대시보드 제품을 만드는 대신, 운영팀이 이미 읽는 표면(Markdown·메신저)에 결과를 실었습니다.
+
+*인계·협업.* 운영팀의 상담 고통을 듣고 → 개발 가능한 요구로 번역하고 → 제품·개발과 경계를 합의하고 → 워크벤치를 제공하고 → 피드백을 다시 데이터·이슈로 되돌리는 루프를 돌렸습니다.
+
+*JD 관련성.* 주요 업무 ①(AX 인프라 구축·관리·운영)과 자격 요건(개발·비개발 AX)에 직접 대응합니다.
+
+*핵심 증거.* [사내·비공개] incidentcli·voscli 운영 · [공개] 같은 능력의 임베딩·검색 구현 andenken [cite:@repo-andenken] · pgvector [cite:@pgvector].
+
+* 프로젝트 2 — 실사용 에이전트 플랫폼 운영
+:PROPERTIES:
+:CUSTOM_ID: p2
+:END:
+
+/기간 2026-02 – 2026-06 (약 5개월) · 역할 플랫폼 운영 단독 · 대상 실사용자 트래픽 · 스택 Oracle Cloud ARM(aarch64), Docker, 메신저 다중 채널/
+
+*맥락과 문제.* 에이전트 런타임(OpenClaw)을 실사용 트래픽이 걸린 환경에서 운영했습니다. 핵심 조건이 하나 있습니다 — *업스트림은 1인이 유지하는 프로젝트이고, 조직에 업스트림 담당자가 없습니다.* 그래서 "버전을 올린다"가 곧 "릴리즈의 의미를 내 환경으로 번역한다"가 됩니다. *이것은 사내 AX에서 외부 IoT 클라우드 같은 외부 의존의 변경을 우리 관점으로 번역해야 하는 상황과 정확히 같은 구조입니다.*
+
+*내 역할.* 버전 추적·인시던트 대응·정책 수립을 맡은 단독 운영자입니다.
+
+*운영 계보와 변화.*
+
+#+caption: OpenClaw 운영과 인시던트 대응 — 계측·롤백·정공법 수정
+#+name: fig-openclaw
+#+attr_odt: :width 15
+[[file:images/openclaw-ops.png]]
+
+*핵심 판단 ① — 회귀를 계측하고 정확한 판으로 되돌린다.* 두 버전을 한 번에 건너뛴 뒤 응답 지연이 급증했습니다. 게이트웨이가 단일 스레드에서 *CPU 102%로 회전하고* 부팅이 정상 11초에서 *88초로* 늘어난 것을 계측했습니다 [운영 기록]. 클린 부팅에서도 재현시켜 설정 오류 가설을 배제한 뒤, *한 단계 아래가 아니라 이미지 생성 경로가 기존 인증으로 라우팅되는 마지막 정상 판으로* 롤백했습니다.
+
+*핵심 판단 ② — 업스트림 릴리즈 노트에서 내 증상의 정공법 수정을 식별한다.* 다음 판으로 재시도했더니 10분 만에 같은 인시던트가 재현됐습니다. 릴리즈 노트를 *"내 증상의 원인을 정면으로 고친 줄이 있는가"* 로 읽어, 런타임 프리로드를 설정된 플러그인으로 한정한 두 줄을 식별하고 그 판으로 직행했습니다.
+
+#+caption: 인시던트 ② 전후
+| 지표 | before | after |
+|------+--------+-------|
+| 부팅 | 45.4초 | 7.3초 → 하드닝 후 5.8초 |
+| 메모리 | 816 MiB | 246 MiB |
+| 핫패스 의존성 스테이징 | 발생 | 0 |
+
+*운영·성과.* 약 5개월간 20회 이상의 버전 사이클을 계측·판단·문서화로 운영했습니다 [운영 기록]. 고친 것은 코드가 아니라 규칙입니다 — *두 버전 건너뛰기 금지, 비프로덕션 에이전트에 24시간 이상 스테이지 후 승격, =stuck session= 한 줄도 배포 중단 사유, 응답성이 SLO.* 또한 진단 도구의 보안 권고를 우리 배포 맥락에서 검토해 *거짓 양성으로 판정하고 적용하지 않았습니다.*
+
+*인계.* 이 운영은 한 제품 설정에 갇히지 않고 세 개의 공개 계층으로 분리되었습니다(프로젝트 3·4).
+
+*JD 관련성.* 자격 요건(Agentic AI 활용 개발·운영)에 대응하며, *대부분의 지원자가 "Claude Code를 써봤다"에서 멈추는 지점을 운영자의 판단으로 넘어섭니다.*
+
+*핵심 증거.* [공개] 운영이 낳은 계층 andenken·entwurf·forge-config [cite:@repo-andenken;@repo-entwurf;@repo-forge-config] · [사내·비공개] 봇 기억이 담긴 런타임 설정.
+
+* 프로젝트 3 — 에이전트 메모리·RAG 계층 (andenken)
+:PROPERTIES:
+:CUSTOM_ID: p3
+:END:
+
+/기간 2026 (진행 중) · 역할 설계·구현 단독 · 스택 Python, LanceDB, Qwen3-Embedding-8B/ · [cite:@repo-andenken]
+
+*맥락과 문제.* 런타임 내부에 채팅 기록을 가두면 다른 하네스가 그 기억을 소비할 수 없습니다. 메모리를 *런타임에서 떼어내 독립 계층으로* 꺼냈습니다.
+
+*내 역할.* 메모리 계층의 설계·구현 단독 담당입니다.
+
+*아키텍처 — 메모리를 세 축으로 갈랐습니다.*
+
+#+caption: andenken — 메모리 3축과 하이브리드 검색
+#+name: fig-andenken
+#+attr_odt: :width 14
+[[file:images/andenken-rag.png]]
+
+#+caption: andenken 메모리 3축
+| 축 | 하는 일 | 상태 |
+|----+---------+------|
+| active recall | 답변 전 차단형 리콜, 타임아웃 경계 | 하네스 쪽(이 리포 밖) |
+| embedding | 벡터와 BM25 하이브리드, 점수 정규화 | 구현·운영 중 |
+| dream | 야간 통합, 기억의 증류 | 미구현(별도 로드맵) |
+
+*핵심 판단.* 구현 스펙은 LanceDB [cite:@lancedb], Qwen3-Embedding-8B(4096차원) [cite:@qwen3-embedding], 세션과 공개 지식베이스 두 트랙, 한↔영 교차 질의 확장(형태소 분석과 태그 매핑을 별도 CLI로 분리), 회수 추적입니다. 하이브리드 리트리벌은 벡터와 전문검색(BM25 [cite:@bm25-robertson])의 점수를 정규화해 합칩니다. *RAG를 "청킹·임베딩·벡터DB"로 뭉뚱그리지 않는 이유가 여기 있습니다* — 검색은 세 축 중 하나이고, 언제 리콜을 차단형으로 걸 것인가와 무엇을 증류할 것인가가 나머지 둘입니다.
+
+*운영·성과.* 세션과 가든 두 트랙이 라이브로 임베딩·검색됩니다. 이 설계 감각이 사내 임베딩·리랭킹 서빙(프로젝트 1)과 같은 축입니다.
+
+*JD 관련성.* 우대 사항(LLM·RAG)에 대응합니다.
+
+*핵심 증거.* [공개] andenken 저장소 [cite:@repo-andenken] · Qwen3-Embedding [cite:@qwen3-embedding] · LanceDB [cite:@lancedb].
+
+* 프로젝트 4 — 멀티 하네스 개발 워크플로와 검토 가능한 개발 루프
+:PROPERTIES:
+:CUSTOM_ID: p4
+:END:
+
+/기간 2026 (진행 중) · 역할 설계·구현 단독 · 스택 TypeScript·Shell, 셀프호스팅 Forgejo, Claude Code·Codex/ · [cite:@repo-entwurf;@repo-forge-config]
+
+*맥락과 문제.* 서로 다른 하네스(Claude Code, Codex)가 세션을 넘어 위임·연속성·공유 도구를 보존하게 하고, 그 위에서 *"에이전트가 코드를 쓴다"가 아니라 검토 가능한 개발 루프를* 세우는 것.
+
+*내 역할.* 디스패치 기층과 개발 루프의 설계·구현 단독 담당입니다.
+
+*아키텍처.*
+
+#+caption: 플랫폼 운영에서 자기 계층으로 — 계보와 검토 가능한 개발 루프
+#+name: fig-lineage
+#+attr_odt: :width 14
+[[file:images/platform-lineage.png]]
+
+- =entwurf= — 하네스들이 상대의 인증·대화록·런타임을 소유하지 않고 *정체성만으로 서로를 호출하게 하는 얇은 기층* [cite:@acp-spec;@repo-entwurf]. Claude Code와 Codex를 매일 이 위에서 위임합니다 [cite:@claude-code;@openai-codex].
+- =forge-config= — 도메인 오너와의 대화에서 발견된 요구를 셀프호스팅 Forgejo 이슈로 굳히고 [cite:@forgejo;@repo-forge-config], 봇이 해당 도메인 에이전트에게 *읽기 전용 1차 리뷰로* 넘기고, 결과를 durable store에 남기는 루프입니다.
+
+*핵심 판단 — 값어치는 "하지 않기로 한 것"에 있습니다.* 문서에 박아둔 non-goal이 셋입니다 — *자동 코딩 공장이 아니고,* 운영 대시보드 제품이 아니고, 무엇을 구현할지 사람이 정하는 일을 대체하지 않습니다. =forgebot= 은 *디스패처이자 기록자이지 구현자가 아닙니다.* 목적은 하나 — *세션 메모리와 웹훅 재생이 현재 Forge 상태를 절대 이기지 못하게*, 즉 에이전트의 기억보다 durable store가 권위를 갖게. 이것이 BMAD류 워크플로와 같은 문제층의 독립 구현입니다 [cite:@bmad-method].
+
+*운영·성과.* auto-fix 레인이 두 리포에서 GREEN이고, *재생·멱등성 스모크에서 리포트 중복 생성이 없었습니다* [운영 기록].
+
+*인계·수용.* 자기 저장소로 증명되지 않는 것 하나 — *수용(reception).* 제가 그은 확장 경계에 *외부 개발자가 Snowflake Cortex Code 백엔드 기여를 실제로 열었고* [cite:@pr-entwurf-40], 제 코드가 상류 프로젝트에 받아들여진 기록도 함께 둡니다 [cite:@pr-ghostel-343;@pr-ghostel-510]. *이 줄이 가장 위조하기 어렵고, 회의적인 독자가 가장 먼저 확인하는 줄입니다.*
+
+*JD 관련성.* 자격 요건(Agentic AI 활용 개발)과 우대 사항(BMAD·AI Workflow)에 대응합니다.
+
+*핵심 증거.* [공개] entwurf [cite:@repo-entwurf] · forge-config [cite:@repo-forge-config] · 외부 기여 PR \#40 [cite:@pr-entwurf-40] · 상류 수용 [cite:@pr-ghostel-343;@pr-ghostel-510].
+
+* 프로젝트 5 — Linux·Backend·제품 운영 배경
+:PROPERTIES:
+:CUSTOM_ID: p5
+:END:
+
+/역할 공동창업·펌웨어·백엔드 · 스택 Yocto Linux, Go, Flutter, AWS IoT, Zigbee/Wi-Fi · Temporal·Saga(사내 R&D)/
+
+*맥락.* 이 축은 중심은 아니지만 *AX 계층 아래의 현실을 이해한다는 배경 신뢰도입니다*.
+
+*세로축.*
+
+#+caption: 펌웨어에서 제품까지 — AX 계층 아래의 세로축
+#+name: fig-product
+#+attr_odt: :width 14
+[[file:images/product-stack.png]]
+
+대형 터치 디스플레이용 Linux 플랫폼을 공동창업으로 양산했고 [cite:@yocto], 이후 Zigbee/Wi-Fi 펌웨어·Go 서버·Flutter 앱을 연결해 스마트홈 디바이스를 양산 출하했습니다. 연결형 배포는 AWS IoT를, 폐쇄망은 로컬 백엔드가 같은 프로토콜을 제공하고, 이 임베디드·엣지 경험은 공개 저장소로도 남아 있습니다 [cite:@repo-homeagent-config]. 최근에는 IoT 자동화 레시피를 durable execution 문제로 재정의하는 사내 R&D 제안(Temporal·Saga·의미 보존 검증)을 작성했습니다 [cite:@temporal-durable;@saga-pattern]. *에이전트를 붙일 대상이 무엇으로 만들어졌는지 모르면, 붙이는 방식도 틀립니다.*
+
+*JD 관련성.* 자격 요건(Backend 개발·운영)과 우대 사항(DB·MQ·컨테이너·클라우드)에 대응합니다.
+
+*핵심 증거.* [공개] 재현 가능한 Linux 기반 nixos-config [cite:@repo-nixos-config;@nixos] · 임베디드·엣지 homeagent-config [cite:@repo-homeagent-config] · [사내·비공개] durable-iot 사내 R&D.
+
+* 전파·온보딩과 프로젝트 전개
+:PROPERTIES:
+:CUSTOM_ID: enable
+:END:
+
+*전파와 온보딩(정직).* 정규 교육과정 운영 경험보다, *개발자·운영자가 도구를 이어받도록 가이드·데모·온보딩을 만들고 현업 적용을 지원한 경험이 중심입니다*. 회사 개발 서버에 동일 빌드 환경을 셋업해 담당자가 직접 빌드·검토하게 했고, 문서를 =AGENTS.md= (기준선)·=NEXT.md= (인계)·스킬(실행 계약) 세 층으로 나눠 사람과 에이전트가 같은 규칙을 읽게 했습니다. 이 문서 체계는 공개 가든으로도 배포됩니다 [cite:@live-garden].
+
+*프로젝트 전개 순서.* 사내 AI 접점 구축(2025–) → 공개 에이전트 플랫폼 운영·인시던트 대응(2026-02–06) → 메모리 계층 분리(andenken) → 디스패치·개발 루프(entwurf·forge-config, 외부 기여 2026-06 [cite:@pr-entwurf-40]) → 상세 근거는 함께 제출하는 Markdown에. 라이브 통계는 재현 가능한 endpoint로 제시합니다 [cite:@live-agenda-stats].
+
+* 마무리 — 조직 AX를 어떻게 착지시킬 것인가
+:PROPERTIES:
+:CUSTOM_ID: closing
+:END:
+
+조직 AX는 기존 시스템을 AI 플랫폼으로 갈아엎는 일이 아니라고 봅니다. *먼저 도메인의 주인이 자기 데이터를 자기 언어로 물을 수 있는 안전한 접점을 붙이고, 그 결과를 원자료까지 역추적할 수 있게 하는 것.* 이후 반복되는 요구를 검토 가능한 워크플로로 굳히고, 운영 규칙과 문서·전파로 조직이 이어받게 만드는 것 — *제가 맡을 수 있는 일은 이 전 과정을 하나의 운영 계층으로 연결하는 것입니다.*
+
+* 참고자료
+:PROPERTIES:
+:CUSTOM_ID: references
+:END:
+
+#+print_bibliography:
+
+* COMMENT 이미지 생성 프롬프트와 검토 메모                          :noexport:
+
+** 공통 스타일 (모든 그림)
+Clean professional enterprise technical infographic, flat design on white, muted palette
+(slate blue / teal / warm gray, one accent), thin crisp lines, generous whitespace, legible
+Korean sans-serif labels, no photorealism, no decorative clutter. 매 요소가 실제 구조를 지칭.
+
+** fig-company-ax → images/company-ax-arch.png (4:3)
+#+begin_src text
+Title "사내 AX 접점 아키텍처". Left column "업무 원천": chips IoT 디바이스 로그·상담(VOC)·문서·
+클라우드/Kafka. Middle two read-only workbench boxes with a shield (읽기 전용, no mutation):
+"incidentcli"(운영 장애+VOC→device, 9 collectors, KST 단일 시간축), "voscli"(상담 데이터,
+chat-id 역추적, 이상 검출). Horizontal "KST 단일 시간축" arrow under both. Right "도메인 워크벤치":
+운영자/QA가 자연어 질의 → agent가 근거 링크(source id 역추적) 반환. Dashed boundary
+"읽기 전용 경계 · 자격증명은 에이전트가 취급하지 않음" wrapping middle+right. Feedback arrow
+back to sources (피드백→데이터·이슈).
+#+end_src
+
+** fig-openclaw → images/openclaw-ops.png (16:9)
+#+begin_src text
+Title "OpenClaw 운영과 인시던트 대응". Left: a version timeline 2026-02 → 2026-06, 20+ ticks.
+Center: incident flow — "회귀 계측"(CPU 102%, 부팅 88s) → "가설 배제(클린 부팅 재현)" →
+"정확한 판 롤백" → "릴리즈 노트에서 정공법 수정 식별" → "직행". Right: a before/after bar pair —
+부팅 45.4s→5.8s, 메모리 816→246 MiB. Bottom band: 규칙 4개 chips(두 버전 금지·24h 스테이지·
+stuck session pause·응답성 SLO).
+#+end_src
+
+** fig-andenken → images/andenken-rag.png (4:3)
+#+begin_src text
+Title "andenken — 메모리 3축과 하이브리드 검색". Three horizontal lanes: active recall(차단형,
+타임아웃, 하네스 쪽), embedding(벡터+BM25 하이브리드, 점수 정규화 — 구현 중, highlighted),
+dream(야간 증류 — 미구현, faded). Inside embedding lane show two retrieval streams (vector, BM25)
+merging via "점수 정규화" into ranked results. Side note: 세션·가든 두 트랙, Qwen3-Embedding-8B 4096d,
+한↔영 교차 질의.
+#+end_src
+
+** fig-lineage → images/platform-lineage.png (16:9)
+#+begin_src text
+Title "플랫폼 운영에서 자기 계층으로". Root left "OpenClaw 운영(업스트림 추적·버전·인시던트·메모리)".
+Three branches: andenken(메모리 독립 계층·벡터+BM25), entwurf(하네스 간 디스패치·정체성 호출),
+forge-config(검토 가능한 개발 루프·sweeper·durable store 권위). Badge on entwurf: "외부 기여 · #40"
+(reception). Thin arrows fanning from root.
+#+end_src
+
+** fig-product → images/product-stack.png (4:3)
+#+begin_src text
+Title "펌웨어에서 제품까지 — AX 계층 아래의 세로축". Vertical stack bottom→top:
+Zigbee/Wi-Fi 펌웨어 → Go 서버 → Flutter 앱 → AWS IoT(연결형) / 로컬 백엔드(폐쇄망, 같은 프로토콜).
+Left older node "대형 터치 Linux 플랫폼(양산)". Top annotation "AX 계층은 이 위에 붙는다".
+#+end_src
+
+검토 메모:
+- 이미지 5장 + competency 1장 = 총 6장. glg-image(gemini nanobanana 2 flash)로 생성.
+- 생성 실패 시 폴백 graphviz. detail.md에는 로컬 이미지 대신 Mermaid/텍스트 구조로 옮긴다.
+- 수치 재확인(GLG): 140만 사용자 · 2,945건 · n8n 40+ · 부팅/메모리 인시던트치.

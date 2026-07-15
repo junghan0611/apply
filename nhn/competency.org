@@ -1,0 +1,163 @@
+#+title: 역량 및 성과 기술서 — 조직 AX 전환과 에이전트 플랫폼 운영
+#+author: 김정한 (Junghan Kim)
+#+email: [email removed]
+#+language: ko
+#+options: toc:nil num:nil author:nil date:nil broken-links:t
+#+bibliography: references.bib
+#+cite_export: csl ieee.csl
+
+# 이 문서는 gitignore된 제출본이다. 공개하지 않고 채용사에 직접 업로드하므로 회사명·고객사·
+# 사내 사실을 담는다. 공개면(ax.junghanacs.com)과는 별개 트랙이다. 추천인·지원 경로는 넣지 않는다.
+# 강조는 Org 문법: =굵게**= 이고 Markdown =**= 가 아니다. 한국어에서 닫는 마커 뒤에 조사가 붙으면
+# 강조가 아니라 별표가 그대로 인쇄되므로, 굵게는 구절 단위로 문장부호/공백 앞에서 닫는다.
+
+* 직무 요약
+:PROPERTIES:
+:CUSTOM_ID: summary
+:END:
+
+*김정한 (Junghan Kim)* · [email removed] · [[https://github.com/junghan0611][github.com/junghan0611]] · [[https://notes.junghanacs.com][notes.junghanacs.com]] · [[https://agenda.junghanacs.com][agenda.junghanacs.com]]
+
+에이전트 개발 도구를 /써 본/ 사람이 아니라, *조직이 이미 쓰고 있는 시스템 위에 AI 접점을 붙이고, 에이전트 플랫폼을 직접 세워 운영해 온 엔지니어입니다.* 저는 스마트홈 IoT 기업에서 사내 AI 인프라와 업무 데이터 접점을 구축·운영하고 있고, 그 판단의 근거를 개인적으로도 공개된 에이전트 플랫폼을 실사용 트래픽으로 운영하며 매일 검증하고 있습니다.
+
+이 서류는 두 축으로 읽으면 됩니다. *1축은 사내 AX입니다* — 기존 IoT·상담·문서 시스템을 갈아엎지 않고 읽기 전용 에이전트 접점을 붙여 자연어 질의를 실데이터로 잇는 일. *2축은 그 역량을 공개적으로 검증하는 개인 플랫폼 운영입니다* — 회사 코드는 공개할 수 없으니, 같은 능력을 공개 저장소·인시던트·제3자의 기여로 증명합니다.
+
+*핵심 성과 (지난 1년):*
+
+- *[사내]* 스마트홈 IoT 플랫폼(헤이홈, 약 140만 사용자)의 사내 AI 인프라를 구축했습니다 — GPU·컨테이너 기반 임베딩·리랭킹 서빙, 문서 임베딩 파이프라인, 그리고 기존 운영 시스템에 붙인 *읽기 전용 에이전트 워크벤치(incidentcli·voscli).*
+- *[사내]* 회사 기술문서(TDD)를 자연어 지시 한 줄로 편집·빌드·배포하는 *에이전트 우선(agent-first) 문서 파이프라인을 운영합니다.* "그룹사 AI 문서 작성·배포"를 주장하는 대신, 실제 사내 문서가 그 방식으로 만들어집니다.
+- *[공개]* 에이전트 런타임을 약 5개월간 *20회 이상의 버전 사이클로 운영하며*, 회귀를 계측해 롤백하고 재발 방지 규칙을 문서로 못 박았습니다.
+- *[공개]* 그 운영 경험을 메모리·디스패치·검토 가능한 개발 루프의 세 계층으로 분리했고 [cite:@repo-entwurf], 제가 그은 확장 경계에 *외부 개발자가 실제로 기여를 열었습니다* [cite:@pr-entwurf-40].
+
+*대표 수치:* 사내 문서 임베딩 2,945건 · n8n 데이터 흐름 40+ 노드 · 공개 에이전트 20+ 버전 사이클 · 인시던트 부팅 45.4초→5.8초, 메모리 816→246 MiB · 공개 노트 3,500+ · 커밋 8,500+ (라이브: [[https://agenda.junghanacs.com/api/stats][agenda.junghanacs.com/api/stats]]).
+
+배경을 한 줄 더 두자면, 저는 스스로를 *PKM-AI 가드너로* 정의합니다 — 한 사람과 조직의 지식·시간·업무 기록을 에이전트가 지속적으로 읽고, 실행하고, 다시 검증할 수 있는 운영 계층으로 가꾸는 사람. 이 관점이 "AI 기능을 붙인 백엔드"가 아니라 "사람이 이어받는 AX 계층"을 만들게 한 이유입니다.
+
+#+caption: 조직 AX 운영 계층 — 업무 원천에서 읽기 전용 접점, 도메인 워크벤치, 문서·온보딩·인계까지
+#+name: fig-ax-layer
+#+attr_odt: :width 15
+[[file:images/company-ax-layer.png]]
+
+* 주요 업무 대응
+:PROPERTIES:
+:CUSTOM_ID: primary
+:END:
+
+** AX 전환을 위한 시스템 인프라 구축·관리와 서비스 설계·개발·운영
+
+*사내 AI 인프라 — 서빙 계층을 직접 세웠습니다.* 문서 임베딩과 리랭킹을 외부 API에 의존하지 않고 GPU·컨테이너 위에서 직접 서빙합니다(임베딩 서빙, 리랭킹 서빙). 사내 지식(문서 임베딩 2,945건)을 벡터 검색으로 다루고, n8n 40+ 노드와 데이터 파이프라인으로 원천을 자동 수집합니다. *파인튜닝 중심이 아니라, 임베딩·리랭킹·검색 품질·프롬프트 설계라는 실서비스 최적화 축에서 강합니다.*
+
+*기존 시스템을 교체하지 않고 에이전트 접점을 붙였습니다.* 이미 돌아가는 IoT 클라우드와 상담 시스템을 새 플랫폼으로 갈아엎지 않았습니다. 대신 두 개의 읽기 전용 워크벤치를 만들었습니다.
+
+- =incidentcli= (Clojure) — 운영 장애와 VOC→디바이스 추적을 *하나의 KST 단일 시간축으로 회수·정렬합니다.* Slack 알림, API 모니터 DB, Kafka, 클라우드 트레일, IoT 디바이스 로그, 런타임 미러를 9개 수집기로 묶되, *모든 외부 호출은 읽기 전용이고, 덤프를 쌓지 않고 살아 있는 원본에서 읽습니다.* 수집 결과는 SPEC envelope로 검증하고, 인시던트 기록은 append-only입니다.
+- =voscli= (Clojure) — 운영팀이 매일 보는 상담 데이터 위에서 *숫자의 단위·기간·포함정책을 고정하고, 모든 근거를 개별 상담 id까지 역추적하게 만들고,* 평소와 다른 신호를 자동 검출해 운영팀이 읽는 표면으로 고정합니다.
+
+*운영 판단의 규율 — 도구가 시키는 대로 하지 않습니다.* 이 접점들은 실제 고객 식별자와 자격증명을 다룹니다. 그래서 설계에 경계를 문장으로 박았습니다 — *자격증명은 에이전트가 취급하지 않고,* 변경·실행 경로는 차단하며, 원시 개인정보는 표준입력 seam으로만 흐르고 문서·커밋에 남기지 않습니다. AX 도입이 실패하는 흔한 방식이 권한과 경계를 흐린 채 자동화를 붙이는 것이고, 저는 그 반례를 운영 규칙으로 갖고 있습니다.
+
+** 그룹사 AI 관련 문서 작성·배포와 전파·온보딩
+
+*문서 작성·배포를 주장하지 않고, 사내 문서가 그렇게 만들어집니다.* 회사 기술문서(TDD 양식)를 Org 소스에서 편집하고 ODT/DOCX로 빌드·배포하는 *에이전트 우선 파이프라인을 운영합니다.* 담당자가 "이 절에 보안 아키텍처 표를 추가해줘" 같은 자연어로 지시하면 에이전트가 편집·빌드까지 처리하고, 양식 규칙은 문서 계약으로 강제됩니다. 이 서류 자체도 같은 계열의 파이프라인(Org 정본 → 참고문헌·이미지·표가 함께 빌드)으로 만들어졌습니다.
+
+*읽는 사람이 이어받게 만드는 것이 핵심입니다.* 문서를 세 층으로 나눕니다 — =AGENTS.md= 는 영속 기준선, =NEXT.md= 는 세션 간 인계, 스킬 문서는 실행 계약입니다. *사람이든 에이전트든 같은 규칙을 읽습니다.* 40개 이상의 에이전트 스킬이 그 계약을 소비하므로, 문서는 장식이 아니라 실행되는 인터페이스입니다.
+
+*교육은 정직하게 밝힙니다.* 정규 교육과정을 운영한 경험보다는, *개발자·운영자가 실제 도구를 이어받도록 가이드·데모·온보딩 자료를 만들고 현업 적용을 지원한 경험이 중심입니다.* 회사 개발 서버에 동일한 빌드 환경을 셋업해 담당자가 직접 문서를 빌드·검토하게 했고, 운영팀 워크벤치는 =git pull= 한 번으로 바로 쓰도록 만들었습니다. 독자에 따라 표면을 나눕니다 — 개발자에게는 재현 명령과 불변식을, 비개발자에게는 일일 판독과 근거 링크를 줍니다.
+
+* 자격 요건과 우대 사항 대응
+:PROPERTIES:
+:CUSTOM_ID: requirements
+:END:
+
+각 항목은 사내(공개 불가)와 공개(검증 가능)를 라벨로 구분했습니다. 공개 증거가 없는 항목은 회사 코드라서 없는 것이고, 대체 증명을 함께 적었습니다.
+
+#+caption: JD 자격 요건 대응
+| 자격 요건 | 경험 | 결과·증거 |
+|-----------+------+-----------|
+| Linux 개발·운영 | NixOS로 노트북·서버·ARM 장치를 선언적으로 관리. 컨테이너·GPU·Yocto 임베디드 Linux | [공개] [[https://github.com/junghan0611/nixos-config][nixos-config]] |
+| Agentic AI 활용 개발 | Claude Code·Codex를 매일 사용. 하네스 간 위임·연속성 기층과 40+ 스킬을 설계·운영 | [공개] [[https://github.com/junghan0611/entwurf][entwurf]] |
+| BE 시스템 개발·운영 | Go·Clojure로 IoT 백엔드, 단일 바이너리 서비스, 운영·데이터 CLI. 사내 워크벤치 2종 운영 | [사내] incidentcli·voscli · [공개] Go/Clojure 저장소 |
+| 개발·비개발 AX 전환 | 운영팀 상담 데이터 워크벤치, 도메인 오너가 자기 언어로 질의 | [사내] voscli 운영자 일상 사용 |
+
+#+caption: JD 우대 사항 대응
+| 우대 사항 | 경험 | 결과·증거 |
+|-----------+------+-----------|
+| Web Framework (Spring/Gin/FastAPI) | Go·Python 서비스 API 운영. Spring 직접 경험은 없고 경계로 밝힘 | [사내] IoT 백엔드 |
+| DB·MQ·VM·컨테이너 | PostgreSQL·pgvector, Kafka, Docker, GPU 워크로드. 인시던트 도구가 DDL·런타임 미러를 잇는다 | [사내] incidentcli |
+| LLM·RAG | 임베딩·리랭킹 직접 서빙, 벡터+BM25 하이브리드, 점수 정규화, 한↔영 교차 질의 | [공개] [[https://github.com/junghan0611/andenken][andenken]] · [사내] 서빙 |
+| BMAD·AI Workflow | 직접 사용 경험 없음. 같은 문제층(검토 가능한 개발 루프)의 독립 구현으로 대체 증명 | [공개] [[https://github.com/junghan0611/forge-config][forge-config]] |
+| 클라우드 | AWS IoT, Oracle Cloud ARM, Cloudflare·Netlify 운영 | [공개] nixos-config · [사내] AWS |
+| FE (React/Tailwind) | React 19 + A2UI 뷰어 구현. Tailwind 직접 경험은 없고 디자인 토큰으로 대체 | [공개] React/Preact/Lit |
+| 조직·구성원 협업 | 운영팀·제품·개발 조직과 요구 번역·인계. (아래 §협업) | [사내] |
+| 개발자·비개발자 문서 | 독자별 표면 분리, 문서 계약 | [공개] 가든 · [사내] TDD |
+
+* 협업·문서·경계와 검증
+:PROPERTIES:
+:CUSTOM_ID: collab
+:END:
+
+** 조직 간 협업과 인계
+
+기술만 붙이지 않았습니다. *운영팀이 매일 겪는 문제를 듣고 → 개발 가능한 요구로 번역하고 → 제품·개발과 경계를 합의하고 → 읽기 전용 워크벤치를 제공하고 → 사용자의 피드백을 다시 데이터·문서·이슈로 되돌리는* 루프를 돌렸습니다. voscli는 그 루프의 산물이고, "고도화보다 운영자가 쓰고 싶게 만드는 것이 먼저"라는 원칙으로 실제 일상 사용에 진입했습니다.
+
+** 개발자·비개발자 문서
+
+같은 사실을 두 표면으로 냅니다. 개발자에게는 =AGENTS.md= ·스킬 문서·재현 명령을, 운영자에게는 매일 읽는 Markdown 리포트와 근거 링크를 줍니다. 문서가 사람과 에이전트 양쪽의 인터페이스가 되게 설계합니다.
+
+** 정직한 경계
+
+주장을 키우기 전에 *어디까지가 제 것이 아닌지 먼저 말합니다.*
+
+- Java/Spring 직접 경험을 Go/Clojure 경험으로 바꾸어 쓰지 않습니다.
+- BMAD를 사용했다고 쓰지 않습니다. 같은 문제층의 독립 구현과 그 차이를 보여줍니다 [cite:@bmad-method].
+- Tailwind 직접 사용 경험은 없습니다. React/Preact/Lit과 디자인 토큰 경험으로 대신합니다.
+- 파인튜닝 중심이 아닙니다. 임베딩 서빙·리랭킹·검색 품질·프롬프트 설계가 강점축입니다.
+- 사내 코드와 식별 가능한 운영 데이터는 공개하지 않습니다. 공개 저장소 /옆에서/ 구조와 판단만 설명합니다.
+
+** 검증 가능한 공개 기록
+
+- 에이전트 디스패치·연속성 — [[https://github.com/junghan0611/entwurf][entwurf]] (외부 기여 [[https://github.com/junghan0611/entwurf/pull/40][PR #40]])
+- 세션·지식 메모리(RAG) — [[https://github.com/junghan0611/andenken][andenken]] [cite:@repo-andenken]
+- 검토 가능한 개발 루프 — [[https://github.com/junghan0611/forge-config][forge-config]] [cite:@repo-forge-config]
+- 재현 가능한 Linux 기반 — [[https://github.com/junghan0611/nixos-config][nixos-config]] [cite:@repo-nixos-config]
+- 공개 지식·문서 체계 · 라이브 통계 [cite:@live-garden;@live-agenda-stats]
+- 상세 근거·구현·인터뷰 진입점 — 함께 제출하는 증거 패키지(ZIP)의 상세 Markdown
+
+각 항목의 번호는 아래 「참고자료」의 클릭 가능한 URL로 이어집니다.
+
+* 참고자료
+:PROPERTIES:
+:CUSTOM_ID: references
+:END:
+
+#+print_bibliography:
+
+* COMMENT 이미지 생성 프롬프트와 검토 메모                          :noexport:
+
+** 그림 1 — company-ax-layer.png (glg-image / gemini nanobanana 2 flash)
+
+배치: §직무 요약 끝. 권장 비율 4:3 가로. 파일: images/company-ax-layer.png
+
+#+begin_src text
+Clean professional technical infographic, horizontal layered architecture diagram,
+Korean labels. Title band on top: "조직 AX 운영 계층".
+Four horizontal layers stacked top to bottom, each a rounded rectangle with an icon:
+  1) "업무 원천" (data sources) — icons: IoT devices, chat/consultation, documents, cloud logs.
+  2) "읽기 전용 접점" (read-only touchpoints) — label chips: incidentcli, voscli; a shield icon
+     meaning read-only / no mutation; a single KST timeline axis running through.
+  3) "도메인 워크벤치" (domain workbench) — a person (운영자/도메인 오너) asking in natural language,
+     an agent returning evidence traced back to source id.
+  4) "문서·온보딩·인계" (docs / onboarding / handoff) — AGENTS.md, NEXT.md, skill contract cards
+     handed to both a developer and a non-developer.
+Thin vertical arrows connect the layers downward, and one feedback arrow curving back up from
+layer 4 to layer 1. Muted enterprise palette (slate blue, teal, warm gray) on white, flat design,
+generous whitespace, no photorealism, crisp thin lines, legible Korean sans-serif labels.
+16:9-ish but 4:3 acceptable. No decorative clutter — every element names a real structure.
+#+end_src
+
+검토 메모:
+- 이미지는 장식이 아니라 사실 구조. layer 4의 개발자/비개발자 분기 = JD 문서·교육 대응.
+- 생성 실패 시 폴백: graphviz 4-layer 다이어그램(결정적)으로 대체.
+
+** 사실 확인 필요 (GLG 검토)
+- "약 140만 사용자" — 헤이홈 규모. 샘플 제안서 인용. 최종 제출 전 현재 수치 재확인.
+- 문서 임베딩 2,945건 / n8n 40+ 노드 — MATERIAL 검증치. 현재값 재확인 권장.
+- 회사명(헤이홈/고퀄) 노출 범위 — gitignore 제출본이라 포함. 실명 표기 수위는 GLG 최종 판단.

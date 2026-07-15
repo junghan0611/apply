@@ -1,0 +1,18 @@
+# Local smoke tests and transient conversion outputs
+_smoke/
+.package/
+*.tmp
+*.log
+.~lock.*#
+.DS_Store
+
+# org-odt-export writes these beside the source before run.sh moves final artifacts.
+/competency.odt
+/competency.pdf
+/portfolio.odt
+/portfolio.pdf
+/detail.md
+
+# LibreOffice and editor recovery files
+*.bak
+*~
