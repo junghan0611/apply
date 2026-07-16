@@ -4,6 +4,10 @@
 % live URL도 번호 인용한다. "증명 가능한 URL 목록" 자체가 제출물의 기능이다.
 % citeproc 호환 위해 전부 @misc 로 통일하되 title/note/url 를 충실히. note 에 유형 라벨을 둔다.
 % 사내(비공개) 증거는 공개 URL이 없으므로 인용하지 않고 본문에서 [사내] 라벨로 구분한다.
+%
+% 가든 노트 URL 규칙(llms.txt 확정): https://notes.junghanacs.com/{section}/{YYYYMMDDTHHMMSS}
+%   section ∈ {notes, meta, bib, botlog, journal} · timestamp의 T는 대문자 · HTTP 200 검증함.
+% ⚠️ GPT 교차검수 예정 항목은 note 에 [검수] 라벨. 특히 Yegge dev-evolution 정확 출처.
 
 %% ════════ 공식 문서 · 프로토콜 · 방법론 ════════
 
@@ -19,6 +23,11 @@
 @misc{acp-spec,
   author = {{Zed Industries}}, title = {Agent Client Protocol}, year = {2025},
   url = {https://agentclientprotocol.com/}, note = {protocol},
+}
+@misc{web-introduction,
+  author = {{Zed Industries and JetBrains}}, title = {Introduction — Agent Client Protocol},
+  year = {2026}, url = {https://agentclientprotocol.com/overview/introduction},
+  note = {protocol · GLG 마스터 정본 키(web-introduction) · 하네스 비종속(any editor ↔ any agent)의 표준 근거 · LSP-for-agents},
 }
 @misc{openai-codex,
   author = {{OpenAI}}, title = {Codex CLI}, year = {2025},
@@ -66,35 +75,126 @@
   url = {https://forgejo.org/}, note = {software},
 }
 
-%% ════════ 공개 저장소 (자체 증거 · software/repo) ════════
+%% ════════ 담론 · 에이전트 진화 모델 (직무 프레이밍의 외부 근거) ════════
+
+@misc{blog-AnthropicHiveMind26,
+  author = {Yegge, Steve}, title = {The Anthropic Hive Mind}, year = {2026},
+  url = {https://steve-yegge.medium.com/the-anthropic-hive-mind-d01f768f3d7b},
+  note = {discourse · "engineers ... all level 7 to 8 on my Dev Evolution to AI chart,
+          and probably half their business people too" — 조직 전체가 에이전트 고수가 되는 축의 근거},
+}
+@misc{web-YeggeSDeveloper,
+  author = {Abrahms, Justin}, title = {Yegge's Developer-Agent Evolution Model},
+  year = {2026}, url = {https://justin.abrah.ms/blog/2026-01-08-yegge-s-developer-agent-evolution-model.html},
+  note = {discourse · GLG 마스터 정본(Abrahms의 Yegge 모델 정리) ·
+          Stage 7 = 10+ agents hand-managed · Stage 8 = 자기 오케스트레이터 구축},
+}
+@misc{web-KarpathyLLMWiki,
+  author = {Karpathy, Andrej}, title = {LLM Wiki — Idea File (personal knowledge bases with LLMs)},
+  year = {2026}, url = {https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f},
+  note = {discourse · raw→wiki→schema 3층 · "share the idea, not the code" · PKM으로서의 AX 근거},
+}
+
+%% ════════ 공개 저장소 (자체 증거 · GLG 자작 원본) ════════
 
 @misc{repo-entwurf,
-  author = {Kim, Junghan}, title = {entwurf — 하네스 간 디스패치·연속성 기층}, year = {2026},
-  url = {https://github.com/junghan0611/entwurf}, note = {public repo · 2026-07-15 확인},
+  author = {Kim, Junghan}, title = {entwurf — 가든 시민 디스패치 기층 · v2 · meta-bridge · ACP 플러그인 · pi 어댑터},
+  year = {2026}, url = {https://github.com/junghan0611/entwurf}, note = {public repo · 2026-07-15 확인},
 }
 @misc{repo-andenken,
-  author = {Kim, Junghan}, title = {andenken — 세션·지식 시맨틱 메모리 (벡터+BM25 하이브리드)}, year = {2026},
-  url = {https://github.com/junghan0611/andenken}, note = {public repo},
+  author = {Kim, Junghan}, title = {andenken — 사람·에이전트용 시맨틱 메모리 (임베딩 + 벡터/BM25 하이브리드 검색)},
+  year = {2026}, url = {https://github.com/junghan0611/andenken}, note = {public repo},
 }
 @misc{repo-forge-config,
-  author = {Kim, Junghan}, title = {forge-config — 검토 가능한 개발 루프·sweeper}, year = {2026},
-  url = {https://github.com/junghan0611/forge-config}, note = {public repo},
+  author = {Kim, Junghan}, title = {forge-config — Forgejo 커넥터 · 검토 가능한 개발 루프 · sweeper},
+  year = {2026}, url = {https://github.com/junghan0611/forge-config}, note = {public repo},
 }
 @misc{repo-nixos-config,
-  author = {Kim, Junghan}, title = {nixos-config — 노트북·서버·ARM 선언적 관리}, year = {2026},
-  url = {https://github.com/junghan0611/nixos-config}, note = {public repo},
+  author = {Kim, Junghan}, title = {nixos-config — 4개 장치에 걸친 재현 가능한 NixOS 시스템},
+  year = {2026}, url = {https://github.com/junghan0611/nixos-config}, note = {public repo},
 }
 @misc{repo-homeagent-config,
-  author = {Kim, Junghan}, title = {homeagent-config — 임베디드·엣지 에이전트}, year = {2026},
-  url = {https://github.com/junghan0611/homeagent-config}, note = {public repo},
+  author = {Kim, Junghan}, title = {homeagent-config — Matter 스마트홈 허브 + 온디바이스 AI (RPi5+Hailo-8 NPU; RK3576)},
+  year = {2026}, url = {https://github.com/junghan0611/homeagent-config}, note = {public repo},
+}
+@misc{repo-agent-config,
+  author = {Kim, Junghan}, title = {agent-config — PKM-native 에이전트 스킬 스택 (노트·어젠다·서지·건강·git)},
+  year = {2026}, url = {https://github.com/junghan0611/agent-config}, note = {public repo},
+}
+@misc{repo-geworfen,
+  author = {Kim, Junghan}, title = {geworfen — 존재-데이터 대시보드 (Clojure 백엔드 · WebTUI · org-agenda 뷰어)},
+  year = {2026}, url = {https://github.com/junghan0611/geworfen}, note = {public repo},
+}
+@misc{repo-memex-kb,
+  author = {Kim, Junghan}, title = {memex-kb — 한국어 문서 툴체인 (HWPX·스캔 PDF·EPUB → Org 메타문서 → 오피스 포맷)},
+  year = {2026}, url = {https://github.com/junghan0611/memex-kb}, note = {public repo · 주요업무 ② 문서 변환 축},
+}
+@misc{repo-doomemacs-config,
+  author = {Kim, Junghan}, title = {doomemacs-config — Emacs 편집 환경 (Doom + Denote + Org · agent-server.el)},
+  year = {2026}, url = {https://github.com/junghan0611/doomemacs-config}, note = {public repo},
+}
+@misc{repo-dictcli,
+  author = {Kim, Junghan}, title = {dictcli — 개인 어휘 그래프 (한↔영) · 3,900+ triples · 2,400+ 매핑},
+  year = {2026}, url = {https://github.com/junghan0611/dictcli}, note = {public repo},
+}
+@misc{repo-abductcli,
+  author = {Kim, Junghan}, title = {abductcli — 가추 추론 CLI (anomaly → signal → memo → evaluation)},
+  year = {2026}, url = {https://github.com/junghan0611/abductcli}, note = {public repo},
+}
+@misc{repo-legoagent,
+  author = {Kim, Junghan}, title = {legoagent-config — 체현 토이 에이전트 스택 (Pybricks + Flutter + ESP32)},
+  year = {2026}, url = {https://github.com/junghan0611/legoagent-config}, note = {public repo · 교육/데모 소재},
+}
+@misc{repo-openglg-config,
+  author = {Kim, Junghan}, title = {openglg-config — 셀프호스팅 인증 작업면 + 재현 가능한 셸 부트스트랩},
+  year = {2026}, url = {https://github.com/junghan0611/openglg-config}, note = {public repo},
+}
+@misc{repo-lifetract,
+  author = {Kim, Junghan}, title = {lifetract — 생활 추적 데이터 파이프라인 (Samsung Health + aTimeLogger)},
+  year = {2026}, url = {https://github.com/junghan0611/lifetract}, note = {public repo},
+}
+@misc{repo-edgeagent-config,
+  author = {Kim, Junghan}, title = {edgeagent-config — 소형 A2A 엣지 에이전트를 위한 Zig 지향 연구 셸},
+  year = {2026}, url = {https://github.com/junghan0611/edgeagent-config}, note = {public repo · Zig · 임베디드 에이전트},
+}
+@misc{repo-durable-iot-migrate,
+  author = {Kim, Junghan}, title = {durable-iot-migrate — Temporal + Saga 기반 IoT 플랫폼 이관 프레임워크},
+  year = {2026}, url = {https://github.com/junghan0611/durable-iot-migrate}, note = {public repo · 레거시 이관 축},
+}
+@misc{repo-glueclaw,
+  author = {Kim, Junghan}, title = {glueclaw — Claude Max 구독을 OpenClaw에서 다시 쓰게 잇는 접착층},
+  year = {2026}, url = {https://github.com/junghan0611/glueclaw}, note = {public repo · 하네스 비종속·구독 활용},
+}
+@misc{repo-glg-mono,
+  author = {Kim, Junghan}, title = {GLG-Mono — 지식관리·에이전트 작업용 한국어 프로그래밍 폰트},
+  year = {2026}, url = {https://github.com/junghan0611/GLG-Mono},
+  note = {public repo · 이 제출문서의 본문 폰트 · 텍스트/유니코드/한글 축},
+}
+@misc{repo-garden,
+  author = {Kim, Junghan}, title = {garden — notes.junghanacs.com 소스 (Quartz 4 + Markdown)},
+  year = {2026}, url = {https://github.com/junghan0611/garden}, note = {public repo · 공개 지식정원 빌드},
+}
+@misc{repo-identity,
+  author = {Kim, Junghan}, title = {junghan0611 — 프로필·이력·정체성 문서 세트·VOCABULARY},
+  year = {2026}, url = {https://github.com/junghan0611/junghan0611}, note = {public repo · 정체성/어휘 정본},
+}
+@misc{vocabulary,
+  author = {Kim, Junghan}, title = {VOCABULARY.md — coined terms 정본 (Authology · Being-to-Being · Harnessing)},
+  year = {2026}, url = {https://github.com/junghan0611/junghan0611/blob/main/VOCABULARY.md},
+  note = {canonical · 조어 정의 · positioning 앵커},
 }
 
-%% ════════ 수용(reception) · PR ════════
+%% ════════ 수용(reception) · PR · 이슈 ════════
 
 @misc{pr-entwurf-40,
   author = {{External contributor}}, title = {entwurf PR \#40 — Snowflake Cortex Code ACP 백엔드 기여},
   year = {2026}, url = {https://github.com/junghan0611/entwurf/pull/40},
-  note = {reception · 외부 개발자가 확장 경계에 연 기여 · head 3dd6f5f},
+  note = {reception · 외부 개발자가 확장 경계에 연 기여 · 기업용 하네스(cortex) 실증 · head 3dd6f5f},
+}
+@misc{issue-entwurf-48,
+  author = {Kim, Junghan}, title = {entwurf \#48 — Snowflake Cortex 하네스 지원 (0.13.0 반영 예정)},
+  year = {2026}, url = {https://github.com/junghan0611/entwurf/issues/48},
+  note = {reception · 기업용 하네스를 ACP 표준으로 단계적 수용하는 로드맵 근거},
 }
 @misc{pr-ghostel-343,
   author = {Kim, Junghan}, title = {ghostel PR \#343 — 상류 프로젝트에 받아들여진 기여}, year = {2026},
@@ -109,7 +209,7 @@
 
 @misc{live-garden,
   author = {Kim, Junghan}, title = {Digital Garden — 공개 지식·문서 체계 (notes.junghanacs.com)},
-  year = {2026}, url = {https://notes.junghanacs.com}, note = {live surface},
+  year = {2026}, url = {https://notes.junghanacs.com}, note = {live surface · 2,200+ 공개 노트},
 }
 @misc{live-agenda,
   author = {Kim, Junghan}, title = {Agenda — 라이브 작업·통계 표면}, year = {2026},
@@ -118,4 +218,126 @@
 @misc{live-agenda-stats,
   author = {Kim, Junghan}, title = {Agenda 라이브 통계 API (/api/stats)}, year = {2026},
   url = {https://agenda.junghanacs.com/api/stats}, note = {live stat · 재현 가능 집계},
+}
+
+%% ════════ 가든 노트 (자체 서사의 공개 앵커 · notes.junghanacs.com) ════════
+%% 규칙: /{section}/{id}. 본문에서 서사에 녹이고, 검증 필요한 주장에 [cite]로 앵커링.
+
+@misc{note-harnessing,
+  author = {Kim, Junghan}, title = {하네스 엔지니어링: 돌도끼에서 인공지능까지, 도구와 존재의 접합부},
+  year = {2026}, url = {https://notes.junghanacs.com/botlog/20260319T152938},
+  note = {botlog · positioning 핵심 · 하네스는 재현 가능한 forge(NixOS·Emacs)와 응용 사이의 접합층},
+}
+@misc{note-entwurf-lineage,
+  author = {Kim, Junghan}, title = {entwurf: 힣의 분신 소환 하네스 연대기 (굿바이 pi-shell-acp)},
+  year = {2026}, url = {https://notes.junghanacs.com/botlog/20260520T052051},
+  note = {botlog · pi-shell-acp → entwurf 계보 · ACP 뿌리},
+}
+@misc{note-taste-gaetbalja,
+  author = {Kim, Junghan}, title = {개발자는 갷발자로 — 발자와 취향의 자기표현},
+  year = {2025}, url = {https://notes.junghanacs.com/notes/20251121T132839},
+  note = {notes · 취향(taste)으로 시작한 하네스 · PKM-AI 자리매김의 근거},
+}
+@misc{note-karpathy-llmwiki,
+  author = {Kim, Junghan}, title = {카파시조어·바이브코딩·섀디드싱킹·LLMWiki·소프트웨어 3.0},
+  year = {2025}, url = {https://notes.junghanacs.com/meta/20250328T074505},
+  note = {meta · Karpathy llm-wiki를 PKM 관점으로 읽은 메타노트},
+}
+@misc{note-andenken-pkm,
+  author = {Kim, Junghan}, title = {andenken — 내 PKM-AI 자리로 수렴하는 llm-wiki·OKF·EKG},
+  year = {2026}, url = {https://notes.junghanacs.com/botlog/20260406T140411},
+  note = {botlog · 기억축을 PKM-AI로 수렴시킨 설계 서사},
+}
+@misc{note-andenken-semantic,
+  author = {Kim, Junghan}, title = {andenken: 존재의 뜻새김 — 시맨틱 메모리를 넘어서},
+  year = {2026}, url = {https://notes.junghanacs.com/botlog/20260319T110800},
+  note = {botlog · 세션·지식베이스 기억축의 개념},
+}
+@misc{note-forge-config,
+  author = {Kim, Junghan}, title = {봇공방: forge-config 포지 힣 에이전트의 공유 코드 작업면 (Forgejo)},
+  year = {2026}, url = {https://notes.junghanacs.com/botlog/20260527T073823},
+  note = {botlog · 에이전트 작업면을 외부로 보내지 않는다 · sweeper vs copilot},
+}
+@misc{note-linkedin-raw,
+  author = {Kim, Junghan}, title = {링크드인 날것 공개면 — AI 크롤러 시대의 손가락 프롬프트},
+  year = {2025}, url = {https://notes.junghanacs.com/notes/20250328T090326},
+  note = {notes · "내 에이전트가 아닌데 어느 에이전트가 내 글을 다듬나" · 작업면 소유},
+}
+@misc{note-openclaw-loop,
+  author = {Kim, Junghan}, title = {openclaw: 에이전트 액션 루프와 맥(脈) — 봇 루프 풀스택과 멈추지 않는 현재성},
+  year = {2026}, url = {https://notes.junghanacs.com/botlog/20260526T175832},
+  note = {botlog · openclaw를 에이전트 루프로 · sweeper 규모 운영 관찰},
+}
+@misc{note-gpt-review-collab,
+  author = {Kim, Junghan}, title = {지피티 5.6 탄생과 오푸뜨의 눈물 — 검수는 협력이지 판결이 아니다},
+  year = {2024}, url = {https://notes.junghanacs.com/notes/20241223T094008},
+  note = {notes · 클로드·지피티 단독보다 협력 시 시너지 · 교차검수 관점},
+}
+@misc{note-iam-hub,
+  author = {Kim, Junghan}, title = {나는허브다 — 상태머신과 에이전트 협업},
+  year = {2025}, url = {https://notes.junghanacs.com/notes/20251212T162004},
+  note = {notes · zigbee 허브 펌웨어(상태머신)와 에이전트 협업의 경계},
+}
+@misc{note-embedded-memory,
+  author = {Kim, Junghan}, title = {메모리 대란과 임베디드 개발 — 투명한 경계},
+  year = {2024}, url = {https://notes.junghanacs.com/notes/20241019T193836},
+  note = {notes · armv7·64MiB RAM 펌웨어의 하드코어 엔지니어링 배경},
+}
+@misc{note-ondevice-security,
+  author = {Kim, Junghan}, title = {임베디드 LLM 시대의 크립토재킹 방어 — Yocto/NixOS 온디바이스 보안전략},
+  year = {2026}, url = {https://notes.junghanacs.com/botlog/20260304T134334},
+  note = {botlog · 재현성·보안 인프라 관점},
+}
+@misc{note-embedding-search,
+  author = {Kim, Junghan}, title = {검색·검색엔진·검색증강생성·임베딩 (메타노트)},
+  year = {2024}, url = {https://notes.junghanacs.com/meta/20241002T085733},
+  note = {meta · 임베딩/RAG 개념 앵커},
+}
+@misc{note-memex-ocr,
+  author = {Kim, Junghan}, title = {memex-kb 스캔책을 귀로 듣기까지 — OCR 파이프라인 여정},
+  year = {2026}, url = {https://notes.junghanacs.com/botlog/20260606T130306},
+  note = {botlog · 로컬 GPU(RTX5080) OCR 파이프라인},
+}
+@misc{note-memex-kb,
+  author = {Kim, Junghan}, title = {memex-kb — 힣의 범용 지식베이스 변환 시스템},
+  year = {2025}, url = {https://notes.junghanacs.com/notes/20251030T011105},
+  note = {notes · 문서 변환 = 텍스트 브릿지 · 주요업무 ② 근거},
+}
+@misc{note-emacs-chronicle,
+  author = {Kim, Junghan}, title = {이맥스 버전 연대기 27에서 31까지 — 도구가 아니라 거처가 된 편집기},
+  year = {2025}, url = {https://notes.junghanacs.com/notes/20250224T210015},
+  note = {notes · 유니코드·한글 입력기·폰트 고민의 뿌리},
+}
+@misc{note-memex-proposal,
+  author = {Kim, Junghan}, title = {memex-kb 제안서 문서 변환 메타포맷},
+  year = {2026}, url = {https://notes.junghanacs.com/botlog/20260306T130726},
+  note = {botlog · 회사 제안서 변환 실무 · org 메타포맷},
+}
+@misc{note-org-ssot,
+  author = {Kim, Junghan}, title = {Org SSOT 메타문서·책의 미래 인터랙티브 프로젝트 지식베이스},
+  year = {2025}, url = {https://notes.junghanacs.com/notes/20251021T105353},
+  note = {notes · 이 제출문서의 org SSOT→다중 산출 방식의 근거},
+}
+@misc{note-nixos-config,
+  author = {Kim, Junghan}, title = {nixos-config: 재현 가능한 컴퓨팅 환경 구축},
+  year = {2025}, url = {https://notes.junghanacs.com/notes/20251030T011102},
+  note = {notes · Linux 개발·운영 · 재현성 축},
+}
+@misc{note-multiagent-human,
+  author = {Kim, Junghan}, title = {멀티 에이전트 인간 — 눈귀코혀몸뜻},
+  year = {2025}, url = {https://notes.junghanacs.com/notes/20251207T154723},
+  note = {notes · i3wm·NixOS·멀티 하네스 운용의 개인 서사},
+}
+@misc{note-incidentcli,
+  author = {Kim, Junghan}, title = {incidentcli — 운영 인시던트 에이전트, 담당자·군대의 수문장},
+  year = {2026}, url = {https://notes.junghanacs.com/botlog/20260519T175212},
+  note = {botlog · 도메인 오너 에이전트(담당자에게 부착되는 read-only 증거 도구) ·
+          "1차 사용자는 사람이 아니라 담당자 에이전트" · 수문장 preflight 게이트 ·
+          fast-fail(에이전트용 에러정책) · 외부/내부 두 가드 · 격리 런타임=하네스 비종속 · KST 단일축},
+}
+@misc{note-security-principles,
+  author = {Kim, Junghan},
+  title = {보안사고 대응 다섯 가지 원칙 — 포렌식 증류 (재현성·무결성·순수성·추적가능성·불변성)},
+  year = {2025}, url = {https://notes.junghanacs.com/notes/20251121T095117},
+  note = {notes · incidentcli 5원칙의 원천 · 에이전트 증거 도구의 무결성 규율 · PSIRT/보안 축},
 }
