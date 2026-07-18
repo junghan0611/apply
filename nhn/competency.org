@@ -6,15 +6,18 @@
 #+bibliography: references.bib
 #+cite_export: csl ieee.csl
 
-# 이 문서는 gitignore된 제출본이다. 공개하지 않고 채용사에 직접 업로드하므로 회사명·고객사·
-# 사내 사실을 담는다. 공개면(ax.junghanacs.com)과는 별개 트랙이다. 추천인·지원 경로는 넣지 않는다.
-# 강조는 Org 문법: =굵게**= 이고 Markdown =**= 가 아니다. 한국어에서 닫는 마커 뒤에 조사가 붙으면
-# 강조가 아니라 별표가 그대로 인쇄되므로, 굵게는 구절 단위로 문장부호/공백 앞에서 닫는다.
+# 이 문서는 gitignore된 제출본이다. 공개하지 않고 채용사에 직접 업로드하므로 회사명·고객사· 사내 사실을 담는다. 공개면(ax.junghanacs.com)과는 별개 트랙이다. 추천인·지원 경로는 넣지 않는다.
+
+# 강조는 Org 문법: =굵게**= 이고 Markdown =**= 가 아니다. 한국어에서 닫는 마커 뒤에 조사가 붙으면 강조가 아니라 별표가 그대로 인쇄되므로, 굵게는 구절 단위로 문장부호/공백 앞에서 닫는다.
+
+# 개인정보 블록. 첫 헤딩 앞(zeroth 섹션)이라 export 시 제목 바로 밑, 프롤로그 위에 렌더된다.
+*김정한 (Junghan Kim)* · [email removed] · [[https://github.com/junghan0611][github.com/junghan0611]] · [[https://notes.junghanacs.com][notes.junghanacs.com]] · [[https://www.linkedin.com/in/junghan-kim-1489a4306][linkedin.com/in/junghan-kim-1489a4306]]
 
 * 히스토리 :noexport:
+- [2026-07-18 Sat 15:37] @junghan — 이제 검토 좀 하자.
 - [2026-07-16 Thu 12:48] @junghan — 내가 방향을 직접 써야겠다. 이는 프롬프트다.
 
-* COMMENT GLG 원문 — 축 SSOT (직접 쓴 날것)                        :noexport:
+* COMMENT GLG 원문 — 축 SSOT (직접 쓴 날것) :noexport:
 :PROPERTIES:
 :CUSTOM_ID: glg-source
 :END:
@@ -24,7 +27,7 @@
 # 출처: ~/sync/org/journal/20260713T000000--2026-07-13__journal_week28.org:303-414 (2026-07-16 작성)
 
 #+begin_example
-*** AX 전환 / AI 인프라 힣의 직접 쓴다. :noexport:
+,*** AX 전환 / AI 인프라 힣의 직접 쓴다. :noexport:
 
 [2026-07-16 Thu 13:16] 직접 힣이 쓴다.
 
@@ -133,131 +136,131 @@ Java, Python, Go 등 1개 이상의 언어로 BE 시스템 개발 운영 경험?
 또 개발 및 비개발 영역에서 AX 전환에 대한 이야기라면 PKM-AI와 관련 된 이야기가 하나의 맥락에서 이야기가 연결되지 않을까? 더 필요한가?
 
 우대 사항의 이야기들은 대략 정리가 되었던것 같은데? 모르면 모르는 것이고, 모르면 에이전트랑 같이 논의해서 해보면 되는 것 같다.
+
+
 #+end_example
 
-* 직무 요약
+추가
+
+#+BEGIN_EXAMPLE
+- “역량 및 성과 기술서”인데 최신 수정에서 오히려 2,945건, 40+ 노드, 부팅 45.4→5.8초, 메모리 816→246MiB 같은 성과 수치가 빠짐
+
+이거 완전 필요없어. 빼자고한거야. 의미없는 숫자야.
+
+지금 그리고 내가 쓰다가 말았는데 JD에 다 개인프로 젝트만 적고 있잖아. 이말을 적으려다가 말았다.
+
+아직 뭔가 제대로 된 직무가 열린 곳이 아니라 그냥 개인이 밀어 붙이는 분야야 그러니까 더 뭔가 숫자를 바랄게 없어. 그러니 이 주제로 내가 이렇게 해왔고 달려가고 있다는 이야기를 던지는거야.
+#+END_EXAMPLE
+
+* 프롤로그
 :PROPERTIES:
 :CUSTOM_ID: summary
 :END:
 
-*김정한 (Junghan Kim)* · [email removed] · [[https://github.com/junghan0611][github.com/junghan0611]] · [[https://notes.junghanacs.com][notes.junghanacs.com]] · [[https://agenda.junghanacs.com][agenda.junghanacs.com]]
+'AI 전환 백엔드 개발'의 주요 업무를 읽고, 저는 스티브 예기의 글 한 편을 떠올렸습니다. 그는 앤트로픽에선 개발자뿐 아니라 비개발자 상당수도 이미 에이전트 진화 7~8단계에 있더라고 관찰했는데 [cite:@blog-AnthropicHiveMind26], 그가 말한 진화 모델에서 그 단계는 여러 에이전트를 손으로 관리하다 자신의 오케스트레이터를 직접 만드는 자리입니다 [cite:@web-YeggeSDeveloper]. 그렇다면 이 직무에 필요한 수준은 어디쯤일까요. 저는 모릅니다. 아직 이름조차 굳지 않은 자리라고 봅니다.
 
-저는 스스로를 *PKM-AI 하네스 엔지니어로 정의합니다* — /From Embedded Systems to Shared Agent Work Surfaces/. 에이전트 개발 도구를 /써 본/ 사람이 아니라, *자기 오케스트레이터를 직접 만들어 운영하는* 자리에 있습니다.
+다만 저는 이 변화를 엔지니어링이 아니라 *개인지식관리(PKM)* 의 자리에서 바라봅니다. 그래서 제 링크드인에는 세상에 아직 없는 직무 하나가 먼저 적혀 있습니다 — *PKM-AI Harness Engineer*. 개발자와 비개발자의 경계가 흐려질수록, 중요한 것은 모두를 같은 도구 사용법으로 평준화하는 일이 아니라 각자가 쌓아 온 지식과 경험 위에서 에이전트와 협력하는 방식입니다. 저는 그 방식이 스스로 필요해서, 아직 열리지 않은 이 자리를 향해 이미 하나의 흐름을 만들어 왔습니다. 아래 한 장이 그 전체 그림이고, 이어지는 본문은 각 계층에 대한 설명입니다.
 
-스티브 예기의 개발자–에이전트 진화 모델 [cite:@web-YeggeSDeveloper] 에서 마지막 8단계는 "10개 이상의 에이전트를 손으로 관리하다 한계에 이르러 *자기 오케스트레이터를 만드는*" 자리입니다. 앤트로픽은 엔지니어 전원과 비개발자 절반이 이미 7–8단계에 있다고 관찰됩니다 [cite:@blog-AnthropicHiveMind26]. *이 자리가 요구하는 AX 전환은 조직 구성원 전부를 그 단계로 끌어올리는 일이라고 읽습니다.*
-
-저는 pi-shell-acp에서 시작해 지금은 하네스 디스패치 기층 =entwurf= 를 릴리즈·유지하는 메인테이너입니다 [cite:@repo-entwurf;@note-entwurf-lineage]. 깃허브에 에이전트 도구는 이미 널려 있고 누구나 만듭니다. 관건은 *메인테이너의 방향이 담겼는가* 입니다.
-
-*그 방향의 뿌리는 엔지니어링이 아니라 개인지식관리(PKM)입니다* [cite:@note-taste-gaetbalja]. 제 디지털 가든과 닷파일이 가리키는 곳이 거기이고, 카파시의 LLM Wiki도 결국 같은 자리를 가리킵니다 [cite:@web-KarpathyLLMWiki]. 개발자와 비개발자의 경계가 흐려지는 지금, 성장하는 개인은 평준화된 인간이 아니라 *자기가 축적한 지식과 경험을 기반으로 에이전트와 협력하는 개인* 입니다. 저는 AX를 그 관점에서 봅니다.
-
-이 서류는 이 자리가 부르는 두 축으로 읽으면 됩니다 — *AI 인프라* 와 *도메인 오너 에이전트*. 앞은 어떤 하네스에도 종속되지 않는 에이전트 실행 기층이고, 뒤는 담당자에게 부착되는 에이전트(대시보드가 아니라 에이전트)입니다. 저는 스마트홈 IoT 기업 고퀄(제품: 헤이홈)에서 이 둘을 사내로 구축·운영하고, 같은 역량을 공개 저장소·운영 기록·제3자 기여로 매일 검증합니다. 지속성은 공개 지표로 확인됩니다 — 5개월 넘게 이어 온 에이전트 런타임의 20+ 버전 사이클, 제가 그은 확장 경계에 열린 외부 기여 [cite:@pr-entwurf-40], 매일 갱신되는 라이브 작업·통계 [cite:@live-agenda-stats].
-
-#+caption: 조직 AX 두 기둥 — AI 인프라(하네스 비종속 실행 기층)와 도메인 오너 에이전트(담당자 부착)
+#+caption: 개인의 PKM에서 조직의 에이전트 작업면까지 — 제가 먼저 만들어 온 하나의 흐름
 #+name: fig-ax-layer
 #+attr_odt: :width 15
 [[file:images/company-ax-layer.png]]
 
-* 주요 업무 대응
+* 개인지식관리에서 에이전트 인프라로
 :PROPERTIES:
-:CUSTOM_ID: primary
+:CUSTOM_ID: pkm-infra
 :END:
 
-** AX 전환을 위한 시스템 인프라 구축·관리·운영
+** 뿌리는 PKM입니다
 
-두 기둥으로 답합니다 — *AI 인프라* (어떤 하네스에도 종속되지 않는 실행 기층)와 *도메인 오너 에이전트* (담당자에게 부착되는 에이전트).
+제 방향의 뿌리는 엔지니어링보다 *개인지식관리(PKM)* 에 있습니다 [cite:@note-taste-gaetbalja]. 개발자와 비개발자의 경계가 흐려질수록 사람을 같은 도구 사용법으로 평준화하는 것보다, 각자가 축적한 지식과 경험을 에이전트가 읽고 이어서 일하게 하는 일이 중요해집니다. 카파시가 말한 LLM Wiki 역시 같은 필요를 가리킨다고 봅니다 [cite:@web-KarpathyLLMWiki].
 
-*기둥 1 — AI 인프라: 어떤 하네스에도 종속되지 않는 지점.*
+그래서 에이전트 도구 하나만 만들지 않았습니다. 사람이 바뀌고 세션이 끝나도 다시 시작할 수 있도록 NixOS·Emacs·에이전트 설정·셀프호스팅 코드 작업면을 =-config= 저장소로 관리해 왔습니다 [cite:@repo-nixos-config;@note-nixos-config;@repo-agent-config]. 재현성은 배포 편의가 아니라 *사람과 에이전트가 같은 자리로 돌아오기 위한 조건* 입니다.
 
-AX의 시스템 인프라를 "AI 기능이 붙은 백엔드"가 아니라 *에이전트 실행 기층으로 봅니다.* 회사가 특정 벤더(앤트로픽·OpenAI)에 묶여 한 도구만 제공하거나, API 호출로 비용이 폭발하는 선택을 피하는 지점입니다. 답은 표준 인터페이스입니다 — ACP(Agent Client Protocol) [cite:@web-introduction]. 저는 이름 그대로 pi-shell-acp를 ACP 도구로 시작했고, 그 뿌리가 =entwurf= 로 이어져 Claude Code·Codex·Gemini를 *구독 요금제 그대로 브릿지합니다* [cite:@repo-entwurf]. *기업용 하네스(Snowflake Cortex)를 쓰는 외부 개발자가 ACP 백엔드 기여를 열었고, 다음 릴리즈에 반영됩니다* [cite:@pr-entwurf-40;@issue-entwurf-48] — 하네스 비종속이 주장이 아니라 이미 받은 기여라는 뜻입니다.
+** 도구를 쓰는 데서 운영 계층을 만드는 데로
 
-그 위에 계층을 쌓습니다.
+OpenClaw는 설치해 본 도구가 아니라 계속 운영해 온 에이전트 런타임입니다. 상류 버전의 변화를 제 환경의 인증·모델·플러그인·메모리 계층에 어떤 의미가 있는지 다시 해석하고, 회귀가 생기면 롤백하며, 다음 운영자가 반복하지 않도록 승격과 검증 규칙을 문서에 남겼습니다 [cite:@note-openclaw-loop]. 여기서 배운 것은 모델보다 *에이전트 루프를 오래 살게 하는 운영층* 이 먼저라는 점입니다.
 
-- *에이전트 루프 운영* — 상류 런타임 openclaw를 약 5개월간 20회 이상의 버전 사이클로 운영하며, 회귀를 계측해 롤백하고 재발 방지 규칙을 문서로 못 박았습니다. openclaw를 조상 도구가 아니라 *에이전트 루프로 보고*, 그 위에 forge-config의 검토 가능한 개발 루프(sweeper)를 세웠습니다 [cite:@note-openclaw-loop;@repo-forge-config;@note-forge-config]. *작업면을 외부(코파일럿·호스팅 코딩 에이전트)로 보내지 않는 것* 이 설계 원칙입니다.
-- *기억축* — andenken. 세션과 디지털 가든 문서를 임베딩하는 작은 프로젝트입니다. 알고리즘을 새로 짜기보다 필요한 부분만 가져오되, *기억축을 세 갈래(세션·지식베이스·통합)로 가른 것* 이 일반 RAG 스택과 다른 지점입니다 [cite:@repo-andenken;@note-andenken-pkm;@note-andenken-semantic].
-- *실물 인프라와 재현성* — NixOS로 RTX 5080 서버 3대와 10G 스토리지를 엮어 사내 GPU 클러스터를 운영합니다. 카카오·네이버급 스케일은 아닙니다. 다만 NixOS는 다루기 까다롭고, *재현 가능성과 보안* 이라는 축에서 제게 중요한 인프라입니다 [cite:@repo-nixos-config;@note-nixos-config;@note-ondevice-security]. =-config= 시리즈(nixos·agent·doomemacs·forge)를 공개·관리하는 이유는, 에이전트 도구 하나가 그 전부와 연결되기 때문입니다 [cite:@repo-agent-config].
+그 위에서 기억을 별도 계층으로 떼어 =andenken= 을 만들었습니다. 세션과 디지털 가든을 각각 검색하고 함께 회수하며, 한국어와 영어가 섞인 제 지식 환경을 에이전트가 다시 읽도록 합니다 [cite:@repo-andenken;@note-andenken-pkm;@note-andenken-semantic]. 새로운 검색 알고리즘을 발명하려는 프로젝트가 아닙니다. 특정 하네스 안에 기억을 가두지 않고 *에이전트가 바뀌어도 이어지는 기억축* 을 갖추려는 프로젝트입니다.
 
-*기둥 2 — 도메인 오너 에이전트: 대시보드가 아니라 담당자에게 부착되는 에이전트.*
+동시에 pi-shell-acp에서 시작한 시도는 =entwurf= 로 이어졌습니다 [cite:@repo-entwurf;@note-entwurf-lineage]. Claude Code·Codex·Gemini 같은 서로 다른 하네스를 하나로 통일하려는 것이 아니라, 각각의 장점을 유지한 채 같은 작업 맥락에서 협력시키는 디스패치 기층입니다. 그 경계를 보고 Snowflake Cortex를 사용하는 외부 개발자가 기업용 하네스 연결을 제안하고 기여를 열었습니다 [cite:@pr-entwurf-40;@issue-entwurf-48]. *특정 벤더의 에이전트를 조직 표준으로 정하는 대신, 바뀌는 하네스를 받아들일 수 있는 표준 인터페이스를 둔다* 는 방향이 실제 접점을 얻은 사례입니다 [cite:@web-introduction].
 
-제가 주로 하는 일은 *에이전트를 만들어 담당자에게 주는 것* 입니다. 담당자에게 필요한 건 대시보드가 아니라 에이전트이기 때문입니다. 이미 돌아가는 IoT 클라우드·상담 시스템을 갈아엎지 않고, 담당자에게 부착되는 읽기 전용 에이전트를 붙입니다.
+그 다음 질문은 “에이전트가 어디에서 함께 일할 것인가”였습니다. =forge-config= 는 에이전트의 작업면을 외부 코파일럿 서비스에 통째로 넘기지 않고, 셀프호스팅 Forgejo에서 이슈·검토·수정·인계를 남기는 개발 루프입니다 [cite:@repo-forge-config;@note-forge-config]. 에이전트가 알아서 코딩하는 공장이 목적이 아닙니다. 사람과 여러 에이전트가 *누가 무엇을 판단했고 다음 사람이 어디서 이어받는지* 확인할 수 있는 공유 작업면이 목적입니다.
 
-- *VOC 워크벤치 (voscli)* — 상담 데이터 위에서 숫자의 단위·기간·포함정책을 고정하고, 모든 근거를 개별 상담 id까지 역추적하며, 평소와 다른 신호를 자동 검출하는 *정량 어브덕션 도구입니다.* [사내]
-- *인시던트 워크벤치 (incidentcli)* — 운영 장애와 VOC→디바이스 추적을 *하나의 KST 단일 시간축* 으로 회수·정렬하는 read-only 증거 도구입니다. 설계 서사는 공개돼 있습니다 [cite:@note-incidentcli]. 핵심은 *1차 사용자가 사람이 아니라 담당자 에이전트* 라는 점이고, 그래서 에러 정책이 다릅니다 — 경고가 아니라 *박살나야 합니다*(fast-fail). 대충 경고는 에이전트가 우회하기 때문입니다. 자동 액션이 외부로 나가기 직전 *수문장 preflight 게이트* 가 검증을 강제하고, 미통과면 액션을 막고 "테스트를 강화하라"는 요구를 되돌립니다. 보안사고 대응 5원칙(재현성·무결성·순수성·추적가능성·불변성)을 운영 인시던트로 옮긴 자리입니다 [cite:@note-security-principles]. [사내 · 설계 공개]
-- *제품 보안 대응 (PSIRT)* — 제품 보안 사고 대응을 담당자 에이전트 관점으로 잇습니다. [사내]
+* 개인의 방향이 회사 도메인에 닿은 곳
+:PROPERTIES:
+:CUSTOM_ID: domain
+:END:
 
-이 에이전트들은 *독립 에이전트로 서야 한다* 는 원칙 위에 있습니다 — 특정 개인의 도구체인이나 자격증명에 묶이면 도구가 사람에게 종속됩니다. 격리 런타임 위에 회사 도메인 스킬만 주입하는 모델로, *하네스 비종속 철학이 인프라와 서비스 양쪽에 일관되게 흐릅니다.*
+이 흐름은 개인 프로젝트 안에서 끝나지 않았습니다. 현재 스마트홈 IoT 회사에서 이미 돌아가는 클라우드·상담·운영 시스템을 갈아엎지 않고, 그 위에 에이전트가 사용할 수 있는 읽기 전용 접점을 만들고 있습니다.
 
-*운영 판단의 규율.* 이 접점들은 실제 고객 식별자와 자격증명을 다룹니다. 그래서 경계를 문장으로 박았습니다 — *자격증명은 에이전트가 취급하지 않고*, 변경·실행 경로는 차단하며, 원시 개인정보는 표준입력 seam으로만 흐르고 문서·커밋에 남기지 않습니다. AX 도입이 흔히 실패하는 방식이 권한과 경계를 흐린 채 자동화를 붙이는 것이고, 저는 그 반례를 운영 규칙으로 갖고 있습니다.
+=voscli= 는 VOC와 상담 데이터를 에이전트가 함부로 요약하지 못하게 합니다. 질문의 기간·단위·포함 정책을 고정하고, 판단의 근거를 개별 상담까지 되짚을 수 있게 합니다. 운영팀이 자기 언어로 묻되 답은 원천 근거로 돌아가게 하는 도메인 에이전트의 손입니다. [사내]
 
-** 그룹사 AI 관련 문서 작성·배포와 전파·온보딩
+=incidentcli= 는 운영 장애, VOC, 디바이스 로그와 런타임 데이터를 하나의 KST 시간축으로 회수·정렬합니다 [cite:@note-incidentcli]. 첫 사용자가 사람이 아니라 담당자 에이전트이기 때문에 오류를 경고로 흘려보내지 않습니다. 입력과 증거가 계약을 통과하지 못하면 멈추고, 외부 액션 직전의 수문장 검증이 통과되지 않으면 실행하지 않습니다. 재현성·무결성·추적가능성과 같은 제품 보안 대응의 원칙을 에이전트 운영으로 옮긴 것입니다 [cite:@note-security-principles]. [사내 · 설계 공개]
 
-*문서 작성·배포를 주장하지 않고, 사내 문서가 그렇게 만들어집니다.* 하루 종일 다루는 것은 결국 텍스트이고, 코드도 텍스트 문서입니다. 에이전트 협업은 텍스트 프롬프트를 전달하고 결과 텍스트를 원하는 형식으로 변환·전달하는 일입니다. 그 고민이 memex-kb입니다 — HWPX·스캔 PDF·EPUB를 Org 메타문서로 모으고 오피스 포맷으로 내보내는 한국어 문서 툴체인 [cite:@repo-memex-kb;@note-memex-kb]. 회사 기술문서(TDD)와 제안서를 이 방식으로 편집·빌드·배포했고 [cite:@note-memex-proposal], *이 서류 자체도 Org 정본 한 장에서 참고문헌·표·이미지가 함께 빌드됩니다* [cite:@note-org-ssot]. T인터뷰에서 =make= 로 재생성해 보일 수 있습니다.
+이 둘은 별도의 “AI 서비스”가 아닙니다. *개인이 먼저 만들어 온 하네스 비종속·재현성·증거 우선의 방향이 실제 조직의 업무 데이터와 만난 자리* 입니다. 특정 개인의 자격증명과 도구체인에 묶인 자동화가 아니라, 격리된 런타임에 회사 도메인 스킬을 주입하고 담당자가 이어받을 수 있는 독립 에이전트로 세우려 합니다.
 
-*읽는 사람이 이어받게 만드는 것이 핵심입니다.* 문서를 세 층으로 나눕니다 — =AGENTS.md= 는 영속 기준선, =NEXT.md= 는 세션 간 인계, 스킬 문서는 실행 계약입니다. *사람이든 에이전트든 같은 규칙을 읽습니다.* 40개 이상의 에이전트 스킬이 그 계약을 소비합니다. 상류 openclaw 릴리즈를 내 리포 관점으로 번역한 *영향 번역 문서* 도 같은 습관의 산물입니다.
+실제 고객 데이터가 있는 곳에서는 할 수 있는 것보다 하지 말아야 할 것을 먼저 정합니다. 자격증명을 에이전트에게 주지 않고, 원시 개인정보가 문서·세션·커밋에 남지 않게 하며, 기본 경로를 읽기 전용으로 둡니다. 저에게 AX 인프라는 모델 호출을 붙이는 일이 아니라 *이 경계를 운영 가능한 계약으로 만드는 일* 입니다.
 
-*교육은 정직하게 밝힙니다.* 정규 교육과정 운영보다, *개발자·운영자가 실제 도구를 이어받도록 가이드·데모·온보딩을 만들고 현업 적용을 지원한 경험이 중심입니다.* 회사 개발 서버에 동일 빌드 환경을 셋업해 담당자가 직접 빌드·검토하게 했고, 워크벤치는 =git pull= 한 번으로 쓰도록 만들었습니다. 독자에 따라 표면을 나눕니다 — 개발자에게는 재현 명령과 불변식을, 비개발자에게는 일일 판독과 근거 링크를 줍니다.
+* 조직으로 건너가는 방법은 문서입니다
+:PROPERTIES:
+:CUSTOM_ID: enablement
+:END:
 
-* 자격 요건과 우대 사항 대응
+에이전트는 결국 텍스트로 일을 받고 텍스트로 흔적을 남깁니다. 그래서 문서를 결과 보고서가 아니라 *사람과 에이전트가 함께 읽는 실행 인터페이스* 로 다룹니다. =AGENTS.md= 는 오래 유지할 원칙, =NEXT.md= 는 세션 사이의 인계, 스킬 문서는 실제 명령과 검증 계약을 맡습니다. 상류 릴리즈 노트를 제 환경의 영향으로 번역해 남기는 습관도 같은 이유에서 생겼습니다.
+
+=memex-kb= 는 HWPX·PDF·EPUB·웹 문서를 Org 메타문서로 모으고 필요한 오피스 포맷으로 내보내는 한국어 문서 브릿지입니다 [cite:@repo-memex-kb;@note-memex-kb]. 회사 기술문서와 제안서를 이 방식으로 편집·배포해 왔고 [cite:@note-memex-proposal], 이 제출본도 Org 정본에서 참고문헌·표·이미지와 함께 다시 만들어집니다 [cite:@note-org-ssot]. 특정 포맷을 고집하는 것이 아니라, 원천을 하나로 두고 독자에 맞는 표면을 내는 방식입니다.
+
+정규 교육과정을 운영했다고 부풀려 말하지 않겠습니다. 제 경험은 개발자와 운영자가 실제 도구를 이어받도록 환경을 맞추고, 데모와 가이드를 만들고, 현업 질문을 다시 도구와 문서에 반영하는 온보딩에 가깝습니다. 개발자에게는 재현 명령과 불변식을, 비개발자에게는 판독 가능한 리포트와 근거 링크를 줍니다. *문서를 쓰고 배포하고 교육한다는 것은 결국 다른 사람이 자기 에이전트와 함께 다음 일을 시작할 수 있게 하는 것* 이라고 생각합니다.
+
+* 이 방향을 지탱하는 엔지니어링
+:PROPERTIES:
+:CUSTOM_ID: engineering
+:END:
+
+저는 임베디드 펌웨어만 만들고 경계를 넘기지 않았습니다. 자원이 제한된 ARM Linux 장치의 Zig 펌웨어에서 시작해 정합성을 확인할 서버와 앱까지 함께 만들었고, 그 장치가 실제 제품으로 판매되는 과정까지 보았습니다 [cite:@note-iam-hub;@note-embedded-memory]. 지금은 Zig·Go·Clojure·Python·TypeScript·Dart를 문제의 경계에 따라 사용합니다. NixOS 서버와 컨테이너, GPU·스토리지, IoT 클라우드와 데이터 접점을 직접 운영해 온 배경이 있기에 에이전트 플랫폼을 프롬프트 모음이 아니라 시스템 인프라로 봅니다 [cite:@note-ondevice-security].
+
+모르는 기술을 사용했다고 쓰지 않습니다. 특정 프레임워크의 이름보다 Linux·프로세스·네트워크·데이터·권한·실패 경계를 이해하고, 필요한 도구를 에이전트와 함께 빠르게 익혀 실제 운영 계약으로 만드는 편입니다. 제가 이 직무에 던지는 것은 완성된 교과서의 숙련도가 아니라, *아직 정답이 없는 분야에서 방향을 정하고 필요한 계층을 만들고 기록하며 조직의 작업면으로 가져온 과정* 입니다.
+
+* 자격 요건과 우대 사항 대응 :noexport:
 :PROPERTIES:
 :CUSTOM_ID: requirements
 :END:
 
-각 항목은 사내(공개 불가)와 공개(검증 가능)를 라벨로 구분했습니다. 공개 증거가 없는 항목은 회사 코드라서 없는 것이고, 대체 증명을 함께 적었습니다.
+내부 누락 점검용. 제출본에는 대응표를 싣지 않는다.
 
 #+caption: JD 자격 요건 대응
 | 자격 요건            | 경험                                                                                 | 결과·증거                                           |
 |----------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------|
 | Linux 개발·운영      | NixOS로 노트북·서버·ARM 장치를 선언적으로 관리. 컨테이너·GPU·Yocto 임베디드 Linux      | [공개] [[https://github.com/junghan0611/nixos-config][nixos-config]]                                 |
-| Agentic AI 활용 개발 | Claude Code·Codex 매일 사용. ACP로 하네스를 잇는 디스패치 기층 entwurf 릴리즈·운영, 40+ 스킬 설계 | [공개] [[https://github.com/junghan0611/entwurf][entwurf]] |
-| BE 시스템 개발·운영 | 임베디드 Zig · CLI/서버 Go·Clojure · 스크립트 Python · 앱 Flutter/Dart · 에이전트 도구 TS. 싱글 바이너리 선호, 레거시 Java는 필요 시 지원 | [사내] incidentcli·voscli · [공개] Go/Clojure 저장소 |
-| 개발·비개발 AX 전환 | 담당자에게 부착되는 도메인 오너 에이전트(대시보드가 아니라 에이전트). 도메인 오너가 자기 언어로 질의 | [사내] voscli·incidentcli |
+| Agentic AI 활용 개발 | Claude Code·Codex 매일 사용. ACP로 하네스를 잇는 디스패치 기층 entwurf 릴리즈·운영, 에이전트 스킬 설계 | [공개] [[https://github.com/junghan0611/entwurf][entwurf]] |
+| BE 시스템 개발·운영 | 임베디드 Zig · CLI/서버 Go·Clojure · 스크립트 Python · 앱 Flutter/Dart · 에이전트 도구 TS | [사내] incidentcli·voscli · [공개] Go/Clojure 저장소 |
+| 개발·비개발 AX 전환 | 담당자에게 부착되는 도메인 에이전트. 도메인 오너가 자기 언어로 질의                  | [사내] voscli·incidentcli                            |
 
 #+caption: JD 우대 사항 대응
 | 우대 사항                          | 경험                                                                                     | 결과·증거                        |
 |------------------------------------+------------------------------------------------------------------------------------------+----------------------------------|
-| Web Framework (Spring/Gin/FastAPI) | Go·Python 서비스 API 운영. Spring 직접 경험은 없고 경계로 밝힘                             | [사내] IoT 백엔드                |
-| DB·MQ·VM·컨테이너                  | PostgreSQL·pgvector, Kafka, Docker, GPU 워크로드. 인시던트 도구가 DDL·런타임 미러를 잇는다 | [사내] incidentcli               |
-| LLM·RAG                            | 임베딩·리랭킹 직접 서빙, 벡터+BM25 하이브리드, 점수 정규화, 한↔영 교차 질의                 | [공개] [[https://github.com/junghan0611/andenken][andenken]] · [사내] 서빙     |
-| BMAD·AI Workflow                   | 직접 사용 경험 없음. 같은 문제층(검토 가능한 개발 루프)의 독립 구현으로 대체 증명           | [공개] [[https://github.com/junghan0611/forge-config][forge-config]]              |
+| Web Framework (Spring/Gin/FastAPI) | Go·Python 서비스 API 운영. Spring 직접 경험 없음                                           | [사내] IoT 백엔드                |
+| DB·MQ·VM·컨테이너                  | PostgreSQL·pgvector, Kafka, Docker, GPU 워크로드. DDL·런타임 미러 접점                     | [사내] incidentcli               |
+| LLM·RAG                            | 임베딩·리랭킹 서빙, 벡터+BM25 하이브리드, 점수 정규화, 한↔영 교차 질의                     | [공개] [[https://github.com/junghan0611/andenken][andenken]] · [사내] 서빙     |
+| BMAD·AI Workflow                   | 직접 사용 경험 없음. 검토 가능한 개발 루프를 독립 구현                                     | [공개] [[https://github.com/junghan0611/forge-config][forge-config]]              |
 | 클라우드                           | AWS IoT, Oracle Cloud ARM, Cloudflare·Netlify 운영                                       | [공개] nixos-config · [사내] AWS |
-| FE (React/Tailwind)                | React 19 + A2UI 뷰어 구현. Tailwind 직접 경험은 없고 디자인 토큰으로 대체                  | [공개] React/Preact/Lit          |
-| 조직·구성원 협업                    | 운영팀·제품·개발 조직과 요구 번역·인계. (아래 §협업)                                       | [사내]                           |
+| FE (React/Tailwind)                | React 19 + A2UI 뷰어 구현. Tailwind 직접 경험 없음                                        | [공개] React/Preact/Lit          |
+| 조직·구성원 협업                    | 운영팀·제품·개발 조직과 요구 번역·인계                                                     | [사내]                           |
 | 개발자·비개발자 문서                | 독자별 표면 분리, 문서 계약                                                               | [공개] 가든 · [사내] TDD          |
 
-* 협업·문서·경계와 검증
+* 확인할 수 있는 기록
 :PROPERTIES:
-:CUSTOM_ID: collab
+:CUSTOM_ID: evidence
 :END:
 
-** 조직 간 협업과 인계
-
-기술만 붙이지 않았습니다. *운영팀이 매일 겪는 문제를 듣고 → 개발 가능한 요구로 번역하고 → 제품·개발과 경계를 합의하고 → 읽기 전용 워크벤치를 제공하고 → 사용자의 피드백을 다시 데이터·문서·이슈로 되돌리는* 루프를 돌렸습니다. voscli는 그 루프의 산물이고, "고도화보다 운영자가 쓰고 싶게 만드는 것이 먼저"라는 원칙으로 실제 일상 사용에 진입했습니다.
-
-** 개발자·비개발자 문서
-
-같은 사실을 두 표면으로 냅니다. 개발자에게는 =AGENTS.md= ·스킬 문서·재현 명령을, 운영자에게는 매일 읽는 Markdown 리포트와 근거 링크를 줍니다. 문서가 사람과 에이전트 양쪽의 인터페이스가 되게 설계합니다.
-
-** 정직한 경계
-
-주장을 키우기 전에 *어디까지가 제 것이 아닌지 먼저 말합니다.*
-
-- Java/Spring 직접 경험을 Go/Clojure 경험으로 바꾸어 쓰지 않습니다.
-- BMAD를 사용했다고 쓰지 않습니다. 같은 문제층의 독립 구현과 그 차이를 보여줍니다 [cite:@bmad-method].
-- Tailwind 직접 사용 경험은 없습니다. React/Preact/Lit과 디자인 토큰 경험으로 대신합니다.
-- 파인튜닝 중심이 아닙니다. 임베딩 서빙·리랭킹·검색 품질·프롬프트 설계가 강점축입니다.
-- 카카오·네이버급 대규모 트래픽 인프라 경험은 없습니다. 재현성·보안 중심의 GPU 클러스터·엣지 운영으로 대신합니다.
-- 사내 코드와 식별 가능한 운영 데이터는 공개하지 않습니다. 공개 저장소 /옆에서/ 구조와 판단만 설명합니다.
-
-** 검증 가능한 공개 기록
-
-- 에이전트 디스패치·연속성 — [[https://github.com/junghan0611/entwurf][entwurf]] (외부 기여 [[https://github.com/junghan0611/entwurf/pull/40][PR #40]])
-- 세션·지식 메모리(RAG) — [[https://github.com/junghan0611/andenken][andenken]] [cite:@repo-andenken]
-- 검토 가능한 개발 루프 — [[https://github.com/junghan0611/forge-config][forge-config]] [cite:@repo-forge-config]
+- 하네스 디스패치와 연속성 — [[https://github.com/junghan0611/entwurf][entwurf]] · 외부 기업용 하네스 기여 [[https://github.com/junghan0611/entwurf/pull/40][PR #40]]
+- 세션·지식 메모리 — [[https://github.com/junghan0611/andenken][andenken]] [cite:@repo-andenken]
+- 검토 가능한 공유 개발 작업면 — [[https://github.com/junghan0611/forge-config][forge-config]] [cite:@repo-forge-config]
 - 재현 가능한 Linux 기반 — [[https://github.com/junghan0611/nixos-config][nixos-config]] [cite:@repo-nixos-config]
-- 도메인 오너 에이전트 설계 — incidentcli 수문장·fast-fail·5원칙 [cite:@note-incidentcli;@note-security-principles]
-- 공개 지식·문서 체계 · 라이브 통계 [cite:@live-garden;@live-agenda-stats]
-- 상세 근거·구현·인터뷰 진입점 — 함께 제출하는 증거 패키지(ZIP)의 상세 Markdown
-
-각 항목의 번호는 아래 「참고자료」의 클릭 가능한 URL로 이어집니다.
+- 공개 지식·문서 체계 — [[https://notes.junghanacs.com][notes.junghanacs.com]] [cite:@live-garden]
+- 도메인 에이전트의 설계 판단 — incidentcli·수문장·fast-fail·보안 대응 원칙 [cite:@note-incidentcli;@note-security-principles]
+- 구현·테스트·설계 판단의 상세 진입점 — 함께 제출하는 상세 Markdown과 증거 패키지
 
 * 참고자료
 :PROPERTIES:
@@ -266,29 +269,70 @@ AX의 시스템 인프라를 "AI 기능이 붙은 백엔드"가 아니라 *에�
 
 #+print_bibliography:
 
-* COMMENT 이미지 생성 프롬프트와 검토 메모                          :noexport:
+* COMMENT 이미지 생성 프롬프트와 검토 메모 :noexport:
 
 ** 그림 1 — company-ax-layer.png (glg-image / gemini nanobanana 2 flash)
 
-배치: §직무 요약 끝. 권장 비율 4:3 가로. 파일: images/company-ax-layer.png
+배치: §이 직무를 이렇게 읽었습니다 끝. 비율 16:9 가로. 파일: images/company-ax-layer.png
 
 #+begin_src text
-Clean professional technical infographic, horizontal layered architecture diagram,
-Korean labels. Title band on top: "조직 AX 운영 계층".
-Four horizontal layers stacked top to bottom, each a rounded rectangle with an icon:
-  1) "업무 원천" (data sources) — icons: IoT devices, chat/consultation, documents, cloud logs.
-  2) "읽기 전용 접점" (read-only touchpoints) — label chips: incidentcli, voscli; a shield icon
-     meaning read-only / no mutation; a single KST timeline axis running through.
-  3) "도메인 워크벤치" (domain workbench) — a person (운영자/도메인 오너) asking in natural language,
-     an agent returning evidence traced back to source id.
-  4) "문서·온보딩·인계" (docs / onboarding / handoff) — AGENTS.md, NEXT.md, skill contract cards
-     handed to both a developer and a non-developer.
-Thin vertical arrows connect the layers downward, and one feedback arrow curving back up from
-layer 4 to layer 1. Muted enterprise palette (slate blue, teal, warm gray) on white, flat design,
-generous whitespace, no photorealism, crisp thin lines, legible Korean sans-serif labels.
-16:9-ish but 4:3 acceptable. No decorative clutter — every element names a real structure.
+Create one clean editorial technical infographic for a Korean job-application document.
+Landscape 16:9, white background, crisp vector style, generous whitespace, muted navy, teal,
+and warm amber accents. All visible labels must be exactly the Korean text supplied below;
+do not invent labels, numbers, metrics, logos, or decorative AI imagery.
+
+Title: "개인의 PKM에서 조직의 에이전트 작업면까지"
+Subtitle: "아직 없는 역할을 먼저 만들어 온 하나의 흐름"
+
+Compose the diagram as one continuous left-to-right river or growing path, not two separate pillars.
+A thin amber line connects every stage and ends in a broad shared work surface.
+Place each stage title exactly once, above its own icon. Never repeat stage titles below the path.
+Visual descriptions are icon instructions, not text: do not print “stable rollback”, “self-hosted forge
+surface”, “issue”, “review”, or “handoff”. The only English text allowed is the supplied project/file names
+and the exact engineering foundation line.
+
+At the far left, draw roots below the path labeled:
+  "개인지식관리(PKM)"
+  small supporting labels: "축적한 지식·경험", "취향과 판단"
+Above the roots place a foundation block labeled:
+  "재현 가능한 환경"
+  small labels inside: "NixOS", "Emacs", "-config"
+
+Across the center, place four connected stages in this exact order:
+  1. "에이전트 런타임 운영" — small label "OpenClaw"
+     visual: a stable runtime loop with rollback and a small document card, no metrics.
+  2. "이어지는 기억" — small label "andenken"
+     visual: two sources, "세션" and "지식베이스", joining one memory stream.
+  3. "하네스 비종속 디스패치" — small label "entwurf"
+     visual: three small neutral terminal nodes feeding one switch; no vendor logos.
+  4. "검토 가능한 공유 작업면" — small label "forge-config"
+     visual: issue, review, handoff cards on a self-hosted forge surface.
+
+From stage 4, continue to a real-work domain landing area labeled:
+  "회사 도메인에 착지"
+Inside it show existing systems as three source icons labeled "VOC·상담", "운영 장애", "IoT·로그".
+They connect through a shield-shaped boundary labeled "읽기 전용·증거 우선" to two tool cards:
+  "voscli"
+  "incidentcli"
+Then show a domain owner and a small agent side by side, with the label:
+  "담당자가 자기 언어로 묻고 원천 근거로 돌아간다"
+
+Above the entire path, draw a light spanning arch labeled:
+  "문서·배포·온보딩"
+Place three small cards on the arch labeled "AGENTS.md", "NEXT.md", "스킬 계약".
+At the far right, the path opens into a shared surface with two people labeled "개발자" and "비개발자".
+Final label at the destination:
+  "조직의 에이전트 작업면"
+
+At the very bottom, add a narrow engineering foundation line spanning the full diagram:
+  "Embedded Linux · Backend · App · Cloud · 보안 경계"
+
+The image must communicate one coherent trajectory: personal knowledge management grows through
+reproducible infrastructure, runtime operations, memory, dispatch, and a reviewable work surface;
+it then reaches real company domains and is transferred to the organization through documentation.
+No charts, no KPI counters, no maturity scores, no robot heads, no glowing brains, no stock-photo people.
 #+end_src
 
 검토 메모:
-- 이미지는 장식이 아니라 사실 구조. layer 4의 개발자/비개발자 분기 = JD 문서·교육 대응.
-- 생성 실패 시 폴백: graphviz 4-layer 다이어그램(결정적)으로 대체.
+- 두 기둥이 아니라 하나의 계보여야 한다.
+- 개인 프로젝트가 JD에 붙은 목록이 아니라 회사 도메인과 조직 작업면으로 이어지는 방향을 보여준다.
