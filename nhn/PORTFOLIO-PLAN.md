@@ -128,3 +128,34 @@
 - 프로젝트 5: 제품 개발·출시의 주요 이정표
 
 인용 가능한 기록에는 `as_of`, `content_sha256`, `code_sha256`, 소스 상태를 남긴다.
+
+## v2 교차검토 결정 (Opus 검토 → GLG 확정, 2026-07-18)
+
+Opus가 사실 경계·목소리·누락을 MATERIAL.md·references.bib에 대조 검토했고, GLG가 7건을
+확정했다. 아래는 GPT가 다음 세션에서 portfolio.org에 반영할 항목이다. (Opus가 이미 처리한
+것: references.bib에 프로토콜 3키 추가 `note-protocol-grammar`·`note-a2ui`·`note-edgeagent-a2a`.)
+
+1. **ghostel PR #343·#510 = 병합됨.** "수용" 표현 유지. 변경 없음.
+2. **프로젝트 2 수치 제거.** 45.4→5.8초·816→246MiB·CPU 102%·부팅 88초 표/증거 태그를
+   모두 뺀다. GLG: *"숫자는 별로 의미없고, 다룰 수 있느냐가 핵심."* → 증상 인지 → 클린 부팅
+   재현 → 마지막 정상판 롤백 → 승격 규칙 명문화의 **판단 역량 서사만** 남긴다.
+3. **"실사용 트래픽" 완화.** 가족 봇 SLO의 애매한 프레이밍에 기대지 않는다. "응답성을 SLO로
+   본다"는 운영 규칙 자체는 유지하되 "누구의 트래픽" 질문을 부르는 표현은 줄인다.
+4. **React 아님 → 프로토콜 축.** 프로젝트 4를 "하네스 디스패치"에서 **프로토콜 기반
+   협업(ACP·A2A·A2UI)**으로 넓힌다. GLG 정본: *"프로토콜은 존재 간 연결의 문법"*
+   [note-protocol-grammar], *"보여지는 UI도 규약"* [note-a2ui]. 축:
+   - ACP — pi-shell-acp→entwurf, any editor↔any agent [acp-spec;repo-entwurf]
+   - A2A — homeagent-config·edgeagent 카드 교환+상태머신 [repo-homeagent-config;note-edgeagent-a2a]
+   - A2UI — 에이전트가 UI를 동적 재구성 [note-a2ui]. ⚠️ butlercli(React 19+@a2ui)는
+     **PRIVATE** → 공개 증거는 a2ui 정본 노트·OpenClaw Canvas A2UI, 뷰어 자체는 [사내]로만.
+5. **memex-kb 삽입.** JD 2번째 주요업무(문서 작성·배포·교육)의 구체 증거. 기존 bib 키만 쓰면
+   된다: `repo-memex-kb`·`note-memex-proposal`·`note-memex-kb`·`note-memex-ocr`·`note-org-ssot`.
+   프레이밍: *"어떤 문서도 다 터미널에서 다룬다"* — 이 제출본 파이프라인(run.sh: org→odt→pdf)
+   자체가 실증. 별도 프로젝트로 세우거나 "조직이 이어받는 방법" 절을 강화하는 선택은 GPT 판단.
+6. **회사명 = "스마트홈 IoT 플랫폼" 일반화 유지.** 고퀄/헤이홈 실명 안 씀. competency도 이미
+   "스마트홈 IoT 회사"로 일반화되어 정합 — 변경 없음.
+7. **프로젝트명 forge-config 확정**(-config 네이밍). 봇 컴포넌트 "포지봇"은 봇로그·봇멘트·
+   봇공방 계보. 변경 없음.
+
+미해결/후속: butlercli 공개화 여부(비공개면 A2UI는 개념 노트로만 증명), 이미지 5장 생성은
+프로토콜·memex 반영으로 프로젝트 4·5 사실이 바뀌므로 그 뒤에 생성한다.
