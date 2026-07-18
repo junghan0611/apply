@@ -161,7 +161,7 @@ Java, Python, Go 등 1개 이상의 언어로 BE 시스템 개발 운영 경험?
 
 다만 저는 이 변화를 엔지니어링이 아니라 *개인지식관리(PKM)* 의 자리에서 바라봅니다. 그래서 제 링크드인에는 세상에 아직 없는 직무 하나가 먼저 적혀 있습니다 — *PKM-AI Harness Engineer*. 개발자와 비개발자의 경계가 흐려질수록, 중요한 것은 모두를 같은 도구 사용법으로 평준화하는 일이 아니라 각자가 쌓아 온 지식과 경험 위에서 에이전트와 협력하는 방식입니다. 저는 그 방식이 스스로 필요해서, 아직 열리지 않은 이 자리를 향해 이미 하나의 흐름을 만들어 왔습니다. 아래 한 장이 그 전체 그림이고, 이어지는 본문은 각 계층에 대한 설명입니다.
 
-#+caption: 개인의 PKM에서 조직의 에이전트 작업면까지 — 제가 먼저 만들어 온 하나의 흐름
+#+caption: 개인의 PKM에서 조직의 에이전트 작업면까지 — 흩어진 도구가 아니라 하나로 이어지는 흐름
 #+name: fig-ax-layer
 #+attr_odt: :width 15
 [[file:images/company-ax-layer.png]]
@@ -273,7 +273,7 @@ OpenClaw는 설치해 본 도구가 아니라 계속 운영해 온 에이전트 
 
 ** 그림 1 — company-ax-layer.png (glg-image / gemini nanobanana 2 flash)
 
-배치: §이 직무를 이렇게 읽었습니다 끝. 비율 16:9 가로. 파일: images/company-ax-layer.png
+배치: §프롤로그 끝. 비율 16:9 가로. 파일: images/company-ax-layer.png
 
 #+begin_src text
 Create one clean editorial technical infographic for a Korean job-application document.
@@ -282,14 +282,17 @@ and warm amber accents. All visible labels must be exactly the Korean text suppl
 do not invent labels, numbers, metrics, logos, or decorative AI imagery.
 
 Title: "개인의 PKM에서 조직의 에이전트 작업면까지"
-Subtitle: "아직 없는 역할을 먼저 만들어 온 하나의 흐름"
+Subtitle: "흩어진 도구가 아니라 하나로 이어지는 흐름"
 
 Compose the diagram as one continuous left-to-right river or growing path, not two separate pillars.
 A thin amber line connects every stage and ends in a broad shared work surface.
-Place each stage title exactly once, above its own icon. Never repeat stage titles below the path.
-Visual descriptions are icon instructions, not text: do not print “stable rollback”, “self-hosted forge
-surface”, “issue”, “review”, or “handoff”. The only English text allowed is the supplied project/file names
-and the exact engineering foundation line.
+Text discipline (critical): print ONLY the exact quoted labels listed below, and print each label
+exactly once — never duplicate a title above and below a shape. Every line beginning with "visual:"
+is a drawing instruction for icons; do not turn any word from a "visual:" line into printed text.
+Blank cards, loop arrows, shields, laptops, and surfaces carry no text at all. The only English
+allowed anywhere is the listed project/file names (OpenClaw, andenken, entwurf, forge-config, voscli,
+incidentcli, AGENTS.md, NEXT.md) and the single bottom foundation line. Place each stage title once,
+above its own icon, and never repeat it elsewhere.
 
 At the far left, draw roots below the path labeled:
   "개인지식관리(PKM)"
@@ -298,30 +301,32 @@ Above the roots place a foundation block labeled:
   "재현 가능한 환경"
   small labels inside: "NixOS", "Emacs", "-config"
 
-Across the center, place four connected stages in this exact order:
+Across the center, place four connected stages in this exact order. For each stage, print the Korean
+title once directly ABOVE its icon, with the small project label on the line just under the title;
+never print the stage title a second time below the icon:
   1. "에이전트 런타임 운영" — small label "OpenClaw"
-     visual: a stable runtime loop with rollback and a small document card, no metrics.
+     visual: a circular loop arrow returning on itself with one small blank document card. Icons only, no text.
   2. "이어지는 기억" — small label "andenken"
      visual: two sources, "세션" and "지식베이스", joining one memory stream.
   3. "하네스 비종속 디스패치" — small label "entwurf"
-     visual: three small neutral terminal nodes feeding one switch; no vendor logos.
+     visual: three small neutral terminal nodes feeding one unlabeled switch icon; no vendor logos, no text on the switch.
   4. "검토 가능한 공유 작업면" — small label "forge-config"
-     visual: issue, review, handoff cards on a self-hosted forge surface.
+     visual: a laptop showing three small blank stacked cards. Icons only, no text on the cards or the surface.
 
-From stage 4, continue to a real-work domain landing area labeled:
+From stage 4, continue to a real-work domain landing area. Print its title once, at the top of the area only:
   "회사 도메인에 착지"
 Inside it show existing systems as three source icons labeled "VOC·상담", "운영 장애", "IoT·로그".
 They connect through a shield-shaped boundary labeled "읽기 전용·증거 우선" to two tool cards:
   "voscli"
   "incidentcli"
-Then show a domain owner and a small agent side by side, with the label:
+Then show a domain owner and a small agent icon side by side, both unlabeled, with only this one caption beneath them:
   "담당자가 자기 언어로 묻고 원천 근거로 돌아간다"
 
 Above the entire path, draw a light spanning arch labeled:
   "문서·배포·온보딩"
 Place three small cards on the arch labeled "AGENTS.md", "NEXT.md", "스킬 계약".
-At the far right, the path opens into a shared surface with two people labeled "개발자" and "비개발자".
-Final label at the destination:
+At the far right, the path opens into one shared work-surface icon with two people labeled "개발자" and "비개발자",
+under a single destination title printed only once (do not repeat it):
   "조직의 에이전트 작업면"
 
 At the very bottom, add a narrow engineering foundation line spanning the full diagram:
