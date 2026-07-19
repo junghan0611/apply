@@ -24,11 +24,13 @@
 README.md                     이 파일
 AGENTS.md                     사실 탐색·검증 계약
 KimJunghan_AX_Detail.md       상세 원문 (참고자료 URL이 문서 끝에 렌더됨)
-sources/                      Org 정본 (competency · portfolio · detail)
+competency.org · portfolio.org · detail.org
+                              Org 정본. 작업 저장소와 같은 배치라 풀면 그대로 빌드된다
 images/                       인포그래픽 (본문 참조)
 references.bib                공식 문서 + 공개 증거(repo·PR·live) URL
 run.sh · pipeline/            Org → PDF/MD 재현 파이프라인
-outputs/                      최종 PDF 2종
+flake.nix · flake.lock        조판 클래스·한글 엔진·활자를 리비전까지 고정한 빌드 입력
+outputs/                      최종 PDF·ODT·DOC
 MANIFEST.sha256               전체 파일 목록 + 해시
 ```
 
@@ -42,7 +44,17 @@ MANIFEST.sha256               전체 파일 목록 + 해시
 
 ## 선택적 재현 (원하는 경우에만)
 
-PDF와 MD는 이미 들어 있으므로 재현은 필수가 아닙니다. 직접 다시 만들려면 `pandoc`,
-`poppler-utils`(pdftotext·pdfinfo), Emacs(Org 내보내기), LibreOffice가 필요합니다. 이들이 PATH에
-있으면 `./run.sh all` 이 그대로 돌고, 없으면 `run.sh` 가 필요한 도구를 안내합니다. 무결성은
-`sha256sum -c MANIFEST.sha256` 로 확인할 수 있습니다.
+PDF·ODT·DOC·MD는 이미 들어 있으므로 재현은 필수가 아닙니다. 어디까지 그대로 돌고 어디서
+멈추는지 있는 그대로 적습니다 — 재현성을 주장하는 자료에서 그 경계를 흐리면 주장 자체가
+근거를 잃기 때문입니다.
+
+- **무결성** — `sha256sum -c MANIFEST.sha256`. 추가 도구 없이 지금 바로 확인됩니다.
+- **의존성 점검** — `./run.sh check` 가 필요한 도구와 빠진 것을 그대로 보고합니다.
+- **조판 입력** — `flake.nix` · `flake.lock` 이 조판 클래스(acmart), 한글 엔진(xetexko),
+  활자(Pretendard · D2Coding)를 nixpkgs 리비전까지 고정합니다. Nix가 있으면 이 계층은
+  기계가 달라도 같은 입력으로 섭니다.
+- **아직 격리되지 않은 한 계층** — Org → TeX/ODT 내보내기가 제 Doom Emacs의 straight
+  빌드(org · citeproc · citar)에 의존합니다. 이 부분은 `flake.nix` 안에 들어 있지 않아,
+  Doom이 없는 기계에서는 `./run.sh check` 가 `straight build 없음` 으로 멈춥니다.
+  **즉 현재 이 패키지는 "산출물과 조판 입력은 검증 가능하고, 내보내기 단계는 제 환경에
+  묶여 있다"** 가 정확한 상태입니다. Emacs 계층까지 flake로 올리는 것이 다음 작업입니다.

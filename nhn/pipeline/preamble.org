@@ -1,0 +1,83 @@
+# 두 제출 문서가 공유하는 LaTeX 조판 선언. 각 정본이 #+INCLUDE 로 끌어온다.
+#
+# 여기 있는 것은 전부 #+latex_header 키워드라 ODT 트랙에서는 그대로 무시된다. 한 정본이
+# 두 표면(PDF·ODT)을 갖는 방식이고, 문서 본문은 자기가 어느 쪽으로 나갈지 몰라도 된다.
+#
+# 문서마다 다른 것 — 제목·부제·저자 블록 — 은 여기 두지 않는다. 각 정본이 자기
+# #+begin_export latex 블록에서 직접 쥔다.
+
+#+latex_class: nhnpaper
+#+latex_class_options: [manuscript,nonacm,screen]
+#+latex_compiler: xelatex
+
+# 한글 조판. flake 가 이 두 활자를 빌드 입력으로 고정한다 — 받는 쪽에 없으면 XeTeX 는
+# 조용히 대체 활자로 짜고 페이지는 멀쩡히 나오므로, 폰트를 환경에 맡기면 "같은 소스에서
+# 같은 문서가 나온다" 는 말을 지킬 수 없다.
+#+latex_header: \usepackage{xetexko}
+#+latex_header: \setmainhangulfont{Pretendard}[Ligatures=TeX]
+#+latex_header: \setsanshangulfont{Pretendard}
+#+latex_header: \setmonohangulfont{D2Coding}
+#+latex_header: \setmainfont{Pretendard}[Ligatures=TeX]
+#+latex_header: \setmonofont{D2Coding}[Scale=0.92]
+
+# 한자는 별도 활자를 지정해야 한다. Pretendard 에는 한자 글리프가 없어서, 서지의 맥(脈)
+# 같은 한 글자가 XeTeX 로그에만 "Missing character" 로 남고 PDF 에는 빈칸으로 찍힌다 —
+# 페이지는 멀쩡히 나오므로 눈으로 세지 않으면 지나간다. D2Coding 은 이미 빌드 입력이고
+# 한자를 담고 있어, 새 활자를 들이지 않고 이 구멍만 막는다(xetexko 가 스크립트로 가른다).
+#+latex_header: \setmainhanjafont{D2Coding}
+
+# 행간은 건드리지 않는다. acmart 는 \baselinestretch 재정의를 발견하면 \end{document}
+# 에서 에러로 멈춘다(ACM 제출 규정 검사). manuscript 는 심사용 포맷이라 행간이 이미
+# 넉넉하므로, 한글이 답답해 보이면 활자 크기가 아니라 판면 폭(geometry)으로 조정한다.
+
+# ACM 서지·저작권 장치를 끈다. 이 문서는 ACM 에 내는 글이 아니라 조판만 빌린 것이다.
+#+latex_header: \settopmatter{printacmref=false}
+#+latex_header: \setcopyright{none}
+#+latex_header: \acmDOI{}
+#+latex_header: \acmISBN{}
+#+latex_header: \pagestyle{plain}
+
+# 각주는 이 문서의 일급 시민이다 — 용어 정의와 곁가지 설명이 본문 흐름을 끊지 않고
+# 페이지 아래에 앉는 것이, 이 파이프라인이 증명하려는 조판 수준의 일부다.
+#+latex_header: \renewcommand{\footnoterule}{\kern-3pt\hrule width 0.35\linewidth\kern 2.6pt}
+
+# 저자 연락처는 1쪽 하단 각주(acmart 의 authorsaddresses)가 아니라 타이틀 블록이 쥔다.
+# 각 정본의 \affiliation 이 역할·국가·연락처를 한 덩어리로 조판하므로, 각주판을 그대로
+# 두면 같은 정보가 한 쪽에 두 번 앉는다. 빈 값으로 덮어 그 블록을 걷어낸다.
+#+latex_header: \authorsaddresses{}
+
+# ── 표제 위계 ─────────────────────────────────────────────────────────────────
+# acmart manuscript 는 심사용 포맷이라 절·소절·소소절이 전부 본문과 같은 크기이고,
+# 굵기와 이탤릭만으로 갈린다(\@secfont·\@subsecfont 가 크기를 안 준다). 학술지 심사자는
+# 그렇게 읽어도 되지만, 이 문서는 처음 보는 사람이 훑으면서 구조를 잡아야 하는 제출본이다.
+# 크기로 네 단(제목 → 절 → 소절 → 소소절 → 본문)을 만들어 눈이 층을 세게 한다.
+#
+# 소소절은 기본이 이탤릭이라 한글에서 위계로 읽히지 않는다(한글 이탤릭은 기울인 흉내일
+# 뿐이다). 크기를 준 김에 굵기로 바꿔 나머지 층과 같은 문법에 둔다.
+#
+# @ 로 시작하는 내부 이름을 건드리므로 \makeatletter 로 감싼다. acmart 가 포맷별
+# \ifcase 로 이 값들을 정한 뒤라, 프리앰블의 이 재정의가 마지막에 이긴다.
+#+latex_header: \makeatletter
+#+latex_header: \def\@titlefont{\Huge\sffamily\bfseries}
+#+latex_header: \def\@subtitlefont{\large\mdseries}
+#+latex_header: \def\@secfont{\sffamily\bfseries\LARGE\section@raggedright}
+#+latex_header: \def\@subsecfont{\sffamily\bfseries\Large\section@raggedright}
+#+latex_header: \def\@subsubsecfont{\sffamily\bfseries\large\section@raggedright}
+#+latex_header: \makeatother
+
+# ── 참고문헌 밀도 ─────────────────────────────────────────────────────────────
+# 증거 목록은 늘어난다. 항목이 100개에 이르면 본문 크기·본문 행간으로 짜인 서지가 문서의
+# 절반을 먹고, 지금도 포트폴리오는 마지막 쪽에 항목 두 개만 남아 여백만 넓다.
+#
+# citeproc 이 만드는 cslbibliography 환경을 등록 후에 덮어야 하므로 \AtBeginEnvironment
+# 로 환경 진입 시점에 끼운다(정의 자체는 ox-latex 이 프리앰블 끝에 쏟아내서, #+latex_header
+# 로는 먼저 선언되고 나중에 덮인다). etoolbox 는 latex-export.el 이 이미 싣는다.
+#
+# 서지를 한 급 줄이고 항목 간격을 고정값으로 눌러 잡는다 — 환경 기본값은 \parskip 에
+# 더하는 방식이라 문서 \parskip 이 바뀌면 같이 벌어진다.
+#
+# 여기서 ragged2e 의 \RaggedRight 를 쓰지 않는다. URL 이 많은 목록이라 왼끝맞춤이 맞아
+# 보이지만, xetexko 는 한글 음절 사이에 늘어나는 글루를 넣어 줄을 맞추는데 \RaggedRight
+# 가 \rightskip 을 바꾸면 그 글루가 흡수되지 않고 음절 사이가 벌어진다 — "백 엔 드 기 여"
+# 처럼 낱글자로 흩어져 인쇄된다. 서지 항목은 이미 Overfull 0 이라 얻을 것도 없다.
+#+latex_header: \AtBeginEnvironment{cslbibliography}{\small\setlength{\parskip}{2pt plus 1pt minus 0.5pt}}
