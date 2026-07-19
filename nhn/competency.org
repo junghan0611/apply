@@ -184,9 +184,13 @@ Java, Python, Go 등 1개 이상의 언어로 BE 시스템 개발 운영 경험?
 :CUSTOM_ID: summary
 :END:
 
-'AX 전환 / AI 인프라(백엔드)' 공고의 주요 업무를 읽고, 저는 스티브 예기의 글 한 편을 떠올렸습니다. 그는 앤트로픽에서 개발자뿐 아니라 상당수 비개발자도 이미 에이전트 진화 7~8단계에 이르렀다고 관찰했습니다 [cite:@blog-AnthropicHiveMind26]. 그 진화 모델의 7단계는 여러 에이전트를 손으로 관리하는 자리이고, 8단계는 자신의 오케스트레이터를 직접 만드는 자리입니다 [cite:@web-YeggeSDeveloper]. 그렇다면 이 직무에 필요한 수준은 어디쯤일까요. 정답은 아직 없다고 생각합니다. 이 역할 자체가 이름조차 굳지 않은 자리이기 때문입니다.
+'AX 전환 / AI 인프라(백엔드)' 공고의 주요 업무를 저는 두 겹의 역할로 읽었습니다. 하나는 *에이전트가 돌아갈 플랫폼을 구축하고 관리하고 운영하는 일* 이고, 다른 하나는 *그것을 조직 구성원이 실제로 쓰게 만드는 문서·배포·전파* 입니다. 앞의 것만 하면 아무도 안 쓰는 기반이 남고, 뒤의 것만 하면 기댈 바닥이 없습니다.
 
-저는 이 변화를 바라보는 출발점을 엔지니어링이 아닌 개인지식관리(PKM)에서 찾습니다. 그래서 제 링크드인에는 아직 공론화되지 않은 직무명 하나가 먼저 적혀 있습니다 — *PKM-AI Harness Engineer*. 개발자와 비개발자의 경계가 흐려질수록, 중요한 것은 모두를 같은 도구 사용법으로 평준화하는 일이 아니라 각자가 쌓아 온 지식과 경험 위에서 에이전트와 협력하는 방식입니다. 저 자신에게 그 방식이 필요했기에, 이런 직무가 열리기 전부터 하나의 흐름을 만들어 왔습니다. 아래 한 장이 그 전체 그림이고, 이어지는 본문은 각 계층에 대한 설명입니다.
+저는 두 겹을 이미 한 번씩 지나왔습니다. 회사에서는 공용 GPU도 임베딩 기반도 없던 자리에 클러스터와 데이터 파이프라인을 깔고 사내 문서 검색을 직접 서빙한 뒤, 그 위에 담당자에게 붙는 도메인 에이전트를 세웠습니다. 개인 운영에서는 상시 가동하는 에이전트 런타임을 운영하며 거기서 만난 문제를 계층으로 떼어냈습니다 — 기억은 =andenken= 으로, 하네스 사이의 연결은 =entwurf= 로, 협업의 판단이 남는 자리는 =forge-config= 로. 그 아래에는 펌웨어에서 서버·앱·클라우드까지 직접 만들어 양산까지 보낸 제품 세로축이 있습니다. 그리고 이 모든 것을 다음 사람이 이어받도록 인수 문서와 변환 파이프라인으로 남겨 왔습니다.
+
+이 일을 설명할 좌표로 스티브 예기의 관찰을 빌립니다. 그는 앤트로픽에서 개발자뿐 아니라 상당수 비개발자도 이미 에이전트 진화 7~8단계에 이르렀다고 봤습니다 [cite:@blog-AnthropicHiveMind26]. 그 모델의 7단계는 여러 에이전트를 손으로 관리하는 자리이고, 8단계는 자신의 오케스트레이터를 직접 만드는 자리입니다 [cite:@web-YeggeSDeveloper]. *다만 제가 중요하게 보는 것은 제 단계가 몇인지가 아닙니다.* 오케스트레이터를 만들어 본 사람이 필요한 이유는, 조직 구성원 각자가 자기 경험 위에서 에이전트와 일하게 만들려면 그 층이 어떻게 부서지는지 아는 사람이 있어야 하기 때문입니다.
+
+그 목표의 뿌리를 저는 엔지니어링이 아니라 개인지식관리(PKM)에 두고 있습니다. 그래서 제 링크드인에는 아직 공론화되지 않은 직무명 하나가 먼저 적혀 있습니다 — *PKM-AI Harness Engineer*. 개발자와 비개발자의 경계가 흐려질수록 중요한 것은 모두를 같은 도구 사용법으로 평준화하는 일이 아니라, 각자가 쌓아 온 지식과 경험 위에서 에이전트와 협력하는 방식입니다. 저 자신에게 그것이 필요했기에 이런 직무가 열리기 전부터 만들어 왔습니다. 아래 한 장이 그 전체 그림이고, 이어지는 본문이 각 계층을 증명합니다.
 
 #+caption: 개인의 PKM에서 조직의 에이전트 작업면까지 — 흩어진 도구가 아니라 하나로 이어지는 흐름
 #+name: fig-ax-layer
@@ -208,9 +212,11 @@ Java, Python, Go 등 1개 이상의 언어로 BE 시스템 개발 운영 경험?
 
 OpenClaw는 설치해 본 도구가 아니라 계속 운영해 온 에이전트 런타임입니다. 상류 버전의 변화가 제 환경의 인증·모델·플러그인·메모리 계층에 미치는 영향을 다시 해석하고, 회귀가 생기면 롤백하며, 다음 운영자가 같은 실패를 반복하지 않도록 승격과 검증 규칙을 문서에 남겼습니다 [cite:@note-openclaw-loop]. 여기서 배운 점은 분명합니다. *모델보다 에이전트 루프를 오래 살게 하는 운영 계층이 먼저입니다.*
 
-그 위에서 기억을 별도 계층으로 떼어 =andenken= 프로젝트를 만들었습니다. 대화 세션과 디지털 가든을 각각 검색하고 통합해 회수하며, 한국어와 영어가 섞인 제 지식 환경을 에이전트가 다시 읽도록 합니다 [cite:@repo-andenken;@note-andenken-pkm;@note-andenken-semantic]. 목표는 새로운 검색 알고리즘 자체보다 특정 하네스 안에 기억을 가두지 않는 데 있습니다. *에이전트가 바뀌어도 이어지는 기억축을 갖춥니다.*
+*그 운영에서 다음 계층이 나왔습니다.* OpenClaw를 돌리며 액티브 메모리와 기억 증류 문제를 마주했고, 그 런타임 안에 있던 기억 로직 — Markdown 청킹과 임베딩 — 을 출발점으로 삼아 밖으로 떼어낸 것이 =andenken= 프로젝트입니다. 상류의 로직을 LanceDB 위로 옮겨 놓고, 상류 버전이 올라갈 때마다 그 부분이 바뀌었는지 대조합니다. 특정 런타임 내부의 기억에서 시작해 제 대화 세션과 공개 디지털 가든까지 검색면을 넓혔고, 벡터와 전문검색(BM25)의 점수 정규화·회수 추적·개인 어휘 그래프를 붙였습니다 [cite:@repo-andenken;@note-andenken-pkm;@note-andenken-semantic]. *도구를 하나 더 만든 것이 아니라, 운영에서 만난 문제를 런타임 밖의 독립 계층으로 분리한 것입니다.*
 
-한편 pi-shell-acp에서 시작한 시도는 =entwurf= 프로젝트로 이어졌습니다 [cite:@repo-entwurf;@note-entwurf-lineage]. Claude Code·Codex·Gemini 같은 서로 다른 하네스를 하나로 통일하려는 것이 아니라, 각각의 장점을 유지한 채 같은 작업 맥락에서 협력시키는 디스패치 기층입니다. 이 설계 방향을 보고 Snowflake Cortex를 사용하는 외부 개발자가 기업용 하네스 연결을 제안하며 기여 PR을 열었습니다 [cite:@pr-entwurf-40;@issue-entwurf-48]. *특정 벤더의 에이전트를 조직 표준으로 고정하지 않고, 계속 바뀌는 하네스를 받아들일 표준 인터페이스를 둡니다.* 이 방향은 외부 사용자의 요구와 기여로 이어졌습니다 [cite:@web-introduction].
+여기서 한 발견이 하나 있습니다. *임베딩 한 층만으로는 한국어 지식의 회수망을 안정적으로 넓힐 수 없었습니다* — 한국어 개념명과 영어 태그, 개인 어휘, 메타노트 연결이 서로 어긋나기 때문입니다. 그래서 임베딩 위에 Denote 연결 그래프와 개인 어휘 온톨로지를 얹어 세 층으로 회수합니다. 어휘 그래프는 별도 도구로 분리해 현재 트리플 3,900여 개와 한↔영 매핑 2,400여 개를 들고 있습니다 [cite:@repo-dictcli]. *에이전트가 바뀌어도 이어지는 기억축을 갖추되, 그 기억이 한국어로 쓰였다는 사실을 설계에 넣었습니다.*
+
+한편 pi-shell-acp에서 시작한 시도는 =entwurf= 프로젝트로 이어졌습니다 [cite:@repo-entwurf;@note-entwurf-lineage]. Claude Code·Codex·Antigravity·pi 같은 서로 다른 하네스를 하나로 통일하려는 것이 아니라, *각자가 자기 인증·대화록·런타임을 그대로 지킨 채* 같은 작업 맥락에서 협력하게 하는 디스패치 표면입니다. 하네스마다 들어오는 경로가 다르고, 통일하지 않은 것이 설계입니다. 이 설계 방향을 보고 Snowflake Cortex를 사용하는 외부 개발자가 기업용 하네스 연결을 제안하며 기여 PR을 열었습니다 [cite:@pr-entwurf-40;@issue-entwurf-48]. *특정 벤더의 에이전트를 조직 표준으로 고정하지 않고, 계속 바뀌는 하네스를 받아들일 표준 인터페이스를 둡니다.* 이 방향은 외부 사용자의 요구와 기여로 이어졌습니다 [cite:@web-introduction].
 
 다음 질문은 “에이전트가 어디에서 함께 일할 것인가”였습니다. 이 질문을 =forge-config= 프로젝트로 풀었습니다. 에이전트의 작업면을 외부 코파일럿 서비스에 통째로 넘기지 않고, 셀프호스팅 Forgejo에서 이슈·검토·수정·인계를 남기는 개발 루프입니다 [cite:@repo-forge-config;@note-forge-config]. 에이전트가 알아서 코딩하는 공장이 목적이 아닙니다. 사람과 여러 에이전트가 *누가 무엇을 판단했고 다음 사람이 어디서 이어받는지* 확인할 수 있는 공유 작업면이 목적입니다.
 
@@ -219,11 +225,15 @@ OpenClaw는 설치해 본 도구가 아니라 계속 운영해 온 에이전트 
 :CUSTOM_ID: domain
 :END:
 
-이 흐름은 개인 프로젝트 안에서 끝나지 않았습니다. 현재 스마트홈 IoT 회사에서 이미 돌아가는 클라우드·상담·운영 시스템을 갈아엎지 않고, 그 위에 에이전트가 사용할 수 있는 읽기 전용 업무 접점을 만들고 있습니다.
+이 흐름은 개인 프로젝트 안에서 끝나지 않았습니다. 현재 스마트홈 IoT 회사에서 두 단계로 진행했습니다 — *먼저 AI가 돌아갈 기반을 깔았고, 그 위에 담당자에게 붙는 에이전트를 세웠습니다.*
+
+*1단계는 인프라였습니다 (2025-06–09).* 입사 시점에는 공용 GPU도, 임베딩 기반도, 업무 데이터를 한곳으로 모으는 파이프라인도 없었습니다. RTX 5080 3대와 10G 네트워크를 NixOS로 묶어 Docker 서비스 17개를 올렸고, n8n 워크플로 40여 노드에 pgvector 문서 임베딩 2,945건을 물렸으며, Airbyte 커넥터로 상담·문서·이슈 시스템을 PostgreSQL 한 곳으로 모으고 사내 포털을 Cloudflare Zero Trust 뒤에 두었습니다 [사내] [cite:@pgvector]. *문서 임베딩 모델과 리랭킹 모델은 외부 API로 넘기지 않고 그 GPU·컨테이너 위에서 직접 서빙했습니다* — 사내 문서가 밖으로 나가지 않아야 했고, 그래야 검색 품질을 우리가 손볼 수 있었습니다. *RAG를 데모로 끝내지 않고 이미 돌아가던 낡은 사내 시스템에 붙여 실제 업무 데이터를 쓰는 데까지 밀었습니다.* 이 단계에서 다룬 것은 모델이 아니라 GPU·컨테이너·네트워크·인증 경계였고, 그것이 다음 단계의 조건이었습니다.
+
+*2단계는 사람이었습니다 (2026-05–현재).* 기반이 생기자 요청의 성격이 바뀌었습니다. 다른 팀에서 들어온 말은 «대시보드를 만들어 주세요»가 아니라 *«제가 없어도 돌아가게 해 주세요»* 였습니다. 그래서 대시보드를 만들지 않고, 이미 돌아가는 클라우드·상담·운영 시스템을 갈아엎지도 않고, 그 위에 담당자가 쓰는 읽기 전용 업무 접점을 붙였습니다.
 
 VOC와 상담 데이터를 다루는 =voscli= 프로젝트는 에이전트가 자료를 함부로 요약하지 못하게 합니다. 질의의 기간·단위·포함 정책을 고정하고, 판단의 근거를 개별 상담까지 되짚을 수 있게 합니다. 운영팀이 자기 언어로 묻되 답은 원천 근거로 돌아가게 하는 도메인 에이전트의 손입니다 [사내].
 
-=incidentcli= 프로젝트는 운영 장애, VOC, 디바이스 로그와 런타임 데이터를 하나의 KST 시간축으로 회수·정렬합니다 [cite:@note-incidentcli]. 첫 사용자가 사람이 아니라 담당자 에이전트이기 때문에 오류를 경고로 흘려보내지 않습니다. 입력과 증거가 검증 계약을 통과하지 못하면 멈추고, 외부 액션 직전의 수문장 검증을 통과하지 못하면 실행하지 않습니다. 재현성·무결성·추적가능성과 같은 제품 보안 대응의 원칙을 에이전트 운영으로 옮긴 것입니다 [cite:@note-security-principles] [사내 · 설계 공개].
+=incidentcli= 프로젝트는 운영 장애, VOC, 디바이스 로그와 런타임 데이터를 하나의 KST 시간축으로 회수·정렬합니다 [cite:@note-incidentcli]. 첫 사용자가 사람이 아니라 담당자 에이전트이기 때문에 오류를 경고로 흘려보내지 않습니다. 입력과 증거가 검증 계약을 통과하지 못하면 멈추고, 외부 액션 직전의 수문장 검증을 통과하지 못하면 실행하지 않습니다. 재현성·무결성·추적가능성과 같은 제품 보안 대응의 원칙을 에이전트 운영으로 옮긴 것입니다 [cite:@note-security-principles] [사내].
 
 이 둘은 별도의 “AI 서비스”가 아닙니다. *개인이 먼저 만들어 온 하네스 비종속·재현성·증거 우선의 방향이 실제 조직의 업무 데이터와 만난 자리입니다.* 특정 개인의 자격증명과 도구체인에 묶인 자동화가 아니라, 격리된 런타임에 회사 도메인 스킬을 주입하고 담당자가 이어받을 수 있는 독립 에이전트로 세우고 있습니다.
 
@@ -238,14 +248,20 @@ VOC와 상담 데이터를 다루는 =voscli= 프로젝트는 에이전트가 �
 
 한국어 문서 브릿지 =memex-kb= 프로젝트는 HWPX·PDF·EPUB·웹 문서를 Org 메타문서로 모으고 필요한 오피스 포맷으로 내보냅니다 [cite:@repo-memex-kb;@note-memex-kb]. 회사 기술문서와 제안서를 이 방식으로 편집·배포해 왔고 [cite:@note-memex-proposal], 이 제출본도 Org 정본에서 참고문헌과 이미지까지 함께 다시 만들어집니다 [cite:@note-org-ssot]. 특정 포맷을 고집하는 것이 아니라, 원천을 하나로 두고 독자에 맞는 표면을 내는 방식입니다.
 
-제 경험의 중심은 정규 교육과정 운영보다 현업 온보딩에 가깝습니다. 개발자와 운영자가 실제 도구를 이어받도록 환경을 맞추고, 데모와 가이드를 만들며, 현업 질문을 다시 도구와 문서에 반영해 왔습니다. 개발자에게는 재현 명령과 불변식을, 비개발자에게는 판독 가능한 리포트와 근거 링크를 줍니다. 저에게 문서·배포·교육의 목적은 분명합니다. *다른 사람이 자기 에이전트와 함께 다음 일을 시작할 수 있게 하는 일입니다.*
+제 경험의 중심은 정규 교육과정 운영보다 현업 온보딩에 가깝습니다. 그리고 그 온보딩을 말이 아니라 *문서로* 남깁니다. 예컨대 =voscli= 에는 후임자가 처음 열어 보고 바로 운영·유지보수할 수 있도록 인수 가이드를 따로 두었습니다 — 이 도구가 무엇이고 왜 있는지, 3층 구조와 데이터 흐름, 운영자가 실제로 치는 명령, 실행 환경과 빌드, 운영 규칙과 개인정보 취급, 알려진 한계와 로드맵, 그리고 무엇이 SSOT인지까지 일곱 항목입니다 [사내]. *«제가 설명해 드릴게요»가 아니라 «이 문서를 열면 이어받을 수 있습니다»가 목표입니다.*
+
+같은 방식으로 회사 기술문서(TDD)도 Org 정본에서 ODT·DOC으로 내는 파이프라인 위에 올려, 자연어 지시로 편집하고 빌드해 배포합니다. 회사 개발 서버에도 같은 빌드 환경을 맞춰 담당자가 직접 만들어 볼 수 있게 했습니다 [사내]. 개발자에게는 재현 명령과 불변식을, 비개발자에게는 판독 가능한 리포트와 근거 링크를 줍니다. 저에게 문서·배포·교육의 목적은 분명합니다. *다른 사람이 자기 에이전트와 함께 다음 일을 시작할 수 있게 하는 일입니다.*
 
 * 이 방향을 지탱하는 엔지니어링
 :PROPERTIES:
 :CUSTOM_ID: engineering
 :END:
 
-제 엔지니어링은 임베디드 펌웨어에서 시작했지만 거기서 멈추지 않았습니다. 자원이 제한된 ARM Linux 장치의 Zig 펌웨어에서 시작해 제품 전체의 정합성을 확인하기 위해 서버와 앱까지 함께 만들었고, 그 작업은 장치가 실제 제품으로 출시되는 데까지 이어졌습니다 [cite:@note-iam-hub;@note-embedded-memory]. 지금은 Zig·Go·Clojure·Python·TypeScript·Dart를 문제의 경계에 따라 사용합니다. NixOS 서버와 컨테이너, GPU·스토리지, IoT 클라우드와 데이터 접점을 직접 운영해 온 배경이 있기에 에이전트 플랫폼을 프롬프트 모음이 아니라 시스템 인프라로 봅니다 [cite:@note-ondevice-security].
+제 엔지니어링은 임베디드 펌웨어에서 시작했지만 거기서 멈추지 않았습니다. 자원이 제한된 ARM Linux 장치의 Zig 펌웨어를 맡았는데, *계약은 펌웨어였고 펌웨어만 나가면 제품이 되지 않았습니다.* 서버와 앱 두 층이 비어 있어서 Go 서버와 Flutter 앱을 직접 만들었고, 연결형에는 AWS IoT를 폐쇄망에는 로컬 백엔드를 두되 *펌웨어는 양쪽에 수정 없이 그대로 나가게* 했습니다. 그 허브는 양산 출하됐습니다 [사내] [cite:@note-iam-hub;@note-embedded-memory]. 지금은 클라우드 없이 도는 Matter 허브에 온디바이스 AI를 얹어, 하나의 Go 코드베이스에서 Yocto Linux와 Android 두 타깃을 냅니다 — 배포 간 코드 공유 96%입니다 [cite:@repo-homeagent-config].
+
+*이 축은 제가 에이전트와 함께 얼마나 만들 수 있는지를 가장 정직하게 드러내는 자리이기도 합니다.* 출하일이 정해져 있고 물건이 실제로 나가야 끝나기 때문입니다. 허브 펌웨어·프로토콜·클라우드 연동 층을 가로질러 *30일에 198 커밋* 을 Claude와 짝 프로그래밍으로 냈고, 온디바이스 허브에서는 *3-에이전트 병렬 세션으로 하루 24 커밋·테스트 163개 통과·파일 충돌 0* 을 기록했습니다(사람은 PM만) [운영 기록]. *충돌이 0인 것은 모델이 똑똑해서가 아니라 작업 경계를 미리 갈라 뒀기 때문입니다* — 이 문서가 처음부터 말한 «경계를 먼저 계약으로 만든다»가 제품 개발에서 그대로 나타난 자리입니다.
+
+지금은 Zig·Go·Clojure·Python·TypeScript·Dart를 문제의 경계에 따라 사용합니다. NixOS 서버와 컨테이너, GPU·스토리지, IoT 클라우드와 데이터 접점을 직접 운영해 온 배경이 있기에 에이전트 플랫폼을 프롬프트 모음이 아니라 시스템 인프라로 봅니다 [cite:@note-ondevice-security].
 
 모르는 기술을 사용했다고 쓰지 않습니다. 특정 프레임워크의 이름을 나열하기보다 Linux·프로세스·네트워크·데이터·권한·실패 경계를 이해하고, 필요한 도구를 에이전트와 함께 빠르게 익혀 실제 운영 계약으로 만드는 편입니다. 제가 이 직무에 던지는 것은 이미 정리된 직무의 답안이 아니라, *아직 이름이 굳지 않은 분야에서 방향을 정하고 필요한 계층을 만들고 기록하며 조직의 작업면으로 가져온 과정* 그 자체입니다.
 
@@ -298,72 +314,77 @@ VOC와 상담 데이터를 다루는 =voscli= 프로젝트는 에이전트가 �
 
 * COMMENT 이미지 생성 프롬프트와 검토 메모 :noexport:
 
-** 그림 1 — company-ax-layer.png (glg-image / gemini nanobanana 2 flash)
+** 공통 세계관 블록 — 6장 전부 이 블록을 앞에 붙여 생성한다
 
-배치: §프롤로그 끝. 비율 16:9 가로. 파일: images/company-ax-layer.png
+SSOT: =~/sync/org/botlog/20260327T100239--힣맨-세계관-비주얼-컨셉…org= 의 =공통 세계관 블록 (v2, 2026-04-01)=.
+아래는 이 제출본용으로 다듬은 판본이다. 화풍·재료·빛을 6장이 공유해야 한 작가의 연작으로 읽힌다.
 
 #+begin_src text
-Create one clean editorial technical infographic for a Korean job-application document.
-Landscape 16:9, white background, crisp vector style, generous whitespace, muted navy, teal,
-and warm amber accents. All visible labels must be exactly the Korean text supplied below;
-do not invent labels, numbers, metrics, logos, or decorative AI imagery.
+[World: GLGMAN Universe]
+Style: 2D illustration, midpoint between Disney and Studio Ghibli. Clean linework, soft cel-shading,
+polished storybook concept art. Warm and mythic, never corporate.
+Setting: an Antarctic winter village and an ice-forge workshop built from ice blocks and whale bones.
+Snow-covered ground, aurora borealis in a deep navy sky, amber dawn at the horizon.
+Color palette: deep navy (polar night), white, amber/gold (forge light, permitted flow), ice-blue
+(boundaries, frozen structure), small orange sparks.
+Recurring materials: ice walls and gates, whale-bone framing, golden cables, glowing memory crystals,
+a heavy ledger book, lighthouse beams, CRT monitors half-buried in snow, small hand-forged drivers.
+Camera: single wide establishing shot, slight low angle, one clear focal point, generous negative space.
+Mood: epic but warm, mythic but intimate, handmade, sincere.
 
-Title: "개인의 PKM에서 조직의 에이전트 작업면까지"
-Subtitle: "흩어진 도구가 아니라 하나로 이어지는 흐름"
+TEXT RULE (critical): render NO sentences, NO Korean text, NO labels, NO captions, NO legends,
+NO UI boxes, NO floating annotations, NO watermark anywhere in the image. This illustration carries
+meaning through structure, light and composition only. The document supplies every word.
 
-Compose the diagram as one continuous left-to-right river or growing path, not two separate pillars.
-A thin amber line connects every stage and ends in a broad shared work surface.
-Text discipline (critical): print ONLY the exact quoted labels listed below, and print each label
-exactly once — never duplicate a title above and below a shape. Every line beginning with "visual:"
-is a drawing instruction for icons; do not turn any word from a "visual:" line into printed text.
-Blank cards, loop arrows, shields, laptops, and surfaces carry no text at all. The only English
-allowed anywhere is the listed project/file names (OpenClaw, andenken, entwurf, forge-config, voscli,
-incidentcli, AGENTS.md, NEXT.md) and the single bottom foundation line. Place each stage title once,
-above its own icon, and never repeat it elsewhere.
-
-At the far left, draw roots below the path labeled:
-  "개인지식관리(PKM)"
-  small supporting labels: "축적한 지식·경험", "취향과 판단"
-Above the roots place a foundation block labeled:
-  "재현 가능한 환경"
-  small labels inside: "NixOS", "Emacs", "-config"
-
-Across the center, place four connected stages in this exact order. For each stage, print the Korean
-title once directly ABOVE its icon, with the small project label on the line just under the title;
-never print the stage title a second time below the icon:
-  1. "에이전트 런타임 운영" — small label "OpenClaw"
-     visual: a circular loop arrow returning on itself with one small blank document card. Icons only, no text.
-  2. "이어지는 기억" — small label "andenken"
-     visual: two sources, "세션" and "지식베이스", joining one memory stream.
-  3. "하네스 비종속 디스패치" — small label "entwurf"
-     visual: three small neutral terminal nodes feeding one unlabeled switch icon; no vendor logos, no text on the switch.
-  4. "검토 가능한 공유 작업면" — small label "forge-config"
-     visual: a laptop showing three small blank stacked cards. Icons only, no text on the cards or the surface.
-
-From stage 4, continue to a real-work domain landing area. Print its title once, at the top of the area only:
-  "회사 도메인에 착지"
-Inside it show existing systems as three source icons labeled "VOC·상담", "운영 장애", "IoT·로그".
-They connect through a shield-shaped boundary labeled "읽기 전용·증거 우선" to two tool cards:
-  "voscli"
-  "incidentcli"
-Then show a domain owner and a small agent icon side by side, both unlabeled, with only this one caption beneath them:
-  "담당자가 자기 언어로 묻고 원천 근거로 돌아간다"
-
-Above the entire path, draw a light spanning arch labeled:
-  "문서·배포·온보딩"
-Place three small cards on the arch labeled "AGENTS.md", "NEXT.md", "스킬 계약".
-At the far right, the path opens into one shared work-surface icon with two people labeled "개발자" and "비개발자",
-under a single destination title printed only once (do not repeat it):
-  "조직의 에이전트 작업면"
-
-At the very bottom, add a narrow engineering foundation line spanning the full diagram:
-  "Embedded Linux · Backend · App · Cloud · 보안 경계"
-
-The image must communicate one coherent trajectory: personal knowledge management grows through
-reproducible infrastructure, runtime operations, memory, dispatch, and a reviewable work surface;
-it then reaches real company domains and is transferred to the organization through documentation.
-No charts, no KPI counters, no maturity scores, no robot heads, no glowing brains, no stock-photo people.
+Do NOT: photorealistic, 3D render, corporate infographic, flowchart boxes, dark gritty tone,
+speech bubbles, excessive micro-detail, stock-photo people.
 #+end_src
+
+*캐릭터 배치 원칙* — 네 명을 모든 그림에 억지로 넣지 않는다.
+- GLGMAN(황제펭귄 아버지): 판단·소유·운영의 주체가 필요한 장면
+- 아기 펭귄: 인계·학습·다음 세대가 핵심인 장면
+- 여우 형제: 멀티하네스 협업 장면
+- 캐릭터 없음: 시스템 내부 구조 자체가 주인공인 장면
+
+** 그림 1 — company-ax-layer.png · 16:9 hero · 2K
+
+배치: §프롤로그 끝. 파일: images/company-ax-layer.png
+*이 장면이 옮기는 판단*: 「기반을 깔고 → 사람에게 붙이고 → 다음 사람에게 넘긴다」 — 여섯 축이
+하나의 대장간 주위에 모이고, 결과가 검토를 거쳐 원본으로 돌아온다.
+
+#+begin_src text
+[공통 세계관 블록을 여기 앞에 붙인다]
+
+Scene: one wide establishing view of the ice-forge village at polar dawn, 16:9.
+
+FOUNDATION (bottom, spanning the full width): the village is built on a visible bedrock of pale
+ice-blue geometric crystal — a frozen, ordered floor that everything else stands on. It reads as
+"the ground was laid first."
+
+LEFT — the archive: a snow-covered stone archive whose shelves hold glowing memory crystals and
+stacked books. Warm light spills out. Golden cables leave the archive toward the centre.
+
+CENTRE — the forge: the ice-and-whale-bone workshop, amber fire inside, four smaller workbenches
+arranged around it like a ring. GLGMAN, an anthropomorphic emperor penguin in white-navy armour,
+stands at the centre holding a small hand-forged driver raised just enough to catch the light.
+He is composed, not triumphant.
+
+RIGHT — the gates: exactly three distinct ice gateways, each of a different shape, stand in an arc.
+Each has a golden cable running from it into the forge. The gates are clearly different from one
+another but all connect to the same courtyard. Nothing passes between the gates directly.
+Three gates, no more and no fewer.
+
+RETURN PATH (foreground, curving back to the archive): a raised stone walkway leaves the forge,
+passes through a single narrow reviewing arch, and only then reaches the archive. A baby emperor
+penguin with a tiny scarf carries one glowing crystal along this walkway toward the archive.
+The return is deliberate and narrow — nothing flows back automatically.
+
+Above: aurora light connects the whole scene into one continuous arc.
+
+Emphasis: the forge is the focal point; the narrow reviewing arch on the return path must be
+clearly visible as the only way back.
+#+end_src
+
 
 검토 메모:
 - 두 기둥이 아니라 하나의 계보여야 한다.
