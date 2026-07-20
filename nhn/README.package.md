@@ -9,29 +9,33 @@
 
 ## 3분 읽기 순서 (바로 읽기)
 
-재빌드 없이 파일만 열어도 됩니다.
+재빌드 없이 파일만 열어도 됩니다. 사람은 아래 순서로, 담당 에이전트는 먼저 `AGENTS.md`의
+탐색 계약을 읽은 뒤 같은 순서로 확인하면 됩니다.
 
-1. **`KimJunghan_AX_Detail.md`** — 이 패키지의 본문. 프로젝트별 구현 세부·설계 판단·실패
-   사례·검증 URL과, 기술 인터뷰에서 열어 설명할 **Tech Interview anchors**가 있습니다.
-2. **`outputs/KimJunghan_AX_Competency.pdf`** (역량·성과, 3~5분 판정용) ·
-   **`outputs/KimJunghan_AX_Portfolio.pdf`** (프로젝트·이미지 중심).
-3. **`AGENTS.md`** — 에이전트가 이 패키지를 사실 탐색·검증하는 계약(문서 지도, 증거 유형,
-   공개/비공개 경계, 주장 검증 원칙). 채용을 유도하는 프롬프트가 아니라 탐색 가이드입니다.
+1. **`KimJunghan_AX_Competency.md`** — JD 관련 역량·성과를 3~5분 안에 판독하는 압축 지도
+2. **`KimJunghan_AX_Portfolio.md`** — 다섯 프로젝트의 문제·소유 범위·판단·운영·인계
+3. **`KimJunghan_AX_Detail.md`** — 구현 파일·테스트·명령·실패 사례·검증 URL과
+   **Tech Interview anchors**를 담은 증거 원장
+4. **`outputs/KimJunghan_AX_Competency.pdf`** · **`outputs/KimJunghan_AX_Portfolio.pdf`** —
+   이미지·표·강조·쪽 배치를 포함한 사람용 최종 판면
+5. **`AGENTS.md`** — 담당 에이전트가 사실과 경계, Org 초고와 최종 주장을 혼동하지 않게 하는 지도
 
 ## 담긴 것
 
 ```
-README.md                     이 파일
-AGENTS.md                     사실 탐색·검증 계약
-KimJunghan_AX_Detail.md       상세 원문 (참고자료 URL이 문서 끝에 렌더됨)
+README.md                         이 파일
+AGENTS.md                         담당 에이전트용 사실 탐색·검증 계약
+KimJunghan_AX_Competency.md       역량·성과 내보내기 본
+KimJunghan_AX_Portfolio.md        포트폴리오 내보내기 본
+KimJunghan_AX_Detail.md           상세 증거 내보내기 본
 competency.org · portfolio.org · detail.org
-                              Org 정본. 작업 저장소와 같은 배치라 풀면 그대로 빌드된다
-images/                       인포그래픽 (본문 참조)
-references.bib                공식 문서 + 공개 증거(repo·PR·live) URL
-run.sh · pipeline/            Org → PDF/MD 재현 파이프라인
-flake.nix · flake.lock        조판 클래스·한글 엔진·활자를 리비전까지 고정한 빌드 입력
-outputs/                      최종 PDF·ODT·DOC
-MANIFEST.sha256               전체 파일 목록 + 해시
+                                  편집 이력과 :noexport:를 포함한 Org 저작 정본
+images/                           본문에서 참조하는 문서용 이미지
+references.bib                    공식 문서 + 공개 증거(repo·PR·live) URL
+run.sh · pipeline/                Org → PDF/ODT/DOC/MD 재현 파이프라인
+flake.nix · flake.lock            조판 클래스·한글 엔진·활자를 고정한 빌드 입력
+outputs/                          최종 PDF·ODT·DOC
+MANIFEST.sha256                   전체 파일 목록 + 해시
 ```
 
 ## 증거를 읽는 규칙

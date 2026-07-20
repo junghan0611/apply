@@ -15,14 +15,16 @@
 ZIP 루트에는 최소한 다음이 있어야 한다.
 
 - `README.md`
-- `AGENTS.md`
+- `AGENTS.md` — 저장소 개발 지침이 아니라 `AGENTS.package.md`에서 만든 담당 에이전트용 탐색 계약
+- `KimJunghan_AX_Competency.md`
+- `KimJunghan_AX_Portfolio.md`
 - `KimJunghan_AX_Detail.md`
-- `sources/*.org`
+- `competency.org` · `portfolio.org` · `detail.org` — 재빌드 경로를 보존하려 패키지 루트에 둔다
 - `images/*`
 - `references.bib`
 - `run.sh`
 - `pipeline/`
-- `outputs/`의 최종 PDF 두 개
+- `outputs/`의 최종 PDF·ODT·DOC
 - `MANIFEST.sha256`
 
 ## 문서 역할

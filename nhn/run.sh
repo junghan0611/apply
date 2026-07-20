@@ -10,7 +10,9 @@
 #   portfolio.org  │      acmart manuscript · A4 1단 · 한글 xetexko
 #                  └→ proposal-export.el(org→odt) → odt_postprocess.py
 #                         → .odt → libreoffice → .doc → (한글에서 HWP 저장)
-#   detail.org      → pandoc(org→gfm) → .md
+#   competency.org ┐
+#   portfolio.org  ├→ pandoc(org→gfm) → machine-readable .md 3종
+#   detail.org     ┘
 #   images/master   → optimize_images.py → images/   (생성 원본은 보존)
 #
 # 두 표면은 경쟁하지 않는다. PDF 는 조판 품질을, ODT/DOC 는 받는 쪽이 열어서 고칠 수
@@ -25,7 +27,7 @@
 #   ./run.sh check         # 의존성 점검
 #   ./run.sh competency    # ① 역량·성과 기술서 (PDF + ODT/DOC)
 #   ./run.sh portfolio     # ② 포트폴리오 (PDF + ODT/DOC)
-#   ./run.sh detail        # ③ 상세 Markdown
+#   ./run.sh detail        # ③ competency·portfolio·detail Markdown 3종
 #   ./run.sh images        # ④ 생성 원본 → 문서용 축소본
 #   ./run.sh all           # ①②③ 전부 + 검수
 #   ./run.sh verify        # 산출물 검수 (별표 누출·:noexport 누출·연락처·캡션)
@@ -184,15 +186,24 @@ cmd_images() {
 }
 
 cmd_detail() {
-  local org="$DIR/detail.org"
-  [[ -f "$org" ]] || { err "$org 없음"; exit 1; }
   mkdir -p "$BUILD"
-  info "[detail] org → gfm (pandoc, ax flake)"
-  AXRUN pandoc "$org" -f org -t gfm --wrap=none --toc \
-    --citeproc --bibliography="$DIR/references.bib" \
-    --csl="$PIPE/templates/ieee.csl" \
-    -o "$BUILD/KimJunghan_AX_Detail.md"
-  ok "[detail] $BUILD/KimJunghan_AX_Detail.md — $(wc -l < "$BUILD/KimJunghan_AX_Detail.md") lines, $(du -h "$BUILD/KimJunghan_AX_Detail.md" | cut -f1)"
+  local key label org out
+  for key in competency portfolio detail; do
+    case "$key" in
+      competency) label="Competency" ;;
+      portfolio)  label="Portfolio" ;;
+      detail)     label="Detail" ;;
+    esac
+    org="$DIR/$key.org"
+    out="$BUILD/KimJunghan_AX_${label}.md"
+    [[ -f "$org" ]] || { err "$org 없음"; exit 1; }
+    info "[$key-md] org → gfm (pandoc, ax flake)"
+    AXRUN pandoc "$org" -f org -t gfm --wrap=none --toc \
+      --citeproc --bibliography="$DIR/references.bib" \
+      --csl="$PIPE/templates/ieee.csl" \
+      -o "$out"
+    ok "[$key-md] $out — $(wc -l < "$out") lines, $(du -h "$out" | cut -f1)"
+  done
 }
 
 # 산출물 검수 — 페이지수, 캡션 번호, :noexport 누출, 연락처/URL.
@@ -201,7 +212,18 @@ cmd_verify() {
   for key in competency portfolio; do
     local base="${FINAL[$key]}" pdf="$BUILD/${FINAL[$key]}.pdf"
     [[ -f "$pdf" ]] || { err "$pdf 없음 — verify 는 산출물이 있어야 성립한다"; fail=1; continue; }
-    local txt; txt="$(AXRUN pdftotext "$pdf" - 2>/dev/null)"
+    local txt=""
+    txt="$(AXRUN pdftotext -layout "$pdf" - 2>/dev/null || true)"
+    # nix develop 경유 poppler가 드물게 성공 코드와 빈 stdout을 돌려준 적이 있다. 빈 텍스트로
+    # URL·캡션을 검사하면 경고 대상이 실행마다 옮겨 다닌다. 한 번 재시도하고도 비면 PDF 검수를
+    # 수행한 척하지 않고 명시적으로 실패한다.
+    if [[ -z "${txt//[[:space:]]/}" ]]; then
+      sleep 0.2
+      txt="$(AXRUN pdftotext -layout "$pdf" - 2>/dev/null || true)"
+    fi
+    if [[ -z "${txt//[[:space:]]/}" ]]; then
+      err "  PDF 텍스트 추출 실패(2회 빈 출력): $pdf"; fail=1; continue
+    fi
     local pages; pages="$(AXRUN pdfinfo "$pdf" 2>/dev/null | awk '/^Pages/{print $2}')"
     echo "── $base.pdf (${pages}p) ──"
     # 판면 크기. 제출처가 A4 를 전제하므로 letterpaper 로 새는 것은 통과시키지 않는다.
@@ -251,12 +273,18 @@ cmd_verify() {
     fi
     [[ -f "$BUILD/$base.doc" ]] || { err "  $BUILD/$base.doc 없음"; fail=1; }
   done
-  local md="$BUILD/KimJunghan_AX_Detail.md"
-  if [[ -f "$md" ]]; then
-    echo "── KimJunghan_AX_Detail.md ──"
-    grep -qiE 'noexport|IMAGE PROMPT' "$md" && { warn "  :noexport 누출 의심"; fail=1; } || ok "  :noexport 누출 없음"
-    grep -q 'github.com/junghan0611' "$md" && ok "  자체 프로젝트 공개 링크 존재" || warn "  공개 링크 없음"
-  fi
+  local label md
+  for label in Competency Portfolio Detail; do
+    md="$BUILD/KimJunghan_AX_${label}.md"
+    if [[ -f "$md" ]]; then
+      echo "── KimJunghan_AX_${label}.md ──"
+      grep -qiE 'noexport|IMAGE PROMPT|생성 프롬프트|검토 메모' "$md" \
+        && { warn "  :noexport 누출 의심"; fail=1; } || ok "  :noexport 누출 없음"
+      grep -q 'github.com/junghan0611' "$md" && ok "  자체 프로젝트 공개 링크 존재" || warn "  공개 링크 없음"
+    else
+      err "  $md 없음"; fail=1
+    fi
+  done
   [[ $fail -eq 0 ]] && ok "verify 통과" || { err "verify 경고 있음 — 위 항목 확인"; return 1; }
 }
 
@@ -269,14 +297,15 @@ cmd_clean() {
 # 증거 패키지 ZIP — allowlist 스테이징 → zip + MANIFEST.sha256.
 # 넣지 않는 것: .git · _smoke · *.odt · *.log · 편집기 잠금 · 원본 PRIVATE.md · 로컬 절대경로.
 cmd_package() {
-  local COMP="$BUILD/KimJunghan_AX_Competency.pdf" PORT="$BUILD/KimJunghan_AX_Portfolio.pdf" MD="$BUILD/KimJunghan_AX_Detail.md"
-  for f in "$COMP" "$PORT" "$MD"; do [[ -f "$f" ]] || { err "$f 없음 — 먼저 ./run.sh all"; exit 1; }; done
+  local COMP="$BUILD/KimJunghan_AX_Competency.pdf" PORT="$BUILD/KimJunghan_AX_Portfolio.pdf"
+  local MDC="$BUILD/KimJunghan_AX_Competency.md" MDP="$BUILD/KimJunghan_AX_Portfolio.md" MDD="$BUILD/KimJunghan_AX_Detail.md"
+  for f in "$COMP" "$PORT" "$MDC" "$MDP" "$MDD"; do [[ -f "$f" ]] || { err "$f 없음 — 먼저 ./run.sh all"; exit 1; }; done
   local S="$DIR/$STAGE"
   rm -rf "$DIR/.package"; mkdir -p "$S"/{images,pipeline/templates,outputs}
   # allowlist 복사
   cp "$DIR/README.package.md" "$S/README.md"
-  cp "$DIR/AGENTS.md"          "$S/AGENTS.md"
-  cp "$MD"                     "$S/KimJunghan_AX_Detail.md"
+  cp "$DIR/AGENTS.package.md" "$S/AGENTS.md"
+  cp "$MDC" "$MDP" "$MDD"   "$S/"
   # Org 정본은 패키지 루트에 둔다 — 작업 저장소와 같은 배치여야 한다.
   #
   # 한동안 sources/ 아래에 담았는데, 그러면 받는 쪽에서 ./run.sh 가 아무것도 못 찾는다:
