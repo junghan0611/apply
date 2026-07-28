@@ -7,6 +7,7 @@
 | 경로 | **LinkedIn Easy Apply** — 이 배치에서 **유일하게 원클릭으로 끝나는 건** |
 | 첨부 컷 | **Embedded** (`resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`) |
 | 공고 URL | https://www.linkedin.com/jobs/view/4380679251/ |
+| **지원 URL** | **같은 페이지의 「간편 지원」** — Easy Apply 는 별도 URL 이 없다. 모달 5단계 (`../AGENTS.md` §브라우저 워크플로) |
 | 근무지 | **Seoul, South Korea** · 정규직 |
 | 회사 | 본사 **Sunnyvale, CA** · 250명+ · **차량 800만 대 이상 양산 탑재** · SDV 플랫폼. **🌐 외국계** |
 | 팀 | **한국 사이트 — 전사 매출의 30%** 를 만드는 OEM 납품 축. 온프레미스 빌드·랩·테스트 환경 |

@@ -32,7 +32,7 @@ else
 	ok '.git/ 없음'
 fi
 
-for path in applications nhn NHN.md NEXT.md .timeline-events.jsonl .timeline-snapshot.json \
+for path in applications dossier NEXT.md .timeline-events.jsonl .timeline-snapshot.json \
             .timeline-manifest.json .claude/settings.local.json; do
 	if [ -e "$root/$path" ]; then
 		bad "금지 경로 포함: $path"

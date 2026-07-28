@@ -7,6 +7,7 @@
 | 경로 | **Paylocity** (`recruiting.paylocity.com`) — **이 저장소에서 처음 만나는 ATS** |
 | 첨부 컷 | **Embedded** (`resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`) |
 | 공고 URL | https://recruiting.paylocity.com/recruiting/jobs/Details/4158364/TELIT-IOT-PLATFORMS-LLC/Edge-AI-Software-Engineer (HTTP 200 확인) |
+| **지원 URL** | **https://recruiting.paylocity.com/Recruiting/jobs/Apply/4158364** (브라우저 실측 2026-07-29) |
 | 근무지 | **Seoul, KOR** · 정규직 |
 | 회사 | IoT 모듈·엔드투엔드 IoT 솔루션. **서방 최대 규모 셀룰러 모듈 공급사.** 🌐 외국계 |
 

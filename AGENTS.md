@@ -62,7 +62,7 @@ GitHub `junghan0611/apply` **(PRIVATE)**. 회사명 · 고객사 · 사내 사�
 | 탐색 | `.claude/skills/linkedin-jobs/` | 공개 카드 · 포스트, 원문 요건, 근무지 확신도, 랭킹 근거, 추천 컷 | 로그인, 개인 필드, 제출 |
 | 문서 | `resume/` | 검증된 사실 모듈, 직무별 선택 · 순서, 공개 증거 입구, 재현 가능한 PDF | ATS 상태, 지원 원장 |
 | 제출 | `applications/` | JD 보존, 타깃별 답변, 업로드 파일 사본, 상태 원장 | 공용 이력서 사실, 탐색 구현 |
-| 닫힌 dossier | `nhn/` | 제출본 재생성과 면접 앵커 | 현재 지원 큐 |
+| **dossier 발사대** | `dossier/` | 역량기술서 · 포트폴리오 · 증거패키지 생성, 면접 앵커 | 현재 지원 큐 |
 | 메타 검수 | 루트 문서 · `scripts/` | 계약, 모순 검사, 핸드오프 | 남의 레인 구현을 말없이 다시 여는 것 |
 
 한 에이전트가 "도와준다"며 다른 레인을 편집하지 않는다. 체크포인트나 발견한 구멍을 레인 담당에게
@@ -174,8 +174,11 @@ applications/check.py
 # 이력서 빌드와 PDF 검사
 (cd resume && ./run.sh all && ./run.sh verify)
 
-# 닫힌 dossier — nhn/ 을 건드릴 때만
-(cd nhn && ./run.sh check && ./run.sh all && ./run.sh verify)
+# dossier 발사대 — dossier/ 를 건드릴 때만
+(cd dossier && ./run.sh check && ./run.sh all && ./run.sh verify)
+
+# 공고가 아직 열려 있는가 (제출 직전)
+applications/alive.py
 ```
 
 게이트와 문서가 어긋나면 **같은 변경 안에서** 거동이나 SSOT 중 하나를 고친다.

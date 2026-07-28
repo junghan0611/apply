@@ -60,7 +60,7 @@ xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" \
 office:version="1.2">
  <office:meta>
   <dc:title>Org ODT style master</dc:title>
-  <meta:generator>nhn/pipeline/strip_reference_odt.py</meta:generator>
+  <meta:generator>dossier/pipeline/strip_reference_odt.py</meta:generator>
  </office:meta>
 </office:document-meta>
 """

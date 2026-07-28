@@ -2,12 +2,12 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **draft** — 필수는 전부 충족. **남은 것은 커버레터 한 장** |
+| 상태 | **ready** — 커버레터까지 끝났다. 폼 실측 완료 |
 | 지원일 | — |
 | 경로 | **자체 채용홈** `holiday-robotics.com/careers` — ATS 화이트라벨 아님 |
 | 첨부 컷 | **FDE** (`resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`) |
 | 공고 URL | https://www.linkedin.com/jobs/view/4443068175/ (LinkedIn 판, `offsite`) |
-| **지원 URL** | `holiday-robotics.com/careers` → 해당 카드의 「View Details」 → 「Apply」 **(폼 미실측)** |
+| **지원 URL** | **`https://holiday-robotics.com/careers/forward-deployed-robotics-engineer/apply`** ✅ |
 | 근무지 | **서울 강남** · 정규직 · **3–8년** |
 | 회사 | 2024 설립 · 28명 · **Series A $105M** · 산업용 휴머노이드 **FRIDAY** |
 
@@ -82,22 +82,53 @@ and product development."*
 
 ## 낸 것
 
-- [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`
-- [ ] 커버레터 / 지원 동기 — **ROS2 화법은 위에 정해져 있다.** 그대로 한 문단
+- [x] **이력서 PDF** — `resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf` (준비됨)
+- [x] **커버레터** — `cover-letter.md` §붙여넣을 본문. **영문 약 390 단어.** ROS2 문단 포함
 - [x] 운전면허 — **있음** (GLG 확인, 2026-07-28)
+
+## 폼 스키마 — 브라우저 실측 (2026-07-29)
+
+`https://holiday-robotics.com/careers/forward-deployed-robotics-engineer/apply`
+**로그인·계정 생성 없음.** 한 화면짜리 폼이고 슬롯이 여덟이다.
+
+| 필드 | 필수 | 형식 | 넣을 값 |
+|---|---|---|---|
+| Full Name | **필수** | text | `Junghan Kim` |
+| Email | **필수** | email | `[email removed]` |
+| Phone | 선택 | tel (`+82 10-0000-0000`) | GLG 가 직접 — Git 에 없다 |
+| **Resume / CV** | 선택 | **PDF 업로드** | `KimJunghan_Resume_Forward_Deployed_Engineer.pdf` |
+| **Additional Documents** | 선택 | **PDF 업로드** | 없음 — 이 건은 이력서 한 장으로 간다 |
+| GitHub URL | 선택 | url | `https://github.com/junghan0611` |
+| LinkedIn URL | 선택 | url | `https://www.linkedin.com/in/junghan-kim-1489a4306/` |
+| **Cover Letter** | 선택 | **textarea** | `cover-letter.md` §붙여넣을 본문 **전체** |
+| [필수] 개인정보 수집·이용 동의 | **필수** | 체크박스 | GLG 가 본문 확인 후 체크 |
+| [선택] 인재풀 보관 동의 | 선택 | 체크박스 | **GLG 판단** — 권장은 체크(28명 회사, 다른 자리 재검토 여지) |
+
+**이 폼이 이 건의 성격을 바꾼다.** 이력서조차 `optional` 이고 서술형 칸이 **Cover Letter 하나뿐**
+이다. 즉 **커버레터가 서류의 절반**이고, ROS2 를 어떻게 말하느냐가 폼 안에서 결정된다.
+그래서 커버레터를 미루지 않고 먼저 썼다.
+
+**희망 연봉·입사 가능일·이직 사유를 묻지 않는다.** `FAQ.md` §4 의 미확정 값이 여기서는
+막지 않는다 — **13건 중 폼이 가장 가볍다.**
 
 ## 폼에 답한 질문
 
 | 질문 | 답 | 출처 |
 |---|---|---|
-| (폼 미실측 — 자체 채용홈이라 스키마를 못 떴다) | | |
-
-> 자체 채용홈이고 `boards.py probe` 로 Ashby·Greenhouse·Lever·Workable·그리팅·ninehire
-> 어느 것도 잡히지 않았다. 페이지가 JS 렌더링이라 본문 스크래핑도 4.5KB 껍데기만 온다.
-> **폼 구조는 브라우저에서 열어야 안다.**
+| (서술형 문항 없음 — Cover Letter textarea 하나가 전부) | `cover-letter.md` | 브라우저 실측 2026-07-29 |
 
 ## 이후 기록
 
 - [2026-07-28] 건 생성. GLG 가 링크를 던졌다. LinkedIn guest API 로 **본문 전문 확보**,
   회사·투자·규모·원칙을 exa 로 확인. 같은 회사 3건이 열려 있고 그중 이 자리가 GLG 축이다.
 - [2026-07-28] 채용 페이지에서 **Wild Card 입구** 발견 — 두 번째 경로로 기록.
+- [2026-07-29] **브라우저로 지원 URL·폼 스키마 확정.** 로그인 없음, 서술형은 Cover Letter
+  하나. **커버레터를 써서 `ready` 로 올렸다.**
+- [2026-07-29] ⚠ **채용 보드에 자리가 하나 늘었다** — `Software Engineer: Test &
+  Manufacturing Systems` (서울 강남 · 정규직). 소개문이
+  *"tests at each production stage, HIL runs in the lab, and a build history that follows every
+  robot. You build those systems, and the tools operators use to run them."* 다.
+  **24시간 aging-test 자동화 · 다중 허브 fan-out 실기기 검증 · 양산 이력**이 정면으로 걸린다.
+  다만 `applications/AGENTS.md` §한 회사에 공고가 여러 개일 때 의 기본은 **하나**이고,
+  28명 회사에 두 경로로 들어가는 것은 인상이 갈린다. **FDE 로 간다는 판단은 유지하고,
+  이 자리는 사실로만 남긴다** — 바꿀지는 GLG 판단.

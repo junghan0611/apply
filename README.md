@@ -48,7 +48,7 @@ The boundaries are as important as the arrows:
 | Discovery | `.claude/skills/linkedin-jobs/` | public guest search, detail enrichment, location evidence, explainable ranking | `SKILL.md` |
 | Document launcher | `resume/` | one fact corpus → role-specific résumé cuts | `resume/body.org` |
 | Submission operations | `applications/` | JD snapshot, form answers, uploaded-file snapshot, outcome ledger | `applications/LEDGER.md` |
-| Closed case | `nhn/` | a completed, deeply targeted dossier and reproducible document pipeline | `nhn/AGENTS.md` |
+| Dossier launcher | `dossier/` | competency statement, portfolio, and evidence package from one org corpus | `dossier/AGENTS.md` |
 | Handoff | `NEXT.md` | the next concrete move, not a backlog or history archive | `NEXT.md` |
 
 ## Multi-agent collaboration

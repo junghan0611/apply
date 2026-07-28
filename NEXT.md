@@ -1,121 +1,93 @@
-# NOW — 제출 대기 13건 + 새 축 4건. 컷 네 종 + 막힌 것 하나
+# NOW — 실행 14건 + 보류 2건 · 공고 전부 살아 있음 · 표준 구조 정리 끝
 
 - **Hot group**: 지원 실행. 공개 준비는 이 축이 아니다.
 - **기조 (2026-07-28 밤 GLG)**: **내고 떨어지면 만다.** 실제로 만든 것이 있으니 밀어붙인다.
   위로 찌르는 것이 기본값이고 — **떨어져도 이름이 알려진다.** 지역은 후보를 거르는 축이 아니다.
-- **⭐ 방향 전환 (2026-07-28 심야 GLG)**: **시스템 축은 접고 로봇·피지컬 축을 넓게 본다.**
-  > "너무 시스템 가니까 재미없어 보인다. 로봇쪽도 넓게 보려고 해. … 내가 말하는 **에이전트
-  > 공존**이 결국 **피지컬 실체를 염두한 포석**이긴 하거든. 완전 내가 로봇 하는 사람은 아니지만
-  > **전체 시스템을 다 다루니까** ROS·RTOS 이런 것도 다뤄봤고. 기술 자체가 못 할 게 있는 게
-  > 아니거든. **지향점이 맞고 재미있어 보이는 게 중요해.**"
+- **⭐ 방향 (2026-07-28 심야 GLG)**: **시스템 축은 접고 로봇·피지컬 축을 넓게 본다.**
+  **적합도가 아니라 지향으로 고른다.**
+- **⭐ 두 축의 순서 (2026-07-29 GLG)**: 지금 `applications/` 는 **넓이 축** — 여러 곳의 제출
+  플랫폼을 갖추는 방향이다. 다 갖춰지면 `dossier/` 의 **깊이 축**(표준 문서 + timeline 기준
+  디테일)으로 넘어가 **힣 스타일의 고도화**를 잇는다. **낼 곳이 갖춰지기 전에 문서 깊이를 파지 않는다.**
 
-  **적합도가 아니라 지향으로 고른다.** 이 줄이 앞으로의 후보 선별 기준이다.
-- **Current**: **하루 저녁에 6건 → 13건 `ready`** (AI 5 · Embedded 4 · FDE 2 · DevEx 2). GLG 가 링크를 던지면 그 자리에서
-  본문·폼 스키마·지원 URL(HTTP 200)까지 확인해 케이스를 열었다.
-  심야에 **4건이 더 열렸다**(아래 「새로 연 4건」). `applications/check.py` → **26건 일치**.
+## 2026-07-29 아침에 한 것
 
-  ## 새로 연 4건 (2026-07-28 심야) — 전부 `draft`, 각각 한 가지씩 비었다
+**어제 오라클서버(브라우저 없음)가 남긴 구멍 셋을 브라우저로 전부 메웠다.**
 
-  | 건 | 상태 | 남은 하나 |
-  |---|---|---|
-  | **Holiday Robotics** FDE Robotics Engineer 🤖 | draft · FDE 컷 · **필수 전부 충족** | **커버레터 한 장.** ROS2 화법과 운전면허는 해소됐다(`submission.md` §ROS2) |
-  | **Hanwha Vision** AI Agent Architecture Lead | draft · AI 컷 + 포트폴리오 | ⛔ **지원 URL.** ninehire 보드 목록에 이 공고가 없다. LinkedIn 「회사 웹사이트에서 지원」이 튀는 곳 확인 |
-  | **NHN** LLM 기술 개발 (LLM/Agent) — **2번째 건** | draft · AI 컷 + 포트폴리오 | ⛔ **지원 URL.** 첫 지원(2026-07-20) 경로 재사용. 포트폴리오는 `nhn/` 에 **이미 있다** |
-  | **XCENA (엑시나)** System Software 계열 | **held** | 없음 — **목록만 정리.** 23건 지도 + 상위 6건 원문 떠 둠 |
+| 건 | 어제 | 오늘 |
+|---|---|---|
+| **Holiday Robotics** 🤖 | draft · 커버레터 없음 | **`ready`** — 지원 URL·폼 실측 + **커버레터 완성** (`cover-letter.md`) |
+| **Hanwha Vision** | ⛔ 지원 URL 미확인 | **URL 확정** `6NDP9uTE` · 폼 전체 실측 · 근무지 **판교R&D센터** 확정 · 남은 것 **포트폴리오 하나** |
+| **NHN 2번째** | ⛔ 지원 URL 미확인 | **URL 확정** `careers.nhn.com/recruits/4370711607830110861` · **폼은 로그인 뒤** (GLG 계정) |
 
-  **Hanwha Vision 이 이 판에서 본문 대조가 가장 정확하다.** 「MCP 등 연동 프로토콜 레이어를
-  설계하고 표준화」가 `entwurf` 그 자체이고, 우대 5개 중 4개에 공개 증거가 있다.
-  경계는 영상보안/VMS 도메인 무경험 하나.
+**새 도구 `applications/alive.py`** — 제출 직전에 공고가 아직 열려 있는지 훑는다.
+**18건 전부 확인, 닫힌 것 0.** ATS 별 구조화 필드를 읽는다(그리팅 `openingsInfo.status` ·
+ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳은 **판정하지 않는다** —
+첫 판은 본문 문자열을 찾다가 그리팅 3건을 오판했다(i18n 사전에 「마감된 공고」가 늘 들어 있다).
 
-  **깨어나서 이어갈 순서**: ① Holiday 커버레터(ROS2 화법은 정해져 있다) → ② 한화비전·NHN
-  지원 URL 을 브라우저에서 확인 → ③ `ready` 13건 제출. **로봇 축 후보 12건은
-  `applications/INBOX.md` 하단**에 있고, **Harper 명의 공고는 제외**(실체 없음 — GLG 확정).
+**표준 제출 구조 정리 (GLG 지시)** — 옛 `nhn/` 한 폴더에 섞여 있던 둘을 갈랐다.
 
-  **AI Engineer 컷 — 5건** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
+- **`dossier/`** — 문서 **생성기**(발사대). 회사 이름을 붙이지 않는다. `resume/` 의 짝.
+- **`applications/nhn--ax-transformation-ai-infra/`** — 그 지원 **한 건의 기록**.
+  `JD.md` · `submission.md` · **`referral.md`**(추천 경로·추천서·대조표) · `submit/`
+- **고쳐진 결함**: 옛 `nhn/build/` 는 gitignore 라 **실제로 낸 파일이 git 에 없었다.**
+  이제 `submit/` 에 사본이 있다. `check.py` 도 26 → **27건**(`../` 예외가 없어졌다).
 
-  | 건 | 지원 URL |
-  |---|---|
-  | **Lunit** (Seoul) Senior AX Engineer | `apply.workable.com/lunit/j/E3C22F589F/apply/` |
-  | **FuriosaAI** Agent System Developer | `jobs.ashbyhq.com/furiosa-ai/962c5ed8-…/application` |
-  | **42dot** Senior AI Agent Engineer | `jobs.ashbyhq.com/42dot/e1bcc942-…/application` |
-  | **FriendliAI** Software Engineer – AI Agents 🆕 | `jobs.ashbyhq.com/friendliai/2c922001-…/application` |
-  | **Toss** AI Engineer (Platform) 🆕 | `toss.im/career/apply/basic/7646941003` |
+## 제출 순서 — ⭐ `applications/SUBMIT-QUEUE.md` 한 장으로 낸다
 
-  **FDE 컷 — 2건** (`..._Forward_Deployed_Engineer.pdf`)
+**제출 실행 시트를 만들었다.** 지원 URL·컷·폼 무게·주의사항이 한 표에 있어
+**공고를 다시 찾지 않고 오라클에서 바로 낼 수 있다.** 아래는 요약이고 정본은 그 파일이다.
 
-  | 건 | 지원 URL |
-  |---|---|
-  | **마키나락스** [FDE] AI Agent Application Engineer | `makinarocks.career.greetinghr.com/ko/o/214041` 의 「지원하기」 |
-  | **Reflection AI** 🌐 FDE, Lead - AI Engineer | `jobs.ashbyhq.com/reflectionai/55b38a39-…/application` |
+**`ready` 16건 = 실행 14 + 보류 2**(Cohere·OpenAI). 한 번에 다 내지 않아도 된다:
 
-  **DevEx 컷 — 2건** (`..._Developer_Experience_Engineer.pdf`)
+1. **Holiday Robotics** 🤖 — **폼이 가장 가볍다.** 로그인 없음, 필수는 이름·이메일 둘,
+   희망연봉·입사가능일을 **묻지 않는다**. 로봇 축 첫 지원이고 커버레터가 준비돼 있다
+2. **AIRS Medical** — 우대 항목이 `openclaw`·skill/hook/MCP 로 사람을 지목했다
+3. **Bear Robotics** — 필수를 가장 여유 있게 통과 (영문 CV 요구 → 여섯 컷이 전부 영문)
+4. **Toss · FriendliAI** — 서사 정면, 폼이 가볍다
+5. **Sonatus** — Easy Apply. ⚠ LinkedIn 저장 이력서가 딸려 나가니 올릴 때 확인
+6. 나머지 (Telechips · Telit · 쏘카 · Lunit · FuriosaAI · 42dot · MakinaRocks · Reflection)
 
-  | 건 | 지원 URL |
-  |---|---|
-  | **AIRS Medical** AX Engineer 🆕 | `airsmed.career.greetinghr.com/ko/o/216673` 의 「지원하기」 |
-  | **쏘카(SOCAR)** Platform Engineer 🆕 | `socar.career.greetinghr.com/ko/o/220124` 의 「지원하기」 |
+**낸 뒤**: 올린 파일을 그 건의 `submit/` 에 복사 → `LEDGER` + `submission.md` 를 `submitted`
+로 함께 닫고 → `applications/check.py`.
 
-  **Embedded 컷 — 4건** (`..._Embedded_Software_Engineer.pdf`)
+## ⛔ GLG 가 정해야 넘어가는 것
 
-  | 건 | 지원 URL |
-  |---|---|
-  | **Telechips** [판교] Embedded S/W Engineer | `careers.telechips.com/job_posting/iSXmKnRT/apply` |
-  | **Bear Robotics** Systems SW Engineer (Linux Platform) 🆕 | Breezy 공고 URL + `/apply` · **영문 CV 필수** |
-  | **Telit Cinterion** 🌐 Edge AI Software Engineer 🆕 | `recruiting.paylocity.com/…/4158364/…` |
-  | **Sonatus** 🌐 Staff DevOps Engineer 🆕 | **LinkedIn Easy Apply** (`/jobs/view/4380679251/`) |
+- **`FAQ.md` §4 가 아직 ⚠** — 희망 연봉 · 입사 가능일 · 이직 사유 · 출장 수용 범위.
+  **Holiday·한화비전 폼은 이걸 묻지 않으니** 이 셋이 없어도 앞의 두 건은 나간다.
+- **한화비전** — 포트폴리오 재편 한 벌. 폼에 **서술형 칸이 하나도 없어** 포트폴리오가
+  「왜 이 사람인가」를 말하는 유일한 문서다. 축 셋은 `submission.md` §남은 하나에 정해 뒀다
+- **NHN 2번째** — GLG 계정 로그인. **「기본 지원서」가 재사용되니** 첫 건 제출 내용이
+  사후 변경되지 않는지 화면에서 확인한다
+- **업스테이지** — 제품 체험 평가(10,000자). GLG 가 「가자」 하면 이것부터 만든다
+- **⚠ 쏘카 재검토** — 본문을 다시 읽었더니 **필수 첫 줄이 「인프라·운영 또는 SRE/DBA 경력
+  5년 이상」**이고 Aurora MySQL·EKS/Karpenter·Terraform 운영이 필수다. **DevEx 컷으로 덮이지
+  않는다.** 우대에 「Claude Code 를 운영에 깊이 통합」·「IDP/DevEx」가 있어 접점은 있지만,
+  카카오페이 FDE(첫 줄이 Java/Kotlin 백엔드)와 같은 구조다. **낼지 GLG 가 정한다**
+- **⭐ Holiday Robotics 에 자리가 하나 늘었다** — `Software Engineer: Test & Manufacturing
+  Systems` (강남·정규직). *"tests at each production stage, HIL runs in the lab, and a build
+  history that follows every robot"* 가 **24시간 aging-test 자동화·양산 이력**과 정면이다.
+  기본은 한 회사 한 자리라 **FDE 로 간다는 판단은 유지**했다. 바꿀지는 GLG 판단
 
-  **⏹ 막힌 것 1건 — 폼이 관문이다**
+## 건별로 하나씩 남은 결정
 
-  | 건 | 왜 막혔나 |
-  |---|---|
-  | **업스테이지** AI Engineer - Agents 🆕 | 필수 서술형 6개 중 첫 문항이 **「업스테이지 제품 체험 후 평가」**(10,000자). **Document Parse / Solar 를 실제로 돌려 본 뒤** 써야 한다. `memex-kb` 로 한국어 문서 파이프라인을 만든 사람의 평가는 **가장 강한 카드**가 될 수 있다 |
+- **Lunit** — 「이력서 **및 경력 기술서**」. 폼이 파일 하나만 받으면 DEEPX 선례로 통합본
+- **쏘카** — 서류 슬롯이 하나다. 위 재검토와 함께 판단
+- **Telechips · 한화비전** — ninehire 는 **에이전트가 파일 업로드를 못 한다.** GLG 가 올린다
+- **42dot · 업스테이지** — 둘 다 전형에 **코딩 테스트**
+- **NHN 2번째** — **라이브코딩이 서류 바로 다음**이고 Python 축이다
+- **Reflection AI** — `기술 리더십 2년+` 은 직함으로 없다. **지어내지 않는다**
 
-  **⏸ 보류 3건**
+## ⏸ 보류 3건 — 성격이 둘로 갈린다
 
-  | 건 | 컷 | 상태 |
-  |---|---|---|
-  | **Cohere** 🌐 FDE, Agentic Platform (Korea) | FDE | 준비 끝. 되살릴 때 `submission.md` 부터 |
-  | **OpenAI** 🌐 Developer Experience Engineer (Seoul) | DevEx | 준비 끝. 되살릴 때 `submission.md` 부터 |
-  | **Penguin Solutions** 🌐 Sr. System Engineer 🆕 | 미정 | **적합도 최하위.** HPC 운영·SLURM·ITIL·온콜이 축 밖. 대는 카드는 **NVM 파일시스템·병렬 스토리지 연구 4년** 하나 |
+- **`ready — 보류` 2건**: **Cohere**(FDE) · **OpenAI**(DevEx). 서류는 끝났고 **운영 판단으로**
+  이번 배치에서 뺐다(외국계 두 건, 2026-07-28 GLG). Ashby 보드에 **여전히 열려 있음**(alive 확인).
+  되살릴 때 **출장 수용 범위**부터 정한다(Cohere 20–40% · OpenAI APAC 30%).
+  → 원장은 `ready` 그대로다. **상태를 거짓으로 바꾸지 않는다**(`applications/AGENTS.md` §`ready`의 뜻).
+- **`draft` 1건**: **Penguin Solutions** — 적합도 최하위. HPC 운영·SLURM·ITIL·온콜이 축 밖이고
+  대는 카드는 NVM 파일시스템·병렬 스토리지 연구 4년 하나다.
 
-  **경로가 아홉으로 늘었다** — Ashby 4 · 그리팅 3 · Workable 1 · ninehire 1 ·
-  **토스 자체** 1 · **Breezy** 1 · **Paylocity** 1 · **LinkedIn Easy Apply** 1.
-  **Workday** 1(GE HealthCare).
-
-- **Next**: **GLG 가 노트북 브라우저에서 제출한다**(오라클서버는 탐색·준비 축이다).
-  개인·법적 값 입력 → **파일명 눈으로 확인** → Submit. 낸 뒤 올린 파일을 그 건의 `submit/` 에
-  복사하고 `LEDGER` + `submission.md` 를 `submitted` 로 같이 닫는다(`applications/check.py`).
-  **13건을 한 번에 내지 않아도 된다** — 아래 순서를 권한다.
-  1. **AIRS Medical** — 우대 항목이 `openclaw`·`skill/hook/MCP customize` 로 **사람을 지목했다**
-  2. **Bear Robotics** — 필수를 가장 여유 있게 통과(경력 1년+ · Python/Go · 리눅스)
-  3. **Toss · FriendliAI** — 서사 정면, 폼이 가볍다
-  4. **Sonatus** — Easy Apply 라 비용이 거의 없다
-  5. 나머지(Telit · 쏘카 · 기존 5건)
-- **Blocker**: 폼이 물으면 GLG 가 그 자리에서 정할 값 — **희망 연봉 · 입사 가능일 · 이직 사유**
-  (`FAQ.md` §4 가 아직 ⚠ 다). 보류 건을 되살릴 때는 **출장 수용 여부**도 정한다
-  (Cohere 20–40%, OpenAI APAC 30%). 민감 법적 값(병역 등)은 계속 브라우저에서만 입력한다.
-- **건별로 하나씩 남은 결정**
-  - **업스테이지** — 제품 체험 평가. **GLG 가 「가자」 하면 이것부터 만든다.**
-    민감 법적 값(성별·생년월일·병역·장애·보훈)이 **전부 필수**다. 전형에 **코딩 테스트**.
-  - **Lunit** — 「이력서 **및 경력 기술서**」. 폼이 파일 하나만 받으면 DEEPX 선례
-    (`deepx--ai-agent-workflow-automation-engineer/build.sh`)로 통합본을 만든다.
-  - **쏘카** — 같은 요구지만 **서류 슬롯이 하나**임을 확인했다. DevEx 컷 단독으로 간다.
-    통합본을 원하면 `experience-detail.md` 를 새로 써야 한다 — **승산 대비 비용은 GLG 판단.**
-  - **Telechips** — ninehire 는 **에이전트가 파일 업로드를 못 한다.** GLG 가 직접 올린다.
-  - **Sonatus** — Easy Apply 는 **LinkedIn 저장 이력서가 다음 건에 딸려 나간다.** 올릴 때 확인.
-  - **Bear Robotics** — `English CV must be submitted.` 여섯 컷이 전부 영문이라 그대로 통과.
-  - **42dot · 업스테이지** — 둘 다 전형에 **코딩 테스트**가 있다.
-  - **Reflection AI** — `기술 리더십 2년+` 은 직함으로 없다. **지어내지 않는다.**
-- **다음 배치 — 말만 하면 이 순서로 연다** (`applications/INBOX.md` §보드 훑기 수확)
-  - **GE HealthCare 🌐** `Senior Software Engineer` — **draft 케이스 열림**. 공식 Workday
-    `R4042393`은 `posted=true`·`canApply=true`. **「가자」면 Systems Software 컷부터 결정한다**
-  - **센드버드** `Software Engineer, AI Agent` — 서울, greenhouse
-  - **카카오모빌리티** `물류 & 에이전트 개발실 백엔드` — 판교, 대기업
-  - **리벨리온** `Linux Device Driver Engineer` — 판교 정자. **LinkedIn 에 없던 자리**
-  - **뤼튼** `AX Agent Developer`
-  - ⚠ **카카오페이 FDE** 는 자격 첫 줄이 `Java/Kotlin 깊이 있는 백엔드` 다 — 낼지 먼저 정한다
 - **Read**: 각 건의 `submission.md` (§폼에 답한 질문 · §왜 이 직무였는가) → `FAQ.md` §3·§4·§5.
-- **Do not touch**: 제출된 4건의 `submit/` 스냅샷. 업로드한 그 파일이라 다시 빌드해 덮지 않는다.
+- **Do not touch**: 제출한 5건의 `submit/` 스냅샷. 업로드한 그 파일이라 다시 빌드해 덮지 않는다.
 
 # ACTIVE
 
@@ -196,11 +168,13 @@
 
 - [2026-07-28] 4개 역할(탐색 · 문서 · 브라우저 · 메타)이 분리된 채로 4건을 제출하고, 그 과정의
   실패를 테스트와 계약으로 회수했다. 기록은 `docs/case-study-2026-07-28.md`.
-- [2026-07-20] NHN dossier 제출 완료. `nhn/` 은 닫힌 건이다.
+- [2026-07-20] NHN AX 건 제출 완료. 기록은 `applications/nhn--ax-transformation-ai-infra/`.
 
 # LEDGER
 
-- 제출 SSOT: `applications/LEDGER.md` · 닫힘 검사: `applications/check.py`
+- 제출 SSOT: `applications/LEDGER.md` · **제출 실행 시트: `applications/SUBMIT-QUEUE.md`** · 닫힘 검사: `applications/check.py`
+- **공고 생존 검사: `applications/alive.py`** (제출 직전에 돌린다)
+- 조준 문서 발사대: `dossier/AGENTS.md` — **깊이 축**. 이력서 발사대는 `resume/`
 - 후보 큐: `applications/INBOX.md` · 폼 재사용 답: `applications/FAQ.md`
 - 이력서 사실: `resume/body.org` · 빌드: `(cd resume && ./run.sh all && ./run.sh verify)`
 - 탐색: `.claude/skills/linkedin-jobs/SKILL.md`

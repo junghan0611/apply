@@ -5,10 +5,18 @@
 
 상태: `draft`(자리만 만듦) · `ready`(글·첨부 준비됨, 제출 대기) · `saved`(플랫폼에 임시저장)
 · `submitted`(제출 완료) · `replied`(회신 옴) · `interview` · `offer` · `rejected` · `closed`(공고 마감/철회)
+· `held`(후보 목록만 — 낼 자리를 아직 안 고름)
+
+**상태와 「이번에 낼 것」은 다르다.** `ready` 는 *서류가 준비됐다*는 사실이고, 낼지 말지는
+운영 판단이다. 운영상 보류는 **원장의 사실 상태를 바꾸지 않고** 그 건의 `submission.md` 상태칸에
+`ready — 보류` 로 적고 `NEXT.md` 에 이유를 남긴다(`AGENTS.md` §`ready`의 뜻).
+
+> **2026-07-29 계보**: `ready` **16건** = **실행 14건** + **보류 2건**(Cohere · OpenAI —
+> 외국계 두 건은 이번 배치에서 뺀다, 2026-07-28 GLG). 이 계보가 `NEXT.md` 의 「14건」과 맞다.
 
 | 회사 | 직무 | 상태 | 지원일 | 경로 | 첨부 컷 | 폴더 |
 |---|---|---|---|---|---|---|
-| NHN | AX Transformation / AI Infra (BE) | submitted | 2026-07-20 | 직접 제출 | `nhn/` 3종 세트 | `../nhn/` |
+| NHN | AX Transformation / AI Infra (BE) | submitted | 2026-07-20 | NHN 채용홈 + **직원 추천** | **dossier 3종** (이력서 컷 아님) | `nhn--ax-transformation-ai-infra` |
 | Insighter | AX Engineer | saved | — | LinkedIn Easy Apply | — | `insighter--ax-engineer` |
 | Hyundai AutoEver | AI Agent Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | AI Engineer + 국문 자기소개서 | `hyundai-autoever--ai-agent-engineer` |
 | DEEPX | AI Agent Workflow Automation Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | AI Engineer + 경력기술서 통합 (7쪽) | `deepx--ai-agent-workflow-automation-engineer` |
@@ -33,9 +41,9 @@
 | AIRS Medical | AX Engineer | ready | — | 그리팅 (자체 도메인) | DevEx | `airs-medical--ax-engineer` |
 | GE HealthCare 🌐 | Senior Software Engineer | draft | — | **Workday** (공식 외부 사이트) | 미정 — Systems Software 컷 판단 | `ge-healthcare--senior-software-engineer` |
 | XCENA (엑시나) | System Software 계열 — **회사 스캔 23건** | **held** | — | 그리팅 (자체 도메인) | — (목록만 · GLG: "너무 시스템") | `xcena--system-software` |
-| Holiday Robotics | Forward Deployed Robotics Engineer (3–8년) | draft | — | 자체 채용홈 `holiday-robotics.com` | FDE (⚠ **ROS2 필수** 확인) | `holiday-robotics--forward-deployed-robotics-engineer` |
-| Hanwha Vision (한화비전) | AI Agent Architecture Lead (석사+10년, Director) | draft | — | ninehire 추정 — **지원 URL 미확인** | AI Engineer + 포트폴리오 | `hanwha-vision--ai-agent-architecture-lead` |
-| NHN | LLM 기술 개발 (LLM / Agent) — **NHN 2번째 건** | draft | — | NHN 자체 채용홈 — **URL 미확인** | AI Engineer + **포트폴리오 필수** | `nhn--llm-technology-development-llm-agent` |
+| Holiday Robotics | Forward Deployed Robotics Engineer (3–8년) | ready | — | 자체 채용홈 `holiday-robotics.com` (로그인 없음) | FDE + **커버레터** | `holiday-robotics--forward-deployed-robotics-engineer` |
+| Hanwha Vision (한화비전) | AI Agent Architecture Lead (석사+10년, Director) | draft | — | **ninehire** `6NDP9uTE` (로그인 없음) | AI Engineer + 포트폴리오 (**재편 남음**) | `hanwha-vision--ai-agent-architecture-lead` |
+| NHN | LLM 기술 개발 (LLM / Agent) — **NHN 2번째 건** | draft | — | **`careers.nhn.com`** — ⚠ **로그인 필요** | AI Engineer + **포트폴리오 필수** | `nhn--llm-technology-development-llm-agent` |
 
 ---
 

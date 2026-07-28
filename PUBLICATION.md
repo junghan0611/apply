@@ -26,7 +26,7 @@ objects are still public.
 |---|---|---|
 | Public method | role contracts, search code/tests, generic pipeline design, redacted case study | allow |
 | Public professional evidence | already-public GitHub/garden links and intentionally public résumé claims | explicit human review |
-| Private operations | `applications/`, `NHN.md`, `nhn/`, `NEXT.md`, target/company decisions, ATS answers | deny |
+| Private operations | `applications/`, `dossier/`, `NEXT.md`, target/company decisions, ATS answers | deny |
 | Secret / sensitive | credentials, phone, birth date, military status, raw customer data, consent choices | deny and rotate if ever committed |
 | Third-party content | full scraped JDs, ATS HTML, company form schemas | do not republish without a clear right; describe the method instead |
 
@@ -47,9 +47,9 @@ PUBLICATION.md                       # 공개 시 이 경고 블록은 걷어낸
 
 | 파일 | 왜 |
 |---|---|
-| `AGENTS.md` | 비공개 운영 문서다. 「추천 경로」 등 private 표식과 `nhn/` 레인이 그대로 있다. 공개용은 계약만 발췌해 새로 쓴다 |
+| `AGENTS.md` | 비공개 운영 문서다. 「추천 경로」 등 private 표식과 `dossier/` 레인이 그대로 있다. 공개용은 계약만 발췌해 새로 쓴다 |
 | `.claude/skills/linkedin-jobs/SKILL.md` | 회사명이 예시로 박혀 있다(`DEEPX`, `Reflection AI Korea`, `딜리버리랩`). 예시를 익명화해야 한다 |
-| `README.md` | `nhn/` 레인 행이 있다. 지울지 익명화할지 결정 |
+| `README.md` | `dossier/` 레인 행이 있다. 지울지 익명화할지 결정 |
 
 `check-public.sh` 는 **회사명을 스캔하지 않는다.** 회사명 판정은 자동화하지 않았으니 §6 수동
 검토에서 사람이 본다. 게이트 통과가 공개 승인이 아니라는 뜻이 여기에도 걸린다.
@@ -61,7 +61,7 @@ resume/                              # contains personal career claims and conta
 examples/applications/               # synthetic example only; never copy real applications/
 ```
 
-`applications/`, `nhn/`, `NHN.md`, submitted PDFs, current `NEXT.md`, local settings, session JSONL,
+`applications/`, `dossier/`, submitted PDFs, current `NEXT.md`, local settings, session JSONL,
 and timeline snapshots are never part of the public export.
 
 ## Release procedure
