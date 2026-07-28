@@ -17,7 +17,7 @@ At GoQual I shipped a Zigbee/Wi-Fi smart home hub to mass production — firmwar
 
 That last part is the job you are describing: going into someone else's environment, making the system stable there, and carrying back what you learned so the product changes. Your Field-First principle — usefulness gets proven on the factory floor, not in a demo — is the sentence I would have written for those aging tests.
 
-On the stack: Linux, Python, and Docker are daily tools. Board-level hardware and network debugging run from my first startup's embedded product line through the work I do now, and the RF stacks — Zigbee, Thread, Matter — are the current one: EFR32MG24, ESP32-H2, RK3576, Raspberry Pi 5 with a Hailo-8 NPU.
+On the stack: I work with Linux, Python, and Docker. Board-level hardware and network debugging run from my first startup's embedded product line through the work I do now, and the RF stacks — Zigbee, Thread, Matter — are the current one: EFR32MG24, ESP32-H2, RK3576, Raspberry Pi 5 with a Hailo-8 NPU.
 
 On ROS2 I would rather be exact than generous. I worked with it in graduate school and I have not gone deep. I am not going to claim production ROS2 systems. What I will claim is that I have assembled embedded stacks from bootloader through kernel, drivers, protocols, and cloud, and taken them to mass production. In that context ROS2 is a layer I have not yet needed, not a wall. If this role were about authoring ROS2 internals, I would tell you it is not my strength.
 

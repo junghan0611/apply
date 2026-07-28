@@ -52,6 +52,8 @@
 # 이 문서의 중심축이 잡힌 원천. 힣이 직접 쓴 날것을 한 글자도 바꾸지 않고 보존한다.
 # COMMENT+noexport로 export에서 이중 차단. 글이 한번 잡히면 GPT 교차검수의 기준 원문으로 쓴다.
 # 출처: ~/sync/org/journal/20260713T000000--2026-07-13__journal_week28.org:303-414 (2026-07-16 작성)
+# 아래 NHN.md는 당시 경로를 보존한 원문이다. 현재 실행 참조는
+# applications/nhn--ax-transformation-ai-infra/JD.md 이며, 원문 안의 경로는 고치지 않는다.
 
 #+begin_example
 ,*** AX 전환 / AI 인프라 힣의 직접 쓴다. :noexport:
