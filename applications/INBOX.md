@@ -19,10 +19,10 @@
 | 플랫폼 | 확인된 회사 | 주소 형태 | 가입 | 폼 특징 |
 |---|---|---|---|---|
 | **그리팅** | DEEPX · Hyundai AutoEver · Rebellions | `<회사>.career.greetinghr.com/ko/o/<id>` · `career.<회사>.com/ko/o/<id>` | 불필요 | **회사마다 폼이 다르다.** AutoEver는 사전질문 1,000자, DEEPX는 자기소개서를 묻는다 |
-| **Ashby** | OpenAI · Cohere · 42dot | `jobs.ashbyhq.com/<회사>/<uuid>` | 불필요 | 폼 직접 작성 + 이력서 업로드 |
+| **Ashby** | OpenAI · Cohere · 42dot · **FuriosaAI** | `jobs.ashbyhq.com/<회사>/<uuid>` | 불필요 | 폼 직접 작성 + 이력서 업로드. **공고 목록은 API 로 한 번에 뜬다** — `api.ashbyhq.com/posting-api/job-board/<회사>` (title·team·location·employmentType·publishedAt·applyUrl·본문 HTML) |
 | **ninehire** | Enhans | `<회사>career.ninehire.site/job_posting/<id>` | 불필요 | **서술형 칸 없음.** 이력서 + URL 한 줄이 전부 |
 | **Greenhouse** | Toss (`toss.im` 경유) | `toss.im/career/job-detail?gh_jid=<id>` | 불필요 | ⚠ `toss.im`은 브라우저 안전 제한으로 에이전트가 못 연다 |
-| **자체** | FuriosaAI | `furiosa.ai/careers` | 확인 필요 | — |
+| ~~자체~~ | ~~FuriosaAI~~ | — | — | **정정: FuriosaAI 는 Ashby 다**(위 행). `furiosa.ai/careers` 는 목록 페이지일 뿐이고 「Apply」가 Ashby 로 넘긴다 |
 
 ### 브라우저 축 실무 메모
 
@@ -44,17 +44,34 @@
 | 회사 | 권고 직무 | 근무지 | 컷 | 경로 | 공고 |
 |---|---|---|---|---|---|
 | **FuriosaAI** | **Agent System Developer** | **강남 도산대로 145** | AI | offsite | `4387941500` |
-| **KRAFTON** | AX Governance Specialist (3년+) | **역삼** | AI | offsite | `4444946832` |
+| **KRAFTON** | AX Governance Specialist (3년+) | **역삼** | AI | offsite | `4444946832` ⚠**계약직** |
 | **HITS** | AI Agent Engineer | **강남역** | AI | **easy** | `4420262371` |
 | **카카오뱅크** | DevOps 엔지니어 | **성남 분당구 분당내곡로 131** | DevEx | offsite | `4437387455` |
 | **NeuroFusion** | Back End Developer | 판교/강남 | SWE | — | `4444060387` |
-| **Sonatus** | Staff Cloud Backend Engineer | **판교** | SWE | **easy** | `4419070095` |
+| ~~Sonatus~~ | ~~Staff Cloud Backend Engineer~~ | 판교 | — | easy | `4419070095` **제외** |
 | **LVIS** | Backend Software Engineer | 강남 | SWE | offsite | `4434953668` |
 | **Gauss Labs** | Senior FDE Operations (KR) | ?(역삼동) | **FDE** | offsite | `4445211164` |
 
 **FuriosaAI Agent System Developer가 1순위다.** JD가 agent orchestration · context management ·
 tool execution · memory abstraction 을 그대로 요구하고 팀 이름이 **AI Transformation** 이다.
 23건 전부 강남권이라 회사 자체가 기준을 통과한다.
+
+> **2026-07-28 본문 확인 후 정정 (건 열림 → `furiosaai--agent-system-developer`)**
+>
+> - **FuriosaAI 지원 경로는 Ashby다.** `furiosa.ai/careers/software-agentsystem` 이
+>   `jobs.ashbyhq.com/furiosa-ai/962c5ed8-.../application` 로 넘긴다. **가입 불필요.**
+>   Ashby 보드 실제 공고 수는 23건이 아니라 **55건**이고, 에이전트 축이 셋이다
+>   (Agent System Developer · ML Engineer Agentic AI · Technical Writer).
+>   ⚠ Agent System Developer 는 **2026-03-20 게시로 4개월째 열려 있다.**
+> - **Sonatus 는 제외한다.** 실제 제목이 `Cloud Backend Engineer (Databases)` 이고 본문이
+>   time-series · OLAP/OLTP · Cassandra/Druid/Pinot **데이터베이스 전문직**이다. 위 표의
+>   「Staff Cloud Backend Engineer」는 카드 제목만 보고 적은 것이었다. 증거 축이 아니다.
+> - **KRAFTON AX Governance 는 `Employment type: Contract` — 계약직이다.** 재직 중 이직으로는
+>   다른 결정이고, 제출물도 입사지원서(자유양식)+경력기술서+포트폴리오라 무겁다. 「후다닥」
+>   대상이 아니다.
+> - **HITS 는 석사 요건 통과**(GLG M.S. 2008–2010). 다만 요구 스택이 LangChain·LangGraph·
+>   LlamaIndex 이고 도메인이 bioinformatics/cheminformatics 다. Easy Apply 라 비용은 싸지만
+>   **적합도는 중간**이다.
 
 ### 티어 2 · 판교권 (카드 확정 · 본문 미확인 — 지역은 통과로 봐도 되는 묶음)
 

@@ -1,14 +1,16 @@
 # NOW — FuriosaAI Agent System Developer 를 낸다
 
 - **Hot group**: 지원 실행. 공개 준비는 이 축이 아니다.
-- **Current**: 2026-07-28 4건 제출 완료(AutoEver · DEEPX ×2 · Enhans). 원장 · 기록 · 스킬 ·
-  이력서 검수 통과. 다음 stem 은 **FuriosaAI Agent System Developer**(강남 도산대로 145, `4387941500`).
-- **Next**: `applications/INBOX.md` 티어1 을 읽고 `./new.sh "FuriosaAI" "Agent System Developer" <URL>`
-  로 건을 연다. 컷은 AI. 지원 경로는 자체 사이트(`furiosa.ai/careers`) — **가입 필요 여부 미확인**이
-  첫 확인 사항이다.
-- **Blocker**: 없음. 다음 폼 전에 GLG 가 정할 값 셋 — **희망 연봉 · 입사 가능일 · 이직 사유**.
-  민감 법적 값(병역 등)은 계속 브라우저에서만 입력한다.
-- **Read**: `applications/INBOX.md` 티어1 → `applications/FAQ.md` → `AGENTS.md`.
+- **Current**: **FuriosaAI Agent System Developer 건이 `ready` 다.** 폴더·JD 원문·컷·지원 URL
+  전부 준비됐다 — `applications/furiosaai--agent-system-developer/`.
+  경로는 **Ashby, 가입 불필요**: `jobs.ashbyhq.com/furiosa-ai/[uuid removed]/application`
+  첨부는 `resume/build/KimJunghan_Resume_AI_Engineer.pdf` (3쪽).
+- **Next**: **GLG 가 퇴근 후 브라우저에서 제출한다.** 개인·법적 값 입력 → 파일명 눈으로 확인 →
+  Submit. 낸 뒤 올린 파일을 `submit/` 에 복사하고 `LEDGER` + `submission.md` 를 `submitted` 로
+  같이 닫는다(`applications/check.py` 로 확인).
+- **Blocker**: 폼이 물으면 GLG 가 그 자리에서 정할 값 셋 — **희망 연봉 · 입사 가능일 · 이직 사유**
+  (`FAQ.md` §4 가 아직 ⚠ 다). 민감 법적 값(병역 등)은 계속 브라우저에서만 입력한다.
+- **Read**: `applications/furiosaai--agent-system-developer/submission.md` → `FAQ.md` §3·§5.
 - **Do not touch**: 제출된 4건의 `submit/` 스냅샷. 업로드한 그 파일이라 다시 빌드해 덮지 않는다.
 
 # ACTIVE
@@ -16,8 +18,11 @@
 ## 지원 실행
 
 - `applications/check.py` 통과: LEDGER ↔ 5건 submission ↔ submit 스냅샷 일치.
-- 티어1 후보 8곳이 INBOX 에 근무지 · 컷 · 경로까지 정해진 채 대기 중이다. FuriosaAI 다음은
-  KRAFTON(역삼) · HITS(강남, Easy Apply) 순.
+- FuriosaAI 다음 대기: **HITS**(강남역, Easy Apply, 석사요건 통과 · 적합도 중간) ·
+  **42dot LLM Engineer**(판교, Ashby, 집중채용) · **XCENA Developer Tools**(판교).
+- ⚠ **INBOX 티어1 정정 2건** — `Sonatus` 는 실제로 DB 전문직(`Cloud Backend Engineer
+  (Databases)`)이라 **제외**, `KRAFTON AX Governance` 는 **계약직**이다. 카드 제목만 보고
+  올렸던 것을 본문 확인으로 잡았다.
 - Insighter 는 `saved` — 마포 DMC 라 GLG 지역 기준 밖이다. 낼지 말지는 GLG 판단이고,
   안 내기로 하면 `closed` + `_archive/`.
 
