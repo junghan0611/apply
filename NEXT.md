@@ -21,14 +21,20 @@
   | **Reflection AI** 🌐 FDE, Lead - AI Engineer | `jobs.ashbyhq.com/reflectionai/[uuid removed]/application` |
   | **Cohere** 🌐 FDE, Agentic Platform (Korea) | `jobs.ashbyhq.com/cohere/[uuid removed]/application` |
 
-  **DevEx 컷 — 1건** · **Embedded 컷 — 1건**
+  **Embedded 컷 — 1건**
 
   | 건 | 지원 URL |
   |---|---|
-  | **OpenAI** 🌐 Developer Experience Engineer (Seoul) | `jobs.ashbyhq.com/openai/[uuid removed]/application` |
   | **Telechips** [판교] Embedded S/W Engineer | `careers.telechips.com/job_posting/iSXmKnRT/apply` |
 
-  **경로는 셋뿐이다** — Ashby 5건(폼 구조 같다) · Workable 1건 · ninehire 1건.
+  **⏸ 보류 2건 — 이번 배치 아님** (2026-07-28 GLG: 「지금 안 한다」)
+
+  | 건 | 컷 | 상태 |
+  |---|---|---|
+  | **Cohere** 🌐 FDE, Agentic Platform (Korea) | FDE | 준비 끝. 되살릴 때 `submission.md` 부터 |
+  | **OpenAI** 🌐 Developer Experience Engineer (Seoul) | DevEx | 준비 끝. 되살릴 때 `submission.md` 부터 |
+
+  외국계 두 건을 빼고 **더 현실적인 곳부터 후다닥 낸다.** 다음 배치는 아래 §다음 배치.
 
 - **Next**: **GLG 가 노트북 브라우저에서 제출한다**(오라클서버는 탐색·준비 축이다).
   개인·법적 값 입력 → **파일명 눈으로 확인** → Submit. 낸 뒤 올린 파일을 그 건의 `submit/` 에
@@ -43,9 +49,13 @@
   - **Reflection AI** — `기술 리더십 2년+` 은 직함으로 없다. **지어내지 않는다.**
   - **42dot** — 전형에 **코딩 테스트**가 있다. 서류가 붙으면 그 준비가 다음 일이다.
     GLG 가 짚은 `On-device Agent Orchestration`(2~3년 자리)로 바꾸려면 이 건을 닫고 새로 연다.
-- **다음 배치는 이미 골라 뒀다** — `applications/INBOX.md` §보드 훑기 수확:
-  마키나락스(FDE 12건) · 센드버드 · 업스테이지 · 카카오페이 FDE · 카카오모빌리티 ·
-  뤼튼 · **리벨리온 Linux Device Driver**(LinkedIn 에 없던 자리) · 프렌들리AI.
+- **다음 배치 — 현실적인 곳부터. 후다닥 연다** (`applications/INBOX.md` §보드 훑기 수확)
+  - **마키나락스** `[FDE] AI Agent Application Engineer` — FDE 축이 12건이라 가장 두껍다
+  - **센드버드** `Software Engineer, AI Agent` — 서울, greenhouse
+  - **카카오모빌리티** `물류 & 에이전트 개발실 백엔드` — 판교, 대기업
+  - **리벨리온** `Linux Device Driver Engineer` — 판교 정자. **LinkedIn 에 없던 자리**
+  - **업스테이지** `AI Engineer - Agents` · **뤼튼** `AX Agent Developer` · **프렌들리AI** `AI Agents`
+  - ⚠ **카카오페이 FDE** 는 자격 첫 줄이 `Java/Kotlin 깊이 있는 백엔드` 다 — 낼지 먼저 정한다
 - **Read**: 각 건의 `submission.md` (§폼에 답한 질문 · §왜 이 직무였는가) → `FAQ.md` §3·§4·§5.
 - **Do not touch**: 제출된 4건의 `submit/` 스냅샷. 업로드한 그 파일이라 다시 빌드해 덮지 않는다.
 

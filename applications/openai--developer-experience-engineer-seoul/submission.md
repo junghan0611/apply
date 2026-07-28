@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **ready** (첨부·경로 확정 · **제출 대기 — GLG 노트북에서 제출**) |
+| 상태 | **ready — 보류** (준비 끝났으나 **이번 배치 아님**. 2026-07-28 GLG: 「지금 안 한다」) |
 | 지원일 | — |
 | 경로 | **Ashby** — 가입 불필요 (지원 URL HTTP 200 확인, 2026-07-28) |
 | 첨부 컷 | **DevEx** (`resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf`, 3쪽) |
@@ -66,3 +66,5 @@ GLG 는 그 셋이 이미 한 축이다.
 - [2026-07-28] 건 생성. Ashby posting-api 로 **본문 원문 채집**(브라우저 없이).
   게시 2026-05-13 · `FullTime` · `Seoul, South Korea` · `isListed=true` 확인.
   지원 URL HTTP 200 확인. 컷 **DevEx** 확정. 상태 `ready` — **GLG 노트북에서 제출 대기**.
+- [2026-07-28] **보류.** GLG 판단 — 외국계 두 건(Cohere · OpenAI)은 이번 배치에서 뺀다.
+  더 현실적인 곳부터 낸다. 준비물은 그대로 살아 있으니 되살릴 때 이 파일부터 읽는다.
