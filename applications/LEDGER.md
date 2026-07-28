@@ -21,6 +21,7 @@
 | Telechips | [판교] Embedded S/W Engineer (BSP Driver) | ready | — | 자체 채용홈 (ninehire 화이트라벨) | Embedded | `telechips--embedded-sw-engineer` |
 | Reflection AI 🌐 | FDE, Lead - AI Engineer (Seoul) | ready | — | Ashby (가입 불필요) | FDE | `reflection-ai--forward-deployed-engineer-lead-ai-engineer` |
 | 42dot | Senior AI Agent Engineer (Intelligence Service) | ready | — | Ashby (가입 불필요) | AI Engineer | `42dot--senior-ai-agent-engineer-intelligence-service` |
+| MakinaRocks | [FDE] AI Agent Application Engineer | ready | — | 그리팅 (자체 도메인) | FDE | `makinarocks--ai-agent-application-engineer-fde` |
 
 ---
 

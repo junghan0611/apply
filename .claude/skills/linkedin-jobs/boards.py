@@ -57,12 +57,14 @@ def fetch_json(url: str):
 
 
 def strip_html(s: str) -> str:
-	s = re.sub(r"<li>", "\n- ", s or "")
+	# Greenhouse 는 본문을 이스케이프해서 준다(`&lt;p&gt;`). 먼저 풀지 않으면 태그가 글자로 남는다.
+	import html as _html
+
+	s = _html.unescape(s or "")
+	s = re.sub(r"<li>", "\n- ", s)
 	s = re.sub(r"</(p|div|h\d|ul|ol|tr)>", "\n", s)
 	s = re.sub(r"<br\s*/?>", "\n", s)
 	s = re.sub(r"<[^>]+>", "", s)
-	import html as _html
-
 	return re.sub(r"\n{3,}", "\n\n", _html.unescape(s)).strip()
 
 
@@ -169,6 +171,35 @@ def a_greeting(slug):
 			"body": "",
 		})
 	return out
+
+
+def greeting_body(slug, oid):
+	"""그리팅은 목록에 본문이 없다. 상세 페이지 __NEXT_DATA__ 에서 뜬다.
+
+	`props.pageProps.dehydratedState.queries[*].state.data.data.openingsInfo.detail` 에
+	본문이 있고, 같은 자리에 `docsInfo`(제출 서류) · `questionnairesInfo`(서술형 문항과
+	글자수 상한)도 들어 있다. **브라우저로 폼을 열기 전에 여기서 읽는다.**
+	"""
+	raw = fetch(f"https://{slug}.career.greetinghr.com/ko/o/{oid}")
+	if not raw:
+		return None
+	d = _next_data(raw.decode("utf-8", "replace"))
+	if not d:
+		return None
+	for q in ((d.get("props") or {}).get("pageProps") or {}).get("dehydratedState", {}).get("queries", []):
+		data = ((q.get("state") or {}).get("data") or {})
+		data = data.get("data") if isinstance(data.get("data"), dict) else data
+		info = (data or {}).get("openingsInfo") or {}
+		if info.get("detail"):
+			docs = [x.get("name") or x.get("type") for x in (data.get("docsInfo") or [])]
+			qs = [x.get("question") or x.get("title") for x in (data.get("questionnairesInfo") or [])]
+			return {
+				"detail": strip_html(info["detail"]),
+				"title": info.get("title") or "",
+				"docs": [x for x in docs if x],
+				"questions": [x for x in qs if x],
+			}
+	return None
 
 
 def a_kakao(_slug=None):
@@ -304,6 +335,20 @@ def cmd_body(args):
 	if len(args) < 2:
 		sys.exit("usage: boards.py body <ats>:<슬러그> <공고ID>")
 	ats, slug = _split(args[0])
+	if ats == "greeting":
+		# 그리팅은 목록에 본문이 없다 — 상세 페이지에서 따로 뜬다.
+		got = greeting_body(slug, args[1])
+		if not got:
+			sys.exit(f"본문을 못 떴다: {slug}/{args[1]}")
+		print(f"{got['title']} | {slug}/{args[1]}")
+		print(f"https://{slug}.career.greetinghr.com/ko/o/{args[1]}")
+		if got["docs"]:
+			print(f"제출 서류: {' · '.join(got['docs'])}")
+		if got["questions"]:
+			print(f"서술형 문항: {' | '.join(got['questions'])}")
+		print()
+		print(got["detail"])
+		return
 	jobs = ADAPTERS[ats](slug) or []
 	for j in jobs:
 		if j["id"] == args[1] or args[1] in j["url"]:
