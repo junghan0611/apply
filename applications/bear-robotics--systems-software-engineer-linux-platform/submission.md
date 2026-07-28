@@ -7,7 +7,7 @@
 | 경로 | **Breezy HR** (`bear-robotics.breezy.hr`) — **이 저장소에서 처음 만나는 ATS** |
 | 첨부 컷 | **Embedded** (`resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`) |
 | 공고 URL | https://bear-robotics.breezy.hr/p/5d59d1cd221e-systems-software-engineer-linux-platform |
-| **지원 URL** | 같은 주소 + `/apply` (HTTP 200 확인, 2026-07-28) |
+| **지원 URL** | **https://bear-robotics.breezy.hr/p/5d59d1cd221e-systems-software-engineer-linux-platform/apply** (HTTP 200 확인) |
 | 근무지 | **Seoul, Korea** · 보고 라인 **Principal Software Engineer (USA)** |
 | 회사 | 서빙로봇 20여개국 **2만대** · AMR · 한 공간 **1,000대 군집제어** · 200명+ ·
   **2025-05 LG전자 계열회사 편입** |

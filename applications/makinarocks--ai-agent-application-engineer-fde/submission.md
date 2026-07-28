@@ -7,7 +7,7 @@
 | 경로 | **그리팅** (자체 도메인 `makinarocks.career.greetinghr.com`) — 가입 불필요 |
 | 첨부 컷 | **FDE** (`resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`, 3쪽) |
 | 공고 URL | https://makinarocks.career.greetinghr.com/ko/o/214041 |
-| **지원 URL** | 같은 페이지의 「지원하기」 |
+| **지원 URL** | **https://makinarocks.career.greetinghr.com/ko/o/214041** → 페이지 하단 「지원하기」 |
 | 근무지 | 서울 서초구 강남대로 343 |
 | 제품 | **DrawX** — 도면(PDF/DWG) B2B SaaS. Agent 아키텍처를 지금 설계하는 단계 |
 

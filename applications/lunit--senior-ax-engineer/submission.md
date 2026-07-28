@@ -15,15 +15,48 @@
 
 - [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`
       (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
-- [ ] **경력기술서** — ⚠ **공고가 「이력서 및 경력 기술서」를 요구한다.**
-      Workable 폼은 이력서 외 첨부칸이 있으면 따로 올리고, **한 파일만 받으면 통합본을 만든다**.
-      DEEPX 건에 통합 PDF 를 만드는 `build.sh` 선례가 있다
-      (`../deepx--ai-agent-workflow-automation-engineer/build.sh` — 이력서 컷 + 경력기술서 → `pdfunite`).
-      **폼을 연 뒤 어느 쪽인지 정한다.** 통합본이 필요하면 이 폴더에 `build.sh` 를 복제해 만든다.
-- [ ] 커버레터 — 칸이 있으면 아래 §왜 이 직무였는가 를 줄여 쓴다
+- [ ] **경력기술서 — ✅ 슬롯 확정됨 (2026-07-29 브라우저 실측). 통합본은 필요 없다.**
+      Workable 폼에 **별도 첨부칸이 있다** — `추가적인 제출 서류(포트폴리오 등)가 있다면
+      업로드 해주세요 **(Optional)**`. DEEPX 처럼 한 파일로 합칠 이유가 없어졌다.
+      **다만 그 칸은 Optional 이고, 지금 낼 수 있는 독립 경력기술서 PDF 는 없다**
+      (DEEPX 것은 이력서와 합쳐진 통합본이고 소스는 그 폴더의 `experience-detail.md` 다).
+      → **이력서만으로도 제출 가능하다.** 아래 §경력기술서 판단 참조
+- [ ] 커버레터 — **칸 없음.** 대신 `본 포지션에 대한 문의 사항` (Optional) 자유 입력칸이 있다
 
 **⚠ 업로드 직전 파일명을 눈으로 확인한다.** FuriosaAI 건과 **같은 AI Engineer 컷**이다.
 올린 파일은 **그대로 `submit/` 에 복사**한다.
+
+## 폼 스키마 — 브라우저 실측 (2026-07-29)
+
+`apply.workable.com/lunit/j/E3C22F589F/apply/` · **로그인 없음.** 한 화면.
+
+| 필드 | 필수 | 값 |
+|---|---|---|
+| First / Last name | **필수** | `Junghan` / `Kim` |
+| Email | **필수** | `[email removed]` |
+| Phone (`+82`) | **필수** | GLG 가 직접 |
+| **Resume** | **필수** | `KimJunghan_Resume_AI_Engineer.pdf` |
+| 추가 제출 서류(포트폴리오 등) | **선택** | §경력기술서 판단 |
+| 본 포지션에 대한 문의 사항 | 선택 | 비워도 된다 |
+| **이력서에 연봉·처우 정보를 삭제 후 제출** | **필수** YES/NO | **YES** — 이력서에 연봉 정보가 없다(`resume/body.org` 확인) |
+| (필수) 개인정보 수집·이용 동의 | **필수** YES/NO | YES |
+| (필수) **민감정보** 수집·이용 동의 | **필수** YES/NO | YES — 국적·보훈·병역·학력 등이 대상 |
+| (선택) 추가 지원 서류 수집 동의 | 선택 YES/NO | 추가 서류를 낼 때만 YES |
+
+**희망 연봉·입사 가능일을 묻지 않는다.** 오히려 **이력서에서 연봉 정보를 빼라**고 요구한다.
+
+## 경력기술서 판단 — GLG 가 정한다
+
+공고는 「이력서 **및 경력 기술서**」라고 하지만 **폼의 그 칸은 Optional 이다.** 갈림길은 둘이다.
+
+- **A. 이력서만 낸다** — 지금 바로 나간다. 폼의 필수 조건을 전부 충족한다.
+- **B. 경력기술서를 만들어 같이 낸다** — 독립 PDF 가 없어 **새 문서 작업이 필요하다.**
+  소스는 `../deepx--ai-agent-workflow-automation-engineer/experience-detail.md` 이고,
+  같은 폴더 `build.sh` 의 조판 경로(`resume/` flake devshell → `xetexko`)를 재사용하면 된다.
+  **브라우저가 필요 없는 작업이라 오라클에서 만들 수 있다.**
+
+> **원장 상태는 `ready` 로 둔다** — A 경로가 실재하므로 「새 문서 작업 없이 제출 가능」이라는
+> `ready` 계약을 지킨다(`../AGENTS.md` §`ready`의 뜻). B 를 고르면 그때 문서를 만든다.
 
 ## 폼에 답한 질문
 

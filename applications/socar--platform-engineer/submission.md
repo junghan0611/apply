@@ -7,7 +7,7 @@
 | 경로 | **그리팅** (자체 도메인 `socar.career.greetinghr.com`) — 가입 불필요 |
 | 첨부 컷 | **DevEx** (`resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf`, 3쪽) |
 | 공고 URL | https://socar.career.greetinghr.com/ko/o/220124 |
-| **지원 URL** | 같은 페이지의 「지원하기」 (HTTP 200 확인, 2026-07-28) |
+| **지원 URL** | **https://socar.career.greetinghr.com/ko/o/220124** → 페이지 하단 「지원하기」 (HTTP 200 확인) |
 | 근무지 | **서울 성동구 왕십리로 83-21** (쏘카 본사, 성수) · 재택 아님 |
 | 조건 | 정규직 · 경력 5년 이상 · 게시 2026-06-05 · **마감일 없음(수시, 조기 마감 가능)** |
 | 팀 | **쏘카 Tech Platform** — Product Engineer 한 명이 전 스택을 책임지는 AI Native 조직으로 전환 중 |

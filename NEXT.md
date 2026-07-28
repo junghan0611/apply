@@ -93,7 +93,7 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 
 ## 지원 실행
 
-- `applications/check.py` 통과: LEDGER ↔ **23건** submission ↔ submit 스냅샷 일치.
+- `applications/check.py` 통과: LEDGER ↔ **27건** submission ↔ submit 스냅샷 일치.
 - **GLG 가 링크를 던지는 흐름이 통했다 (2026-07-28 밤).** LinkedIn URL 하나를 받으면
   `ljobs.py detail` 로 본문을 뜨고 → **원본 ATS 를 찾아** 경로를 바꾸고 → 폼 스키마까지
   확인해 케이스를 연다. 이 저녁에만 **처음 만나는 ATS 넷**을 확인했다 —

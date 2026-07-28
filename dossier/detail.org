@@ -467,7 +467,7 @@ Matter 월패드를 RK3576 + Android 15, ESP32-H2 Thread RCP, AOSP 네이티브 
 *이 제출본 자체가 그 방식의 실증입니다.*
 
 #+begin_src shell
-cd nhn
+cd dossier
 ./run.sh check       # 도구·폰트 확인
 ./run.sh all         # competency + portfolio + detail 빌드
 ./run.sh verify      # 페이지 수·판형·한글 텍스트·캡션 연번·프롬프트 미누출

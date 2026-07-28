@@ -2,7 +2,7 @@
 
 ;; 이력서 정본(resume.org, targets/*.org) 하나를 PDF 한 장으로 옮기는 유일한 변환기.
 ;;
-;; nhn/ 의 제출 파이프라인과 같은 자리를 맡지만 클래스가 다르다. 저쪽은 acmart(논문
+;; dossier/ 의 제출 파이프라인과 같은 자리를 맡지만 클래스가 다르다. 저쪽은 acmart(논문
 ;; 조판)이고 이쪽은 article 이다. 조판 선언은 전부 pipeline/preamble.org 가 쥐고,
 ;; 여기서는 클래스 등록과 Org 백엔드의 기본값 교정만 한다.
 ;;

@@ -7,7 +7,7 @@
 | 경로 | **그리팅** (자체 도메인 `airsmed.career.greetinghr.com`) — 가입 불필요 |
 | 첨부 컷 | **DevEx** (`resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf`, 3쪽) |
 | 공고 URL | https://airsmed.career.greetinghr.com/ko/o/216673 |
-| **지원 URL** | 같은 페이지의 「지원하기」 |
+| **지원 URL** | **https://airsmed.career.greetinghr.com/ko/o/216673** → 페이지 하단 「지원하기」 |
 | 근무지 | **서울 강남구 테헤란로 223** · 정규직 · **경력 3년 이상** |
 | 팀 | **AX (AI Transformation) 팀** — 회사 전체가 쓰는 **AI Native Workspace** 를 만든다 |
 
