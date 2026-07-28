@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """LinkedIn 공개(guest) 채용 검색 — 로그인 없이 공고를 긁어 추린다.
 
-	search  키워드/지역/기간/근무형태로 공고 목록 (페이징)
+	search  키워드/지역/기간/근무형태로 공고 카드 수집 (페이징)
+	enrich  병합 카드에 본문·criteria·근무지·지원경로를 한 번만 추가
 	detail  공고 ID 로 본문 전문 + criteria + 근무지 추정
-	rank    검색 결과를 키워드·지역 가중치로 정렬
+	rank    검색 결과를 키워드·지역 가중치와 근거로 정렬
 
 지역이 첫 축이다. LinkedIn 의 `location=` 서버 필터는 광역으로 번지므로
 (`Seongnam` → 서울 공고 섞임, `Pangyo` → 화성·천안) **넓게 긁고 좁게 거른다**:
@@ -14,6 +15,7 @@
 import argparse
 import html
 import json
+import os
 import re
 import sys
 import time
@@ -261,11 +263,18 @@ def get_detail(jid):
 	"""공고 하나의 본문·criteria·근무지·지원경로를 한 요청으로 얻는다."""
 	if not jid:
 		return {"description": "", "criteria": {}, "worksite": "", "worksite_src": "none",
-		        "apply": ""}
+		        "apply": "unknown"}
 	page = fetch(POSTING + jid)
-	# offsite 아이콘이 붙어 있으면 회사 사이트/외부 ATS 로 나가는 공고다.
-	# 없으면 LinkedIn Easy Apply — 브라우저 축이 가입 없이 바로 낼 수 있다.
-	apply = "offsite" if "offsite-apply-icon" in page else "easy"
+	# 빈 응답을 Easy Apply로 오인하면 브라우저 레인 전체가 잘못된 경로로 간다.
+	# offsite 아이콘과 apply 버튼을 실제로 본 경우에만 분류한다.
+	if not page:
+		apply = "unknown"
+	elif "offsite-apply-icon" in page:
+		apply = "offsite"
+	elif "apply-button" in page:
+		apply = "easy"
+	else:
+		apply = "unknown"
 	m = re.search(
 		r'class="(?:show-more-less-html__markup|description__text)[^"]*">(.*?)</div>',
 		page, re.S)
@@ -300,6 +309,18 @@ def card_hint(loc):
 	return parts[0]
 
 
+def location_known(row):
+	"""본문 근무지 또는 구체적인 카드 지명이 있으면 알려진 위치로 본다.
+
+	`loc_ok` 의 소프트 필터와 `score` 의 지역 감점이 **같은 판정**을 써야 한다.
+	두 군데서 따로 계산하면 한쪽만 고쳐졌을 때 조용히 갈라진다.
+	"""
+	if row.get("worksite"):
+		return True
+	hint = card_hint(row.get("location", ""))
+	return bool(hint and hint != "서울·구미상")
+
+
 def loc_ok(row, a):
 	"""지역 필터. 기본은 **소프트** — 모르는 것은 버리지 않는다.
 
@@ -317,9 +338,7 @@ def loc_ok(row, a):
 	if a.loc_strict:
 		return False
 	# 근무지도 모르고 카드도 뭉뚱그려져 있으면 판단을 미룬다 — 살려서 올린다.
-	hint = card_hint(row.get("location", ""))
-	known = bool(row.get("worksite")) or (hint and hint != "서울·구미상")
-	return not known
+	return not location_known(row)
 
 
 # --- 서브커맨드 --------------------------------------------------------------
@@ -350,6 +369,7 @@ def cmd_search(a):
 			r["worksite"] = d["worksite"]
 			r["worksite_src"] = d["worksite_src"]
 			r["criteria"] = d["criteria"]
+			r["apply"] = d["apply"]
 			if a.detail:
 				r["description"] = d["description"][:a.max_chars]
 			time.sleep(a.delay)
@@ -360,6 +380,16 @@ def cmd_search(a):
 	emit(rows[:a.limit], a)
 
 
+def write_json_atomic(path, data):
+	"""중간 저장 중 끊겨도 기존 JSON을 보존한다."""
+	tmp = path + ".tmp"
+	with open(tmp, "w", encoding="utf-8") as f:
+		json.dump(data, f, ensure_ascii=False)
+		f.flush()
+		os.fsync(f.fileno())
+	os.replace(tmp, path)
+
+
 def cmd_enrich(a):
 	"""카드만 모아 둔 json 에 본문 유래 정보를 채운다.
 
@@ -367,8 +397,10 @@ def cmd_enrich(a):
 	낭비하므로, 카드는 `search --json`(빠름)으로 모아 병합한 뒤 여기서 한 번만
 	받는다. 이미 채워진 항목은 건너뛴다 — 중단됐던 판을 이어서 돌릴 수 있다.
 	"""
-	rows = json.load(open(a.file)) if a.file != "-" else json.load(sys.stdin)
-	todo = [r for r in rows if a.force or "worksite" not in r]
+	with (open(a.file, encoding="utf-8") if a.file != "-" else sys.stdin) as f:
+		rows = json.load(f)
+	complete = ("worksite", "worksite_src", "criteria", "apply")
+	todo = [r for r in rows if a.force or not all(k in r for k in complete)]
 	print(f"# enrich {len(todo)}/{len(rows)}", file=sys.stderr)
 	for i, r in enumerate(todo, 1):
 		print(f"\r# {i}/{len(todo)}", end="", file=sys.stderr)
@@ -379,10 +411,10 @@ def cmd_enrich(a):
 			r["description"] = d["description"][:a.max_chars]
 		time.sleep(a.delay)
 		if a.out and i % 20 == 0:
-			json.dump(rows, open(a.out, "w"), ensure_ascii=False)
+			write_json_atomic(a.out, rows)
 	print("\r" + " " * 24 + "\r", end="", file=sys.stderr)
 	if a.out:
-		json.dump(rows, open(a.out, "w"), ensure_ascii=False)
+		write_json_atomic(a.out, rows)
 		known = sum(1 for r in rows if r.get("worksite"))
 		print(f"# {a.out}: {len(rows)}건, 근무지 확인 {known}", file=sys.stderr)
 	else:
@@ -402,43 +434,78 @@ def cmd_detail(a):
 		print()
 
 
-def score(row, a):
+def term_match(term, text):
+	"""짧은 영문 키워드는 낱말로, 구·한글은 문자열로 매칭한다.
+
+	단순 부분문자열이면 `--minus intern`이 `internal platform`까지 감점하고,
+	`--plus ai`가 unrelated ASCII 낱말 안에서도 걸린다.
+	"""
+	term = term.strip()
+	if not term:
+		return False
+	if re.fullmatch(r"[A-Za-z0-9_+.#-]+", term):
+		pat = rf"(?<![A-Za-z0-9]){re.escape(term)}(?![A-Za-z0-9])"
+		return bool(re.search(pat, text, re.I))
+	return term.casefold() in text.casefold()
+
+
+def score_with_reasons(row, a):
 	blob = " ".join([row.get("title", ""), row.get("company", ""),
 	                 row.get("location", ""), row.get("worksite", ""),
-	                 row.get("description", "")]).lower()
-	if any(m.lower() not in blob for m in a.must):
-		return None
-	neg = sum(3 for m in a.minus if m.lower() in blob)
-	s = sum(2 for p in a.plus if p.lower() in blob) - neg
-	if any(p.lower() in row.get("title", "").lower() for p in a.plus):
+	                 row.get("description", "")])
+	title = row.get("title", "")
+	missing = [m for m in a.must if not term_match(m, blob)]
+	if missing:
+		return None, ["must 누락: " + ", ".join(missing)]
+
+	plus = [p for p in a.plus if term_match(p, blob)]
+	minus = [m for m in a.minus if term_match(m, blob)]
+	title_plus = [p for p in plus if term_match(p, title)]
+	s = 2 * len(plus) - 3 * len(minus)
+	reasons = []
+	if plus:
+		reasons.append("plus " + ", ".join(plus))
+	if minus:
+		reasons.append("minus " + ", ".join(minus))
+	if title_plus:
 		s += 3
-	# 지역 축. 맞으면 올리고, **확인된 근무지가** 어긋나면 내린다.
-	# 미확인은 기본적으로 건드리지 않는다 — 확인율이 30% 남짓이라 감점하면
-	# 조건에 맞는 공고 다수가 조용히 아래로 가라앉는다. 굳이 내리려면
-	# --penalize-unknown 을 명시한다.
-	locblob = " ".join([row.get("location", ""), row.get("worksite", "")]).lower()
-	if a.near:
+		reasons.append("title +3")
+
+	# 지역 축. 맞으면 올리고, 알려진 위치가 어긋나면 내린다. 미확인은 기본 0점.
+	locblob = " ".join([row.get("location", ""), row.get("worksite", "")])
+	near = [n for n in a.near if term_match(n, locblob)]
+	if a.near and near:
 		# 직무가 안 맞는 공고를 지역 가점으로 끌어올리지 않는다.
-		if any(n.lower() in locblob for n in a.near):
-			if not neg:
-				s += 6
-		elif row.get("worksite"):
-			s -= 4
+		if not minus:
+			s += 6
+			reasons.append("near +6: " + ", ".join(near))
+	elif a.near and location_known(row):
+		s -= 4
+		reasons.append("known location mismatch -4")
 	if a.penalize_unknown and not row.get("worksite"):
 		s -= 2
-	return s
+		reasons.append("worksite unknown -2")
+	return s, reasons
+
+
+def score(row, a):
+	"""호환용 점수 API. 설명이 필요하면 score_with_reasons를 쓴다."""
+	return score_with_reasons(row, a)[0]
 
 
 def cmd_rank(a):
-	rows = json.load(open(a.file)) if a.file != "-" else json.load(sys.stdin)
+	with (open(a.file, encoding="utf-8") if a.file != "-" else sys.stdin) as f:
+		rows = json.load(f)
 	out = []
-	for r in rows:
-		if a.require_worksite and not r.get("worksite"):
+	for row in rows:
+		if a.require_worksite and not row.get("worksite"):
 			continue
-		s = score(r, a)
+		s, reasons = score_with_reasons(row, a)
 		if s is None:
 			continue
+		r = dict(row)
 		r["score"] = s
+		r["score_reasons"] = reasons
 		out.append(r)
 	out.sort(key=lambda r: -r["score"])
 	emit(out[:a.limit], a)
@@ -461,6 +528,8 @@ def emit(rows, a):
 		cols = [r.get("score", ""), r["id"], r["posted"][:10], r["company"],
 		        r["title"], r["location"], ws, r.get("apply", ""), r["url"]]
 		print("\t".join(str(c) for c in cols))
+		if getattr(a, "explain", False) and r.get("score_reasons"):
+			print("\t# " + "; ".join(r["score_reasons"]))
 		if r.get("description"):
 			print("\t" + r["description"].replace("\n", " ⏎ ")[:600])
 
@@ -470,7 +539,7 @@ def main():
 	                            formatter_class=argparse.RawDescriptionHelpFormatter)
 	sub = p.add_subparsers(dest="cmd", required=True)
 
-	s = sub.add_parser("search")
+	s = sub.add_parser("search", help="공개 guest 검색 결과를 카드 JSON/TSV로 수집")
 	s.add_argument("keywords")
 	s.add_argument("-l", "--location", default="",
 	               help="LinkedIn 서버 필터. 광역으로 번진다 — 좁히려면 --loc 를 쓴다")
@@ -496,7 +565,7 @@ def main():
 	s.add_argument("--json", action="store_true")
 	s.set_defaults(func=cmd_search)
 
-	e = sub.add_parser("enrich", help="카드 json 에 근무지·criteria·지원경로를 채운다")
+	e = sub.add_parser("enrich", help="병합한 카드 JSON에 본문·근무지·criteria·지원경로를 한 번만 채움")
 	e.add_argument("file", help="search --json 을 병합한 파일 (- 는 stdin)")
 	e.add_argument("-o", "--out", default="", help="저장 경로 (20건마다 중간 저장)")
 	e.add_argument("--force", action="store_true", help="이미 채워진 것도 다시")
@@ -505,12 +574,12 @@ def main():
 	e.add_argument("--delay", type=float, default=0.7)
 	e.set_defaults(func=cmd_enrich)
 
-	d = sub.add_parser("detail")
+	d = sub.add_parser("detail", help="공고 ID/URL의 본문·criteria·근무지·지원경로 확인")
 	d.add_argument("ids", nargs="+", help="job id 또는 공고 URL")
 	d.add_argument("--max-chars", type=int, default=12000)
 	d.set_defaults(func=cmd_detail)
 
-	r = sub.add_parser("rank")
+	r = sub.add_parser("rank", help="must/plus/minus/near 기준으로 설명 가능한 점수 계산")
 	r.add_argument("file", help="search --json 결과 파일 (- 는 stdin)")
 	r.add_argument("--must", nargs="*", default=[], help="전부 있어야 통과")
 	r.add_argument("--plus", nargs="*", default=[], help="가점")
@@ -524,10 +593,15 @@ def main():
 	r.add_argument("--penalize-unknown", action="store_true",
 	               help="근무지 미확인에 -2 (기본은 감점 없음)")
 	r.add_argument("-n", "--limit", type=int, default=20)
-	r.add_argument("--json", action="store_true")
+	r.add_argument("--explain", action="store_true", help="TSV 다음 줄에 점수 근거를 표시")
+	r.add_argument("--json", action="store_true", help="score_reasons를 포함한 JSON 출력")
 	r.set_defaults(func=cmd_rank)
 
 	a = p.parse_args()
+	if hasattr(a, "delay") and a.delay < 0.2:
+		p.error("--delay는 0.2초 이상이어야 합니다 (guest endpoint 과호출 방지)")
+	if hasattr(a, "limit") and a.limit < 1:
+		p.error("--limit는 1 이상이어야 합니다")
 	a.func(a)
 
 

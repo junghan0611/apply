@@ -5,13 +5,14 @@
 | 상태 | **submitted** |
 | 지원일 | 2026-07-28 |
 | 경로 | ninehire (`enhanscareer.ninehire.site`) — 가입 불필요 |
-| 첨부 컷 | `KimJunghan_Resume_Forward_Deployed_Engineer.pdf` |
+| 첨부 컷 | `submit/KimJunghan_Resume_Forward_Deployed_Engineer.pdf` |
 | 공고 URL | https://enhanscareer.ninehire.site/job_posting/6G3i8k2O |
 | 근무지 | 서울 서초구 서초중앙로8길 89-17 (남부터미널역 신사옥) |
 
 ## 낸 것
 
-- [x] 이력서 PDF — FDE 컷 (여섯 컷 중 **FDE 컷을 처음 쓴 건**)
+- [x] 이력서 PDF — `submit/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`
+  (여섯 컷 중 **FDE 컷을 처음 쓴 건**)
 - [ ] 커버레터 — **폼에 칸이 없다**
 - [ ] 포트폴리오 파일 — 비움. URL로 대신
 - [x] URL — `https://github.com/junghan0611`

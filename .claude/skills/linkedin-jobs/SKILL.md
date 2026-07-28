@@ -20,18 +20,22 @@ user_invocable: true
 한국 시장은 **포스트 쪽에만 있는 자리가 많다**(예: Reflection AI Korea FDE, 딜리버리랩 AX).
 그래서 한 판에 둘 다 돌린다. 하나만 돌리면 절반을 놓친다.
 
-```bash
-# 축 2 — 포스트에서 줍기 (병렬 안전)
-~/.claude/skills/exa-search/search.js "Forward Deployed Engineer hiring Korea 2026" \
-  -n 8 --type fast --include-domains linkedin.com
+```text
+exa-search로 "Forward Deployed Engineer hiring Korea"를 검색하고
+linkedin.com/posts 도메인을 포함한다. 실행 경로는 활성 하네스의 exa-search 스킬을 따른다.
 ```
+
+`ljobs.py`는 LinkedIn의 **문서화되지 않은 공개 guest endpoint**를 읽는 best-effort 도구다.
+LinkedIn과 제휴·승인된 API가 아니며 마크업 변경이나 403/999로 언제든 깨질 수 있다. 로그인
+쿠키·개인정보·지원 행위는 다루지 않고, 속도 제한과 해당 서비스의 이용 조건을 지킨다.
 
 ## ljobs.py
 
 ```bash
 {baseDir}/ljobs.py search <keywords> [옵션]
+{baseDir}/ljobs.py enrich <병합.json> -o <상세.json> --keep-body
 {baseDir}/ljobs.py detail <jobId|공고URL> ...
-{baseDir}/ljobs.py rank <search --json 결과> --must ... --plus ... --minus ...
+{baseDir}/ljobs.py rank <상세.json> --must ... --plus ... --minus ... --explain
 ```
 
 의존성 0 (Python stdlib). 로그인·쿠키·API 키 없음. 공개 guest 엔드포인트만 읽는다.
@@ -140,26 +144,36 @@ Rebellions 가 본문 미확인인 채로 상위에 남는다.
 
 ### 한 판의 표준 흐름
 
-`-w` 를 켜면 한 쿼리에 수십 초가 걸린다. 여러 축을 도는 판은 **백그라운드로 돌리고
-그동안 다른 일을 한다.** 한 판에 9 쿼리 × 20건이면 6~8분이다.
+본문 요청이 비용의 대부분이다. 쿼리마다 `-w/-d`를 켜면 중복 공고의 본문을 매번 다시 받는다.
+따라서 **카드 수집 → ID 중복 제거 → enrich 한 번 → 본문을 포함해 rank** 순서로 간다.
 
 ```bash
 cd {baseDir}
+mkdir -p /tmp/ljobs
 for q in "AI Engineer" "AI 엔지니어" "LLM Engineer" "Forward Deployed Engineer" \
          "Platform Engineer" "Embedded Software Engineer" "Developer Experience"; do
-  ./ljobs.py search "$q" -l "South Korea" -n 20 --posted month -w --json \
-    > "/tmp/h/$(echo "$q" | tr ' ' '_').json"
+  ./ljobs.py search "$q" -l "South Korea" -n 20 --posted month --json \
+    > "/tmp/ljobs/$(echo "$q" | tr ' ' '_').json"
 done
 
-python3 -c "import json,glob;
-r={}; [r.setdefault(j['id'],j) for f in glob.glob('/tmp/h/*.json') for j in json.load(open(f))];
-json.dump(list(r.values()),open('/tmp/all.json','w'),ensure_ascii=False)"
+python3 - <<'PY'
+import glob, json
+rows = {}
+for path in glob.glob('/tmp/ljobs/*.json'):
+    for row in json.load(open(path)):
+        rows.setdefault(row['id'] or row['url'], row)
+json.dump(list(rows.values()), open('/tmp/ljobs/cards.json', 'w'), ensure_ascii=False)
+PY
 
-./ljobs.py rank /tmp/all.json \
+./ljobs.py enrich /tmp/ljobs/cards.json -o /tmp/ljobs/detail.json --keep-body
+./ljobs.py rank /tmp/ljobs/detail.json --explain \
   --near 판교 성남 분당 강남 서초 역삼 \
   --plus agent llm rag platform infrastructure "developer experience" emacs nix embedded firmware \
-  --minus intern "신입" "junior" "0~2년" freelance
+  --minus intern "신입" junior "0~2년" freelance
 ```
+
+`enrich -o`는 20건마다 원자적으로 중간 저장하므로 중단 후 같은 명령을 다시 실행할 수 있다.
+`--keep-body`가 없으면 rank는 제목·회사·위치 위주로만 보게 된다.
 
 ### rank 의 지역 축
 
@@ -172,8 +186,10 @@ json.dump(list(r.values()),open('/tmp/all.json','w'),ensure_ascii=False)"
 `--minus` 에 걸린 공고에는 **지역 가점을 주지 않는다.** 직무가 안 맞는 자리는 집 앞이어도
 안 맞는다. (이 규칙이 없으면 `--near 강남` 하나로 인턴 공고가 상위로 올라온다.)
 
-`rank` 는 대충 훑는 1차 체이지 판단이 아니다. 상위 후보는 반드시 `detail` 로 본문을 읽고
-**연차 요건·비자·언어·근무지**를 눈으로 확인한 다음 GLG 에게 올린다.
+`rank`는 대충 훑는 1차 기계 판단이다. 짧은 영문 키워드는 낱말 경계로 매칭하므로 `intern`이
+`internal`에 걸리지 않는다. `--explain`은 각 점수의 plus/minus/title/near 근거를 다음 줄에,
+`--json`은 `score_reasons` 배열로 남긴다. 그래도 상위 후보는 반드시 `detail`과 원문으로
+**연차 요건·비자·언어·근무지**를 사람이 확인한 다음 GLG에게 올린다.
 
 ## 컷 배정 — 찾았으면 여기까지 정해서 넘긴다
 
@@ -188,8 +204,9 @@ json.dump(list(r.values()),open('/tmp/all.json','w'),ensure_ascii=False)"
 | 일반 백엔드/풀스택 | `..._Software_Engineer.pdf` |
 | 애매하거나 첫 접촉 | `KimJunghan_Resume.pdf` (베이스) |
 
-다섯 컷 중 어느 것으로도 안 덮이면 새 컷을 뽑는다 — `resume/AGENTS.md` §「새 타깃 컷
-만드는 법」6단계, 5분. **공고를 찾았다고 컷을 임의로 늘리지 않는다.** 분량 계약은 3쪽이다.
+다섯 컷 중 어느 것으로도 안 덮이면 `resume/AGENTS.md` §「새 타깃 컷 만드는 법」을 따른다.
+**공고를 찾았다고 컷을 임의로 늘리지 않는다.** 사실은 한 벌이고 타깃은 모듈 선택·순서와
+공개 증거 입구를 바꾼다. 분량은 2쪽 우선, 증거가 남을 때 3쪽이다.
 
 ## 넘기는 형식 (브라우저 세션이 그대로 먹을 수 있게)
 
@@ -216,7 +233,7 @@ json.dump(list(r.values()),open('/tmp/all.json','w'),ensure_ascii=False)"
 - **로그인 하지 않는다.** guest 엔드포인트만 읽는다. 쿠키·세션·`li_at` 을 이 스크립트에
   절대 넣지 않는다. 계정 리스크는 브라우저 축이 지고, 이 축은 지지 않는다.
 - **연락처를 이 축에서 뿌리지 않는다.** 지원 행위는 전부 브라우저 세션 소관이다.
-- `--delay` 를 0 으로 내리지 않는다(기본 0.7s). 429 를 맞으면 판이 끝난다.
+- `--delay`는 기본 0.7초이고 CLI가 0.2초 미만을 거부한다. 429를 맞으면 판이 끝난다.
 - 빈 결과가 `없음`은 아니다. 원인은 대개 둘이다.
   1. **쿼리가 길다.** guest API 는 구를 통째로 AND 로 먹는다 —
      `"Platform Engineer developer tools"` 0건, `"Platform Engineer"` 20건. 두 낱말까지만.
@@ -231,15 +248,18 @@ json.dump(list(r.values()),open('/tmp/all.json','w'),ensure_ascii=False)"
   지역으로 자르는 플래그(`--loc-strict`, `--require-worksite`, `--penalize-unknown`)는
   GLG 가 명시적으로 요구할 때만 쓴다.
 
-## 상태
+## 상태와 검사
 
-2026-07-28 검증 — search / detail / rank 3 개 서브커맨드 전부 실물 동작.
+2026-07-28 검증 — search / enrich / detail / rank 4개 서브커맨드 실물 동작.
 
 ```bash
-{baseDir}/test_places.py     # 45 케이스, 네트워크 없이 1초
+{baseDir}/test_ljobs.py      # 57 케이스, 네트워크 없이 1초
+python3 -m py_compile {baseDir}/ljobs.py {baseDir}/test_ljobs.py
 ```
 
-**`PLACES` / `WEAK` / `_SUFFIX` / `LABEL_RE` 를 건드렸으면 반드시 돌린다.** 사전을 한 줄
+지명 경계·근무지 추출뿐 아니라 키워드 낱말 경계, 지역 가감점, 빈 응답의 `unknown` 판정,
+원자적 중간 저장을 고정한다. **`PLACES` / `WEAK` / `_SUFFIX` / `LABEL_RE` 또는 score를
+건드렸으면 반드시 돌린다.** 사전을 한 줄
 늘리는 것만으로 조용히 오탐이 생긴다 — 실제로 `가산`을 넣자 "가산점"이, `동작`을 넣자
 "동작 방식"이 근무지가 됐다. 케이스는 전부 실물 공고에서 물린 문장이다.
 

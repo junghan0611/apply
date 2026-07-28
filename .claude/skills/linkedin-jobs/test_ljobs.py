@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-"""근무지 지명 매칭 회귀 검사 — 네트워크 없이 돈다.
+"""ljobs 회귀 검사 — 네트워크 없이 돈다.
 
-`ljobs.py` 의 PLACES / WEAK / _SUFFIX 를 건드렸으면 반드시 이걸 돌린다.
-한국어 지명은 다른 낱말에 통째로 박히기 때문에(무'신사', '동작' 방식, '가산'점)
-사전을 한 줄 늘리는 것만으로 조용히 오탐이 생긴다.
+지명 경계, 근무지 추출, 키워드 점수, 지역 가감점, 빈 응답의 지원경로 판정을 고정한다.
 
-	./test_places.py        # 실패하면 exit 1
+	./test_ljobs.py        # 실패하면 exit 1
 """
 import importlib.util
+import json
 import os
 import sys
+import tempfile
+from types import SimpleNamespace
 
 _here = os.path.dirname(os.path.abspath(__file__))
 _spec = importlib.util.spec_from_file_location("lj", os.path.join(_here, "ljobs.py"))
@@ -74,6 +75,12 @@ EXTRACT = [
 ]
 
 
+def score_args(**overrides):
+	values = dict(must=[], plus=[], minus=[], near=[], penalize_unknown=False)
+	values.update(overrides)
+	return SimpleNamespace(**values)
+
+
 def main():
 	fails = []
 
@@ -94,13 +101,69 @@ def main():
 		elif want_sub and want_sub not in ws:
 			fails.append(f"값:  {body[:32]!r} -> {ws!r} (기대 {want_sub!r} 포함)")
 
-	total = len(MUST_NOT) + len(MUST_HAVE) + len(EXTRACT)
+	# 영문 단어 경계. `intern`은 `internal`을 감점하면 안 된다.
+	if not lj.term_match("AI", "Applied AI Engineer"):
+		fails.append("term: AI 낱말을 찾지 못함")
+	if lj.term_match("intern", "internal platform engineer"):
+		fails.append("term: intern 이 internal 에 오탐")
+
+	score_cases = [
+		("internal-not-intern",
+		 {"title": "Internal Platform Engineer"},
+		 score_args(plus=["platform"], minus=["intern"]), 5),
+		("negative-blocks-near-bonus",
+		 {"title": "AI Intern", "worksite": "강남"},
+		 score_args(minus=["intern"], near=["강남"]), -3),
+		("known-location-mismatch",
+		 {"title": "Engineer", "worksite": "부산"},
+		 score_args(near=["강남"]), -4),
+		("card-location-mismatch",
+		 {"title": "Engineer", "location": "Seongnam, Gyeonggi"},
+		 score_args(near=["강남"]), -4),
+		("unknown-location-neutral",
+		 {"title": "Engineer", "location": "Seoul, Seoul, South Korea"},
+		 score_args(near=["강남"]), 0),
+		("near-bonus",
+		 {"title": "Engineer", "worksite": "강남"},
+		 score_args(near=["강남"]), 6),
+		("unknown-penalty",
+		 {"title": "Engineer"},
+		 score_args(penalize_unknown=True), -2),
+		("must-missing",
+		 {"title": "Backend Engineer"},
+		 score_args(must=["agent"]), None),
+	]
+	for name, row, args, want in score_cases:
+		row = {"company": "", "location": "", "worksite": "", "description": "", **row}
+		got = lj.score(row, args)
+		if got != want:
+			fails.append(f"score {name}: {got!r} (기대 {want!r})")
+
+	# 네트워크/마크업 실패를 Easy Apply로 둔갑시키지 않는다.
+	original_fetch = lj.fetch
+	try:
+		lj.fetch = lambda _url: ""
+		if lj.get_detail("123456")["apply"] != "unknown":
+			fails.append("detail: 빈 응답을 unknown으로 분류하지 않음")
+	finally:
+		lj.fetch = original_fetch
+
+	# 중간 저장은 원자적으로 교체되고 다시 읽혀야 한다.
+	with tempfile.TemporaryDirectory() as td:
+		path = os.path.join(td, "rows.json")
+		lj.write_json_atomic(path, [{"id": "1"}])
+		with open(path, encoding="utf-8") as f:
+			if json.load(f) != [{"id": "1"}]:
+				fails.append("atomic json: 저장 후 값 불일치")
+
+	total = len(MUST_NOT) + len(MUST_HAVE) + len(EXTRACT) + 2 + len(score_cases) + 2
 	if fails:
 		print(f"FAIL {len(fails)}/{total}")
 		for f in fails:
 			print("  " + f)
 		return 1
-	print(f"ok {total}/{total} — 오탐 {len(MUST_NOT)} · 참값 {len(MUST_HAVE)} · 추출 {len(EXTRACT)}")
+	print(f"ok {total}/{total} — 지명 오탐 {len(MUST_NOT)} · 참값 {len(MUST_HAVE)} · "
+	      f"추출 {len(EXTRACT)} · 점수 {len(score_cases)} · 안전성 4")
 	return 0
 
 

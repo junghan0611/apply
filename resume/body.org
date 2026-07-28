@@ -170,7 +170,7 @@ Built =denotecli=, =dictcli=, =gitcli=, =lifetract=, =bibcli=, and =abductcli= f
 rather than a demo context. Every tool speaks Denote IDs, so commits, journals, bot logs, and health
 days cross-reference on one timestamp scheme.
 
-** Sungkyunkwan University — Distributed Computing Lab @@latex:\cvwhen{2018 – 2021}@@
+** Sungkyunkwan University — Distributed Computing Lab @@latex:\cvwhen{2018 – 2022}@@
 
 - Research on non-volatile memory filesystems and NUMA lock performance in virtualized environments.
 - Virginia Tech COSMOSS Lab, exchange researcher (2019.07 – 2020.03).

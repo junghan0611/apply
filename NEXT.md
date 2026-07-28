@@ -1,83 +1,56 @@
-# NOW — 제출 레인 가동 중. 다음 한 걸음은 FuriosaAI
+# NOW — FuriosaAI Agent System Developer 를 낸다
 
-- **Current**: 2026-07-28. **오늘 4건 제출했다.** 탐색→작성→제출 파이프라인이 실제로 돌았고
-  플랫폼 5종을 실측으로 확인했다. 다음 세션은 **`applications/INBOX.md` 티어1 맨 위부터**
-  이어서 내면 된다.
-- **Next (한 걸음)**: **FuriosaAI — Software Engineer, Agent System Developer**
-  (`jobs/view/4387941500`, 강남 도산대로 145, 컷=AI Engineer).
-  JD가 agent orchestration · context management · tool execution · memory abstraction 을
-  그대로 요구하고 팀 이름이 **AI Transformation** 이다. FuriosaAI는 23건 전부 강남권이라
-  회사 자체가 지역 기준을 통과한다. 경로는 자체(`furiosa.ai/careers`) — 가입 여부 미확인.
-- **Blocker**: none. 단 아래 §GLG 확정 필요 두 개가 폼에서 나오면 거기서 멈춘다.
-- **Read**: `applications/AGENTS.md` → `applications/FAQ.md` → `applications/INBOX.md`
-  → `applications/LEDGER.md`.
-- **Do not touch**: 제출 버튼은 GLG 승인 없이 누르지 않는다(건마다·세션마다 따로).
-  연락처·개인정보 동의는 GLG가 직접 입력·체크한다. PDF를 손으로 고치지 않는다.
+- **Hot group**: 지원 실행. 공개 준비는 이 축이 아니다.
+- **Current**: 2026-07-28 4건 제출 완료(AutoEver · DEEPX ×2 · Enhans). 원장 · 기록 · 스킬 ·
+  이력서 검수 통과. 다음 stem 은 **FuriosaAI Agent System Developer**(강남 도산대로 145, `4387941500`).
+- **Next**: `applications/INBOX.md` 티어1 을 읽고 `./new.sh "FuriosaAI" "Agent System Developer" <URL>`
+  로 건을 연다. 컷은 AI. 지원 경로는 자체 사이트(`furiosa.ai/careers`) — **가입 필요 여부 미확인**이
+  첫 확인 사항이다.
+- **Blocker**: 없음. 다음 폼 전에 GLG 가 정할 값 셋 — **희망 연봉 · 입사 가능일 · 이직 사유**.
+  민감 법적 값(병역 등)은 계속 브라우저에서만 입력한다.
+- **Read**: `applications/INBOX.md` 티어1 → `applications/FAQ.md` → `AGENTS.md`.
+- **Do not touch**: 제출된 4건의 `submit/` 스냅샷. 업로드한 그 파일이라 다시 빌드해 덮지 않는다.
 
-## 오늘 제출한 것 (`applications/LEDGER.md` 가 SSOT)
+# ACTIVE
 
-| 회사 | 직무 | 컷 | 플랫폼 |
-|---|---|---|---|
-| Hyundai AutoEver | AI Agent 엔지니어 | AI + 국문 자기소개서 + 사전질문 967자 | 그리팅 |
-| DEEPX | AI Agent Workflow Automation Engineer | AI + 경력기술서 통합(7쪽) | 그리팅 |
-| DEEPX | Linux BSP Engineer | Embedded + 경력기술서 통합(5쪽) | 그리팅 |
-| Enhans | Forward Deployed Engineer (7년 이상) | **FDE** | ninehire |
+## 지원 실행
 
-여섯 컷 중 **FDE 컷이 오늘 처음 쓰였다.**
+- `applications/check.py` 통과: LEDGER ↔ 5건 submission ↔ submit 스냅샷 일치.
+- 티어1 후보 8곳이 INBOX 에 근무지 · 컷 · 경로까지 정해진 채 대기 중이다. FuriosaAI 다음은
+  KRAFTON(역삼) · HITS(강남, Easy Apply) 순.
+- Insighter 는 `saved` — 마포 DMC 라 GLG 지역 기준 밖이다. 낼지 말지는 GLG 판단이고,
+  안 내기로 하면 `closed` + `_archive/`.
 
-## GLG 확정 필요 (다음 폼에서 바로 걸린다)
+## 이력서
 
-- [ ] **희망 연봉 / 현재 연봉** — 오늘 네 폼은 안 물었지만 다음은 물을 수 있다.
-      「면접 후 협의」로 둘 수 있으면 그렇게 둔다.
-- [ ] **입사 가능일** — 재직 중이라 인수인계 필요. 통상 「협의 가능」 또는 「4주 이내」.
-- [ ] **병역** — `FAQ.md` §5.
-- [ ] **이직 사유 한 문장** — 거의 모든 면접에 나온다. 이력서 Summary 마지막 문단
-      (「개인의 기억·저자성·장기 협업 → 기업의 데이터·거버넌스·워크플로」)을 쓸 수 있다.
+- 6종 PDF 빌드 · verify 통과: Embedded 2쪽, 나머지 3쪽.
+- `A2A` 는 스택에 **유지**한다 — `home agent-config` / `edge agent-config` 세트로 GLG 가 실제로
+  파고 있는 주제다. 프로토타입 전 단계라는 것만 알고 있으면 된다.
+- ⚠ **연구실 기간을 `2018–2021` → `2018–2022` 로 고쳤다.** 이미 제출한 3건(AutoEver ·
+  DEEPX ×2)은 `2018–2021` 판이다. `LEDGER.md` §메모에 델타를 남겼다.
+- **날짜 입도 규칙을 새로 박았다** — `resume/AGENTS.md` §날짜 입도. 이력서는 연 단위가 기본,
+  현직·프로젝트만 연.월. 폼 답변용 정밀 원장은 `FAQ.md` §3 이고 증빙은 공단 서류다.
+  **에이전트가 오래된 이력을 월 단위로 "정밀화"하는 것은 교정이 아니다.**
 
-## 판단 대기
+## linkedin-jobs
 
-- [ ] **Insighter** — Easy Apply **임시저장 상태로 남아 있다**(제출 아님). 서울 마포 DMC라
-      지역 기준 밖. 버리려면 `LEDGER.md` 상태를 `closed` 로 바꾸고 `_archive/` 로 옮긴다.
-- [ ] **NHN LLM 기술 개발** (`4439978335`, 판교) — `nhn/` AX 지원(7/20)에 이은 **세 번째 접촉**.
-      직무는 다르지만 같은 회사다.
-- [ ] **resume/body.org 연도** — 연구실을 `2018 – 2021` 로 적고 있으나 GLG 확정 사실은
-      **`2018 – 2022.06`** 이다. 고치면 재빌드 필요(3쪽 계약 확인).
-
-## 이력서 레인에 남은 것
-
-- [ ] 연락처 수위(전화번호 미포함) · GLGMAN 비주얼 포트폴리오 분리 · entwurf 스타 수 재측정
-      · 국문 이력서 컷 · 공개 트랙(`junghan0611/resume`) 반영 — 상세는 `resume/AGENTS.md`.
+- 57개 network-free 회귀 검사 통과. 표준 흐름: 카드 수집 → dedupe → `enrich --keep-body` 한 번 →
+  `rank --explain`.
+- 고친 것: `intern`→`internal` 오탐, 알려진 근무지 mismatch 감점, 빈 fetch 를 Easy Apply 로 오판,
+  search 의 `apply` 누락, enrich 원자 저장 · 재개, 점수 근거.
+- guest endpoint 는 비공식 · best-effort. 403/999 또는 markup 변경 시 exa/브라우저로 전환.
 
 # RECENT
 
-- [2026-07-28] **`applications/` 레인 신설·가동.** `LEDGER.md`(원장) · `FAQ.md`(값+근거+화법) ·
-  `INBOX.md`(후보 418건) · `new.sh`(건 스캐폴딩). 폴더명은 `<company>--<role>` 영문 소문자.
-  건마다 `submit/` 에 **실제로 올린 파일 사본**을 둔다 — 발사대는 갱신되므로 링크로는 3개월 뒤
-  「그때 무엇을 냈는지」가 사라진다.
-- [2026-07-28] **총 경력 8+ 확정.** NEMO-UX 4년(법인 2 + 준비 2) + 대학원 4년 4개월
-  (2018–2022.06) + GoQual 1년 2개월 = 9년 6개월. 8+는 낮춰 부르는 값이라 안전하고 모든
-  연차 필터를 통과한다. **어디에나 같은 값으로 낸다.** 2022.06–2025.05 공백(육아·물류창고)은
-  약점이 아니라 전환점으로 쓴다 — Independent Work가 그때 시작됐고 커밋·노트가 날짜째로
-  공개돼 있다.
-- [2026-07-28] **플랫폼 5종 실측**: 그리팅 · Ashby · ninehire · Greenhouse · 자체.
-  `file_upload` 가 이 저장소 경로를 그대로 받는다(LinkedIn·그리팅). 단 ninehire는 file input이
-  DOM에 없어 GLG가 직접 올린다. LinkedIn 저장 이력서에 **NHN 전용 문서가 물려 있던 것**을
-  베이스판으로 교체했다 — 안 했으면 오늘 낸 곳마다 그게 딸려 나갔다.
-- [2026-07-28] `linkedin-jobs` 스킬 신설(오푸스2). guest API 직접 조회 + exa 축 병행.
-  지역 필터는 **옵셔널·소프트** — 근무지 확인율이 18%라 미확인을 자르면 놓치는 쪽이 크다.
-- [2026-07-28] `resume/` 직무별 증거 컷 재편(GPT). `body.org` 모듈화 + `CV_*_MODULES` 선택 +
-  모든 컷에 `Public Evidence` 절(실행 명령·제3자 PR·공개/비공개 경계).
-- [2026-07-20] NHN AX 지원 제출 (`nhn/` 레인은 닫혀 있다). 연락이 오면
-  `nhn/build/KimJunghan_AX_Detail.md` 의 Tech Interview anchors 로 라이브 코딩을 준비한다.
+- [2026-07-28] 4개 역할(탐색 · 문서 · 브라우저 · 메타)이 분리된 채로 4건을 제출하고, 그 과정의
+  실패를 테스트와 계약으로 회수했다. 기록은 `docs/case-study-2026-07-28.md`.
+- [2026-07-20] NHN dossier 제출 완료. `nhn/` 은 닫힌 건이다.
 
 # LEDGER
 
-- **제출 이력 SSOT**: `applications/LEDGER.md`
-- **폼·면접 답변 SSOT**: `applications/FAQ.md` (값 + 근거 + 화법)
-- 사실·서사 SSOT: `~/repos/gh/junghan0611/apply/MATERIAL.md`
-- 영문 공개키(가든): `20260318T183247` · 자기소개 서사: `20230814T142800`
-  · 기업용 하네스 좌표: `20231018T221900`
-- 계약: `applications/AGENTS.md` · `resume/AGENTS.md` · `nhn/AGENTS.md`
+- 제출 SSOT: `applications/LEDGER.md` · 닫힘 검사: `applications/check.py`
+- 후보 큐: `applications/INBOX.md` · 폼 재사용 답: `applications/FAQ.md`
+- 이력서 사실: `resume/body.org` · 빌드: `(cd resume && ./run.sh all && ./run.sh verify)`
 - 탐색: `.claude/skills/linkedin-jobs/SKILL.md`
-- 라이브 수치: `agenda.junghanacs.com/api/stats` (100 단위 내림, 측정일 명기)
-- 이력서는 Org 정본에서 재생성한다. `./run.sh all` → `./run.sh verify`.
+- 전체 계약: `AGENTS.md`
+- **나중에** 공개할 때만: `PUBLICATION.md`, `scripts/check-public.sh`, `README.md`
