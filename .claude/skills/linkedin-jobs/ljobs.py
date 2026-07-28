@@ -6,7 +6,7 @@
 	detail  공고 ID 로 본문 전문 + criteria + 근무지 추정
 	rank    검색 결과를 키워드·지역 가중치와 근거로 정렬
 
-지역이 첫 축이다. LinkedIn 의 `location=` 서버 필터는 광역으로 번지므로
+지역은 1차 필터가 아니라 확인 항목이다. LinkedIn 의 `location=` 서버 필터는 광역으로 번지므로
 (`Seongnam` → 서울 공고 섞임, `Pangyo` → 화성·천안) **넓게 긁고 좁게 거른다**:
 검색은 "South Korea" 로 하고 `--loc` / `--loc-exclude` 로 클라이언트에서 자른다.
 

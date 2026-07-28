@@ -20,9 +20,9 @@
 
 ---
 
-## 지원 경로 — 플랫폼 5종 (실측 확정)
+## 지원 경로 — ATS 지도 (실측 확정)
 
-한국 채용 플랫폼은 다섯으로 수렴한다. **하나를 익히면 여러 회사가 덮인다.**
+경로는 계속 늘어난다. **같은 ATS는 재사용하되, 회사 이름만 보고 플랫폼을 추정하지 않는다.**
 
 | 플랫폼 | 확인된 회사 | 주소 형태 | 가입 | 폼 특징 |
 |---|---|---|---|---|
@@ -30,6 +30,7 @@
 | **Ashby** | OpenAI · Cohere · 42dot · **FuriosaAI** · **Reflection AI** | `jobs.ashbyhq.com/<회사>/<uuid>` · 지원은 뒤에 `/application` | 불필요 | 폼 직접 작성 + 이력서 업로드. **공고 목록·본문이 API 한 번에 다 뜬다** — 아래 §Ashby API |
 | **ninehire** | Enhans · **Telechips**(자체 도메인 화이트라벨) | `<회사>career.ninehire.site/job_posting/<id>` · `careers.telechips.com/job_posting/<id>` | 불필요 | **서술형 칸 없음.** 이력서 + URL 한 줄이 전부. ⚠ **파일 업로드를 에이전트가 못 한다** — 아래 §브라우저 축 |
 | **Workable** | **Lunit(루닛)** 한국 채용 | `apply.workable.com/<회사>/j/<코드>/` · 지원은 뒤에 `apply/` | 불필요 | **목록·본문·게시일이 공개 API 로 뜬다** — `apply.workable.com/api/v1/widget/accounts/<회사>?details=true` (title·city·employment_type·published_on·telecommuting·description). ⚠ 폼 구조는 아직 눈으로 안 봤다 |
+| **Workday** | **GE HealthCare** 🌐 | `gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/..._<req>-1` | 폼에서 확인 | `wday/cxs/gehc/GEHC_ExternalSite/job/<posting>` JSON에 본문·`posted`·`canApply`·지원 URL이 뜬다. ⚠ 예전 Phenom 페이지와 열림 상태가 충돌할 수 있어 **Workday를 현재 SSOT로 확인**한다 |
 | **Greenhouse** | Toss (`toss.im` 경유) | `toss.im/career/job-detail?gh_jid=<id>` | 불필요 | ⚠ `toss.im`은 브라우저 안전 제한으로 에이전트가 못 연다 |
 | ~~자체~~ | ~~FuriosaAI~~ | — | — | **정정: FuriosaAI 는 Ashby 다**(위 행). `furiosa.ai/careers` 는 목록 페이지일 뿐이고 「Apply」가 Ashby 로 넘긴다 |
 
@@ -78,6 +79,7 @@ curl -s "https://api.ashbyhq.com/posting-api/job-board/<슬러그>?includeCompen
 |---|---|---|---|---|---|---|
 | **Lunit (루닛)** | | **(Seoul) Senior AX Engineer** | AI | **Workable** | **✓** | `4426954164` → **건 열림 · `ready`** |
 | **FuriosaAI** | | **Software Engineer, Agent System Developer** | AI | Ashby | **✓** | `4387941500` → **건 열림 · `ready`** |
+| **GE HealthCare** | **🌐** | **Senior Software Engineer** | Embedded/Systems | **Workday** | **✓** | `R4042393` · `4430473327` → **건 열림 · `draft`** |
 | **HITS** (히츠) | | AI Agent Engineer | AI | **easy** | **✓** | `4420262371` |
 | **카카오뱅크** | | DevOps 엔지니어 | DevEx | offsite | ? | `4437387455` |
 | **NeuroFusion** | ? | Back End Developer | SWE | — | ? | `4444060387` |
@@ -260,6 +262,7 @@ NPU·컴파일러 도메인 + 문서·전파 축이 한 자리에서 겹친다. 
 | Rebellions | | 8건 | **System Software Architect** | 시스템 SW 축이 증거가 가장 두껍다 |
 | XCENA | | 11건 | **Performance & Developer Tools** | 나머지는 SoC/HW 설계 |
 | OpenAI | **🌐** | 5건 | **Developer Experience Engineer** | DevEx가 가장 정확히 맞고 경쟁이 얕다 |
+| GE HealthCare | **🌐** | 성남 Software·AI/ML 연차별 묶음 | **Senior Software Engineer** | 7~12년 application/system SW가 정면. AI/ML 계열은 모델 개발 하드 갭 |
 | NHN | | 5건 | 내려면 **LLM 기술 개발** `4439978335` | ⚠ **세 번째 접촉** — GLG 판단 자리 |
 | CJ OLIVE YOUNG | | 2건 | **Forward Deployed AI Engineer** | FDE 축이 더 얕다 |
 | ~~KRAFTON~~ | | ~~14건~~ | — | **게임회사 제외** |

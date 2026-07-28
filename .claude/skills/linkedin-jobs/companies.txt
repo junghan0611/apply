@@ -60,3 +60,7 @@ greeting:stradvision    # 스트라드비젼 23
 # 베어로보틱스 bear-robotics.breezy.hr — **Breezy HR**. 지원은 공고 URL + `/apply`
 # 펭귄솔루션스 careers.penguinsolutions.com — SuccessFactors 계열 🌐
 # 소나투스     LinkedIn Easy Apply 로 받는다 (자체 보드 미확인) 🌐
+# GE HealthCare 🌐 — **Workday** `gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite`.
+#   상세 JSON: `/wday/cxs/gehc/GEHC_ExternalSite/job/<posting-slug>`.
+#   `posted`·`canApply`·`externalUrl`을 현재 열림 SSOT로 본다. 예전
+#   `careers.gehealthcare.com` Phenom 페이지는 같은 req를 `filled`로 잘못 보일 수 있다.

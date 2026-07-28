@@ -31,6 +31,7 @@
 | Sonatus 🌐 | Staff DevOps Engineer | ready | — | **LinkedIn Easy Apply** | Embedded | `sonatus--staff-devops-engineer` |
 | Telit Cinterion 🌐 | Edge AI Software Engineer | ready | — | **Paylocity** (자체 보드) | Embedded | `telit-cinterion--edge-ai-software-engineer` |
 | AIRS Medical | AX Engineer | ready | — | 그리팅 (자체 도메인) | DevEx | `airs-medical--ax-engineer` |
+| GE HealthCare 🌐 | Senior Software Engineer | draft | — | **Workday** (공식 외부 사이트) | 미정 — Systems Software 컷 판단 | `ge-healthcare--senior-software-engineer` |
 
 ---
 

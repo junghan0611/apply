@@ -5,7 +5,7 @@
   위로 찌르는 것이 기본값이고 — **떨어져도 이름이 알려진다.** 지역은 후보를 거르는 축이 아니다.
 - **Current**: **하루 저녁에 6건 → 13건 `ready`** (AI 5 · Embedded 4 · FDE 2 · DevEx 2). GLG 가 링크를 던지면 그 자리에서
   본문·폼 스키마·지원 URL(HTTP 200)까지 확인해 케이스를 열었다.
-  `applications/check.py` → **22건 일치**.
+  `applications/check.py` → **23건 일치**.
 
   **AI Engineer 컷 — 5건** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
 
@@ -54,8 +54,9 @@
   | **OpenAI** 🌐 Developer Experience Engineer (Seoul) | DevEx | 준비 끝. 되살릴 때 `submission.md` 부터 |
   | **Penguin Solutions** 🌐 Sr. System Engineer 🆕 | 미정 | **적합도 최하위.** HPC 운영·SLURM·ITIL·온콜이 축 밖. 대는 카드는 **NVM 파일시스템·병렬 스토리지 연구 4년** 하나 |
 
-  **경로가 여덟으로 늘었다** — Ashby 4 · 그리팅 3 · Workable 1 · ninehire 1 ·
+  **경로가 아홉으로 늘었다** — Ashby 4 · 그리팅 3 · Workable 1 · ninehire 1 ·
   **토스 자체** 1 · **Breezy** 1 · **Paylocity** 1 · **LinkedIn Easy Apply** 1.
+  **Workday** 1(GE HealthCare).
 
 - **Next**: **GLG 가 노트북 브라우저에서 제출한다**(오라클서버는 탐색·준비 축이다).
   개인·법적 값 입력 → **파일명 눈으로 확인** → Submit. 낸 뒤 올린 파일을 그 건의 `submit/` 에
@@ -82,6 +83,8 @@
   - **42dot · 업스테이지** — 둘 다 전형에 **코딩 테스트**가 있다.
   - **Reflection AI** — `기술 리더십 2년+` 은 직함으로 없다. **지어내지 않는다.**
 - **다음 배치 — 말만 하면 이 순서로 연다** (`applications/INBOX.md` §보드 훑기 수확)
+  - **GE HealthCare 🌐** `Senior Software Engineer` — **draft 케이스 열림**. 공식 Workday
+    `R4042393`은 `posted=true`·`canApply=true`. **「가자」면 Systems Software 컷부터 결정한다**
   - **센드버드** `Software Engineer, AI Agent` — 서울, greenhouse
   - **카카오모빌리티** `물류 & 에이전트 개발실 백엔드` — 판교, 대기업
   - **리벨리온** `Linux Device Driver Engineer` — 판교 정자. **LinkedIn 에 없던 자리**
@@ -94,7 +97,7 @@
 
 ## 지원 실행
 
-- `applications/check.py` 통과: LEDGER ↔ **22건** submission ↔ submit 스냅샷 일치.
+- `applications/check.py` 통과: LEDGER ↔ **23건** submission ↔ submit 스냅샷 일치.
 - **GLG 가 링크를 던지는 흐름이 통했다 (2026-07-28 밤).** LinkedIn URL 하나를 받으면
   `ljobs.py detail` 로 본문을 뜨고 → **원본 ATS 를 찾아** 경로를 바꾸고 → 폼 스키마까지
   확인해 케이스를 연다. 이 저녁에만 **처음 만나는 ATS 넷**을 확인했다 —
