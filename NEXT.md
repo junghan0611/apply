@@ -1,60 +1,83 @@
-# NOW — 공고 탐색 → 직무별 증거 컷 → 제출 원장
+# NOW — 제출 레인 가동 중. 다음 한 걸음은 FuriosaAI
 
-- **Current**: 2026-07-28, 세 레인이 병행 중이다. `.claude/skills/linkedin-jobs/`는 공고
-  탐색·랭킹, `resume/`은 직무별 PDF, `applications/`는 JD·폼·제출 원장을 쥔다.
-- **Résumé design**: 사실은 `resume/body.org` 한 벌이다. 타깃 정본의 `CV_*_MODULES`가 같은
-  사실을 직무별로 선택·배열하고, 각 컷은 보이는 GitHub URL·실행 명령·제3자 PR과
-  비공개/공개 경계를 담은 `Public Evidence` 절을 별도로 가진다.
-- **Built**: `resume/build/` 6종 PDF, 전부 verify 통과. Embedded는 2쪽, 나머지는 3쪽.
-  1. `KimJunghan_Resume.pdf` — Agent Platform & Systems 공개 입구
-  2. `KimJunghan_Resume_AI_Engineer.pdf` — Applied AI / Agent Platform (모델 학습 과장 없음)
-  3. `KimJunghan_Resume_Forward_Deployed_Engineer.pdf` — 도메인 오너·증거 계약·인수인계
-  4. `KimJunghan_Resume_Embedded_Software_Engineer.pdf` — 양산·포팅·프로토콜·제품화
-  5. `KimJunghan_Resume_Developer_Experience_Engineer.pdf` — 도구·프로비넌스·문서 인에이블
-  6. `KimJunghan_Resume_Software_Engineer.pdf` — 펌웨어→에이전트 루프 세로축
-- **Next**: `applications/AGENTS.md` 계약으로 공고를 보존하고 가장 강한 컷 하나만 낸다.
-  새 직무는 `resume/AGENTS.md`의 8단계로 만든다. 자료를 더 넣기 전에 모듈을 고른다.
-- **Blocker**: none.
-- **Read**: 루트 `AGENTS.md` → 각 레인의 `AGENTS.md` → `applications/LEDGER.md`.
-- **Do not touch**: PDF를 손으로 고치지 않는다. Org를 고치고 `./run.sh all`로 다시 낸다.
-  공개 인접 구현을 비공개 양산·고객 배포의 증거처럼 쓰지 않는다.
+- **Current**: 2026-07-28. **오늘 4건 제출했다.** 탐색→작성→제출 파이프라인이 실제로 돌았고
+  플랫폼 5종을 실측으로 확인했다. 다음 세션은 **`applications/INBOX.md` 티어1 맨 위부터**
+  이어서 내면 된다.
+- **Next (한 걸음)**: **FuriosaAI — Software Engineer, Agent System Developer**
+  (`jobs/view/4387941500`, 강남 도산대로 145, 컷=AI Engineer).
+  JD가 agent orchestration · context management · tool execution · memory abstraction 을
+  그대로 요구하고 팀 이름이 **AI Transformation** 이다. FuriosaAI는 23건 전부 강남권이라
+  회사 자체가 지역 기준을 통과한다. 경로는 자체(`furiosa.ai/careers`) — 가입 여부 미확인.
+- **Blocker**: none. 단 아래 §GLG 확정 필요 두 개가 폼에서 나오면 거기서 멈춘다.
+- **Read**: `applications/AGENTS.md` → `applications/FAQ.md` → `applications/INBOX.md`
+  → `applications/LEDGER.md`.
+- **Do not touch**: 제출 버튼은 GLG 승인 없이 누르지 않는다(건마다·세션마다 따로).
+  연락처·개인정보 동의는 GLG가 직접 입력·체크한다. PDF를 손으로 고치지 않는다.
 
-## 이번 판에서 남겨 둔 것 (GLG 판단 또는 다음 세션)
+## 오늘 제출한 것 (`applications/LEDGER.md` 가 SSOT)
 
-- [ ] **연락처 수위** — 지금은 이메일·GitHub·가든·LinkedIn 넷뿐이다. 전화번호·주소는
-      의도적으로 뺐다. 링크드인 첨부는 열람 범위가 넓을 수 있어 GLG가 결정할 자리다.
-      넣기로 하면 `pipeline/preamble.org` 의 `\cvheader` 한 곳만 고치면 여섯 컷에 다 반영된다.
-- [ ] **GLGMAN Universe 이미지** — `resume/images/master/` 자리를 비워 두었다. 이력서 3쪽
-      계약과 충돌해서 이번 판에는 넣지 않았다. 쓴다면 이력서 본문이 아니라 **별도 1장짜리
-      비주얼 포트폴리오**(`resume/visual.org`)로 여는 편이 맞다. 패턴은 `authologplay` /
-      `command-glgimage`, 프롬프트 보존은 `:PROMPT:` 헤딩 규약.
-- [ ] **제3자 증거 수치 재확인** — entwurf 스타 수(21)와 npm 설치 수(1,395/30d)는 2026-07-10
-      측정값이다. 현재 본문은 npm 수치만 남기고 "(2026-07)"로 표기했다. 스타 수를 다시 넣으려면
-      `gh` 로 재측정 후 `body.org` 의 Third-Party Validation 을 고친다.
-- [ ] **국문 이력서 컷** — 국내 공고가 국문 이력서를 요구하면 같은 골격에서 `resume-ko.org`
-      로 가른다. 활자·조판은 그대로 쓸 수 있다(xetexko·Pretendard 이미 배선됨).
-- [ ] **공개 트랙 반영** — `junghan0611/resume/README.md`는 2026-07-10 판이다. 이번 판의
-      직무별 증거 언어와 모듈 조립 구조를 공개 리포로 되돌릴지는 별도 판단한다.
-      비공개→공개 자동 동기화는 하지 않는다.
+| 회사 | 직무 | 컷 | 플랫폼 |
+|---|---|---|---|
+| Hyundai AutoEver | AI Agent 엔지니어 | AI + 국문 자기소개서 + 사전질문 967자 | 그리팅 |
+| DEEPX | AI Agent Workflow Automation Engineer | AI + 경력기술서 통합(7쪽) | 그리팅 |
+| DEEPX | Linux BSP Engineer | Embedded + 경력기술서 통합(5쪽) | 그리팅 |
+| Enhans | Forward Deployed Engineer (7년 이상) | **FDE** | ninehire |
+
+여섯 컷 중 **FDE 컷이 오늘 처음 쓰였다.**
+
+## GLG 확정 필요 (다음 폼에서 바로 걸린다)
+
+- [ ] **희망 연봉 / 현재 연봉** — 오늘 네 폼은 안 물었지만 다음은 물을 수 있다.
+      「면접 후 협의」로 둘 수 있으면 그렇게 둔다.
+- [ ] **입사 가능일** — 재직 중이라 인수인계 필요. 통상 「협의 가능」 또는 「4주 이내」.
+- [ ] **병역** — `FAQ.md` §5.
+- [ ] **이직 사유 한 문장** — 거의 모든 면접에 나온다. 이력서 Summary 마지막 문단
+      (「개인의 기억·저자성·장기 협업 → 기업의 데이터·거버넌스·워크플로」)을 쓸 수 있다.
+
+## 판단 대기
+
+- [ ] **Insighter** — Easy Apply **임시저장 상태로 남아 있다**(제출 아님). 서울 마포 DMC라
+      지역 기준 밖. 버리려면 `LEDGER.md` 상태를 `closed` 로 바꾸고 `_archive/` 로 옮긴다.
+- [ ] **NHN LLM 기술 개발** (`4439978335`, 판교) — `nhn/` AX 지원(7/20)에 이은 **세 번째 접촉**.
+      직무는 다르지만 같은 회사다.
+- [ ] **resume/body.org 연도** — 연구실을 `2018 – 2021` 로 적고 있으나 GLG 확정 사실은
+      **`2018 – 2022.06`** 이다. 고치면 재빌드 필요(3쪽 계약 확인).
+
+## 이력서 레인에 남은 것
+
+- [ ] 연락처 수위(전화번호 미포함) · GLGMAN 비주얼 포트폴리오 분리 · entwurf 스타 수 재측정
+      · 국문 이력서 컷 · 공개 트랙(`junghan0611/resume`) 반영 — 상세는 `resume/AGENTS.md`.
 
 # RECENT
 
-- [2026-07-28] `resume/` 신설. Org SSOT 한 벌(`body.org`) + 표제·서사만 다른 컷 6장 구조.
-  조판은 `article` 기반 자체 파이프라인 — nhn 의 acmart(논문)를 재사용하지 않았다. 이력서를
-  논문 판면에 얹으면 두 쪽이면 될 문서가 네 쪽이 된다.
-- [2026-07-28] 조판에서 잡은 것 셋: `#+INCLUDE` 에 `:minlevel 1` 이 없어 본문 전체가 한 단
-  밀려 절이 소절로 조판되던 문제, 표를 균등 X 로 늘려 설명 열이 좁아지던 문제(세 열 이상이면
-  첫·끝을 자연폭으로), 넷째 쪽에 절 하나만 남아 3분의 2가 비던 문제(판면과 문장을 같이 조여
-  3쪽 확정).
-- [2026-07-20] NHN AX 지원 제출 완료 (`nhn/` 레인은 닫혀 있다). 연락이 오면
+- [2026-07-28] **`applications/` 레인 신설·가동.** `LEDGER.md`(원장) · `FAQ.md`(값+근거+화법) ·
+  `INBOX.md`(후보 418건) · `new.sh`(건 스캐폴딩). 폴더명은 `<company>--<role>` 영문 소문자.
+  건마다 `submit/` 에 **실제로 올린 파일 사본**을 둔다 — 발사대는 갱신되므로 링크로는 3개월 뒤
+  「그때 무엇을 냈는지」가 사라진다.
+- [2026-07-28] **총 경력 8+ 확정.** NEMO-UX 4년(법인 2 + 준비 2) + 대학원 4년 4개월
+  (2018–2022.06) + GoQual 1년 2개월 = 9년 6개월. 8+는 낮춰 부르는 값이라 안전하고 모든
+  연차 필터를 통과한다. **어디에나 같은 값으로 낸다.** 2022.06–2025.05 공백(육아·물류창고)은
+  약점이 아니라 전환점으로 쓴다 — Independent Work가 그때 시작됐고 커밋·노트가 날짜째로
+  공개돼 있다.
+- [2026-07-28] **플랫폼 5종 실측**: 그리팅 · Ashby · ninehire · Greenhouse · 자체.
+  `file_upload` 가 이 저장소 경로를 그대로 받는다(LinkedIn·그리팅). 단 ninehire는 file input이
+  DOM에 없어 GLG가 직접 올린다. LinkedIn 저장 이력서에 **NHN 전용 문서가 물려 있던 것**을
+  베이스판으로 교체했다 — 안 했으면 오늘 낸 곳마다 그게 딸려 나갔다.
+- [2026-07-28] `linkedin-jobs` 스킬 신설(오푸스2). guest API 직접 조회 + exa 축 병행.
+  지역 필터는 **옵셔널·소프트** — 근무지 확인율이 18%라 미확인을 자르면 놓치는 쪽이 크다.
+- [2026-07-28] `resume/` 직무별 증거 컷 재편(GPT). `body.org` 모듈화 + `CV_*_MODULES` 선택 +
+  모든 컷에 `Public Evidence` 절(실행 명령·제3자 PR·공개/비공개 경계).
+- [2026-07-20] NHN AX 지원 제출 (`nhn/` 레인은 닫혀 있다). 연락이 오면
   `nhn/build/KimJunghan_AX_Detail.md` 의 Tech Interview anchors 로 라이브 코딩을 준비한다.
 
 # LEDGER
 
+- **제출 이력 SSOT**: `applications/LEDGER.md`
+- **폼·면접 답변 SSOT**: `applications/FAQ.md` (값 + 근거 + 화법)
 - 사실·서사 SSOT: `~/repos/gh/junghan0611/apply/MATERIAL.md`
 - 영문 공개키(가든): `20260318T183247` · 자기소개 서사: `20230814T142800`
   · 기업용 하네스 좌표: `20231018T221900`
-- 이력서 계약: `resume/AGENTS.md` · NHN 제출 계약: `nhn/AGENTS.md`
-- 패키지 탐색 계약: `nhn/AGENTS.package.md`, `nhn/README.package.md`
+- 계약: `applications/AGENTS.md` · `resume/AGENTS.md` · `nhn/AGENTS.md`
+- 탐색: `.claude/skills/linkedin-jobs/SKILL.md`
 - 라이브 수치: `agenda.junghanacs.com/api/stats` (100 단위 내림, 측정일 명기)
-- 최종 산출물은 Org 정본에서 재생성한다. `./run.sh all` → `./run.sh verify`.
+- 이력서는 Org 정본에서 재생성한다. `./run.sh all` → `./run.sh verify`.

@@ -258,10 +258,14 @@ def parse_criteria(page):
 
 
 def get_detail(jid):
-	"""공고 하나의 본문·criteria·근무지를 한 요청으로 얻는다."""
+	"""공고 하나의 본문·criteria·근무지·지원경로를 한 요청으로 얻는다."""
 	if not jid:
-		return {"description": "", "criteria": {}, "worksite": "", "worksite_src": "none"}
+		return {"description": "", "criteria": {}, "worksite": "", "worksite_src": "none",
+		        "apply": ""}
 	page = fetch(POSTING + jid)
+	# offsite 아이콘이 붙어 있으면 회사 사이트/외부 ATS 로 나가는 공고다.
+	# 없으면 LinkedIn Easy Apply — 브라우저 축이 가입 없이 바로 낼 수 있다.
+	apply = "offsite" if "offsite-apply-icon" in page else "easy"
 	m = re.search(
 		r'class="(?:show-more-less-html__markup|description__text)[^"]*">(.*?)</div>',
 		page, re.S)
@@ -272,7 +276,7 @@ def get_detail(jid):
 	body = re.sub(r"\n{3,}", "\n\n", body).strip()
 	ws, src = extract_worksite(body)
 	return {"description": body, "criteria": parse_criteria(page),
-	        "worksite": ws, "worksite_src": src}
+	        "worksite": ws, "worksite_src": src, "apply": apply}
 
 
 def card_hint(loc):
@@ -356,13 +360,42 @@ def cmd_search(a):
 	emit(rows[:a.limit], a)
 
 
+def cmd_enrich(a):
+	"""카드만 모아 둔 json 에 본문 유래 정보를 채운다.
+
+	여러 쿼리를 돌면 같은 공고가 겹친다. 쿼리마다 본문을 받으면 그 배수만큼
+	낭비하므로, 카드는 `search --json`(빠름)으로 모아 병합한 뒤 여기서 한 번만
+	받는다. 이미 채워진 항목은 건너뛴다 — 중단됐던 판을 이어서 돌릴 수 있다.
+	"""
+	rows = json.load(open(a.file)) if a.file != "-" else json.load(sys.stdin)
+	todo = [r for r in rows if a.force or "worksite" not in r]
+	print(f"# enrich {len(todo)}/{len(rows)}", file=sys.stderr)
+	for i, r in enumerate(todo, 1):
+		print(f"\r# {i}/{len(todo)}", end="", file=sys.stderr)
+		d = get_detail(r["id"])
+		r["worksite"], r["worksite_src"] = d["worksite"], d["worksite_src"]
+		r["criteria"], r["apply"] = d["criteria"], d["apply"]
+		if a.keep_body:
+			r["description"] = d["description"][:a.max_chars]
+		time.sleep(a.delay)
+		if a.out and i % 20 == 0:
+			json.dump(rows, open(a.out, "w"), ensure_ascii=False)
+	print("\r" + " " * 24 + "\r", end="", file=sys.stderr)
+	if a.out:
+		json.dump(rows, open(a.out, "w"), ensure_ascii=False)
+		known = sum(1 for r in rows if r.get("worksite"))
+		print(f"# {a.out}: {len(rows)}건, 근무지 확인 {known}", file=sys.stderr)
+	else:
+		json.dump(rows, sys.stdout, ensure_ascii=False)
+
+
 def cmd_detail(a):
 	for jid in a.ids:
 		jid = re.sub(r".*?(\d{6,}).*", r"\1", jid)
 		d = get_detail(jid)
 		print(f"===== {jid} https://www.linkedin.com/jobs/view/{jid}")
 		ws = d["worksite"] or "?"
-		print(f"# 근무지: {ws}  (근거: {d['worksite_src']})")
+		print(f"# 근무지: {ws}  (근거: {d['worksite_src']})  지원: {d['apply']}")
 		if d["criteria"]:
 			print("# " + " | ".join(f"{k}: {v}" for k, v in d["criteria"].items()))
 		print(d["description"][:a.max_chars])
@@ -426,7 +459,7 @@ def emit(rows, a):
 			tail = "·원문빈칸" if r.get("worksite_src") == "label-empty" else ""
 			ws = f"?({hint}{tail})" if hint else (f"?({tail.lstrip('·')})" if tail else "?")
 		cols = [r.get("score", ""), r["id"], r["posted"][:10], r["company"],
-		        r["title"], r["location"], ws, r["url"]]
+		        r["title"], r["location"], ws, r.get("apply", ""), r["url"]]
 		print("\t".join(str(c) for c in cols))
 		if r.get("description"):
 			print("\t" + r["description"].replace("\n", " ⏎ ")[:600])
@@ -462,6 +495,15 @@ def main():
 	s.add_argument("--delay", type=float, default=0.7)
 	s.add_argument("--json", action="store_true")
 	s.set_defaults(func=cmd_search)
+
+	e = sub.add_parser("enrich", help="카드 json 에 근무지·criteria·지원경로를 채운다")
+	e.add_argument("file", help="search --json 을 병합한 파일 (- 는 stdin)")
+	e.add_argument("-o", "--out", default="", help="저장 경로 (20건마다 중간 저장)")
+	e.add_argument("--force", action="store_true", help="이미 채워진 것도 다시")
+	e.add_argument("--keep-body", action="store_true", help="본문도 남긴다 (커진다)")
+	e.add_argument("--max-chars", type=int, default=6000)
+	e.add_argument("--delay", type=float, default=0.7)
+	e.set_defaults(func=cmd_enrich)
 
 	d = sub.add_parser("detail")
 	d.add_argument("ids", nargs="+", help="job id 또는 공고 URL")
