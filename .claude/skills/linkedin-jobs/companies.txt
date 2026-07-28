@@ -64,3 +64,9 @@ greeting:stradvision    # 스트라드비젼 23
 #   상세 JSON: `/wday/cxs/gehc/GEHC_ExternalSite/job/<posting-slug>`.
 #   `posted`·`canApply`·`externalUrl`을 현재 열림 SSOT로 본다. 예전
 #   `careers.gehealthcare.com` Phenom 페이지는 같은 req를 `filled`로 잘못 보일 수 있다.
+# 홀리데이로보틱스 holiday-robotics.com/careers — 자체 채용홈(JS 렌더). probe 전부 미검출.
+#   본문은 LinkedIn guest API 로 뜬다. 페이지에 `Wild Card` 자유 지원 입구가 따로 있다
+# 한화비전    hanwhavision.ninehire.site — ninehire. **목록에 없는 공고도 URL 로는 산다**
+#   (`/job_posting/weLEZzYc` 200인데 목록 밖). LinkedIn offsite 링크로만 닿는 자리가 있다
+# 엑시나(XCENA) xcena.career.greetinghr.com — 그리팅. LinkedIn 12건 vs 보드 **23건**.
+#   **LinkedIn 본문은 연차 요건이 잘려 온다** — 그리팅 원문이 SSOT

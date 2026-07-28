@@ -352,3 +352,65 @@ Ashby 보드는 55건이었다. **회사를 정했으면 그 회사 채용 보�
   **주간 온콜**이 상수다. 대는 카드는 **NVM 파일시스템·병렬 스토리지 연구 4년** 하나뿐이다.
 - **처음 만난 ATS 넷**(토스 자체 · Breezy · Paylocity · SuccessFactors)의 경로는
   `.claude/skills/linkedin-jobs/companies.txt` 하단에 적어 두었다.
+
+---
+
+## 🤖 로봇·피지컬 축 — 2026-07-28 심야 개시
+
+**GLG 방향 전환**: "너무 시스템 가니까 재미없어 보인다. 로봇쪽도 넓게 보려고 해."
+**에이전트 공존 = 피지컬 실체를 염두한 포석**이라는 축을 여기서부터 실제 후보로 옮긴다.
+GLG 는 로봇 전공자가 아니지만 **전체 시스템을 다 다뤄 왔고** ROS·RTOS 도 만졌다.
+기준은 적합도가 아니라 **지향과 흥미**다.
+
+### 케이스로 연 것
+
+| 회사 | 자리 | 근무지 | 비고 |
+|---|---|---|---|
+| **Holiday Robotics** | Forward Deployed Robotics Engineer (3–8년) | 서울 강남 | **케이스 열림.** 2024설립·28명·Series A **$105M**·산업용 휴머노이드 `FRIDAY`. ⚠ ROS2 필수 |
+
+**Holiday Robotics 채용 페이지에 `Wild Card` 입구가 따로 있다** —
+*"맞는 자리가 없으면, 무슨 문제를 풀고 싶고 무엇을 만들지 말해 달라. 같이 방법을 찾자."*
+FDE 폼이 ROS2 로 막히면 **이쪽이 오히려 GLG 의 문**이다. 같은 회사에 두 입구를 동시에 쓰지 않는다.
+
+### 훑어서 나온 것 — 아직 본문 미확인
+
+| 회사 | 자리 | 근무지 | 게시 | ID |
+|---|---|---|---|---|
+| **Holiday Robotics** | Humanoid Robot Field Service Manager (3–10년) | 서울 강남 | 07-21 | 4443053720 |
+| Hyundai AutoEver | [SDx] Platform Developer - Robot | 서울 | 07-24 | 4426051229 |
+| Raion Robotics | 로봇 SW 엔지니어 (서울/대전) | 서울 | 07-22 | 4443121237 |
+| Beyond Honeycomb | Robotics Engineer | 서울 | 07-15 | 4439996330 |
+| Hyundai Motor | [Manufacturing Robotics] Robotics Data Engineer | 성남 | 07-15 | 4438043344 |
+| Hyundai Motor | Lunar Mobility Software Engineer (Space) | 화성 | 07-15 | 4438029658 |
+| Woowa Bros. | 로보틱스 S/W 엔지니어링 (SLAM 개발) | 서울 | 07-17 | 4414163925 |
+| Sequor Robotics | SLAM Engineer | 서울 | 07-28 | 4445448460 |
+| NVIDIA 🌐 | Solutions Architect - AI Technology Center for **Physical AI** | 서울/인천 | 07-24 | 4416338532 |
+| NVIDIA 🌐 | Simulation Engineer, Industrial Physics and Robotics | 서울/인천 | 07-22 | 4434379426 |
+| Superb AI | Simulation Engineer | 서울 | 07-05 | 4437115788 |
+| Ludo Robotics | AI/ML Research Engineer (Robotics) (2년 이상) | 서울 | 07-23 | 4386388310 |
+| Doosan Robotics | Robotics Mechanical Engineer | 성남 | 07-21 | 4414823437 |
+
+### ⛔ Harper 는 안 쓴다 (2026-07-28 GLG 확정)
+
+> "harper는 안 쓸 거야. **여기 실체가 별로 없어.**"
+
+Harper 명의로 올라온 자리(`Head of Robotics Systems` 4443100893 · `Robotics Systems Engineer`
+4443102776 · 앞서 나온 `Founding Engineer, AI Agent`)는 **전부 중개 구조**다. 공고 본문이
+*"Harper is an AI career agent that works for you — the candidate. Skip the application form:
+just talk to Harper"* 로 시작하고, **실제 고용주 이름이 공고 어디에도 없다**("삼성·현대·LG 가
+투자한 로봇 파운데이션 모델 스타트업"이라고만 쓴다).
+
+**앞으로 Harper 명의 공고는 목록에 올리지 않는다.** 훑다가 나오면 이 줄을 근거로 건너뛴다.
+
+**이미 낸 것과 겹치는 자리**: Bear Robotics(`ready`, Systems SW Engineer) · Hyundai AutoEver
+(`submitted`, AI Agent Engineer) — 로봇 축에서도 같은 회사가 다시 나온다.
+
+### SLAM·제어·시뮬레이션은 축이 아니다
+
+SLAM(우아한형제들·Sequor) · 기구 설계(두산) · 시뮬레이션(NVIDIA·Superb AI)은 **GLG 축이
+아니다.** 로봇 축에서 GLG 가 서는 자리는 셋이다.
+
+1. **현장 배치·통합·필드 디버깅** (Holiday FDE)
+2. **로봇 플랫폼 위의 시스템/플랫폼 소프트웨어** (Bear Robotics · AutoEver SDx)
+3. **로봇과 에이전트가 만나는 지점** — 아직 공고로 잘 안 나온다. **여기가 진짜 축이고,
+   그래서 `Wild Card` 같은 입구가 중요하다.**

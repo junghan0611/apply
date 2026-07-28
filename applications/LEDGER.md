@@ -32,6 +32,10 @@
 | Telit Cinterion 🌐 | Edge AI Software Engineer | ready | — | **Paylocity** (자체 보드) | Embedded | `telit-cinterion--edge-ai-software-engineer` |
 | AIRS Medical | AX Engineer | ready | — | 그리팅 (자체 도메인) | DevEx | `airs-medical--ax-engineer` |
 | GE HealthCare 🌐 | Senior Software Engineer | draft | — | **Workday** (공식 외부 사이트) | 미정 — Systems Software 컷 판단 | `ge-healthcare--senior-software-engineer` |
+| XCENA (엑시나) | System Software 계열 — **회사 스캔 23건** | **held** | — | 그리팅 (자체 도메인) | — (목록만 · GLG: "너무 시스템") | `xcena--system-software` |
+| Holiday Robotics | Forward Deployed Robotics Engineer (3–8년) | draft | — | 자체 채용홈 `holiday-robotics.com` | FDE (⚠ **ROS2 필수** 확인) | `holiday-robotics--forward-deployed-robotics-engineer` |
+| Hanwha Vision (한화비전) | AI Agent Architecture Lead (석사+10년, Director) | draft | — | ninehire 추정 — **지원 URL 미확인** | AI Engineer + 포트폴리오 | `hanwha-vision--ai-agent-architecture-lead` |
+| NHN | LLM 기술 개발 (LLM / Agent) — **NHN 2번째 건** | draft | — | NHN 자체 채용홈 — **URL 미확인** | AI Engineer + **포트폴리오 필수** | `nhn--llm-technology-development-llm-agent` |
 
 ---
 
