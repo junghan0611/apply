@@ -156,14 +156,35 @@ def main():
 			if json.load(f) != [{"id": "1"}]:
 				fails.append("atomic json: 저장 후 값 불일치")
 
-	total = len(MUST_NOT) + len(MUST_HAVE) + len(EXTRACT) + 2 + len(score_cases) + 2
+	# 고용형태. 정규직이 아닌 자리가 목록에서 정규직처럼 보이면 안 된다 —
+	# KRAFTON 계약직 공고가 티어1 표에 그냥 섞여 들어갔던 실물 사고에서 온 케이스다.
+	employment_cases = [
+		({"Employment type": "Contract"}, "⚠Contract"),
+		({"Employment type": "Internship"}, "⚠Internship"),
+		({"Employment type": "Part-time"}, "⚠Part-time"),
+		({"Employment type": "Temporary"}, "⚠Temporary"),
+		({"Employment type": "Full-time"}, ""),
+		({"Seniority level": "Entry level"}, ""),
+		({}, ""),
+	]
+	for crit, want in employment_cases:
+		got = lj.employment_flag({"criteria": crit})
+		if got != want:
+			fails.append(f"employment_flag({crit}) → {got!r}, 기대 {want!r}")
+	# criteria 자체가 없는 행에서도 죽지 않는다.
+	if lj.employment_flag({}) != "":
+		fails.append("employment_flag: criteria 없는 행 처리 실패")
+
+	total = (len(MUST_NOT) + len(MUST_HAVE) + len(EXTRACT) + 2 + len(score_cases) + 2
+	         + len(employment_cases) + 1)
 	if fails:
 		print(f"FAIL {len(fails)}/{total}")
 		for f in fails:
 			print("  " + f)
 		return 1
 	print(f"ok {total}/{total} — 지명 오탐 {len(MUST_NOT)} · 참값 {len(MUST_HAVE)} · "
-	      f"추출 {len(EXTRACT)} · 점수 {len(score_cases)} · 안전성 4")
+	      f"추출 {len(EXTRACT)} · 점수 {len(score_cases)} · "
+	      f"고용형태 {len(employment_cases)} · 안전성 5")
 	return 0
 
 

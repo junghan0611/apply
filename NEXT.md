@@ -20,9 +20,12 @@
 - `applications/check.py` 통과: LEDGER ↔ 5건 submission ↔ submit 스냅샷 일치.
 - FuriosaAI 다음 대기: **HITS**(강남역, Easy Apply, 석사요건 통과 · 적합도 중간) ·
   **42dot LLM Engineer**(판교, Ashby, 집중채용) · **XCENA Developer Tools**(판교).
-- ⚠ **INBOX 티어1 정정 2건** — `Sonatus` 는 실제로 DB 전문직(`Cloud Backend Engineer
-  (Databases)`)이라 **제외**, `KRAFTON AX Governance` 는 **계약직**이다. 카드 제목만 보고
-  올렸던 것을 본문 확인으로 잡았다.
+- **타깃 기준 갱신 (2026-07-28 GLG)** — `applications/AGENTS.md` §타깃 기준.
+  **게임회사 제외**(KRAFTON 3건 전부 탈락), **정규직 기본**, 지역은 **서울·판교면 통과**
+  (구 단위 미확인은 탈락 사유가 아니다). **외국계는 🌐로 표시**해 둔다 — 거르는 게 아니라
+  낼 때 비자·영어·본사 시차를 확인하라는 표시다.
+- **INBOX 를 회사 이름 중심으로 다시 짰다.** 위치 비중을 줄이고 `🌐`·`본문✓/?` 칸을 넣었다.
+  티어 2·3·4 는 **전부 본문 미확인**이라 내기 전에 본문부터 뜬다.
 - Insighter 는 `saved` — 마포 DMC 라 GLG 지역 기준 밖이다. 낼지 말지는 GLG 판단이고,
   안 내기로 하면 `closed` + `_archive/`.
 
@@ -39,8 +42,12 @@
 
 ## linkedin-jobs
 
-- 57개 network-free 회귀 검사 통과. 표준 흐름: 카드 수집 → dedupe → `enrich --keep-body` 한 번 →
+- 65개 network-free 회귀 검사 통과. 표준 흐름: 카드 수집 → dedupe → `enrich --keep-body` 한 번 →
   `rank --explain`.
+- **고용형태를 목록에 내보낸다.** `enrich` 가 받아 두던 `criteria` 를 `emit()` 이 한 번도
+  출력하지 않아 계약직이 표에 정규직처럼 섞였다. 이제 `⚠Contract` 로 뜬다.
+- **뒷정리 계약 2개를 SKILL.md 에 박았다** — 「제목을 줄이지 않는다」(괄호 안에 연차·고용형태가
+  있다), 「확정이라고 적으려면 본문을 읽었어야 한다」. 두 실물 사고에서 나왔다.
 - 고친 것: `intern`→`internal` 오탐, 알려진 근무지 mismatch 감점, 빈 fetch 를 Easy Apply 로 오판,
   search 의 `apply` 누락, enrich 원자 저장 · 재개, 점수 근거.
 - guest endpoint 는 비공식 · best-effort. 403/999 또는 markup 변경 시 exa/브라우저로 전환.

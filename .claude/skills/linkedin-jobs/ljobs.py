@@ -511,6 +511,18 @@ def cmd_rank(a):
 	emit(out[:a.limit], a)
 
 
+# 정규직이 아닌 자리는 **지원 여부 자체가 다른 결정**이다. criteria 는 enrich 가 이미
+# 받아 두는데 예전 emit 은 그것을 한 번도 내보내지 않았다 — 그래서 계약직 공고가 표에
+# 정규직처럼 섞여 들어왔다. 목록에서 눈에 띄게 만든다.
+_NON_PERMANENT = ("contract", "temporary", "internship", "part-time", "volunteer")
+
+
+def employment_flag(row):
+	"""정규직이 아니면 표시 문자열, 정규직·미확인이면 빈 문자열."""
+	et = (row.get("criteria") or {}).get("Employment type", "")
+	return f"⚠{et}" if et.strip().lower() in _NON_PERMANENT else ""
+
+
 def emit(rows, a):
 	if getattr(a, "json", False):
 		json.dump(rows, sys.stdout, ensure_ascii=False, indent=1)
@@ -526,7 +538,8 @@ def emit(rows, a):
 			tail = "·원문빈칸" if r.get("worksite_src") == "label-empty" else ""
 			ws = f"?({hint}{tail})" if hint else (f"?({tail.lstrip('·')})" if tail else "?")
 		cols = [r.get("score", ""), r["id"], r["posted"][:10], r["company"],
-		        r["title"], r["location"], ws, r.get("apply", ""), r["url"]]
+		        r["title"], r["location"], ws, r.get("apply", ""),
+		        employment_flag(r), r["url"]]
 		print("\t".join(str(c) for c in cols))
 		if getattr(a, "explain", False) and r.get("score_reasons"):
 			print("\t# " + "; ".join(r["score_reasons"]))

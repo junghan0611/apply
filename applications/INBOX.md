@@ -3,12 +3,20 @@
 여기 있는 것은 **아직 지원 건이 아니다.** GLG가 고르면 `./new.sh` 로 건이 되고 원장에 행이 생긴다.
 제출된 것은 `LEDGER.md` 가 SSOT다.
 
-기준(`AGENTS.md` §타깃 기준): **성남(판교)·강남권** · 영세 스타트업 제외 · 대기업은 자체 사이트 ·
-**한 회사 한 직무**.
+기준(`AGENTS.md` §타깃 기준): **서울·판교면 통과** · **게임회사 제외** · **정규직** ·
+영세 스타트업 제외 · 대기업은 자체 사이트 · **한 회사 한 직무**.
 
-수집 규모(2026-07-28): 34 쿼리 → 카드 352 → 본문 전부 조회 → 누적 **418건**, 근무지 확정 74건(18%).
-읽는 법: `?(Seongnam)` 은 **본문에 없고 카드에 찍힌 값**이다. 지우지 않는다 — 브라우저 축에서 확인한다.
-`경로` 의 `offsite` = 회사 사이트/외부 ATS, `easy` = LinkedIn Easy Apply.
+수집 규모(2026-07-28): 34 쿼리 → 카드 352 → 본문 전부 조회 → 누적 **418건**.
+
+## 이 표를 읽는 법
+
+- **회사 이름이 첫 축이다.** 후보는 사실상 전부 서울 아니면 판교라, 구 단위 미확인은
+  탈락 사유가 아니다. 위치는 참고로만 적는다.
+- **🌐 = 외국계** (본사가 해외). 거르라는 표시가 아니라 **낼 때 다른 것을 확인하라는 표시**다 —
+  비자·영어 상시 회의·본사 시차·한국 법인 규모. `FAQ.md` §5·§6.
+- **⚠계약직** 등 고용형태 표시가 붙은 것은 기본 제외다. 낼지는 GLG가 건별로 정한다.
+- **본문✓ / 본문?** — 본문을 읽었는지. **제목은 직무를 말해 주지 않는다**(§Sonatus 사고 참조).
+- `경로` 의 `offsite` = 회사 사이트/외부 ATS, `easy` = LinkedIn Easy Apply.
 
 ---
 
@@ -39,84 +47,99 @@
 
 ## 다음 타깃 — 우선순위
 
-### 티어 1 · 근무지 확정 + 「한 회사 한 직무」 권고 확정
+### 티어 1 · 본문까지 본 묶음
 
-| 회사 | 권고 직무 | 근무지 | 컷 | 경로 | 공고 |
-|---|---|---|---|---|---|
-| **FuriosaAI** | **Agent System Developer** | **강남 도산대로 145** | AI | offsite | `4387941500` |
-| **KRAFTON** | AX Governance Specialist (3년+) | **역삼** | AI | offsite | `4444946832` ⚠**계약직** |
-| **HITS** | AI Agent Engineer | **강남역** | AI | **easy** | `4420262371` |
-| **카카오뱅크** | DevOps 엔지니어 | **성남 분당구 분당내곡로 131** | DevEx | offsite | `4437387455` |
-| **NeuroFusion** | Back End Developer | 판교/강남 | SWE | — | `4444060387` |
-| ~~Sonatus~~ | ~~Staff Cloud Backend Engineer~~ | 판교 | — | easy | `4419070095` **제외** |
-| **LVIS** | Backend Software Engineer | 강남 | SWE | offsite | `4434953668` |
-| **Gauss Labs** | Senior FDE Operations (KR) | ?(역삼동) | **FDE** | offsite | `4445211164` |
+| 회사 | 🌐 | 권고 직무 (원제목) | 컷 | 경로 | 본문 | 공고 |
+|---|---|---|---|---|---|---|
+| **FuriosaAI** | | **Software Engineer, Agent System Developer** | AI | Ashby | **✓** | `4387941500` → **건 열림** |
+| **HITS** (히츠) | | AI Agent Engineer | AI | **easy** | **✓** | `4420262371` |
+| **카카오뱅크** | | DevOps 엔지니어 | DevEx | offsite | ? | `4437387455` |
+| **NeuroFusion** | ? | Back End Developer | SWE | — | ? | `4444060387` |
+| **LVIS** | ? | Backend Software Engineer | SWE | offsite | ? | `4434953668` |
+| **Gauss Labs** | **🌐** | Senior FDE Operations (KR) | **FDE** | offsite | ? | `4445211164` — SK hynix 자회사, 본사 Palo Alto |
 
-**FuriosaAI Agent System Developer가 1순위다.** JD가 agent orchestration · context management ·
-tool execution · memory abstraction 을 그대로 요구하고 팀 이름이 **AI Transformation** 이다.
-23건 전부 강남권이라 회사 자체가 기준을 통과한다.
+**탈락시킨 것 (행은 남긴다):**
 
-> **2026-07-28 본문 확인 후 정정 (건 열림 → `furiosaai--agent-system-developer`)**
+| 회사 | 사유 |
+|---|---|
+| ~~KRAFTON~~ | **게임회사 — GLG 관심 축 아님** (2026-07-28). 열려 있던 3건 전부 제외 |
+| ~~Sonatus~~ 🌐 | `Staff Cloud Backend Engineer` — **제목은 정확했으나** 본문이 time-series · OLAP/OLTP · Cassandra/Druid/Pinot **DB 전문직**이다. 증거 축 아님 |
+
+**FuriosaAI Agent System Developer가 1순위다** — 건이 열려 있다
+(`furiosaai--agent-system-developer`, 상태 `ready`). JD 가 agent orchestration ·
+context management · tool execution · memory abstraction 을 그대로 요구한다.
+경로는 **Ashby, 가입 불필요**. Ashby 보드 실제 공고 수는 23건이 아니라 **55건**이고 에이전트
+축이 셋이다(Agent System Developer · ML Engineer Agentic AI · Technical Writer).
+⚠ **2026-03-20 게시로 4개월째 열려 있다** — 회신이 느릴 수 있다.
+
+**HITS 는 2순위.** 석사 요건 통과(GLG M.S. 2008–2010)이고 Easy Apply 라 비용이 싸다. 다만
+요구 스택이 LangChain·LangGraph·LlamaIndex 이고 도메인이 bioinformatics/cheminformatics 라
+**적합도는 중간**이다.
+
+> ### 이 표가 틀렸던 두 자리 — 2026-07-28 정리
 >
-> - **FuriosaAI 지원 경로는 Ashby다.** `furiosa.ai/careers/software-agentsystem` 이
->   `jobs.ashbyhq.com/furiosa-ai/962c5ed8-.../application` 로 넘긴다. **가입 불필요.**
->   Ashby 보드 실제 공고 수는 23건이 아니라 **55건**이고, 에이전트 축이 셋이다
->   (Agent System Developer · ML Engineer Agentic AI · Technical Writer).
->   ⚠ Agent System Developer 는 **2026-03-20 게시로 4개월째 열려 있다.**
-> - **Sonatus 는 제외한다.** 실제 제목이 `Cloud Backend Engineer (Databases)` 이고 본문이
->   time-series · OLAP/OLTP · Cassandra/Druid/Pinot **데이터베이스 전문직**이다. 위 표의
->   「Staff Cloud Backend Engineer」는 카드 제목만 보고 적은 것이었다. 증거 축이 아니다.
-> - **KRAFTON AX Governance 는 `Employment type: Contract` — 계약직이다.** 재직 중 이직으로는
->   다른 결정이고, 제출물도 입사지원서(자유양식)+경력기술서+포트폴리오라 무겁다. 「후다닥」
->   대상이 아니다.
-> - **HITS 는 석사 요건 통과**(GLG M.S. 2008–2010). 다만 요구 스택이 LangChain·LangGraph·
->   LlamaIndex 이고 도메인이 bioinformatics/cheminformatics 다. Easy Apply 라 비용은 싸지만
->   **적합도는 중간**이다.
+> **원인은 스킬이 아니라 뒷정리였다.** 데이터는 멀쩡했고 옮겨 적으면서 잃었다.
+>
+> 1. **KRAFTON — 제목을 줄이다 「계약직」을 날렸다.**
+>    원제목은 `[AI Transformation Dept.] AX Governance Specialist (3년 이상 / 계약직)` 인데
+>    표에는 `AX Governance Specialist (3년+)` 로 올라 있었다. **계약직 공고가 「권고 확정」
+>    묶음에 정규직처럼 앉아 있었다.** → §계약 「제목을 줄이지 않는다」
+> 2. **Sonatus — 제목만 보고 「확정」으로 올렸다.**
+>    제목 `Staff Cloud Backend Engineer` 는 정확했다. 본문이 DB 전문직이라는 건 제목 어디에도
+>    없었다. → §계약 「확정이라고 적으려면 본문을 읽었어야 한다」
+>
+> **스킬에도 구멍이 하나 있었다.** `enrich` 가 받아 두는 `criteria`(고용형태·연차)를 `emit()`
+> 이 한 번도 출력하지 않았다. 이제 `rank`/`search` TSV 에 `⚠Contract` 처럼 뜬다
+> (`test_ljobs.py` 고용형태 7 케이스).
 
-### 티어 2 · 판교권 (카드 확정 · 본문 미확인 — 지역은 통과로 봐도 되는 묶음)
+### 티어 2 · 반도체·모빌리티 (본문 미확인 — 내려면 본문부터)
 
-| 회사 | 권고 직무 | 컷 | 공고 | 비고 |
-|---|---|---|---|---|
-| **42dot** | LLM Engineer (LLM Training) | AI | `4443770588` | **집중채용 중**(2026-07-23 회사 포스트). LLM 4종은 한 팀이라 하나만 |
-| 42dot | *또는* Senior Embedded Linux Build Engineer | DevEx | `4442731341` | DevEx 컷을 쓸 거면 이쪽 |
-| **Rebellions** | System Software Architect | Embedded | `4415303828` | ⚠ 8건 중 2건은 **강서구**. Seongnam 표기만 골랐다 |
-| **XCENA** | System SW Engineer, Performance & **Developer Tools** | DevEx | `4444920306` | 나머지 10건은 SoC/HW 설계라 증거 밖 |
-| Telechips | Embedded Software Engineer | Embedded | `4431589221` | BSP·Device Driver |
-| Penguin Solutions | DevOps Engineer | DevEx | `4440528153` | — |
+| 회사 | 🌐 | 권고 직무 | 컷 | 본문 | 공고 | 비고 |
+|---|---|---|---|---|---|---|
+| **42dot** | | LLM Engineer (LLM Training) | AI | ? | `4443770588` | **집중채용 중**(2026-07-23 회사 포스트). 현대차그룹. LLM 4종은 한 팀이라 하나만 |
+| 42dot | | *또는* Senior Embedded Linux Build Engineer | DevEx | ? | `4442731341` | DevEx 컷을 쓸 거면 이쪽 |
+| **Rebellions** | | System Software Architect | Embedded | ? | `4415303828` | 8건 중 2건은 강서구 — 이 건은 판교 표기 |
+| **XCENA** | | System SW Engineer, Performance & **Developer Tools** | DevEx | ? | `4444920306` | 나머지 10건은 SoC/HW 설계라 증거 밖 |
+| Telechips | | Embedded Software Engineer | Embedded | ? | `4431589221` | BSP·Device Driver |
+| Penguin Solutions | **🌐** | DevOps Engineer | DevEx | ? | `4440528153` | 미국(구 SMART Global Holdings) |
 
 42dot 나머지: RL `4443782022` · Evaluation `4443770586` · Data Generation `4436476007` ·
 ML Platform `4442734241` · DevOps Platform `4442733252`.
 Rebellions 나머지: Server/NPU Infra `4441428492` · Collective Comm `4437141292` · BMC FW `4432085933`.
 XCENA 나머지: Firmware InfiniteMemory `4444918359` · Embedded BSP `4444930080`.
 
-### 티어 3 · FDE 축 (경쟁이 얕고 서사가 정면으로 맞는다 — 지역 확인 필요)
+### 티어 3 · FDE 축 (경쟁이 얕고 서사가 정면으로 맞는다)
 
-| 회사 | 직무 | 표기 | 경로 | 공고 |
+**여기는 거의 전부 외국계다.** 서사는 정면인데 영어 상시 회의·본사 시차·한국 법인 규모가
+같이 걸린다. 전부 **본문 미확인**이라 내려면 본문부터 뜬다.
+
+| 회사 | 🌐 | 직무 | 경로 | 공고 |
 |---|---|---|---|---|
-| **Reflection AI** | Forward Deployed Engineer - AI Engineer | ?(서울) | offsite | `4425505149` |
-| **Databricks** | Forward Deployed Engineer | ?(서울) | offsite | `4410609158` |
-| Cloudflare | FDE, Professional Services | ?(서울) | — | `4432741765` |
-| Cohere | FDE, Agentic Platform (Korea) | ?(서울) | Ashby | `4366574942` |
-| OpenAI | FDE - Seoul | ?(서울) | Ashby | `4431428608` |
-| BCG | (Senior) Forward Deployed AI Engineer | ?(서울) | offsite | `4433468111` |
-| CJ OLIVE YOUNG | Forward Deployed AI Engineer | ?(서울) | offsite | `4424964255` |
-| KRAFTON | [Infra] Technical Solution Engineer (10년+) | 역삼 | — | `4435529194` |
+| **Reflection AI** | **🌐** 미국 | Forward Deployed Engineer - AI Engineer | offsite | `4425505149` |
+| **Databricks** | **🌐** 미국 | Forward Deployed Engineer | offsite | `4410609158` |
+| Cloudflare | **🌐** 미국 | FDE, Professional Services | — | `4432741765` |
+| Cohere | **🌐** 캐나다 | FDE, Agentic Platform (Korea) | **Ashby** | `4366574942` |
+| OpenAI | **🌐** 미국 | FDE - Seoul | **Ashby** | `4431428608` |
+| BCG | **🌐** 미국 | (Senior) Forward Deployed AI Engineer | offsite | `4433468111` |
+| CJ OLIVE YOUNG | | Forward Deployed AI Engineer | offsite | `4424964255` — **국내 유일** |
+| ~~KRAFTON~~ | | ~~[Infra] Technical Solution Engineer (10년+)~~ | — | `4435529194` **게임회사 제외** |
+
+**Ashby 두 곳(Cohere · OpenAI)은 API 로 본문·게시일을 한 번에 볼 수 있다** — 위 플랫폼 표 참조.
 
 **exa 축(피드 포스트)에서만 잡힌 것** — guest API에 안 걸린다:
-KRAFTON AX FDE 집중채용(2026-03 포스트 4건, 「HQ 각 조직에 파견되어 수행할 AI Native
-Engineer」 — GLG의 AX 서사와 정면이나 4개월 전이라 현재 열림 여부 확인 필요) ·
-Google Cloud AI FDE(한국) · TreeSoop FDE · OpenAI Partner AI Deployment Engineer(AWS).
+Google Cloud AI FDE(한국) 🌐 · TreeSoop FDE · OpenAI Partner AI Deployment Engineer(AWS) 🌐.
+~~KRAFTON AX FDE 집중채용~~ 은 게임회사라 제외.
 
 ### 티어 4 · DevEx 축
 
-| 회사 | 직무 | 표기 | 공고 |
+| 회사 | 🌐 | 직무 | 공고 |
 |---|---|---|---|
-| **OpenAI** | Developer Experience Engineer | ?(서울) | `4418860629` — 본문에 「한국어 필요」 명시 |
-| **FuriosaAI** | SW Engineer, **Technical Writer & Document Specialist** | 강남 | `4426791367` |
-| FriendliAI | Developer Advocate | ?(서울) | `4405336361` |
-| CJ OLIVE YOUNG | DevRel | ?(서울) | `4424177483` |
-| NVIDIA | Senior Developer Relations Manager - GenAI | ?(서울·인천) | `4416335601` |
-| KRAFTON | [HR] Developer Relations Program Manager | 역삼 | `4424176050` — **계약직** |
+| **OpenAI** | **🌐** 미국 | Developer Experience Engineer | `4418860629` — 본문에 「한국어 필요」 명시 |
+| **FuriosaAI** | | SW Engineer, **Technical Writer & Document Specialist** | `4426791367` — Ashby, 2026-06-10 게시 |
+| FriendliAI | | Developer Advocate | `4405336361` |
+| CJ OLIVE YOUNG | | DevRel | `4424177483` |
+| NVIDIA | **🌐** 미국 | Senior Developer Relations Manager - GenAI | `4416335601` |
+| ~~KRAFTON~~ | | ~~[HR] Developer Relations Program Manager~~ | `4424176050` **게임회사 + ⚠계약직** |
 
 **FuriosaAI Technical Writer를 눈여겨본다.** JD가 docs-as-code다 — 소스를 읽고 실제 하드웨어에서
 스택을 돌려 문서를 쓰고, **자동 파이프라인으로 문서를 라이브 코드베이스에 대해 계속 검증**한다.
@@ -128,34 +151,41 @@ NPU·컴파일러 도메인 + 문서·전파 축이 한 자리에서 겹친다. 
 
 ## 「한 회사 한 직무」 권고표
 
-| 회사 | 열린 공고 | 권고 | 근거 |
-|---|---|---|---|
-| FuriosaAI | 23건 (엔지니어 9) | **Agent System Developer** | 2순위는 Technical Writer |
-| 42dot | 19건 (LLM 4 동시) | **LLM Engineer (LLM Training)** | LLM 4종은 한 팀 집중채용 |
-| Rebellions | 8건 (Seongnam 5) | **System Software Architect** | 시스템 SW 축이 증거가 가장 두껍다 |
-| KRAFTON | 14건 | **AX Governance Specialist** | FDE 표제는 현재 안 열려 있다 |
-| XCENA | 11건 | **Performance & Developer Tools** | 나머지는 SoC/HW 설계 |
-| OpenAI | 5건 | **Developer Experience Engineer** | DevEx가 가장 정확히 맞고 경쟁이 얕다 |
-| NHN | 5건 | 내려면 **LLM 기술 개발** `4439978335` | ⚠ **세 번째 접촉** — GLG 판단 자리 |
-| CJ OLIVE YOUNG | 2건 | **Forward Deployed AI Engineer** | FDE 축이 더 얕다 |
+| 회사 | 🌐 | 열린 공고 | 권고 | 근거 |
+|---|---|---|---|---|
+| FuriosaAI | | **Ashby 55건** (LinkedIn엔 23건만) | **Agent System Developer** | **건 열림.** 2순위는 Technical Writer |
+| 42dot | | 19건 (LLM 4 동시) | **LLM Engineer (LLM Training)** | LLM 4종은 한 팀 집중채용 |
+| Rebellions | | 8건 | **System Software Architect** | 시스템 SW 축이 증거가 가장 두껍다 |
+| XCENA | | 11건 | **Performance & Developer Tools** | 나머지는 SoC/HW 설계 |
+| OpenAI | **🌐** | 5건 | **Developer Experience Engineer** | DevEx가 가장 정확히 맞고 경쟁이 얕다 |
+| NHN | | 5건 | 내려면 **LLM 기술 개발** `4439978335` | ⚠ **세 번째 접촉** — GLG 판단 자리 |
+| CJ OLIVE YOUNG | | 2건 | **Forward Deployed AI Engineer** | FDE 축이 더 얕다 |
+| ~~KRAFTON~~ | | ~~14건~~ | — | **게임회사 제외** |
+
+**LinkedIn 공고 수를 믿지 않는다.** FuriosaAI 는 LinkedIn guest 검색에 23건이었는데 실제
+Ashby 보드는 55건이었다. **회사를 정했으면 그 회사 채용 보드를 직접 본다.**
 
 ---
 
 ## 보류 · 제외
 
-| 회사 | 사유 |
-|---|---|
-| **Insighter** | 서울 마포 DMC — 지역 밖. Easy Apply **임시저장 상태로 남아 있다**(제출 아님). 버리려면 `closed` 로 바꾸고 `_archive/` 로 옮긴다 |
-| **Mistral** (Applied AI Engineer, 서울) | 부서는 Solutions인데 요구는 **PhD/석사 AI · 파인튜닝 · PyTorch · Python 주력 · fluent English**. 적합도 중하 — 시간 남으면 마지막에 |
-| **Coxwave** | GLG 회사 판단으로 제외 |
-| Harper | Founding 단계 — 영세 기준 |
-| ALCOFIND · Toss Insurance(구로) · Rebellions 2건(강서) · FuriosaAI Productization(화성) | 지역 밖 |
+| 회사 | 🌐 | 사유 |
+|---|---|---|
+| **KRAFTON** | | **게임회사 — GLG 관심 축 아님** (2026-07-28 확정). 열려 있던 3건 전부 |
+| **Sonatus** | **🌐** | 본문이 time-series·OLAP·Cassandra/Druid/Pinot **DB 전문직**. 증거 축 아님 |
+| **Insighter** | | Easy Apply **임시저장 상태**(제출 아님). 마포 DMC. 버리려면 `closed` + `_archive/` |
+| **Mistral** (Applied AI Engineer) | **🌐** 프랑스 | 부서는 Solutions인데 요구는 **PhD/석사 AI · 파인튜닝 · PyTorch · fluent English**. 적합도 중하 |
+| **Coxwave** | | GLG 회사 판단으로 제외 |
+| Harper | **🌐** | Founding 단계 — 영세 기준 |
+| ALCOFIND · Toss Insurance · FuriosaAI Productization(화성) | | 통근 범위 밖 |
 
 ## 남은 구멍
 
-- **근무지 확인율 18%.** 한국 공고는 본문에 근무지를 안 적는 경우가 많다. 카드 표기는 회사
-  단위로는 믿을 만하지만 같은 회사가 두 곳을 쓰는 경우(Rebellions)가 있다 — 최종 확인은
-  브라우저 축.
-- **NCSOFT 0건 · Kakao Enterprise 1건 · Telechips 2건** — 영문 사명으로 안 걸린다.
-  국문 사명(`엔씨소프트`, `카카오엔터프라이즈`)으로 재검색 필요.
+- **티어 2·3·4 가 통째로 본문 미확인이다.** Sonatus 사고가 그 묶음에서 나왔다. 내기로 정하면
+  **먼저 본문부터 뜬다.** Ashby 쓰는 곳(OpenAI · Cohere · FuriosaAI)은 API 한 번이면 된다.
+- **외국계 표시 중 `?` 두 곳** — NeuroFusion · LVIS 는 본사 국적을 확인하지 않았다.
+  낼 때 확인한다. 모르면 `?` 로 둔다.
+- **LinkedIn 공고 수는 하한이다.** 회사 채용 보드가 진짜 목록이다(FuriosaAI 23 → 55).
+- **Kakao Enterprise 1건 · Telechips 2건** — 영문 사명으로 안 걸린다. 국문 사명
+  (`카카오엔터프라이즈`)으로 재검색 필요. ~~NCSOFT~~ 는 게임회사라 이제 볼 필요 없다.
 - 안랩 · SK플래닛 · 한컴 · LINE Plus는 각 10건씩 잡혔으나 GLG 축에 걸리는 자리가 없었다.
