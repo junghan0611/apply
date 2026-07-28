@@ -1,0 +1,49 @@
+# 회사 채용 보드 지도 — boards.py sweep 용
+#
+# `<ats>:<슬러그>` 는 확인된 보드다. 슬러그만 적으면 probe 가 ATS 를 찾는다.
+# **여기 없는 회사는 안 본 회사이지 없는 회사가 아니다.** 새로 찾으면 줄을 추가한다.
+#
+# 원칙 (2026-07-28 GLG): 지역으로 먼저 자르지 않는다. 서울·성남 바운더리는 어차피 넓고,
+# 지역을 1차 필터로 쓰면 진짜 자리가 목록에서 먼저 사라진다. 회사 규모와 직무가 먼저다.
+# 지금 회사(개발자 12명)보다 큰 곳으로 가는 것이 목표다.
+
+# ── 카카오 공동체 ────────────────────────────────────────────────
+kakao:all               # careers.kakao.com 기술직군 전체 (본사 + 공동체)
+greeting:kakaopay       # 카카오페이 26
+greeting:kakaomobility  # 카카오모빌리티 19
+# 카카오헬스케어는 recruit.kakaohealthcare.com (ninehire) — 목록이 클라이언트 렌더라 boards.py 미지원.
+# 공고는 careers.kakao.com 쪽에 [공동체] 로 같이 뜬다.
+
+# ── 플랫폼 대기업·유니콘 ─────────────────────────────────────────
+greenhouse:coupang      # 644 (글로벌 포함)
+greenhouse:daangn       # 당근 37
+greenhouse:moloco       # 43
+greenhouse:sendbird     # 17
+greeting:kurly          # 컬리 78
+greeting:musinsa        # 무신사 131
+greeting:zigbang        # 직방 8
+greeting:buzzvil        # 버즈빌 12
+
+# ── AI ───────────────────────────────────────────────────────────
+greeting:upstage        # 업스테이지 44
+greeting:wrtn           # 뤼튼 29
+greeting:scatterlab     # 스캐터랩 15
+greeting:makinarocks    # 마키나락스 35
+ashby:friendliai        # 프렌들리AI 18
+ashby:megazone          # 메가존 12
+ashby:openai            # 🌐
+ashby:cohere            # 🌐
+ashby:reflectionai      # 🌐
+workable:lunit          # 루닛 21
+
+# ── 반도체·모빌리티·임베디드 ─────────────────────────────────────
+ashby:furiosa-ai        # 56
+ashby:42dot             # 120
+greeting:rebellions     # 41 — LinkedIn 에는 8건만 보였다
+greeting:stradvision    # 스트라드비젼 23
+# Telechips 는 careers.telechips.com (ninehire 화이트라벨) — 82건 중 열린 건 3건.
+
+# ── 아직 슬러그를 못 찾은 곳 (자체 ATS 이거나 슬러그가 다르다) ──
+# 네이버 · LINE · 토스 · 우아한형제들 · 하이퍼커넥트 · 두나무 · 야놀자 · 오늘의집 ·
+# 채널코퍼레이션 · 리디 · 트웰브랩스 · 라이너 · 베스핀글로벌 · 엘리스 · 노타 · 파두 ·
+# 카카오뱅크 · 카카오엔터프라이즈 · 삼성SDS · LG CNS · SK · KT

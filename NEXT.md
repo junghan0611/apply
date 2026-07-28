@@ -1,25 +1,66 @@
-# NOW — FuriosaAI Agent System Developer 를 낸다
+# NOW — 제출 대기 7건. 컷 네 종으로 갈린다
 
 - **Hot group**: 지원 실행. 공개 준비는 이 축이 아니다.
-- **Current**: **FuriosaAI Agent System Developer 건이 `ready` 다.** 폴더·JD 원문·컷·지원 URL
-  전부 준비됐다 — `applications/furiosaai--agent-system-developer/`.
-  경로는 **Ashby, 가입 불필요**: `jobs.ashbyhq.com/furiosa-ai/[uuid removed]/application`
-  첨부는 `resume/build/KimJunghan_Resume_AI_Engineer.pdf` (3쪽).
-- **Next**: **GLG 가 퇴근 후 브라우저에서 제출한다.** 개인·법적 값 입력 → 파일명 눈으로 확인 →
-  Submit. 낸 뒤 올린 파일을 `submit/` 에 복사하고 `LEDGER` + `submission.md` 를 `submitted` 로
-  같이 닫는다(`applications/check.py` 로 확인).
-- **Blocker**: 폼이 물으면 GLG 가 그 자리에서 정할 값 셋 — **희망 연봉 · 입사 가능일 · 이직 사유**
-  (`FAQ.md` §4 가 아직 ⚠ 다). 민감 법적 값(병역 등)은 계속 브라우저에서만 입력한다.
-- **Read**: `applications/furiosaai--agent-system-developer/submission.md` → `FAQ.md` §3·§5.
+- **기조 (2026-07-28 밤 GLG)**: **내고 떨어지면 만다.** 실제로 만든 것이 있으니 밀어붙인다.
+  위로 찌르는 것이 기본값이고 — **떨어져도 이름이 알려진다.** 지역은 후보를 거르는 축이 아니다.
+- **Current**: **7건이 전부 `ready` 다.** 오라클서버에서 폴더·JD 원문·컷·**지원 URL(HTTP 200
+  확인)** 까지 끝냈다. `applications/check.py` → **12건 일치**.
+
+  **AI Engineer 컷 — 3건** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
+
+  | 건 | 지원 URL |
+  |---|---|
+  | **Lunit** (Seoul) Senior AX Engineer | `apply.workable.com/lunit/j/E3C22F589F/apply/` |
+  | **FuriosaAI** Agent System Developer | `jobs.ashbyhq.com/furiosa-ai/[uuid removed]/application` |
+  | **42dot** Senior AI Agent Engineer (Intelligence Service) | `jobs.ashbyhq.com/42dot/[uuid removed]/application` |
+
+  **FDE 컷 — 2건** (`..._Forward_Deployed_Engineer.pdf`)
+
+  | 건 | 지원 URL |
+  |---|---|
+  | **Reflection AI** 🌐 FDE, Lead - AI Engineer | `jobs.ashbyhq.com/reflectionai/[uuid removed]/application` |
+  | **Cohere** 🌐 FDE, Agentic Platform (Korea) | `jobs.ashbyhq.com/cohere/[uuid removed]/application` |
+
+  **DevEx 컷 — 1건** · **Embedded 컷 — 1건**
+
+  | 건 | 지원 URL |
+  |---|---|
+  | **OpenAI** 🌐 Developer Experience Engineer (Seoul) | `jobs.ashbyhq.com/openai/[uuid removed]/application` |
+  | **Telechips** [판교] Embedded S/W Engineer | `careers.telechips.com/job_posting/iSXmKnRT/apply` |
+
+  **경로는 셋뿐이다** — Ashby 5건(폼 구조 같다) · Workable 1건 · ninehire 1건.
+
+- **Next**: **GLG 가 노트북 브라우저에서 제출한다**(오라클서버는 탐색·준비 축이다).
+  개인·법적 값 입력 → **파일명 눈으로 확인** → Submit. 낸 뒤 올린 파일을 그 건의 `submit/` 에
+  복사하고 `LEDGER` + `submission.md` 를 `submitted` 로 같이 닫는다(`applications/check.py`).
+- **Blocker**: 폼이 물으면 GLG 가 그 자리에서 정할 값 — **희망 연봉 · 입사 가능일 · 이직 사유**
+  (`FAQ.md` §4 가 아직 ⚠ 다) + **출장 수용 여부**(Cohere 20–40%, OpenAI APAC 30%).
+  민감 법적 값(병역 등)은 계속 브라우저에서만 입력한다.
+- **건별로 하나씩 남은 결정**
+  - **Lunit** — 공고가 「이력서 **및 경력 기술서**」를 요구한다. 폼이 파일 하나만 받으면
+    DEEPX 선례(`deepx--ai-agent-workflow-automation-engineer/build.sh`)로 통합본을 만든다.
+  - **Telechips** — ninehire 는 **에이전트가 파일 업로드를 못 한다.** GLG 가 직접 올린다.
+  - **Reflection AI** — `기술 리더십 2년+` 은 직함으로 없다. **지어내지 않는다.**
+  - **42dot** — 전형에 **코딩 테스트**가 있다. 서류가 붙으면 그 준비가 다음 일이다.
+    GLG 가 짚은 `On-device Agent Orchestration`(2~3년 자리)로 바꾸려면 이 건을 닫고 새로 연다.
+- **다음 배치는 이미 골라 뒀다** — `applications/INBOX.md` §보드 훑기 수확:
+  마키나락스(FDE 12건) · 센드버드 · 업스테이지 · 카카오페이 FDE · 카카오모빌리티 ·
+  뤼튼 · **리벨리온 Linux Device Driver**(LinkedIn 에 없던 자리) · 프렌들리AI.
+- **Read**: 각 건의 `submission.md` (§폼에 답한 질문 · §왜 이 직무였는가) → `FAQ.md` §3·§4·§5.
 - **Do not touch**: 제출된 4건의 `submit/` 스냅샷. 업로드한 그 파일이라 다시 빌드해 덮지 않는다.
 
 # ACTIVE
 
 ## 지원 실행
 
-- `applications/check.py` 통과: LEDGER ↔ 5건 submission ↔ submit 스냅샷 일치.
-- FuriosaAI 다음 대기: **HITS**(강남역, Easy Apply, 석사요건 통과 · 적합도 중간) ·
-  **42dot LLM Engineer**(판교, Ashby, 집중채용) · **XCENA Developer Tools**(판교).
+- `applications/check.py` 통과: LEDGER ↔ 11건 submission ↔ submit 스냅샷 일치.
+- **6건 준비 완료 뒤 대기줄**: **HITS**(강남역, Easy Apply, 석사요건 통과 · 적합도 중간) ·
+  **XCENA Developer Tools**(판교, 본문 미확인) · **Rebellions System SW Architect**(본문 미확인).
+- **42dot 두 건은 본문을 뜬 뒤 내려놓았다** — LLM Training 은 pre/post-training·분산학습·논문
+  우대의 **연구직**이고, Embedded Linux Build 는 **`Yocto 5년 + QNX 5년`을 둘 다** 요구한다.
+  근거는 `applications/INBOX.md` §42dot 판정.
+- **본문 확인 축이 하루 만에 8건 늘었다**(42dot ×2 · OpenAI ×2 · Cohere · FuriosaAI TW ·
+  Lunit · Telechips · Reflection ×1). 아직 미확인은 티어 3 offsite 다섯 곳과 티어 2 나머지다.
 - **타깃 기준 갱신 (2026-07-28 GLG)** — `applications/AGENTS.md` §타깃 기준.
   **게임회사 제외**(KRAFTON 3건 전부 탈락), **정규직 기본**, 지역은 **서울·판교면 통과**
   (구 단위 미확인은 탈락 사유가 아니다). **외국계는 🌐로 표시**해 둔다 — 거르는 게 아니라
@@ -39,6 +80,29 @@
 - **날짜 입도 규칙을 새로 박았다** — `resume/AGENTS.md` §날짜 입도. 이력서는 연 단위가 기본,
   현직·프로젝트만 연.월. 폼 답변용 정밀 원장은 `FAQ.md` §3 이고 증빙은 공단 서류다.
   **에이전트가 오래된 이력을 월 단위로 "정밀화"하는 것은 교정이 아니다.**
+
+## 탐색 축 — 회사 보드를 직접 긁는다 (2026-07-28 밤)
+
+- **새 도구**: `.claude/skills/linkedin-jobs/boards.py` + `companies.txt`.
+  `probe`(어느 ATS 인지) · `list` · `sweep`(목록 파일 통째로) · `body`.
+  어댑터 6종: **ashby · greenhouse · lever · workable · greeting · kakao**. 전부 인증 없이 열린다.
+- **왜 만들었나 (GLG 지적)**: LinkedIn guest 검색은 **광고가 상단을 먹고 키워드당 10건에서
+  끊긴다.** 리벨리온은 LinkedIn 8건 / 보드 41건이었고, **정면인 자리 셋이 LinkedIn 목록에
+  아예 없었다.** 25개 보드 1,400여 건 → **331건이 축 키워드에 걸렸다.**
+- **원칙 두 개가 바뀌었다** (`applications/AGENTS.md` §타깃 기준):
+  **지역을 1차 필터로 쓰지 않는다** · **지금 회사보다 큰 곳으로 위로 찌른다.**
+- **교훈**: 회사를 판정하지 말고 **자리를 판정한다.** 42dot 을 두 건 보고 닫을 뻔했는데
+  보드에 에이전트 축이 넷이었다.
+
+## 지원 경로 — ATS 지도가 넓어졌다 (2026-07-28 저녁)
+
+- **회사 채용 보드 API 세 개를 인증 없이 뚫었다.** 브라우저 없이 「본문✓」를 만드는 축이다.
+  - **Ashby**: `api.ashbyhq.com/posting-api/job-board/<슬러그>` — 본문·게시일·고용형태·`isListed`.
+    실측: `furiosa-ai` 56 · `openai` 749 · `cohere` 138 · `42dot` 120 · `reflectionai` 62.
+  - **Workable**: `apply.workable.com/api/v1/widget/accounts/<회사>?details=true` — **Lunit 한국 채용**.
+  - **ninehire 화이트라벨**: 상세 페이지 `__NEXT_DATA__` → `recruitment` 에 `closedAt`·`status`·
+    `career.range`·`jobLocations`. **Telechips 는 82건 중 3건만 열려 있었다.**
+- 전부 `applications/INBOX.md` §지원 경로 에 적었다. **회사를 정했으면 그 회사 보드를 직접 본다.**
 
 ## linkedin-jobs
 

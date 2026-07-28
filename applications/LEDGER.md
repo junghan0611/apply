@@ -15,6 +15,12 @@
 | DEEPX | Linux BSP Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | Embedded + 경력기술서 통합 (5쪽) | `deepx--linux-bsp-engineer` |
 | Enhans | Forward Deployed Engineer (7년 이상) | submitted | 2026-07-28 | ninehire (자체 채용홈) | FDE | `enhans--forward-deployed-engineer` |
 | FuriosaAI | Agent System Developer | ready | — | Ashby (자체 채용페이지 경유) | AI Engineer | `furiosaai--agent-system-developer` |
+| Lunit | (Seoul) Senior AX Engineer | ready | — | **Workable** (자체 채용홈) | AI Engineer | `lunit--senior-ax-engineer` |
+| Cohere | Forward Deployed Engineer, Agentic Platform (Korea) | ready | — | Ashby (가입 불필요) | FDE | `cohere--forward-deployed-engineer-agentic-platform-korea` |
+| OpenAI | Developer Experience Engineer (Seoul) | ready | — | Ashby (가입 불필요) | DevEx | `openai--developer-experience-engineer-seoul` |
+| Telechips | [판교] Embedded S/W Engineer (BSP Driver) | ready | — | 자체 채용홈 (ninehire 화이트라벨) | Embedded | `telechips--embedded-sw-engineer` |
+| Reflection AI 🌐 | FDE, Lead - AI Engineer (Seoul) | ready | — | Ashby (가입 불필요) | FDE | `reflection-ai--forward-deployed-engineer-lead-ai-engineer` |
+| 42dot | Senior AI Agent Engineer (Intelligence Service) | ready | — | Ashby (가입 불필요) | AI Engineer | `42dot--senior-ai-agent-engineer-intelligence-service` |
 
 ---
 
