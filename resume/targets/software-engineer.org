@@ -1,0 +1,44 @@
+# 타깃 컷 — Software Engineer (범용 기반)
+#
+# 직무명이 좁게 지정되지 않은 공고, 또는 "백엔드/풀스택"으로 열린 공고에 낸다. 특정 층을
+# 앞세우지 않고 세로축 자체를 주장한다.
+#
+# 빌드:  ./run.sh target software-engineer
+
+#+cv_pdf_name: KimJunghan_Resume_Software_Engineer
+
+#+INCLUDE: "../pipeline/preamble.org"
+
+#+begin_export latex
+\cvheader{Software Engineer — Depth Across a Vertical, from Firmware to the Agent Loop}
+#+end_export
+
+* Summary
+
+I work from the firmware up to the agent loop. On one end: a Zigbee hub written in Zig, now
+shipping in mass production, with the server (Go) and the companion app (Flutter) I built on top
+of it because the original contract stopped at firmware. On the other end: a dispatch substrate
+for AI agent harnesses, published on npm and extended by a contributor I have never met. The
+middle is not empty — it is a reproducible NixOS/Emacs environment where the tools, the memory,
+and the boundaries are designed rather than improvised.
+
+This is not "full stack" in the front-end/back-end sense. It is depth across a vertical: silicon,
+protocol, service, interface, agent. I tend to build before claiming expertise — build something
+small, find where it breaks, preserve the evidence, and turn that failure into reproducible tools
+and ways of working. Hands-on across Go, Clojure, Zig, C, TypeScript, Nix, and Elisp, with a
+public corpus of code and notes that can be read rather than taken on trust.
+
+* Core Competencies
+
+- @@latex:\cvlabel{Systems and Backend}@@ — Go and Clojure services, protocol design, PostgreSQL and
+  pgvector, MQTT and mTLS, Docker, declarative NixOS across four machines.
+- @@latex:\cvlabel{Embedded Systems}@@ — firmware in Zig and C, ARM and RISC-V Linux, Yocto, static
+  musl, board HAL, Matter/Thread/Zigbee, taken through mass production.
+- @@latex:\cvlabel{AI Agent Systems}@@ — agent harnesses in production, domain-owner agents, evidence
+  contracts, multi-agent development sessions.
+- @@latex:\cvlabel{Knowledge Engineering}@@ — embedding and hybrid retrieval, cross-lingual search,
+  Org/Denote knowledge graphs, document toolchains.
+- @@latex:\cvlabel{Product and Interface}@@ — Flutter and React apps shipped next to the systems they
+  drive, plus interfaces for people who are not developers.
+
+#+INCLUDE: "../body.org" :minlevel 1

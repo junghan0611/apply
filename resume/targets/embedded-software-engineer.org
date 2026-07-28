@@ -1,0 +1,48 @@
+# 타깃 컷 — Embedded Software Engineer
+#
+# 물리 세계와 맞닿는 자리. 양산까지 간 사실과 차세대 포팅 판단이 앞으로 나온다. 에이전트
+# 축은 지우지 않고 "이 사람이 어디까지 갔는가" 로 뒤에 둔다.
+#
+# 빌드:  ./run.sh target embedded-software-engineer
+
+#+cv_pdf_name: KimJunghan_Resume_Embedded_Software_Engineer
+
+#+INCLUDE: "../pipeline/preamble.org"
+
+#+begin_export latex
+\cvheader{Embedded Software Engineer — Firmware, Protocols, and Products That Shipped}
+#+end_export
+
+* Summary
+
+I take embedded products from silicon to shipping. Most recently a Zigbee/Wi-Fi gateway written in
+Zig, now in mass production: a legacy C Zigbee SDK integration rewritten behind a type-safe FFI
+layer, a deterministic state machine (single =HubState=, pure =transition()=), and 24-hour aging-test
+automation. When the contract stopped at firmware I built the server (Go) and the companion app
+(Flutter) myself and turned a deliverable into a product — one protocol served by two
+interchangeable backends, AWS IoT and a local mTLS broker, with the firmware shipping unmodified
+in both.
+
+The next-generation hub is where the engineering judgment shows: port target moved from ARMv7
+glibc with a vendor sysroot to RISC-V on statically linked musl; a board HAL extracted so the hub
+core no longer knows what board it runs on; Zigbee transport delegated to Zigbee2MQTT; seven
+hardcoded device-type handlers dropped so the device model passes through as a generic entity.
+Alongside it, a Matter hub with an on-device AI agent runs from one Go codebase on RPi5 + Hailo-8
+NPU (Yocto) and RK3576 (Android) with 96% code sharing. I started in systems software research
+(non-volatile memory filesystems, NUMA locks) and co-founded a company that shipped a Linux-based
+touch display OS, so the habit of owning the whole stack is not new.
+
+* Core Competencies
+
+- @@latex:\cvlabel{Embedded Systems}@@ — Zig and C firmware, ARM and RISC-V Linux, Yocto, static musl,
+  board HAL, cross-compilation, mass production.
+- @@latex:\cvlabel{IoT Protocols}@@ — Matter, Thread (OTBR, RCP), Zigbee and Zigbee2MQTT, MQTT and
+  mTLS, AWS IoT, BLE commissioning, device shadow with monotonic versioning.
+- @@latex:\cvlabel{Edge AI}@@ — on-device sLLM, NPU deployment across accelerator families, local-first
+  control loops on constrained hardware.
+- @@latex:\cvlabel{Backend and Product}@@ — Go services and Flutter apps built on top of the firmware,
+  so the device is delivered as a whole product.
+- @@latex:\cvlabel{AI-Assisted Development}@@ — agent harnesses used as production tooling: aging-test
+  automation, multi-agent development sessions, reproducible build pipelines.
+
+#+INCLUDE: "../body.org" :minlevel 1

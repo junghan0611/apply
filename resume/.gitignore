@@ -1,0 +1,15 @@
+# 중간산물은 재생성된다. PDF 는 예외로 추적한다 — 이 저장소를 다른 기계로 당겨 그 자리에서
+# 바로 지원서에 첨부하기 위해서다. flake devshell 을 처음 세우는 데 걸리는 시간을 카페에서
+# 기다리게 하지 않으려는 것이지, PDF 가 정본이라서가 아니다. 정본은 늘 Org 다.
+build/*
+!build/*.pdf
+
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.xdv
+*.log
+*.tmp
+*~
+.DS_Store

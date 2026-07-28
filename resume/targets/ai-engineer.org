@@ -1,0 +1,47 @@
+# 타깃 컷 — AI Engineer / Agent Platform Engineer
+#
+# 지금의 중심 분야다. 베이스와 다른 것은 표제 부제와 Summary 와 역량 순서뿐이고, 경력·
+# 증거·오픈소스·스택·학력은 body.org 한 벌을 그대로 쓴다.
+#
+# 빌드:  ./run.sh target ai-engineer
+
+#+cv_pdf_name: KimJunghan_Resume_AI_Engineer
+
+#+INCLUDE: "../pipeline/preamble.org"
+
+#+begin_export latex
+\cvheader{AI Engineer — Agent Platforms, Memory Layers, and Accountable Work Loops}
+#+end_export
+
+* Summary
+
+I build agent platforms, not agent demos. On the harness side: a dispatch substrate that lets
+different agent harnesses address one another by id without owning each other's transcript, auth,
+or runtime, published on npm and extended by an outside contributor for an enterprise runtime I
+had never written for. On the memory side: semantic retrieval as an independent layer — LanceDB
+with hybrid vector + FTS search, score normalization, cross-lingual expansion through a personal
+vocabulary graph. On the operations side: five months and 20+ upstream version cycles of running
+a multi-agent harness in production, including a latency regression I instrumented, rolled back
+on evidence, and turned into an upgrade policy.
+
+What I care about is the part most agent projects skip: what the agent is allowed to touch, what
+evidence it must leave, where it must stop, and how a human picks the work back up. I have built
+that for a personal knowledge corpus of thousands of notes and for domain owners at work who
+asked not for a dashboard but for "make this run without me." The same background covers the
+layers underneath — embedded firmware, protocols, backend services — so the agent layer is not
+being designed by someone who has never had to make the system beneath it work.
+
+* Core Competencies
+
+- @@latex:\cvlabel{AI Agent Systems}@@ — domain-owner agents, evidence contracts, review loops,
+  multi-agent development sessions with a human as PM.
+- @@latex:\cvlabel{Agent Harness Engineering}@@ — dispatch, identity, auth boundaries, session
+  continuity, delegation contracts, upstream version operations and rollback policy.
+- @@latex:\cvlabel{Knowledge Engineering / RAG}@@ — embedding and hybrid retrieval, reranking and
+  embedding served in-house, cross-lingual expansion, Org/Denote knowledge graphs.
+- @@latex:\cvlabel{Backend and Infrastructure}@@ — Go and Clojure services, PostgreSQL/pgvector,
+  Docker, declarative NixOS, GPU cluster, reproducible build and document pipelines.
+- @@latex:\cvlabel{Embedded and Edge AI}@@ — on-device sLLM, NPU deployment, ARM and RISC-V Linux —
+  where the agent loop meets constrained hardware.
+
+#+INCLUDE: "../body.org" :minlevel 1

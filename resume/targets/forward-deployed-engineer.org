@@ -1,0 +1,48 @@
+# 타깃 컷 — Forward Deployed / Applied / Solutions Engineer
+#
+# 기업과 현장의 접합부를 맡는 자리. 노트 20231018T221900(기업용 하네스 좌표)이 이 컷의
+# 논지다 — 데이터 연결 다음에 담당자가 있다.
+#
+# 빌드:  ./run.sh target forward-deployed-engineer
+
+#+cv_pdf_name: KimJunghan_Resume_Forward_Deployed_Engineer
+
+#+INCLUDE: "../pipeline/preamble.org"
+
+#+begin_export latex
+\cvheader{Forward Deployed Engineer — Attaching Agents to the People Who Own the Domain}
+#+end_export
+
+* Summary
+
+The request I keep receiving from other teams is not "build me a dashboard." It is "make this run
+without me." So I do not build dashboards. I go to the person who owns the domain, learn the units
+and periods and inclusion rules their numbers actually obey, and stand up an agent that works in
+their language against their live systems — read-only where the evidence must stay honest, with a
+trail back to the single record behind every figure. Two of those are in daily use at my company:
+a VOC workbench the operations team reads every morning, and an incident workbench that aligns
+platform catalog, device logs, and runtime state on one time axis and stops rather than warns when
+its evidence contract breaks.
+
+I can do this because I have built every layer underneath it — embedded firmware and protocols,
+backend services, deployment, and the agent harnesses themselves. Connecting data to a model is
+the part many people can do; the part that decides whether it survives contact with a real
+organization is the domain owner's language, the boundary where the agent must stop, and the
+hand-off that lets the next human pick it up. That is also why documentation and enablement are
+not a side duty for me: I have spent years turning what I learned into skills, guides, and work
+surfaces someone else can take over.
+
+* Core Competencies
+
+- @@latex:\cvlabel{Applied Agent Deployment}@@ — attaching agents to real operational data, evidence
+  contracts, read-only evidence tools, stop-conditions, hand-off design.
+- @@latex:\cvlabel{Legacy System Integration}@@ — putting an agent surface on systems already running:
+  platform catalogs, support data, device logs, runtime mirrors, on one KST time axis.
+- @@latex:\cvlabel{Agent Harness Engineering}@@ — dispatch, auth boundaries, session continuity, and
+  provider independence so an organization is not bound to one model vendor.
+- @@latex:\cvlabel{Documentation and Enablement}@@ — translating upstream change into per-repository
+  impact notes, writing the operating charters agents and humans both follow.
+- @@latex:\cvlabel{Full-Stack Delivery}@@ — firmware, backend, app, and infrastructure, so the
+  integration is designed by someone who has had to make each layer work.
+
+#+INCLUDE: "../body.org" :minlevel 1

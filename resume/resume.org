@@ -1,0 +1,61 @@
+# 영문 이력서 — 베이스 정본 (타깃 중립)
+#
+# 이 파일은 특정 공고를 겨냥하지 않은 한 벌이다. 링크드인 프로필에 붙이는 판이고, 타깃 컷이
+# 없을 때 그대로 낼 수 있는 판이다. targets/*.org 는 이 구조를 그대로 쓰되 표제 부제와
+# Summary 와 역량 다섯 줄의 순서만 바꾼다. 경력·오픈소스·증거·스택·학력은 body.org 한 벌.
+#
+# 빌드:  ./run.sh base     (또는 ./run.sh all)
+
+#+cv_pdf_name: KimJunghan_Resume
+
+#+INCLUDE: "pipeline/preamble.org"
+
+#+begin_export latex
+\cvheader{PKM-AI Harness Engineer — From Firmware to the Agent Loop}
+#+end_export
+
+* Summary
+
+I build the joints between humans, AI agents, and real systems — from embedded firmware and
+protocols up through services, interfaces, shared memory, and accountable work loops. On one end
+of that vertical: a Zigbee hub written in Zig, now shipping in mass production, with the server
+and the app I built on top of it. On the other: a dispatch substrate that lets agent harnesses
+address one another, published on npm. The same person did both, and the middle is not empty —
+it is a reproducible NixOS/Emacs environment where humans and agents share memory, a timeline,
+and a set of boundaries.
+
+I tend to build before claiming expertise. Build something small, find where it breaks, preserve
+the evidence, and turn that failure into reproducible tools, boundaries, and ways of working.
+That habit grew into a digital garden of thousands of notes, years of journals, bibliography,
+commits, and bot logs — not a display case for finished knowledge, but a living workshop where
+yesterday's failure participates in today's judgment.
+
+Current focus is *PKM-AI harness engineering*: designing environments where different agent
+harnesses handle real data, domain knowledge, permissions, and human accountability without
+erasing their own identity, and without binding an organization to a single model provider. I am
+not trying to remove the human from the loop — I am trying to give the loop a better structure:
+shared memory, explicit boundaries, reviewable evidence, recoverable hand-offs, and work surfaces
+another human or agent can pick up. The next boundary is carrying what I learned about personal
+memory, authorship, and long-term collaboration into enterprise data, governance, and workflow.
+
+* Core Competencies
+
+- @@latex:\cvlabel{Agent Harness Engineering}@@ — the ground agents work on: dispatch, identity,
+  auth boundaries, session continuity, delegation contracts, upstream version operations.
+- @@latex:\cvlabel{AI Agent Systems}@@ — the agent structures that move on that ground: domain-owner
+  agents, evidence contracts, review loops, multi-agent development sessions.
+- @@latex:\cvlabel{Knowledge Engineering}@@ — memory, retrieval, time axis, and domain knowledge:
+  embedding + hybrid search, cross-lingual expansion, Org/Denote knowledge graphs, document toolchains.
+- @@latex:\cvlabel{Embedded Systems}@@ — the substrate that touches the physical world: firmware in
+  Zig and C, ARM and RISC-V Linux, Matter/Thread/Zigbee, mass production.
+- @@latex:\cvlabel{Human-Computer Interaction}@@ — where a human meets all of it: shared timelines,
+  work surfaces, agent-facing interfaces, and interfaces for people who are not developers.
+
+Read downward it is human → agent → knowledge → system → physical world. Read upward it is the
+same sentence as the summary: from firmware to the agent loop.
+
+# :minlevel 1 이 없으면 Org 는 삽입 지점의 헤딩 깊이에 맞춰 본문 전체를 한 단 아래로
+# 민다. 그러면 Experience 가 절이 아니라 소절로 조판되고, 그 아래 회사·프로젝트가
+# 한 단씩 밀려 마지막 층이 번호 목록으로 나온다 — 페이지는 멀쩡히 나오므로 로그로는
+# 잡히지 않는다.
+#+INCLUDE: "body.org" :minlevel 1
