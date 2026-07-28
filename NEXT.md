@@ -1,10 +1,10 @@
-# NOW — 제출 대기 7건. 컷 네 종으로 갈린다
+# NOW — 제출 대기 6건. 컷 세 종으로 갈린다
 
 - **Hot group**: 지원 실행. 공개 준비는 이 축이 아니다.
 - **기조 (2026-07-28 밤 GLG)**: **내고 떨어지면 만다.** 실제로 만든 것이 있으니 밀어붙인다.
   위로 찌르는 것이 기본값이고 — **떨어져도 이름이 알려진다.** 지역은 후보를 거르는 축이 아니다.
-- **Current**: **7건이 전부 `ready` 다.** 오라클서버에서 폴더·JD 원문·컷·**지원 URL(HTTP 200
-  확인)** 까지 끝냈다. `applications/check.py` → **12건 일치**.
+- **Current**: **6건이 전부 `ready` 다.** 오라클서버에서 폴더·JD 원문·컷·**지원 URL(HTTP 200
+  확인)** 까지 끝냈다. `applications/check.py` → **13건 일치**.
 
   **AI Engineer 컷 — 3건** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
 
@@ -18,8 +18,8 @@
 
   | 건 | 지원 URL |
   |---|---|
+  | **마키나락스** [FDE] AI Agent Application Engineer | `makinarocks.career.greetinghr.com/ko/o/214041` 의 「지원하기」 |
   | **Reflection AI** 🌐 FDE, Lead - AI Engineer | `jobs.ashbyhq.com/reflectionai/[uuid removed]/application` |
-  | **Cohere** 🌐 FDE, Agentic Platform (Korea) | `jobs.ashbyhq.com/cohere/[uuid removed]/application` |
 
   **Embedded 컷 — 1건**
 
@@ -34,13 +34,15 @@
   | **Cohere** 🌐 FDE, Agentic Platform (Korea) | FDE | 준비 끝. 되살릴 때 `submission.md` 부터 |
   | **OpenAI** 🌐 Developer Experience Engineer (Seoul) | DevEx | 준비 끝. 되살릴 때 `submission.md` 부터 |
 
-  외국계 두 건을 빼고 **더 현실적인 곳부터 후다닥 낸다.** 다음 배치는 아래 §다음 배치.
+  외국계 두 건을 빼고 **더 현실적인 곳부터 후다닥 낸다.** 그 자리를 마키나락스가 채웠다.
+  **경로는 넷** — Ashby 3 · 그리팅 1 · Workable 1 · ninehire 1.
 
 - **Next**: **GLG 가 노트북 브라우저에서 제출한다**(오라클서버는 탐색·준비 축이다).
   개인·법적 값 입력 → **파일명 눈으로 확인** → Submit. 낸 뒤 올린 파일을 그 건의 `submit/` 에
   복사하고 `LEDGER` + `submission.md` 를 `submitted` 로 같이 닫는다(`applications/check.py`).
 - **Blocker**: 폼이 물으면 GLG 가 그 자리에서 정할 값 — **희망 연봉 · 입사 가능일 · 이직 사유**
-  (`FAQ.md` §4 가 아직 ⚠ 다) + **출장 수용 여부**(Cohere 20–40%, OpenAI APAC 30%).
+  (`FAQ.md` §4 가 아직 ⚠ 다). 보류한 두 건을 되살릴 때는 **출장 수용 여부**도 정해야 한다
+  (Cohere 20–40%, OpenAI APAC 30%).
   민감 법적 값(병역 등)은 계속 브라우저에서만 입력한다.
 - **건별로 하나씩 남은 결정**
   - **Lunit** — 공고가 「이력서 **및 경력 기술서**」를 요구한다. 폼이 파일 하나만 받으면
@@ -49,8 +51,9 @@
   - **Reflection AI** — `기술 리더십 2년+` 은 직함으로 없다. **지어내지 않는다.**
   - **42dot** — 전형에 **코딩 테스트**가 있다. 서류가 붙으면 그 준비가 다음 일이다.
     GLG 가 짚은 `On-device Agent Orchestration`(2~3년 자리)로 바꾸려면 이 건을 닫고 새로 연다.
-- **다음 배치 — 현실적인 곳부터. 후다닥 연다** (`applications/INBOX.md` §보드 훑기 수확)
-  - **마키나락스** `[FDE] AI Agent Application Engineer` — FDE 축이 12건이라 가장 두껍다
+  - **마키나락스** — 폼이 요구하는 서류는 **`Resume/CV` 하나**다(그리팅 `docsInfo` 확인).
+    코딩테스트 없음 — 서류 → 사전인터뷰 → 기술 → Fit.
+- **다음 배치 — 말만 하면 이 순서로 연다** (`applications/INBOX.md` §보드 훑기 수확)
   - **센드버드** `Software Engineer, AI Agent` — 서울, greenhouse
   - **카카오모빌리티** `물류 & 에이전트 개발실 백엔드` — 판교, 대기업
   - **리벨리온** `Linux Device Driver Engineer` — 판교 정자. **LinkedIn 에 없던 자리**
@@ -63,8 +66,8 @@
 
 ## 지원 실행
 
-- `applications/check.py` 통과: LEDGER ↔ 11건 submission ↔ submit 스냅샷 일치.
-- **6건 준비 완료 뒤 대기줄**: **HITS**(강남역, Easy Apply, 석사요건 통과 · 적합도 중간) ·
+- `applications/check.py` 통과: LEDGER ↔ 13건 submission ↔ submit 스냅샷 일치.
+- **대기줄**: **HITS**(강남역, Easy Apply, 석사요건 통과 · 적합도 중간) ·
   **XCENA Developer Tools**(판교, 본문 미확인) · **Rebellions System SW Architect**(본문 미확인).
 - **42dot 두 건은 본문을 뜬 뒤 내려놓았다** — LLM Training 은 pre/post-training·분산학습·논문
   우대의 **연구직**이고, Embedded Linux Build 는 **`Yocto 5년 + QNX 5년`을 둘 다** 요구한다.
