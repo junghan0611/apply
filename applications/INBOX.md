@@ -277,14 +277,14 @@ Ashby 보드는 55건이었다. **회사를 정했으면 그 회사 채용 보�
 
 | 회사 | 자리 | 컷 | 경로 | 근무지 |
 |---|---|---|---|---|
-| **마키나락스** | **[FDE] AI Agent Application Engineer** · `[FDE] Forward Deployed Software Engineer` | FDE | greeting | 서초 강남대로 |
+| ~~**마키나락스**~~ **→ 케이스 열림** | **[FDE] AI Agent Application Engineer** | FDE | greeting | 서초 강남대로 |
 | **센드버드** | **Software Engineer, AI Agent** | AI | greenhouse | 서울 |
-| **업스테이지** | **AI Engineer - Agents** · `AI Model Production - Agents & Document AI` | AI | greeting | 강남 테헤란로 |
+| ~~**업스테이지**~~ **→ 케이스 열림(막힘)** | **AI Engineer - Agents** — 제품 체험 평가 필수 | AI | greeting | 강남 테헤란로 |
 | **카카오페이** | **FDE — 전사 프로젝트 지원 및 AI 기반 업무 생산성 향상** | FDE/AI | greeting | 판교역로 166 |
 | **카카오모빌리티** | 물류 & **에이전트 개발실** 백엔드 개발자 | AI | greeting | 판교역로 152 |
 | **뤼튼** | **AX Agent Developer** · `Platform Engineer` | AI | greeting | 서초 |
 | **리벨리온** | **Linux Device Driver Engineer** · `NPU Kernel Driver` · `NPU SW - SDK` | Embedded | greeting | 판교 정자 |
-| **프렌들리AI** | Software Engineer – AI Agents | AI | ashby | 서울 |
+| ~~**프렌들리AI**~~ **→ 케이스 열림** | Software Engineer – AI Agents | AI | ashby | 서울 |
 
 - **리벨리온이 증거다.** LinkedIn 에는 8건이었는데 **보드에는 41건**이고, GLG 축 정면인
   `Linux Device Driver` · `NPU Kernel Driver` · `SDK` 는 **LinkedIn 목록에 아예 없었다.**
@@ -317,3 +317,35 @@ Ashby 보드는 55건이었다. **회사를 정했으면 그 회사 채용 보�
 - **Kakao Enterprise 1건 · Telechips 2건** — 영문 사명으로 안 걸린다. 국문 사명
   (`카카오엔터프라이즈`)으로 재검색 필요. ~~NCSOFT~~ 는 게임회사라 이제 볼 필요 없다.
 - 안랩 · SK플래닛 · 한컴 · LINE Plus는 각 10건씩 잡혔으나 GLG 축에 걸리는 자리가 없었다.
+
+---
+
+## GLG 가 링크로 건넨 건 — 2026-07-28 밤 (전부 케이스로 열림)
+
+보드 훑기와 **다른 축**이다. GLG 가 LinkedIn 에서 눈으로 고른 자리를 링크로 던지면,
+`ljobs.py detail` 로 본문을 뜨고 **원본 ATS 를 찾아** 경로를 바꾼 뒤 케이스를 열었다.
+**LinkedIn 은 대부분 offsite 였고, 원본 경로가 따로 있었다.**
+
+| 회사 | 자리 | 컷 | 원본 경로(LinkedIn 아님) | 상태 |
+|---|---|---|---|---|
+| **쏘카(SOCAR)** | Platform Engineer | DevEx | greeting `socar` | `ready` |
+| **Toss** | AI Engineer (Platform) | AI | **토스 자체** `toss.im/career` | `ready` |
+| **FriendliAI** | Software Engineer – AI Agents | AI | ashby `friendliai` | `ready` |
+| **AIRS Medical** | AX Engineer | DevEx | greeting `airsmed` | `ready` |
+| **Bear Robotics** | Systems SW Engineer (Linux Platform) | Embedded | **Breezy HR** | `ready` |
+| **Telit Cinterion** 🌐 | Edge AI Software Engineer | Embedded | **Paylocity** | `ready` |
+| **Sonatus** 🌐 | Staff DevOps Engineer | Embedded | **LinkedIn Easy Apply** (원본) | `ready` |
+| **Penguin Solutions** 🌐 | Sr. System Engineer | 미정 | **SuccessFactors** | **보류 — 적합도 최하위** |
+
+- **`AIRS Medical` 가 이번 수확의 최고점이다.** 우대 첫 줄이
+  `Claude Code · Codex · Gemini · OpenCode 를 자체 skill/hook/agent/MCP server 로 customize` +
+  `openclaw 같은 personal AI agent 사용·구축` 이다. **DevEx 컷 이력서에 그 목록이 이미 있다.**
+- **`Bear Robotics` 가 문턱이 가장 낮다** — 필수 경력 **1년 이상**, Python/Go + Bash + 리눅스.
+  우대 여덟 줄 중 다섯이 직접 걸린다. LG전자 계열이라 규모 기준도 통과.
+- **`Telit Cinterion` 은 임베디드와 에이전트가 한 자리에 있다** — 주요 업무 다섯 번째가
+  「LLM 기반 Agent 프레임워크를 R&D 일상 워크플로에 프로덕션 도입」이다. 대신 **필수 절반이
+  모델 최적화**(pruning/quantization/TFLite/ONNX/FFT)라 간극이 분명하다.
+- **`Penguin Solutions` 는 방향이 반대다** — 동사가 install·administer·patch·troubleshoot 이고
+  **주간 온콜**이 상수다. 대는 카드는 **NVM 파일시스템·병렬 스토리지 연구 4년** 하나뿐이다.
+- **처음 만난 ATS 넷**(토스 자체 · Breezy · Paylocity · SuccessFactors)의 경로는
+  `.claude/skills/linkedin-jobs/companies.txt` 하단에 적어 두었다.

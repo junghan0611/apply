@@ -1,63 +1,91 @@
-# NOW — 제출 대기 6건. 컷 세 종으로 갈린다
+# NOW — 제출 대기 13건. 컷 네 종 + 막힌 것 하나
 
 - **Hot group**: 지원 실행. 공개 준비는 이 축이 아니다.
 - **기조 (2026-07-28 밤 GLG)**: **내고 떨어지면 만다.** 실제로 만든 것이 있으니 밀어붙인다.
   위로 찌르는 것이 기본값이고 — **떨어져도 이름이 알려진다.** 지역은 후보를 거르는 축이 아니다.
-- **Current**: **6건이 전부 `ready` 다.** 오라클서버에서 폴더·JD 원문·컷·**지원 URL(HTTP 200
-  확인)** 까지 끝냈다. `applications/check.py` → **13건 일치**.
+- **Current**: **하루 저녁에 6건 → 13건 `ready`** (AI 5 · Embedded 4 · FDE 2 · DevEx 2). GLG 가 링크를 던지면 그 자리에서
+  본문·폼 스키마·지원 URL(HTTP 200)까지 확인해 케이스를 열었다.
+  `applications/check.py` → **22건 일치**.
 
-  **AI Engineer 컷 — 3건** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
+  **AI Engineer 컷 — 5건** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
 
   | 건 | 지원 URL |
   |---|---|
   | **Lunit** (Seoul) Senior AX Engineer | `apply.workable.com/lunit/j/E3C22F589F/apply/` |
-  | **FuriosaAI** Agent System Developer | `jobs.ashbyhq.com/furiosa-ai/[uuid removed]/application` |
-  | **42dot** Senior AI Agent Engineer (Intelligence Service) | `jobs.ashbyhq.com/42dot/[uuid removed]/application` |
+  | **FuriosaAI** Agent System Developer | `jobs.ashbyhq.com/furiosa-ai/962c5ed8-…/application` |
+  | **42dot** Senior AI Agent Engineer | `jobs.ashbyhq.com/42dot/e1bcc942-…/application` |
+  | **FriendliAI** Software Engineer – AI Agents 🆕 | `jobs.ashbyhq.com/friendliai/2c922001-…/application` |
+  | **Toss** AI Engineer (Platform) 🆕 | `toss.im/career/apply/basic/7646941003` |
 
   **FDE 컷 — 2건** (`..._Forward_Deployed_Engineer.pdf`)
 
   | 건 | 지원 URL |
   |---|---|
   | **마키나락스** [FDE] AI Agent Application Engineer | `makinarocks.career.greetinghr.com/ko/o/214041` 의 「지원하기」 |
-  | **Reflection AI** 🌐 FDE, Lead - AI Engineer | `jobs.ashbyhq.com/reflectionai/[uuid removed]/application` |
+  | **Reflection AI** 🌐 FDE, Lead - AI Engineer | `jobs.ashbyhq.com/reflectionai/55b38a39-…/application` |
 
-  **Embedded 컷 — 1건**
+  **DevEx 컷 — 2건** (`..._Developer_Experience_Engineer.pdf`)
+
+  | 건 | 지원 URL |
+  |---|---|
+  | **AIRS Medical** AX Engineer 🆕 | `airsmed.career.greetinghr.com/ko/o/216673` 의 「지원하기」 |
+  | **쏘카(SOCAR)** Platform Engineer 🆕 | `socar.career.greetinghr.com/ko/o/220124` 의 「지원하기」 |
+
+  **Embedded 컷 — 4건** (`..._Embedded_Software_Engineer.pdf`)
 
   | 건 | 지원 URL |
   |---|---|
   | **Telechips** [판교] Embedded S/W Engineer | `careers.telechips.com/job_posting/iSXmKnRT/apply` |
+  | **Bear Robotics** Systems SW Engineer (Linux Platform) 🆕 | Breezy 공고 URL + `/apply` · **영문 CV 필수** |
+  | **Telit Cinterion** 🌐 Edge AI Software Engineer 🆕 | `recruiting.paylocity.com/…/4158364/…` |
+  | **Sonatus** 🌐 Staff DevOps Engineer 🆕 | **LinkedIn Easy Apply** (`/jobs/view/4380679251/`) |
 
-  **⏸ 보류 2건 — 이번 배치 아님** (2026-07-28 GLG: 「지금 안 한다」)
+  **⏹ 막힌 것 1건 — 폼이 관문이다**
+
+  | 건 | 왜 막혔나 |
+  |---|---|
+  | **업스테이지** AI Engineer - Agents 🆕 | 필수 서술형 6개 중 첫 문항이 **「업스테이지 제품 체험 후 평가」**(10,000자). **Document Parse / Solar 를 실제로 돌려 본 뒤** 써야 한다. `memex-kb` 로 한국어 문서 파이프라인을 만든 사람의 평가는 **가장 강한 카드**가 될 수 있다 |
+
+  **⏸ 보류 3건**
 
   | 건 | 컷 | 상태 |
   |---|---|---|
   | **Cohere** 🌐 FDE, Agentic Platform (Korea) | FDE | 준비 끝. 되살릴 때 `submission.md` 부터 |
   | **OpenAI** 🌐 Developer Experience Engineer (Seoul) | DevEx | 준비 끝. 되살릴 때 `submission.md` 부터 |
+  | **Penguin Solutions** 🌐 Sr. System Engineer 🆕 | 미정 | **적합도 최하위.** HPC 운영·SLURM·ITIL·온콜이 축 밖. 대는 카드는 **NVM 파일시스템·병렬 스토리지 연구 4년** 하나 |
 
-  외국계 두 건을 빼고 **더 현실적인 곳부터 후다닥 낸다.** 그 자리를 마키나락스가 채웠다.
-  **경로는 넷** — Ashby 3 · 그리팅 1 · Workable 1 · ninehire 1.
+  **경로가 여덟으로 늘었다** — Ashby 4 · 그리팅 3 · Workable 1 · ninehire 1 ·
+  **토스 자체** 1 · **Breezy** 1 · **Paylocity** 1 · **LinkedIn Easy Apply** 1.
 
 - **Next**: **GLG 가 노트북 브라우저에서 제출한다**(오라클서버는 탐색·준비 축이다).
   개인·법적 값 입력 → **파일명 눈으로 확인** → Submit. 낸 뒤 올린 파일을 그 건의 `submit/` 에
   복사하고 `LEDGER` + `submission.md` 를 `submitted` 로 같이 닫는다(`applications/check.py`).
+  **13건을 한 번에 내지 않아도 된다** — 아래 순서를 권한다.
+  1. **AIRS Medical** — 우대 항목이 `openclaw`·`skill/hook/MCP customize` 로 **사람을 지목했다**
+  2. **Bear Robotics** — 필수를 가장 여유 있게 통과(경력 1년+ · Python/Go · 리눅스)
+  3. **Toss · FriendliAI** — 서사 정면, 폼이 가볍다
+  4. **Sonatus** — Easy Apply 라 비용이 거의 없다
+  5. 나머지(Telit · 쏘카 · 기존 5건)
 - **Blocker**: 폼이 물으면 GLG 가 그 자리에서 정할 값 — **희망 연봉 · 입사 가능일 · 이직 사유**
-  (`FAQ.md` §4 가 아직 ⚠ 다). 보류한 두 건을 되살릴 때는 **출장 수용 여부**도 정해야 한다
-  (Cohere 20–40%, OpenAI APAC 30%).
-  민감 법적 값(병역 등)은 계속 브라우저에서만 입력한다.
+  (`FAQ.md` §4 가 아직 ⚠ 다). 보류 건을 되살릴 때는 **출장 수용 여부**도 정한다
+  (Cohere 20–40%, OpenAI APAC 30%). 민감 법적 값(병역 등)은 계속 브라우저에서만 입력한다.
 - **건별로 하나씩 남은 결정**
-  - **Lunit** — 공고가 「이력서 **및 경력 기술서**」를 요구한다. 폼이 파일 하나만 받으면
-    DEEPX 선례(`deepx--ai-agent-workflow-automation-engineer/build.sh`)로 통합본을 만든다.
+  - **업스테이지** — 제품 체험 평가. **GLG 가 「가자」 하면 이것부터 만든다.**
+    민감 법적 값(성별·생년월일·병역·장애·보훈)이 **전부 필수**다. 전형에 **코딩 테스트**.
+  - **Lunit** — 「이력서 **및 경력 기술서**」. 폼이 파일 하나만 받으면 DEEPX 선례
+    (`deepx--ai-agent-workflow-automation-engineer/build.sh`)로 통합본을 만든다.
+  - **쏘카** — 같은 요구지만 **서류 슬롯이 하나**임을 확인했다. DevEx 컷 단독으로 간다.
+    통합본을 원하면 `experience-detail.md` 를 새로 써야 한다 — **승산 대비 비용은 GLG 판단.**
   - **Telechips** — ninehire 는 **에이전트가 파일 업로드를 못 한다.** GLG 가 직접 올린다.
+  - **Sonatus** — Easy Apply 는 **LinkedIn 저장 이력서가 다음 건에 딸려 나간다.** 올릴 때 확인.
+  - **Bear Robotics** — `English CV must be submitted.` 여섯 컷이 전부 영문이라 그대로 통과.
+  - **42dot · 업스테이지** — 둘 다 전형에 **코딩 테스트**가 있다.
   - **Reflection AI** — `기술 리더십 2년+` 은 직함으로 없다. **지어내지 않는다.**
-  - **42dot** — 전형에 **코딩 테스트**가 있다. 서류가 붙으면 그 준비가 다음 일이다.
-    GLG 가 짚은 `On-device Agent Orchestration`(2~3년 자리)로 바꾸려면 이 건을 닫고 새로 연다.
-  - **마키나락스** — 폼이 요구하는 서류는 **`Resume/CV` 하나**다(그리팅 `docsInfo` 확인).
-    코딩테스트 없음 — 서류 → 사전인터뷰 → 기술 → Fit.
 - **다음 배치 — 말만 하면 이 순서로 연다** (`applications/INBOX.md` §보드 훑기 수확)
   - **센드버드** `Software Engineer, AI Agent` — 서울, greenhouse
   - **카카오모빌리티** `물류 & 에이전트 개발실 백엔드` — 판교, 대기업
   - **리벨리온** `Linux Device Driver Engineer` — 판교 정자. **LinkedIn 에 없던 자리**
-  - **업스테이지** `AI Engineer - Agents` · **뤼튼** `AX Agent Developer` · **프렌들리AI** `AI Agents`
+  - **뤼튼** `AX Agent Developer`
   - ⚠ **카카오페이 FDE** 는 자격 첫 줄이 `Java/Kotlin 깊이 있는 백엔드` 다 — 낼지 먼저 정한다
 - **Read**: 각 건의 `submission.md` (§폼에 답한 질문 · §왜 이 직무였는가) → `FAQ.md` §3·§4·§5.
 - **Do not touch**: 제출된 4건의 `submit/` 스냅샷. 업로드한 그 파일이라 다시 빌드해 덮지 않는다.
@@ -66,7 +94,15 @@
 
 ## 지원 실행
 
-- `applications/check.py` 통과: LEDGER ↔ 13건 submission ↔ submit 스냅샷 일치.
+- `applications/check.py` 통과: LEDGER ↔ **22건** submission ↔ submit 스냅샷 일치.
+- **GLG 가 링크를 던지는 흐름이 통했다 (2026-07-28 밤).** LinkedIn URL 하나를 받으면
+  `ljobs.py detail` 로 본문을 뜨고 → **원본 ATS 를 찾아** 경로를 바꾸고 → 폼 스키마까지
+  확인해 케이스를 연다. 이 저녁에만 **처음 만나는 ATS 넷**을 확인했다 —
+  **토스 자체** · **Breezy HR**(베어로보틱스) · **Paylocity**(텔릿) · **SuccessFactors**(펭귄).
+  경로는 `.claude/skills/linkedin-jobs/companies.txt` 하단에 적어 두었다.
+- ⚠ **쏘카는 그리팅인데 목록 페이지가 막혀 있다** — `/` → `/ko` 301, `/ko` 404.
+  `boards.py list greeting:socar` 는 실패하고 **`body` 는 정상**이다. 목록은 회사 채용홈
+  `socarcorp.kr/careers/jobs` 의 `__NEXT_DATA__` 에서 뽑았다(28건).
 - **대기줄**: **HITS**(강남역, Easy Apply, 석사요건 통과 · 적합도 중간) ·
   **XCENA Developer Tools**(판교, 본문 미확인) · **Rebellions System SW Architect**(본문 미확인).
 - **42dot 두 건은 본문을 뜬 뒤 내려놓았다** — LLM Training 은 pre/post-training·분산학습·논문

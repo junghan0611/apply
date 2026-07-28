@@ -22,6 +22,15 @@
 | Reflection AI 🌐 | FDE, Lead - AI Engineer (Seoul) | ready | — | Ashby (가입 불필요) | FDE | `reflection-ai--forward-deployed-engineer-lead-ai-engineer` |
 | 42dot | Senior AI Agent Engineer (Intelligence Service) | ready | — | Ashby (가입 불필요) | AI Engineer | `42dot--senior-ai-agent-engineer-intelligence-service` |
 | MakinaRocks | [FDE] AI Agent Application Engineer | ready | — | 그리팅 (자체 도메인) | FDE | `makinarocks--ai-agent-application-engineer-fde` |
+| SOCAR | Platform Engineer | ready | — | 그리팅 (자체 도메인) | DevEx | `socar--platform-engineer` |
+| Upstage | AI Engineer - Agents | draft | — | 그리팅 (자체 도메인) | AI Engineer (⚠ 제품 체험 평가 필수) | `upstage--ai-engineer-agents` |
+| FriendliAI | Software Engineer - AI Agents | ready | — | Ashby (가입 불필요) | AI Engineer | `friendliai--software-engineer-ai-agents` |
+| Toss | AI Engineer (Platform) | ready | — | **토스 자체 채용홈** | AI Engineer | `toss--ai-engineer-platform` |
+| Bear Robotics | Systems Software Engineer (Linux Platform) | ready | — | **Breezy HR** (자체 보드) | Embedded (영문 CV 필수) | `bear-robotics--systems-software-engineer-linux-platform` |
+| Penguin Solutions 🌐 | Sr. System Engineer | draft | — | 자체 채용홈 (SuccessFactors) | — (보류 — GLG 판단) | `penguin-solutions--sr-system-engineer` |
+| Sonatus 🌐 | Staff DevOps Engineer | ready | — | **LinkedIn Easy Apply** | Embedded | `sonatus--staff-devops-engineer` |
+| Telit Cinterion 🌐 | Edge AI Software Engineer | ready | — | **Paylocity** (자체 보드) | Embedded | `telit-cinterion--edge-ai-software-engineer` |
+| AIRS Medical | AX Engineer | ready | — | 그리팅 (자체 도메인) | DevEx | `airs-medical--ax-engineer` |
 
 ---
 

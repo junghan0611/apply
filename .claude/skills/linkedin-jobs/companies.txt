@@ -42,8 +42,21 @@ ashby:42dot             # 120
 greeting:rebellions     # 41 — LinkedIn 에는 8건만 보였다
 greeting:stradvision    # 스트라드비젼 23
 # Telechips 는 careers.telechips.com (ninehire 화이트라벨) — 82건 중 열린 건 3건.
+#
+# 쏘카(SOCAR)는 그리팅 슬러그가 `socar` 인데 **목록 페이지가 막혀 있다** — `/` 가 `/ko` 로
+# 301 하고 `/ko` 는 404 다. 그래서 `boards.py list greeting:socar` 는 실패한다.
+# 목록은 회사 채용홈 `www.socarcorp.kr/careers/jobs` 의 `__NEXT_DATA__`
+# (`props.pageProps.jobList.jsonResult.data`, 2026-07-28 기준 28건)에서 뽑고,
+# **본문은 `boards.py body greeting:socar <id>` 가 정상 동작한다**(상세 페이지는 200).
 
 # ── 아직 슬러그를 못 찾은 곳 (자체 ATS 이거나 슬러그가 다르다) ──
-# 네이버 · LINE · 토스 · 우아한형제들 · 하이퍼커넥트 · 두나무 · 야놀자 · 오늘의집 ·
+# 네이버 · LINE · 우아한형제들 · 하이퍼커넥트 · 두나무 · 야놀자 · 오늘의집 ·
 # 채널코퍼레이션 · 리디 · 트웰브랩스 · 라이너 · 베스핀글로벌 · 엘리스 · 노타 · 파두 ·
 # 카카오뱅크 · 카카오엔터프라이즈 · 삼성SDS · LG CNS · SK · KT
+#
+# 확인된 자체/미지원 ATS (2026-07-28) — probe 로는 안 잡힌다. 링크로 직접 간다.
+# 토스        toss.im/career/jobs (자체) — 상세 `job-detail?job_id=<id>`,
+#             지원 `toss.im/career/apply/basic/<id>`. 목록은 클라이언트 렌더라 미지원
+# 베어로보틱스 bear-robotics.breezy.hr — **Breezy HR**. 지원은 공고 URL + `/apply`
+# 펭귄솔루션스 careers.penguinsolutions.com — SuccessFactors 계열 🌐
+# 소나투스     LinkedIn Easy Apply 로 받는다 (자체 보드 미확인) 🌐
