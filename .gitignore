@@ -7,3 +7,7 @@ tmp/
 .timeline-events.jsonl
 .timeline-snapshot.json
 .timeline-manifest.json
+
+# skill 실행 부산물
+__pycache__/
+*.pyc

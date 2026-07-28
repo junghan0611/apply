@@ -1,47 +1,57 @@
-# 타깃 컷 — AI Engineer / Agent Platform Engineer
+# 타깃 컷 — Applied AI / Agent Platform Engineer
 #
-# 지금의 중심 분야다. 베이스와 다른 것은 표제 부제와 Summary 와 역량 순서뿐이고, 경력·
-# 증거·오픈소스·스택·학력은 body.org 한 벌을 그대로 쓴다.
+# 모델 학습 전문가를 주장하지 않는다. 하네스·메모리·권한·증거·운영이라는 시스템 경계를
+# 전면에 둔다. 사실은 body.org 한 벌이고, 아래 두 CV_* 목록이 이 컷의 선택과 순서다.
 #
 # 빌드:  ./run.sh target ai-engineer
 
 #+cv_pdf_name: KimJunghan_Resume_AI_Engineer
+#+CV_GOQUAL_MODULES: domain-agents ai-infra on-device-ai smart-hub
+#+CV_INDEPENDENT_MODULES: platform-operations entwurf andenken agent-config forge-config corpus-tools
+#+EXCLUDE_TAGS: catalog corpus
 
 #+INCLUDE: "../pipeline/preamble.org"
 
 #+begin_export latex
-\cvheader{AI Engineer — Agent Platforms, Memory Layers, and Accountable Work Loops}
+\cvheader{Applied AI / Agent Platform Engineer — Accountable Systems Around Models}
 #+end_export
 
 * Summary
 
-I build agent platforms, not agent demos. On the harness side: a dispatch substrate that lets
-different agent harnesses address one another by id without owning each other's transcript, auth,
-or runtime, published on npm and extended by an outside contributor for an enterprise runtime I
-had never written for. On the memory side: semantic retrieval as an independent layer — LanceDB
-with hybrid vector + FTS search, score normalization, cross-lingual expansion through a personal
-vocabulary graph. On the operations side: five months and 20+ upstream version cycles of running
-a multi-agent harness in production, including a latency regression I instrumented, rolled back
-on evidence, and turned into an upgrade policy.
+I build and operate the systems around models: harness boundaries, retrieval, permissions, evidence
+contracts, upgrade policy, and the work surface through which a human takes responsibility. I have
+run a self-hosted multi-agent harness through 20+ upstream version cycles, separated semantic
+memory into its own hybrid-retrieval layer, and published a dispatch substrate that preserves each
+harness's transcript, authentication, and runtime ownership.
 
-What I care about is the part most agent projects skip: what the agent is allowed to touch, what
-evidence it must leave, where it must stop, and how a human picks the work back up. I have built
-that for a personal knowledge corpus of thousands of notes and for domain owners at work who
-asked not for a dashboard but for "make this run without me." The same background covers the
-layers underneath — embedded firmware, protocols, backend services — so the agent layer is not
-being designed by someone who has never had to make the system beneath it work.
+My claim is not foundation-model training or fine-tuning expertise. It is applied AI systems
+engineering grounded in layers that must work when the model call ends: Go and Clojure services,
+PostgreSQL/pgvector, NixOS and containers, embedded Linux, protocols, and real domain data. I design
+where an agent may act, what it must leave behind, where it must stop, and how another human or
+agent can reproduce the path.
 
 * Core Competencies
 
-- @@latex:\cvlabel{AI Agent Systems}@@ — domain-owner agents, evidence contracts, review loops,
-  multi-agent development sessions with a human as PM.
-- @@latex:\cvlabel{Agent Harness Engineering}@@ — dispatch, identity, auth boundaries, session
-  continuity, delegation contracts, upstream version operations and rollback policy.
+- @@latex:\cvlabel{Agent Platform Operations}@@ — upstream tracking, staged promotion, regression
+  instrumentation, rollback policy, SLOs, and recoverable session continuity.
+- @@latex:\cvlabel{Harness and Agent Systems}@@ — dispatch, identity, auth boundaries, delegation
+  contracts, domain-owner agents, and review loops with a human as PM.
 - @@latex:\cvlabel{Knowledge Engineering / RAG}@@ — embedding and hybrid retrieval, reranking and
-  embedding served in-house, cross-lingual expansion, Org/Denote knowledge graphs.
+  embedding served in-house, cross-lingual expansion, recall tracking, Org/Denote knowledge graphs.
 - @@latex:\cvlabel{Backend and Infrastructure}@@ — Go and Clojure services, PostgreSQL/pgvector,
-  Docker, declarative NixOS, GPU cluster, reproducible build and document pipelines.
-- @@latex:\cvlabel{Embedded and Edge AI}@@ — on-device sLLM, NPU deployment, ARM and RISC-V Linux —
-  where the agent loop meets constrained hardware.
+  Docker, declarative NixOS, GPU infrastructure, reproducible build and document pipelines.
+- @@latex:\cvlabel{Embedded and Edge AI}@@ — on-device sLLM and NPU deployment on ARM/RISC-V Linux;
+  the agent loop is designed by someone who has had to make the system beneath it work.
+
+* Public Evidence — Inspect, Run, Challenge
+
+- *Harness boundary* — [[https://github.com/junghan0611/entwurf][github.com/junghan0611/entwurf]] publishes the package, boundary contract,
+  deterministic checks, and clean-host path. Run =npm install -g @junghanacs/entwurf=, then
+  =entwurf check-bridge=. An outside contributor exercised the extension boundary in [[https://github.com/junghan0611/entwurf/pull/40][PR #40]].
+- *Independent memory layer* — [[https://github.com/junghan0611/andenken][github.com/junghan0611/andenken]] exposes indexing, hybrid search,
+  quality regression, and gap diagnosis through =./run.sh search:md=, =golden=, and =doctor --md=.
+- *Reproducible skill surface* — [[https://github.com/junghan0611/agent-config][github.com/junghan0611/agent-config]] fans one skill SSOT into six
+  harness surfaces. Built CLI artifacts record source revision, source-tree digest, and binary
+  SHA-256; =./run.sh env= reports drift. Private company data is not presented as public proof.
 
 #+INCLUDE: "../body.org" :minlevel 1

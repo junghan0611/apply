@@ -1,48 +1,58 @@
 # 타깃 컷 — Forward Deployed / Applied / Solutions Engineer
 #
-# 기업과 현장의 접합부를 맡는 자리. 노트 20231018T221900(기업용 하네스 좌표)이 이 컷의
-# 논지다 — 데이터 연결 다음에 담당자가 있다.
+# 기업과 현장의 접합부를 맡는 자리. 모델 연결보다 도메인 언어·실데이터·중단 경계·인수인계가
+# 먼저다. 공개 구현과 비공개 회사 수행 사실을 섞지 않는다.
 #
 # 빌드:  ./run.sh target forward-deployed-engineer
 
 #+cv_pdf_name: KimJunghan_Resume_Forward_Deployed_Engineer
+#+CV_GOQUAL_MODULES: domain-agents smart-hub ai-infra
+#+CV_INDEPENDENT_MODULES: forge-config corpus-tools agent-config entwurf platform-operations
+#+EXCLUDE_TAGS: validation catalog corpus
 
 #+INCLUDE: "../pipeline/preamble.org"
 
 #+begin_export latex
-\cvheader{Forward Deployed Engineer — Attaching Agents to the People Who Own the Domain}
+\cvheader{Forward Deployed Engineer — Domain Agents on Real Systems}
 #+end_export
 
 * Summary
 
 The request I keep receiving from other teams is not "build me a dashboard." It is "make this run
-without me." So I do not build dashboards. I go to the person who owns the domain, learn the units
-and periods and inclusion rules their numbers actually obey, and stand up an agent that works in
-their language against their live systems — read-only where the evidence must stay honest, with a
-trail back to the single record behind every figure. Two of those are in daily use at my company:
-a VOC workbench the operations team reads every morning, and an incident workbench that aligns
-platform catalog, device logs, and runtime state on one time axis and stops rather than warns when
-its evidence contract breaks.
+without depending on me." I begin with the domain owner: the units, periods, inclusion rules, source
+systems, and failure conditions their work actually obeys. Then I build a read-only evidence path or
+a bounded agent surface in their language, with every figure traceable to its source record and a
+stop condition when the contract breaks.
 
-I can do this because I have built every layer underneath it — embedded firmware and protocols,
-backend services, deployment, and the agent harnesses themselves. Connecting data to a model is
-the part many people can do; the part that decides whether it survives contact with a real
-organization is the domain owner's language, the boundary where the agent must stop, and the
-hand-off that lets the next human pick it up. That is also why documentation and enablement are
-not a side duty for me: I have spent years turning what I learned into skills, guides, and work
-surfaces someone else can take over.
+Two such workbenches are in daily company use: one over customer-support data and one aligning a
+platform catalog, device logs, and runtime state on a single time axis. I can cross the boundary
+between field and engineering because I have built the layers underneath it — firmware, protocols,
+backend services, deployment, and agent harnesses — and because I leave a hand-off another person
+can inspect rather than a conversation only its author understands.
 
 * Core Competencies
 
-- @@latex:\cvlabel{Applied Agent Deployment}@@ — attaching agents to real operational data, evidence
-  contracts, read-only evidence tools, stop-conditions, hand-off design.
-- @@latex:\cvlabel{Legacy System Integration}@@ — putting an agent surface on systems already running:
-  platform catalogs, support data, device logs, runtime mirrors, on one KST time axis.
-- @@latex:\cvlabel{Agent Harness Engineering}@@ — dispatch, auth boundaries, session continuity, and
-  provider independence so an organization is not bound to one model vendor.
-- @@latex:\cvlabel{Documentation and Enablement}@@ — translating upstream change into per-repository
-  impact notes, writing the operating charters agents and humans both follow.
-- @@latex:\cvlabel{Full-Stack Delivery}@@ — firmware, backend, app, and infrastructure, so the
+- @@latex:\cvlabel{Domain-Owner Deployment}@@ — operational language discovery, live-system
+  integration, evidence contracts, read-only paths, stop conditions, and recoverable hand-offs.
+- @@latex:\cvlabel{Legacy and Operational Data}@@ — support data, platform catalogs, device logs,
+  runtime mirrors, PostgreSQL/JSONB, and one explicit KST time axis.
+- @@latex:\cvlabel{Agent Work Surfaces}@@ — conversations converted into durable work items with
+  ownership, first review, human decision points, and implementation separated from dispatch.
+- @@latex:\cvlabel{Documentation and Enablement}@@ — operating charters and upstream-to-repository
+  impact notes that developers and non-developers can continue without the original author.
+- @@latex:\cvlabel{Full-Stack Delivery}@@ — firmware, backend, app, and infrastructure; the field
   integration is designed by someone who has had to make each layer work.
+
+* Public Evidence — Method, Boundary, Hand-Off
+
+- *Work ledger* — [[https://github.com/junghan0611/forge-config][github.com/junghan0611/forge-config]] publishes the exact operating loop:
+  conversation → issue → owner review → hand-back. Its README separates dispatch, triage, human
+  judgment, and implementation instead of calling every automated transition "done."
+- *Falsifiable quantitative method* — [[https://github.com/junghan0611/abductcli][github.com/junghan0611/abductcli]] records working and
+  non-working parts, 24 tests/88 assertions, and a claim-versus-verified-data path. Run
+  =./run.sh test= and =clj -M:run pipeline=. It is the public method precursor, not company data.
+- *Whole-system proof* — [[https://github.com/junghan0611/homeagent-config][github.com/junghan0611/homeagent-config]] exposes the Go/Flutter/Matter/Yocto
+  implementation and build entries (=./run.sh go-build=, =flutter-server=, =bundle=). Private
+  deployments remain labeled as experience; this public repository is not used to impersonate them.
 
 #+INCLUDE: "../body.org" :minlevel 1

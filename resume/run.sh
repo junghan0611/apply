@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # 영문 이력서 — Org 정본 → XeLaTeX → PDF
 #
-# 하나의 공통 본문(body.org)과 여러 개의 표제(resume.org, targets/*.org)가 한 벌의 조판
-# 선언(pipeline/preamble.org)을 공유한다. 타깃이 늘어도 경력·오픈소스·증거·스택·학력은
-# 한 곳에서만 고친다 — 컷마다 사실이 어긋날 자리를 만들지 않기 위해서다.
+# 하나의 공통 사실원(body.org)과 여러 개의 타깃 정본(resume.org, targets/*.org)이 한 벌의
+# 조판 선언을 공유한다. 경력 사실은 body.org에서만 고치고, 타깃은 CV_*_MODULES로 선택·순서,
+# 자기 직무 언어, 공개 증거 입구를 쥔다 — 사실 SSOT와 표시 SSOT를 혼동하지 않는다.
 #
 #   resume.org ─┐
 #   targets/*.org ┼→ latex-export.el(org→tex) → xelatex → build/<name>.pdf
@@ -67,10 +67,26 @@ cmd_check() {
 	[[ "$n" -gt 0 ]] && ok "Pretendard ${n}종 (flake fontconfig)" || { err "Pretendard 없음 — flake FONTCONFIG_FILE 확인"; exit 1; }
 }
 
+# 타깃 컷은 "검증 가능"이라는 말만 하지 않고 실제 공개 입구를 보여야 한다. 이 검사는
+# 새 컷을 복사하면서 Evidence 절이나 선택 manifest를 빼먹는 조용한 퇴행을 막는다.
+validate_target_source() {
+	local org="$1" links
+	[[ "$org" == "$DIR/targets/"* ]] || return 0
+	# BRE에서 \+는 리터럴 plus가 아니라 반복 연산자다. Org의 #+는 plus를 그대로 쓴다.
+	grep -q '^#+CV_GOQUAL_MODULES:' "$org" \
+		|| { err "$org 에 #+CV_GOQUAL_MODULES가 없습니다"; return 1; }
+	grep -q '^\* Public Evidence' "$org" \
+		|| { err "$org 에 Public Evidence 절이 없습니다"; return 1; }
+	links="$(grep -o 'https://github.com/junghan0611/' "$org" | wc -l)"
+	[[ "$links" -ge 2 ]] \
+		|| { err "$org 에 공개 GitHub 증거 경로가 2개 미만입니다"; return 1; }
+}
+
 # org → tex → pdf. 정본 한 장이 PDF 한 장이 된다.
 build_one() {
 	local org="$1" base
 	[[ -f "$org" ]] || { err "$org 없음"; exit 1; }
+	validate_target_source "$org"
 	base="$(pdf_name_of "$org")"
 	mkdir -p "$BUILD"
 	info "[$base] org → tex (emacs ox-latex, article)"
@@ -147,6 +163,16 @@ cmd_verify() {
 		echo "$txt" | grep -q '[email removed]'   && ok "  이메일 노출" || { err "  이메일 안 보임"; fail=1; }
 		echo "$txt" | grep -q 'github.com/junghan0611' && ok "  GitHub URL 노출" || { err "  GitHub URL 안 보임"; fail=1; }
 		echo "$txt" | grep -qi 'linkedin.com/in/'      && ok "  LinkedIn URL 노출" || { err "  LinkedIn URL 안 보임"; fail=1; }
+		# 공개 증거가 PDF 텍스트에도 보여야 한다. 숨은 링크 annotation만 있으면 사람은 눌러도
+		# ATS/상대 에이전트가 추출한 텍스트에서는 사라질 수 있으므로 URL 자체를 보인다.
+		if echo "$txt" | grep -q 'Public Evidence'; then
+			local evidence_links
+			evidence_links="$(echo "$txt" | grep -o 'github.com/junghan0611/' | wc -l)"
+			[[ "$evidence_links" -ge 2 ]] && ok "  공개 증거 URL ${evidence_links}개" \
+				|| { err "  공개 증거 URL 2개 미만"; fail=1; }
+		else
+			err "  Public Evidence 절 안 보임"; fail=1
+		fi
 		# 한국어 텍스트가 섞여 들어가지 않았는지. 영문 이력서다 — 이름 병기(김정한·힣)와
 		# 도시명만 허용하고, 문장이 통째로 한국어면 컷을 잘못 만든 것이다.
 		local ko; ko="$(echo "$txt" | grep -oP '[가-힣]' | wc -l)"

@@ -1,45 +1,57 @@
 # 타깃 컷 — Developer Experience / Agent Enablement Engineer
 #
-# 하네스 도구와 HCI 쪽 입구. 문서·전파·온보딩이 업무에 들어 있는 자리에 낸다 — 이 이력서
-# 자체가 Org 정본 하나에서 재생성되는 파이프라인의 산출물이라는 점이 그 주장의 일부다.
+# 하네스 도구·문서·온보딩·HCI의 입구. 문서량이 아니라 다른 사람이 재현하고 이어받을 수 있는
+# 설치·검증·경계·프로비넌스를 전면에 둔다.
 #
 # 빌드:  ./run.sh target developer-experience-engineer
 
 #+cv_pdf_name: KimJunghan_Resume_Developer_Experience_Engineer
+#+CV_GOQUAL_MODULES: domain-agents ai-infra on-device-ai
+#+CV_INDEPENDENT_MODULES: agent-config memex-kb forge-config digital-garden entwurf corpus-tools
+#+EXCLUDE_TAGS: catalog corpus
 
 #+INCLUDE: "../pipeline/preamble.org"
 
 #+begin_export latex
-\cvheader{Developer Experience Engineer — Tools, Boundaries, and Documents Other People Can Pick Up}
+\cvheader{Developer Experience Engineer — Tools Others Can Reproduce and Continue}
 #+end_export
 
 * Summary
 
-I build the surfaces other people work on. 40+ agent skills over a real corpus rather than a demo
-context; a dispatch substrate that lets different agent harnesses address one another without
-owning each other's transcript, auth, or runtime; a self-hosted code work surface where an agent
-turns a conversation into a durable, reviewable work item; a fenced Emacs agent-server exposing 10
-path-guarded APIs, so agents are given a playground rather than a list of prohibitions. If an
-agent breaks something inside that fence, I treat it as a design problem, not an agent problem.
+I build the surfaces other people and agents work on: 40+ skills over a real corpus, one skill SSOT
+fanned into six harnesses, a fenced Emacs agent server, a Forgejo work ledger, and document tools
+that carry Korean HWPX, scanned paper, EPUB, Org, and office formats across otherwise disconnected
+systems. The goal is not another wrapper. It is an installable path with ownership, boundaries,
+provenance, diagnostics, and a hand-off the next person can recover.
 
-Documentation is not a chore appended to the work — it is the work. I translate upstream releases
-into per-repository impact notes so a team knows where to look, and I keep operating charters that
-let agents from different vendors work under one house's grammar. The corpus behind that is public
-and countable: 2,200+ published pages, 3,500+ notes, 1,600+ consecutive days of journaling, all
-cross-referenced on one identifier scheme. Even this résumé is generated from a single Org source
-through a reproducible pipeline — the same claim, demonstrated rather than asserted.
+Documentation is part of the executable surface. Release notes become repository-specific impact
+notes; operating charters state what an agent owns and does not own; generated artifacts lead back
+to one source and one build command. When a built CLI is installed, its source revision, source-tree
+digest, and binary SHA-256 are recorded. If reality drifts from the document, the check should say so
+before a user has to infer it from a failure.
 
 * Core Competencies
 
-- @@latex:\cvlabel{Developer Tooling}@@ — agent-queryable CLIs, 40+ agent skills, reproducible build
-  and document pipelines (Nix, Make, Org → PDF/ODT/Markdown).
-- @@latex:\cvlabel{Agent Harness Engineering}@@ — dispatch, identity, auth boundaries, session
-  continuity, delegation contracts, provider independence.
-- @@latex:\cvlabel{Documentation and Enablement}@@ — upstream-to-repository impact translation,
-  operating charters, onboarding surfaces for developers and non-developers alike.
-- @@latex:\cvlabel{Human-Computer Interaction}@@ — shared human/agent timelines, work surfaces,
-  fenced APIs, and interfaces for people who do not write code.
-- @@latex:\cvlabel{Knowledge Engineering}@@ — memory, retrieval, cross-lingual search, and the Korean
-  document toolchain (HWPX, scanned PDF, EPUB → Org → office formats).
+- @@latex:\cvlabel{Developer Tooling}@@ — agent-queryable CLIs, 40+ skills, reproducible builds, and
+  document pipelines across Nix, Org, PDF, ODT, Markdown, HWPX, and EPUB.
+- @@latex:\cvlabel{Provenance and Diagnostics}@@ — source/binary identity, environment doctors,
+  deterministic gates, declared gaps, and failures that stop instead of merely warn.
+- @@latex:\cvlabel{Agent Harness Enablement}@@ — shared capabilities across Claude Code, Codex, pi,
+  Antigravity, and OpenClaw without replacing each harness's identity or authentication.
+- @@latex:\cvlabel{Documentation and Onboarding}@@ — impact translation, operating charters,
+  clean-host paths, and work surfaces for developers and non-developers.
+- @@latex:\cvlabel{Human-Computer Interaction}@@ — shared timelines, fenced APIs, durable work items,
+  and interfaces that keep human judgment visible.
+
+* Public Evidence — The Documentation Has an Executable Edge
+
+- *Install provenance* — [[https://github.com/junghan0611/agent-config][github.com/junghan0611/agent-config]] documents six consumer surfaces and
+  records =vcs_revision=, source-tree digest, and binary SHA-256. Run =./run.sh setup=, then
+  =./run.sh env= to verify links, binaries, and memory-index state.
+- *Korean document boundary* — [[https://github.com/junghan0611/memex-kb][github.com/junghan0611/memex-kb]] exposes the command catalogue and
+  reproducible Nix environment for HWPX/scanned PDF/EPUB/Org/office-format conversion and QA.
+- *Accepted outside the author's repository* — [[https://github.com/dakra/ghostel/pull/343][ghostel PR #343]] and [[https://github.com/dakra/ghostel/pull/510][PR #510]] were merged upstream.
+  They repair Korean/CJK IME composition in an Emacs terminal codebase I do not own; the maintainer's
+  merge, diff, and discussion remain independently inspectable.
 
 #+INCLUDE: "../body.org" :minlevel 1

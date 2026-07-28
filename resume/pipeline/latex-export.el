@@ -75,6 +75,70 @@
 (add-to-list 'org-export-filter-table-functions #'cv/table-fit-to-linewidth)
 (add-to-list 'org-export-filter-table-functions #'cv/table-close-tabularx)
 
+;; 사실은 body.org 한 벌에 두되, 타깃 컷은 같은 사실을 같은 순서로 보여 주지 않는다.
+;; 정본의 CV_*_MODULES 키워드는 body.org 안의 CUSTOM_ID 하위 모듈을 선택하고 배열한다.
+;; 이 변환은 include가 풀린 임시 export 버퍼에서만 일어나므로 사실원은 복제되지 않는다.
+(defun cv/keyword-list (name)
+  "현재 버퍼의 #+NAME: 값을 공백/쉼표 목록으로 읽는다."
+  (save-excursion
+    (goto-char (point-min))
+    (when (re-search-forward
+           (format "^#\\+%s:[ \t]*\\(.+\\)$" (regexp-quote name)) nil t)
+      (split-string (string-trim (match-string-no-properties 1)) "[, \t]+" t))))
+
+(defun cv/goto-custom-id (id)
+  "CUSTOM_ID가 ID인 헤딩으로 이동한다."
+  (goto-char (point-min))
+  (when (re-search-forward
+         (format "^[ \t]*:CUSTOM_ID:[ \t]+%s[ \t]*$" (regexp-quote id)) nil t)
+    (org-back-to-heading t)
+    t))
+
+(defun cv/select-and-order-child-modules (parent-id requested)
+  "PARENT-ID 바로 아래 모듈을 REQUESTED 순서와 집합으로 export한다."
+  (when requested
+    (save-excursion
+      (unless (cv/goto-custom-id parent-id)
+        (error "CV module parent not found: %s" parent-id))
+      (let* ((parent-level (org-outline-level))
+             (parent-end (save-excursion (org-end-of-subtree t t) (point)))
+             (children nil))
+        (save-restriction
+          (narrow-to-region (point) parent-end)
+          (goto-char (point-min))
+          (while (re-search-forward org-heading-regexp nil t)
+            (when (= (org-outline-level) (1+ parent-level))
+              (let* ((start (line-beginning-position))
+                     (id (org-entry-get (point) "CUSTOM_ID"))
+                     (end (save-excursion (org-end-of-subtree t t) (point))))
+                (unless id
+                  (error "direct child under %s has no CUSTOM_ID" parent-id))
+                (push (cons id (buffer-substring-no-properties start end)) children)))))
+        (setq children (nreverse children))
+        (let ((first-start
+               (save-excursion
+                 (cv/goto-custom-id parent-id)
+                 (outline-next-heading)
+                 (line-beginning-position)))
+              (ordered nil))
+          (dolist (id requested)
+            (let ((module (assoc id children)))
+              (unless module
+                (error "requested CV module not found under %s: %s" parent-id id))
+              (push (cdr module) ordered)))
+          (delete-region first-start parent-end)
+          (goto-char first-start)
+          (insert (mapconcat #'identity (nreverse ordered) "")))))))
+
+(defun cv/apply-target-profile (_backend)
+  "타깃 정본의 모듈 선택을 include 확장 뒤 export 버퍼에 적용한다."
+  (cv/select-and-order-child-modules
+   "cv-goqual" (cv/keyword-list "CV_GOQUAL_MODULES"))
+  (cv/select-and-order-child-modules
+   "cv-independent" (cv/keyword-list "CV_INDEPENDENT_MODULES")))
+
+(add-hook 'org-export-before-parsing-hook #'cv/apply-target-profile)
+
 (let* ((source (pop command-line-args-left))
        (output (pop command-line-args-left)))
   (unless (and source output)

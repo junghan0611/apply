@@ -1,20 +1,23 @@
-# NOW — 영문 이력서 발사대 (`resume/`)
+# NOW — 공고 탐색 → 직무별 증거 컷 → 제출 원장
 
-- **Current**: 2026-07-28 오전, 링크드인 프리미엄 구독을 계기로 **영문 이력서 PDF 베이스**를
-  세웠다. Org 정본 하나 → 타깃별 컷을 뽑는 구조다. 오늘 10곳 지원에 그대로 쓸 수 있다.
-- **Built**: `resume/build/` 에 **6종 PDF, 전부 3쪽, verify 통과**.
-  1. `KimJunghan_Resume.pdf` — 베이스 (타깃 중립, 링크드인 첨부용)
-  2. `KimJunghan_Resume_AI_Engineer.pdf`
-  3. `KimJunghan_Resume_Forward_Deployed_Engineer.pdf`
-  4. `KimJunghan_Resume_Embedded_Software_Engineer.pdf`
-  5. `KimJunghan_Resume_Developer_Experience_Engineer.pdf`
-  6. `KimJunghan_Resume_Software_Engineer.pdf`
-- **Next**: 공고를 하나 건네면 `resume/AGENTS.md` §「새 타깃 컷 만드는 법」 6단계로 컷을
-  하나 더 뽑는다(5분). 기존 다섯 컷으로 덮이는 공고면 그대로 첨부한다.
+- **Current**: 2026-07-28, 세 레인이 병행 중이다. `.claude/skills/linkedin-jobs/`는 공고
+  탐색·랭킹, `resume/`은 직무별 PDF, `applications/`는 JD·폼·제출 원장을 쥔다.
+- **Résumé design**: 사실은 `resume/body.org` 한 벌이다. 타깃 정본의 `CV_*_MODULES`가 같은
+  사실을 직무별로 선택·배열하고, 각 컷은 보이는 GitHub URL·실행 명령·제3자 PR과
+  비공개/공개 경계를 담은 `Public Evidence` 절을 별도로 가진다.
+- **Built**: `resume/build/` 6종 PDF, 전부 verify 통과. Embedded는 2쪽, 나머지는 3쪽.
+  1. `KimJunghan_Resume.pdf` — Agent Platform & Systems 공개 입구
+  2. `KimJunghan_Resume_AI_Engineer.pdf` — Applied AI / Agent Platform (모델 학습 과장 없음)
+  3. `KimJunghan_Resume_Forward_Deployed_Engineer.pdf` — 도메인 오너·증거 계약·인수인계
+  4. `KimJunghan_Resume_Embedded_Software_Engineer.pdf` — 양산·포팅·프로토콜·제품화
+  5. `KimJunghan_Resume_Developer_Experience_Engineer.pdf` — 도구·프로비넌스·문서 인에이블
+  6. `KimJunghan_Resume_Software_Engineer.pdf` — 펌웨어→에이전트 루프 세로축
+- **Next**: `applications/AGENTS.md` 계약으로 공고를 보존하고 가장 강한 컷 하나만 낸다.
+  새 직무는 `resume/AGENTS.md`의 8단계로 만든다. 자료를 더 넣기 전에 모듈을 고른다.
 - **Blocker**: none.
-- **Read**: `resume/AGENTS.md` → `resume/resume.org` → `resume/body.org`.
-- **Do not touch**: PDF 를 손으로 고치지 않는다. Org 를 고치고 `./run.sh` 로 다시 낸다.
-  분량 계약은 3쪽이고 지금 여유가 없다 — 늘리려면 같은 분량을 먼저 덜어낸다.
+- **Read**: 루트 `AGENTS.md` → 각 레인의 `AGENTS.md` → `applications/LEDGER.md`.
+- **Do not touch**: PDF를 손으로 고치지 않는다. Org를 고치고 `./run.sh all`로 다시 낸다.
+  공개 인접 구현을 비공개 양산·고객 배포의 증거처럼 쓰지 않는다.
 
 ## 이번 판에서 남겨 둔 것 (GLG 판단 또는 다음 세션)
 
@@ -30,8 +33,8 @@
       `gh` 로 재측정 후 `body.org` 의 Third-Party Validation 을 고친다.
 - [ ] **국문 이력서 컷** — 국내 공고가 국문 이력서를 요구하면 같은 골격에서 `resume-ko.org`
       로 가른다. 활자·조판은 그대로 쓸 수 있다(xetexko·Pretendard 이미 배선됨).
-- [ ] **공개 트랙 반영** — `junghan0611/resume/README.md` 는 2026-07-10 판이다. 이번 판에서
-      다듬은 문장(Summary 세 문단, 역량 다섯 축)을 공개 리포로 되돌릴지는 별도 판단.
+- [ ] **공개 트랙 반영** — `junghan0611/resume/README.md`는 2026-07-10 판이다. 이번 판의
+      직무별 증거 언어와 모듈 조립 구조를 공개 리포로 되돌릴지는 별도 판단한다.
       비공개→공개 자동 동기화는 하지 않는다.
 
 # RECENT

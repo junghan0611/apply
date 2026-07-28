@@ -1,48 +1,56 @@
 # 타깃 컷 — Embedded Software Engineer
 #
-# 물리 세계와 맞닿는 자리. 양산까지 간 사실과 차세대 포팅 판단이 앞으로 나온다. 에이전트
-# 축은 지우지 않고 "이 사람이 어디까지 갔는가" 로 뒤에 둔다.
+# 물리 세계와 맞닿는 자리. 양산·포팅·프로토콜·제품화를 전면에 두고, AI는 모델 전문성이
+# 아니라 검증 가능한 개발 도구와 온디바이스 배포 경험으로만 말한다.
 #
 # 빌드:  ./run.sh target embedded-software-engineer
 
 #+cv_pdf_name: KimJunghan_Resume_Embedded_Software_Engineer
+#+CV_GOQUAL_MODULES: smart-hub on-device-ai ai-infra
+#+EXCLUDE_TAGS: independent validation catalog corpus
 
 #+INCLUDE: "../pipeline/preamble.org"
 
 #+begin_export latex
-\cvheader{Embedded Software Engineer — Firmware, Protocols, and Products That Shipped}
+\cvheader{Embedded Software Engineer — Firmware and Protocols That Shipped}
 #+end_export
 
 * Summary
 
-I take embedded products from silicon to shipping. Most recently a Zigbee/Wi-Fi gateway written in
-Zig, now in mass production: a legacy C Zigbee SDK integration rewritten behind a type-safe FFI
-layer, a deterministic state machine (single =HubState=, pure =transition()=), and 24-hour aging-test
-automation. When the contract stopped at firmware I built the server (Go) and the companion app
-(Flutter) myself and turned a deliverable into a product — one protocol served by two
-interchangeable backends, AWS IoT and a local mTLS broker, with the firmware shipping unmodified
-in both.
+I take embedded products from silicon to shipping. Most recently: a Zigbee/Wi-Fi gateway written in
+Zig and shipped to mass production, with a legacy C SDK isolated behind type-safe FFI, one explicit
+state machine, and 24-hour aging automation. When the contract stopped at firmware, I built the Go
+server and Flutter companion app and delivered one protocol over two interchangeable backends — AWS
+IoT for connected deployments and a local mTLS broker for closed networks — without changing the
+firmware.
 
-The next-generation hub is where the engineering judgment shows: port target moved from ARMv7
-glibc with a vendor sysroot to RISC-V on statically linked musl; a board HAL extracted so the hub
-core no longer knows what board it runs on; Zigbee transport delegated to Zigbee2MQTT; seven
-hardcoded device-type handlers dropped so the device model passes through as a generic entity.
-Alongside it, a Matter hub with an on-device AI agent runs from one Go codebase on RPi5 + Hailo-8
-NPU (Yocto) and RK3576 (Android) with 96% code sharing. I started in systems software research
-(non-volatile memory filesystems, NUMA locks) and co-founded a company that shipped a Linux-based
-touch display OS, so the habit of owning the whole stack is not new.
+The next port moved from ARMv7/glibc and a vendor sysroot to RISC-V on static musl, extracted a board
+HAL, delegated Zigbee transport to Zigbee2MQTT, and removed seven hardcoded device handlers. In
+parallel, one Go Matter-hub codebase runs on RPi5 + Hailo-8 NPU/Yocto and RK3576/Android with 96% code
+sharing. AI appears here as an engineering tool and deployable edge workload, not as a claim of
+model-training expertise.
 
 * Core Competencies
 
-- @@latex:\cvlabel{Embedded Systems}@@ — Zig and C firmware, ARM and RISC-V Linux, Yocto, static musl,
-  board HAL, cross-compilation, mass production.
-- @@latex:\cvlabel{IoT Protocols}@@ — Matter, Thread (OTBR, RCP), Zigbee and Zigbee2MQTT, MQTT and
-  mTLS, AWS IoT, BLE commissioning, device shadow with monotonic versioning.
-- @@latex:\cvlabel{Edge AI}@@ — on-device sLLM, NPU deployment across accelerator families, local-first
-  control loops on constrained hardware.
-- @@latex:\cvlabel{Backend and Product}@@ — Go services and Flutter apps built on top of the firmware,
-  so the device is delivered as a whole product.
-- @@latex:\cvlabel{AI-Assisted Development}@@ — agent harnesses used as production tooling: aging-test
-  automation, multi-agent development sessions, reproducible build pipelines.
+- @@latex:\cvlabel{Embedded Linux and Firmware}@@ — Zig and C, ARM and RISC-V, Yocto, static musl,
+  board HAL, cross-compilation, deterministic state machines, and mass production.
+- @@latex:\cvlabel{IoT Protocols}@@ — Matter, Thread/OTBR/RCP, Zigbee and Zigbee2MQTT, MQTT and mTLS,
+  AWS IoT, BLE commissioning, and versioned device shadows.
+- @@latex:\cvlabel{Portability and Productization}@@ — one core across boards and backends, explicit
+  hardware boundaries, real-device fan-out tests, server and app delivered with the firmware.
+- @@latex:\cvlabel{Edge AI}@@ — on-device sLLM and NPU deployment across accelerator families;
+  local-first control loops on constrained hardware.
+- @@latex:\cvlabel{AI-Assisted Verification}@@ — agents used for aging automation and bounded parallel
+  development, with tests and reproducible builds as the acceptance surface.
+
+* Public Evidence — Build Surface and Honest Boundary
+
+- *Open implementation* — [[https://github.com/junghan0611/homeagent-config][github.com/junghan0611/homeagent-config]] contains the Go/Flutter/Matter/Yocto
+  system and its build entries: =./run.sh go-build=, =flutter-server=, and =bundle=.
+- *Cross-build reasoning* — [[https://github.com/junghan0611/homeagent-config/blob/main/docs/YOCTO.md][github.com/junghan0611/homeagent-config/blob/main/docs/YOCTO.md]] records npm/Yocto dependency failures,
+  target-architecture QA, shrinkwrap policy, and the commands used to reproduce and clear failures.
+- *Boundary* — the mass-production SKS firmware and customer data are private. HomeAgent is a public,
+  adjacent implementation that verifies the Matter/Go/Flutter/Yocto work; it is not offered as proof
+  of the private shipment claim. That claim remains attributable employment experience.
 
 #+INCLUDE: "../body.org" :minlevel 1

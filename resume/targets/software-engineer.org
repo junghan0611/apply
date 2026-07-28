@@ -1,44 +1,57 @@
-# 타깃 컷 — Software Engineer (범용 기반)
+# 타깃 컷 — Software / Systems Engineer
 #
-# 직무명이 좁게 지정되지 않은 공고, 또는 "백엔드/풀스택"으로 열린 공고에 낸다. 특정 층을
-# 앞세우지 않고 세로축 자체를 주장한다.
+# "무엇이든 조금"이 아니라 하나의 세로축을 끝까지 소유한 시스템 엔지니어로 낸다. 타깃이
+# 더 구체적이면 이 범용 컷보다 해당 컷을 우선한다.
 #
 # 빌드:  ./run.sh target software-engineer
 
 #+cv_pdf_name: KimJunghan_Resume_Software_Engineer
+#+CV_GOQUAL_MODULES: smart-hub domain-agents on-device-ai ai-infra
+#+CV_INDEPENDENT_MODULES: platform-operations entwurf agent-config corpus-tools memex-kb
+#+EXCLUDE_TAGS: catalog corpus
 
 #+INCLUDE: "../pipeline/preamble.org"
 
 #+begin_export latex
-\cvheader{Software Engineer — Depth Across a Vertical, from Firmware to the Agent Loop}
+\cvheader{Software / Systems Engineer — From Firmware to Agent Loops}
 #+end_export
 
 * Summary
 
-I work from the firmware up to the agent loop. On one end: a Zigbee hub written in Zig, now
-shipping in mass production, with the server (Go) and the companion app (Flutter) I built on top
-of it because the original contract stopped at firmware. On the other end: a dispatch substrate
-for AI agent harnesses, published on npm and extended by a contributor I have never met. The
-middle is not empty — it is a reproducible NixOS/Emacs environment where the tools, the memory,
-and the boundaries are designed rather than improvised.
+I work across one vertical rather than collecting disconnected stacks. At the physical end: a
+Zigbee hub in Zig, shipped to mass production, with the Go server and Flutter app I built when the
+original contract stopped at firmware. At the agent end: a published dispatch substrate whose
+boundary was extended by a contributor I had never met. Between them are protocols, services,
+deployment, semantic retrieval, reproducible NixOS environments, and explicit operational gates.
 
-This is not "full stack" in the front-end/back-end sense. It is depth across a vertical: silicon,
-protocol, service, interface, agent. I tend to build before claiming expertise — build something
-small, find where it breaks, preserve the evidence, and turn that failure into reproducible tools
-and ways of working. Hands-on across Go, Clojure, Zig, C, TypeScript, Nix, and Elisp, with a
-public corpus of code and notes that can be read rather than taken on trust.
+The common method is build → break → preserve evidence → encode the recovery as a tool or policy.
+That has produced deterministic firmware state transitions, interchangeable cloud/local backends,
+staged agent-platform upgrades, source-to-binary provenance, and work items another person can take
+over. I use Go, Clojure, Zig, C, TypeScript, Nix, and Elisp where each layer requires them; the claim
+is backed by public repositories and runnable entry points rather than a technology list alone.
 
 * Core Competencies
 
 - @@latex:\cvlabel{Systems and Backend}@@ — Go and Clojure services, protocol design, PostgreSQL and
-  pgvector, MQTT and mTLS, Docker, declarative NixOS across four machines.
-- @@latex:\cvlabel{Embedded Systems}@@ — firmware in Zig and C, ARM and RISC-V Linux, Yocto, static
-  musl, board HAL, Matter/Thread/Zigbee, taken through mass production.
-- @@latex:\cvlabel{AI Agent Systems}@@ — agent harnesses in production, domain-owner agents, evidence
-  contracts, multi-agent development sessions.
-- @@latex:\cvlabel{Knowledge Engineering}@@ — embedding and hybrid retrieval, cross-lingual search,
-  Org/Denote knowledge graphs, document toolchains.
-- @@latex:\cvlabel{Product and Interface}@@ — Flutter and React apps shipped next to the systems they
-  drive, plus interfaces for people who are not developers.
+  pgvector, MQTT and mTLS, containers, and declarative NixOS.
+- @@latex:\cvlabel{Embedded Systems}@@ — Zig and C firmware, ARM/RISC-V Linux, Yocto, static musl,
+  board HAL, Matter/Thread/Zigbee, and mass production.
+- @@latex:\cvlabel{Agent Systems}@@ — production harness operations, domain-owner agents, evidence
+  contracts, dispatch boundaries, and recoverable sessions.
+- @@latex:\cvlabel{Reproducible Delivery}@@ — tests, build gates, source/binary provenance, explicit
+  failure boundaries, and documentation generated from the same source as the artifact.
+- @@latex:\cvlabel{Product Interface}@@ — Flutter and React surfaces built next to the systems they
+  drive, including interfaces for people who do not write code.
+
+* Public Evidence — One Vertical, Multiple Independent Checks
+
+- *Device to application* — [[https://github.com/junghan0611/homeagent-config][github.com/junghan0611/homeagent-config]] exposes the Go/Flutter/Matter/Yocto
+  implementation and build entries (=./run.sh go-build=, =flutter-server=, =bundle=).
+- *Agent boundary* — [[https://github.com/junghan0611/entwurf][github.com/junghan0611/entwurf]] is installable from npm and carries deterministic
+  checks; =entwurf check-bridge= probes the auth-free bridge surface. [[https://github.com/junghan0611/entwurf/pull/40][PR #40]] is an independent
+  extension of the backend boundary.
+- *Reproducible workstation/server layer* — [[https://github.com/junghan0611/nixos-config][github.com/junghan0611/nixos-config]] is the declarative
+  configuration across four machines and the service host beneath the public agent work. The
+  repositories expose code and checks; private employer systems remain labeled separately.
 
 #+INCLUDE: "../body.org" :minlevel 1

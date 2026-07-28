@@ -1,25 +1,31 @@
 # 이력서 공통 본문 — 모든 타깃 컷이 #+INCLUDE 로 이 파일 한 벌을 끌어온다.
 #
-# 여기 있는 것은 타깃이 바뀌어도 달라지지 않는 사실이다: 경력, 오픈소스, 제3자 증거,
-# 기술 스택, 학력, 작업 코퍼스. 타깃마다 바뀌는 것 — 표제 부제와 Summary 와 역량 다섯 줄 —
-# 은 각 정본(resume.org, targets/*.org)이 직접 쥔다.
+# 여기 있는 것은 타깃이 바뀌어도 달라지지 않는 사실 모듈이다: 경력, 오픈소스, 제3자 증거,
+# 기술 스택, 학력, 작업 코퍼스. 각 정본은 표제·Summary·역량·공개 증거 입구와 함께
+# CV_*_MODULES로 이 모듈의 선택·순서를 쥔다. 사실 문장을 타깃 파일에 복사하지 않는다.
 #
 # 이 파일은 단독으로 export 하지 않는다. 조판 선언(#+latex_class 등)이 없기 때문이다.
 
 * Experience
 
 ** GoQual Inc. — Full Stack Architect @@latex:\cvwhen{2025.06 – Present}@@
+:PROPERTIES:
+:CUSTOM_ID: cv-goqual
+:END:
 
 *** Domain-Owner Agents and Agent Work Surfaces (2026.05 – Present)
+:PROPERTIES:
+:CUSTOM_ID: domain-agents
+:END:
 
 The request I keep receiving from other teams is not "build me a dashboard." It is "make this
-run without me." So I do not build dashboards. I stand up an agent and attach it to the person
-who owns the domain.
+run without depending on me." When a dashboard would merely transfer the burden, I stand up an
+agent and attach it to the person who owns the domain.
 
 - *VOC workbench* — quantitative-abduction tool over daily customer-support data. Fixes the units,
   periods, and inclusion policy of every number; makes each figure traceable down to a single
-  conversation id; surfaces signals that differ from baseline. Production body of my open-source
-  =abductcli= experiment.
+  conversation id; surfaces signals that differ from baseline. The production counterpart of the
+  public =abductcli= method, without exposing company data.
 - *Incident workbench* — read-only evidence tool that reads live from real sources instead of
   storing dumps, aligning platform DDL catalog, device logs, and runtime mirror on a single KST
   time axis. Stops rather than warns when the evidence contract breaks.
@@ -31,11 +37,14 @@ who owns the domain.
   and regulator/customer response for externally reported vulnerabilities.
 
 *** Smart Home Hub — Firmware to Product (2025.12 – Present)
+:PROPERTIES:
+:CUSTOM_ID: smart-hub
+:END:
 
 - *SKS Hub* — Zigbee/Wi-Fi gateway firmware in Zig, *shipped to mass production*. Rewrote a
   legacy C Zigbee SDK integration behind Zig's type-safe FFI layer; deterministic state machine
-  (single =HubState=, pure =transition()=); 198 commits in 30 days across driver, protocol, and
-  cloud layers; 24-hour aging-test automation with an AI agent as pair programmer.
+  (single =HubState=, pure =transition()=) across driver, protocol, and cloud layers; 24-hour
+  aging-test automation with an AI agent as pair programmer.
 - *Productization the original contract did not cover* — built the server (Go) and companion app
   (Flutter) myself, turning a firmware deliverable into a whole product. One protocol served by
   two interchangeable backends (AWS IoT for connected deployments, a local mTLS broker for closed
@@ -47,12 +56,15 @@ who owns the domain.
   dropping seven hardcoded device-type handlers.
 
 *** On-Device AI Smart Home Hub (2025.09 – Present)
+:PROPERTIES:
+:CUSTOM_ID: on-device-ai
+:END:
 
 - *HomeAgent* — open-source Matter hub with an on-device AI agent. One Go codebase runs on
   RPi5 + Hailo-8 NPU (Yocto) and RK3576 (Android), with Flutter as the shell; 96% code sharing
   across the two deployments. BLE commissioning for Matter/Thread via a matterjs bridge, OTBR
-  integration. Ran 3-agent parallel development sessions with the human as PM: 24 commits/day,
-  163 tests passing, zero file conflicts.
+  integration. Ran 3-agent parallel development sessions with the human as PM: 163 tests passing,
+  zero file conflicts.
 - *Matter wallpad (customer engagement)* — RK3576 + Android 15, ESP32-H2 as Thread RCP,
   AOSP-native CHIP C++ SDK with =ot-daemon=, delivered as a versioned Android SDK (AAR) into the
   customer's own namespace.
@@ -61,6 +73,9 @@ who owns the domain.
   families. Currently in year two.
 
 *** AI Infrastructure and Knowledge Base (2025.06 – 2025.09)
+:PROPERTIES:
+:CUSTOM_ID: ai-infra
+:END:
 
 - Built GPU cluster infrastructure: 3× RTX 5080, NixOS, 10G network, 17 Docker services.
 - Designed a hierarchical AI agent system on n8n (40+ node workflows) over Supabase pgvector with
@@ -69,41 +84,91 @@ who owns the domain.
 - Data pipelines: Airbyte connectors for Channel.io, Notion, and JIRA into PostgreSQL JSONB;
   internal portal behind Cloudflare Zero Trust.
 
-** Independent Work — Operating an Agent Platform in the Open @@latex:\cvwhen{2022 – Present}@@
+** Independent Work — Operating an Agent Platform in the Open @@latex:\cvwhen{2022 – Present}@@ :independent:
+:PROPERTIES:
+:CUSTOM_ID: cv-independent
+:END:
 
 Public work is not a side project here — it is where the ideas are built and load-tested before
 they enter production settings. One vertical runs through it: *operate a harness → extract the
 memory layer → make harnesses addressable → close the development loop.*
 
-- *Agent platform operations (2026.02 – Present)* — ran a self-hosted multi-agent harness through
-  20+ upstream version cycles on Oracle Cloud ARM. Instrumented a latency regression to a spinning
-  gateway process, chose the rollback target on evidence rather than recency, and wrote the policy
-  that followed: no two-version jumps, stage on a non-production agent for ≥24h before promotion,
-  responsiveness is the SLO. A later upstream release fixed the root cause; the upgrade took boot
-  from 45.4s to 5.8s and resident memory from 816 MiB to 246 MiB.
-- *entwurf* — garden-citizen dispatch substrate. Agent harnesses (Claude Code, Codex, Antigravity,
-  pi) address one another by id *without* owning each other's transcript, auth, or runtime. No
-  OAuth proxy, no CLI transcript scraping, no backend identity replacement. Published on npm.
-- *andenken* — semantic memory as an independent layer: LanceDB with hybrid retrieval (vector +
-  FTS, score-normalized), Korean↔English cross-lingual expansion through a personal vocabulary
-  graph, and recall tracking for consolidation.
-- *agent-config* — PKM-native skill stack: 40+ agent skills over notes, agenda, bibliography,
-  health data, and git history, plus a 3-layer cross-lingual retrieval design (embedding vectors,
-  Denote dblock graph, personal vocabulary ontology).
-- *memex-kb* — document toolchain that makes Korean content machine-legible: =hwpx2org= for the
-  Korean word processor format no toolchain wants to touch, =scanpdf2org= with vision transcription
-  for scanned paper, =epub2org=, =org2odtdoc= for the round trip back into office formats, and
-  =textlint-ko= for Korean prose linting, with Org-mode as the meta-document everything passes
-  through. *Every Korean organization hits this wall; I have a toolchain for it.*
-- *Digital garden and shared timeline* — 2,200+ published pages backed by 3,500+ org-mode notes and
-  1,600+ consecutive days of journaling. Human and agents read the same org-agenda through 10
-  path-guarded Elisp APIs over an emacsclient socket: one interface, three consumers (local Emacs,
-  cloud bots, public web). Designed *ROSSE*, the IndieWeb POSSE pattern inverted — raw writing is
-  struck outside where polish cannot reach it, recovered and converged in the garden, then
-  syndicated back out.
-- Built agent-queryable CLI tools for a real corpus rather than a demo context: =denotecli=,
-  =dictcli=, =gitcli=, =lifetract=, =bibcli=, =abductcli=. Every tool speaks Denote IDs, so commits,
-  journals, bot logs, and health days cross-reference on one timestamp scheme.
+*** Agent Platform Operations (2026.02 – Present)
+:PROPERTIES:
+:CUSTOM_ID: platform-operations
+:END:
+
+Ran a self-hosted multi-agent harness through 20+ upstream version cycles on Oracle Cloud ARM.
+Instrumented a latency regression to a spinning gateway process, chose the rollback target on
+evidence rather than recency, and wrote the policy that followed: no two-version jumps, stage on a
+non-production agent for ≥24h before promotion, responsiveness is the SLO. A later upstream release
+fixed the root cause; the upgrade took boot from 45.4s to 5.8s and resident memory from 816 MiB to
+246 MiB.
+
+*** entwurf — Garden-Citizen Dispatch Substrate
+:PROPERTIES:
+:CUSTOM_ID: entwurf
+:END:
+
+Agent harnesses (Claude Code, Codex, Antigravity, pi) address one another by id *without* owning
+each other's transcript, auth, or runtime. No OAuth proxy, no CLI transcript scraping, no backend
+identity replacement. Published on npm.
+
+*** andenken — Semantic Memory as an Independent Layer
+:PROPERTIES:
+:CUSTOM_ID: andenken
+:END:
+
+LanceDB with hybrid retrieval (vector + FTS, score-normalized), Korean↔English cross-lingual
+expansion through a personal vocabulary graph, and recall tracking for consolidation.
+
+*** agent-config — Reproducible Skill Surface
+:PROPERTIES:
+:CUSTOM_ID: agent-config
+:END:
+
+PKM-native stack of 40+ agent skills over notes, agenda, bibliography, health data, and git history,
+plus a 3-layer cross-lingual retrieval design. Built CLI artifacts carry source revision, source-tree
+digest, and installed-binary SHA-256 provenance.
+
+*** forge-config — Durable Agent Work Ledger
+:PROPERTIES:
+:CUSTOM_ID: forge-config
+:END:
+
+Public operating policy and CLI surface that turns conversations into reviewable Forgejo issues:
+capture, explicit ownership, read-only first review, hand-back, and human-governed implementation.
+The bot dispatches and records; it does not silently implement.
+
+*** memex-kb — Korean Document Toolchain
+:PROPERTIES:
+:CUSTOM_ID: memex-kb
+:END:
+
+Makes Korean content machine-legible: =hwpx2org=, scanned-paper vision transcription, =epub2org=,
+=org2odtdoc= for the round trip into office formats, and =textlint-ko=, with Org-mode as the
+meta-document everything passes through. This is a recurring boundary in Korean organizations,
+not a demo-format conversion.
+
+*** Digital Garden and Shared Timeline
+:PROPERTIES:
+:CUSTOM_ID: digital-garden
+:END:
+
+2,200+ published pages backed by 3,500+ org-mode notes and 1,600+ consecutive days of journaling.
+Human and agents read the same org-agenda through 10 path-guarded Elisp APIs over an emacsclient
+socket: one interface, three consumers (local Emacs, cloud bots, public web). Designed *ROSSE*, the
+IndieWeb POSSE pattern inverted — raw writing is struck outside where polish cannot reach it,
+recovered and converged in the garden, then syndicated back out.
+
+*** Agent-Queryable Corpus Tools
+:PROPERTIES:
+:CUSTOM_ID: corpus-tools
+:END:
+
+Built =denotecli=, =dictcli=, =gitcli=, =lifetract=, =bibcli=, and =abductcli= for a real corpus
+rather than a demo context. Every tool speaks Denote IDs, so commits, journals, bot logs, and health
+days cross-reference on one timestamp scheme.
 
 ** Sungkyunkwan University — Distributed Computing Lab @@latex:\cvwhen{2018 – 2021}@@
 
@@ -117,14 +182,14 @@ memory layer → make harnesses addressable → close the development loop.*
   and mass production. The startup failed; the habit of taking a product from silicon to shipping
   did not.
 
-* Third-Party Validation
+* Third-Party Validation :validation:
 
 Evidence that does not depend on my own account — each item is an action someone else took.
 
 - *Others build on entwurf.* A developer I have never met contributed a Snowflake Cortex Code ACP
   backend ([[https://github.com/junghan0611/entwurf/pull/40][entwurf#40]] — 11 files, +885 lines), targeting an enterprise agent runtime I had never
-  written for. He found the extension boundary exactly where the architecture claimed it was. That
-  is the only review of an abstraction that counts.
+  written for. He found the extension boundary exactly where the architecture claimed it was —
+  stronger validation than a self-authored architecture claim.
 - *Others merged my code.* Two patches accepted upstream into [[https://github.com/dakra/ghostel][dakra/ghostel]], an Emacs terminal
   emulator built on libghostty-vt: [[https://github.com/dakra/ghostel/pull/343][#343]] forwards IME-committed text and guards redraws during
   composition (+435 lines), and [[https://github.com/dakra/ghostel/pull/510][#510]] lets Lisp IMEs compose inside read-only buffers. Both fix
@@ -132,7 +197,7 @@ Evidence that does not depend on my own account — each item is an action someo
   solve, met from the other side.
 - *People install it.* =@junghanacs/entwurf= — 1,395 npm installs in the preceding 30 days (2026-07).
 
-* Selected Open Source
+* Selected Open Source :catalog:
 
 | Project | What it is | Stack |
 |---------+------------+-------|
@@ -170,7 +235,7 @@ Evidence that does not depend on my own account — each item is an action someo
 # 이 절은 한때 일곱 칸짜리 표였다. 표가 더 잘 보이긴 했지만 절 하나가 통째로 넷째 쪽으로
 # 넘어가면서 그 쪽의 3분의 2가 비었다 — 읽는 사람에게는 "네 쪽짜리 이력서" 로 보인다.
 # 수치는 어차피 라이브 주소에서 확인되므로, 이력서에는 셀 수 있다는 사실만 한 줄로 남긴다.
-* Working Corpus
+* Working Corpus :corpus:
 
 The claims above rest on a corpus that is public and countable, not on a self-description:
 *3,500+* org-mode notes · *8,200+* bibliography entries · *8,500+* commits · *1,600+* consecutive
