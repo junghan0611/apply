@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **draft** — 지원 URL·폼·표지 원고 확정. 남은 것은 **표지 1장 PDF 변환 + 기존 PDF 2종과 `gs` 합본** |
+| 상태 | **ready** — 첨부 2개 다 만들어졌다. 남은 것은 **GLG 의 ninehire 업로드**뿐 |
 | 지원일 | — |
 | 경로 | **ninehire** (`hanwhavision.ninehire.site`) — 확정 |
 | 첨부 컷 | **AI Engineer** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`) + **포트폴리오** |
@@ -95,9 +95,9 @@ KST 축에** 세운다. 증거 계약이 깨지면 경고가 아니라 **멈춘�
 ## 낸 것
 
 - [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`
-- [ ] **포트폴리오 합본** — **`cover-sheet.md` → 표지 PDF 1장** + 기존 `dossier/` 산출물 PDF 2종을
-      `gs` 로 합친다. **org 소스의 조준부 3자리는 오늘 교체하지 않는다** — 표지가 그 역할을 대신한다.
-      문안은 확정돼 있다 (§채택안). **NHN 제출본을 그대로 재사용할 수 없다** — 이유도 같은 절
+- [x] **포트폴리오 합본** — ✅ **`submit/KimJunghan_Hanwha_Portfolio.pdf` 생성 완료 (18쪽, 4.2M)**.
+      `cover-sheet.md` → 표지 1장(`submit/00-cover.pdf`) + 기존 `dossier/` 산출물 PDF 2종 `gs` 합본.
+      **org 소스의 조준부 3자리는 교체하지 않았다** — 표지가 그 역할을 대신한다 (§채택안)
 - [x] ~~커버레터~~ — **N/A 확정.** 폼에 서술형 칸이 **하나도 없다**(2026-07-29 실측).
       쓸 자리가 없으므로 만들지 않는다
 
@@ -220,37 +220,29 @@ gs -dNOPAUSE -dBATCH -dQUIET -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress \
 **결과 17쪽 · 4.0M** — 한글 활자·인포그래픽 손상 없음(1쪽·6쪽 렌더 확인). 폼 상한의 12% 다.
 순서는 **역량기술서 먼저**다 — 서술형 칸이 없으니 글이 먼저 오고 프로젝트가 뒤를 받친다.
 
-### ⛔ 막힌 곳 하나 — 표지 1장을 PDF 로 만들 간단한 엔진이 없다
+### ✅ 막혔던 곳 — 노트북에서 풀렸다 (2026-07-29 11:00)
 
-표지 **내용은 위에 확정돼 있다.** 남은 것은 「마크다운 한 장 → PDF」뿐인데, **그 경로가
-저장소에 없다.**
+서버(오라클)에서는 「마크다운 한 장 → PDF」 경로가 없어 막혀 있었다. **노트북에는 Chrome 이
+있어서 풀렸고, 결과를 재사용 가능한 스크립트로 남겼다** — `applications/md2pdf.sh`.
 
-| 후보 | 이 서버 | 판정 |
-|---|---|---|
-| `dossier/run.sh` · `resume/run.sh` | 있음 | ⛔ **둘 다 `emacs → ox-latex → xelatex(flake devshell)`.** GLG 가 안 쓰기로 한 그 파이프라인이다 |
-| `pandoc` 단독 | 3.7.0.2 있음 | ⛔ PDF 엔진이 없다 (`xelatex`·`typst`·`weasyprint`·`wkhtmltopdf` 전부 없음) |
-| LibreOffice headless | **없음** | ⛔ `dossier/run.sh check` 가 여기서 끊긴다 |
-| 브라우저 인쇄 | 크롬 없음(`DISPLAY` 없음) | ⛔ 서버 불가 · **노트북에서는 된다** |
-| `gs` 병합 | 있음 | ✅ 합치는 것만 가능 — 만드는 것은 못 한다 |
+| 후보 | 판정 |
+|---|---|
+| `dossier/run.sh` · `resume/run.sh` | ⛔ `emacs → ox-latex → xelatex(flake)`. 정본 문서용이고 표지 한 장에 쓸 것이 아니다 |
+| `pandoc --pdf-engine=typst` | ⛔ 노트북에도 `typst` 가 없다. 도입은 `nixos-config` 변경이라 GLG 판단 |
+| **`pandoc`(md→HTML) → Chrome headless(→PDF)** | ✅ **채택.** TeX·typst·LibreOffice 전부 불필요 |
+| `gs` 병합 | ✅ 합치는 것은 서버에서도 된다 |
 
-**추천: `pandoc --pdf-engine=typst`.** 단일 바이너리이고 `emacs`·TeX·flake 가 필요 없다.
-markdown 한 장이 그대로 PDF 가 된다 — 커버레터·경력기술서·표지 같은 **공고별 한 장짜리
-문서 전부가 이 경로를 쓴다.** 한글은 `--variable=cjk-font` 로 D2Coding/Pretendard 를 지정한다.
-`typst` 도입은 `nixos-config` 변경이라 **GLG 판단**이다.
+⚠ **폰트를 심어야 한다.** Chrome 이 fontconfig 로 고르게 두면 CSS 에 `Pretendard` 를 1순위로
+적어도 **D2Coding(코딩용 고정폭)** 으로 떨어진다. 그래서 `md2pdf.sh` 는 Pretendard Regular/Bold 를
+**data URI 로 HTML 안에 심는다.** 실측으로 확인한 것이고, 다음 한 장짜리 문서도 같은 함정을 만난다.
 
-**당장 막히지 않는 우회**: 노트북 브라우저에서 markdown → 인쇄 → PDF. 표지 1장이면 충분하다.
-
-### 낼 때 순서 — 명령까지 적어 둔다 (노트북에서 그대로 실행)
-
-**표지 원고는 `cover-sheet.md` 에 확정돼 있다.** 글은 더 쓸 것이 없고, 남은 것은 변환뿐이다.
+### 낼 때 순서 — 실행 완료 (2026-07-29 11:00)
 
 ```bash
 cd ~/repos/gh/apply/applications/hanwha-vision--ai-agent-architecture-lead
-mkdir -p submit
 
-# ① 표지 md → PDF (한 장). 아래 중 되는 것 하나. 확인: 1쪽인지, 한글이 안 깨졌는지
-pandoc cover-sheet.md -o submit/00-cover.pdf --pdf-engine=typst   # 권장(typst 있을 때)
-#  또는 브라우저에서 cover-sheet.md 를 열어 인쇄 → PDF 저장 → submit/00-cover.pdf
+# ① 표지 md → PDF (한 장)
+../md2pdf.sh cover-sheet.md submit/00-cover.pdf        # → 1쪽
 
 # ② 표지 + 역량기술서 + 포트폴리오 = 한 파일  (순서 중요: 글이 먼저)
 N=../nhn--ax-transformation-ai-infra/submit
@@ -263,6 +255,9 @@ gs -dNOPAUSE -dBATCH -dQUIET -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress \
 gs -q -dNODISPLAY -dNOSAFER \
    -c "(submit/KimJunghan_Hanwha_Portfolio.pdf) (r) file runpdfbegin pdfpagecount = quit"
 ```
+
+**검수 결과**: 18쪽 · 4.2M. 표지는 Pretendard 벡터로 굽혔고 표·볼드·한글 정상,
+합본 2쪽(역량기술서 첫 장)에서 그림·링크 손상 없음을 렌더링으로 확인했다.
 
 **업로드**
 
@@ -286,6 +281,9 @@ gs -q -dNODISPLAY -dNOSAFER \
 - [2026-07-29] **브라우저로 해소.** 지원 URL `6NDP9uTE` 확정 · 폼 스키마 전체 실측 ·
   근무지 **판교R&D센터** 확정 · 공고 `until_filled` 로 열려 있음 확인.
   남은 것은 **표지 PDF 생성 + 합본 한 파일**이다.
+- [2026-07-29 11:00, 노트북] **첨부 완성.** `md2pdf.sh`(pandoc → Chrome headless, Pretendard
+  data URI 심기)로 표지 1장을 굽고 `gs` 로 합본 → `submit/KimJunghan_Hanwha_Portfolio.pdf`
+  **18쪽 4.2M**. `draft` → **`ready`**. 남은 것은 GLG 의 ninehire 업로드뿐이다.
 - [2026-07-29 오전, 오라클] **기존 제출본 재사용 검사 → 「조건부」.** 회사명은 없지만
   `공고 대응` 컬럼과 프롤로그 첫 문장이 **NHN 공고 번호에 묶여 있다.** 고칠 세 자리와
   교체 문안을 §남은 하나 에 확정했다. `gs` 합본 실측(17쪽 4.0M, 손상 없음).

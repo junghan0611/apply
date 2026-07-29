@@ -11,7 +11,7 @@
 > 사실이 아니었다. **폼 값은 각 `submission.md` 가 정본**이고, 이 큐에는 실행에 필요한
 > 순서·URL·첨부·주의만 둔다. Holiday/Lunit/SOCAR 는 폼 실측 요약도 함께 적었다.
 
-- 상태 계보: `ready` **16** = **실행 14** + **보류 2**(Cohere · OpenAI).
+- 상태 계보: `ready` **17** = **실행 15** + **보류 2**(Cohere · OpenAI). 한화비전이 11:00 합류.
 - 공고 생존: `./alive.py` — **2026-07-29 06:36 KST 기준 19건 전부 열림, 닫힌 것 0.**
   **제출 당일 다시 돌린다.**
 - 제출 순서는 아래 표 순서를 권한다(폼이 가벼운 것 → 무거운 것).
@@ -32,7 +32,7 @@
 
 ---
 
-## 실행 14건
+## 실행 15건
 
 컷 경로는 전부 `resume/build/` 아래다. `_AI`=`KimJunghan_Resume_AI_Engineer.pdf` ·
 `_FDE`=`..._Forward_Deployed_Engineer.pdf` · `_EMB`=`..._Embedded_Software_Engineer.pdf` ·
@@ -54,6 +54,7 @@
 | 12 | **Reflection AI** 🌐 | `_FDE` | `https://jobs.ashbyhq.com/reflectionai/[uuid removed]/application` | Ashby. `기술 리더십 2년+` 은 직함으로 없다 — **지어내지 않는다** |
 | 13 | **Lunit** | `_AI` | `https://apply.workable.com/lunit/j/E3C22F589F/apply/` | Workable. ✅ **A(이력서만)로 닫혔다 (2026-07-29)** — 새 문서 작업 없이 나간다. 로그인 없음·한 화면. **연봉·입사일 안 물음**. ⚠ 이력서에서 연봉정보 삭제 확인 YES · **민감정보 동의 YES** |
 | 14 | **SOCAR** | `_DEVEX` | `https://socar.career.greetinghr.com/ko/o/220124` → 「지원하기」 | ✅ **오늘 낸다 (2026-07-29 GLG 확정)**. 로그인 없음 · **서술형 0 · 부가정보 0** — 이름·이메일·연락처 + 이력서 하나면 끝. ⚠ `enableUrl:false`(URL 칸 없음) |
+| **15** | **Hanwha Vision** | `_AI` + **포트폴리오** | `https://hanwhavision.ninehire.site/job_posting/6NDP9uTE` | ✅ **2026-07-29 11:00 첨부 완성으로 합류.** 포트폴리오 = `submit/KimJunghan_Hanwha_Portfolio.pdf` (18쪽). 서술형 칸 **없음**. ⚠ **「선택항목 수집 동의」 체크 필수** — 미동의 시 포트폴리오 미처리. ⚠ ninehire 는 **에이전트가 업로드 못 한다 — GLG 가 직접**. 지원경로 = **링크드인** |
 
 ## ⏸ 보류 2건 — 이번 배치 아님 (2026-07-28 GLG)
 
@@ -64,11 +65,13 @@
 
 되살릴 때 **출장 수용 범위**를 먼저 정한다(Cohere 20–40% · OpenAI APAC 30%).
 
-## 🚧 아직 못 내는 3건 — 남은 관문이 있다
+## 🚧 아직 못 내는 2건 — 남은 관문이 있다
+
+> **한화비전은 여기서 빠졌다** (2026-07-29 11:00). 노트북에서 `md2pdf.sh` 로 표지를 굽고
+> `gs` 합본까지 끝나 **실행 큐 15번**으로 올라갔다.
 
 | 회사 | 컷 | 지원 URL (확정) | 남은 관문 |
 |---|---|---|---|
-| **Hanwha Vision** | `_AI` + 포트폴리오 | `https://hanwhavision.ninehire.site/job_posting/6NDP9uTE` | **표지 1장만 남았다** (2026-07-29 축소). 기존 PDF 2종은 회사명은 없지만 **NHN 공고 번호에 매핑돼 있어 그대로 못 낸다** → 재빌드 대신 **표지 1장 + `gs` 합본**. 표지 문안은 `submission.md` §채택안 에 **확정**. ⛔ 막힌 것은 「md 1장 → PDF」 엔진 하나. 지원경로 = **링크드인** |
 | **NHN (2번째)** | `_AI` + 포트폴리오 | `https://careers.nhn.com/recruits/4370711607830110861` | **셋이다**: ① 포트폴리오를 이 건에 맞게 재편 → `submit/` ② 직무 맞춤 자기소개 ③ GLG 계정 로그인. ⚠ **「기본 지원서」가 재사용**되니 첫 건(2026-07-20) 제출 내용이 사후 변경되지 않는지 화면 확인 |
 | **Upstage** ⭐ | `_AI` | `https://careers.upstage.ai/ko/o/194880` → 「지원하기」 | 필수 6문항 중 **5개 완료**(`answers.md`). 남은 관문은 **문항 1 제품 체험 평가** 하나 — Document Parse/Solar 를 실제로 돌린 뒤 작성. 문항 2 OCR 문단과 겹치면 `answers.md` 문항 2를 줄인다 |
 

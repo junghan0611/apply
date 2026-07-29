@@ -11,8 +11,8 @@
 운영 판단이다. 운영상 보류는 **원장의 사실 상태를 바꾸지 않고** 그 건의 `submission.md` 상태칸에
 `ready — 보류` 로 적고 `NEXT.md` 에 이유를 남긴다(`AGENTS.md` §`ready`의 뜻).
 
-> **2026-07-29 계보**: `ready` **16건** = **실행 14건** + **보류 2건**(Cohere · OpenAI —
-> 외국계 두 건은 이번 배치에서 뺀다, 2026-07-28 GLG). 이 계보가 `NEXT.md` 의 「14건」과 맞다.
+> **2026-07-29 계보**: `ready` **17건** = **실행 15건**(11:00 한화비전 합류) + **보류 2건**(Cohere · OpenAI —
+> 외국계 두 건은 이번 배치에서 뺀다, 2026-07-28 GLG). 이 계보가 `NEXT.md`·`SUBMIT-QUEUE.md` 의 「15건」과 맞다.
 
 | 회사 | 직무 | 상태 | 지원일 | 경로 | 첨부 컷 | 폴더 |
 |---|---|---|---|---|---|---|
@@ -42,7 +42,7 @@
 | GE HealthCare 🌐 | Senior Software Engineer | draft | — | **Workday** (공식 외부 사이트) | 미정 — Systems Software 컷 판단 | `ge-healthcare--senior-software-engineer` |
 | XCENA (엑시나) | System Software 계열 — **회사 스캔 23건** | **held** | — | 그리팅 (자체 도메인) | — (목록만 · GLG: "너무 시스템") | `xcena--system-software` |
 | Holiday Robotics | Forward Deployed Robotics Engineer (3–8년) | ready | — | 자체 채용홈 `holiday-robotics.com` (로그인 없음) | FDE + **커버레터** | `holiday-robotics--forward-deployed-robotics-engineer` |
-| Hanwha Vision (한화비전) | AI Agent Architecture Lead (석사+10년, Director) | draft | — | **ninehire** `6NDP9uTE` (로그인 없음) | AI Engineer + 포트폴리오 (**재편 남음**) | `hanwha-vision--ai-agent-architecture-lead` |
+| Hanwha Vision (한화비전) | AI Agent Architecture Lead (석사+10년, Director) | ready | — | **ninehire** `6NDP9uTE` (로그인 없음) | AI Engineer + 포트폴리오 합본 18쪽 (`submit/`) | `hanwha-vision--ai-agent-architecture-lead` |
 | NHN | LLM 기술 개발 (LLM / Agent) — **NHN 2번째 건** | draft | — | **`careers.nhn.com`** — ⚠ **로그인 필요** | AI Engineer + **포트폴리오 필수** | `nhn--llm-technology-development-llm-agent` |
 
 ---

@@ -1,4 +1,4 @@
-# NOW — 실행 14건 + 보류 2건 · 공고 전부 살아 있음 · 표준 구조 정리 끝
+# NOW — 실행 15건 + 보류 2건 · 한화 첨부까지 완성 · 남은 건 제출
 
 - **Hot group**: 지원 실행. 공개 준비는 이 축이 아니다.
 - **기조 (2026-07-28 밤 GLG)**: **내고 떨어지면 만다.** 실제로 만든 것이 있으니 밀어붙인다.
@@ -66,16 +66,19 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 거기서 다시 필요한 디테일이 공명해서 나온다. 영양가 없는 내용은 쳐내되, **의미가 전달되는
 좌표(노트·서지·커밋·timeline)는 남긴다**.
 
-**오늘 바로 제출 가능한 3건**:
+**오늘 바로 제출 가능한 4건** (한화는 GLG 가 직접 올린다):
 - **Holiday Robotics** — `submission.md` + `cover-letter.md`. 로그인 없음, 폼 미정값 없음.
   ⚠ 공고 요건 `business travel` 가능 여부는 GLG 가 말로 확인하고, 확정 전 커버레터에는 쓰지 않는다.
 - **Lunit** — **A(이력서만)**. Optional 추가서류 비움. 연봉정보 삭제 YES, 개인정보 YES, 민감정보 YES.
 - **SOCAR** — DevEx 컷 하나. `deploy=False` 는 닫힘이 아님. URL 칸 없음, submit/ 스냅샷 폴더 혼동 주의.
+- **Hanwha Vision** — ✅ 11:00 첨부 완성. 이력서 `_AI` + `submit/KimJunghan_Hanwha_Portfolio.pdf`
+  둘만 올리면 끝이고 서술형이 없다. ⚠ **「선택항목 수집 동의」를 반드시 체크**한다.
+  ninehire 는 에이전트가 업로드를 못 하므로 **GLG 가 직접**.
 
 **한 걸음 남은 것**:
-- **Hanwha Vision** — `cover-sheet.md` 를 PDF 로 만든 뒤 기존 `KimJunghan_AX_Competency.pdf` +
-  `KimJunghan_AX_Portfolio.pdf` 와 `gs` 합본 → `submit/KimJunghan_Hanwha_Portfolio.pdf`.
-  서버에는 md→PDF 엔진을 새로 깔지 않았다. 노트북 인쇄/PDF 또는 typst/pandoc 환경에서 처리.
+- ~~**Hanwha Vision**~~ — ✅ **닫혔다 (11:00, 노트북).** 새 도구 `applications/md2pdf.sh`
+  (pandoc → Chrome headless, **Pretendard 를 data URI 로 심는다**) 로 표지 1장을 굽고
+  `gs` 합본 → `submit/KimJunghan_Hanwha_Portfolio.pdf` **18쪽**. 실행 큐 15번으로 올라갔다.
 - **Upstage** — `answers.md` 에 필수 6문항 중 5개가 닫힘. 남은 것은 **문항 1 제품 체험 평가**.
   Document Parse 를 OCR 5엔진 실측 자리에 **여섯 번째 엔진**으로 세우는 평가다. 문항 1 작성 후
   문항 2의 OCR 문단과 겹치면 문항 2를 줄인다.
@@ -90,7 +93,7 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 않는다. **폼 값은 각 건 `submission.md`가 정본**이므로 오라클은 큐에서 건을 고른 뒤 해당 기록을
 함께 연다. 아래는 요약이고 실행 순서의 정본은 큐다.
 
-**`ready` 16건 = 실행 14 + 보류 2**(Cohere·OpenAI). 한 번에 다 내지 않아도 된다:
+**`ready` 17건 = 실행 15 + 보류 2**(Cohere·OpenAI). 한 번에 다 내지 않아도 된다:
 
 1. **Holiday Robotics** 🤖 — **폼이 가장 가볍다.** 로그인 없음, 필수는 이름·이메일 둘,
    희망연봉·입사가능일을 **묻지 않는다**. 로봇 축 첫 지원이고 커버레터가 준비돼 있다.
@@ -107,9 +110,10 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 ## ⛔ GLG 가 정해야 넘어가는 것
 
 - **`FAQ.md` §4 닫힘** — 희망 연봉=면접 후 협의, 입사 가능일=협의 가능/강제 시 최종합격·처우협의 후 4주 이내. 숫자 강제는 GLG 직접. 이직 사유는 §7/이력서 Summary 축.
-- **한화비전** — 표지 1장 PDF + 기존 dossier PDF 2종 합본. 폼에 **서술형 칸이 하나도 없어**
-  포트폴리오가 「왜 이 사람인가」를 말하는 유일한 문서다. org 소스 조준부 3자리는 오늘 건드리지
-  않고, `cover-sheet.md` 표지가 한화비전 조준 지도를 대신한다
+- **한화비전** — ✅ **첨부 완성 (11:00).** `submit/KimJunghan_Hanwha_Portfolio.pdf` 18쪽.
+  폼에 **서술형 칸이 하나도 없어** 포트폴리오가 「왜 이 사람인가」를 말하는 유일한 문서다.
+  org 소스 조준부 3자리는 건드리지 않았고 `cover-sheet.md` 표지가 그 역할을 대신한다.
+  **남은 것은 GLG 의 ninehire 업로드뿐** — 에이전트는 ninehire 에 파일을 못 올린다
 - **NHN 2번째** — 포트폴리오 재편 · 직무 맞춤 자기소개 · GLG 계정 로그인. **「기본 지원서」가
   재사용되니** 첫 건 제출 내용이 사후 변경되지 않는지 화면에서 확인한다
 - **업스테이지** — `answers.md` 생성. 필수 6문항 중 **5개 닫힘**(업무경험 797자 포함). 남은 것은
@@ -128,7 +132,7 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 - **Lunit** — **A(이력서만)** 로 닫힘. Workable Optional 첨부 슬롯은 비우고 AI Engineer 컷만 제출; 경력기술서는 면접에서 요청받으면 작성
 - **쏘카** — **오늘 낸다.** 서류 슬롯이 하나라 DevEx 컷 파일명 확인
 - **Telechips · 한화비전** — ninehire 는 **에이전트가 파일 업로드를 못 한다.** GLG 가 올린다.
-  한화는 업로드 전 `submit/KimJunghan_Hanwha_Portfolio.pdf` 합본 생성이 먼저다
+  한화 합본은 ✅ 생성 완료 — 파일만 올리면 된다
 - **42dot · 업스테이지** — 둘 다 전형에 **코딩 테스트**
 - **NHN 2번째** — **라이브코딩이 서류 바로 다음**이고 Python 축이다
 - **Reflection AI** — `기술 리더십 2년+` 은 직함으로 없다. **지어내지 않는다**
@@ -230,6 +234,7 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 
 - 제출 SSOT: `applications/LEDGER.md` · **제출 실행 시트: `applications/SUBMIT-QUEUE.md`** · 닫힘 검사: `applications/check.py`
 - **공고 생존 검사: `applications/alive.py`** (제출 직전에 돌린다)
+- **한 장짜리 md → 제출용 PDF: `applications/md2pdf.sh`** (노트북 전용 — Chrome 이 필요하다)
 - 조준 문서 발사대: `dossier/AGENTS.md` — **깊이 축**. 이력서 발사대는 `resume/`
 - 후보 큐: `applications/INBOX.md` · 폼 재사용 답: `applications/FAQ.md`
 - 이력서 사실: `resume/body.org` · 빌드: `(cd resume && ./run.sh all && ./run.sh verify)`
