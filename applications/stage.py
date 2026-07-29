@@ -32,6 +32,7 @@ ROOT = HERE.parent
 SLOT = {
 	"00-cover.pdf": "⛔ 올리지 않는다 — 합본 입력용 중간 산물",
 	"_Resume_": "이력서 (필수)",
+	"_Competency": "경력기술서 · 역량기술서",
 	"_Portfolio": "포트폴리오",
 	"cover-letter.txt": "커버레터 — 전체 복사해 붙여넣는다 (칸 유무·상한은 그 건 `submission.md` §폼)",
 }

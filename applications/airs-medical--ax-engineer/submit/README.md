@@ -5,6 +5,8 @@
 
 | 파일 | 폼의 어느 칸 |
 |---|---|
+| `KimJunghan_AX_Competency.pdf` | 경력기술서 · 역량기술서 |
+| `KimJunghan_AX_Portfolio.pdf` | 포트폴리오 |
 | `KimJunghan_Resume_Developer_Experience_Engineer.pdf` | 이력서 (필수) |
 | `cover-letter.txt` | 커버레터 — 전체 복사해 붙여넣는다 (칸 유무·상한은 그 건 `submission.md` §폼) |
 
