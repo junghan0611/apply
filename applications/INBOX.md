@@ -69,6 +69,25 @@ curl -s "https://api.ashbyhq.com/posting-api/job-board/<슬러그>?includeCompen
 - **LinkedIn 저장 이력서**(`jobs/application-settings/`)에는 **베이스판만** 둔다. 한 공고용
   문서를 올려 두면 다음 열 곳에 그게 딸려 나간다(NHN AX 문서가 그럴 뻔했다).
 
+### ⭐ 브라우저 없이 「폼」까지 읽을 수 있는가 — ATS 별 판정 (2026-07-29 오라클 실측)
+
+공고 **본문**을 인증 없이 읽는 축은 위에 있다. 이건 한 겹 더 안쪽 — **지원 폼의 문항·서류
+슬롯·부가정보 수집**까지 브라우저 없이 읽히느냐다. 읽히면 `FAQ.md` §4(희망연봉·입사가능일·
+이직사유)가 그 건에 **실제로 필요한지**가 브라우저 전에 판정된다.
+
+| ATS | 폼 판독 | 방법 · 한계 |
+|---|---|---|
+| **그리팅** | ⚠ **워크스페이스마다 다르다** | 상세 페이지 `__NEXT_DATA__` → `dehydratedState.queries[getOpeningById].state.data.data` 의 `docsInfo` · `questionnairesInfo` · `additionalApplicantInfoConfig`. **SOCAR·Upstage 는 실림, AIRS·MakinaRocks 는 `docsInfo: null`** — `/apply` 경로에도 안 실린다(폼을 런타임에 XHR 로 가져온다). 넷 다 `useApplicationForm=true` 라 **이 플래그로는 구분 안 된다** |
+| **ninehire** | ✅ 메타는 됨 | 상세 `__NEXT_DATA__` 의 `recruitment` — `status` · `closedAt` · `career.range` · `jobLocations` · `employmentType`. 폼 문항 자체는 브라우저에서 봤다 |
+| **Ashby** | ⛔ **안 됨** | 지원 페이지의 `window.__appData` 에 `organization` · `posting` 은 있으나 **폼 정의가 없다** — 로드 후 API 로 가져온다. 본문·`isListed` 는 보드 API 로 그대로 읽힌다 |
+| **Workable · Breezy · Paylocity · Toss 자체 · LinkedIn Easy Apply** | ⛔ 미확인/불가 | 브라우저로 실측한 것만 기록에 있다 |
+
+- **비용 대비**: 그리팅이 실리는 워크스페이스면 폼 전체가 한 번의 GET 으로 나온다(SOCAR 가
+  그래서 ⚠ 세 개를 브라우저 없이 지웠다). **안 실리면 거기서 멈추고 브라우저로 넘긴다** —
+  JS 번들을 뒤져 API 를 복원하는 것은 하지 않는다(2026-07-29 시도했고 값이 안 나왔다).
+- **판정하지 않는 것을 기록한다.** 못 읽은 폼을 「가벼울 것」으로 적지 않는다.
+  `alive.py` 가 어댑터 없는 곳을 「미판정」으로 두는 것과 같은 규칙이다.
+
 ---
 
 ## 다음 타깃 — 우선순위
@@ -294,7 +313,24 @@ Ashby 보드는 55건이었다. **회사를 정했으면 그 회사 채용 보�
 - **마키나락스는 FDE 만 12건**이다. FDE 축을 파려면 여기가 가장 두껍다.
 - 카카오페이 FDE 는 자격 첫 줄이 **`Java/Kotlin 기반 깊이 있는 백엔드`** 다 — Enhans AgentOS 를
   같은 이유로 뺐던 자리다. **내려면 그 칸을 어떻게 답할지 먼저 정한다.**
-- 카카오헬스케어 `AI Native EHR` 은 **의료정보시스템 10년 이상**이 하드 게이트라 제외.
+- **카카오헬스케어 — 재조사 완료 (2026-07-29, GLG 지시). 두 건이고 둘 다 못 낸다.**
+  앞 판에는 `AI Native EHR` 하나만 적혀 있었다. 빠져 있던 것은 `Data Engineer(Healthcare)` 다.
+
+  | 공고 | careers.kakao | 원본 ATS(ninehire) 실측 | 하드 게이트 | 판정 |
+  |---|---|---|---|---|
+  | `AI Native EHR 개발` (`S-4699`) | 상시 | `9W2MmlSr` · **`in_progress`** · `closedAt=null` · `until_filled` | **의료정보시스템(EMR/HIS/OCS/EHR) 개발·운영 10년 이상** | ⛔ **제외** — 열려 있지만 축 밖 |
+  | `Data Engineer(Healthcare)` (`S-4689`) | 상시 | `byfZYpGH` · **`archived`** · **`closedAt=2026-05-15`** | **의료정보시스템(EMR/HIS/CDW/CDM) 5년 이상** | ⛔ **제외** — 이미 닫혔고, 살아 있었어도 축 밖 |
+
+  - 근무지는 둘 다 **카카오판교아지트**(판교역로 166) · 정규직. 지역은 통과였다.
+  - `Data Engineer` 는 우대가 Spark/Hadoop·비식별화·데이터 마이그레이션으로 **데이터 엔지니어
+    정직군**이다. 임베디드·에이전트 축과 겹치는 면이 없다.
+  - ⚠ **`careers.kakao.com` 공동체 목록은 stale 하다.** 소스 ATS 에서 **두 달 넘게 archived**
+    인 공고를 「상시」로 그대로 노출한다. **카카오 공동체 건은 `boards.py list kakao:all` 로
+    찾은 뒤 원본 ATS 에서 `status` 를 다시 확인한다** — 목록을 믿고 케이스를 열면 안 된다.
+  - 카카오헬스케어 자체 보드(`recruit.kakaohealthcare.com`)는 **목록이 클라이언트 렌더**라
+    `boards.py` 로 못 훑는다. 상세 페이지 `__NEXT_DATA__` 의 `recruitment` 는 정상이므로
+    **`careers.kakao.com` 으로 발견 → ninehire 상세로 검증**이 이 회사의 경로다.
+    (list API 세 경로 시도 전부 404 — `api.ninehire.com` 은 공개 목록 엔드포인트가 없다.)
 
 ## 보류 · 제외
 

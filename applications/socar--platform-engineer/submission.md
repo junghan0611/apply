@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **ready** (첨부·경로 확정 · **제출 대기 — GLG 노트북에서 제출**) |
+| 상태 | **ready** — ⭐ **오늘 낸다 (2026-07-29 GLG 확정)**. 첨부·경로·폼 전부 확정 |
 | 지원일 | — |
 | 경로 | **그리팅** (자체 도메인 `socar.career.greetinghr.com`) — 가입 불필요 |
 | 첨부 컷 | **DevEx** (`resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf`, 3쪽) |
@@ -11,6 +11,21 @@
 | 근무지 | **서울 성동구 왕십리로 83-21** (쏘카 본사, 성수) · 재택 아님 |
 | 조건 | 정규직 · 경력 5년 이상 · 게시 2026-06-05 · **마감일 없음(수시, 조기 마감 가능)** |
 | 팀 | **쏘카 Tech Platform** — Product Engineer 한 명이 전 스택을 책임지는 AI Native 조직으로 전환 중 |
+
+## ⭐ 제출 실행 — 이대로 하면 끝난다 (2026-07-29 확정)
+
+**막는 것이 하나도 없다.** 로그인 불필요 · 서술형 0 · 부가정보 0 · GLG 미정값 불필요.
+
+1. `cd ~/repos/gh/apply/applications && ./alive.py SOCAR` → `status=OPEN` 확인
+   (⚠ `deploy=False` 는 **채용홈 미배포일 뿐 공고 상태가 아니다** — 닫힘으로 읽지 않는다)
+2. `https://socar.career.greetinghr.com/ko/o/220124` → 페이지 하단 **「지원하기」**
+3. 이름 `김정한` · 이메일 `[email removed]` · 연락처 **GLG 직접**
+4. **「이력서 및 경력기술서」(필수)** 슬롯에 업로드 —
+   `resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf` **(3쪽 · 35KB)**
+   - ⚠ 파일명 확인. **`_Developer_Experience_` 가 맞다** (`_AI_`·`_Embedded_` 아님)
+   - 「포트폴리오」(선택) 슬롯은 **비워 둔다**
+5. Submit → **낸 파일을 이 폴더 `submit/` 에 즉시 복사** (AIRS 와 같은 컷이라 폴더를 헷갈리기 쉽다)
+6. `LEDGER.md` → `submitted` + 날짜 / 이 문서 → `submitted` → `./check.py`
 
 ## 낸 것
 
@@ -30,8 +45,10 @@ Experience / Independent Work 절이 그 역할을 겸한다**고 보고 단독 
 > 다만 그 문서는 **공고마다 새로 조준해 쓰는 255줄짜리 글**이다. 이 건은 아래 §경계대로
 > **서류 승산이 6건 중 가장 낮다.** 그 비용을 여기 쓸지는 GLG 가 정한다.
 
-**⚠ 업로드 직전 파일명을 눈으로 확인한다.** DevEx 컷은 보류 중인 OpenAI 건과 같은 파일이다.
-올린 파일은 그대로 `submit/` 에 복사한다.
+**⚠ 업로드 직전 파일명을 눈으로 확인한다.** DevEx 컷은 **AIRS Medical**(오늘 큐 2번)·
+**OpenAI**(보류)와 **같은 파일**이다. 오늘 AIRS 와 쏘카가 둘 다 나가므로 컷을 헷갈릴 자리가
+아니라, **`submit/` 스냅샷을 어느 폴더에 복사했는지**가 헷갈릴 자리다. 낸 직후에 그 건 폴더로
+바로 복사한다.
 
 ## 폼에 답한 질문
 
@@ -42,9 +59,9 @@ Experience / Independent Work 절이 그 역할을 겸한다**고 보고 단독 
 | GitHub / 포트폴리오 URL | https://github.com/junghan0611 · https://notes.junghanacs.com | `FAQ.md` §1 |
 | 총 경력 | **8+ years** — 요건 `5년 이상` 통과. 단 **직함 기준 SRE/DBA 5년은 아니다**(§경계) | `FAQ.md` §3 |
 | 연락처 | **브라우저에서 GLG 직접 입력. Git 에 저장하지 않는다** | `FAQ.md` §5 |
-| 희망 연봉 | ⚠ **GLG 확정 필요** — 폼에 칸이 있으면 그 자리에서 정한다 | `FAQ.md` §4 |
-| 입사 가능일 | ⚠ **GLG 확정 필요** | `FAQ.md` §4 |
-| 이직 사유 | ⚠ **GLG 확정 필요** | `FAQ.md` §4 |
+| 희망 연봉 | ✅ **묻지 않는다** — 폼에 칸이 없다 (2026-07-29 재실측) | `openingsInfo` |
+| 입사 가능일 | ✅ **묻지 않는다** — 폼에 칸이 없다 (2026-07-29 재실측) | `openingsInfo` |
+| 이직 사유 | ✅ **묻지 않는다** — 폼에 칸이 없다 (2026-07-29 재실측) | `openingsInfo` |
 
 > **이 건은 민감 법적 값을 묻지 않는다.** 그리팅 `additionalApplicantInfoConfig` 가
 > 생년월일·성별·병역·장애·보훈·주소·학력·경력·어학·자격증을 **전부 `NOT_RECEIVED`** 로 둔다.
@@ -52,6 +69,26 @@ Experience / Independent Work 절이 그 역할을 겸한다**고 보고 단독 
 >
 > 전형: **서류 → 1차(기술) 인터뷰 → 2차(컬처핏) 인터뷰 → 처우 협의 → 최종 → 입사.**
 > 코딩테스트 없음. 입사 후 **3개월 수습 평가**. 문의처 `[email removed]`.
+
+### ✅ 폼 전수 재실측 — 2026-07-29 오전 (오라클, 브라우저 없이 구조화 필드로)
+
+`socar.career.greetinghr.com/ko/o/220124` 의 `__NEXT_DATA__` 를 다시 떠서 **네 필드를 전부**
+확인했다. 브라우저에서 볼 것이 남아 있지 않다.
+
+| 필드 | 값 | 뜻 |
+|---|---|---|
+| `openingsInfo.status` | `OPEN` | 열려 있다 |
+| `questionnairesInfo` | **`[]`** | **서술형 문항이 하나도 없다** |
+| `commonResumeQuestionnaireOption` | `false` | 공통 이력서 문항도 안 쓴다 |
+| `additionalApplicantInfoConfig` | 전 항목 `NOT_RECEIVED` | 생년월일·학력·경력·어학 등 안 받는다 |
+| `openingSettingInfo.requireAuthentication` | `false` | **로그인 불필요** |
+| `docsInfo` | 「이력서 및 경력기술서」 **필수** · 「포트폴리오」 선택 · 둘 다 `enableUrl:false` | **URL 제출 불가, 파일만** |
+
+**⭐ 그래서 `FAQ.md` §4(희망 연봉·입사 가능일·이직 사유)가 이 건을 막지 않는다.**
+폼에 그 칸이 아예 없다. 이름·이메일·연락처 + 파일 하나면 제출이 끝난다.
+
+**⚠ `enableUrl:false` 를 주의한다** — GitHub·가든 링크를 폼에 URL 로 넣을 자리가 없다.
+이력서 본문의 링크가 유일한 공개 증거 입구다.
 
 ## 왜 이 직무였는가
 
@@ -90,9 +127,18 @@ Experience / Independent Work 절이 그 역할을 겸한다**고 보고 단독 
 **그래도 내는 이유**는 기조다 — 위로 찌르는 것이 기본값이고, **떨어져도 이름이 알려진다.**
 면접까지 가면 대는 것은 「AWS 를 몇 년 만졌는가」가 아니라 **「운영을 코드로 흡수한 방식」**이다.
 
+> **⭐ 2026-07-29 GLG 확정 — 낸다.** 위 간극은 사실 그대로 남겨 둔다. 재검토에서 「낼지
+> GLG 가 정한다」로 열어 두었던 운영 판단이 **「오늘 낸다」로 닫혔다.** 필수 첫 줄을 직함으로
+> 못 대는 것을 알고 내는 것이지, 요건을 다르게 읽어서 내는 것이 아니다.
+
 ## 이후 기록
 
 - [2026-07-28] 건 생성. **쏘카 채용홈(`socarcorp.kr/careers/jobs`)의 `__NEXT_DATA__` 에서
   전체 28건 목록을 채집**하고, 본문·`docsInfo`·`questionnairesInfo` 는 `boards.py body` 로 떴다.
   브라우저를 열지 않았다.
 - [2026-07-28] 컷 **DevEx** 확정. 상태 `ready` — **GLG 노트북에서 제출 대기**.
+- [2026-07-29 오전, 오라클] **폼 전수 재실측 + 운영 판단 확정.** `questionnairesInfo=[]` ·
+  `additionalApplicantInfoConfig` 전 항목 `NOT_RECEIVED` · `requireAuthentication=false` ·
+  `docsInfo.enableUrl=false` 를 구조화 필드로 확인 → **`FAQ.md` §4 미정값 셋이 이 건을
+  막지 않는다**(칸이 없다). `alive.py` **`status=OPEN`** 재확인(09:07 KST).
+  **GLG 가 「낸다」로 확정**했다 — 재검토 경고는 사실로 보존한다.

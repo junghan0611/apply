@@ -51,8 +51,8 @@
 | 10 | **42dot** | `_AI` | `https://jobs.ashbyhq.com/42dot/[uuid removed]/application` | Ashby. 전형에 **코딩 테스트** |
 | 11 | **MakinaRocks** | `_FDE` | `https://makinarocks.career.greetinghr.com/ko/o/214041` → 「지원하기」 | 그리팅 |
 | 12 | **Reflection AI** 🌐 | `_FDE` | `https://jobs.ashbyhq.com/reflectionai/[uuid removed]/application` | Ashby. `기술 리더십 2년+` 은 직함으로 없다 — **지어내지 않는다** |
-| 13 | **Lunit** | `_AI` | `https://apply.workable.com/lunit/j/E3C22F589F/apply/` | Workable. ✅ **별도 첨부 슬롯 있음(Optional) — 통합본 불필요**(2026-07-29 실측). 이력서만으로 제출 가능. 경력기술서를 붙일지는 `submission.md` §경력기술서 판단 |
-| 14 | **SOCAR** | `_DEVEX` | `https://socar.career.greetinghr.com/ko/o/220124` → 「지원하기」 | ⚠ **낼지 먼저 정한다** — 아래 §쏘카 |
+| 13 | **Lunit** | `_AI` | `https://apply.workable.com/lunit/j/E3C22F589F/apply/` | Workable. ✅ **A(이력서만)로 닫혔다 (2026-07-29)** — 새 문서 작업 없이 나간다. 로그인 없음·한 화면. **연봉·입사일 안 물음**. ⚠ 이력서에서 연봉정보 삭제 확인 YES · **민감정보 동의 YES** |
+| 14 | **SOCAR** | `_DEVEX` | `https://socar.career.greetinghr.com/ko/o/220124` → 「지원하기」 | ✅ **오늘 낸다 (2026-07-29 GLG 확정)**. 로그인 없음 · **서술형 0 · 부가정보 0** — 이름·이메일·연락처 + 이력서 하나면 끝. ⚠ `enableUrl:false`(URL 칸 없음) |
 
 ## ⏸ 보류 2건 — 이번 배치 아님 (2026-07-28 GLG)
 
@@ -67,16 +67,38 @@
 
 | 회사 | 컷 | 지원 URL (확정) | 남은 관문 |
 |---|---|---|---|
-| **Hanwha Vision** | `_AI` + 포트폴리오 | `https://hanwhavision.ninehire.site/job_posting/6NDP9uTE` | **포트폴리오 재편.** URL·폼·근무지(판교R&D센터)는 확정. 폼에 **서술형 칸이 없어** 포트폴리오가 유일한 발언이다. 축 셋은 `submission.md` §남은 하나. 지원경로 = **링크드인** |
+| **Hanwha Vision** | `_AI` + 포트폴리오 | `https://hanwhavision.ninehire.site/job_posting/6NDP9uTE` | **표지 1장만 남았다** (2026-07-29 축소). 기존 PDF 2종은 회사명은 없지만 **NHN 공고 번호에 매핑돼 있어 그대로 못 낸다** → 재빌드 대신 **표지 1장 + `gs` 합본**. 표지 문안은 `submission.md` §채택안 에 **확정**. ⛔ 막힌 것은 「md 1장 → PDF」 엔진 하나. 지원경로 = **링크드인** |
 | **NHN (2번째)** | `_AI` + 포트폴리오 | `https://careers.nhn.com/recruits/4370711607830110861` | **셋이다**: ① 포트폴리오를 이 건에 맞게 재편 → `submit/` ② 직무 맞춤 자기소개 ③ GLG 계정 로그인. ⚠ **「기본 지원서」가 재사용**되니 첫 건(2026-07-20) 제출 내용이 사후 변경되지 않는지 화면 확인 |
 | **Upstage** ⭐ | `_AI` | `https://careers.upstage.ai/ko/o/194880` → 「지원하기」 | **필수 서술형 6문항이 전부 미작성.** 관문은 ①**제품 체험 평가**(10,000자 — 실제로 돌려 본 뒤). 나머지 ②업무 경험(1,000자) ③관심분야 선택 ④언어=**Python**(Go 없음) ⑤**합류 시점**(⚠GLG) ⑥지원 경로. 상세·평가 골격은 `submission.md` §관문 |
 
 ---
 
-## ⚠ 제출 전에 GLG 가 정할 값
+## ✅ 제출 전에 정할 값 — **2026-07-29 확정됐다. 이제 폼 앞에서 멈추지 않는다**
 
-`FAQ.md` §4 가 아직 ⚠ 다. **실행 14건 중 이 값 없이 확실히 나가는 것은 1번 Holiday 뿐이다** —
-그 폼이 묻지 않는 것을 실측했다. **AIRS 를 포함한 나머지는 폼을 열어야 안다**
+`FAQ.md` §4 · §7 이 닫혔다. **11건이 물어도 답이 있다.**
+
+| 값 | 확정 |
+|---|---|
+| **희망 연봉** | **「면접 후 협의」**. 숫자를 강제하는 폼에서만 GLG 가 그 자리에서 직접 입력 (GLG: *"연봉은 지금 고민 안 할 거야"*) |
+| **입사 가능일** | **「협의 가능」**. 날짜 강제 시 **「최종 합격·처우 협의 후 4주 이내」** |
+| **이직 사유** | **「개인의 기억·저자성·장기 협업에서 배운 에이전트 운영 방식을, 더 큰 조직의 데이터·거버넌스·워크플로로 옮기는 다음 경계를 찾고 있습니다」** (`resume/body.org` Summary 에서 나온 문장) |
+| 출장 수용 범위 | ⚠ **실행 14건에는 안 나온다.** 보류 2건 되살릴 때만 |
+
+**에이전트가 숫자를 만들어 넣는 일은 없다.** 「기본값 + 강제 시 GLG 직접」 두 단이 계약이다.
+
+### 아래는 확정 전 기록 (보존)
+
+`FAQ.md` §4 가 아직 ⚠ 다. **실행 14건 중 이 값 없이 확실히 나가는 것은 셋** —
+**1번 Holiday · 13번 Lunit · 14번 SOCAR.** 세 폼이 묻지 않는 것을 실측했다(SOCAR 는
+2026-07-29 구조화 필드 전수 재실측: `questionnairesInfo=[]` · `additionalApplicantInfoConfig`
+전 항목 `NOT_RECEIVED`. Lunit 은 브라우저 실측, 오히려 이력서에서 연봉정보를 **빼라**고 요구).
+
+> **나머지 11건은 폼 미실측이다.** 2026-07-29 에 브라우저 없이 읽어 보려 했고, **그리팅
+> 워크스페이스마다 되고 안 되고가 갈렸다**(AIRS·MakinaRocks 는 `docsInfo: null` 로 막힘,
+> Ashby 4건은 폼 정의가 페이지에 없음). 판정표는 `INBOX.md` §브라우저 없이 폼까지 읽을 수
+> 있는가. **못 읽은 폼을 「가벼울 것」으로 적지 않는다.**
+
+**AIRS 를 포함한 나머지는 폼을 열어야 안다**
 (각 건 `submission.md` 의 §폼에 답한 질문에 ⚠ 로 표시돼 있다). 못 내는 3건 중에는
 **한화비전**이 묻지 않는 것으로 실측됐고, **Upstage 는 「합류 시점」을 필수로 묻는다.**
 
@@ -89,7 +111,7 @@
 
 **빈칸이 틀린 값보다 낫다.** 사전에 없는 값을 에이전트가 채우지 않는다(`AGENTS.md` §경계).
 
-## ⚠ 쏘카 — 낼지 먼저 정한다 (2026-07-29 재검토)
+## ✅ 쏘카 — 낸다로 닫혔다 (2026-07-29 GLG). 아래 경고는 사실로 보존한다
 
 본문을 다시 읽었더니 **필수 첫 줄이 「인프라·운영 또는 SRE/DBA 경력 5년 이상」**이고
 Aurora MySQL · EKS/Karpenter · Terraform/OpenTofu 운영이 필수다. **DevEx 컷으로 덮이지 않는다.**
@@ -98,7 +120,8 @@ Aurora MySQL · EKS/Karpenter · Terraform/OpenTofu 운영이 필수다. **DevEx
 「Internal Developer Platform / 플랫폼-as-product 관점의 DevEx 개선」. 그러나 **필수 첫 줄이
 축 밖인 구조는 카카오페이 FDE(첫 줄 Java/Kotlin 백엔드)와 같다.**
 
-「위로 찌른다」 기조로 그냥 낼 수도 있다 — **GLG 판단이다.** 안 내기로 하면 `closed` + `_archive/`.
+「위로 찌른다」 기조로 그냥 낸다 — **2026-07-29 GLG 가 「오늘 낸다」로 확정했다.** 요건을 다르게
+읽어서가 아니라, 필수 첫 줄을 직함으로 못 대는 것을 알고 내는 것이다. 위 간극은 지우지 않는다.
 
 ## ⭐ Holiday Robotics — 자리가 하나 늘었다
 
