@@ -67,7 +67,8 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 좌표(노트·서지·커밋·timeline)는 남긴다**.
 
 **오늘 바로 제출 가능한 3건**:
-- **Holiday Robotics** — `submission.md` + `cover-letter.md`. 로그인 없음, 미정값 없음.
+- **Holiday Robotics** — `submission.md` + `cover-letter.md`. 로그인 없음, 폼 미정값 없음.
+  ⚠ 공고 요건 `business travel` 가능 여부는 GLG 가 말로 확인하고, 확정 전 커버레터에는 쓰지 않는다.
 - **Lunit** — **A(이력서만)**. Optional 추가서류 비움. 연봉정보 삭제 YES, 개인정보 YES, 민감정보 YES.
 - **SOCAR** — DevEx 컷 하나. `deploy=False` 는 닫힘이 아님. URL 칸 없음, submit/ 스냅샷 폴더 혼동 주의.
 
@@ -92,7 +93,8 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 **`ready` 16건 = 실행 14 + 보류 2**(Cohere·OpenAI). 한 번에 다 내지 않아도 된다:
 
 1. **Holiday Robotics** 🤖 — **폼이 가장 가볍다.** 로그인 없음, 필수는 이름·이메일 둘,
-   희망연봉·입사가능일을 **묻지 않는다**. 로봇 축 첫 지원이고 커버레터가 준비돼 있다
+   희망연봉·입사가능일을 **묻지 않는다**. 로봇 축 첫 지원이고 커버레터가 준비돼 있다.
+   단, 공고 요건 `business travel` 가능 여부는 GLG 말로 확인한다
 2. **AIRS Medical** — 우대 항목이 `openclaw`·skill/hook/MCP 로 사람을 지목했다
 3. **Bear Robotics** — 필수를 가장 여유 있게 통과 (영문 CV 요구 → 여섯 컷이 전부 영문)
 4. **Toss · FriendliAI** — 서사 정면, 폼이 가볍다
@@ -105,8 +107,9 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 ## ⛔ GLG 가 정해야 넘어가는 것
 
 - **`FAQ.md` §4 닫힘** — 희망 연봉=면접 후 협의, 입사 가능일=협의 가능/강제 시 최종합격·처우협의 후 4주 이내. 숫자 강제는 GLG 직접. 이직 사유는 §7/이력서 Summary 축.
-- **한화비전** — 포트폴리오 재편 한 벌. 폼에 **서술형 칸이 하나도 없어** 포트폴리오가
-  「왜 이 사람인가」를 말하는 유일한 문서다. 축 셋은 `submission.md` §남은 하나에 정해 뒀다
+- **한화비전** — 표지 1장 PDF + 기존 dossier PDF 2종 합본. 폼에 **서술형 칸이 하나도 없어**
+  포트폴리오가 「왜 이 사람인가」를 말하는 유일한 문서다. org 소스 조준부 3자리는 오늘 건드리지
+  않고, `cover-sheet.md` 표지가 한화비전 조준 지도를 대신한다
 - **NHN 2번째** — 포트폴리오 재편 · 직무 맞춤 자기소개 · GLG 계정 로그인. **「기본 지원서」가
   재사용되니** 첫 건 제출 내용이 사후 변경되지 않는지 화면에서 확인한다
 - **업스테이지** — `answers.md` 생성. 필수 6문항 중 **5개 닫힘**(업무경험 797자 포함). 남은 것은
@@ -124,7 +127,8 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 
 - **Lunit** — **A(이력서만)** 로 닫힘. Workable Optional 첨부 슬롯은 비우고 AI Engineer 컷만 제출; 경력기술서는 면접에서 요청받으면 작성
 - **쏘카** — **오늘 낸다.** 서류 슬롯이 하나라 DevEx 컷 파일명 확인
-- **Telechips · 한화비전** — ninehire 는 **에이전트가 파일 업로드를 못 한다.** GLG 가 올린다
+- **Telechips · 한화비전** — ninehire 는 **에이전트가 파일 업로드를 못 한다.** GLG 가 올린다.
+  한화는 업로드 전 `submit/KimJunghan_Hanwha_Portfolio.pdf` 합본 생성이 먼저다
 - **42dot · 업스테이지** — 둘 다 전형에 **코딩 테스트**
 - **NHN 2번째** — **라이브코딩이 서류 바로 다음**이고 Python 축이다
 - **Reflection AI** — `기술 리더십 2년+` 은 직함으로 없다. **지어내지 않는다**
