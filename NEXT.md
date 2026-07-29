@@ -68,7 +68,7 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 
 **오늘 바로 제출 가능한 4건** (한화는 GLG 가 직접 올린다):
 - **Holiday Robotics** — `submission.md` + `cover-letter.md`. 로그인 없음, 폼 미정값 없음.
-  ⚠ 공고 요건 `business travel` 가능 여부는 GLG 가 말로 확인하고, 확정 전 커버레터에는 쓰지 않는다.
+  ✅ `business travel` 은 **GLG 확인으로 닫혔다(가능, 2026-07-29)** — 커버레터 문장도 되살렸다.
 - **Lunit** — **A(이력서만)**. Optional 추가서류 비움. 연봉정보 삭제 YES, 개인정보 YES, 민감정보 YES.
 - **SOCAR** — DevEx 컷 하나. `deploy=False` 는 닫힘이 아님. URL 칸 없음, submit/ 스냅샷 폴더 혼동 주의.
 - **Hanwha Vision** — ✅ 11:00 첨부 완성. 이력서 `_AI` + `submit/KimJunghan_Hanwha_Portfolio.pdf`
@@ -97,7 +97,7 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 
 1. **Holiday Robotics** 🤖 — **폼이 가장 가볍다.** 로그인 없음, 필수는 이름·이메일 둘,
    희망연봉·입사가능일을 **묻지 않는다**. 로봇 축 첫 지원이고 커버레터가 준비돼 있다.
-   단, 공고 요건 `business travel` 가능 여부는 GLG 말로 확인한다
+   ✅ 공고 요건 5개 **전부 충족** — `business travel` 이 GLG 확인으로 닫혔다
 2. **AIRS Medical** — 우대 항목이 `openclaw`·skill/hook/MCP 로 사람을 지목했다
 3. **Bear Robotics** — 필수를 가장 여유 있게 통과 (영문 CV 요구 → 여섯 컷이 전부 영문)
 4. **Toss · FriendliAI** — 서사 정면, 폼이 가볍다
@@ -109,7 +109,7 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 
 ## ⛔ GLG 가 정해야 넘어가는 것
 
-- **`FAQ.md` §4 닫힘** — 희망 연봉=면접 후 협의, 입사 가능일=협의 가능/강제 시 최종합격·처우협의 후 4주 이내. 숫자 강제는 GLG 직접. 이직 사유는 §7/이력서 Summary 축.
+- **`FAQ.md` §4 완전히 닫힘** — 희망 연봉=면접 후 협의, 입사 가능일=협의 가능/강제 시 최종합격·처우협의 후 4주 이내, **출장=가능**(2026-07-29). 숫자 강제는 GLG 직접. 이직 사유는 §7/이력서 Summary 축.
 - **한화비전** — ✅ **첨부 완성 (11:00).** `submit/KimJunghan_Hanwha_Portfolio.pdf` 18쪽.
   폼에 **서술형 칸이 하나도 없어** 포트폴리오가 「왜 이 사람인가」를 말하는 유일한 문서다.
   org 소스 조준부 3자리는 건드리지 않았고 `cover-sheet.md` 표지가 그 역할을 대신한다.
@@ -141,7 +141,7 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 
 - **`ready — 보류` 2건**: **Cohere**(FDE) · **OpenAI**(DevEx). 서류는 끝났고 **운영 판단으로**
   이번 배치에서 뺐다(외국계 두 건, 2026-07-28 GLG). Ashby 보드에 **여전히 열려 있음**(alive 확인).
-  되살릴 때 **출장 수용 범위**부터 정한다(Cohere 20–40% · OpenAI APAC 30%).
+  출장 자체는 ✅ 가능으로 닫혔고, 이 둘만 **비율이 명시**돼 있다(Cohere 20–40% · OpenAI APAC 30%).
   → 원장은 `ready` 그대로다. **상태를 거짓으로 바꾸지 않는다**(`applications/AGENTS.md` §`ready`의 뜻).
 - **`draft` 1건**: **Penguin Solutions** — 적합도 최하위. HPC 운영·SLURM·ITIL·온콜이 축 밖이고
   대는 카드는 NVM 파일시스템·병렬 스토리지 연구 4년 하나다.

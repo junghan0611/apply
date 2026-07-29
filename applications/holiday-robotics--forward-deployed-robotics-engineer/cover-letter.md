@@ -21,7 +21,7 @@ On the stack: I work with Linux, Python, and Docker. Board-level hardware and ne
 
 On ROS2 I would rather be exact than generous. I worked with it in graduate school and I have not gone deep. I am not going to claim production ROS2 systems. What I will claim is that I have assembled embedded stacks from bootloader through kernel, drivers, protocols, and cloud, and taken them to mass production. In that context ROS2 is a layer I have not yet needed, not a wall. If this role were about authoring ROS2 internals, I would tell you it is not my strength.
 
-I hold a valid driver's license.
+I hold a valid driver's license and am available for business travel.
 
 My work is public and dated: github.com/junghan0611 and notes.junghanacs.com. A developer I have never met contributed a Snowflake Cortex Code backend to entwurf, finding the extension point exactly where the architecture claimed it was.
 
@@ -54,9 +54,9 @@ I would like to help put Friday on a real floor.
 |---|---|
 | `Linux, Python, Docker, and **gRPC** are daily tools` | **`resume/body.org` 에 gRPC 근거가 없다.** 공고는 gRPC 를 「이해」 수준으로 요구하고 **필수로 못 박은 것은 ROS2 뿐**이다. 없는 것을 있다고 하지 않는다 — `FAQ.md` §원칙 1 |
 | `board/RF ... where **most of the last decade** went` | RF 스택(Zigbee·Thread·Matter)은 **2025.09~** 다. 보드 레벨·임베디드는 NEMO-UX(2013–2017)부터 이어지지만 **RF 를 10년으로 부를 수 없다.** 둘을 갈라 적었다 |
-| `and am **available for business travel**` | `FAQ.md` §4 「출장 가능」은 **⚠ GLG 미확정**이다. 운전면허만 확인됐다(2026-07-28). **미확정 값을 에이전트가 확정처럼 쓰지 않는다** — `AGENTS.md` §경계 |
+| ~~`and am **available for business travel**`~~ | ✅ **되살렸다 (2026-07-29 11:20).** 당시엔 `FAQ.md` §4 가 ⚠ 미확정이라 걷어냈던 것이고, **GLG 가 「출장 가능」으로 확정**해 원래 자리로 돌아갔다. 걷어낸 판단 자체는 옳았다 — 순서가 「GLG 확정 → 문서」였다는 기록으로 남긴다 |
 
-> ⚠ **제출 전 GLG 확인 2개.** 공고 필수는 `Valid driver's license **and availability for
-> business travel**` 이다. 면허는 있고, **출장 수용 여부는 GLG 가 정해야 한다** — 정해지면
-> `FAQ.md` §4 에 넣고 이 문단을 되살린다. 또 **gRPC 실경험이 있다면 `body.org` 에 먼저
-> 넣고** 나서 커버레터에 쓴다. 순서를 뒤집지 않는다.
+> ✅ **제출 전 확인 2개 중 하나가 닫혔다.** 공고 필수는 `Valid driver's license **and
+> availability for business travel**` 인데, 면허·출장 **둘 다 GLG 확인 완료**(2026-07-29)이고
+> `FAQ.md` §4 에 반영했다. **남은 하나는 gRPC** — 실경험이 있다면 `body.org` 에 먼저 넣고
+> 나서 커버레터에 쓴다. 순서를 뒤집지 않는다.

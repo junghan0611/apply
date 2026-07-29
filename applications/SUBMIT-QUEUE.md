@@ -40,7 +40,7 @@
 
 | # | 회사 | 컷 | 지원 URL | 폼 무게 · 주의 |
 |---|---|---|---|---|
-| 1 | **Holiday Robotics** 🤖 | `_FDE` + **커버레터** | `https://holiday-robotics.com/careers/forward-deployed-robotics-engineer/apply` | **가장 가볍다.** 로그인 없음. 필수는 이름·이메일 둘. **연봉·입사일 안 물음.** 커버레터는 `cover-letter.md` §붙여넣을 본문 **전체 복사**. ⚠ 공고 요건 `business travel` 가능 여부는 GLG 말로 확인 |
+| 1 | **Holiday Robotics** 🤖 | `_FDE` + **커버레터** | `https://holiday-robotics.com/careers/forward-deployed-robotics-engineer/apply` | **가장 가볍다.** 로그인 없음. 필수는 이름·이메일 둘. **연봉·입사일 안 물음.** 커버레터는 `cover-letter.md` §붙여넣을 본문 **전체 복사**. ✅ `business travel` 은 GLG 확인으로 닫혔다(가능) |
 | 2 | **AIRS Medical** | `_DEVEX` | `https://airsmed.career.greetinghr.com/ko/o/216673` → 「지원하기」 | 그리팅. 우대가 `openclaw`·skill/hook/MCP 로 사람을 지목했다 |
 | 3 | **Bear Robotics** | `_EMB` | `https://bear-robotics.breezy.hr/p/5d59d1cd221e-systems-software-engineer-linux-platform/apply` | Breezy. **영문 CV 필수** — 여섯 컷 전부 영문이라 그대로 통과 |
 | 4 | **Toss** | `_AI` | `https://toss.im/career/apply/basic/7646941003` | 토스 자체 폼 |
@@ -63,7 +63,8 @@
 | **Cohere** 🌐 | `_FDE` | `https://jobs.ashbyhq.com/cohere/[uuid removed]/application` | 준비 끝 · **공고 열려 있음**(alive 확인) |
 | **OpenAI** 🌐 | `_DEVEX` | `https://jobs.ashbyhq.com/openai/[uuid removed]/application` | 준비 끝 · **공고 열려 있음**(alive 확인) |
 
-되살릴 때 **출장 수용 범위**를 먼저 정한다(Cohere 20–40% · OpenAI APAC 30%).
+출장 자체는 ✅ 가능으로 닫혔다. 다만 이 둘은 **비율이 명시**돼 있어(Cohere 20–40% · OpenAI APAC 30%)
+되살릴 때 그 폭을 받아들일지 따로 정한다.
 
 ## 🚧 아직 못 내는 2건 — 남은 관문이 있다
 
@@ -86,7 +87,7 @@
 | **희망 연봉** | **「면접 후 협의」**. 숫자를 강제하는 폼에서만 GLG 가 그 자리에서 직접 입력 (GLG: *"연봉은 지금 고민 안 할 거야"*) |
 | **입사 가능일** | **「협의 가능」**. 날짜 강제 시 **「최종 합격·처우 협의 후 4주 이내」** |
 | **이직 사유** | **「개인의 기억·저자성·장기 협업에서 배운 에이전트 운영 방식을, 더 큰 조직의 데이터·거버넌스·워크플로로 옮기는 다음 경계를 찾고 있습니다」** (`resume/body.org` Summary 에서 나온 문장) |
-| 출장 수용 범위 | ⚠ **폼 질문으로 실측된 실행 건은 없다.** 다만 Holiday 공고 요건에 `business travel` 이 있으므로 제출 직전 GLG 말로 확인. Cohere/OpenAI 보류 2건은 되살릴 때 범위(20–40% / APAC 30%)를 정한다 |
+| **출장 가능** | ✅ **가능** (GLG 확인 2026-07-29). Holiday 요건이 이 값으로 닫혔다. Cohere/OpenAI 보류 2건은 **비율이 명시**돼 있어(20–40% / APAC 30%) 되살릴 때 그 폭을 따로 본다 |
 
 **에이전트가 숫자를 만들어 넣는 일은 없다.** 「기본값 + 강제 시 GLG 직접」 두 단이 계약이다.
 
