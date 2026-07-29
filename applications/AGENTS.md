@@ -49,6 +49,26 @@ applications/
 **추천서를 서류 본문에 인용하지 않는다.** 추천은 추천인의 문장이고 서류는 내 문장이다.
 추천인 실명은 이 저장소(PRIVATE)에만 두고 제출 문서 본문에 넣지 않는다.
 
+### 검수는 소스가 아니라 제출 세트 위에서 한다 (2026-07-29 GLG)
+
+**GLG 는 org/md 를 읽지 않는다. 그 업체에 올라갈 파일 세트를 그대로 연다.**
+
+```bash
+./stage.py            # ready 인 건 전부 세트를 다시 깐다
+./stage.py holiday    # 한 건만
+```
+
+`stage.py` 가 각 건 `submit/` 에 **나갈 물건 전부**를 깐다 — `submission.md` §첨부 컷에서
+읽은 이력서 컷, `cover-letter.md` §붙여넣을 본문을 뽑은 `cover-letter.txt`(폼이 textarea 다),
+그리고 `README.md`(어느 파일이 폼의 어느 칸인지) + `MANIFEST.sha256`.
+
+- **수정 요청이 오면 `submit/` 을 손으로 고치지 않는다.** `resume/body.org` · `targets/*.org` ·
+  `dossier/*.org` · `cover-letter.md` 를 고치고 **빌드 → `./stage.py`** 로 세트를 다시 깐다.
+  세트 단위로 움직여야 제출본과 소스가 갈라지지 않는다.
+- **`submitted` 인 건은 `stage.py` 가 건드리지 않는다.** 그때 나간 파일이 사실이다.
+- 이력서·dossier 를 재빌드했으면 **`./stage.py` 를 반드시 뒤따라 돌린다.** 안 그러면
+  세트가 옛 판이다.
+
 ### `submit/` — 건마다 사본을 둔다
 
 **제출지마다 내라는 것이 다르다.** 어디는 영문 이력서 한 장, 어디는 국문 자기소개서, 어디는

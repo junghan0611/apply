@@ -13,6 +13,24 @@
   코딩테스트·전통식 절차가 결에 안 맞으면 **못 한다고 하면 된다.** 오늘은 쏘카도 낸다.
   **카카오헬스케어 후보가 빠졌으니 로컬에서 다시 조사**한다.
 
+## ⭐ GLG 검수 방식 — 소스가 아니라 제출 세트를 연다 (2026-07-29 결정)
+
+**GLG 는 org/md 를 고치지 않는다.** 그 업체에 올라갈 파일 세트를 그대로 열어서 보고,
+수정 사항을 말로 전달한다. 에이전트가 **org·파이프라인을 고치고 세트를 다시 깐다.**
+그래야 ① 검수한 것과 실제 제출본에 갭이 없고 ② 고칠 때 세트 전체가 함께 움직인다.
+
+```bash
+(cd resume && ./run.sh all)      # 이력서를 고쳤으면
+(cd dossier && ./run.sh all)     # dossier 를 고쳤으면
+applications/stage.py            # ⭐ 반드시 뒤따라 — 18건 세트를 다시 깐다
+applications/check.py
+```
+
+**`applications/stage.py`** 가 각 건 `submit/` 에 나갈 물건을 깐다 —
+이력서 컷(`submission.md` §첨부 컷에서 읽음) · `cover-letter.txt`(폼이 textarea 라 평문) ·
+`README.md`(어느 파일이 폼의 어느 칸인지) · `MANIFEST.sha256`.
+**`submitted` 인 5건은 건드리지 않는다.**
+
 ## 2026-07-29 11:00~ 노트북에서 한 것
 
 **노트북이라서 풀린 것 둘, GLG 판단으로 바뀐 것 하나.**
@@ -266,6 +284,8 @@ ninehire `recruitment.status` · Ashby 보드 `isListed`). 어댑터 없는 곳�
 - 제출 SSOT: `applications/LEDGER.md` · **제출 실행 시트: `applications/SUBMIT-QUEUE.md`** · 닫힘 검사: `applications/check.py`
 - **공고 생존 검사: `applications/alive.py`** (제출 직전에 돌린다)
 - **한 장짜리 md → 제출용 PDF: `applications/md2pdf.sh`** (노트북 전용 — Chrome 이 필요하다)
+- **⭐ 제출 세트 깔기: `applications/stage.py`** — 각 건 `submit/` 에 나갈 물건 전부를 깐다.
+  **GLG 검수는 여기서 한다.** 이력서·dossier 재빌드 뒤에는 반드시 이어서 돌린다
 - 조준 문서 발사대: `dossier/AGENTS.md` — **깊이 축**. 이력서 발사대는 `resume/`
 - 후보 큐: `applications/INBOX.md` · 폼 재사용 답: `applications/FAQ.md`
 - 이력서 사실: `resume/body.org` · 빌드: `(cd resume && ./run.sh all && ./run.sh verify)`

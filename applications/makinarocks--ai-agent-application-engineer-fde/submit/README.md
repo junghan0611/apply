@@ -1,0 +1,10 @@
+# 제출 세트 — makinarocks--ai-agent-application-engineer-fde
+
+**이 폴더가 실제로 올라갈 파일 전부다.** 검수는 여기서 한다 — 소스(org/md)가 아니라
+나갈 물건 위에서. 고칠 것이 있으면 org·파이프라인을 고치고 `./stage.py` 를 다시 돌린다.
+
+| 파일 | 폼의 어느 칸 |
+|---|---|
+| `KimJunghan_Resume_Forward_Deployed_Engineer.pdf` | 이력서 (필수) |
+
+생성: `applications/stage.py` · 손으로 고치지 않는다.
