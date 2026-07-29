@@ -61,10 +61,9 @@ agent and attach it to the person who owns the domain.
 :END:
 
 - *HomeAgent* — open-source Matter hub with an on-device AI agent. One Go codebase runs on
-  RPi5 + Hailo-8 NPU (Yocto) and RK3576 (Android), with Flutter as the shell; 96% code sharing
-  across the two deployments. BLE commissioning for Matter/Thread via a matterjs bridge, OTBR
-  integration. Ran 3-agent parallel development sessions with the human as PM: 163 tests passing,
-  zero file conflicts.
+  RPi5 + Hailo-8 NPU (Yocto) and RK3576 (Android), with Flutter as the shell. BLE commissioning
+  for Matter/Thread via a matterjs bridge, OTBR integration. Ran three agents in parallel with
+  the human as PM; the work split held — no file conflicts across the sessions.
 - *Matter wallpad (customer engagement)* — RK3576 + Android 15, ESP32-H2 as Thread RCP,
   AOSP-native CHIP C++ SDK with =ot-daemon=, delivered as a versioned Android SDK (AAR) into the
   customer's own namespace.
@@ -78,9 +77,8 @@ agent and attach it to the person who owns the domain.
 :END:
 
 - Built GPU cluster infrastructure: 3× RTX 5080, NixOS, 10G network, 17 Docker services.
-- Designed a hierarchical AI agent system on n8n (40+ node workflows) over Supabase pgvector with
-  2,945 document embeddings; served the embedding and reranking stages directly rather than
-  renting them.
+- Designed a hierarchical AI agent system on n8n (40+ node workflows) over Supabase pgvector;
+  served the embedding and reranking stages directly rather than renting them.
 - Data pipelines: Airbyte connectors for Channel.io, Notion, and JIRA into PostgreSQL JSONB;
   internal portal behind Cloudflare Zero Trust.
 
@@ -102,8 +100,8 @@ Ran a self-hosted multi-agent harness through 20+ upstream version cycles on Ora
 Instrumented a latency regression to a spinning gateway process, chose the rollback target on
 evidence rather than recency, and wrote the policy that followed: no two-version jumps, stage on a
 non-production agent for ≥24h before promotion, responsiveness is the SLO. A later upstream release
-fixed the root cause; the upgrade took boot from 45.4s to 5.8s and resident memory from 816 MiB to
-246 MiB.
+fixed the root cause, and the policy is what decided when to take it. The incident, the rollback
+target, and the policy that followed are dated in the public commit history.
 
 *** entwurf — Garden-Citizen Dispatch Substrate
 :PROPERTIES:

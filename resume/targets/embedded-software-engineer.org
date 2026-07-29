@@ -26,9 +26,9 @@ firmware.
 
 The next port moved from ARMv7/glibc and a vendor sysroot to RISC-V on static musl, extracted a board
 HAL, delegated Zigbee transport to Zigbee2MQTT, and removed seven hardcoded device handlers. In
-parallel, one Go Matter-hub codebase runs on RPi5 + Hailo-8 NPU/Yocto and RK3576/Android with 96% code
-sharing. AI appears here as an engineering tool and deployable edge workload, not as a claim of
-model-training expertise.
+parallel, one Go Matter-hub codebase runs on both RPi5 + Hailo-8 NPU/Yocto and RK3576/Android. AI
+appears here as an engineering tool and deployable edge workload, not as a claim of model-training
+expertise.
 
 * Core Competencies
 
