@@ -41,7 +41,7 @@
 | # | 회사 | 컷 | 지원 URL | 폼 무게 · 주의 |
 |---|---|---|---|---|
 | 1 | **Holiday Robotics** 🤖 | `_FDE` + **커버레터** | `https://holiday-robotics.com/careers/forward-deployed-robotics-engineer/apply` | **가장 가볍다.** 로그인 없음. 필수는 이름·이메일 둘. **연봉·입사일 안 물음.** 커버레터는 `cover-letter.md` §붙여넣을 본문 **전체 복사**. ✅ `business travel` 은 GLG 확인으로 닫혔다(가능) |
-| 2 | **AIRS Medical** | `_DEVEX` | `https://airsmed.career.greetinghr.com/ko/o/216673` → 「지원하기」 | 그리팅. 우대가 `openclaw`·skill/hook/MCP 로 사람을 지목했다 |
+| 2 | **AIRS Medical** | `_DEVEX` + **커버레터(조건부)** | `https://airsmed.career.greetinghr.com/ko/o/216673` → 「지원하기」 | 그리팅. 우대가 `openclaw`·skill/hook/MCP 로 사람을 지목했다. **국문 커버레터 초안 있음**(`submit/cover-letter.txt`, 1,710자) — ⚠ **칸 유무 미실측**. 있으면 붙이고, 없으면 1차 면접 답 골격으로 쓴다 |
 | 3 | **Bear Robotics** | `_EMB` | `https://bear-robotics.breezy.hr/p/5d59d1cd221e-systems-software-engineer-linux-platform/apply` | Breezy. **영문 CV 필수** — 여섯 컷 전부 영문이라 그대로 통과 |
 | 4 | **Toss** | `_AI` | `https://toss.im/career/apply/basic/7646941003` | 토스 자체 폼 |
 | 5 | **FriendliAI** | `_AI` | `https://jobs.ashbyhq.com/friendliai/[uuid removed]/application` | Ashby. 가입 불필요 |
