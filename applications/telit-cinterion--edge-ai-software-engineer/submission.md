@@ -33,9 +33,9 @@
 | 영어 | 필수는 **읽기·쓰기**다(`read technical documentation and collaborate with global teams`) | `FAQ.md` §6 |
 | 대한민국 취업 자격 | Yes / 스폰서 불필요 | `FAQ.md` §5 |
 | 연락처 · 법적 값 | **브라우저에서 GLG 직접 입력. Git 에 저장하지 않는다** | `FAQ.md` §5 |
-| 희망 연봉 | ⚠ **GLG 확정 필요** | `FAQ.md` §4 |
-| 입사 가능일 | ⚠ **GLG 확정 필요** | `FAQ.md` §4 |
-| 이직 사유 | ⚠ **GLG 확정 필요** | `FAQ.md` §4 |
+| 희망 연봉 | ✅ **「면접 후 협의」** — 숫자를 강제하는 폼에서만 GLG 가 직접 입력 (Git 에 숫자를 적지 않는다) | `FAQ.md` §4 |
+| 입사 가능일 | ✅ **「협의 가능」** — 날짜를 강제하면 **「최종 합격·처우 협의 후 4주 이내」** | `FAQ.md` §4 |
+| 이직 사유 | ✅ **확정 문장 있음** — `FAQ.md` §7 (`resume/body.org` Summary 축) | `FAQ.md` §7 |
 
 ## 왜 이 직무였는가
 
