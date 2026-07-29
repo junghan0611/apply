@@ -13,6 +13,41 @@
   코딩테스트·전통식 절차가 결에 안 맞으면 **못 한다고 하면 된다.** 오늘은 쏘카도 낸다.
   **카카오헬스케어 후보가 빠졌으니 로컬에서 다시 조사**한다.
 
+## ▶ 지금 여기서 이어받는다 — 서버로 넘어감 (2026-07-29 11:50 노트북)
+
+**GLG 는 아직 아무 문서도 검수하지 못했다.** 시간이 없었다. 이후 계획은
+**서버에서 더 작업 → 집에서 제출**이다.
+
+**집에서 열 것 — 이 네 폴더가 전부다** (`applications/` 아래):
+
+| 순서 | 폴더 `…/submit/` | 볼 것 |
+|---|---|---|
+| 1 | `hanwha-vision--ai-agent-architecture-lead` | **포트폴리오 18쪽** — 1쪽 표지 + 본문. ⛔ `00-cover.pdf` 는 안 올린다 |
+| 2 | `holiday-robotics--forward-deployed-robotics-engineer` | **`cover-letter.txt` 400단어** — 폼이 textarea 라 이 평문이 제출 양식이다 |
+| 3 | `lunit--senior-ax-engineer` | 이력서 `_AI` 한 장이 서류 전부 |
+| 4 | `socar--platform-engineer` | 이력서 `_DEVEX` 한 장이 서류 전부 |
+
+각 폴더 `README.md` 에 **어느 파일이 폼의 어느 칸인지** 적혀 있다.
+
+**⚠ 서버에서 못 하는 것 (노트북·집 전용)**
+
+- **`applications/md2pdf.sh`** — Chrome 이 필요하다. 서버엔 없다.
+- **브라우저 폼 실측 / 제출** — 서버는 `DISPLAY` 가 없다.
+- ninehire 업로드(한화·텔레칩스)는 **어느 기계에서든 GLG 가 직접** 한다.
+
+**✅ 서버에서 되는 것**: `stage.py` · `check.py` · `alive.py` · `resume/run.sh` ·
+`dossier/run.sh`(LibreOffice 경로) · 문서 작업 · Upstage 문항 1 집필.
+
+**서버에서 문서를 고쳤다면 반드시**:
+
+```bash
+(cd resume && ./run.sh all)     # 또는 (cd dossier && ./run.sh all)
+applications/stage.py           # ⭐ 빼먹으면 세트가 옛 판이다
+applications/check.py
+```
+
+**제출 직전 필수**: `applications/alive.py` — 공고 생존 확인은 06:36 판이라 당일 다시 돈다.
+
 ## ⭐ GLG 검수 방식 — 소스가 아니라 제출 세트를 연다 (2026-07-29 결정)
 
 **GLG 는 org/md 를 고치지 않는다.** 그 업체에 올라갈 파일 세트를 그대로 열어서 보고,
