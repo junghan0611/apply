@@ -13,6 +13,37 @@
   코딩테스트·전통식 절차가 결에 안 맞으면 **못 한다고 하면 된다.** 오늘은 쏘카도 낸다.
   **카카오헬스케어 후보가 빠졌으니 로컬에서 다시 조사**한다.
 
+## 2026-07-29 11:00~ 노트북에서 한 것
+
+**노트북이라서 풀린 것 둘, GLG 판단으로 바뀐 것 하나.**
+
+**① 한화 ⛔ 해소** — 서버에 없던 「md 한 장 → PDF」를 Chrome 으로 뚫고 재사용 스크립트
+`applications/md2pdf.sh` 로 남겼다(pandoc → Chrome headless). ⚠ **Pretendard 를 data URI 로
+심어야 한다** — fontconfig 에 맡기면 CSS 1순위여도 D2Coding(코딩용 고정폭)으로 떨어진다.
+표지 1장 + dossier PDF 2종 `gs` 합본 → `submit/KimJunghan_Hanwha_Portfolio.pdf`.
+한화 `draft` → **`ready`**, 실행 큐 **15번**.
+
+**② 출장 게이트 닫힘** — GLG 확인 「출장 가능」. `FAQ.md` §4 의 마지막 ⚠ 가 사라졌고,
+Holiday 커버레터에서 걷어냈던 `available for business travel` 문장을 되살렸다.
+Holiday 공고 필수 5개 **전부 충족**. Cohere/OpenAI 만 **비율**(20–40% / APAC 30%)이 남았다.
+
+**③ ⭐ 수치 원칙이 바뀌었다 (GLG)** — **자가 측정 수치는 넣어봐야 도움이 안 된다.**
+그 자리에는 **그 일을 한 커밋과 타임라인 기록**을 적는다. 시간축이 이 저장소의 강점이다.
+
+- 걷어낸 것: 부팅 45.4→5.8초 · 메모리 816→246MiB(**개선한 것은 업스트림 릴리스다**) ·
+  코드 공유 96% · 테스트 163개 · 임베딩 2,945건 · 30일 198커밋 · 하루 24커밋.
+- 남긴 것: **Working Corpus 푸터**(라이브 주소 + 측정일) · **제3자가 남긴 숫자**(기여 PR
+  줄 수, npm 설치 수) · 날짜·커밋 SHA. 내가 만든 숫자가 아니라 **대체 불가능한 기록**이다.
+- **계약에 박았다** — `AGENTS.md` §불변식 §숫자(정본) · `resume/AGENTS.md` ·
+  `applications/AGENTS.md` · `applications/FAQ.md` §원칙 4 · `dossier/AGENTS.md` ·
+  `dossier/PORTFOLIO-PLAN.md` §수치 원칙 **v4**.
+  **왜 계약에 박았나**: `competency.org` 히스토리에 GLG 가 이미 *"이거 완전 필요없어.
+  빼자고한거야"* 라고 적어 둔 적이 있다. **한 번 뺐다가 되살아났다.**
+- ⚠ **`body.org` 만 고치면 끝이 아니다** — `targets/embedded-software-engineer.org` 에서
+  96% 가 그렇게 살아남았다. **고친 뒤 빌드된 PDF 를 직접 뒤진다.**
+- ⚠ **이미 제출한 5건의 `submit/` 스냅샷은 옛 수치판**이고 고치지 않는다.
+  델타와 면접 답변은 `LEDGER.md` §메모.
+
 ## 2026-07-29 아침에 한 것
 
 **어제 오라클서버(브라우저 없음)가 남긴 구멍 셋을 브라우저로 전부 메웠다.**

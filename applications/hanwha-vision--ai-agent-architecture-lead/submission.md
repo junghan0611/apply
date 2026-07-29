@@ -96,8 +96,10 @@ KST 축에** 세운다. 증거 계약이 깨지면 경고가 아니라 **멈춘�
 
 - [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`
 - [x] **포트폴리오 합본** — ✅ **`submit/KimJunghan_Hanwha_Portfolio.pdf` 생성 완료 (18쪽, 4.2M)**.
-      `cover-sheet.md` → 표지 1장(`submit/00-cover.pdf`) + 기존 `dossier/` 산출물 PDF 2종 `gs` 합본.
-      **org 소스의 조준부 3자리는 교체하지 않았다** — 표지가 그 역할을 대신한다 (§채택안)
+      `cover-sheet.md` → 표지 1장(`submit/00-cover.pdf`) + **`dossier/build/` 산출물 PDF 2종**
+      `gs` 합본. **org 소스의 조준부 3자리는 교체하지 않았다** — 표지가 그 역할을 대신한다
+      (§채택안). ⚠ 다만 **수치 정리로 dossier 는 재빌드했다** — 합본 입력은
+      **NHN 제출 스냅샷이 아니라 `dossier/build/`** 다
 - [x] ~~커버레터~~ — **N/A 확정.** 폼에 서술형 칸이 **하나도 없다**(2026-07-29 실측).
       쓸 자리가 없으므로 만들지 않는다
 
@@ -149,9 +151,15 @@ NHN 제출본 2종(`../nhn--ax-transformation-ai-infra/submit/`)을 검사했다
 **2026-07-29 GLG 결정: 지원 문서는 NHN org 파이프라인(`emacs → ox-latex → xelatex → ODT`)을
 쓰지 않는다. 간단하게 PDF 까지 가는 경로로 간다.**
 
-그래서 **기존 PDF 2종을 재빌드하지 않는다.** 조준이 어긋난 자리는 세 곳뿐이고, 그 셋이 하는
+그래서 **조준부 때문에 재빌드하지는 않는다.** 조준이 어긋난 자리는 세 곳뿐이고, 그 셋이 하는
 말은 결국 「이 다섯 프로젝트를 이 공고의 어느 요구로 읽어야 하는가」 하나다. **그 말을 표지
 한 장이 대신한다.**
+
+> ⭐ **정정 (2026-07-29 11:22).** 결국 재빌드는 **했다** — 다만 이유가 조준부가 아니라
+> **수치**다. GLG 판단으로 자가 측정 수치(코드 공유 96% · 테스트 163개 · 임베딩 2,945건 ·
+> 30일 198커밋 · 하루 24커밋)를 `dossier/` 세 소스에서 걷어냈고, 그 문서가 이 합본에
+> 들어가므로 재빌드가 불가피했다. **조준부 3자리는 여전히 건드리지 않았다** — 표지가
+> 그 역할을 그대로 대신한다. 쪽수도 5p·12p 그대로다.
 
 ```text
 [표지 1장 — 새로 쓴다]  +  KimJunghan_AX_Competency.pdf(5쪽)  +  KimJunghan_AX_Portfolio.pdf(12쪽)
@@ -245,11 +253,13 @@ cd ~/repos/gh/apply/applications/hanwha-vision--ai-agent-architecture-lead
 ../md2pdf.sh cover-sheet.md submit/00-cover.pdf        # → 1쪽
 
 # ② 표지 + 역량기술서 + 포트폴리오 = 한 파일  (순서 중요: 글이 먼저)
-N=../nhn--ax-transformation-ai-infra/submit
+#    ⚠ 입력은 dossier/build/ 다. NHN 제출 스냅샷(../nhn--*/submit/)은 2026-07-29 수치
+#      정리 이전 판이라 재사용하지 않는다.
+D=../../dossier/build
 gs -dNOPAUSE -dBATCH -dQUIET -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress \
    -dDetectDuplicateImages=true \
    -sOutputFile=submit/KimJunghan_Hanwha_Portfolio.pdf \
-   submit/00-cover.pdf "$N/KimJunghan_AX_Competency.pdf" "$N/KimJunghan_AX_Portfolio.pdf"
+   submit/00-cover.pdf "$D/KimJunghan_AX_Competency.pdf" "$D/KimJunghan_AX_Portfolio.pdf"
 
 # ③ 검수 — 18쪽인지 (표지1 + 역량5 + 포트폴리오12)
 gs -q -dNODISPLAY -dNOSAFER \
@@ -258,6 +268,10 @@ gs -q -dNODISPLAY -dNOSAFER \
 
 **검수 결과**: 18쪽 · 4.2M. 표지는 Pretendard 벡터로 굽혔고 표·볼드·한글 정상,
 합본 2쪽(역량기술서 첫 장)에서 그림·링크 손상 없음을 렌더링으로 확인했다.
+
+⭐ **11:22 재합본** — GLG 의 수치 판단(`AGENTS.md` §불변식 §숫자)으로 `dossier/` 세 소스에서
+자가 측정 수치를 걷어내고 재빌드했다(Competency 5p · Portfolio 12p, **쪽수 불변**, verify 통과).
+합본 입력을 **NHN 제출 스냅샷 → `dossier/build/`** 로 바꿔 다시 만들었다. 합본 전문 재검색 0건.
 
 **업로드**
 
