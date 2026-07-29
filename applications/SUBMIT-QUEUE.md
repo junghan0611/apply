@@ -42,8 +42,8 @@
 |---|---|---|---|---|
 | 1 | **Holiday Robotics** 🤖 | `_FDE` + **커버레터** | `https://holiday-robotics.com/careers/forward-deployed-robotics-engineer/apply` | **가장 가볍다.** 로그인 없음. 필수는 이름·이메일 둘. **연봉·입사일 안 물음.** 커버레터는 `cover-letter.md` §붙여넣을 본문 **전체 복사**. ✅ `business travel` 은 GLG 확인으로 닫혔다(가능) |
 | 2 | **AIRS Medical** | `_DEVEX` + **커버레터(조건부)** | `https://airsmed.career.greetinghr.com/ko/o/216673` → 「지원하기」 | 그리팅. 우대가 `openclaw`·skill/hook/MCP 로 사람을 지목했다. **국문 커버레터 초안 있음**(`submit/cover-letter.txt`, 1,710자) — ⚠ **칸 유무 미실측**. 있으면 붙이고, 없으면 1차 면접 답 골격으로 쓴다 |
-| 3 | **Bear Robotics** | `_EMB` | `https://bear-robotics.breezy.hr/p/5d59d1cd221e-systems-software-engineer-linux-platform/apply` | Breezy. **영문 CV 필수** — 여섯 컷 전부 영문이라 그대로 통과 |
-| 4 | **Toss** | `_AI` | `https://toss.im/career/apply/basic/7646941003` | 토스 자체 폼 |
+| 3 | **Bear Robotics** | `_EMB` + **커버레터(조건부)** | `https://bear-robotics.breezy.hr/p/5d59d1cd221e-systems-software-engineer-linux-platform/apply` | Breezy. **영문 CV 필수** — 여섯 컷 전부 영문이라 그대로 통과. **영문 커버레터 초안 있음**(`submit/cover-letter.txt`, 474단어) — ⚠ **칸 유무 미실측**, 파일 업로드형이면 PDF 라 집 축 |
+| 4 | **Toss** | `_AI` + **커버레터(조건부)** | `https://toss.im/career/apply/basic/7646941003` | 토스 자체 폼. **계정 생성 필요할 수 있음 — GLG 직접.** **국문 커버레터 초안 있음**(`submit/cover-letter.txt`, 1,415자) — 공고가 지정한 「목적 → 수단 → 해결 방식」 형식으로 썼다. ⚠ **칸 유무 미실측** |
 | 5 | **FriendliAI** | `_AI` | `https://jobs.ashbyhq.com/friendliai/[uuid removed]/application` | Ashby. 가입 불필요 |
 | 6 | **Sonatus** 🌐 | `_EMB` | `https://www.linkedin.com/jobs/view/4380679251/` → **「간편 지원」** | Easy Apply 5단계. ⚠ **LinkedIn 저장 이력서가 기본 선택**이라 올릴 때 파일 확인 |
 | 7 | **Telit Cinterion** 🌐 | `_EMB` | `https://recruiting.paylocity.com/Recruiting/jobs/Apply/4158364` | Paylocity |

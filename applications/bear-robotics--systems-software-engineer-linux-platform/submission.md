@@ -18,7 +18,11 @@
 
 - [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`
       (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`)
-- [ ] 커버레터 — Breezy 는 보통 「Cover Letter」 칸이 있다. 있으면 아래 §왜 이 직무였는가 를 줄여 쓴다
+- [ ] **커버레터 — `cover-letter.md` 에 영문 본문을 썼다** (2026-07-29, 474단어).
+      제출 세트에는 `submit/cover-letter.txt` 로 깔려 있다.
+      ⚠ **칸이 있는지는 미실측** — Breezy 는 보통 `Cover Letter` 칸을 두지만 워크스페이스마다
+      다르다. **파일 업로드형이면 PDF 가 필요하고 그건 집(노트북) 축**이다.
+      칸이 없으면 버리지 않고 **Peer Interview(3시간) 답 골격**으로 쓴다.
 
 > **⚠ 공고 첫 줄이 `English CV must be submitted.` 다.** `resume/build/` 의 여섯 컷이 **전부 영문**이라
 > 그대로 통과한다. **한글 서류를 만들지 않는다.**
@@ -67,3 +71,6 @@ Bash 자동화 · 리눅스 시스템 · 경력 1년+** 다 — 전부 대는 �
 - [2026-07-28] 건 생성. GLG 가 건넨 LinkedIn 링크를 `ljobs.py detail` 로 뜨고,
   **exa-search 로 Breezy 원본 공고를 찾아** 지원 URL(HTTP 200)까지 확인했다.
 - [2026-07-28] 컷 **Embedded** 확정. 상태 `ready` — **제출 대기**.
+- [2026-07-29] **커버레터 초안 작성** (`cover-letter.md`). 골격은 Holiday 판을 따랐다 —
+  §붙여넣을 본문 + §왜 이렇게 썼는가 + §쓰지 않은 것. `stage.py` 가 `submit/cover-letter.txt`
+  로 깐다. **다음 판에서 GPT 교열**(2026-07-29 분업).

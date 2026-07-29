@@ -19,7 +19,11 @@
 
 - [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`
       (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
-- [ ] 커버레터 / 지원 동기 — **폼을 열고 칸을 확인한다.** 있으면 아래 §왜 이 직무였는가 를 줄여 쓴다
+- [ ] **커버레터 / 지원 동기 — `cover-letter.md` 에 국문 본문을 썼다** (2026-07-29, 1,415자).
+      제출 세트에는 `submit/cover-letter.txt` 로 깔려 있다.
+      ⚠ **칸이 있는지는 미실측** — 토스 자체 ATS 라 밖에서 폼을 못 읽는다.
+      **공고가 지정한 「목적 → 수단 → 해결 방식」 형식을 글의 뼈대로 썼다.**
+      칸이 없으면 버리지 않고 **심층 기술 면접 앞의 「왜 토스인가」 답**으로 쓴다.
 
 **⚠ 업로드 직전 파일명을 눈으로 확인한다.** 같은 AI Engineer 컷을 쓰는 건이 이 배치에 넷이다.
 
@@ -72,3 +76,6 @@ GPU 스케줄링 · 트래픽) 실적이 없다** — GPU 클러스터는 자체
 - [2026-07-28] 건 생성. GLG 가 건넨 LinkedIn 링크에서 시작해 **토스 자체 채용홈의 원본 공고와
   지원 URL(`/career/apply/basic/7646941003`, HTTP 200)** 까지 확인했다.
 - [2026-07-28] 컷 **AI Engineer** 확정. 상태 `ready` — **제출 대기**.
+- [2026-07-29] **커버레터 초안 작성** (`cover-letter.md`). 골격은 Holiday 판을 따랐다 —
+  §붙여넣을 본문 + §왜 이렇게 썼는가 + §쓰지 않은 것. `stage.py` 가 `submit/cover-letter.txt`
+  로 깐다. **다음 판에서 GPT 교열**(2026-07-29 분업).

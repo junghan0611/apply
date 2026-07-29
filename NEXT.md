@@ -33,8 +33,17 @@
   없으면 버리지 않고 **1차 면접 「왜 우리인가」 답 골격**으로 쓴다(코딩테스트 없는 전형).
   **다음: GPT 교열.**
 - **NHN 2번째** — 직무 맞춤 자기소개. 정본은 `applications/SELF-INTRODUCTION.md`, 조준은 사본으로.
-- **Bear Robotics · Toss · FriendliAI · MakinaRocks · Reflection** — 커버레터 슬롯 여부가
-  **폼 미실측**이라 미정. 있으면 Holiday 판(`cover-letter.md`)을 골격으로 쓴다.
+- ~~**Bear Robotics**~~ — ✅ **영문 커버레터 초안 완료** (474단어). 공고 첫 줄이
+  `English CV must be submitted.` 이고 보고 라인이 미국이라 영문으로 썼다.
+  심장은 **Nix 문단** — Terraform 실적이 없다고 한 문장으로 닫고 같은 곳에 다른 도구로
+  도달했다고 말한다. ⚠ 파일 업로드형이면 **PDF 가 필요하고 그건 집 축**이다.
+- ~~**Toss**~~ — ✅ **국문 커버레터 초안 완료** (1,415자). **공고가 지정한 형식
+  「목적 → 수단 → 해결 방식」을 글의 뼈대로 썼다.** 계정 생성이 필요할 수 있고 그건 GLG 직접.
+- **FriendliAI · MakinaRocks · Reflection · FuriosaAI · 42dot · Telit** — 아직. 슬롯 여부가
+  **폼 미실측**이라 미정이지만, **AIRS·Bear·Toss 판정과 같다** — 있으면 붙이고 없으면
+  면접 답 골격으로 쓴다. Holiday 판을 골격으로.
+- ⛔ **Lunit · SOCAR · 한화 는 커버레터가 필요 없다** — 서술형·추가서류가 아예 없는 폼이다.
+- ⛔ **Sonatus** 는 LinkedIn Easy Apply 라 커버레터 칸이 없다.
 - ⛔ **Upstage 문항 1 은 서버가 쓰지 않는다** — GLG 가 pi·entwurf 로 직접 돌린 뒤에 나온다.
 
 **⭐ 업스테이지 축이 바뀌었다 (2026-07-29 저녁 GLG)** — 문항 1 은 「써 보고 소감 쓰는 글」이

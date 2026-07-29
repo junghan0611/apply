@@ -6,5 +6,6 @@
 | 파일 | 폼의 어느 칸 |
 |---|---|
 | `KimJunghan_Resume_Embedded_Software_Engineer.pdf` | 이력서 (필수) |
+| `cover-letter.txt` | 커버레터 — 전체 복사해 붙여넣는다 (칸 유무·상한은 그 건 `submission.md` §폼) |
 
 생성: `applications/stage.py` · 손으로 고치지 않는다.
