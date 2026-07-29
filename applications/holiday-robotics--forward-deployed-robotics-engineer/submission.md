@@ -2,8 +2,8 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **ready** — 커버레터까지 끝났다. 폼 실측 완료 |
-| 지원일 | — |
+| 상태 | **submitted** — 2026-07-30 GLG가 브라우저에서 제출 완료 |
+| 지원일 | 2026-07-30 |
 | 경로 | **자체 채용홈** `holiday-robotics.com/careers` — ATS 화이트라벨 아님 |
 | 첨부 컷 | **FDE** (`resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`) |
 | 공고 URL | https://www.linkedin.com/jobs/view/4443068175/ (LinkedIn 판, `offsite`) |
@@ -84,9 +84,10 @@ and product development."*
 
 ## 낸 것
 
-- [x] **이력서 PDF** — `resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf` (준비됨)
-- [x] **커버레터** — `cover-letter.md` §붙여넣을 본문. **영문 약 390 단어.** ROS2 문단 포함
+- [x] **이력서 PDF** — `submit/KimJunghan_Resume_Forward_Deployed_Engineer.pdf` (실제 업로드 사본)
+- [x] **커버레터** — `submit/cover-letter.txt` 전체를 Cover Letter textarea에 붙여넣음. **영문 387단어.** ROS2 문단 포함
 - [x] 운전면허 — **있음** (GLG 확인, 2026-07-28)
+- [x] 개인 필드·전화번호·동의 체크 — **GLG가 브라우저에서 직접 완료. 값은 Git에 저장하지 않음**
 
 ## 폼 스키마 — 브라우저 실측 (2026-07-29)
 
@@ -120,6 +121,43 @@ and product development."*
 |---|---|---|
 | (서술형 문항 없음 — Cover Letter textarea 하나가 전부) | `cover-letter.md` | 브라우저 실측 2026-07-29 |
 
+## 제출 시점 자체 평가 — 예상 결과와 피드백 기준 (2026-07-30)
+
+**결론**: 그냥 던진 건 아니다. 이번 배치에서 **재료 품질은 상위권**이고, 회사 언어와 실제 이력이
+잘 겹친다. 다만 **ROS2 required** 와 **물리 로봇 필드 배치 무경험**은 실제 갭이라 통과율을
+낙관하진 않는다. 전략은 `NEXT.md` 기조 그대로 — **내고 떨어지면 만다**, 이름을 알리고 반응을 본다.
+
+### 강점
+
+- **서사가 진짜다.** Holiday 의 `Field-First` · `Radical Simplicity` 가 스마트홈 허브 양산,
+  계약 밖 서버·앱 구현, 24시간 aging-test 자동화, 고객사 네임스페이스 SDK 딜리버리와 그대로 겹친다.
+- **FDE 포지셔닝이 일관적이다.** Cohere · Reflection AI · Enhans · MakinaRocks 에서 잡은
+  Forward Deployed 축과 같은 결이고, 여기서는 배치 대상이 소프트웨어에서 로봇으로 바뀐 형태다.
+- **폼 마찰이 낮았다.** 계정 생성 없음, 한 화면 폼, 서술형은 Cover Letter textarea 하나.
+  이력서와 커버레터만으로 메시지가 닫혔다.
+- **ROS2 를 정직하게 처리했다.** 프로덕션 ROS2 경험을 주장하지 않고, 대학원 사용 경험과
+  임베디드 전체 스택 양산 경험 사이의 관계를 설명했다. 제출 직전 교열로 자기비하 톤도 줄였다.
+
+### 약점 / 리스크
+
+- **ROS2 가 required 다.** 대학원 때 다뤄본 정도라 키워드/스크리너가 production ROS2 를 기대하면
+  서사와 무관하게 걸러질 수 있다.
+- **물리 로봇 현장 배치 경험은 없다.** 스마트홈 허브는 고정 설치형 제품이고, 이 자리는 산업용
+  휴머노이드를 고객 현장마다 설치·안정화하는 일이다. 층위는 비슷하지만 대상 도메인이 다르며,
+  이 갭은 인터뷰에서 검증될 갭이다.
+- **초기 스타트업 변수.** 28명 · Series A 조직이라 채용 기준과 기대치가 유동적일 수 있다.
+- **Wild Card 는 쓰지 않았다.** ROS2 한 줄에 막히면 Wild Card 쪽이 더 맞는 문일 수 있다.
+  이번에는 FDE 정공법 하나로만 갔다.
+
+### 이후 피드백을 받으면 대조할 질문
+
+- 거절이면: 실제 컷오프가 **ROS2/로봇 도메인 경험**이었는가, 아니면 연차·조직 규모·문화핏이었는가.
+- 연락이 오면: 회사가 GLG 를 **로봇 엔지니어**로 본 것인지, **field/product bridge** 로 본 것인지.
+- 면접에서 물으면: ROS2 는 과장하지 않고, `field deployment` 에 필요한 학습·디버깅·시스템 조립
+  능력으로 답한다. 휴머노이드 제어·기구학은 축 밖이라고 먼저 구분한다.
+- 떨어져도: Wild Card 로 다시 두드릴지 여부를 판단한다. 이때는 `무엇을 풀고 싶은가` —
+  물리 실체를 갖는 에이전트, 온디바이스 허브, 현장 로그→제품 루프 — 로 방향을 바꾼다.
+
 ## 이후 기록
 
 - [2026-07-28] 건 생성. GLG 가 링크를 던졌다. LinkedIn guest API 로 **본문 전문 확보**,
@@ -135,3 +173,6 @@ and product development."*
   다만 `applications/AGENTS.md` §한 회사에 공고가 여러 개일 때 의 기본은 **하나**이고,
   28명 회사에 두 경로로 들어가는 것은 인상이 갈린다. **FDE 로 간다는 판단은 유지하고,
   이 자리는 사실로만 남긴다** — 바꿀지는 GLG 판단.
+- [2026-07-30] **제출 완료.** GLG 가 브라우저에서 개인 필드·동의·Submit 을 직접 완료했다.
+  실제 제출 세트는 `submit/KimJunghan_Resume_Forward_Deployed_Engineer.pdf` 와
+  `submit/cover-letter.txt` 이며, 개인값은 Git 에 저장하지 않는다. 제출 시점 자체 평가를 위 절에 남겼다.

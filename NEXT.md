@@ -74,7 +74,7 @@
 | 순서 | 폴더 `…/submit/` | 볼 것 |
 |---|---|---|
 | 1 | `hanwha-vision--ai-agent-architecture-lead` | **포트폴리오 18쪽** — 1쪽 표지 + 본문. ⛔ `00-cover.pdf` 는 안 올린다 |
-| 2 | `holiday-robotics--forward-deployed-robotics-engineer` | **`cover-letter.txt` 400단어** — 폼이 textarea 라 이 평문이 제출 양식이다 |
+| 2 | `holiday-robotics--forward-deployed-robotics-engineer` | ✅ **submitted 2026-07-30** — `cover-letter.txt` 387단어 + FDE 이력서 업로드. 자체 평가는 `submission.md` |
 | 3 | `lunit--senior-ax-engineer` | 이력서 `_AI` 한 장이 서류 전부 |
 | 4 | `socar--platform-engineer` | 이력서 `_DEVEX` 한 장이 서류 전부 |
 
