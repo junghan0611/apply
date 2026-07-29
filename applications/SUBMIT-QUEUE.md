@@ -11,7 +11,7 @@
 > 사실이 아니었다. **폼 값은 각 `submission.md` 가 정본**이고, 이 큐에는 실행에 필요한
 > 순서·URL·첨부·주의만 둔다. Holiday/Lunit/SOCAR 는 폼 실측 요약도 함께 적었다.
 
-- 상태 계보: `ready` **17** = **실행 15** + **보류 2**(Cohere · OpenAI). 한화비전이 11:00 합류.
+- 상태 계보: `ready` **17** = **실행 15** + **보류 2**(Cohere · OpenAI). 한화비전은 11:00 합류했고, 11:46 GPT 재검수 보정판으로 갱신됐다.
 - 공고 생존: `./alive.py` — **2026-07-29 06:36 KST 기준 19건 전부 열림, 닫힌 것 0.**
   **제출 당일 다시 돌린다.**
 - 제출 순서는 아래 표 순서를 권한다(폼이 가벼운 것 → 무거운 것).
@@ -54,7 +54,7 @@
 | 12 | **Reflection AI** 🌐 | `_FDE` | `https://jobs.ashbyhq.com/reflectionai/[uuid removed]/application` | Ashby. `기술 리더십 2년+` 은 직함으로 없다 — **지어내지 않는다** |
 | 13 | **Lunit** | `_AI` | `https://apply.workable.com/lunit/j/E3C22F589F/apply/` | Workable. ✅ **A(이력서만)로 닫혔다 (2026-07-29)** — 새 문서 작업 없이 나간다. 로그인 없음·한 화면. **연봉·입사일 안 물음**. ⚠ 이력서에서 연봉정보 삭제 확인 YES · **민감정보 동의 YES** |
 | 14 | **SOCAR** | `_DEVEX` | `https://socar.career.greetinghr.com/ko/o/220124` → 「지원하기」 | ✅ **오늘 낸다 (2026-07-29 GLG 확정)**. 로그인 없음 · **서술형 0 · 부가정보 0** — 이름·이메일·연락처 + 이력서 하나면 끝. ⚠ `enableUrl:false`(URL 칸 없음) |
-| **15** | **Hanwha Vision** | `_AI` + **포트폴리오** | `https://hanwhavision.ninehire.site/job_posting/6NDP9uTE` | ✅ **2026-07-29 11:00 첨부 완성으로 합류.** 포트폴리오 = `submit/KimJunghan_Hanwha_Portfolio.pdf` (18쪽). 서술형 칸 **없음**. ⚠ **「선택항목 수집 동의」 체크 필수** — 미동의 시 포트폴리오 미처리. ⚠ ninehire 는 **에이전트가 업로드 못 한다 — GLG 가 직접**. 지원경로 = **링크드인** |
+| **15** | **Hanwha Vision** | `_AI` + **포트폴리오** | `https://hanwhavision.ninehire.site/job_posting/6NDP9uTE` | ✅ **2026-07-29 11:46 GPT 재검수 보정판.** 포트폴리오 = `submit/KimJunghan_Hanwha_Portfolio.pdf` (18쪽). 서술형 칸 **없음**. ⚠ **「선택항목 수집 동의」 체크 필수** — 미동의 시 포트폴리오 미처리. ⚠ ninehire 는 **에이전트가 업로드 못 한다 — GLG 가 직접**. 지원경로 = **링크드인** |
 
 ## ⏸ 보류 2건 — 이번 배치 아님 (2026-07-28 GLG)
 
@@ -68,8 +68,8 @@
 
 ## 🚧 아직 못 내는 2건 — 남은 관문이 있다
 
-> **한화비전은 여기서 빠졌다** (2026-07-29 11:00). 노트북에서 `md2pdf.sh` 로 표지를 굽고
-> `gs` 합본까지 끝나 **실행 큐 15번**으로 올라갔다.
+> **한화비전은 여기서 빠졌다** (2026-07-29 11:46 GPT 재검수 보정판). 노트북에서 `md2pdf.sh` 로 표지를 굽고,
+> `dossier/` 앞 조준부까지 한화 축으로 최소 교체한 뒤 `gs` 합본까지 끝나 **실행 큐 15번**으로 올라갔다.
 
 | 회사 | 컷 | 지원 URL (확정) | 남은 관문 |
 |---|---|---|---|
