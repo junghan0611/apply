@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **draft** — 필수 6문항 중 **5개 완료**. 남은 것은 **문항 1(제품 체험 평가) 하나** (아래 §관문). 답 정본은 `answers.md` |
+| 상태 | **draft** — 필수 6문항 **초안 완료**. 문항 1(제품 체험 평가)은 실제 Upstage Document Parse/OCR/IE 실측으로 작성했고, GLG 최종 검토 후 제출. 답 정본은 `answers.md` |
 | 지원일 | — |
 | 경로 | **그리팅** (자체 도메인 `careers.upstage.ai`) — 가입 불필요 |
 | 첨부 컷 | **AI Engineer** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`, 3쪽) |
@@ -209,8 +209,10 @@ GLG 는 **직접 구현해 본 사람만 아는 곳**을 짚을 수 있다 — �
 
 - ⚠ **`syn-pro` 는 정체를 모른다.** 문서에서 확인하기 전에는 문항 1 에 쓰지 않는다.
   이름만 보고 추측하지 않는다.
-- ⛔ **Document Parse 는 아직 안 돌렸다.** 그게 문항 1 의 본체이고,
-  **GLG 가 pi·entwurf 로 직접 붙이는 레인**이다(위 §체험 방식). 서버가 대신 쓰지 않는다.
+- ✅ **Document Parse/OCR/Information Extraction 을 2026-07-30 에 실제로 돌렸다.**
+  실측 SSOT 는 `~/repos/gh/memex-kb/scanpdf/work/물리학강의/upstage/README.md`.
+  Upstage Document Parse 를 기존 `scanbook` 5엔진 비교축의 **여섯 번째 엔진**으로 세웠고,
+  Document OCR 과 Information Extraction 까지 파이프라인의 실제 통증에 붙여 보았다.
 
 ### ⚠ 확인 필요 — 업스테이지의 「바이브코딩」 축 (2026-07-29 저녁, 미확인)
 
@@ -232,7 +234,7 @@ GLG 가 링크드인에서 **업스테이지가 Claude Code 같은 바이브코�
 | GitHub / 포트폴리오 URL | https://github.com/junghan0611 · https://notes.junghanacs.com | `FAQ.md` §1 |
 | 총 경력 | **8+ years** — 공고는 **경력 무관**이라 필터가 아니다 | `FAQ.md` §3 |
 | 최종 학력 | 석사 보유 | `FAQ.md` §3 |
-| **업스테이지 제품 체험 평가** (필수, 10,000자) | ⚠ **미작성 — §관문** | — |
+| **업스테이지 제품 체험 평가** (필수, 10,000자) | ✅ **작성 완료 — `answers.md` §문항 1**. 실측 SSOT: `~/repos/gh/memex-kb/scanpdf/work/물리학강의/upstage/README.md` | Upstage Document Parse/OCR/IE 실측 + Solar provider 실측 |
 | **지원 분야 관련 업무 경험** (필수, 1,000자) | ✅ **작성 완료 — `answers.md` §문항 2** (797자, 상한 아래) | `FAQ.md` §9 골격 |
 | **선호 관심 분야** (필수, 다중선택) | **`Data Collection & Processing` + `Natural language processing`** | 아래 §폼 실측 |
 | **선호 프로그래밍 언어** (필수, 선택형) | ⚠ **`Python`** — 선택지에 **Go 가 없다** | 아래 §폼 실측 |
@@ -277,3 +279,6 @@ GLG 가 링크드인에서 **업스테이지가 Claude Code 같은 바이브코�
 - [2026-07-28] 건 생성. 보드 훑기(`boards.py list greeting:upstage`, 44건)에서 골랐다.
   본문·`docsInfo`·`questionnairesInfo`·`additionalApplicantInfoConfig` 를 **브라우저 없이** 확인.
 - [2026-07-28] 컷 **AI Engineer** 확정. 상태 **`blocked`** — **제품 체험 평가가 남았다.**
+- [2026-07-30] 제품 체험 평가 관문 해소. `memex-kb` 에서 Upstage Document Parse/OCR/Information
+  Extraction 을 기존 `scanbook` 비교축에 붙여 실측했고, `answers.md` §문항 1 초안을 작성했다.
+  남은 것은 GLG 브라우저 최종 검토·민감 법적값 입력·파일 업로드·제출.

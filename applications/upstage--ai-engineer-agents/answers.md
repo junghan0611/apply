@@ -5,12 +5,66 @@
 
 | 문항 | 상한 | 상태 |
 |---|---|---|
-| 1. 제품 체험 평가 | 10,000 | ⛔ **미작성 — 실제로 돌린 뒤에 쓴다** (`submission.md` §관문) |
+| 1. 제품 체험 평가 | 10,000 | ✅ **초안 작성 완료 — 아래 문항 1** (실측 SSOT: `~/repos/gh/memex-kb/scanpdf/work/물리학강의/upstage/README.md`) |
 | **2. 업무 경험** | **1,000** | ✅ **아래 완성** |
 | 3. 관심 분야 (다중선택) | — | ✅ `Data Collection & Processing` + `Natural language processing` |
 | 4. 선호 언어 (선택형) | — | ✅ `Python` (선택지에 Go 가 없다) |
 | 5. 합류 가능 시점 | 1,000 | ✅ 「협의 가능」 · 날짜 강제 시 「최종 합격·처우 협의 후 4주 이내」 |
 | 6. 지원 경로 | 1,000 | ✅ 「채용 홈페이지」 |
+
+---
+
+## 문항 1 — 업스테이지 제품 체험 평가 (필수 · 10,000자)
+
+> Solar Open 2는 현재 제 계정에서 호출 권한이 열리지 않아 평가하지 못했습니다. 대신 이미 공개된
+> Solar Pro 3를 제가 쓰는 에이전트 하네스에 provider로 직접 붙여 호환 경계를 확인했습니다. Pi에는
+> Upstage provider가 기본으로 없기 때문에 `agent-config/pi-extensions/upstage-provider.ts`로
+> `api.upstage.ai/v1`을 OpenAI-compatible provider로 등록했습니다. 이 과정에서 OpenAI 호환이라도
+> 에이전트를 얹을 때 실제로 걸리는 것은 `store`, developer role, strict tool schema,
+> reasoning effort, streaming usage, prompt cache 같은 런타임 계약이라는 점이 분명했습니다.
+>
+> Document Parse는 제가 운영해 온 스캔책 파이프라인의 기존 OCR 비교축에 여섯 번째 엔진으로 세웠습니다.
+> 기존에는 MinerU, PP-StructureV3, DeepSeek-OCR, PaddleOCR-VL의 모델/도구 모드, GLM-OCR을 같은
+> 한국어 책 구간으로 재고 있었습니다. 이번에는 Upstage Document Parse를 늘 쓰던 동일 구간, 최무영
+> 《물리학 강의》 5강 17쪽에 적용해 같은 잣대로 보았습니다.
+>
+> 글자 층에서는 가장 깨끗했습니다. 앞선 엔진들이 서로 다른 고유명사에서 하나씩 깨졌던 자리 — 톰슨,
+> 돌턴, 슈뢰딩거, 찐빵 — 를 동시에 모두 맞힌 유일한 엔진이었고, 자체 GPU로 돌리던 엔진들이 내던
+> 한자 환각도 이 구간에서는 없었습니다. GPU 서버 운영 없이 약 0.73초/쪽으로 나온 점도 실무에서는
+> 큰 차이였습니다.
+>
+> 반면 구조 층은 문서 유형에 따라 갈렸습니다. 수식과 2단 도판이 밀집한 구간에서는 화학반응식이
+> LaTeX가 아니라 평문으로 나오며 `equation`이 아닌 `heading1`로 분류됐고, 그림 캡션이 본문 문장
+> 한가운데를 갈라 reading order가 무너졌습니다. 다만 표본을 하나 더 늘려 수식 없는 인문서 구간을
+> 같은 방식으로 측정하자 결과가 뒤집혔습니다. 제목 13개 중 12개가 정확했고, 각주 정의와 번호 목록,
+> 표까지 분리됐습니다. 그래서 약점은 엔진의 일반 특성이라기보다 조판 유형에 대한 민감도로 읽었습니다.
+>
+> 주의점도 있었습니다. 화살표와 개념 라벨만 있는 칸트 도식을 막대차트로 오인해, 원문에 없는 수치가
+> 담긴 데이터 표를 생성한 사례를 확인했습니다. `chart_recognition`은 기본값이 켜져 있고 enhanced
+> 모드에서는 강제 활성이라, 도식이 있는 문서에서는 이 옵션을 끄는 편이 안전하다고 판단했습니다. 없는
+> 숫자가 정본에 섞이는 일은 글자 오독보다 되돌리기 어렵기 때문입니다.
+>
+> Document Parse 하나만 보지 않고 같은 계열의 다른 API도 제 파이프라인의 실제 통증에 붙여 봤습니다.
+> Document OCR은 Document Parse와 글자 결과가 사실상 같으면서 단가는 훨씬 낮고, 단어마다 confidence와
+> bounding box를 줍니다. 제가 그동안 여러 엔진의 불일치로 찾아내던 오독 후보를 이 점수로 뽑을 수 있어,
+> 교정 오라클 자리에는 Document Parse보다 OCR API가 더 맞았습니다. Information Extraction은 판권지
+> 몇 쪽에서 책의 서지 정보를 뽑아 주었고, 제가 책마다 손으로 적던 메타데이터에서 빠뜨린 ISBN까지
+> 채웠습니다. 반대로 Document Classification은 쪽 유형은 맞혔지만 어느 쪽이 어느 묶음인지가 응답에
+> 없어, 본문 시작과 찾아보기 경계를 잡는 용도로는 보류했습니다.
+>
+> 그래서 제가 이 제품군을 보는 자리는 OCR 정확도 순위가 아니라, 비정형 문서를 에이전트와 RAG가 소비할
+> 수 있는 구조로 넘기는 도구 레이어입니다. 수식과 도판이 많은 과학책은 기존 도구 엔진이 골격을 맡고
+> Document OCR이 글자 교정 오라클을 맡는 조합이 좋았고, 산문 위주 문서는 Document Parse 단독으로도
+> 충분했습니다. 비용도 책 한 권 기준 Document Parse는 약 7달러, 오라클 용도의 OCR은 약 1달러라 품질
+> 판단을 가로막는 요소는 아니었습니다. 다만 가중치가 공개되지 않아 자체 호스팅이 어렵고 스캔 원문을
+> 외부 API로 보내야 한다는 점은, 오픈웨이트 엔진을 자체 GPU에 올려 쓰던 방식과 별도로 판단해야 할
+> 축이라고 봤습니다. 제 관점에서는 문서를 구조화하는 시민, OCR 불일치와 고유명사를 검수하는 시민,
+> 최종 Org/EPUB/검색 색인으로 넣는 시민이 나뉘어 협업하고 사람은 판단만 남기는 구성이며, 이 지점이
+> Agents 직무와 가장 직접적으로 만나는 자리라고 생각합니다.
+
+**근거** — `~/repos/gh/memex-kb/scanpdf/work/물리학강의/upstage/README.md` (private `scanpdf/`).
+Solar provider 실측은 `~/repos/gh/agent-config/pi-extensions/upstage-provider.ts` 와
+`https://github.com/junghan0611/agent-config/issues/17`.
 
 ---
 
