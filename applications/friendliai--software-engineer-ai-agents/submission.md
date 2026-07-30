@@ -2,11 +2,11 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **ready** (첨부·경로 확정 · **제출 대기 — GLG 노트북에서 제출**) |
-| 지원일 | — |
+| 상태 | **submitted** — 2026-07-30 제출 완료 |
+| 지원일 | **2026-07-30** |
 | 경로 | **Ashby** (가입 불필요) |
 | 첨부 컷 | **AI Engineer** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`, 3쪽) |
-| 추가 첨부 | ⚠ **슬롯 미실측 — 폼에 선택 첨부칸이 있으면 올린다** · `dossier/build/KimJunghan_AX_Competency.pdf` (경력·역량기술서 5쪽) · `dossier/build/KimJunghan_AX_Portfolio.pdf` (포트폴리오 12쪽) |
+| 추가 첨부 | ⛔ **낼 칸이 없다 — 2026-07-30 브라우저 실측으로 확정.** 이 Ashby 폼의 파일 슬롯은 `Resume/CV` **하나뿐**이고 커버레터 칸도 없다. 깊이 문서 2종은 `submit/` 에 깔려 있으니 **면접에서 요청받으면 낸다** |
 | 공고 URL | https://jobs.ashbyhq.com/friendliai/[uuid removed] |
 | **지원 URL** | https://jobs.ashbyhq.com/friendliai/[uuid removed]/application (HTTP 200 확인) |
 | 근무지 | **Seoul** · FullTime · 게시 2026-03-24 |
@@ -17,15 +17,33 @@ LinkedIn 쪽은 offsite 라 **Ashby 원본으로 낸다.**
 
 ## 낸 것
 
-- [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`
-      (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
-- [ ] 커버레터 — Ashby 는 건마다 칸이 다르다. **칸이 있으면** 아래 §왜 이 직무였는가 를 줄여 쓴다
-- [ ] ⭐ **경력·역량기술서** `submit/KimJunghan_AX_Competency.pdf` (5쪽) ·
-      **포트폴리오** `submit/KimJunghan_AX_Portfolio.pdf` (12쪽) — **세트에 깔려 있다.**
-      `dossier/` 정본에서 2026-07-30 **회사 중립판으로 재빌드**했다(회사명 잔재 0건).
-      ⚠ **Ashby 는 폼 정의를 페이지에서 못 읽는다.** 열어서 선택 첨부 칸이 있으면 **올린다.**
-      칸이 하나면 **Portfolio 12쪽**. 없으면 그냥 두고 면접에서 낸다
-      (2026-07-30 GLG: 「하나만 내기에는 성의가 없다」)
+- [x] **이력서 PDF** — `submit/KimJunghan_Resume_AI_Engineer.pdf` (3쪽) → 폼 `Resume/CV`(필수)
+- [x] Yes/No 셋 — 온사이트 근무 가능 **Yes** · Python 프레임워크 **Yes** ·
+      **LLM 워크플로우·에이전트 패턴·툴 호출 경험 Yes**
+- [ ] 커버레터 — **칸 없음** (2026-07-30 실측)
+- [ ] ⛔ **경력·역량기술서 · 포트폴리오 — 낼 칸이 없다.** `submit/` 에 2종이 깔려 있지만
+      이 폼의 파일 슬롯은 `Resume/CV` 하나다. **이력서 한 장으로 내는 것이 이 폼의 전부이고,
+      성의 부족이 아니라 폼의 모양이다** (2026-07-30 GLG 「하나만 내기에는 성의가 없다」의 예외)
+
+## ⭐ 폼 스키마 — 브라우저 실측 (2026-07-30)
+
+`jobs.ashbyhq.com/friendliai/…/application` · **로그인 없음. 한 화면. 짧다.**
+
+| 필드 | 필수 | 값 |
+|---|---|---|
+| Name | 필수 | GLG 직접 |
+| Email | 필수 | `[email removed]` |
+| **Resume/CV** (파일 하나) | 필수 | `KimJunghan_Resume_AI_Engineer.pdf` (3쪽) |
+| Location | — | `Seoul, South Korea` |
+| LinkedIn Profile | — | `https://www.linkedin.com/in/junghan-kim-1489a4306` |
+| `This is an on-site role. Would you be available to work in person?` | Yes/No | **Yes** — 근무지 서울, `FAQ.md` §4 통근 기준 통과 |
+| `Do you have strong proficiency with various Python frameworks?` | Yes/No | **Yes** |
+| `Do you have experience of LLM workflows, agent patterns, or tool invocation systems?` | Yes/No | **Yes** — 이 축이 주력이다 |
+
+- **동의 체크박스가 없다.** 「선택 첨부 관련 동의」 우려(GPT 교차검수 R3)는 이 건에서
+  **해당 사항 없음** — 올릴 선택 첨부 자체가 없다.
+- ⚠ **Ashby 4연타의 나머지 셋(FuriosaAI · 42dot · Reflection)도 같은 구조라고 가정하지 않는다.**
+  Ashby 는 건마다 폼 정의가 다르다. 이 실측은 **FriendliAI 건에 한정**한다.
 
 **⚠ 업로드 직전 파일명을 눈으로 확인한다.** FuriosaAI · Lunit · 42dot · Upstage 와 **같은 AI Engineer 컷**이다.
 

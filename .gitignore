@@ -32,3 +32,17 @@ __pycache__/
 # **노트북에서 빌드가 실패했을 때의 폴백 자산**이다(`SUBMIT-QUEUE.md` §0).
 # 히스토리를 다시 쓰지 않는다.
 applications/*/submit/*.pdf
+
+# 합본·중간 산출물 PDF — 위와 같은 이유다 (2026-07-30)
+#
+# `build/` 는 `submit/` 에 깔 수 없는 물건이 사는 자리다: 합본 입력(한화 `00-cover.pdf`),
+# 그리고 **폼의 파일 슬롯이 하나뿐일 때 만든 합본**(카카오헬스케어 20쪽 4.2MB ·
+# 42dot·Toss 8쪽). `stage.py` 가 MANIFEST 를 다시 쓰는 자리가 아니어서 여기 두지만,
+# **PDF 라는 사실은 같다.** 재현은 각 건 `submission.md` §합본 재현 의 `gs` 한 줄이고,
+# 입력 지문은 `submit/MANIFEST.sha256` 에 있다.
+#
+# ⚠ `deepx--*/build/experience-detail.pdf` 는 **이미 tracked** 라 그대로 남는다.
+applications/*/build/*.pdf
+
+# 한 장짜리 md → PDF 산출물 (정본은 md, 재현은 그 폴더 `build.sh`)
+applications/*/KimJunghan_*.pdf

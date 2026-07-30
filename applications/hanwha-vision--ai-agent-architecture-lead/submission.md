@@ -2,8 +2,8 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **ready** — 첨부 2개 다 만들어졌다. 남은 것은 **GLG 의 ninehire 업로드**뿐 |
-| 지원일 | — |
+| 상태 | **submitted** — 2026-07-30 **제출 완료** (GLG 가 ninehire 에 직접 업로드) |
+| 지원일 | **2026-07-30** |
 | 경로 | **ninehire** (`hanwhavision.ninehire.site`) — 확정 |
 | 첨부 컷 | **AI Engineer** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`) + **포트폴리오** |
 | 공고 URL | https://www.linkedin.com/jobs/view/4438028734/ |
@@ -94,7 +94,19 @@ KST 축에** 세운다. 증거 계약이 깨지면 경고가 아니라 **멈춘�
 
 ## 낸 것
 
-- [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`
+- [x] **이력서 PDF** — `submit/KimJunghan_Resume_AI_Engineer.pdf` → 폼 `이력서`(필수)
+- [x] **포트폴리오 합본 18쪽** — `submit/KimJunghan_Hanwha_Portfolio.pdf` → 폼 `포트폴리오`(필수)
+- [x] 참고 링크 · **동의 3종 전부 체크**(선택항목 · 인재풀 · 필수) — GLG 직접
+
+> **✅ 2026-07-30 폼 재실측 — 7/29 스키마와 100% 일치했다.** 필드·동의 문구·순서가 그대로였고
+> 서술형 칸도 여전히 없다. **`ninehire` 는 에이전트가 파일을 올릴 수 없다는 것도 재확인**했다 —
+> `이력서`·`포트폴리오` 버튼 뒤에 **`input[type=file]` 이 DOM 에 없고** 네이티브 파일 다이얼로그를
+> 여는 구조다(`find` 로 hidden file input 조회 → 0건). Enhans 실측에 이어 **두 번째 확인**이므로
+> **ninehire 계열은 처음부터 GLG 업로드로 계획한다** — 카카오헬스케어·Telechips 도 같다.
+
+### 이하 원래 계획 (참고)
+
+- [x] ~~**이력서 PDF** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`~~
 - [x] **포트폴리오 합본** — ✅ **`submit/KimJunghan_Hanwha_Portfolio.pdf` 생성 완료 (18쪽, 4.2M)**.
       `cover-sheet.md` → 표지 1장(`build/00-cover.pdf` — ⚠ `submit/` 아님) + **`dossier/build/` 산출물 PDF 2종**
       `gs` 합본. 11:46 GPT 검수에서 2쪽 첫 문장의 옛 공고 조준을 발견해,

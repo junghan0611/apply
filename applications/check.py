@@ -47,6 +47,8 @@ BRANDS = {
 	"enhans": ("Enhans",),
 	"deepx": ("DEEPX",),
 	"hyundai-autoever": ("AutoEver", "오토에버"),
+	# 단독 `카카오` 는 쓰지 않는다 — 계열사가 많고 본문에 정당하게 등장할 수 있다
+	"kakao-healthcare": ("Kakao Healthcare", "카카오헬스케어"),
 	"ge-healthcare": ("GE HealthCare",),  # 단독 `GE` 는 오탐이 난다
 	"penguin-solutions": ("Penguin Solutions",),
 	"xcena": ("XCENA", "엑시나"),

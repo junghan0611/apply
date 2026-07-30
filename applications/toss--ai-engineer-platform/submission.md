@@ -2,8 +2,8 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **ready** (첨부·경로 확정 · **제출 대기 — GLG 노트북에서 제출**) |
-| 지원일 | — |
+| 상태 | **submitted** — 2026-07-30 **제출 완료** (GLG 가 직접 열어 제출 · 에이전트는 차단됨) |
+| 지원일 | **2026-07-30** |
 | 경로 | **토스 자체 채용홈** (`toss.im/career`) — **계정 생성이 필요할 수 있다** |
 | 첨부 컷 | **AI Engineer** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`, 3쪽) |
 | 추가 첨부 | ⚠ **슬롯 미실측 — 폼에 선택 첨부칸이 있으면 올린다** · `dossier/build/KimJunghan_AX_Competency.pdf` (경력·역량기술서 5쪽) · `dossier/build/KimJunghan_AX_Portfolio.pdf` (포트폴리오 12쪽) |
@@ -16,13 +16,36 @@
 **토스 자체 채용홈으로 낸다.** `boards.py probe toss vivarepublica tossbank` 는 전부 실패했다 —
 **자체 ATS 이고 이 저장소에서 처음 만나는 경로**다.
 
+## ✅ 폼 실측 (2026-07-30 · GLG 브라우저) — 커버레터 칸이 **없다**
+
+🔴 **토스 폼은 에이전트가 열 수 없다** — `toss.im` 이 브라우저 확장 허용 목록에 없어
+차단됐다(`This site is not allowed due to safety restrictions`). **GLG 가 직접 열어 실측했다.**
+
+- ⛔ **커버레터·지원동기 서술형 칸이 없다.** 1,415자 글은 **낼 자리가 없다.**
+  → **버리지 않는다.** 다음 단계가 심층 기술 면접이고 그 자리의 「왜 토스인가」 답이 이 글이다.
+- **경력사항을 폼에 직접 입력한다 — 최근 5개까지.** 값은 `../FAQ.md` §3 정밀 원장 그대로:
+  ① **GoQual Inc. 2025.06 – 현재** (Full Stack Architect) ② 성균관대 분산컴퓨팅연구실
+  2018.03 – 2022.06 ③ NEMO-UX 2013 – 2017 (공동창업). **Virginia Tech 방문연구원
+  (2019.07 – 2020.03) 은 ②에 포함**이라 별 칸으로 쓰지 않는다. **2022.06 – 2025.05 는 공백**
+  (육아·물류창고 일)이고 회사로 채우지 않는다.
+- ⭐ **이력서 칸에 8쪽 합본을 냈다** (아래 §낸 것).
+
 ## 낸 것
 
-- [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`
-      (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
-- [ ] **커버레터 / 지원 동기 — `cover-letter.md` 에 국문 본문을 썼다** (2026-07-29, 1,415자).
-      제출 세트에는 `submit/cover-letter.txt` 로 깔려 있다.
-      ⚠ **칸이 있는지는 미실측** — 토스 자체 ATS 라 밖에서 폼을 못 읽는다.
+- [x] ⭐ **`build/KimJunghan_Resume_with_Competency.pdf` — 8쪽 합본**
+      (이력서 AI Engineer 3쪽 + 경력·역량기술서 5쪽). **GLG 요청으로 제출 중에 만들었다** —
+      *"이거 이력서 경력기술서 파일 하나로 만들어줘"*. 42dot·카카오헬스케어와 같은 `gs` 경로다.
+      `sha256 85e70916cef7c8bca1b6e1fd096f18436c4432007759a2c4240d04237d9369d8`
+- [ ] ⛔ **커버레터 — 칸이 없어 내지 못했다.** `submit/cover-letter.txt` (1,415자) 그대로 남긴다.
+      **면접용 정본이다.**
+      ✅ **2026-07-30 사실 정정** — 3문단 「여섯 개 하네스」를 **다섯**으로 고쳤다.
+      SSOT(`agent-config/README.md` §Harness Support) 기준이고 나열된 다섯과 맞다.
+
+### 이하 원래 계획 (참고 · 미실측 시점의 판단)
+
+- [x] ~~**이력서 PDF** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`~~ → 합본으로 대체
+- [ ] ~~**커버레터** — 칸이 있으면 붙여넣는다~~ →
+      ⚠ **칸이 있는지는 미실측이었다** — 토스 자체 ATS 라 밖에서 폼을 못 읽었다.
       **공고가 지정한 「목적 → 수단 → 해결 방식」 형식을 글의 뼈대로 썼다.**
       칸이 없으면 버리지 않고 **심층 기술 면접 앞의 「왜 토스인가」 답**으로 쓴다.
       ✅ **2026-07-30 사실 정정** — 3문단 「여섯 개 하네스」를 **다섯**으로 고쳤다.

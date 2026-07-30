@@ -2,18 +2,51 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **ready** (첨부·경로 확정 · **제출 대기 — GLG 노트북에서 제출**) |
-| 지원일 | — |
+| 상태 | **submitted** — 2026-07-30 **제출 완료** |
+| 지원일 | **2026-07-30** |
 | 경로 | **Ashby** — 가입 불필요 |
 | 첨부 컷 | **FDE** (`resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`, 3쪽) |
-| 추가 첨부 | ⚠ **슬롯 미실측 — 폼에 선택 첨부칸이 있으면 올린다** · `dossier/build/KimJunghan_AX_Competency.pdf` (경력·역량기술서 5쪽) · `dossier/build/KimJunghan_AX_Portfolio.pdf` (포트폴리오 12쪽) |
+| 추가 첨부 | ⛔ **없다 — 2026-07-30 실측.** 폼의 파일 슬롯은 `Resume` **하나**뿐이고 서술형도 없다. **합본도 만들지 않았다** — 아래 §왜 합본을 안 만들었나 |
 | 공고 URL | https://jobs.ashbyhq.com/reflectionai/[uuid removed] |
 | **지원 URL** | https://jobs.ashbyhq.com/reflectionai/[uuid removed]/application |
 | 조직 | `Applied AI` · 근무지 **Seoul** · 게시 2026-06-09 |
 
+## ✅ 폼 스키마 — 브라우저 실측 (2026-07-30)
+
+`jobs.ashbyhq.com/reflectionai/…/application` · 로그인 없음. **폼 전체가 영문이다.**
+
+| 필드 | 필수 | 값 |
+|---|---|---|
+| Name · Email | 필수 | GLG 직접 |
+| **Resume** (파일 하나) | 필수 | `KimJunghan_Resume_Forward_Deployed_Engineer.pdf` (3쪽, 영문) |
+| LinkedIn URL | — | `https://www.linkedin.com/in/junghan-kim-1489a4306` |
+| `Are you legally authorized to work in South Korea?` | Yes/No | **Yes** |
+| `Will you now or in the future require sponsorship …?` | Yes/No | **No** |
+| `This position will be based in our Seoul … office. Will you be able to work from this location?` | Yes/No | **Yes** — 온사이트 서울 (`FAQ.md` §4) |
+| **`How soon can you start full-time?`** | 텍스트 | **`Within 4 weeks after the final offer and terms agreement.`** (`FAQ.md` §4) |
+
+**동의 체크박스가 없다** — 미국 본사 Ashby 폼이라 국내 개인정보 동의 UI 를 쓰지 않는다.
+
+### 🔴 왜 합본을 안 만들었나 — 같은 「슬롯 하나」인데 카카오·42dot 과 다르게 판정했다
+
+이 배치에서 파일 슬롯이 하나인 폼을 셋 만났고 **판정이 갈렸다.** 기준은 슬롯 개수가 아니다.
+
+| 건 | 슬롯 | 판정 | 근거 |
+|---|---|---|---|
+| 카카오헬스케어 | 「이력서/CV」 하나 | ✅ **20쪽 합본** | 회사 개인정보 고지가 필수 항목을 **「입사지원서(이력서, 경력기술서 등)」** 로 명시했다 — 회사가 경력기술서를 요구했다 |
+| 42dot | `Resume` + `Portfolio` 별도 | ✅ **8쪽 합본** | `Portfolio` 칸이 따로 있어 `Resume` 칸이 **국문 경력기술서를 받을 유일한 자리**였고, 폼·공고가 국문 조직이다 |
+| **Reflection AI** | `Resume` 하나 | ⛔ **이력서 3쪽만** | **폼 전체가 영문이고 깊이 문서 2종은 국문이다.** 영문 심사자에게 국문 5쪽을 붙이면 읽히지 않는다 |
+
+**⭐ 기준: 「낼 칸이 있는가」 다음에 「그 칸의 독자가 읽을 수 있는 언어인가」를 본다.**
+첨부를 늘리는 것이 성의가 아니라 **그 자리에 맞는 것을 내는 것**이다
+(`../AGENTS.md` · 2026-07-30 Bear Robotics 커버레터가 같은 판단을 했다).
+
+⚠ **깊이 문서의 영문판은 없다.** 만들면 이 축의 외국계 건(Reflection · Cohere · OpenAI ·
+Sonatus · Telit)에서 쓸 수 있다 — **오늘 할 일은 아니고, 다음 배치의 후보다.**
+
 ## 낸 것
 
-- [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`
+- [x] **이력서 PDF** — `submit/KimJunghan_Resume_Forward_Deployed_Engineer.pdf` (3쪽) → `Resume`(필수)
       (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`)
 - [ ] 커버레터 / 지원 동기 — **Lead 건이라 칸이 있으면 쓴다.** 「직함으로서의 리드」가 아니라
       **축을 세우고 규약을 남긴 실적**으로 답한다(아래 §왜 이 직무였는가)

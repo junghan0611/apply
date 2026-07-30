@@ -2,19 +2,42 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **ready** (첨부·경로 확정 · **제출 대기 — GLG 저녁 제출**) |
-| 지원일 | — |
+| 상태 | **submitted** — 2026-07-30 **제출 완료** |
+| 지원일 | **2026-07-30** |
 | 경로 | **Ashby** — 가입 불필요 |
 | 첨부 컷 | **AI Engineer** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`, 3쪽) |
-| 추가 첨부 | ⚠ **슬롯 미실측 — 폼에 선택 첨부칸이 있으면 올린다** · `dossier/build/KimJunghan_AX_Competency.pdf` (경력·역량기술서 5쪽) · `dossier/build/KimJunghan_AX_Portfolio.pdf` (포트폴리오 12쪽) |
+| 추가 첨부 | ✅ **실측 확정 (2026-07-30)** — `Additional Attachments` 칸이 있고 **파일 하나뿐**이다(2개 올리면 반영되지 않고, 1개 올리면 `Replace` 로 바뀐다). 계약대로 `dossier/build/KimJunghan_AX_Portfolio.pdf` (12쪽). **Competency 5쪽은 낼 칸이 없다** |
 | 공고 URL | https://jobs.ashbyhq.com/furiosa-ai/[uuid removed] |
 | **지원 URL** | https://jobs.ashbyhq.com/furiosa-ai/[uuid removed]/application |
 
+## ✅ 폼 스키마 — 브라우저 실측 (2026-07-30 제출 당일)
+
+`jobs.ashbyhq.com/furiosa-ai/…/application` · 로그인 없음. 폼 상단 안내가
+**「한국어 또는 영어로 작성 부탁 드립니다」** 다.
+
+| 필드 | 필수 | 낸 값 |
+|---|---|---|
+| Name · Email · Phone Number | 필수 | GLG 직접 |
+| **Desired Job Type** | 필수 | **Full-Time** (다른 선택지: Internship · 전문연구요원) |
+| **Resume** (파일 하나) | 필수 | `KimJunghan_Resume_AI_Engineer.pdf` (3쪽) |
+| **Career Summary** (서술형) | **필수** | ⭐ `cover-letter.md` §붙여넣을 본문 **1,351자**. 상한 표시 없음 |
+| **Additional Attachments** (파일 **하나**) | 선택 | `KimJunghan_AX_Portfolio.pdf` (12쪽) |
+| 개인정보 수집·이용 동의 | 필수 | 체크 |
+
+🔴 **Ashby 는 건마다 폼이 다르다 — 이 배치에서 확증됐다.** 같은 날 낸 FriendliAI 는
+`Resume/CV` 하나에 서술형·선택첨부 **둘 다 없었고**, 이 건은 **서술형이 필수**이고 선택 첨부 칸도
+있다. **앞 건의 실측을 다음 Ashby 건에 복사하지 않는다** — 42dot · Reflection 도 각각 열어서 본다.
+
 ## 낸 것
 
-- [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`
-      (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
-- [ ] 커버레터 / 지원 동기 — Ashby 폼에 있으면 아래 §왜 이 회사인가 를 쓴다. 필수 아니면 생략 가능
+- [x] **이력서 PDF** — `submit/KimJunghan_Resume_AI_Engineer.pdf` (3쪽) → `Resume`(필수)
+- [x] ⭐ **포트폴리오 PDF** — `submit/KimJunghan_AX_Portfolio.pdf` (12쪽) → `Additional Attachments`
+- [x] ⭐ **Career Summary 1,351자** — `cover-letter.md` §붙여넣을 본문. **GPT 와 다듬어 제출.**
+      🔴 **축을 GLG 가 바로잡은 글이다** — 에이전트 초안은 임베디드 이력을 일부러 뺐고,
+      GLG 가 *"여기 사실 임베디드 AI 칩 관련 회사잖아"* 로 뒤집었다. 경위는 `cover-letter.md`
+      §왜 이렇게 썼는가
+- [ ] ⛔ **경력·역량기술서 5쪽 — 낼 칸이 없다.** `Additional Attachments` 가 단일 파일이라
+      Portfolio 를 남겼다. 면접에서 요청받으면 그때 낸다
 - [ ] ⭐ **경력·역량기술서** `submit/KimJunghan_AX_Competency.pdf` (5쪽) ·
       **포트폴리오** `submit/KimJunghan_AX_Portfolio.pdf` (12쪽) — **세트에 깔려 있다.**
       `dossier/` 정본에서 2026-07-30 **회사 중립판으로 재빌드**했다(회사명 잔재 0건).

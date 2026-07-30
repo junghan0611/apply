@@ -12,8 +12,10 @@
 > 순서·URL·첨부·주의만 둔다. Holiday/Lunit/SOCAR 는 폼 실측 요약도 함께 적었다.
 
 - 상태 계보: `ready` **17** = **실행 15** + **보류 2**(Cohere · OpenAI). 한화비전은 11:00 합류했고, 11:46 GPT 재검수 보정판으로 갱신됐다.
-- 공고 생존: `./alive.py` — **2026-07-30 08:35 KST 재실행. 19건 · 열림확인 12 · 미판정 7 · 닫힘 0.**
+  🆕 **2026-07-30 10:2x — 카카오헬스케어가 별동대로 합류해 `ready` 18 = 실행 16 + 보류 2.**
+- 공고 생존: `./alive.py` — **2026-07-30 10:2x KST 재실행. 20건 · 열림확인 13 · 미판정 7 · 닫힘 0.**
   미판정 7은 어댑터가 없는 곳(plain HTTP 200)이라 **판정하지 않는다** — 닫힘이 아니다.
+  (08:35 판은 19건 · 열림 12 였다. 늘어난 1건이 **카카오헬스케어 — `ninehire` 어댑터로 열림 확인**.)
 - 제출 순서는 아래 표 순서를 권한다(폼이 가벼운 것 → 무거운 것).
 
 ---
@@ -22,6 +24,10 @@
 
 **아침에 2건 나갔다** (Holiday Robotics · AIRS Medical). **남은 실행 큐는 13건**이고,
 2시간이면 아래 세 묶음까지가 현실적이다. **가벼운 것을 먼저 몰아친다.**
+
+> 🆕 **10:2x 별동대로 1건 늘었다 → 남은 실행 큐 14건.** 16번 카카오헬스케어는
+> **묶음 A 다음, B 앞**에 넣기를 권한다 — 폼은 ninehire 라 가볍지만
+> **🔴 「현재 연봉(고정급)」이 필수**라 GLG 가 그 자리에서 값을 정해야 한다.
 
 ### §0 노트북에서 먼저 이것부터 🔴
 
@@ -137,7 +143,11 @@ applications/check.py --deep     # 중립인지 반드시 확인
 
 ---
 
-## 실행 15건
+## 실행 15건 (+ 별동대 1건 = **16**)
+
+> 🆕 **2026-07-30 별동대 합류 — 16번 카카오헬스케어.** 옆 레인이 큐를 돌리는 동안 따로 팠다.
+> **큐에 없던 이유는 발견 경로의 구멍**이었다(`INBOX.md` §카카오헬스케어 정정).
+> 표에서 **맨 위에 둔다** — 이 배치에서 JD 적합도가 가장 높다.
 
 컷 경로는 전부 `resume/build/` 아래다. `_AI`=`KimJunghan_Resume_AI_Engineer.pdf` ·
 `_FDE`=`..._Forward_Deployed_Engineer.pdf` · `_EMB`=`..._Embedded_Software_Engineer.pdf` ·
@@ -145,6 +155,7 @@ applications/check.py --deep     # 중립인지 반드시 확인
 
 | # | 회사 | 컷 | 지원 URL | 폼 무게 · 주의 |
 |---|---|---|---|---|
+| **16** ⭐ | **카카오헬스케어** | `_AI` + **Competency + Portfolio + 커버레터** | `https://recruit.kakaohealthcare.com/job_posting/e9Q82rF9/apply` | 🆕 **2026-07-30 별동대로 새로 열린 건.** ninehire 화이트라벨 · 공고 열림 실측(`in_progress`·`until_filled`). **JD 가 이 배치에서 가장 정면**이다 — 밑바닥부터 만드는 harness · subagent/skill/workflow 인터페이스 · 평가·관측 · LLM 서빙 라우팅 · STT/OCR 도입 판단. ⚠ **폼 미실측**(클라이언트 렌더) — 서술형 칸·문서 슬롯 수는 열어 봐야 안다. 🔴 **회사 고지상 「현재 연봉(고정급)」이 필수**다 — **GLG 직접 입력.** 🔴 생년월일·성별·주소도 필수. ⚠ ninehire 는 **에이전트가 업로드 못 한다** |
 | ~~1~~ | ~~**Holiday Robotics** 🤖~~ | `_FDE` + 커버레터 | — | ✅ **submitted 2026-07-30.** 커버레터 387단어 + FDE 이력서. 자체 평가는 `submission.md` |
 | ~~2~~ | ~~**AIRS Medical**~~ | `_DEVEX` + Competency + Portfolio | — | ✅ **submitted 2026-07-30.** 이력서만 넣지 않고 `dossier/` 5쪽+12쪽을 **AIRS AX 조준으로 재타깃**해 함께 냈다 |
 | 3 | **Bear Robotics** | `_EMB` + **커버레터(조건부)** | `https://bear-robotics.breezy.hr/p/5d59d1cd221e-systems-software-engineer-linux-platform/apply` | Breezy. **영문 CV 필수** — 여섯 컷 전부 영문이라 그대로 통과. **영문 커버레터 초안 있음**(`submit/cover-letter.txt`, 474단어) — ⚠ **칸 유무 미실측**, 파일 업로드형이면 PDF 라 집 축 |

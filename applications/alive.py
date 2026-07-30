@@ -58,6 +58,7 @@ TARGETS = [
 	("Sonatus", "https://www.linkedin.com/jobs/view/4380679251/", "plain"),
 	("Holiday Robotics", "https://holiday-robotics.com/careers/forward-deployed-robotics-engineer/apply", "plain"),
 	("Hanwha Vision", "https://hanwhavision.ninehire.site/job_posting/6NDP9uTE", "ninehire"),
+	("Kakao Healthcare", "https://recruit.kakaohealthcare.com/job_posting/e9Q82rF9", "ninehire"),
 	("NHN (2번째)", "https://careers.nhn.com/recruits/4370711607830110861", "plain"),
 	("Upstage", "https://careers.upstage.ai/ko/o/194880", "greeting"),
 	# 보류 2건 — 되살릴 때를 위해 같이 본다
