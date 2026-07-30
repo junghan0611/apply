@@ -96,7 +96,7 @@ KST 축에** 세운다. 증거 계약이 깨지면 경고가 아니라 **멈춘�
 
 - [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`
 - [x] **포트폴리오 합본** — ✅ **`submit/KimJunghan_Hanwha_Portfolio.pdf` 생성 완료 (18쪽, 4.2M)**.
-      `cover-sheet.md` → 표지 1장(`submit/00-cover.pdf`) + **`dossier/build/` 산출물 PDF 2종**
+      `cover-sheet.md` → 표지 1장(`build/00-cover.pdf` — ⚠ `submit/` 아님) + **`dossier/build/` 산출물 PDF 2종**
       `gs` 합본. 11:46 GPT 검수에서 2쪽 첫 문장의 옛 공고 조준을 발견해,
       `dossier/competency.org` 프롤로그와 `dossier/portfolio.org` 앞 표/문장을
       **AI Agent Architecture Lead 축으로 최소 교체**한 뒤 재빌드·재합본했다.
@@ -225,8 +225,12 @@ gs -dNOPAUSE -dBATCH -dQUIET -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress \
 ```bash
 cd ~/repos/gh/apply/applications/hanwha-vision--ai-agent-architecture-lead
 
-# ① 표지 md → PDF (한 장)
-../md2pdf.sh cover-sheet.md submit/00-cover.pdf        # → 1쪽
+# ① 표지 md → PDF (한 장) — ⚠ `submit/` 이 아니라 build 자리에 굽는다
+#    2026-07-30: `stage.py` 가 `submit/00-cover.pdf` 를 **치운다.** 합본 입력용 중간
+#    산물이 제출 폴더에 있으면 「폴더가 올라갈 파일 전부」라는 README 와 모순이고,
+#    카페에서 폴더 기준으로 움직이면 그대로 올라간다 (GPT 재검).
+mkdir -p build
+../md2pdf.sh cover-sheet.md build/00-cover.pdf         # → 1쪽
 
 # ② 표지 + 역량기술서 + 포트폴리오 = 한 파일  (순서 중요: 글이 먼저)
 #    ⚠ 입력은 dossier/build/ 다. NHN 제출 스냅샷(../nhn--*/submit/)은 2026-07-29 수치
@@ -235,7 +239,7 @@ D=../../dossier/build
 gs -dNOPAUSE -dBATCH -dQUIET -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress \
    -dDetectDuplicateImages=true \
    -sOutputFile=submit/KimJunghan_Hanwha_Portfolio.pdf \
-   submit/00-cover.pdf "$D/KimJunghan_AX_Competency.pdf" "$D/KimJunghan_AX_Portfolio.pdf"
+   build/00-cover.pdf "$D/KimJunghan_AX_Competency.pdf" "$D/KimJunghan_AX_Portfolio.pdf"
 
 # ③ 검수 — 18쪽인지 (표지1 + 역량5 + 포트폴리오12)
 gs -q -dNODISPLAY -dNOSAFER \

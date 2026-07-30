@@ -5,6 +5,8 @@
 
 | 파일 | 폼의 어느 칸 |
 |---|---|
+| `KimJunghan_AX_Competency.pdf` | 경력기술서·역량기술서 (5쪽) — 선택 슬롯이 **있으면** 올린다 |
+| `KimJunghan_AX_Portfolio.pdf` | 포트폴리오 (12쪽) — 선택 슬롯이 **있으면** 올린다. 칸이 하나면 이것을 |
 | `KimJunghan_Resume_Forward_Deployed_Engineer.pdf` | 이력서 (필수) |
 
 생성: `applications/stage.py` · 손으로 고치지 않는다.

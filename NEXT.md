@@ -1,9 +1,78 @@
-# NOW — 실행 15건 + 보류 2건 · Holiday/AIRS 제출 완료 · 다음 제출은 출근 후
+# NOW — 남은 실행 13건 · Holiday/AIRS 제출 완료 · ⭐ 오늘 오전 카페 세션에서 이어간다
 
 - **Hot group**: 지원 실행. 공개 준비는 이 축이 아니다.
+- **✅ 2026-07-30 GPT 교차검수 2라운드 완료** — 기록: **`docs/review-request-2026-07-30.md`**
+  (맨 위 §검수 완료 표가 반영 내역이다). **1차 P0 5건 + 2차 P0 3건 + 오업로드 1건**을 닫았다.
+  - **1차** — P0-1 커밋/푸시 게이트 · P0-2 §0 이 R1 과 모순 · P0-3 `stage.py` 가 조용히 성공 ·
+    P0-4 SOCAR 세트 모순 · P0-5 폴백이 메타 갱신 안 함 · J3 6,000자 컷 · 지문 검사 부재 · J5 문구
+  - **2차** — **P0-A** `is_stale` 이 tracked 이력서에 걸려 **노트북 `git pull` 직후 오판**
+    (git 은 checkout mtime 을 주므로 org 가 늦게 써지면 PDF 가 stale) → **깊이 문서에만 적용** ·
+    **P0-B** 지문 대조가 `submitted` 에만 걸려 「전체 게이트」가 거짓 → **manifest 있는 모든 건** ·
+    **P0-C** `aim_leak` 의 `import check` 가 **fail-open** → 실패를 문제로 반환(fail-closed)
+  - **오업로드** — 한화 세트에 `00-cover.pdf`(합본 입력용 중간 산물)가 남아 있었다.
+    SOCAR 와 **같은 종류의 모순**이라 `stage.py` 가 치우고, 합본 입력을 `build/` 자리로 옮겼다.
+  - **orphan 정리를 글롭 → 정확한 파일명 allowlist**(`MANAGED`)로 좁혔다 — 미래의 Evidence
+    ZIP·합본을 지울 수 있는 계약이었다.
+  - **⭐ 「six consumer surfaces」는 고치지 않았다 — 근거가 있다.** GPT 가 「산식이 없으면 5로
+    고쳐라」고 했고, `agent-config/run.sh` 가 실제로 링크하는 skills 소비 경로를 세면 **6개**다:
+    `~/.pi/agent/skills/pi-skills` · `~/.pi/agent/claude-plugin/skills`(entwurf SDK 격리) ·
+    `~/.claude/skills` · `~/.codex/skills` · `~/.gemini/skills` · `~/.gemini/antigravity-cli/skills`.
+    **「하네스 5개」와 「소비 표면 6개」는 다른 개념이고 둘 다 맞다** — 정의를 `LEDGER.md` §메모 ③에 남겼다.
 - **2026-07-30 아침 회수**: Holiday Robotics 와 AIRS Medical 제출 완료. AIRS 는 이력서만 달랑 넣지 않고
   `dossier/` Competency 5쪽 + Portfolio 12쪽을 AIRS AX 조준으로 재타깃해 함께 냈다.
-  `LEDGER.md` 와 각 `submission.md` 는 `submitted` 로 닫혔다. **다음 제출은 출근 후 이어간다.**
+  `LEDGER.md` 와 각 `submission.md` 는 `submitted` 로 닫혔다. **누적 제출 7건.**
+- **⭐ 2026-07-30 08:35 오라클 — 카페 세션 준비 완료.** GLG 가 **오전 2시간 휴가로 카페에서
+  노트북으로 이어간다.** 열 문서는 하나다 → **`applications/SUBMIT-QUEUE.md` §카페 세션**
+  (A 즉시 2건 → B Ashby 4연타 → C 한화 → D 커버레터 2건 → E 잔여).
+  - ✅ `alive.py` **재실행** — 19건 · 열림 12 · 미판정 7(어댑터 없음) · **닫힘 0**
+  - ✅ **Toss 커버레터 사실 정정** — 3문단 「여섯 개 하네스」→ **다섯**. SSOT
+    (`agent-config/README.md` §Harness Support)를 세면 다섯이고 **나열된 다섯과 맞다**.
+    같은 README 에 전례가 박혀 있다 — *"OpenCode ... once appeared in this table and in the
+    fan-out list"*. **연결 안 된 하네스가 팬아웃 목록에 있던 판의 잔재**였다. 1,415자 유지
+  - ✅ `stage.py` **16건 세트 재생성** → `check.py` **27건 일치**
+  - ⛔ **오늘 카페에서 안 여는 것**: Upstage(문항 1 관문) · NHN 2번째(로그인+포트폴리오)
+- **🔴 2026-07-30 09:0x — 「딸랑 이력서 하나」를 고쳤다 (GLG 지적).** *"이력서만 낼 게
+  아니라 가능하면 포트폴리오랑 경력기술서 내면 좋거든 … 그냥 하나만 내기에는 성의가 없다."*
+  **AX·에이전트 축 11건 세트가 이제 3종이다** (이력서 3쪽 + Competency 5쪽 + Portfolio 12쪽).
+  - 🔴 **구조적 원인은 `stage.py` 였다** — `첨부 컷` 행에서 **`resume/build/` 만** 읽었다.
+    dossier PDF 를 세트에 깔 경로가 **아예 없었다.** AIRS 에 나간 2종은 손으로 복사된
+    것이고, 그래서 **어느 세트를 열어도 이력서 한 장**이었다. `추가 첨부` 행을 읽도록 확장.
+  - ✅ **회사 중립판으로 재빌드했다** — `competency.org` 프롤로그가 「AIRS Medical AX 팀이
+    만드는…」으로 조준돼 있어 **다른 12건에 그대로 못 냈다.** 그 한 줄을 중립으로 바꿨다.
+    `portfolio.org` 는 원래 회사명 0건. 산출물 전수 확인 **잔재 0**.
+  - ✅ **낡은 판정 둘을 뒤집었다** — **Lunit**(Workable Optional 칸 실측돼 있는데 「비워
+    둔다」) · **SOCAR**·**Upstage**(「포트폴리오 선택 슬롯 — 올리지 않는다, 링크가 대신한다」).
+    **링크는 열어 보는 사람만 보고 첨부는 서류 심사에 그대로 놓인다.**
+  - 🔴 **Lunit 폼에 동의 하나가 더 필요해졌다** — 「(선택) 추가 지원 서류 수집 동의 = YES」.
+    어제 기록은 「체크 불필요」였고 **그대로 내면 올린 2종이 처리되지 않는다.**
+  - ⛔ **Embedded 4건(Bear·Telechips·Telit·Sonatus)에는 붙이지 않았다.** AX 축 문서라
+    초점이 흐려진다 — Bear 커버레터의 판단과 같다. 각 건에 이유를 남겼다.
+  - ✅ **정정 2건** — ① `dossier/AGENTS.md` 의 「org 에 자가측정 수치가 남아 재빌드하면
+    산출물이 바뀐다」는 **사실이 아니다**(잔재는 전부 `:noexport:`·EXAMPLE 회의록, PDF 0건).
+    그 경고가 **재빌드를 두려워하게 만드는 자리**였다. ② 「dossier 는 서버에서 LibreOffice
+    경로로 된다」도 이름이 틀렸다 — **PDF 는 xelatex 가 만들고** LibreOffice 는 DOC 전용이라
+    `run.sh check` 가 exit 1 해도 **PDF 는 정상 생성된다.**
+  - 📌 **남은 축(다음 판)**: **Embedded 조준 깊이 문서**가 없다. `dossier/` 정본은 한 벌이라
+    조준부를 바꿔 재빌드해야 하고, 선례는 `applications/deepx--*/build.sh`(이력서 컷 +
+    `experience-detail.md` → `pdfunite`). Embedded 축 4건을 두껍게 내려면 이것을 만든다.
+- **🔴 2026-07-30 GLG — PDF 는 git 에 넣지 않는다. org 로 재현한다.**
+  *"git 에 넣지말고 org 있으니까 제출할때 생성하게 하자 … pdf는 넣을수록 리포가 지저분해지니까"*
+  `.gitignore` 가 `applications/*/submit/*.pdf` 를 전부 막는다(43MB 를 안 넣는다).
+  - ✅ **증언은 두 파일이 대신한다** — `submit/MANIFEST.sha256`(그때 낸 파일의 **identity commitment** —
+    파일이 있으면 **바이트 동일 여부를 판정**하고 없으면 증언만 보존한다) + `submit/SOURCES.md`(**어느 org·명령으로 재현**하는지 +
+    세트를 깔 때의 커밋 SHA). `stage.py` 가 둘 다 생성한다. 옛 `nhn/build/` 결함과 다르다 —
+    **그때는 지문도 재현 경로도 없었다.**
+  - ✅ **지문 없는 제출 4건을 메웠다** (AutoEver · DEEPX ×2 · Enhans). `stage.py` 가
+    `submitted` 를 건드리지 않아 `MANIFEST` 가 아예 없었다. `check.py` 가 이제 FAIL 한다.
+  - ⭐ **새 검사 `./check.py --deep`** — `gs` 로 깊이 문서의 **`참고자료` 헤딩 이전 본문 전체**를 읽어 **다른 건의 회사 이름**을
+    찾는다(25개 · 10초). **AIRS 조준판을 Lunit 세트에 심어 실제로 잡히는 것을
+    확인**했다. ⚠ 첫 판은 본문 전체를 봐서 참고문헌의 `OpenAI, "Codex cli." 2025`(93% 위치)를 조준으로
+    읽고 **12건을 오판**했다. 두 번째 판의 「앞 6,000자」는 휴리스틱이라 `portfolio.org` 의
+    「JD 관련성」 절을 놓쳤다 — **문서 구조 경계가 안정적이다**(GPT 재검 J3).
+  - 🔴 **그래서 노트북에서 빌드가 선행된다.** **이력서 컷은 tracked 라 `git pull` 로 오고
+    깊이 문서만 빌드가 필요하다**(GPT 재검 P0-2 — 「세트가 비어 있다」는 거짓이었다). 게다가
+    노트북 `dossier/build/` 에는 **아침 AIRS 재타깃판**이 남아 있다. 재빌드 없이 `stage.py` 를
+    돌리면 **낡은 조준판이 깔린다.** 절차 정본은 **`SUBMIT-QUEUE.md` §0** (1~2분).
 - **기조 (2026-07-28 밤 GLG)**: **내고 떨어지면 만다.** 실제로 만든 것이 있으니 밀어붙인다.
   위로 찌르는 것이 기본값이고 — **떨어져도 이름이 알려진다.** 지역은 후보를 거르는 축이 아니다.
 - **⭐ 방향 (2026-07-28 심야 GLG)**: **시스템 축은 접고 로봇·피지컬 축을 넓게 본다.**
@@ -76,10 +145,10 @@
 
 | 순서 | 폴더 `…/submit/` | 볼 것 |
 |---|---|---|
-| 1 | `hanwha-vision--ai-agent-architecture-lead` | **포트폴리오 18쪽** — 1쪽 표지 + 본문. ⛔ `00-cover.pdf` 는 안 올린다 |
+| 1 | `hanwha-vision--ai-agent-architecture-lead` | **포트폴리오 18쪽** — 1쪽 표지 + 본문. ✅ 2026-07-30: 중간 산물 `00-cover.pdf` 는 `stage.py` 가 세트에서 치운다(합본 입력은 `build/` 자리) |
 | 2 | `holiday-robotics--forward-deployed-robotics-engineer` | ✅ **submitted 2026-07-30** — `cover-letter.txt` 387단어 + FDE 이력서 업로드. 자체 평가는 `submission.md` |
-| 3 | `lunit--senior-ax-engineer` | 이력서 `_AI` 한 장이 서류 전부 |
-| 4 | `socar--platform-engineer` | 이력서 `_DEVEX` 한 장이 서류 전부 |
+| 3 | `lunit--senior-ax-engineer` | ⭐ **3종** — 이력서 `_AI` + Competency 5쪽 + Portfolio 12쪽. 🔴 「(선택) 추가 지원 서류 수집 동의 = YES」 |
+| 4 | `socar--platform-engineer` | **2종** — 이력서 `_DEVEX` + Portfolio 12쪽(선택 슬롯 이름이 「포트폴리오」). Competency 는 낼 칸이 없어 세트에서 뺐다 |
 
 각 폴더 `README.md` 에 **어느 파일이 폼의 어느 칸인지** 적혀 있다.
 

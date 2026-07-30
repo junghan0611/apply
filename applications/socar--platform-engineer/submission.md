@@ -6,6 +6,7 @@
 | 지원일 | — |
 | 경로 | **그리팅** (자체 도메인 `socar.career.greetinghr.com`) — 가입 불필요 |
 | 첨부 컷 | **DevEx** (`resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf`, 3쪽) |
+| 추가 첨부 | ✅ **슬롯 실측 확인** — `dossier/build/KimJunghan_AX_Portfolio.pdf` (포트폴리오 12쪽) **하나만.** 이 폼의 선택 슬롯은 「포트폴리오」 하나뿐이라 **Competency 는 세트에 깔지 않는다** — 세트에 있으면 오업로드 위험이다 (2026-07-30 GPT 교차검수 P0-4) |
 | 공고 URL | https://socar.career.greetinghr.com/ko/o/220124 |
 | **지원 URL** | **https://socar.career.greetinghr.com/ko/o/220124** → 페이지 하단 「지원하기」 (HTTP 200 확인) |
 | 근무지 | **서울 성동구 왕십리로 83-21** (쏘카 본사, 성수) · 재택 아님 |
@@ -23,7 +24,10 @@
 4. **「이력서 및 경력기술서」(필수)** 슬롯에 업로드 —
    `resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf` **(3쪽 · 35KB)**
    - ⚠ 파일명 확인. **`_Developer_Experience_` 가 맞다** (`_AI_`·`_Embedded_` 아님)
-   - 「포트폴리오」(선택) 슬롯은 **비워 둔다**
+   - ⭐ **「포트폴리오」(선택) 슬롯에 `submit/KimJunghan_AX_Portfolio.pdf`(12쪽)를 올린다**
+     (2026-07-30 갱신 — 어제는 「비워 둔다」였다). 슬롯 이름이 「포트폴리오」이므로
+     **Portfolio 를 넣는다**. Competency 5쪽은 이 폼에 들어갈 칸이 없다 —
+     `submit/` 에 함께 깔려 있으니 **면접에서 요청받으면 그때 낸다**
 5. Submit → **낸 파일을 이 폴더 `submit/` 에 즉시 복사** (AIRS 와 같은 컷이라 폴더를 헷갈리기 쉽다)
 6. `LEDGER.md` → `submitted` + 날짜 / 이 문서 → `submitted` → `./check.py`
 
@@ -31,8 +35,22 @@
 
 - [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf`
       (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf`)
-- [ ] 포트폴리오 — **선택 항목이다.** 올리지 않는다. 이력서 본문의 공개 저장소 링크가
-      포트폴리오 역할을 한다
+- [ ] ⭐ **포트폴리오 PDF** — `submit/KimJunghan_AX_Portfolio.pdf` **(12쪽)**
+      `dossier/` 정본에서 **2026-07-30 회사 중립판으로 재빌드**했다. 회사명 잔재 0건.
+      어제는 *「선택 항목이라 올리지 않는다 — 이력서의 저장소 링크가 대신한다」* 였다.
+      **링크는 열어 보는 사람만 보고, 첨부는 서류 심사에 그대로 놓인다.** 슬롯이 실재하고
+      공고가 경력기술서를 함께 요구하는데 비우는 것은 근거가 없다 (2026-07-30 GLG)
+- [ ] 경력·역량기술서 — **이 세트에는 없다.** `docsInfo` 슬롯이 필수 이력서 + 선택 포트폴리오
+      **둘뿐**이라 낼 칸이 없고, **세트에 두면 오업로드 위험**이라 `추가 첨부` 행에서 뺐다.
+      필요하면 `dossier/build/KimJunghan_AX_Competency.pdf` 를 그때 만들어 낸다
+      (면접 요청 시 · 또는 아래 §합본 대안)
+
+> **⭐ 대안 — 합본으로 경력기술서 요구를 정면으로 받는다 (GPT 권고, 2026-07-30)**
+> 필수 슬롯 이름이 **「이력서 및 경력기술서」**이고 중립 Competency 가 이미 있으므로,
+> **새 조준 문서를 쓰는 일이 아니라 `pdfunite` 한 번**이면 된다 —
+> `Resume(3쪽) + Competency(5쪽)` = **8쪽 합본을 필수 슬롯**, `Portfolio(12쪽)` 를 선택 슬롯에.
+> 선례는 `../deepx--ai-agent-workflow-automation-engineer/build.sh`.
+> **카페 2시간에서는 후순위**다 — 시간이 남으면 한다. 하면 `build.sh` 와 소스 경로를 남긴다.
 - [ ] 커버레터 — **폼에 칸이 없다** (서술형 문항 `questionnairesInfo` 가 빈 배열이다).
       아래 §왜 이 직무였는가 는 **면접용 대본**이지 제출물이 아니다
 
@@ -49,6 +67,12 @@ Experience / Independent Work 절이 그 역할을 겸한다**고 보고 단독 
 **OpenAI**(보류)와 **같은 파일**이다. 오늘 AIRS 와 쏘카가 둘 다 나가므로 컷을 헷갈릴 자리가
 아니라, **`submit/` 스냅샷을 어느 폴더에 복사했는지**가 헷갈릴 자리다. 낸 직후에 그 건 폴더로
 바로 복사한다.
+
+> 🔴 **폼 마지막 단계에서 「선택 첨부 관련 동의」가 있는지 눈으로 확인한다** (2026-07-30 GPT 교차검수 R3).
+> 리포 안의 증거로는 이 폼에 그 동의가 있는지 **확정할 수 없다** — `docsInfo` ·
+> `additionalApplicantInfoConfig` 는 개인정보 동의 UI 를 증명하지 않는다. Lunit 은 실측으로
+> 「(선택) 추가 지원 서류 수집 동의」가 있었고 한화비전에는 「선택항목 수집 동의」가 있다.
+> **「없다」고 추론하지 않는다** — 미동의로 내면 올린 첨부가 처리되지 않는다.
 
 ## 폼에 답한 질문
 
@@ -104,7 +128,7 @@ Experience / Independent Work 절이 그 역할을 겸한다**고 보고 단독 
 - **`AI 도구(Claude Code 등)를 운영·인프라 작업에 깊이 통합해본 경험 — AI 없이 일하던 방식으로
   돌아가라고 하면 부자연스럽다고 느끼는 분`** — 우대 항목이 사람을 지목한 문장에 가깝다.
   Oracle Cloud ARM 에서 셀프호스팅 하네스를 **업스트림 20+ 버전 사이클** 동안 운영했고,
-  하나의 스킬 SSOT 를 **6개 하네스로 팬아웃**했다.
+  하나의 스킬 SSOT 를 **다섯 개 하네스로 팬아웃**했다.
 - **`Internal Developer Platform / 플랫폼-as-product 관점의 DevEx 개선`** — `agent-config` 가
   6개 소비 표면을 문서화하고 `./run.sh setup` → `./run.sh env` 로 링크·바이너리·인덱스 상태를
   스스로 진단한다. **설치형 셀프서비스 경로**이지 안내문이 아니다.

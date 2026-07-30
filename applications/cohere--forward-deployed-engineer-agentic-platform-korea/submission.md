@@ -6,6 +6,7 @@
 | 지원일 | — |
 | 경로 | **Ashby** — 가입 불필요 (지원 URL HTTP 200 확인, 2026-07-28) |
 | 첨부 컷 | **FDE** (`resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`, 3쪽) |
+| 추가 첨부 | ⚠ **슬롯 미실측 — 폼에 선택 첨부칸이 있으면 올린다** · `dossier/build/KimJunghan_AX_Competency.pdf` (경력·역량기술서 5쪽) · `dossier/build/KimJunghan_AX_Portfolio.pdf` (포트폴리오 12쪽) |
 | 공고 URL | https://jobs.ashbyhq.com/cohere/[uuid removed] |
 | **지원 URL** | https://jobs.ashbyhq.com/cohere/[uuid removed]/application |
 | 조직 | `Modeling` / `Applied-ML` (Ashby 보드 표기) · 제품은 **North** (엔터프라이즈 AI 워크스페이스) |
@@ -15,7 +16,13 @@
 - [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`
       (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`)
 - [ ] 커버레터 / 지원 동기 — Ashby 폼에 칸이 있으면 아래 §왜 이 직무였는가 를 영문으로 줄여 쓴다
-- [ ] 추가 서류 — 없음
+- [ ] ⭐ **경력·역량기술서** `submit/KimJunghan_AX_Competency.pdf` (5쪽) ·
+      **포트폴리오** `submit/KimJunghan_AX_Portfolio.pdf` (12쪽) — **세트에 깔려 있다.**
+      `dossier/` 정본에서 2026-07-30 **회사 중립판으로 재빌드**했다(회사명 잔재 0건).
+      ⚠ **이 폼의 선택 첨부 슬롯은 미실측이다.** 폼을 열어 칸이 있으면 **올린다.**
+      칸이 하나면 **Portfolio 12쪽**을 올린다. 칸이 없으면 그냥 두고 면접에서 낸다.
+      어제까지 이 자리는 「추가 서류 — 없음」이었는데, **그건 낼 물건이 없다는 뜻이었고
+      폼에 칸이 없다는 확인이 아니었다** (2026-07-30 GLG: 「하나만 내기에는 성의가 없다」)
 
 **⚠ 업로드 직전 파일명을 눈으로 확인한다.** Enhans 에 낸 것과 **같은 FDE 컷**이라 파일명이
 비슷하다. 올린 파일은 **그대로 `submit/` 에 복사**한다.

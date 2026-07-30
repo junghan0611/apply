@@ -12,9 +12,114 @@
 > 순서·URL·첨부·주의만 둔다. Holiday/Lunit/SOCAR 는 폼 실측 요약도 함께 적었다.
 
 - 상태 계보: `ready` **17** = **실행 15** + **보류 2**(Cohere · OpenAI). 한화비전은 11:00 합류했고, 11:46 GPT 재검수 보정판으로 갱신됐다.
-- 공고 생존: `./alive.py` — **2026-07-29 06:36 KST 기준 19건 전부 열림, 닫힌 것 0.**
-  **제출 당일 다시 돌린다.**
+- 공고 생존: `./alive.py` — **2026-07-30 08:35 KST 재실행. 19건 · 열림확인 12 · 미판정 7 · 닫힘 0.**
+  미판정 7은 어댑터가 없는 곳(plain HTTP 200)이라 **판정하지 않는다** — 닫힘이 아니다.
 - 제출 순서는 아래 표 순서를 권한다(폼이 가벼운 것 → 무거운 것).
+
+---
+
+## ⭐ 2026-07-30 카페 세션 — 오전 2시간 휴가, 노트북 축
+
+**아침에 2건 나갔다** (Holiday Robotics · AIRS Medical). **남은 실행 큐는 13건**이고,
+2시간이면 아래 세 묶음까지가 현실적이다. **가벼운 것을 먼저 몰아친다.**
+
+### §0 노트북에서 먼저 이것부터 🔴
+
+🔴 **선행 게이트 — 서버가 커밋·푸시하지 않으면 `git pull` 로 아무것도 오지 않는다.**
+오늘 오전 판(새 `stage.py`·`check.py` · 중립 org · 이 시트 자체)은 **오라클 서버에 있다.**
+GLG 가 이동하기 전에 그 게이트를 닫아야 한다. (2026-07-30 GPT 교차검수 P0-1)
+
+**무엇이 이미 노트북에 있고, 무엇을 빌드해야 하나 — 정확히 이렇다.**
+
+| | `git pull` 로 오는가 | 왜 |
+|---|---|---|
+| **이력서 컷** (`_Resume_*.pdf`) | ✅ **온다** | 오늘 낼 11건 전부 **tracked** 다. gitignore 는 *이미 추적 중인* 파일에 무효 |
+| **깊이 문서** (`AX_Competency` · `AX_Portfolio`) | ❌ **안 온다** | 새로 늘어나는 3.8MB 급이라 gitignore 로 막았다 |
+| 제출 완료 7건의 스냅샷 | ✅ 온다 | 이미 tracked |
+
+**그래서 빌드는 「깊이 문서 때문에」 돈다.** 이력서는 이미 있다 —
+`resume/run.sh` 가 실패해도 **제출을 포기하지 않는다.**
+
+```bash
+cd ~/repos/gh/apply && git pull
+(cd dossier && ./run.sh competency && ./run.sh portfolio)   # ⭐ 5쪽 + 12쪽 — 이것 때문에 돈다
+(cd resume  && ./run.sh all)                        # 선택 — tracked 컷을 최신으로 맞출 때만
+applications/stage.py                               # 세트를 깐다 (누출을 스스로 검사한다)
+applications/check.py --deep                        # 전체 게이트 — 20초
+```
+
+🔴 **`--deep` 을 건너뛰지 않는다.** 노트북 `dossier/build/` 에는 **오늘 아침 AIRS 재타깃
+빌드판**이 남아 있다. `git pull` 로 중립 org 를 받아도 **빌드를 다시 하지 않으면 낡은 PDF 가
+그대로 세트에 깔린다** — Lunit·SOCAR 에 *"AIRS Medical AX 팀이 만드는…"* 이 붙는다.
+눈으로는 안 보이고 `--deep` 만 잡는다.
+
+- `run.sh check` 가 `libreoffice 없음` 으로 실패해도 **무시한다.** PDF 는 xelatex 가 만들고
+  LibreOffice 는 DOC 전용이다. 마지막 `EXIT=127` 도 같은 이유다.
+- 빌드는 두 문서 합쳐 **1~2분**이다. 한 번 돌리면 11건 세트가 전부 채워진다.
+
+#### 🚨 dossier 빌드가 노트북에서 실패하면 — 폴백이 있다
+
+`dossier/run.sh` 는 **Doom Emacs straight 빌드**를 요구한다(`run.sh:91` — 없으면 `exit 1`).
+노트북 `EMACSDIR` 상태가 서버와 다르면 여기서 멈춘다. **그때 이력서 한 장으로 되돌아가지 않는다.**
+
+**폴백: 이미 git 에 있는 중립 Portfolio 를 `dossier/build/` 에 놓고 `stage.py` 로 깐다.**
+파일을 각 건에 직접 복사하지 **않는다** — 그러면 세트 메타(`MANIFEST`·`README`·`SOURCES`)가
+갱신되지 않고, 뒤에 `stage.py` 를 돌리면 낡은 판이 다시 덮는다 (GPT 교차검수 P0-5).
+
+```bash
+# AIRS 세트의 Portfolio 12쪽은 tracked 이고 회사명 잔재 0건 — 중립판이다
+mkdir -p dossier/build
+cp applications/airs-medical--ax-engineer/submit/KimJunghan_AX_Portfolio.pdf dossier/build/
+applications/stage.py            # 발사대에서 깔린다 — 메타까지 함께 갱신된다
+applications/check.py --deep     # 중립인지 반드시 확인
+```
+
+⚠ 이 폴백은 **Competency 를 만들지 못한다.** `stage.py` 가 「없음」으로 경고하고
+그 건은 **FAIL 로 뜬다** — 그게 맞다. Portfolio 만 내고 `추가 첨부` 행에서 Competency 를
+잠시 빼는 것은 **GLG 판단**이다. **Competency 없이 Portfolio 만 내도 이력서 한 장보다 낫다.**
+
+⛔ **`KimJunghan_AX_Competency.pdf` 는 폴백으로 쓰지 않는다.** AIRS 세트의 그 파일은
+**AIRS 조준판**이다(프롤로그 첫 문장). NHN 세트 것도 NHN 조준이다.
+**Competency 없이 Portfolio 만 내도 이력서 한 장보다 훨씬 낫다.**
+
+### 🔴 첨부가 바뀌었다 — 이제 이력서 한 장으로 내지 않는다 (2026-07-30)
+
+**GLG**: *"딸랑 이력서 하나 준비되어있더라. 그냥 하나만 내기에는 성의가 없다."*
+
+**AX·에이전트 축 11건 세트에 깊이 문서 2종이 깔렸다.** `dossier/` 정본을 **회사 중립판으로
+재빌드**했다(회사명 잔재 0건 · `gs` 전수 확인).
+
+| 파일 | 쪽 | 폼의 어느 칸 |
+|---|---|---|
+| `KimJunghan_Resume_*.pdf` | 3 | **필수** 이력서 |
+| `KimJunghan_AX_Competency.pdf` | **5** | 선택 — 경력기술서·역량기술서 |
+| `KimJunghan_AX_Portfolio.pdf` | **12** | 선택 — 포트폴리오 |
+
+- **선택 슬롯이 하나뿐이면 `Portfolio` 12쪽**을 올린다(더 두껍고 이미지로 증명한다).
+- **슬롯이 없으면 그냥 둔다.** 없는 칸을 만들려고 폼과 씨름하지 않는다.
+- 🔴 **선택 첨부를 올리면 동의 항목이 하나 더 붙는 폼이 있다** — Lunit 「(선택) 추가 지원
+  서류 수집 동의」 · 한화비전 「선택항목 수집 동의」. **미동의로 내면 올린 파일이 처리되지
+  않는다.** 어제 Lunit 기록에는 「체크 불필요」라고 적혀 있었다 — 고쳤다.
+- ⛔ **Embedded 컷 4건(Bear · Telechips · Telit · Sonatus)에는 붙이지 않는다.** 두 문서는
+  AX·에이전트 축이고, Bear 커버레터가 이미 *「그 서사를 붙이면 무엇을 하는 사람인지
+  흐려진다」* 고 판단했다. **첨부를 늘리는 것이 성의가 아니라 그 자리에 맞는 것을 내는 것이다.**
+
+| 묶음 | 건 | 한 건당 | 첨부 | 왜 이 순서인가 |
+|---|---|---|---|---|
+| **A. 즉시** | **13 Lunit** → **14 SOCAR** | 5~8분 | **3종 / 2종** | 폼 실측 완료 · 미정값 0 · 로그인 없음. **둘 다 선택 슬롯이 실측으로 확인**돼 있다 — Lunit 은 2종 다, SOCAR 는 「포트폴리오」 칸에 Portfolio 하나 |
+| **B. Ashby 4연타** | **5 FriendliAI** → **9 FuriosaAI** → **10 42dot** → **12 Reflection** | 5~8분 | **3종(칸 있으면)** | 가입 불필요 · 폼 구조가 넷 다 같아 **손이 익는다**. ⚠ Ashby 는 폼 정의를 밖에서 못 읽어 **선택 첨부칸은 열어봐야 안다** — 첫 건에서 확인하면 나머지 셋은 같다 |
+| **C. 파일 2개** | **15 한화비전** | 10분 | 이력서 + **전용 18쪽** | 이 건은 **전용 합본**을 쓴다(중립판 아님). ⚠ **「선택항목 수집 동의」 체크** |
+| **D. 커버레터** | **3 Bear Robotics** · **4 Toss** | 15분+ | Bear **1종** · Toss 3종 | Bear 는 ⛔ Embedded 축이라 깊이 문서를 안 붙인다. 업로드형이면 **PDF 필요 → `md2pdf.sh`(노트북 전용)**. Toss 는 **계정 생성**이 걸릴 수 있다 |
+| **E. 남는 시간** | **6 Sonatus**(Easy Apply) · **7 Telit** · **8 Telechips** | | **1종** | 셋 다 Embedded 축. Sonatus 는 ⚠ **LinkedIn 저장 이력서가 기본 선택**이라 파일을 갈아준다 |
+
+**2시간에 다 못 넣어도 된다.** A+B 여섯 건이면 오늘 누적 **13건**이고, 이 축의 목적은
+넓이다. D 는 글을 붙이는 일이라 **서둘러 넣기보다 다음 자리에서 낸다**.
+
+**⛔ 오늘 카페에서 열지 않는 것 2건** — 관문이 남아 있어 2시간에 안 끝난다.
+**Upstage**(문항 1 = pi 에 Upstage API 를 붙이고 Document Parse 를 스킬로 만드는 일) ·
+**NHN 2번째**(로그인 + 포트폴리오 재편 + 자기소개).
+
+**낸 뒤 매번**: `LEDGER.md` + 그 건 `submission.md` 를 `submitted` 로 함께 닫고 → `./check.py`.
 
 ---
 
@@ -40,10 +145,10 @@
 
 | # | 회사 | 컷 | 지원 URL | 폼 무게 · 주의 |
 |---|---|---|---|---|
-| 1 | **Holiday Robotics** 🤖 | `_FDE` + **커버레터** | `https://holiday-robotics.com/careers/forward-deployed-robotics-engineer/apply` | **가장 가볍다.** 로그인 없음. 필수는 이름·이메일 둘. **연봉·입사일 안 물음.** 커버레터는 `cover-letter.md` §붙여넣을 본문 **전체 복사**. ✅ `business travel` 은 GLG 확인으로 닫혔다(가능) |
-| 2 | **AIRS Medical** | `_DEVEX` + **커버레터(조건부)** | `https://airsmed.career.greetinghr.com/ko/o/216673` → 「지원하기」 | 그리팅. 우대가 `openclaw`·skill/hook/MCP 로 사람을 지목했다. **국문 커버레터 초안 있음**(`submit/cover-letter.txt`, 1,710자) — ⚠ **칸 유무 미실측**. 있으면 붙이고, 없으면 1차 면접 답 골격으로 쓴다 |
+| ~~1~~ | ~~**Holiday Robotics** 🤖~~ | `_FDE` + 커버레터 | — | ✅ **submitted 2026-07-30.** 커버레터 387단어 + FDE 이력서. 자체 평가는 `submission.md` |
+| ~~2~~ | ~~**AIRS Medical**~~ | `_DEVEX` + Competency + Portfolio | — | ✅ **submitted 2026-07-30.** 이력서만 넣지 않고 `dossier/` 5쪽+12쪽을 **AIRS AX 조준으로 재타깃**해 함께 냈다 |
 | 3 | **Bear Robotics** | `_EMB` + **커버레터(조건부)** | `https://bear-robotics.breezy.hr/p/5d59d1cd221e-systems-software-engineer-linux-platform/apply` | Breezy. **영문 CV 필수** — 여섯 컷 전부 영문이라 그대로 통과. **영문 커버레터 초안 있음**(`submit/cover-letter.txt`, 474단어) — ⚠ **칸 유무 미실측**, 파일 업로드형이면 PDF 라 집 축 |
-| 4 | **Toss** | `_AI` + **커버레터(조건부)** | `https://toss.im/career/apply/basic/7646941003` | 토스 자체 폼. **계정 생성 필요할 수 있음 — GLG 직접.** **국문 커버레터 초안 있음**(`submit/cover-letter.txt`, 1,415자) — 공고가 지정한 「목적 → 수단 → 해결 방식」 형식으로 썼다. ⚠ **칸 유무 미실측** |
+| 4 | **Toss** | `_AI` + **커버레터(조건부)** | `https://toss.im/career/apply/basic/7646941003` | 토스 자체 폼. **계정 생성 필요할 수 있음 — GLG 직접.** **국문 커버레터 있음**(`submit/cover-letter.txt`, 1,415자) — 공고가 지정한 「목적 → 수단 → 해결 방식」 형식으로 썼다. ✅ **2026-07-30 사실 정정** — 3문단 「여섯 개 하네스」를 **다섯**으로 고쳤다(SSOT 기준, 나열된 다섯과 일치). ⚠ **칸 유무 미실측** |
 | 5 | **FriendliAI** | `_AI` | `https://jobs.ashbyhq.com/friendliai/[uuid removed]/application` | Ashby. 가입 불필요 |
 | 6 | **Sonatus** 🌐 | `_EMB` | `https://www.linkedin.com/jobs/view/4380679251/` → **「간편 지원」** | Easy Apply 5단계. ⚠ **LinkedIn 저장 이력서가 기본 선택**이라 올릴 때 파일 확인 |
 | 7 | **Telit Cinterion** 🌐 | `_EMB` | `https://recruiting.paylocity.com/Recruiting/jobs/Apply/4158364` | Paylocity |

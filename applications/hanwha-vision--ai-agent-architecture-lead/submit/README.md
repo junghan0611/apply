@@ -5,8 +5,7 @@
 
 | 파일 | 폼의 어느 칸 |
 |---|---|
-| `00-cover.pdf` | ⛔ 올리지 않는다 — 합본 입력용 중간 산물 |
-| `KimJunghan_Hanwha_Portfolio.pdf` | 포트폴리오 |
+| `KimJunghan_Hanwha_Portfolio.pdf` | 포트폴리오 (12쪽) — 선택 슬롯이 **있으면** 올린다. 칸이 하나면 이것을 |
 | `KimJunghan_Resume_AI_Engineer.pdf` | 이력서 (필수) |
 
 생성: `applications/stage.py` · 손으로 고치지 않는다.

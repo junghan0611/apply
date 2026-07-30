@@ -6,6 +6,7 @@
 | 지원일 | — |
 | 경로 | **그리팅** (자체 도메인 `careers.upstage.ai`) — 가입 불필요 |
 | 첨부 컷 | **AI Engineer** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`, 3쪽) |
+| 추가 첨부 | ⚠ **슬롯 미실측 — 폼에 선택 첨부칸이 있으면 올린다** · `dossier/build/KimJunghan_AX_Competency.pdf` (경력·역량기술서 5쪽) · `dossier/build/KimJunghan_AX_Portfolio.pdf` (포트폴리오 12쪽) |
 | 공고 URL | https://careers.upstage.ai/ko/o/194880 |
 | **지원 URL** | **https://careers.upstage.ai/ko/o/194880** → 페이지 하단 「지원하기」 (HTTP 200 확인) |
 | 근무형태 | **Anywhere On Earth But Together** — 원격 지원(장비 500만원 예산) |
@@ -16,9 +17,20 @@
 - [ ] **이력서 PDF (필수)** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`
       (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
 - [ ] 자기소개서 (선택) — 서술형 문항이 그 역할을 겸한다. 따로 만들지 않는다
-- [ ] 포트폴리오 (선택) — 올리지 않는다. 이력서의 공개 저장소 링크가 그 역할이다
+- [ ] ⭐ **포트폴리오 (선택) — 올린다.** `submit/KimJunghan_AX_Portfolio.pdf` **(12쪽)**
+      어제 판정은 *「올리지 않는다. 이력서의 공개 저장소 링크가 그 역할이다」* 였다.
+      **링크는 열어 보는 사람만 보고, 첨부는 서류 심사에 그대로 놓인다** (2026-07-30 GLG).
+      `dossier/` 정본에서 회사 중립판으로 재빌드했고 회사명 잔재 0건이다
+- [ ] ⭐ **경력·역량기술서** `submit/KimJunghan_AX_Competency.pdf` (5쪽) — 세트에 깔려 있다.
+      **이 폼에 전용 칸이 있는지는 §폼 실측 표에서 확인**하고, 없으면 면접에서 낸다
 
 **⚠ 업로드 직전 파일명을 눈으로 확인한다.** FuriosaAI · Lunit · 42dot 과 **같은 AI Engineer 컷**이다.
+
+> 🔴 **폼 마지막 단계에서 「선택 첨부 관련 동의」가 있는지 눈으로 확인한다** (2026-07-30 GPT 교차검수 R3).
+> 리포 안의 증거로는 이 폼에 그 동의가 있는지 **확정할 수 없다** — `docsInfo` ·
+> `additionalApplicantInfoConfig` 는 개인정보 동의 UI 를 증명하지 않는다. Lunit 은 실측으로
+> 「(선택) 추가 지원 서류 수집 동의」가 있었고 한화비전에는 「선택항목 수집 동의」가 있다.
+> **「없다」고 추론하지 않는다** — 미동의로 내면 올린 첨부가 처리되지 않는다.
 
 ## 폼 실측 — 문항 9개 (필수 6 · 선택 3), 2026-07-29
 

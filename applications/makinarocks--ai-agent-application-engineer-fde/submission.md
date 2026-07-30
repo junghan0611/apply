@@ -6,6 +6,7 @@
 | 지원일 | — |
 | 경로 | **그리팅** (자체 도메인 `makinarocks.career.greetinghr.com`) — 가입 불필요 |
 | 첨부 컷 | **FDE** (`resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`, 3쪽) |
+| 추가 첨부 | ⚠ **슬롯 미실측 — 폼에 선택 첨부칸이 있으면 올린다** · `dossier/build/KimJunghan_AX_Competency.pdf` (경력·역량기술서 5쪽) · `dossier/build/KimJunghan_AX_Portfolio.pdf` (포트폴리오 12쪽) |
 | 공고 URL | https://makinarocks.career.greetinghr.com/ko/o/214041 |
 | **지원 URL** | **https://makinarocks.career.greetinghr.com/ko/o/214041** → 페이지 하단 「지원하기」 |
 | 근무지 | 서울 서초구 강남대로 343 |
@@ -17,10 +18,22 @@
       (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_Forward_Deployed_Engineer.pdf`)
 - [ ] 커버레터 — **폼이 요구하는 서류는 `Resume/CV` 하나다**(그리팅 `docsInfo` 확인).
       칸이 따로 있으면 아래 §왜 이 직무였는가 를 줄여 쓴다
-- [ ] 추가 서류 — 없음
+- [ ] ⭐ **경력·역량기술서** `submit/KimJunghan_AX_Competency.pdf` (5쪽) ·
+      **포트폴리오** `submit/KimJunghan_AX_Portfolio.pdf` (12쪽) — **세트에 깔려 있다.**
+      `dossier/` 정본에서 2026-07-30 **회사 중립판으로 재빌드**했다(회사명 잔재 0건).
+      ⚠ **이 폼의 선택 첨부 슬롯은 미실측이다.** 폼을 열어 칸이 있으면 **올린다.**
+      칸이 하나면 **Portfolio 12쪽**을 올린다. 칸이 없으면 그냥 두고 면접에서 낸다.
+      어제까지 이 자리는 「추가 서류 — 없음」이었는데, **그건 낼 물건이 없다는 뜻이었고
+      폼에 칸이 없다는 확인이 아니었다** (2026-07-30 GLG: 「하나만 내기에는 성의가 없다」)
 
 **⚠ Enhans·Reflection 과 같은 FDE 컷이다.** 업로드 직전 파일명을 눈으로 확인하고
 올린 파일을 `submit/` 에 복사한다.
+
+> 🔴 **폼 마지막 단계에서 「선택 첨부 관련 동의」가 있는지 눈으로 확인한다** (2026-07-30 GPT 교차검수 R3).
+> 리포 안의 증거로는 이 폼에 그 동의가 있는지 **확정할 수 없다** — `docsInfo` ·
+> `additionalApplicantInfoConfig` 는 개인정보 동의 UI 를 증명하지 않는다. Lunit 은 실측으로
+> 「(선택) 추가 지원 서류 수집 동의」가 있었고 한화비전에는 「선택항목 수집 동의」가 있다.
+> **「없다」고 추론하지 않는다** — 미동의로 내면 올린 첨부가 처리되지 않는다.
 
 ## 폼에 답한 질문
 
