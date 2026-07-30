@@ -19,7 +19,7 @@
 * Summary
 
 I build the surfaces other people and agents work on: 40+ skills over a real corpus, one skill SSOT
-fanned into six harnesses, a fenced Emacs agent server, a Forgejo work ledger, and document tools
+fanned into five harnesses, a fenced Emacs agent server, a Forgejo work ledger, and document tools
 that carry Korean HWPX, scanned paper, EPUB, Org, and office formats across otherwise disconnected
 systems. The goal is not another wrapper. It is an installable path with ownership, boundaries,
 provenance, diagnostics, and a hand-off the next person can recover.

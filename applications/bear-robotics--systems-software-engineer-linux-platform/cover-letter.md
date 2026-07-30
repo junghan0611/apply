@@ -19,7 +19,7 @@ The first line of your posting asks for an English CV. The rest of it asks for s
 
 At my first company, NEMO-UX, we built a Linux-based OS for large touch displays. The startup failed after four years. The habit of owning a system from the board up did not. Since then I shipped a Zigbee/Wi-Fi hub to mass production — gateway firmware in Zig, a deterministic state machine spanning the driver, protocol, and cloud layers — and then moved that same hub core from ARMv7/glibc with a vendor sysroot to RISC-V (SG2000) on statically linked musl, extracting a board HAL so the core no longer knows which board it runs on.
 
-Your responsibilities read as three things: a standard environment for robot software, the infrastructure that deploys and manages it, and a device identity and access-policy layer. I have built that third layer. The hub's cloud link runs behind two interchangeable backends — AWS IoT for connected deployments, a local mTLS broker for closed sites — so the same device identity holds whether or not the site has a route to the internet.
+Your responsibilities read as three things: a standard environment for robot software, the infrastructure that deploys and manages it, and a device identity and access-policy layer. I have built the device-identity part of that third layer. The hub's cloud link runs behind two interchangeable backends — AWS IoT for connected deployments, a local mTLS broker for closed sites — so the same device identity remains valid whether or not the site has a route to the internet.
 
 For the second, my answer is Nix rather than Terraform, and I would rather say that plainly than let it look like a match. I run four machines and seventeen Docker services declaratively, including a GPU cluster of three RTX 5080s on a 10G network. When something installs, I record the vcs_revision, the source-tree digest, and the binary SHA-256, because what is actually on that machine is the only question worth answering during an incident. That is the same instinct your posting calls package distribution and management; I reached it through a different toolchain. I have no Terraform track record. The daemons and CLIs around it are Go, Python, and Bash — small binaries other processes query, which is the shape your first required qualification describes.
 
@@ -67,5 +67,11 @@ I would like to work on the layer the robots stand on.
 - **Breezy 폼에 Cover Letter 칸이 있는지 본다.** 파일 업로드형이면 **평문 대신 PDF 를 요구할 수
   있다** — 그 경우 이 건은 **집(노트북) 축**이다(`md2pdf.sh`). 서버에서는 못 만든다.
 - **이력서는 Embedded 컷.** Telechips · DEEPX BSP 와 **같은 파일**이라 업로드 직전 파일명 확인.
-- 다음 판에서 **GPT 교열**(2026-07-29 분업). 특히 **영문 문장의 리듬**을 본다 —
-  사실 좌표는 `JD.md` §우대 대조표와 `resume/body.org` 44·50·53·79·191·208행이 들고 있다.
+- ✅ **GPT 교열 반영 (2026-07-30)** — 한 곳이 **과장 위험**이었다.
+  `I have built that third layer.` 는 공고의 「device identity **and access-policy** layer」
+  전체를 만들었다고 읽히는데, 근거는 device identity + mTLS 뿐이라 **access-policy 전체를
+  댈 수 없다.** → `I have built the device-identity part of that third layer.` 로 좁혔다.
+  같은 문장의 `the same device identity holds` 도 `remains valid` 로 고쳤다(자연스러움).
+  **경계를 스스로 밝히는 글에서 한 줄이 과장되면 나머지 정직함이 같이 의심받는다.**
+  나머지 리듬·경계는 GPT 판정으로 「좋다」 — 사실 좌표는 `JD.md` §우대 대조표와
+  `resume/body.org` 44·50·53·79·191·208행이 들고 있다.

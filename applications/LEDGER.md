@@ -57,6 +57,30 @@
 
 ## 메모
 
+- ⚠ **제출본과 현재 문서의 차이 ③ — 하네스 개수 (2026-07-30)** — 면접에서 되물릴 수 있다.
+  - **「여섯 개 하네스」→ 「다섯 개」로 고쳤다.** SSOT(`agent-config/README.md` §Harness
+    Support)를 세면 구별되는 하네스는 **다섯**이다 — pi 축 3행(pi+entwurf · pi+anthropic ·
+    pi-entwurf)은 같은 pi 이고, 거기에 **Claude Code · Codex · Antigravity · OpenClaw**.
+  - **어디서 왔나**: 같은 README 에 *"OpenCode is not used. It once appeared in this table
+    **and in the fan-out list**"* 가 적혀 있다. **연결되지 않은 하네스가 팬아웃 목록에 올라
+    있던 판의 잔재**다.
+  - **이미 나간 문서에는 「여섯」이 그대로 있다** — **AIRS Medical**(커버레터 + 이력서 DevEx
+    컷의 `fanned into six harnesses`) · **DEEPX**(JD 대조표). **고치지 않는다.**
+  - **물어보면**: *"다섯이 맞습니다. pi 를 실행 방식별로 세어 여섯으로 적었던 것이고,
+    구별되는 하네스는 Claude Code · Codex · pi · Antigravity · OpenClaw 다섯입니다."* 가 사실이다.
+  - ⚠ **이력서 정본(`resume/targets/developer-experience-engineer.org`)까지 퍼져 있었다.**
+    커버레터만 고치고 끝낼 문제가 아니었다 — **DevEx 컷 PDF 에 실려 나가는 자리였다.**
+    2026-07-30 에 정본을 고치고 여섯 컷을 재빌드했다.
+  - ⭐ **「소비 표면 6개」는 「하네스 5개」와 다른 개념이고 둘 다 맞다** — 고치지 않았다.
+    `agent-config/run.sh` 가 skills 를 링크하는 경로를 세면 **정확히 여섯**이다:
+    ① `~/.pi/agent/skills/pi-skills` ② `~/.pi/agent/claude-plugin/skills`(entwurf SDK 격리
+    모드용 — pi 가 스폰하는 Claude 는 `~/.claude/skills` 를 자동 발견하지 않는다)
+    ③ `~/.claude/skills` ④ `~/.codex/skills` ⑤ `~/.gemini/skills`
+    ⑥ `~/.gemini/antigravity-cli/skills`.
+    **물어보면**: *"하네스는 다섯이고, 스킬 정본이 링크되는 소비 경로는 여섯입니다. pi 가
+    격리 모드로 스폰하는 Claude 가 별도 경로를 쓰고, Gemini CLI 도 링크를 받기 때문입니다."*
+    ⚠ **OpenClaw 는 이 여섯에 없다** — Nix store mount/symlink 축이라 경로가 다르다.
+
 - ⚠ **제출본과 현재 문서의 차이 ② — 수치 (2026-07-29)** — 면접에서 되물릴 수 있다.
   - **자가 측정 수치를 전부 걷어냈다** (GLG 판단, `AGENTS.md` §불변식 §숫자):
     부팅 45.4→5.8초 · 메모리 816→246MiB · 코드 공유 96% · 테스트 163개 · 임베딩 2,945건 ·
