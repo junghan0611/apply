@@ -31,7 +31,7 @@
 | 42dot | Senior AI Agent Engineer (Intelligence Service) | submitted | 2026-07-30 | Ashby (가입 불필요) | **이력서+경력기술서 8쪽 합본** + Portfolio 12쪽(전용 칸) + **Motivation 805자** | `42dot--senior-ai-agent-engineer-intelligence-service` |
 | MakinaRocks | [FDE] AI Agent Application Engineer | ready | — | 그리팅 (자체 도메인) | FDE | `makinarocks--ai-agent-application-engineer-fde` |
 | SOCAR | Platform Engineer | submitted | 2026-07-30 | 그리팅 (자체 도메인) | DevEx + Portfolio 12쪽 | `socar--platform-engineer` |
-| Upstage | AI Engineer - Agents | draft | — | 그리팅 (자체 도메인) | AI Engineer (⚠ 제품 체험 평가 필수) | `upstage--ai-engineer-agents` |
+| Upstage | AI Engineer - Agents | **ready**(2026-07-31 목표 제출) | — | 그리팅 (자체 도메인) | AI Engineer + 경력·역량기술서 5쪽 + 포트폴리오 12쪽 | `upstage--ai-engineer-agents` |
 | FriendliAI | Software Engineer - AI Agents | submitted | 2026-07-30 | Ashby (가입 불필요) | AI Engineer (⛔ 폼에 첨부 슬롯 1개 — 깊이 문서 칸 없음) | `friendliai--software-engineer-ai-agents` |
 | Toss | AI Engineer (Platform) | submitted | 2026-07-30 | **토스 자체 채용홈** | **이력서+경력기술서 8쪽 합본** · 경력 3건 직접 입력 · ⛔ 커버레터 칸 없음 | `toss--ai-engineer-platform` |
 | Bear Robotics | Systems Software Engineer (Linux Platform) | ready | — | **Breezy HR** (자체 보드) | Embedded (영문 CV 필수) | `bear-robotics--systems-software-engineer-linux-platform` |

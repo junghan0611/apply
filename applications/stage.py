@@ -17,10 +17,11 @@
   - 어느 파일이 폼의 어느 칸으로 가는지 submit/README.md 에 적는다
 
 무엇을 하지 않나:
-  - **이미 제출한 건(status=submitted)은 건드리지 않는다.** 그때 나간 파일이 사실이다.
+  - **제출 뒤 상태(`submitted`·`replied`·`interview`·`offer`·`rejected`·`closed`)는 건드리지 않는다.**
+    원장의 상태가 `submitted`에서 바뀌어도 그때 올린 submit/ 스냅샷은 사실이다.
   - submit/ 에 이미 있는데 소스를 모르는 파일(합본 PDF 등)은 지우지 않는다.
 
-  ./stage.py            # ready 인 건 전부
+  ./stage.py            # 아직 제출 전인 건 전부
   ./stage.py holiday    # 폴더명에 holiday 가 들어가는 건만
 """
 import hashlib
@@ -52,12 +53,18 @@ def slot_of(name: str) -> str:
 	return "—"
 
 
+# 제출 뒤 상태는 submit/의 실제 업로드 스냅샷을 보존한다. `replied`처럼 `submitted`를
+# 대체하는 상태를 parser가 모르면, 다음 전체 stage가 이미 낸 파일을 새 빌드로 덮어쓴다.
+# check.py의 원장 상태와 같은 어휘를 읽고, terminal 여부는 별도 계약으로 둔다.
+TERMINAL_STATUSES = {"submitted", "replied", "interview", "offer", "rejected", "closed"}
+
+
 def status_of(text: str) -> str:
 	m = re.search(r"^\|\s*상태\s*\|\s*(.+?)\s*\|", text, re.M)
 	if not m:
 		return "?"
-	raw = m.group(1)
-	for s in ("submitted", "ready", "draft", "saved", "closed", "held"):
+	raw = m.group(1).lower()
+	for s in ("submitted", "replied", "interview", "rejected", "closed", "offer", "ready", "draft", "saved", "held"):
 		if s in raw:
 			return s
 	return "?"
@@ -161,7 +168,7 @@ def stage(case: Path) -> tuple[str, list[str], list[str]]:
 	record = case / "submission.md"
 	text = record.read_text()
 	status = status_of(text)
-	if status == "submitted":
+	if status in TERMINAL_STATUSES:
 		return status, [], []
 
 	out = case / "submit"
@@ -319,7 +326,7 @@ def main() -> int:
 	failed: list[str] = []
 	for case in cases:
 		status, staged, problems = stage(case)
-		if status == "submitted":
+		if status in TERMINAL_STATUSES:
 			continue
 		if not staged and not problems:
 			continue

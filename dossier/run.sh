@@ -214,15 +214,25 @@ cmd_verify() {
     [[ -f "$pdf" ]] || { err "$pdf 없음 — verify 는 산출물이 있어야 성립한다"; fail=1; continue; }
     local txt=""
     txt="$(AXRUN pdftotext -layout "$pdf" - 2>/dev/null || true)"
-    # nix develop 경유 poppler가 드물게 성공 코드와 빈 stdout을 돌려준 적이 있다. 빈 텍스트로
-    # URL·캡션을 검사하면 경고 대상이 실행마다 옮겨 다닌다. 한 번 재시도하고도 비면 PDF 검수를
-    # 수행한 척하지 않고 명시적으로 실패한다.
-    if [[ -z "${txt//[[:space:]]/}" ]]; then
+    # nix develop 경유 poppler가 드물게 성공 코드와 빈 stdout 또는 첫 페이지가 빠진 출력을 돌려준 적이
+    # 있다. 후자는 본문이 남아 있으므로 빈 출력 검사만으로는 통과해, 이메일·URL 경고가 실행마다
+    # 옮겨 다닌다. 모든 제출 PDF의 1쪽에 있어야 하는 이메일을 sentinel로 삼아 한 번 재시도한다.
+    if [[ -z "${txt//[[:space:]]/}" || "$txt" != *"[email removed]"* ]]; then
       sleep 0.2
       txt="$(AXRUN pdftotext -layout "$pdf" - 2>/dev/null || true)"
     fi
-    if [[ -z "${txt//[[:space:]]/}" ]]; then
-      err "  PDF 텍스트 추출 실패(2회 빈 출력): $pdf"; fail=1; continue
+    # Poppler 재시도 뒤에도 첫 페이지가 빠지면, 이 호스트에 있는 Ghostscript txtwrite로 판독을
+    # 폴백한다. PDF 본문 검사 자체를 건너뛰는 것이 아니라 다른 추출기로 같은 sentinel을 확인한다.
+    if [[ -z "${txt//[[:space:]]/}" || "$txt" != *"[email removed]"* ]] && command -v gs >/dev/null; then
+      local gs_txt
+      gs_txt="$(gs -q -sDEVICE=txtwrite -o - "$pdf" 2>/dev/null || true)"
+      # Poppler의 본문·캡션 레이아웃과 Ghostscript의 1쪽 헤더가 서로 보완된다. 어느 한쪽이
+      # 누락됐다고 다른 쪽에서 정상 추출한 증거까지 버리지 않도록 합쳐 검수한다.
+      txt+=$'\n'
+      txt+="$gs_txt"
+    fi
+    if [[ -z "${txt//[[:space:]]/}" || "$txt" != *"[email removed]"* ]]; then
+      err "  PDF 텍스트 추출 실패(2회 Poppler + Ghostscript 첫 페이지 누락): $pdf"; fail=1; continue
     fi
     local pages; pages="$(AXRUN pdfinfo "$pdf" 2>/dev/null | awk '/^Pages/{print $2}')"
     echo "── $base.pdf (${pages}p) ──"
@@ -248,14 +258,15 @@ cmd_verify() {
       [[ "$over" -eq 0 ]] && ok "  판면 초과 없음" || warn "  Overfull hbox ${over}건"
     fi
     # 별표 누출 (Org 굵게가 렌더 안 되고 별표로 샌 경우)
-    if echo "$txt" | grep -q '[*]'; then warn "  별표(*) 누출 — 굵게 렌더 실패 의심"; fail=1; else ok "  별표 누출 없음"; fi
+    if grep -q '[*]' <<<"$txt"; then warn "  별표(*) 누출 — 굵게 렌더 실패 의심"; fail=1; else ok "  별표 누출 없음"; fi
     # :noexport 프롬프트/메모 누출
-    if echo "$txt" | grep -qiE 'noexport|생성 프롬프트|IMAGE PROMPT|TODO|검토 메모'; then warn "  :noexport 내용 누출 의심"; fail=1; else ok "  :noexport 누출 없음"; fi
-    # 연락처 + 대표 URL
-    echo "$txt" | grep -q '[email removed]' && ok "  이메일 노출" || { warn "  이메일 안 보임"; fail=1; }
-    echo "$txt" | grep -q 'github.com/junghan0611' && ok "  GitHub URL 노출" || { warn "  GitHub URL 안 보임"; fail=1; }
+    if grep -qiE 'noexport|생성 프롬프트|IMAGE PROMPT|TODO|검토 메모' <<<"$txt"; then warn "  :noexport 내용 누출 의심"; fail=1; else ok "  :noexport 누출 없음"; fi
+    # 연락처 + 대표 URL. set -o pipefail 아래에서 `echo "$txt" | grep -q`는 grep 조기 종료 뒤
+    # echo가 SIGPIPE로 실패해 거짓 경고를 낼 수 있으므로 here-string으로 검사한다.
+    grep -q '[email removed]' <<<"$txt" && ok "  이메일 노출" || { warn "  이메일 안 보임"; fail=1; }
+    grep -q 'github.com/junghan0611' <<<"$txt" && ok "  GitHub URL 노출" || { warn "  GitHub URL 안 보임"; fail=1; }
     # 캡션 번호
-    echo "$txt" | grep -qE '표 [0-9]|그림 [0-9]' && ok "  캡션 연번(표/그림 N) 존재" || warn "  캡션 연번 없음(이미지/표 미포함이면 정상)"
+    grep -qE '표 [0-9]|그림 [0-9]' <<<"$txt" && ok "  캡션 연번(표/그림 N) 존재" || warn "  캡션 연번 없음(이미지/표 미포함이면 정상)"
     # 편집면(ODT/DOC)도 산출물이다. PDF 만 보고 통과시키면 받는 쪽이 여는 문서가 검사 밖에 남는다.
     local odt="$BUILD/$base.odt"
     if [[ -f "$odt" ]]; then
