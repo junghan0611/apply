@@ -48,6 +48,7 @@
 | 카카오뱅크 (Kakao Bank) | **인재풀 등록** — 지원분야 `Platform Development` | submitted | 2026-07-30 | **`kakaobank.recruiter.co.kr`** (recruiter.co.kr) · 접수 ~2026-12-31 | AI Engineer + Competency + Portfolio + 공개 좌표 2 | `kakao-bank--talent-pool-platform-development` |
 | 카카오뱅크 (Kakao Bank) | **데이터 엔지니어 - Data Warehouse** (`260510`, 마감 2026-08-06) | draft | — | **`recruit.kakaobank.com`** 개편 채용홈 → 폼은 `kakaobank.recruiter.co.kr` | 🔴 **자기소개서 2문항 × 1,000자가 관문** (`pre-question.md`) · 첨부는 경력기술서 란(Competency + 이력서 컷) + 포트폴리오 란(Portfolio) · **이력서 컷 미확정** | `kakao-bank--data-engineer-data-warehouse` |
 | IGNITE | AI Developer | draft | — | 회사 자체 ATS (ninehire) | AI Engineer | `ignite--ai-developer` |
+| Wonderful 🌐 | Forward Deployed Engineer (South Korea) | ready | — | Ashby (가입 불필요) | FDE (기존 PDF 재사용) | `wonderful--forward-deployed-engineer` |
 
 ---
 
