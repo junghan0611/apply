@@ -28,7 +28,7 @@
 |---|---|---|---|---|
 | **그리팅** | DEEPX · Hyundai AutoEver · Rebellions | `<회사>.career.greetinghr.com/ko/o/<id>` · `career.<회사>.com/ko/o/<id>` | 불필요 | **회사마다 폼이 다르다.** AutoEver는 사전질문 1,000자, DEEPX는 자기소개서를 묻는다 |
 | **Ashby** | OpenAI · Cohere · 42dot · **FuriosaAI** · **Reflection AI** | `jobs.ashbyhq.com/<회사>/<uuid>` · 지원은 뒤에 `/application` | 불필요 | 폼 직접 작성 + 이력서 업로드. **공고 목록·본문이 API 한 번에 다 뜬다** — 아래 §Ashby API |
-| **ninehire** | Enhans · **Telechips**(자체 도메인 화이트라벨) | `<회사>career.ninehire.site/job_posting/<id>` · `careers.telechips.com/job_posting/<id>` | 불필요 | **서술형 칸 없음.** 이력서 + URL 한 줄이 전부. ⚠ **파일 업로드를 에이전트가 못 한다** — 아래 §브라우저 축 |
+| **ninehire** | Enhans · **Telechips**(자체 도메인 화이트라벨) · **IGNITE**(이그나이트) | `<회사>career.ninehire.site/job_posting/<id>` · `careers.telechips.com/job_posting/<id>` · `ignite.ninehire.site/job_posting/<id>` | 불필요 | ⚠ **정정(2026-07-31, IGNITE 실측)**: 「서술형 칸 없음」은 **Telechips·Enhans 기준이었다 — 회사마다 다르다.** IGNITE는 별도 이력서 칸 없이 "경력기술서" 파일 업로드 하나로 겸하고, **서술형 3문항을 각 200-300자 캡(실시간 카운터)으로 커스텀**했다. ⚠ **파일 업로드를 에이전트가 못 한다**(공통, DOM에 `<input type=file>` 없음) — 아래 §브라우저 축 |
 | **Workable** | **Lunit(루닛)** 한국 채용 | `apply.workable.com/<회사>/j/<코드>/` · 지원은 뒤에 `apply/` | 불필요 | **목록·본문·게시일이 공개 API 로 뜬다** — `apply.workable.com/api/v1/widget/accounts/<회사>?details=true` (title·city·employment_type·published_on·telecommuting·description). ⚠ 폼 구조는 아직 눈으로 안 봤다 |
 | **Workday** | **GE HealthCare** 🌐 | `gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite/job/..._<req>-1` | 폼에서 확인 | `wday/cxs/gehc/GEHC_ExternalSite/job/<posting>` JSON에 본문·`posted`·`canApply`·지원 URL이 뜬다. ⚠ 예전 Phenom 페이지와 열림 상태가 충돌할 수 있어 **Workday를 현재 SSOT로 확인**한다 |
 | **Greenhouse** | Toss (`toss.im` 경유) | `toss.im/career/job-detail?gh_jid=<id>` | 불필요 | ⚠ `toss.im`은 브라우저 안전 제한으로 에이전트가 못 연다 |
