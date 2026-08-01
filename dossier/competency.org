@@ -20,13 +20,14 @@
   \institution{\unskip\newline\normalfont
     \href{mailto:[email removed]}{[email removed]} \textperiodcentered\
     \href{https://github.com/junghan0611}{github.com/junghan0611} \textperiodcentered\
+    \href{https://ax.junghanacs.com}{ax.junghanacs.com}\newline
     \href{https://notes.junghanacs.com}{notes.junghanacs.com} \textperiodcentered\
     \href{https://www.linkedin.com/in/junghan-kim-1489a4306}{linkedin.com/in/junghan-kim-1489a4306}}%
 }
 \maketitle
 #+end_export
 
-# 이 문서는 gitignore된 제출본이다. 공개하지 않고 채용사에 직접 업로드하므로 회사명·고객사· 사내 사실을 담는다. 공개면(ax.junghanacs.com)과는 별개 트랙이다. 추천인·지원 경로는 넣지 않는다.
+# 이 문서는 gitignore된 제출본이다. 공개하지 않고 채용사에 직접 업로드하므로 회사명·고객사· 사내 사실을 담는다. 공개면(ax.junghanacs.com)과는 별개 트랙이다 — 트랙은 갈라 두되 링크는 건다. 이 문서를 받은 사람이 공개 증거면으로 건너갈 자리가 있어야 하므로 연락처 줄과 §근거에 ax 주소를 싣는다(사내 사실이 그쪽으로 새는 것이 아니라, 공개된 것만 가리키는 단방향 포인터다). 추천인·지원 경로는 넣지 않는다.
 
 # 강조는 Org 문법: =*굵게*= 이고 Markdown =**굵게**= 가 아니다. 한국어에서 닫는 마커 뒤에 조사가 붙으면 강조가 아니라 별표가 그대로 인쇄되므로, 굵게는 구절 단위로 문장부호/공백 앞에서 닫는다.
 
@@ -37,7 +38,7 @@
 #+begin_export odt
 <text:p text:style-name="OrgSubtitle">모델 역량을 조직의 작업면으로 — Agent Engineering과 에이전트 플랫폼 운영</text:p>
 <text:p text:style-name="OrgCenter">김정한 (Junghan Kim) · PKM-AI Harness Engineer · From Embedded Systems to Shared Agent Work Surfaces · <text:a xlink:type="simple" xlink:href="mailto:[email removed]">[email removed]</text:a></text:p>
-<text:p text:style-name="OrgCenter"><text:a xlink:type="simple" xlink:href="https://github.com/junghan0611">github.com/junghan0611</text:a> · <text:a xlink:type="simple" xlink:href="https://notes.junghanacs.com">notes.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://www.linkedin.com/in/junghan-kim-1489a4306">linkedin.com/in/junghan-kim-1489a4306</text:a></text:p>
+<text:p text:style-name="OrgCenter"><text:a xlink:type="simple" xlink:href="https://github.com/junghan0611">github.com/junghan0611</text:a> · <text:a xlink:type="simple" xlink:href="https://ax.junghanacs.com">ax.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://notes.junghanacs.com">notes.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://www.linkedin.com/in/junghan-kim-1489a4306">linkedin.com/in/junghan-kim-1489a4306</text:a></text:p>
 #+end_export
 
 * 히스토리 :noexport:
@@ -304,6 +305,7 @@ VOC와 상담 데이터를 다루는 =voscli= 프로젝트는 에이전트가 �
 - 세션·지식 메모리 — [[https://github.com/junghan0611/andenken][andenken]] [cite:@repo-andenken]
 - 검토 가능한 공유 개발 작업면 — [[https://github.com/junghan0611/forge-config][forge-config]] [cite:@repo-forge-config]
 - 재현 가능한 Linux 기반 — [[https://github.com/junghan0611/nixos-config][nixos-config]] [cite:@repo-nixos-config]
+- 다섯 축을 한 화면에 세운 공개 증거면 — [[https://ax.junghanacs.com][ax.junghanacs.com]] [cite:@live-ax]
 - 공개 지식·문서 체계 — [[https://notes.junghanacs.com][notes.junghanacs.com]] [cite:@live-garden]
 - 도메인 에이전트의 설계 판단 — incidentcli·수문장·fast-fail·보안 대응 원칙 [cite:@note-incidentcli;@note-security-principles]
 - 구현·테스트·설계 판단의 상세 진입점 — 함께 제출하는 상세 Markdown과 증거 패키지

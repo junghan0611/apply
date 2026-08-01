@@ -135,6 +135,14 @@ v3 는 성능 수치만 뺐는데 **v4 는 자가 측정 작업량 수치까지 
 - 중요한 주장과 수치 바로 뒤에 번호 인용을 붙이고 PDF/MD 끝에 클릭 가능한 URL을 렌더한다.
 - 공개 URL이 없는 사내 수행 사실은 억지 근거를 만들지 않고 `비공개 수행 사실`로 명확히 표시한다.
 - `능력(self-owned)`, `수용(third-party action)`, `비공개 수행 사실`, `경계(not implemented/directly used)`를 혼동하지 않는다.
+- **공개 증거면 `ax.junghanacs.com` 은 세 문서 전부에 실린다** (2026-08-01). 이 깊이 문서는
+  gitignore 된 제출본이라 **받는 사람이 공개면으로 건너갈 자리가 여기 말고 없다.** 연락처 줄
+  (`\affiliation` + ODT export 두 표면) · `competency.org` §근거 · `portfolio.org` §검증 ·
+  `detail.org` §읽는 법에 각각 있고 `references.bib` 의 `@live-ax` 로 인용한다.
+  `run.sh` 의 verify 가 **PDF·ODT·MD 산출물**에서 직접 확인한다 — 소스에만 있고 어느 한 표면에서
+  빠지는 일을 막는다.
+  ⚠ 연락처 줄은 다섯 항목이라 **한 줄에 안 들어간다.** `ax` 뒤에 `\newline` 을 넣어 두 줄로
+  가른 상태이며, 이걸 지우면 `Overfull \hbox` 로 LinkedIn URL 이 판면 밖으로 나간다.
 
 ## 비공개 경계
 

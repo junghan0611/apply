@@ -110,6 +110,12 @@
 #
 # 이름 병기가 부제 옆에 앉는 이유: 이 사람의 공개 작업물 절반이 한글 이름과 별명으로
 # 검색된다. 이력서를 읽은 사람이 GitHub·가든에서 같은 사람을 찾을 수 있어야 증거가 이어진다.
+#
+# 연락처 줄은 다섯 항목이고 순서에 뜻이 있다 — 연락 → 코드 → 조준된 증거면(ax) → 가든 → 이력.
+# ax.junghanacs.com 은 이 이력서가 주장하는 것의 공개 증거면이라 가든보다 앞에 둔다.
+# ⚠ 다섯 번째가 붙으면서 한 줄을 넘긴다. \raggedright 로 오른쪽을 풀고 \emergencystretch 로
+# 마지막 줄 넘침을 흡수한다 — 이게 없으면 overfull hbox 로 linkedin URL 이 판면 밖으로 나간다.
+# 항목을 더 늘릴 거면 여기 폭부터 실측한다(`resume/run.sh all` 로그의 Overfull \hbox).
 #+latex_header: \newcommand{\cvheader}[1]{%
 #+latex_header:   \begin{minipage}[b]{0.68\linewidth}%
 #+latex_header:     {\sffamily\bfseries\Huge\color{accent}Junghan Kim}\\[3pt]%
@@ -119,11 +125,12 @@
 #+latex_header:     김정한 · GLG · 힣\\ Suwon, South Korea%
 #+latex_header:   \end{minipage}\\[5pt]%
 #+latex_header:   {\color{rulegray}\hrule height 0.8pt}\vspace{4pt}%
-#+latex_header:   {\footnotesize
+#+latex_header:   {\footnotesize\raggedright\setlength{\emergencystretch}{2em}%
 #+latex_header:     \href{mailto:[email removed]}{[email removed]} \textcolor{rulegray}{\textbar}\
 #+latex_header:     \href{https://github.com/junghan0611}{github.com/junghan0611} \textcolor{rulegray}{\textbar}\
+#+latex_header:     \href{https://ax.junghanacs.com}{ax.junghanacs.com} \textcolor{rulegray}{\textbar}\
 #+latex_header:     \href{https://notes.junghanacs.com}{notes.junghanacs.com} \textcolor{rulegray}{\textbar}\
-#+latex_header:     \href{https://www.linkedin.com/in/junghan-kim-1489a4306}{linkedin.com/in/junghan-kim-1489a4306}%
+#+latex_header:     \href{https://www.linkedin.com/in/junghan-kim-1489a4306}{linkedin.com/in/junghan-kim-1489a4306}\par%
 #+latex_header:   }\vspace{6pt}%
 #+latex_header: }
 

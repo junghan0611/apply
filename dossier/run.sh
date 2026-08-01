@@ -265,6 +265,9 @@ cmd_verify() {
     # echo가 SIGPIPE로 실패해 거짓 경고를 낼 수 있으므로 here-string으로 검사한다.
     grep -q '[email removed]' <<<"$txt" && ok "  이메일 노출" || { warn "  이메일 안 보임"; fail=1; }
     grep -q 'github.com/junghan0611' <<<"$txt" && ok "  GitHub URL 노출" || { warn "  GitHub URL 안 보임"; fail=1; }
+    # 공개 증거면. 이 깊이 문서는 gitignore 된 제출본이라 받는 사람이 공개면으로 건너갈 자리가
+    # 여기 말고 없다. 연락처 줄에서 빠지면 조용히 사라지므로 산출물 텍스트에서 직접 확인한다.
+    grep -q 'ax.junghanacs.com' <<<"$txt" && ok "  AX 증거면 URL 노출" || { warn "  ax.junghanacs.com 안 보임"; fail=1; }
     # 캡션 번호
     grep -qE '표 [0-9]|그림 [0-9]' <<<"$txt" && ok "  캡션 연번(표/그림 N) 존재" || warn "  캡션 연번 없음(이미지/표 미포함이면 정상)"
     # 편집면(ODT/DOC)도 산출물이다. PDF 만 보고 통과시키면 받는 쪽이 여는 문서가 검사 밖에 남는다.
@@ -276,6 +279,11 @@ cmd_verify() {
       local times; times="$(unzip -p "$odt" content.xml styles.xml 2>/dev/null | grep -c 'font-name[^=]*="Times New Roman"' || true)"
       [[ "$times" -eq 0 ]] && ok "  ODT 활자 계약 (Times 사용 0건)" \
         || { err "  ODT 에 Times New Roman 사용 ${times}건 — set_reference_font.py 미적용"; fail=1; }
+      # PDF만 통과시키면 편집면에서 공개 증거면이 조용히 빠져도 모른다. 실제 content.xml을 본다.
+      # set -o pipefail에서 unzip|grep -q의 조기 종료를 오판하지 않도록 먼저 문자열로 받는다.
+      local odt_xml; odt_xml="$(unzip -p "$odt" content.xml 2>/dev/null)"
+      grep -q 'ax.junghanacs.com' <<<"$odt_xml" && ok "  ODT AX 증거면 URL 노출" \
+        || { err "  ODT 에 ax.junghanacs.com 안 보임"; fail=1; }
       # 이미지가 참조만 되고 실제로 안 담기면 받는 쪽에서 빈 상자로 열린다.
       local imgs; imgs="$(unzip -l "$odt" 2>/dev/null | grep -cE 'Images/|Pictures/' || true)"
       [[ "$imgs" -gt 0 ]] && ok "  ODT 이미지 내부 임베드 ${imgs}장" || warn "  ODT 에 임베드된 이미지 없음"
@@ -292,6 +300,9 @@ cmd_verify() {
       grep -qiE 'noexport|IMAGE PROMPT|생성 프롬프트|검토 메모' "$md" \
         && { warn "  :noexport 누출 의심"; fail=1; } || ok "  :noexport 누출 없음"
       grep -q 'github.com/junghan0611' "$md" && ok "  자체 프로젝트 공개 링크 존재" || warn "  공개 링크 없음"
+      # 상세 MD까지 세 문서 모두가 공개 증거면을 가리킨다는 계약을 산출물에서 확인한다.
+      grep -q 'ax.junghanacs.com' "$md" && ok "  AX 증거면 URL 노출" \
+        || { err "  $md 에 ax.junghanacs.com 안 보임"; fail=1; }
     else
       err "  $md 없음"; fail=1
     fi

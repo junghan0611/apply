@@ -154,18 +154,24 @@ cmd_verify() {
 			[[ "$miss" -eq 0 ]] && ok "  활자 누락 없음" || { err "  Missing character ${miss}건"; fail=1; }
 			[[ "$over" -eq 0 ]] && ok "  판면 초과 없음" || warn "  Overfull hbox ${over}건"
 		fi
+		# set -o pipefail 아래에서 `echo "$txt" | grep -q`는 grep 조기 종료 뒤 echo가 SIGPIPE로
+		# 실패해 거짓 경고를 낼 수 있다. 판정용 grep은 here-string으로 고정한다.
 		# 별표 누출 — Org 굵게가 렌더 안 되고 별표로 샌 경우.
-		if echo "$txt" | grep -q '[*]'; then err "  별표(*) 누출 — 굵게 렌더 실패"; fail=1; else ok "  별표 누출 없음"; fi
+		if grep -q '[*]' <<<"$txt"; then err "  별표(*) 누출 — 굵게 렌더 실패"; fail=1; else ok "  별표 누출 없음"; fi
 		# :noexport 메모 누출.
-		if echo "$txt" | grep -qiE 'noexport|생성 프롬프트|IMAGE PROMPT|TODO|검토 메모'; then
+		if grep -qiE 'noexport|생성 프롬프트|IMAGE PROMPT|TODO|검토 메모' <<<"$txt"; then
 			err "  :noexport 내용 누출 의심"; fail=1; else ok "  :noexport 누출 없음"; fi
 		# 연락 경로가 없는 이력서는 이력서가 아니다.
-		echo "$txt" | grep -q '[email removed]'   && ok "  이메일 노출" || { err "  이메일 안 보임"; fail=1; }
-		echo "$txt" | grep -q 'github.com/junghan0611' && ok "  GitHub URL 노출" || { err "  GitHub URL 안 보임"; fail=1; }
-		echo "$txt" | grep -qi 'linkedin.com/in/'      && ok "  LinkedIn URL 노출" || { err "  LinkedIn URL 안 보임"; fail=1; }
+		grep -q '[email removed]' <<<"$txt"   && ok "  이메일 노출" || { err "  이메일 안 보임"; fail=1; }
+		grep -q 'github.com/junghan0611' <<<"$txt" && ok "  GitHub URL 노출" || { err "  GitHub URL 안 보임"; fail=1; }
+		grep -qi 'linkedin.com/in/' <<<"$txt"      && ok "  LinkedIn URL 노출" || { err "  LinkedIn URL 안 보임"; fail=1; }
+		# 공개 증거면. 이력서가 주장하는 것을 읽는 사람이 건너가 확인할 자리다 — 연락처 줄에서
+		# 조용히 빠지면 제출본 전체가 그 자리를 잃는데 다른 검사는 아무것도 말하지 않는다.
+		grep -q 'ax.junghanacs.com' <<<"$txt"      && ok "  AX 증거면 URL 노출" || { err "  ax.junghanacs.com 안 보임"; fail=1; }
+		grep -q 'notes.junghanacs.com' <<<"$txt"   && ok "  가든 URL 노출" || { err "  notes.junghanacs.com 안 보임"; fail=1; }
 		# 공개 증거가 PDF 텍스트에도 보여야 한다. 숨은 링크 annotation만 있으면 사람은 눌러도
 		# ATS/상대 에이전트가 추출한 텍스트에서는 사라질 수 있으므로 URL 자체를 보인다.
-		if echo "$txt" | grep -q 'Public Evidence'; then
+		if grep -q 'Public Evidence' <<<"$txt"; then
 			local evidence_links
 			evidence_links="$(echo "$txt" | grep -o 'github.com/junghan0611/' | wc -l)"
 			[[ "$evidence_links" -ge 2 ]] && ok "  공개 증거 URL ${evidence_links}개" \
