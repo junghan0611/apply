@@ -96,7 +96,7 @@ memory layer → make harnesses addressable → close the development loop.*
 :CUSTOM_ID: platform-operations
 :END:
 
-Ran a self-hosted multi-agent harness through 20+ upstream version cycles on Oracle Cloud ARM.
+Operated a self-hosted multi-agent harness across repeated upstream release changes on Oracle Cloud ARM.
 Instrumented a latency regression to a spinning gateway process, chose the rollback target on
 evidence rather than recency, and wrote the policy that followed: no two-version jumps, stage on a
 non-production agent for ≥24h before promotion, responsiveness is the SLO. A later upstream release

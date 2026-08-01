@@ -20,7 +20,7 @@
 
 I build and operate the systems around models: harness boundaries, retrieval, permissions, evidence
 contracts, upgrade policy, and the work surface through which a human takes responsibility. I have
-run a self-hosted multi-agent harness through 20+ upstream version cycles, separated semantic
+operated a self-hosted multi-agent harness across repeated upstream changes, separated semantic
 memory into its own hybrid-retrieval layer, and published a dispatch substrate that preserves each
 harness's transcript, authentication, and runtime ownership.
 

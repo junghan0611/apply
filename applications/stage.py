@@ -43,6 +43,7 @@ SLOT = {
 	"_Competency": "경력기술서·역량기술서 (5쪽) — 선택 슬롯이 **있으면** 올린다",
 	"_Portfolio": "포트폴리오 (12쪽) — 선택 슬롯이 **있으면** 올린다. 칸이 하나면 이것을",
 	"cover-letter.txt": "커버레터 — 전체 복사해 붙여넣는다 (칸 유무·상한은 그 건 `submission.md` §폼)",
+	"answers.txt": "서술형 문항 답 — 문항별로 복사해 붙여넣고 **폼 카운터를 눈으로 확인**한다",
 }
 
 
@@ -164,6 +165,28 @@ def paste_body(path: Path) -> str | None:
 	return m.group(1).strip() + "\n" if m else None
 
 
+def answer_blocks(path: Path) -> str | None:
+	"""answers.md 의 문항별 ```text 블록 — 폼 칸에 그대로 들어갈 평문만.
+
+	2026-08-01 GLG: *「텍스트 일단 여기 폴더에 회수 꼭 해둬. 비슷한 질문 왔을 때 QNA FAQ
+	할 수 있으니까.」* 근거·검수 메모가 섞인 `answers.md` 를 폼 앞에서 열면 **어디까지가
+	붙여넣을 본문인지** 매번 다시 읽어야 한다. 커버레터와 같은 계약으로 뽑아 둔다.
+	"""
+	text = path.read_text()
+	blocks = re.findall(
+		r"^## (문항 [^\n]+)\n(?:(?!^## ).)*?^```text\n(.*?)^```",
+		text, re.M | re.S,
+	)
+	if not blocks:
+		return None
+	out = ["# 폼에 그대로 붙여넣을 본문 — 생성: applications/stage.py",
+	       "# 정본은 answers.md (근거·검수 메모는 그쪽에 있다). 손으로 고치지 않는다.", ""]
+	for title, body in blocks:
+		body = body.strip()
+		out += [f"## {title}", f"# {len(body)}자 (공백 포함)", "", body, ""]
+	return "\n".join(out) + "\n"
+
+
 def stage(case: Path) -> tuple[str, list[str], list[str]]:
 	record = case / "submission.md"
 	text = record.read_text()
@@ -206,6 +229,15 @@ def stage(case: Path) -> tuple[str, list[str], list[str]]:
 		else:
 			print(f"  ⚠ {letter.name} 에 §붙여넣을 본문 절이 없다")
 
+	answers = case / "answers.md"
+	if answers.exists():
+		body = answer_blocks(answers)
+		if body:
+			(out / "answers.txt").write_text(body)
+			staged.append("answers.txt")
+		else:
+			print(f"  ⚠ {answers.name} 에 「## 문항 …」 + ```text 블록이 없다")
+
 	# 「추가 첨부」에서 빠진 관리 대상 파일은 치운다.
 	# **남겨 두면 오업로드 위험**이다 — README 는 「이 폴더가 올라갈 파일 전부」라고 말하는데
 	# 기록은 안 낸다고 말하는 모순이 생긴다. SOCAR 가 실제로 그 상태였다 (GPT 교차검수 P0-4).
@@ -231,10 +263,24 @@ def stage(case: Path) -> tuple[str, list[str], list[str]]:
 		if f.is_file() and f.name not in {"MANIFEST.sha256", "README.md", "SOURCES.md"}
 	)
 
-	lines = [
-		f"# 제출 세트 — {case.name}",
-		"",
-		"**이 폴더가 실제로 올라갈 파일 전부다.** 검수는 여기서 한다 — 소스(org/md)가 아니라",
+	# 합본을 내는 건에서는 「이 폴더가 전부다」가 **거짓**이다 — 실제로 칸에 올라가는 것은
+	# build/ 의 합본이고 여기 있는 것은 그 입력이다. 42dot·카카오헬스케어 README 가 그렇게
+	# 거짓말하고 있었다(2026-08-01 발견). 검수를 세트 위에서 한다는 계약이 성립하려면
+	# 세트 문서가 실제 제출과 같아야 한다.
+	merged = re.search(r"-sOutputFile=(\S+\.pdf)", text) if "합본 재현" in text else None
+
+	lines = [f"# 제출 세트 — {case.name}", ""]
+	if merged:
+		lines += [
+			f"> 🔴 **이 건은 합본을 낸다 — 실제로 칸에 올라가는 파일은 `{merged.group(1)}` 다.**",
+			"> 아래 목록은 **그 합본의 입력**과 별도 칸에 올라가는 파일이 섞여 있다.",
+			"> 어느 파일이 어느 칸으로 가는지는 그 건 `submission.md` §낸 것 · §합본 재현이 정본이다.",
+			"",
+		]
+	lines += [
+		"**이 폴더가 실제로 올라갈 파일 전부다.** 검수는 여기서 한다 — 소스(org/md)가 아니라"
+		if not merged else
+		"**검수는 여기서 한다** — 소스(org/md)가 아니라",
 		"나갈 물건 위에서. 고칠 것이 있으면 org·파이프라인을 고치고 `./stage.py` 를 다시 돌린다.",
 		"",
 		"| 파일 | 폼의 어느 칸 |",

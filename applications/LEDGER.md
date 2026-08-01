@@ -18,7 +18,7 @@
 |---|---|---|---|---|---|---|
 | NHN | AX Transformation / AI Infra (BE) | submitted | 2026-07-20 | NHN 채용홈 + **직원 추천** | **dossier 3종** (이력서 컷 아님) | `nhn--ax-transformation-ai-infra` |
 | Insighter | AX Engineer | saved | — | LinkedIn Easy Apply | — | `insighter--ax-engineer` |
-| Hyundai AutoEver | AI Agent Engineer | **replied**(서류합격 2026-07-31 · 상세정보 제출 2026-08-01) | 2026-07-28 | 그리팅 (자체 도메인) | AI Engineer + 국문 자기소개서 | `hyundai-autoever--ai-agent-engineer` |
+| Hyundai AutoEver | AI Agent Engineer | replied | 2026-07-28 · **서류합격 2026-07-31** · **상세정보 제출 2026-08-01** | 그리팅 (자체 도메인) | AI Engineer + 국문 자기소개서 | `hyundai-autoever--ai-agent-engineer` |
 | DEEPX | AI Agent Workflow Automation Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | AI Engineer + 경력기술서 통합 (7쪽) | `deepx--ai-agent-workflow-automation-engineer` |
 | DEEPX | Linux BSP Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | Embedded + 경력기술서 통합 (5쪽) | `deepx--linux-bsp-engineer` |
 | Enhans | Forward Deployed Engineer (7년 이상) | submitted | 2026-07-28 | ninehire (자체 채용홈) | FDE | `enhans--forward-deployed-engineer` |
@@ -31,7 +31,7 @@
 | 42dot | Senior AI Agent Engineer (Intelligence Service) | submitted | 2026-07-30 | Ashby (가입 불필요) | **이력서+경력기술서 8쪽 합본** + Portfolio 12쪽(전용 칸) + **Motivation 805자** | `42dot--senior-ai-agent-engineer-intelligence-service` |
 | MakinaRocks | [FDE] AI Agent Application Engineer | ready | — | 그리팅 (자체 도메인) | FDE | `makinarocks--ai-agent-application-engineer-fde` |
 | SOCAR | Platform Engineer | submitted | 2026-07-30 | 그리팅 (자체 도메인) | DevEx + Portfolio 12쪽 | `socar--platform-engineer` |
-| Upstage | AI Engineer - Agents | **ready**(2026-07-31 목표 제출) | — | 그리팅 (자체 도메인) | AI Engineer + 경력·역량기술서 5쪽 + 포트폴리오 12쪽 | `upstage--ai-engineer-agents` |
+| Upstage | AI Engineer - Agents | ready | — (**2026-07-31 목표 제출**) | 그리팅 (자체 도메인) | AI Engineer + 경력·역량기술서 5쪽 + 포트폴리오 12쪽 | `upstage--ai-engineer-agents` |
 | FriendliAI | Software Engineer - AI Agents | submitted | 2026-07-30 | Ashby (가입 불필요) | AI Engineer (⛔ 폼에 첨부 슬롯 1개 — 깊이 문서 칸 없음) | `friendliai--software-engineer-ai-agents` |
 | Toss | AI Engineer (Platform) | submitted | 2026-07-30 | **토스 자체 채용홈** | **이력서+경력기술서 8쪽 합본** · 경력 3건 직접 입력 · ⛔ 커버레터 칸 없음 | `toss--ai-engineer-platform` |
 | Bear Robotics | Systems Software Engineer (Linux Platform) | ready | — | **Breezy HR** (자체 보드) | Embedded (영문 CV 필수) | `bear-robotics--systems-software-engineer-linux-platform` |
@@ -40,14 +40,14 @@
 | Telit Cinterion 🌐 | Edge AI Software Engineer | ready | — | **Paylocity** (자체 보드) | Embedded | `telit-cinterion--edge-ai-software-engineer` |
 | AIRS Medical | AX Engineer | submitted | 2026-07-30 | 그리팅 (자체 도메인) | DevEx + Competency + Portfolio | `airs-medical--ax-engineer` |
 | GE HealthCare 🌐 | Senior Software Engineer | draft | — | **Workday** (공식 외부 사이트) | 미정 — Systems Software 컷 판단 | `ge-healthcare--senior-software-engineer` |
-| XCENA (엑시나) | System Software 계열 — **회사 스캔 23건** | **held** | — | 그리팅 (자체 도메인) | — (목록만 · GLG: "너무 시스템") | `xcena--system-software` |
+| XCENA (엑시나) | System Software 계열 — **회사 스캔 23건** | held | — | 그리팅 (자체 도메인) | — (목록만 · GLG: "너무 시스템") | `xcena--system-software` |
 | Holiday Robotics | Forward Deployed Robotics Engineer (3–8년) | submitted | 2026-07-30 | 자체 채용홈 `holiday-robotics.com` (로그인 없음) | FDE + **커버레터** | `holiday-robotics--forward-deployed-robotics-engineer` |
 | Hanwha Vision (한화비전) | AI Agent Architecture Lead (석사+10년, Director) | submitted | 2026-07-30 | **ninehire** `6NDP9uTE` (로그인 없음) | AI Engineer + **전용 포트폴리오 합본 18쪽** (`submit/`) — 서술형 칸 없음 | `hanwha-vision--ai-agent-architecture-lead` |
 | NHN | LLM 기술 개발 (LLM / Agent) — **NHN 2번째 건** | draft | — | **`careers.nhn.com`** — ⚠ **로그인 필요** | AI Engineer + **포트폴리오 필수** | `nhn--llm-technology-development-llm-agent` |
 | 카카오헬스케어 (Kakao Healthcare) | [경력] AI Agent Engineer | submitted | 2026-07-30 | **자체 채용홈** `recruit.kakaohealthcare.com` (ninehire 화이트라벨) | **합본 20쪽 한 파일** (이력서 3 + Competency 5 + Portfolio 12) — 폼 슬롯이 하나뿐 · 커버레터는 칸 없음 | `kakao-healthcare--ai-agent-engineer` |
 | 카카오뱅크 (Kakao Bank) | **인재풀 등록** — 지원분야 `Platform Development` | submitted | 2026-07-30 | **`kakaobank.recruiter.co.kr`** (recruiter.co.kr) · 접수 ~2026-12-31 | AI Engineer + Competency + Portfolio + 공개 좌표 2 | `kakao-bank--talent-pool-platform-development` |
 | 카카오뱅크 (Kakao Bank) | **데이터 엔지니어 - Data Warehouse** (`260510`, 마감 2026-08-06) | draft | — | **`recruit.kakaobank.com`** 개편 채용홈 → 폼은 `kakaobank.recruiter.co.kr` | 🔴 **자기소개서 2문항 × 1,000자가 관문** (`pre-question.md`) · 첨부는 경력기술서 란(Competency + 이력서 컷) + 포트폴리오 란(Portfolio) · **이력서 컷 미확정** | `kakao-bank--data-engineer-data-warehouse` |
-| IGNITE | AI Developer | draft | — | 회사 자체 ATS (ninehire) | AI Engineer | `ignite--ai-developer` |
+| IGNITE | AI Developer | submitted | **2026-08-01** | 회사 자체 ATS (ninehire, `ignite.ninehire.site` · 상시) · 지원경로 `채용포털` | **이력서+경력기술서 8쪽 합본** + Portfolio 12쪽 + **실제 서술형 260·286·260자** | `ignite--ai-developer` |
 | Wonderful 🌐 | Forward Deployed Engineer (South Korea) | ready | — | Ashby (가입 불필요) | FDE (기존 PDF 재사용) | `wonderful--forward-deployed-engineer` |
 
 ---
@@ -59,6 +59,36 @@
 - 같은 회사 다른 직무는 **별도 건**이다. 같은 직무 재지원도 별도 건이고, 폴더명 뒤에
   `--2`를 붙인다.
 - 회신·면접 일정은 그 건의 `submission.md` 하단 「이후 기록」에 시간순으로 덧붙인다.
+
+## ⭐ 계보 — 앞의 제출이 다음 제출을 강화한다 (시간축)
+
+> **2026-08-01 GLG**: *"제출하면서 앞서 제출한 것들을 통해서 계속 개선이 되거든. 시간 축으로
+> 이 작업의 타임라인이 이 작업 자체를 강화시키고 있다. 그래서 원장에 잘 기록해야 된다."*
+
+**이 저장소의 산출물은 지원 서류가 아니라 「낼수록 좋아지는 제출 기계」다.** 위 표가 *무엇을
+냈는가*라면 이 절은 *그 제출이 다음 제출의 무엇을 바꿨는가*다. 한 건에서 드러난 것은 그 건에
+남기지 않고 게이트·스크립트·계약으로 올려서 **다음 건이 자동으로 물려받게** 한다.
+
+| 날짜 | 어느 건이 드러냈나 | 무엇이 바뀌었나 (다음 건이 물려받은 것) |
+|---|---|---|
+| 07-28 | **DEEPX ×2** | 같은 그리팅인데 자기소개서 슬롯 대신 **이력서+경력기술서 통합 PDF**를 요구했다 → 「폼 구조는 ATS 가 아니라 **회사**가 정한다」. 이후 모든 건에서 **폼을 먼저 실측**한다 |
+| 07-29 | 제출 5건 누적 | GLG 원칙4 — **자가 측정 수치를 뺀다**. 이력서 6컷 + dossier 3문서 재빌드. 이미 나간 5건은 **그대로 둔다**(그때 나간 문서가 사실이다) → §메모 ② |
+| 07-29 | 검수 방식 | *「제출할 양식 그대로 열어서 볼 거야」* → **`stage.py` 탄생.** 검수는 소스(org·md)가 아니라 **나갈 물건** 위에서 한다 |
+| 07-30 | **AIRS Medical** | 「이력서만 달랑」이 아니라 **Competency 5쪽 + Portfolio 12쪽**을 함께 냈다 → 다음 11건의 세트가 3종이 됐다 |
+| 07-30 | GLG 지적 | *「하나만 내기에는 성의가 없다」* — 구조적 원인은 **`stage.py` 가 `첨부 컷` 행만 읽던 것**이었다. `추가 첨부` 행 확장 → **Lunit·SOCAR·Upstage 의 낡은 판정 3건이 뒤집혔다** |
+| 07-30 | 저장소 위생 | **PDF 를 git 에 넣지 않는다** → `MANIFEST.sha256`(지문) + `SOURCES.md`(재현 경로)가 증언을 대신한다. 지문 없던 제출 4건을 소급 보완 |
+| 07-30 | 재타깃 사고 | **`check.py --deep`** 신설 — AIRS 조준판이 Lunit 세트에 실제로 심어지는 것을 잡았다. 이후 세트를 깔 때마다 기계가 본다 |
+| 07-30 | **카페 12건 실측** | 계약 넷이 굳었다 — ① 첨부는 「칸이 있는가」 다음 「독자가 읽을 언어인가」 ② **ninehire 는 에이전트가 파일을 못 올린다** ③ 서술형은 **칸이 묻는 것만** 답한다 ④ **회사 축이 이력을 쓰는 방식을 바꾼다**(FuriosaAI — 임베디드 이력을 뺀 판단이 틀렸다) |
+| 07-31 | **현대오토에버 첫 서류합격** | `submitted` 다음이 침묵이 아니게 됐다 → **§제출 이후 여섯 단계 루프** + `FAQ.md` §11(**대비 학습을 하지 않는다**). 다음 회사의 같은 메일은 이 절부터 편다 |
+| 08-01 | **IGNITE** | ⭐ **계약은 새 건에 자동으로 붙지 않는다.** 07-30 에 고친 「이력서 한 장」이 07-31 에 만든 새 건에서 **그대로 재발**했다 — `submission.md` 에 `추가 첨부` 행이 없으면 `stage.py` 는 dossier 를 깔 **경로 자체가 없다**. → **새 건을 만들 때 `추가 첨부` 행을 먼저 판정한다** |
+| 08-01 | **IGNITE (답 회수)** | GLG: *「텍스트 일단 여기 폴더에 회수 꼭 해둬. 비슷한 질문 왔을 때 QNA FAQ 할 수 있으니까.」* → `stage.py` 가 `answers.md` 의 문항별 ```text 블록을 **`submit/answers.txt`** 로 뽑는다(커버레터와 같은 계약). **글자 수를 자동으로 세는데 폼 카운터와 정확히 일치**했다(264·257·229) — 셈법이 실측으로 검증됐다. 「도구·판단·운영의 경계」 3문항은 **AI 툴링 직무에서 반복될 묶음**이라 `FAQ.md` §9 에 재사용 축으로 올렸다 |
+| 08-01 | **FAQ 자기모순** | §9 골격 3번이 *「자가 측정 수치를 넣지 않는다」* 고 명시하는데 **바로 아래 예문에 「하루 24커밋·163개 테스트·파일 충돌 0」이 살아 있었다.** 07-29 원칙4 를 적용할 때 이력서·dossier 만 훑고 **재사용 예문을 놓친 것**이다. **규칙과 예문이 어긋나면 예문이 이긴다** — 그대로 복사해 쓰는 자리다. 제출 완료된 스냅샷 2건(NHN·AutoEver)은 계약대로 그대로 둔다 |
+| 08-01 | **IGNITE (세트 문서)** | 합본을 내는 건에서 `submit/README.md` 의 *「이 폴더가 실제로 올라갈 파일 전부다」* 가 **거짓**이었다 — 실제로 칸에 올라가는 것은 `build/` 의 합본이고 세트에 있는 건 그 **입력**이다. 42dot·카카오헬스케어도 같았다. `stage.py` 가 §합본 재현을 감지해 **합본 경로를 README 맨 위에 박게** 했다. **「검수는 세트 위에서 한다」는 계약은 세트 문서가 사실일 때만 성립한다** (제출 완료된 두 건은 계약대로 건드리지 않는다) |
+| 08-01 | **IGNITE (게이트)** | 🔴 **원장을 꾸미면 게이트가 그 건을 조용히 면제했다.** 상태 셀이 `**ready**(…목표 제출)` 처럼 꾸며진 행은 `check.py` 가 통째로 건너뛰면서 출력은 `ok` 였다 — **4건이 그렇게 빠져 있었다**(AutoEver·Upstage·XCENA·IGNITE). fail-closed 가드를 넣어 **검사 대상 30 → 33건**. `aim_leak` fail-open(07-30 P0-C)과 **같은 종류**다 |
+
+**읽는 법 — 이 표가 말하는 한 가지**: 실패는 그 건의 실수로 끝나지 않고 **스크립트·게이트·계약
+중 하나로 올라간다.** 올라가지 않은 교훈은 반드시 재발한다(08-01 IGNITE 두 행이 그 증거다).
+그러니 한 건을 닫을 때 묻는 마지막 질문은 *「이번에 알게 된 것이 어디에 박혔는가」*다.
 
 ## 메모
 

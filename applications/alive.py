@@ -61,6 +61,7 @@ TARGETS = [
 	("Kakao Healthcare", "https://recruit.kakaohealthcare.com/job_posting/e9Q82rF9", "ninehire"),
 	("NHN (2번째)", "https://careers.nhn.com/recruits/4370711607830110861", "plain"),
 	("Upstage", "https://careers.upstage.ai/ko/o/194880", "greeting"),
+	("IGNITE", "https://ignite.ninehire.site/job_posting/xGwZ5VTB", "ninehire"),
 	# 보류 2건 — 되살릴 때를 위해 같이 본다
 	("Cohere (보류)", "https://jobs.ashbyhq.com/cohere/[uuid removed]/application", "ashby"),
 	("OpenAI (보류)", "https://jobs.ashbyhq.com/openai/[uuid removed]/application", "ashby"),

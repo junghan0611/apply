@@ -17,8 +17,10 @@ import sys
 
 ROOT = Path(__file__).resolve().parent
 LEDGER = ROOT / "LEDGER.md"
+# LEDGER.md §상태 범례가 정본이다 — `held` 가 빠져 있어 XCENA 행이 검사에서 조용히
+# 빠지고 있었다(2026-08-01).
 STATUSES = {"draft", "ready", "saved", "submitted", "replied", "interview",
-            "offer", "rejected", "closed"}
+            "offer", "rejected", "closed", "held"}
 
 # 조준 누출 검사 — 폴더 슬러그 → 깊이 문서 본문에서 찾을 표기.
 # 자기 건의 표기는 허용하고, 다른 건의 표기가 나오면 조준을 되돌리지 않은 것이다.
@@ -160,6 +162,24 @@ def table_rows(text):
 			yield cols
 
 
+def unknown_status_rows(text):
+	"""7열 행인데 상태 셀이 STATUSES 밖이면 `table_rows` 가 **조용히 건너뛴다.**
+
+	2026-08-01 발견 — 상태 셀을 `**ready**(2026-07-31 목표 제출)` 처럼 꾸미면 그 건이
+	게이트에서 통째로 빠지는데 출력은 `ok` 였다. `aim_leak` 의 fail-open(2026-07-30 GPT
+	재검 P0-C)과 같은 종류다. **원장을 꾸며서 검사를 면제받는 길을 막는다** — 상태 셀은
+	순수 상태어 하나만 두고, 부연은 다른 열이나 그 건의 `submission.md` 에 적는다.
+	실제로 4건(AutoEver · Upstage · XCENA · IGNITE)이 이렇게 빠져 있었다.
+	"""
+	for line in text.splitlines():
+		if not line.startswith("|") or line.startswith("|---") or "| 회사 |" in line:
+			continue
+		cols = [c.strip().strip("`") for c in line.strip().strip("|").split("|")]
+		if len(cols) == 7 and cols[2] not in STATUSES:
+			yield (f"LEDGER 「{cols[0]}」: 상태 셀이 「{cols[2]}」라 이 행이 검사에서 빠진다 "
+			       f"— 상태 셀에는 순수 상태어 하나만 둔다")
+
+
 def field(text, name):
 	m = re.search(rf"^\|\s*{re.escape(name)}\s*\|\s*(.*?)\s*\|$", text, re.M)
 	return m.group(1) if m else ""
@@ -170,6 +190,7 @@ def main():
 	fails = []
 	checked = 0
 	deep_seen = 0
+	fails += list(unknown_status_rows(LEDGER.read_text()))
 	for company, role, status, date, channel, cut, folder in table_rows(LEDGER.read_text()):
 		if folder.startswith("../"):
 			continue  # 닫힌 외부 레인은 자기 검증 계약을 쓴다.
