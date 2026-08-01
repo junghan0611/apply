@@ -18,7 +18,7 @@
 |---|---|---|---|---|---|---|
 | NHN | AX Transformation / AI Infra (BE) | submitted | 2026-07-20 | NHN 채용홈 + **직원 추천** | **dossier 3종** (이력서 컷 아님) | `nhn--ax-transformation-ai-infra` |
 | Insighter | AX Engineer | saved | — | LinkedIn Easy Apply | — | `insighter--ax-engineer` |
-| Hyundai AutoEver | AI Agent Engineer | **replied**(서류합격, 2026-07-31) | 2026-07-28 | 그리팅 (자체 도메인) | AI Engineer + 국문 자기소개서 | `hyundai-autoever--ai-agent-engineer` |
+| Hyundai AutoEver | AI Agent Engineer | **replied**(서류합격 2026-07-31 · 상세정보 제출 2026-08-01) | 2026-07-28 | 그리팅 (자체 도메인) | AI Engineer + 국문 자기소개서 | `hyundai-autoever--ai-agent-engineer` |
 | DEEPX | AI Agent Workflow Automation Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | AI Engineer + 경력기술서 통합 (7쪽) | `deepx--ai-agent-workflow-automation-engineer` |
 | DEEPX | Linux BSP Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | Embedded + 경력기술서 통합 (5쪽) | `deepx--linux-bsp-engineer` |
 | Enhans | Forward Deployed Engineer (7년 이상) | submitted | 2026-07-28 | ninehire (자체 채용홈) | FDE | `enhans--forward-deployed-engineer` |
@@ -100,11 +100,21 @@
 - ⚠ **제출본과 현재 이력서의 차이 (2026-07-28 이후)** — 면접에서 되물릴 수 있으니 알고 있는다.
   - 2026-07-28 제출한 3건(AutoEver · DEEPX ×2)의 PDF 에는 연구실 기간이 **`2018 – 2021`** 로
     적혀 있다. 이후 이력서를 **`2018 – 2022`** 로 고쳤다(연 단위 — `resume/AGENTS.md` §날짜 입도).
-  - **각 건의 `submit/` 스냅샷이 실제로 낸 문서다.** 다시 빌드해서 덮지 않는다. 물어보면
-    "2022년까지가 맞고 당시 서류에 2021로 나갔다"가 사실이다. 정확한 월은 `FAQ.md` §3
+  - **각 건의 `submit/` 스냅샷이 실제로 낸 문서다.** 다시 빌드해서 덮지 않는다 — **단, 그 건에
+    다음 업로드가 실제로 걸려 있으면 예외다.** 2026-08-01, AutoEver 는 상세정보 기재를 위해
+    같은 파일을 다시 올려야 했고, 그 시점에 `./build.sh` 를 재실행해 `2018 – 2022` 로 잡았다
+    (근거: `hyundai-autoever--ai-agent-engineer/submission.md` §상세 정보 기재). **DEEPX
+    ×2 는 다음 업로드가 없어 원래 제출본(`2018–2021`) 그대로 둔다** — 이 규칙이 여전히 적용된다.
+  - 물어보면 "2022년까지가 맞고 당시 서류에 2021로 나갔다"가 사실이다. 정확한 월은 `FAQ.md` §3
     (`2022.06`), 증빙은 **공단 가입이력 증명서**로 낸다.
   - 스택의 `A2A` 는 제출본에도 있고 현재 이력서에도 **유지**한다. `home agent-config` /
     `edge agent-config` 세트로 실제로 파고 있는 주제다(프로토타입 전 단계).
+  - ⭐ **같은 계열의 델타 하나 더 (2026-08-01 발견)** — 이력서의 **`NEMO-UX 2013 – 2017`**
+    (연 단위, 박사과정과 병행한 준비기간 포함 서사)도 정밀 값과 다르다. NHN 에 실제로 신고한
+    공식 재직기간은 **`2015.08.01 – 2017.08.31`**(정확히 법인 2년) —
+    `nhn--ax-transformation-ai-infra/submit/KimJunghan_AX_Applicant_Form.md` 가 원본이다.
+    구조화 경력 입력 폼(월 단위를 요구하는 자리)에는 **이 정밀값을 쓴다.** 이력서의 「2013」은
+    허위가 아니라 준비기간을 포함한 서사적 표기 — 물으면 그렇게 답한다.
 
 - **DEEPX 2건 (2026-07-28)** — 그리팅이지만 다른 회사 폼과 구조가 달랐다. 자기소개서
   슬롯 대신 **이력서+경력기술서 통합 PDF 하나**와 300자 답변을 요구했다.
