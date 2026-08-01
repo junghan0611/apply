@@ -103,6 +103,9 @@ applications/check.py --deep     # 중립인지 반드시 확인
 
 - **선택 슬롯이 하나뿐이면 `Portfolio` 12쪽**을 올린다(더 두껍고 이미지로 증명한다).
 - **슬롯이 없으면 그냥 둔다.** 없는 칸을 만들려고 폼과 씨름하지 않는다.
+- 🔴 **포트폴리오를 `필수` 로 받는 폼이 있다** (텔레칩스, 2026-08-01 실측). 이때는 「안 붙인다」가
+  선택지가 아니다. **AX 2종을 아무 데나 밀어 넣지 말고 그 축의 조준 빌드를 뜬다** —
+  선례는 `applications/deepx--linux-bsp-engineer/`(이력서 컷 + `experience-detail.md` → `pdfunite`).
 - 🔴 **선택 첨부를 올리면 동의 항목이 하나 더 붙는 폼이 있다** — Lunit 「(선택) 추가 지원
   서류 수집 동의」 · 한화비전 「선택항목 수집 동의」. **미동의로 내면 올린 파일이 처리되지
   않는다.** 어제 Lunit 기록에는 「체크 불필요」라고 적혀 있었다 — 고쳤다.
@@ -158,12 +161,12 @@ applications/check.py --deep     # 중립인지 반드시 확인
 | **16** ⭐ | **카카오헬스케어** | `_AI` + **Competency + Portfolio + 커버레터** | `https://recruit.kakaohealthcare.com/job_posting/e9Q82rF9/apply` | 🆕 **2026-07-30 별동대로 새로 열린 건.** ninehire 화이트라벨 · 공고 열림 실측(`in_progress`·`until_filled`). **JD 가 이 배치에서 가장 정면**이다 — 밑바닥부터 만드는 harness · subagent/skill/workflow 인터페이스 · 평가·관측 · LLM 서빙 라우팅 · STT/OCR 도입 판단. ⚠ **폼 미실측**(클라이언트 렌더) — 서술형 칸·문서 슬롯 수는 열어 봐야 안다. 🔴 **회사 고지상 「현재 연봉(고정급)」이 필수**다 — **GLG 직접 입력.** 🔴 생년월일·성별·주소도 필수. ⚠ ninehire 는 **에이전트가 업로드 못 한다** |
 | ~~1~~ | ~~**Holiday Robotics** 🤖~~ | `_FDE` + 커버레터 | — | ✅ **submitted 2026-07-30.** 커버레터 387단어 + FDE 이력서. 자체 평가는 `submission.md` |
 | ~~2~~ | ~~**AIRS Medical**~~ | `_DEVEX` + Competency + Portfolio | — | ✅ **submitted 2026-07-30.** 이력서만 넣지 않고 `dossier/` 5쪽+12쪽을 **AIRS AX 조준으로 재타깃**해 함께 냈다 |
-| 3 | **Bear Robotics** | `_EMB` + **커버레터(조건부)** | `https://bear-robotics.breezy.hr/p/5d59d1cd221e-systems-software-engineer-linux-platform/apply` | Breezy. **영문 CV 필수** — 여섯 컷 전부 영문이라 그대로 통과. **영문 커버레터 초안 있음**(`submit/cover-letter.txt`, 474단어) — ⚠ **칸 유무 미실측**, 파일 업로드형이면 PDF 라 집 축 |
+| ~~3~~ | ~~**Bear Robotics**~~ | `_EMB` + **커버레터(조건부)** | `https://bear-robotics.breezy.hr/p/5d59d1cd221e-systems-software-engineer-linux-platform/apply` | ⛔ **제외 2026-08-01 — AI 연결 보직이 아니다.** 회사는 AI 서비스 로봇(GLG: *「로봇도 좋아」*)이지만 **보직은 로봇 기반 리눅스 시스템·배포·인증 인프라**다. 담당업무 10줄에 AI가 없다. **로봇 축에서 AI 보직이 열리면 그때 낸다.** ↓ 아래는 종전 메모. Breezy. **영문 CV 필수** — 여섯 컷 전부 영문이라 그대로 통과. **영문 커버레터 초안 있음**(`submit/cover-letter.txt`, 474단어) — ⚠ **칸 유무 미실측**, 파일 업로드형이면 PDF 라 집 축 |
 | 4 | **Toss** | `_AI` + **커버레터(조건부)** | `https://toss.im/career/apply/basic/7646941003` | 토스 자체 폼. **계정 생성 필요할 수 있음 — GLG 직접.** **국문 커버레터 있음**(`submit/cover-letter.txt`, 1,415자) — 공고가 지정한 「목적 → 수단 → 해결 방식」 형식으로 썼다. ✅ **2026-07-30 사실 정정** — 3문단 「여섯 개 하네스」를 **다섯**으로 고쳤다(SSOT 기준, 나열된 다섯과 일치). ⚠ **칸 유무 미실측** |
 | 5 | **FriendliAI** | `_AI` | `https://jobs.ashbyhq.com/friendliai/[uuid removed]/application` | Ashby. 가입 불필요 |
-| 6 | **Sonatus** 🌐 | `_EMB` | `https://www.linkedin.com/jobs/view/4380679251/` → **「간편 지원」** | Easy Apply 5단계. ⚠ **LinkedIn 저장 이력서가 기본 선택**이라 올릴 때 파일 확인 |
-| 7 | **Telit Cinterion** 🌐 | `_EMB` | `https://recruiting.paylocity.com/Recruiting/jobs/Apply/4158364` | Paylocity |
-| 8 | **Telechips** | `_EMB` | `https://careers.telechips.com/job_posting/iSXmKnRT/apply` | ninehire. ⚠ **에이전트가 파일 업로드 못 한다** — GLG 가 직접 |
+| ~~6~~ | ~~**Sonatus** 🌐~~ | `_EMB` | `https://www.linkedin.com/jobs/view/4380679251/` → **「간편 지원」** | ⛔ **제외 2026-08-01 — AI 연결 보직이 아니다.** 회사는 AI-SDV지만 **보직은 Jenkins 온프렘 빌드 인프라·모니터링·데이터센터 운영**이다. 담당업무에 AI가 없다 |
+| 7 | **Telit Cinterion** 🌐 | ~~`_EMB`~~ → **`_AI` 재검토** | `https://recruiting.paylocity.com/Recruiting/jobs/Apply/4158364` | ✅ **유지 2026-08-01 — 임베디드 회사의 AI 보직이라 새 기준에 정면으로 맞다.** `Edge AI Software Engineer` — 담당업무에 *「LLM 기반 Agent 프레임워크를 R&D 일상 워크플로에 도입·운영 통합」* 이 박혀 있다. ⚠ **컷 재검토 필요**: 지금 `_EMB` 로 잡혀 있는데 이 JD 는 AI 축이다. 모델 pruning·quantization·학습은 갭이라 **경계를 밝힌다** |
+| ~~8~~ | ~~**Telechips**~~ | `_EMB` | `https://careers.telechips.com/job_posting/iSXmKnRT/apply` | ⏸ **보류 2026-08-01 — GLG: 임베디드 컷으로 내지 않는다.** 공고는 열려 있다.<br>🔴 **폼 실측으로 예상이 깨졌다 — 15개 항목 전부 필수**: 경력요약 **10,000자** · 구조화 학력·경력 · **증명사진**(250×300) · **포트폴리오 파일이 선택이 아니라 필수**.<br>ninehire 는 화이트라벨이라 **회사마다 폼이 다르다 — 건마다 열어봐야 한다**. ⚠ 에이전트가 파일 업로드 못 한다 |
 | 9 | **FuriosaAI** | `_AI` | `https://jobs.ashbyhq.com/furiosa-ai/[uuid removed]/application` | Ashby |
 | 10 | **42dot** | `_AI` | `https://jobs.ashbyhq.com/42dot/[uuid removed]/application` | Ashby. 전형에 **코딩 테스트** |
 | 11 | **MakinaRocks** | `_FDE` | `https://makinarocks.career.greetinghr.com/ko/o/214041` → 「지원하기」 | 그리팅 |
