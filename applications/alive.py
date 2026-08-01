@@ -62,6 +62,8 @@ TARGETS = [
 	("NHN (2번째)", "https://careers.nhn.com/recruits/4370711607830110861", "plain"),
 	("Upstage", "https://careers.upstage.ai/ko/o/194880", "greeting"),
 	("IGNITE", "https://ignite.ninehire.site/job_posting/xGwZ5VTB", "ninehire"),
+	# 마감이 박혀 있는 유일한 건 — 2026-08-06 23:59 · 영입 완료 시 조기 마감
+	("Kakao Bank DW", "https://recruit.kakaobank.com/jobs/260510", "plain"),
 	# 보류 2건 — 되살릴 때를 위해 같이 본다
 	("Cohere (보류)", "https://jobs.ashbyhq.com/cohere/[uuid removed]/application", "ashby"),
 	("OpenAI (보류)", "https://jobs.ashbyhq.com/openai/[uuid removed]/application", "ashby"),
