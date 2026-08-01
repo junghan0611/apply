@@ -2,11 +2,11 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **ready** — 서술형 6문항·폼 전체 구조·첨부 3종 정리 완료. **「모델 역량을 문서·도구·사람의 판단이 만나는 작업면으로 옮긴다」**는 명제로 이력서·역량기술서·포트폴리오·제품 사용기를 정렬했다. **오늘 제출 목표.** 🔴 남은 것: 경력사항 3건 중 ⚠표시 칸(부서·직급·정확한 월)은 GLG가 실제값 확인 후 직접 입력(`answers.md` §0). 첨부·법적값도 GLG |
-| 지원일 | — (2026-07-31 목표) |
+| 상태 | **submitted** — 2026-08-01 GLG가 브라우저에서 최종 제출. 제품 체험 평가·업무 경험·구조화 경력 3건·첨부 3종을 실제 폼에 넣었다. |
+| 지원일 | **2026-08-01** |
 | 경로 | **그리팅** (자체 도메인 `careers.upstage.ai`) — 가입 불필요, 폼 실제 오픈 확인(`/ko/o/194880/apply/new`) |
 | 첨부 컷 | **AI Engineer** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`, 3쪽) — 폼의 「이력서」 칸 `*` 필수 |
-| 추가 첨부 | ✅ **슬롯 실측 완료 — 자기소개서 칸(선택)·포트폴리오 칸(선택, 파일/URL)** · `dossier/build/KimJunghan_AX_Competency.pdf`(5쪽)는 **자기소개서 칸에** · `dossier/build/KimJunghan_AX_Portfolio.pdf`(12쪽)는 **포트폴리오 칸에** |
+| 추가 첨부 | ✅ **슬롯 실측 완료 — 자기소개서 칸(선택)·포트폴리오 칸(선택, 파일/URL)** · 🔴 **2026-08-01 정정**: 자기소개서 칸에 `AX_Competency`(5쪽)를 넣기로 했던 것을 **국문 자기소개서 `submit/KimJunghan_CoverLetter_KO.pdf`(2쪽)로 바꾼다** — `./build.sh` 가 낸다 — Competency 는 *역량 및 성과 기술서*이지 자기소개서가 아니다(GLG 2026-08-01). `dossier/build/KimJunghan_AX_Portfolio.pdf`(12쪽)는 **포트폴리오 칸에** |
 | 공고 URL | https://careers.upstage.ai/ko/o/194880 |
 | **지원 URL** | **https://careers.upstage.ai/ko/o/194880** → 페이지 하단 「지원하기」 (HTTP 200 확인) |
 | 근무형태 | **Anywhere On Earth But Together** — 원격 지원(장비 500만원 예산) |
@@ -14,16 +14,24 @@
 
 ## 낸 것
 
-- [ ] **이력서 PDF (필수)** — `resume/build/KimJunghan_Resume_AI_Engineer.pdf`
-      (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_AI_Engineer.pdf`)
-- [ ] ⭐ **자기소개서 (선택) — 올린다.** `submit/KimJunghan_AX_Competency.pdf` **(5쪽)**.
-      폼의 자기소개서 PDF 칸에 내며, 모델 역량을 문서·도구·사람의 판단이 만나는 작업면으로
-      옮기는 Agent Engineering의 큰 그림을 맡는다.
-- [ ] ⭐ **포트폴리오 (선택) — 올린다.** `submit/KimJunghan_AX_Portfolio.pdf` **(12쪽)**.
+- [x] **이력서 PDF (필수)** — `submit/KimJunghan_Resume_AI_Engineer.pdf` **(37.4 kB)**
+- [x] ⭐ **자기소개서 (선택)** — `submit/KimJunghan_CoverLetter_KO.pdf` **(2쪽 · 66.3 kB)**.
+      🔴 **2026-08-01 바뀌었다.** 이 칸에 `AX_Competency`(5쪽)를 넣기로 했었는데, 그것은
+      **역량 및 성과 기술서이지 자기소개서가 아니다**(GLG). 칸이 묻는 것과 문서의 장르가
+      달랐다 — 첨부는 「칸이 있는가」 다음에 **「그 칸이 무엇을 묻는가」**를 본다.
+      국문 자기소개서를 새로 썼고(`cover-letter.md` → `./build.sh`), 선례는 현대오토에버 건이다.
+      **Competency 는 이 건에서 내지 않는다** — 폼에 낼 칸이 없다(슬롯 3개: 이력서·자기소개서·포트폴리오).
+- [x] ⭐ **포트폴리오 (선택)** — `submit/KimJunghan_AX_Portfolio.pdf` **(12쪽 · 3.8 MB)**.
       이력서와 역량기술서의 명제를 다섯 프로젝트의 판단·운영·인계·증거로 보인다.
       **링크는 열어 보는 사람만 보고, 첨부는 서류 심사에 그대로 놓인다** (2026-07-30 GLG).
 
-**⚠ 업로드 직전 파일명을 눈으로 확인한다.** FuriosaAI · Lunit · 42dot 과 **같은 AI Engineer 컷**이다.
+## 제출 완료 — 2026-08-01 (GLG 브라우저)
+
+- 이력서·국문 자기소개서·AX 포트폴리오 3종을 위 파일명으로 업로드했다.
+- 제품 체험 평가는 `answers.md` §문항 1 / `product-evaluation.md`의 **4,243자 제출판**을 넣었다.
+- 관심 분야는 **Natural language processing · Agent Engineering**, 선호 언어는 **C++**로 선택했다.
+- GitHub·LinkedIn URL을 넣고, 추천인·강연/세미나/소개영상은 제출하지 않았다.
+- 경력사항 3건은 `submit/Upstage_Submission_Form.md`에 실제 제출 텍스트로 회수했다. 법적·민감 개인 필드는 GLG가 브라우저에서 직접 입력·동의했고, **값은 이 저장소에 보존하지 않는다.**
 
 > 🔴 **폼 마지막 단계에서 「선택 첨부 관련 동의」가 있는지 눈으로 확인한다** (2026-07-30 GPT 교차검수 R3).
 > 리포 안의 증거로는 이 폼에 그 동의가 있는지 **확정할 수 없다** — `docsInfo` ·
@@ -90,17 +98,12 @@
 
 **서류 슬롯**: 이력서 **필수**(PDF) · 자기소개서 선택 · 포트폴리오 선택(URL 입력 가능).
 
-### ⚠ 선택지 실측 — 기존 기록을 고쳤다
+### 선택지 — 2026-08-01 실제 제출값
 
-- **문항 4 선호 언어 = `Python` · `C++` · `Java` · `Javascript`.** **`Go` 가 선택지에 없다.**
-  이전 기록의 「Go · Python」은 **고를 수 없는 답**이었다. → **`Python`** 을 고른다.
-  공고 우대에도 Python 이 있고, `memex-kb` 파이프라인·n8n·pgvector 축이 Python 이라 정직하다.
-  (주력이 Go 라는 사실은 문항 2 나 면접에서 말한다. 폼에서 없는 선택지를 만들지 않는다.)
-- **문항 3 관심 분야 = `Computer vision` · `Natural language processing` ·
-  `Multimodal modeling` · `Data Collection & Processing`.**
-  → **`Data Collection & Processing` + `Natural language processing`.**
-  전자가 `memex-kb`·RAG 파이프라인의 정면이고, 후자가 에이전트·검색 축이다.
-  **Computer vision 은 고르지 않는다** — 축이 아니다.
+- 선호 언어는 **`C++`**로 선택했다. `Python`을 고르려던 이전 권고는 제출값이 아니다.
+- 관심 분야는 **`Natural language processing` + `Agent Engineering`**으로 선택했다.
+- 07-31의 선택지 기록에는 `Agent Engineering`이 없었으므로, 그 목록은 완전한 폼 스키마가 아니었다.
+  **선택지를 기록했더라도 실제 제출 화면을 마지막 정본으로 둔다.**
 
 ## §관문 — 이 건의 진짜 작업은 이력서가 아니다
 
@@ -282,8 +285,8 @@ MiMo-V2.5 급, 한국어 정성평가에서 DeepSeek-V4-Flash 보다 선호. **G
 | 최종 학력 | 석사 보유 | `FAQ.md` §3 |
 | **업스테이지 제품 체험 평가** (필수, 10,000자) | ✅ **작성 완료 — `answers.md` §문항 1**. 실측 SSOT: `~/repos/gh/memex-kb/scanpdf/work/물리학강의/upstage/README.md` | Upstage Document Parse/OCR/IE 실측 + Solar provider 실측 |
 | **지원 분야 관련 업무 경험** (필수, 1,000자) | ✅ **작성 완료 — `answers.md` §문항 2** (797자, 상한 아래) | `FAQ.md` §9 골격 |
-| **선호 관심 분야** (필수, 다중선택) | **`Data Collection & Processing` + `Natural language processing`** | 아래 §폼 실측 |
-| **선호 프로그래밍 언어** (필수, 선택형) | ⚠ **`Python`** — 선택지에 **Go 가 없다** | 아래 §폼 실측 |
+| **선호 관심 분야** (필수, 다중선택) | **`Natural language processing` + `Agent Engineering` 제출** | 2026-08-01 제출 화면 |
+| **선호 프로그래밍 언어** (필수, 선택형) | **`C++` 제출** | 2026-08-01 제출 화면 |
 | **합류 가능 시점** (필수, 1,000자) | ✅ **「협의 가능」**. 날짜를 강제하면 **최종 합격·처우 협의 후 4주 이내** | `FAQ.md` §4 (2026-07-29 확정) |
 | **지원 경로** (필수, 1,000자) | 「채용 홈페이지」 — 보드를 직접 훑어 찾았다. ⭐ **다만 2025-10-01 에 이미 이 회사 채용 페이지를 북마크해 두었다**(`@web-sesangeulbagguneunaireul`) | §근거가 이미 있다 |
 | LinkedIn URL (선택) | https://linkedin.com/in/junghan-kim-1489a4306 | `FAQ.md` §1 |
@@ -322,6 +325,7 @@ MiMo-V2.5 급, 한국어 정성평가에서 DeepSeek-V4-Flash 보다 선호. **G
 
 ## 이후 기록
 
+- [2026-08-01] **GLG가 최종 제출했다.** 이력서·국문 자기소개서·포트폴리오 3종과 서술형·선택형 답을 실제 폼에 넣었다. `answers.md`와 `submit/answers.txt`는 **실제 제출판**으로 닫고, 민감 법적값은 값 없이 브라우저 직접 입력 사실만 남긴다.
 - [2026-07-28] 건 생성. 보드 훑기(`boards.py list greeting:upstage`, 44건)에서 골랐다.
   본문·`docsInfo`·`questionnairesInfo`·`additionalApplicantInfoConfig` 를 **브라우저 없이** 확인.
 - [2026-07-28] 컷 **AI Engineer** 확정. 상태 **`blocked`** — **제품 체험 평가가 남았다.**

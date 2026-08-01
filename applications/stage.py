@@ -42,6 +42,7 @@ SLOT = {
 	"_Resume_": "이력서 (필수)",
 	"_Competency": "경력기술서·역량기술서 (5쪽) — 선택 슬롯이 **있으면** 올린다",
 	"_Portfolio": "포트폴리오 (12쪽) — 선택 슬롯이 **있으면** 올린다. 칸이 하나면 이것을",
+	"_CoverLetter": "국문 자기소개서 (2쪽) — 폼의 「자기소개서」 칸. ⚠ 역량·성과 기술서(`_Competency`)와 다른 문서다",
 	"cover-letter.txt": "커버레터 — 전체 복사해 붙여넣는다 (칸 유무·상한은 그 건 `submission.md` §폼)",
 	"answers.txt": "서술형 문항 답 — 문항별로 복사해 붙여넣고 **폼 카운터를 눈으로 확인**한다",
 }
@@ -315,7 +316,8 @@ def stage(case: Path) -> tuple[str, list[str], list[str]]:
 def sources_doc(case: Path, present: list[str]) -> str:
 	"""PDF 는 git 에 없다. 무엇으로 이 세트를 다시 만드는지 여기 적는다."""
 	needs_resume = any("_Resume_" in n for n in present)
-	needs_dossier = any(("_Competency" in n or "_Portfolio" in n) for n in present)
+	needs_competency = any("_Competency" in n for n in present)
+	needs_portfolio = any("_Portfolio" in n for n in present)
 
 	lines = [
 		f"# 이 세트를 어떻게 다시 만드나 — {case.name}",
@@ -329,27 +331,26 @@ def sources_doc(case: Path, present: list[str]) -> str:
 		"빌드가 지문과 어긋나면 *무엇이* 달라졌는지는 말해 주지 않는다 — 재현 경로는 아래다.",
 		"",
 		"- ⭐ **재현점은 이 파일이 담긴 커밋이다.** 그 커밋에 org 정본이 함께 들어 있다 —",
-		"  `git log --oneline -- <이 파일>` 로 찾고 `git show <커밋>:dossier/competency.org` 로 꺼낸다.",
+		"  `git log --oneline -- <이 파일>` 로 찾고 해당 산출물의 dossier 정본 org를 `git show`로 꺼낸다.",
 		"  (커밋 SHA 를 여기 박지 않는다. 박으면 커밋할 때마다 이 파일이 갱신되는 순환이 생긴다.)",
 		"",
 		"```bash",
 	]
 	if needs_resume:
 		lines.append("(cd resume   && ./run.sh all)        # 이력서 여섯 컷")
-	if needs_dossier:
-		lines += [
-			"(cd dossier && ./run.sh competency)   # 5쪽 — xelatex 경로",
-			"(cd dossier && ./run.sh portfolio)    # 12쪽 — LibreOffice 불필요",
-		]
+	if needs_competency:
+		lines.append("(cd dossier && ./run.sh competency)   # 5쪽 — xelatex 경로")
+	if needs_portfolio:
+		lines.append("(cd dossier && ./run.sh portfolio)    # 12쪽 — LibreOffice 불필요")
 	lines += [
 		"applications/stage.py                 # 세트를 다시 깐다 (누출·낡음을 스스로 검사한다)",
 		"applications/check.py --deep          # 전체 게이트 — 조준 누출 + 지문 대조",
 		"```",
 		"",
 	]
-	if needs_dossier:
+	if needs_competency or needs_portfolio:
 		lines += [
-			"⚠ **깊이 문서는 회사 중립판이어야 한다.** `competency.org` 프롤로그 첫 문장이",
+			"⚠ **깊이 문서는 회사 중립판이어야 한다.** dossier 정본의 프롤로그 첫 문장이",
 			"조준 자리다. 다른 건을 조준한 채로 빌드하면 **그 회사 이름이 이 건에 실려 나간다.**",
 			"`./check.py --deep` 이 그것을 잡는다.",
 			"",
