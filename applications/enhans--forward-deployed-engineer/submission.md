@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **submitted** |
+| 상태 | **rejected** — 2026-07-28 제출 · **2026-08-04 불합격 통보 회수** |
 | 지원일 | 2026-07-28 |
 | 경로 | ninehire (`enhanscareer.ninehire.site`) — 가입 불필요 |
 | 첨부 컷 | `submit/KimJunghan_Resume_Forward_Deployed_Engineer.pdf` |

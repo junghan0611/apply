@@ -18,10 +18,10 @@
 |---|---|---|---|---|---|---|
 | NHN | AX Transformation / AI Infra (BE) | submitted | 2026-07-20 | NHN 채용홈 + **직원 추천** | **dossier 3종** (이력서 컷 아님) | `nhn--ax-transformation-ai-infra` |
 | Insighter | AX Engineer | saved | — | LinkedIn Easy Apply | — | `insighter--ax-engineer` |
-| Hyundai AutoEver | AI Agent Engineer | replied | 2026-07-28 · **서류합격 2026-07-31** · **상세정보 제출 2026-08-01** | 그리팅 (자체 도메인) | AI Engineer + 국문 자기소개서 | `hyundai-autoever--ai-agent-engineer` |
+| Hyundai AutoEver | AI Agent Engineer | replied | 2026-07-28 · **서류합격 2026-07-31** · 상세정보 제출 2026-08-01 · **ACT ~08-09 23:00 / 코딩테스트 08-08 14:00** | 그리팅 (자체 도메인) | AI Engineer + 국문 자기소개서 | `hyundai-autoever--ai-agent-engineer` |
 | DEEPX | AI Agent Workflow Automation Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | AI Engineer + 경력기술서 통합 (7쪽) | `deepx--ai-agent-workflow-automation-engineer` |
 | DEEPX | Linux BSP Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | Embedded + 경력기술서 통합 (5쪽) | `deepx--linux-bsp-engineer` |
-| Enhans | Forward Deployed Engineer (7년 이상) | submitted | 2026-07-28 | ninehire (자체 채용홈) | FDE | `enhans--forward-deployed-engineer` |
+| Enhans | Forward Deployed Engineer (7년 이상) | rejected | 2026-07-28 · **불합격 통보 2026-08-04** | ninehire (자체 채용홈) | FDE | `enhans--forward-deployed-engineer` |
 | FuriosaAI | Agent System Developer | submitted | 2026-07-30 | Ashby (자체 채용페이지 경유) | AI Engineer + Portfolio 12쪽 + **Career Summary 1,351자** | `furiosaai--agent-system-developer` |
 | Lunit | (Seoul) Senior AX Engineer | submitted | 2026-07-30 | **Workable** (자체 채용홈) | AI Engineer + Portfolio 12쪽 + **문의칸 답** | `lunit--senior-ax-engineer` |
 | Cohere | Forward Deployed Engineer, Agentic Platform (Korea) | ready | — | Ashby (가입 불필요) | FDE | `cohere--forward-deployed-engineer-agentic-platform-korea` |
@@ -33,7 +33,7 @@
 | SOCAR | Platform Engineer | submitted | 2026-07-30 | 그리팅 (자체 도메인) | DevEx + Portfolio 12쪽 | `socar--platform-engineer` |
 | Upstage | AI Engineer - Agents | submitted | **2026-08-01** | 그리팅 (자체 도메인) | AI Engineer + **국문 자기소개서 2쪽** + 포트폴리오 12쪽 | `upstage--ai-engineer-agents` |
 | FriendliAI | Software Engineer - AI Agents | submitted | 2026-07-30 | Ashby (가입 불필요) | AI Engineer (⛔ 폼에 첨부 슬롯 1개 — 깊이 문서 칸 없음) | `friendliai--software-engineer-ai-agents` |
-| Toss | AI Engineer (Platform) | submitted | 2026-07-30 | **토스 자체 채용홈** | **이력서+경력기술서 8쪽 합본** · 경력 3건 직접 입력 · ⛔ 커버레터 칸 없음 | `toss--ai-engineer-platform` |
+| Toss | AI Engineer (Platform) | rejected | 2026-07-30 · **불합격 통보 2026-08-04** | **토스 자체 채용홈** | **이력서+경력기술서 8쪽 합본** · 경력 3건 직접 입력 · ⛔ 커버레터 칸 없음 | `toss--ai-engineer-platform` |
 | Bear Robotics | Systems Software Engineer (Linux Platform) | ready | — | **Breezy HR** (자체 보드) | Embedded (영문 CV 필수) | `bear-robotics--systems-software-engineer-linux-platform` |
 | Penguin Solutions 🌐 | Sr. System Engineer | draft | — | 자체 채용홈 (SuccessFactors) | — (보류 — GLG 판단) | `penguin-solutions--sr-system-engineer` |
 | Sonatus 🌐 | Staff DevOps Engineer | ready | — | **LinkedIn Easy Apply** | Embedded | `sonatus--staff-devops-engineer` |
