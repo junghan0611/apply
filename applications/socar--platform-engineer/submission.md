@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **submitted** — 2026-07-30 제출 완료 |
+| 상태 | **rejected** — 2026-07-30 제출 · **2026-08-04 불합격 통보 회수** |
 | 지원일 | **2026-07-30** |
 | 경로 | **그리팅** (자체 도메인 `socar.career.greetinghr.com`) — 가입 불필요 |
 | 첨부 컷 | **DevEx** (`resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf`, 3쪽) |
@@ -168,3 +168,5 @@ Experience / Independent Work 절이 그 역할을 겸한다**고 보고 단독 
   `docsInfo.enableUrl=false` 를 구조화 필드로 확인 → **`FAQ.md` §4 미정값 셋이 이 건을
   막지 않는다**(칸이 없다). `alive.py` **`status=OPEN`** 재확인(09:07 KST).
   **GLG 가 「낸다」로 확정**했다 — 재검토 경고는 사실로 보존한다.
+- [2026-07-30] GLG가 제출 완료. DevEx 이력서와 Portfolio 12쪽을 올렸고, 서술형 문항은 없었다.
+- [2026-08-04] **서류전형 불합격 통보 회수.** 현 포지션은 `rejected`로 닫고 실제 제출 스냅샷은 보존한다.

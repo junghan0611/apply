@@ -30,7 +30,7 @@
 | Reflection AI 🌐 | FDE, Lead - AI Engineer (Seoul) | submitted | 2026-07-30 | Ashby (가입 불필요) | FDE 3쪽만 — **영문 폼이라 국문 깊이 문서를 붙이지 않았다** | `reflection-ai--forward-deployed-engineer-lead-ai-engineer` |
 | 42dot | Senior AI Agent Engineer (Intelligence Service) | submitted | 2026-07-30 | Ashby (가입 불필요) | **이력서+경력기술서 8쪽 합본** + Portfolio 12쪽(전용 칸) + **Motivation 805자** | `42dot--senior-ai-agent-engineer-intelligence-service` |
 | MakinaRocks | [FDE] AI Agent Application Engineer | ready | — | 그리팅 (자체 도메인) | FDE | `makinarocks--ai-agent-application-engineer-fde` |
-| SOCAR | Platform Engineer | submitted | 2026-07-30 | 그리팅 (자체 도메인) | DevEx + Portfolio 12쪽 | `socar--platform-engineer` |
+| SOCAR | Platform Engineer | rejected | 2026-07-30 · **불합격 통보 2026-08-04** | 그리팅 (자체 도메인) | DevEx + Portfolio 12쪽 | `socar--platform-engineer` |
 | Upstage | AI Engineer - Agents | submitted | **2026-08-01** | 그리팅 (자체 도메인) | AI Engineer + **국문 자기소개서 2쪽** + 포트폴리오 12쪽 | `upstage--ai-engineer-agents` |
 | FriendliAI | Software Engineer - AI Agents | submitted | 2026-07-30 | Ashby (가입 불필요) | AI Engineer (⛔ 폼에 첨부 슬롯 1개 — 깊이 문서 칸 없음) | `friendliai--software-engineer-ai-agents` |
 | Toss | AI Engineer (Platform) | rejected | 2026-07-30 · **불합격 통보 2026-08-04** | **토스 자체 채용홈** | **이력서+경력기술서 8쪽 합본** · 경력 3건 직접 입력 · ⛔ 커버레터 칸 없음 | `toss--ai-engineer-platform` |
