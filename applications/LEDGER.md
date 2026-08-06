@@ -16,7 +16,7 @@
 
 | 회사 | 직무 | 상태 | 지원일 | 경로 | 첨부 컷 | 폴더 |
 |---|---|---|---|---|---|---|
-| NHN | AX Transformation / AI Infra (BE) | submitted | 2026-07-20 | NHN 채용홈 + **직원 추천** | **dossier 3종** (이력서 컷 아님) | `nhn--ax-transformation-ai-infra` |
+| NHN | AX Transformation / AI Infra (BE) | rejected | 2026-07-20 · **불합격 통보 2026-08-06** | NHN 채용홈 + **직원 추천** | **dossier 3종** (이력서 컷 아님) | `nhn--ax-transformation-ai-infra` |
 | Insighter | AX Engineer | saved | — | LinkedIn Easy Apply | — | `insighter--ax-engineer` |
 | Hyundai AutoEver | AI Agent Engineer | replied | 2026-07-28 · **서류합격 2026-07-31** · 상세정보 제출 2026-08-01 · **ACT ~08-09 23:00 / 코딩테스트 08-08 14:00** | 그리팅 (자체 도메인) | AI Engineer + 국문 자기소개서 | `hyundai-autoever--ai-agent-engineer` |
 | DEEPX | AI Agent Workflow Automation Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | AI Engineer + 경력기술서 통합 (7쪽) | `deepx--ai-agent-workflow-automation-engineer` |
@@ -38,7 +38,7 @@
 | Penguin Solutions 🌐 | Sr. System Engineer | draft | — | 자체 채용홈 (SuccessFactors) | — (보류 — GLG 판단) | `penguin-solutions--sr-system-engineer` |
 | Sonatus 🌐 | Staff DevOps Engineer | ready | — | **LinkedIn Easy Apply** | Embedded | `sonatus--staff-devops-engineer` |
 | Telit Cinterion 🌐 | Edge AI Software Engineer | ready | — | **Paylocity** (자체 보드) | Embedded | `telit-cinterion--edge-ai-software-engineer` |
-| AIRS Medical | AX Engineer | submitted | 2026-07-30 | 그리팅 (자체 도메인) | DevEx + Competency + Portfolio | `airs-medical--ax-engineer` |
+| AIRS Medical | AX Engineer | rejected | 2026-07-30 · **서류전형 불합격 통보 2026-08-06** | 그리팅 (자체 도메인) | DevEx + Competency + Portfolio | `airs-medical--ax-engineer` |
 | GE HealthCare 🌐 | Senior Software Engineer | draft | — | **Workday** (공식 외부 사이트) | 미정 — Systems Software 컷 판단 | `ge-healthcare--senior-software-engineer` |
 | XCENA (엑시나) | System Software 계열 — **회사 스캔 23건** | held | — | 그리팅 (자체 도메인) | — (목록만 · GLG: "너무 시스템") | `xcena--system-software` |
 | Holiday Robotics | Forward Deployed Robotics Engineer (3–8년) | submitted | 2026-07-30 | 자체 채용홈 `holiday-robotics.com` (로그인 없음) | FDE + **커버레터** | `holiday-robotics--forward-deployed-robotics-engineer` |

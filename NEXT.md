@@ -27,6 +27,7 @@
 
 # RECENT
 
+- [2026-08-06] **AIRS Medical AX Engineer·NHN AX Transformation / AI Infra (BE) 불합격 통보를 회수했다.** 두 건을 `rejected`로 닫고 실제 제출 스냅샷은 보존한다. AIRS는 같은 포지션에 6개월 뒤 재지원 가능하며, 다른 포지션은 즉시 지원할 수 있다고 안내했다.
 - [2026-08-04] **현대오토에버 온라인전형 일정 확정·캘린더 반영.** ACT I·II는 8/9 23:00까지(수험번호 [exam id removed]), 코딩테스트는 8/8 14:00~17:00(Programmers, 2문제·180분)이다. 실제 시험장으로 입실 창(13:00~14:10)과 감독 환경을 확인해, ACT 8/9 21:00~23:00·코딩테스트 8/8 13:00~17:00을 개인 캘린더에 등록했다.
 - [2026-08-04] **토스 AI Engineer (Platform)·인핸스 FDE·루닛 Senior AX Engineer·쏘카 Platform Engineer 불합격 통보를 회수했다.** 네 건을 `rejected`로 닫고, 실제 제출 스냅샷은 그대로 보존한다.
 - [2026-08-04] **운영 방침 갱신.** 현대오토에버는 실제 시험 전 에이전트와 예상 문제·Programmers 사전 테스트 체험을 함께 점검한다. 카카오뱅크 DW 뒤로 Telit·MakinaRocks·Wonderful의 제출 준비를 잇고, 제출 건 회신은 도착 즉시 원장과 건별 기록을 갱신한다.

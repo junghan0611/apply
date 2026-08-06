@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **submitted** — 2026-07-30 GLG가 브라우저에서 제출 완료 |
+| 상태 | **rejected** — 2026-07-30 제출 · **2026-08-06 서류전형 불합격 통보 회수** |
 | 지원일 | 2026-07-30 |
 | 경로 | **그리팅** (자체 도메인 `airsmed.career.greetinghr.com`) — 가입 불필요 |
 | 첨부 컷 | **DevEx** (`resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf`, 3쪽) |
@@ -134,3 +134,4 @@ OLAP/Lakehouse 실무, 의료 도메인**은 실제 갭이라 통과를 낙관�
   실제 제출 세트는 `submit/KimJunghan_Resume_Developer_Experience_Engineer.pdf`,
   `submit/KimJunghan_AX_Competency.pdf`, `submit/KimJunghan_AX_Portfolio.pdf` 이다.
   커버레터는 폼 슬롯이 없어 제출하지 않고 면접 답변 골격으로 보존한다. 제출 시점 총평을 위 절에 남겼다.
+- [2026-08-06] **서류전형 불합격 통보 회수.** 에어스메디컬은 현 포지션에 6개월 뒤 재지원 가능하며, 다른 포지션은 즉시 지원할 수 있다고 안내했다. 이 건은 `rejected`로 닫고 실제 제출 스냅샷은 보존한다.
