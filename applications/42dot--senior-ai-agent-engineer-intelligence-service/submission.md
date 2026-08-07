@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **submitted** — 2026-07-30 **제출 완료** |
+| 상태 | **rejected** — 2026-07-30 제출 · **2026-08-07 서류전형 불합격 통보 회수** |
 | 지원일 | **2026-07-30** |
 | 경로 | **Ashby** — 가입 불필요 |
 | 첨부 컷 | **AI Engineer** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`, 3쪽) |
@@ -99,6 +99,7 @@ GLG 가 먼저 짚은 것은 `On-device Agent Orchestration` 이었는데, 그 �
 
 ## 이후 기록
 
+- [2026-08-07] **서류전형 불합격 통보 회수.** 이 건은 `rejected`로 닫고 실제 제출 스냅샷은 보존한다.
 - [2026-07-28] **GLG 가 `On-device Agent Orchestration` 을 짚어 42dot 재검토가 시작됐다.**
   아침에 본 두 건(LLM Training·Embedded Build)이 하필 축 밖이었을 뿐, 보드에는 에이전트 축이
   넷 있었다. **회사를 판정하지 말고 자리를 판정한다** — `INBOX.md` §42dot 판정 정정.
