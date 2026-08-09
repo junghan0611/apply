@@ -345,6 +345,62 @@ id·제목·회사·원클릭 여부를 뽑을 수 있다. 같은 카드가 `li`
 「회사 웹사이트에서 지원」은 새 탭으로 튕긴다(greetinghr·wanted·saramin·잡코리아·Greenhouse 등).
 폼 구조가 제각각이라 건마다 읽어야 한다. **처음 보는 ATS를 만나면 그 구조를 이 절에 추가한다.**
 
+#### `breezy.hr` — Bear Robotics (2026-08-09 실측)
+
+`<company>.breezy.hr/p/<id>-<slug>/apply`. **한 화면 폼**(위저드 아님) · 가입 불필요 ·
+AngularJS 라 **폼 스키마가 HTML 안에 통째로 들어 있다.** 브라우저를 열기 전에 `curl` 로 읽는다.
+
+```bash
+curl -sA "$UA" "<지원URL>" |
+  grep -o '<input type="hidden" id="questions" value="[^"]*"'   # 질문지 JSON 전문
+# 필수/선택은 별도 hidden 이 말한다: resume_required · work_required · education_required
+#                                   · summary_required · cover_letter · eeoc
+```
+
+- ✅ **네이티브 file input 이 DOM 에 있다**(`name="cResume"`). ninehire 와 다르다 —
+  **에이전트 업로드가 가능할 것으로 보인다**(실제 업로드는 아직 미검증).
+- **서술 칸이 둘이다** — `cSummary`(Experience Summary) · `cCoverLetter`(Cover Letter).
+  회사마다 required/optional 이 다르고 **hidden 값이 사실이다.**
+- **질문지는 분기한다.** 「장애·보훈 → 네」가 증빙파일 **필수** 칸을 열고, 「국적 → Non-Korean」이
+  Visa sponsorship 칸을 연다. **분기 뒤 칸까지 읽어야 폼을 안 것이다.**
+- ⚠ **EEOC(인종·성별) 라디오가 `required` 로 렌더될 수 있다** — 미국 본사 계열. 응답 거부
+  선택지가 있고 **사람이 고른다.**
+- 🔴 **honeypot 필드(`hp_*`)와 `form_token` 이 있다.** 봇 방지 축이 걸려 있으므로
+  **폼 채우기는 브라우저에서 사람이 한다.**
+- **화면은 2단계다.** `curl` 로 읽은 HTML 에는 질문지·EEOC 가 한 장에 다 있지만, UI 는
+  **「계속」** 버튼으로 나눠 보여 준다. **「HTML 에 다 있다」를 「한 화면이다」로 읽지 않는다.**
+- **EEOC 는 `ng-required` 로 렌더되지만 화면 문구는 `requested (not required)`** 이고 응답
+  거부 선택지가 있다. **DOM 의 required 를 사람에게 「필수」라고 전하지 않는다.**
+- 실측 원문: `bear-robotics--systems-software-engineer-linux-platform/submission.md` §폼 실측.
+
+#### 🔴 자동 채워진 구조화 경력은 **값이 아니라 초안**이다 (2026-08-09, Breezy 에서 터졌다)
+
+**이력서 PDF 를 파싱해 경력·학력 칸을 자동으로 채우는 ATS 가 있다.** Breezy 가 그랬고,
+LinkedIn·Indeed 연동 버튼이 있는 폼은 전부 같은 자리다. 파서는 **프로젝트를 재직으로,
+과제 발주 기관을 고용주로** 올린다 — 사람이 안 보면 그대로 신고된다.
+
+Bear Robotics 폼에 실제로 이렇게 들어 있었다(제출 직전에 잡았다):
+
+- 한 회사가 **세 재직으로 쪼개지고 셋 다 퇴사 처리**(실제는 재직 중),
+- **국책과제 발주 기관(IITP)이 고용주**로,
+- **교환연구 9개월이 별도 재직**으로(원 재직 기간과 이중 계상),
+- **이력서의 서사 연도(2013)가 구조화 칸에** — `FAQ.md` §3 이 *「재직하지 않은 기간을 재직으로
+  신고하는 것」* 이라고 못 박은 바로 그 값,
+- 정작 **5년짜리 계약직 재직은 통째로 빠져** 있었다.
+
+**계약**
+
+1. **구조화 경력·학력 칸이 이미 채워져 있으면, 채운 주체가 누구든 초안으로 본다.**
+   「전에 내가 넣었겠지」로 넘기지 않는다 — 이 건은 **파서가 넣은 것**이었다.
+2. **제출 전에 SSOT 와 한 줄씩 대조한다.** SSOT 는
+   `hyundai-autoever--ai-agent-engineer/submit/KimJunghan_AutoEver_Detail_Form.md`(GLG 가 실제
+   제출 화면에서 복사한 스냅샷)와 `FAQ.md` §3 이다.
+3. **고치기 전에 GLG 승인을 받는다.** 재직 신고는 사람의 값이다. 「명백히 틀렸으니 고친다」로
+   혼자 가지 않는다 — 무엇이 틀렸는지 보이고, 지울지 다시 넣을지를 GLG 가 고른다.
+4. **재직 중인 회사는 종료일을 비운다.** 파서는 오늘 날짜를 퇴사일로 넣는다.
+5. 값을 **케이스 파일로 복사하지 않는다.** 어느 칸에 무엇이 들어갔는지만 적는다
+   (§제출 스냅샷은 다음 건의 입력값이다).
+
 #### `recruiter.co.kr` — 카카오뱅크 인재풀 (2026-07-30 실측)
 
 `kakaobank.recruiter.co.kr/v1/applicant/resume-form/<id>?step=N`. 3단계 위저드

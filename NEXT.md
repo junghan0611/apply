@@ -1,51 +1,40 @@
-# NOW — 2026-08-07 42dot 서류탈락, 카카오헬스케어 서류합격(일정 조율), 카카오뱅크 DW 마감일, 현대오토에버 시험 주간
+# RAIL — 현재 좌표
 
-- **42dot Senior AI Agent Engineer 서류전형 불합격 통보 (2026-08-07)**. `rejected`로 닫았고 실제 제출 스냅샷은 보존한다.
-- 🎉 **카카오헬스케어 서류합격 (2026-08-06)**. 다음은 **스크리닝 인터뷰** — 비대면 화상 · **30분 내외** · **채용 부서 팀장** 참석 · 복장 자율. 🔴 **GLG 가 ninehire 조율 페이지에서 가능한 일정을 최소 3개 선택**하면 회사가 확정해 링크를 재안내한다. 맞는 일정이 없으면 채팅 회신으로 재조율(문의 [phone removed]). 확정되면 개인 캘린더에 등록한다. 준비 기준은 `applications/kakao-healthcare--ai-agent-engineer/submission.md` §연락이 오면 대조할 질문 — ①②③(`entwurf`·`agent-config`·`andenken`) 각 2분 + **경계 넷을 먼저** + OCR 다섯 엔진 표.
-- **Current**: 카카오뱅크 `데이터 엔지니어 - Data Warehouse`(`260510`)는 여전히 `ready`다. 자기소개서 2문항(952자·879자, `answers.md`)과 `AI Engineer` 컷이 확정되어 있다. 마감은 **2026-08-06 23:59**(조기 마감 가능).
-- **Next**: 🔴 **GLG가 카카오뱅크 폼을 열어 제출한다.** `submit/`의 4개 파일과 `answers.txt`를 그대로 쓴다. 입력표 정본은 `answers.md` §0이며, **병역 기본값 `비대상`을 반드시 수정**하고 동의 2건을 확인한다.
-- **현대오토에버 사전 연습**: 시험 전에 GLG와 에이전트가 예상 알고리즘 문제를 함께 풀며 Programmers의 사전 테스트 체험·입실 흐름·응시 환경을 점검한다. **실제 감독 시험 중에는** 공고 규정대로 AI 에이전트·다른 웹페이지/프로그램·다중 모니터를 쓰지 않고 GLG가 단독 응시한다.
-- **현대오토에버 일정**: **ACT는 8/9 23:00까지**(수험번호 [exam id removed]), **코딩테스트는 8/8 14:00~17:00**(Programmers, 2문제·180분)이다. 코딩테스트 시험장 입실은 **13:00~14:10**이고 설정에 10분 이상 걸릴 수 있다. 개인 캘린더에 ACT 8/9 21:00~23:00·코딩테스트 8/8 13:00~17:00을 등록했다. 사전 테스트 체험 후, 독립 공간·안정적 네트워크·단일 모니터·최신 Chrome으로 입실한다.
-- **다음 제출 묶음**: 카카오뱅크 DW를 먼저 닫고, 보직 기준을 통과한 `ready` 건(**Telit Cinterion Edge AI**, **MakinaRocks FDE**, **Wonderful FDE**)을 각 폼 실측·첨부 컷 확인 순으로 준비한다. `held`·제외·보류 건은 되살리지 않는다.
-- **회신 처리**: 이미 낸 곳의 합격·불합격·다음 전형 통보가 오면 즉시 `LEDGER.md`와 해당 `submission.md`를 함께 갱신한다.
-- **Verify**: 카카오 폼 직전 `applications/alive.py` 실행 → 폼 카운터(`0/1000`) 확인 → 제출 보고 직후 원장·건별 기록을 함께 `submitted`로 닫고 `applications/check.py`.
-- **Read**: `applications/kakao-bank--data-engineer-data-warehouse/{submission.md,answers.md}`, `submit/README.md`, `applications/FAQ.md`, `applications/hyundai-autoever--ai-agent-engineer/submission.md`.
-- **Do not touch**: `submitted` 건의 `submit/` 스냅샷을 재빌드·덮어쓰지 않는다. PDF는 Git에 새로 넣지 않고 소스·지문·재현 경로를 보존한다. **Telechips `submit/` 스냅샷은 그대로 둔다** — 보류지 철회가 아니다.
+- [x] **1. 후보·폼·첨부 실측과 제출 패킷 준비**
+- [x] **2. 2026-08-09 즉시 제출 묶음 5건 발사** — MakinaRocks · Wonderful · Cohere · Telit · Bear Robotics
+- [ ] **3. 남은 ready 건을 한 건씩 실제 제출** ← CURRENT: OpenAI DevEx의 180일 5건 제한을 GLG가 재확인
+- [ ] **4. 새 후보를 원본 ATS 확인 뒤 케이스 승격**
 
-# ACTIVE
+현재 좌표: 2 완료 → 3 승인 대기 → 4 후속
 
-## 지원 실행
+# NOW — OpenAI 한 건을 먼저 판정
 
-- ⏸ **Telechips** — **보류(2026-08-01)**. 임베디드 컷으로 내지 않기로 했다. 공고는 열려 있어 되살릴 수 있다. 되살리면 **포트폴리오가 필수 칸**이라 임베디드 조준 빌드를 먼저 떠야 하고, **경력요약 10,000자**를 써야 한다(`submission.md` §폼 실측).
-- 🔴 **카카오뱅크 DW** — **이번 제출 묶음의 첫 건.** 위 NOW 참조. 남은 것은 GLG의 폼 입력뿐이다.
-- ✅ **Telit Cinterion** — **유지.** `Edge AI Software Engineer`는 담당업무에 *LLM 기반 Agent 프레임워크 도입*이 박혀 있어 새 보직 기준에 정면으로 맞는다. ⚠ **컷 재검토**: 지금 `_EMB`인데 JD는 AI 축이다. 낼 때 `_AI` 컷과 대조한다. Country 기본값(`United States`) 확인.
-- ⛔ **Sonatus / Bear Robotics** — **제외(2026-08-01).** 회사만 AI고 담당업무는 인프라 운영이다. 근거는 `AGENTS.md` §어떤 자리에 내는가.
-- **MakinaRocks** — FDE 컷. 폼 미실측.
-- **서버 개발자-뱅킹**(카카오뱅크 `260505`, 마감 08.10) — GLG 결정 미정. JD 서사는 이 회사에서 가장 정면이지만 **필수가 JVM**이라 이력서 언어에 0건이다. 「이름을 남긴다」 목적이면 던질 수 있다.
+- **Current:** OpenAI `Developer Experience Engineer (Seoul)`은 `ready`; 폼·답·영문 291단어 Additional Information이 모두 준비됐다.
+- **Next:** GLG가 **180일 최대 5건 지원 제한**을 확인해 이 칸을 DevEx에 쓸지 결정 → 승인하면 브라우저에서 제출 → `LEDGER.md`·건별 `submission.md`·실제 제출 세트/지문을 함께 닫고 `applications/check.py`.
+- **확정값:** Legal Name `Junghan Kim` · 주 3일 로컬 오피스 `Yes` · 스폰서 `No` · 입사 가능일 `Negotiable — within 4 weeks of offer`.
+- **Blocker:** GLG의 OpenAI 건별 최종 승인 하나.
+- **Read:** `applications/openai--developer-experience-engineer-seoul/{submission.md,cover-letter.md,submit/README.md}`.
+- **Do not touch:** 제출 완료 건의 실제 `submit/` 스냅샷을 재빌드·덮어쓰지 않는다. 최종 Submit·개인/법적 값·동의는 GLG가 건별로 한다.
 
-## 후속 전형 대기
+# ACTIVE — 다음 제출 큐
 
-- 🔴 **카카오헬스케어 AI Agent Engineer** — 2026-08-06 **서류합격**, 상태 `replied`. **스크리닝 인터뷰(비대면 30분·팀장)** 일정 조율만 남았다. GLG 가 조율 페이지에서 3개 이상 선택 → 회사 확정 → 링크 안내 → 캘린더 등록. 공고 전형표상 **라이브 코딩테스트는 이번이 아니라 다음 단계(1차 직무면접, 대면)**다. 메일이 이 전형을 「1차 직무면접」이라 부르는 문구 불일치는 건별 기록에 남겼다.
-- **현대오토에버 AI Agent Engineer** — 2026-08-01 상세정보 기재 제출 완료, 상태 `replied`. **ACT는 8/9 23:00까지**(수험번호 [exam id removed]), **코딩테스트는 8/8 14:00~17:00**(Programmers, 2문제·180분)이며 개인 캘린더에 반영했다. 시험장 입실 가능 창은 **13:00~14:10**이고, 사전 테스트 체험·예상 문제 몇 개를 에이전트와 리허설한 뒤 독립 공간·단일 모니터·최신 Chrome으로 GLG가 단독 입실한다.
+- **Sonatus** — 다음 재개점. Easy Apply 5단계와 저장 이력서 함정을 `applications/sonatus--staff-devops-engineer/submission.md` §다음 한 걸음에서 확인한다.
+- **Telechips** — 필수 포트폴리오·경력요약 1,976자·영어 `중`·증명사진까지 준비됨. 다음에는 폼에서 구조화 경력/학력을 AutoEver 스냅샷·`FAQ.md` §3과 한 줄씩 대조한다.
+- **Penguin Solutions** — 새 req 2027 URL로 복구됨; 컷 미정.
+- **GE HealthCare** — Workday `R4042393` 열림; Embedded vs Systems Software 컷 결정 필요.
+- **XCENA** — 9건 열림. `110622 Device Runtime & SDK`가 후보 1순위지만, GLG가 정확한 직무를 고른 뒤에만 새 케이스를 만든다.
+- **NHN LLM/Agent 2번째 건** — 로그인·필수 포트폴리오·프로젝트 단위 자기소개가 남은 별도 묶음.
 
 # RECENT
 
-- [2026-08-07] **42dot Senior AI Agent Engineer 서류전형 불합격 통보를 회수했다.** 이 건을 `rejected`로 닫고 실제 제출 스냅샷은 보존한다.
-- [2026-08-06] 🎉 **카카오헬스케어 [경력] AI Agent Engineer 서류합격.** 제출 전 총평에 *「이 배치에서 서류가 이길 가능성이 가장 높은 건」*이라 적어 둔 그 건이다. 상태를 `replied` 로 올리고 스크리닝 인터뷰 조건(비대면 30분·팀장·복장 자율·일정 3개 이상 선택)을 원장과 건별 기록에 함께 남겼다.
-- [2026-08-06] **AIRS Medical AX Engineer·NHN AX Transformation / AI Infra (BE) 불합격 통보를 회수했다.** 두 건을 `rejected`로 닫고 실제 제출 스냅샷은 보존한다. AIRS는 같은 포지션에 6개월 뒤 재지원 가능하며, 다른 포지션은 즉시 지원할 수 있다고 안내했다.
-- [2026-08-04] **현대오토에버 온라인전형 일정 확정·캘린더 반영.** ACT I·II는 8/9 23:00까지(수험번호 [exam id removed]), 코딩테스트는 8/8 14:00~17:00(Programmers, 2문제·180분)이다. 실제 시험장으로 입실 창(13:00~14:10)과 감독 환경을 확인해, ACT 8/9 21:00~23:00·코딩테스트 8/8 13:00~17:00을 개인 캘린더에 등록했다.
-- [2026-08-04] **토스 AI Engineer (Platform)·인핸스 FDE·루닛 Senior AX Engineer·쏘카 Platform Engineer 불합격 통보를 회수했다.** 네 건을 `rejected`로 닫고, 실제 제출 스냅샷은 그대로 보존한다.
-- [2026-08-04] **운영 방침 갱신.** 현대오토에버는 실제 시험 전 에이전트와 예상 문제·Programmers 사전 테스트 체험을 함께 점검한다. 카카오뱅크 DW 뒤로 Telit·MakinaRocks·Wonderful의 제출 준비를 잇고, 제출 건 회신은 도착 즉시 원장과 건별 기록을 갱신한다.
-- [2026-08-01] **카카오뱅크 DW `ready`.** 자기소개서 2문항을 쓰고(952자·879자) 이력서 컷을 `AI Engineer`로 확정했다. 회사 인용은 공고 원문 2건 + 웹 확인한 시퀀스 FDS 모델만 썼고, 미확인 영입블로그는 인용하지 않았다. 하드 갭(DW 구축·운영 없음)은 문항 2에서 먼저 닫았다.
-- [2026-08-01] **보직 기준이 계약으로 들어갔다** — `AGENTS.md` §어떤 자리에 내는가. *「산업은 넓게, 보직은 좁게」*. 판정은 회사 소개가 아니라 **JD 담당업무**에서 한다. 이 기준으로 Bear·Sonatus를 걸렀고 Telit을 살렸다.
-- [2026-08-01] **Telechips 보류 · 폼 실측으로 예상이 깨졌다.** 「ninehire는 서술형 칸이 거의 없다」는 Enhans 한 건에서 일반화한 것이었고 텔레칩스에서 깨졌다 — **15개 항목 전부 필수**, 경력요약 10,000자, 구조화 학력·경력, 증명사진, **포트폴리오가 선택이 아니라 필수**. ninehire는 화이트라벨이라 **건마다 폼을 열어봐야 한다**. `FAQ.md`에 영어 상/중/하·증명사진·지원경로 3항목을 추가했다.
-- [2026-08-01] **Upstage 제출 완료.** 제품 사용기는 2024 Solar/gptel 사용 → 2025 커리어 기록 → 2026-05~06 scanbook 파이프라인 → 07-30 Solar provider·Document AI 실측의 시간축으로 4,243자 제출했다. 실제 선택값·첨부·텍스트는 `applications/upstage--ai-engineer-agents/`에 회수했다.
-- [2026-08-01] **AX 증거면을 생성 루틴에 연결.** 이력서 6컷과 깊이 문서 3종의 연락처·참조·검증 게이트에 `ax.junghanacs.com`을 넣고 실측했다.
+- [2026-08-09] **제출 5건:** MakinaRocks(FDE AI Agent) — 이력서·역량기술서·포트폴리오 3슬롯; Wonderful(FDE); Cohere(FDE Agentic Platform, 완료 화면 `Remote`); Telit(이력서+임베디드 깊이 문서); Bear Robotics(이력서+커버레터·경험요약 textarea).
+- [2026-08-09] **자동 채움 구조화 경력은 초안이다.** Bear에서 현직 퇴사 처리·발주기관/교환연구의 고용 오인·NEMO 준비기간 재직 신고·재직 누락을 제출 전 잡았다. 업로드 뒤 경력/학력이 자동 입력되면 GLG 승인 전 AutoEver 스냅샷과 `FAQ.md` §3을 한 줄씩 대조한다.
+- [2026-08-09] **첨부와 동의는 한 결정이다.** MakinaRocks는 선택 첨부를 올리자 선택항목 수집 동의가 제출 필수로 승격됐다. 전체 동의 대신 필요한 개별 동의만 쓴다.
+- [2026-08-09] 현대오토에버는 시험 미응시 철회, 카카오뱅크 DW는 마감 미제출로 닫았다. 다음 카카오뱅크 공고는 새 케이스·추천 경로로 다시 판단한다.
 
-# LEDGER
+# VERIFY / READ
 
-- 지원 상태: `applications/LEDGER.md` · 건별 사실: `applications/<회사>--<직무>/submission.md`
-- 제출 실행: `applications/SUBMIT-QUEUE.md` · 폼 재사용 답: `applications/FAQ.md`
-- 닫힘 검사: `applications/check.py` · 공고 생존: `applications/alive.py`
-- 제출 세트: `applications/stage.py` · 이력서: `resume/` · 깊이 문서: `dossier/`
-- 지원 계약: `AGENTS.md` · 공고 탐색: `.claude/skills/linkedin-jobs/SKILL.md`
+- 상태 SSOT: `applications/LEDGER.md`; 건별 사실: `applications/<회사>--<직무>/submission.md`
+- 제출 닫힘: `applications/check.py`; 공고 생존: `applications/alive.py`
+- 새 후보: `applications/INBOX-WANTED.md`, `applications/INBOX-REMEMBER.md`
+- 반복 계약: `applications/AGENTS.md`, `applications/FAQ.md`

@@ -18,26 +18,26 @@
 |---|---|---|---|---|---|---|
 | NHN | AX Transformation / AI Infra (BE) | rejected | 2026-07-20 · **불합격 통보 2026-08-06** | NHN 채용홈 + **직원 추천** | **dossier 3종** (이력서 컷 아님) | `nhn--ax-transformation-ai-infra` |
 | Insighter | AX Engineer | saved | — | LinkedIn Easy Apply | — | `insighter--ax-engineer` |
-| Hyundai AutoEver | AI Agent Engineer | replied | 2026-07-28 · **서류합격 2026-07-31** · 상세정보 제출 2026-08-01 · **ACT ~08-09 23:00 / 코딩테스트 08-08 14:00** | 그리팅 (자체 도메인) | AI Engineer + 국문 자기소개서 | `hyundai-autoever--ai-agent-engineer` |
+| Hyundai AutoEver | AI Agent Engineer | closed | 2026-07-28 · **서류합격 2026-07-31** · 상세정보 제출 2026-08-01 · **2026-08-09 전형 철회(코딩테스트·ACT 미응시)** | 그리팅 (자체 도메인) | AI Engineer + 국문 자기소개서 | `hyundai-autoever--ai-agent-engineer` |
 | DEEPX | AI Agent Workflow Automation Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | AI Engineer + 경력기술서 통합 (7쪽) | `deepx--ai-agent-workflow-automation-engineer` |
 | DEEPX | Linux BSP Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | Embedded + 경력기술서 통합 (5쪽) | `deepx--linux-bsp-engineer` |
 | Enhans | Forward Deployed Engineer (7년 이상) | rejected | 2026-07-28 · **불합격 통보 2026-08-04** | ninehire (자체 채용홈) | FDE | `enhans--forward-deployed-engineer` |
 | FuriosaAI | Agent System Developer | submitted | 2026-07-30 | Ashby (자체 채용페이지 경유) | AI Engineer + Portfolio 12쪽 + **Career Summary 1,351자** | `furiosaai--agent-system-developer` |
 | Lunit | (Seoul) Senior AX Engineer | rejected | 2026-07-30 · **불합격 통보 2026-08-04** | **Workable** (자체 채용홈) | AI Engineer + Portfolio 12쪽 + **문의칸 답** | `lunit--senior-ax-engineer` |
-| Cohere | Forward Deployed Engineer, Agentic Platform (Korea) | ready | — | Ashby (가입 불필요) | FDE | `cohere--forward-deployed-engineer-agentic-platform-korea` |
+| Cohere | Forward Deployed Engineer, Agentic Platform (Korea) | submitted | **2026-08-09** | Ashby (가입 불필요) · 🔴 **`Location Type: Remote`** (제출 화면에서 처음 보였다) | FDE 3쪽만 — 폼에 선택 첨부·서술형 칸 없음 | `cohere--forward-deployed-engineer-agentic-platform-korea` |
 | OpenAI | Developer Experience Engineer (Seoul) | ready | — | Ashby (가입 불필요) | DevEx | `openai--developer-experience-engineer-seoul` |
-| Telechips | [판교] Embedded S/W Engineer (BSP Driver) | ready | — | 자체 채용홈 (ninehire 화이트라벨) | Embedded | `telechips--embedded-sw-engineer` |
+| Telechips | [판교] Embedded S/W Engineer (BSP Driver) | ready | — | 자체 채용홈 (ninehire 화이트라벨) | Embedded + **Embedded Experience Detail 3쪽** (포트폴리오 **필수** 칸 · 2026-08-09 신규 빌드) | `telechips--embedded-sw-engineer` |
 | Reflection AI 🌐 | FDE, Lead - AI Engineer (Seoul) | submitted | 2026-07-30 | Ashby (가입 불필요) | FDE 3쪽만 — **영문 폼이라 국문 깊이 문서를 붙이지 않았다** | `reflection-ai--forward-deployed-engineer-lead-ai-engineer` |
 | 42dot | Senior AI Agent Engineer (Intelligence Service) | rejected | 2026-07-30 · **불합격 통보 2026-08-07** | Ashby (가입 불필요) | **이력서+경력기술서 8쪽 합본** + Portfolio 12쪽(전용 칸) + **Motivation 805자** | `42dot--senior-ai-agent-engineer-intelligence-service` |
-| MakinaRocks | [FDE] AI Agent Application Engineer | ready | — | 그리팅 (자체 도메인) | FDE | `makinarocks--ai-agent-application-engineer-fde` |
+| MakinaRocks | [FDE] AI Agent Application Engineer | submitted | **2026-08-09** | 그리팅 (자체 도메인) — **신형 지원폼** · 이메일 인증 게이트 | FDE + **경력기술서 5쪽 + 포트폴리오 12쪽** (전용 슬롯 3개에 1:1) | `makinarocks--ai-agent-application-engineer-fde` |
 | SOCAR | Platform Engineer | rejected | 2026-07-30 · **불합격 통보 2026-08-04** | 그리팅 (자체 도메인) | DevEx + Portfolio 12쪽 | `socar--platform-engineer` |
 | Upstage | AI Engineer - Agents | submitted | **2026-08-01** | 그리팅 (자체 도메인) | AI Engineer + **국문 자기소개서 2쪽** + 포트폴리오 12쪽 | `upstage--ai-engineer-agents` |
 | FriendliAI | Software Engineer - AI Agents | submitted | 2026-07-30 | Ashby (가입 불필요) | AI Engineer (⛔ 폼에 첨부 슬롯 1개 — 깊이 문서 칸 없음) | `friendliai--software-engineer-ai-agents` |
 | Toss | AI Engineer (Platform) | rejected | 2026-07-30 · **불합격 통보 2026-08-04** | **토스 자체 채용홈** | **이력서+경력기술서 8쪽 합본** · 경력 3건 직접 입력 · ⛔ 커버레터 칸 없음 | `toss--ai-engineer-platform` |
-| Bear Robotics | Systems Software Engineer (Linux Platform) | ready | — | **Breezy HR** (자체 보드) | Embedded (영문 CV 필수) | `bear-robotics--systems-software-engineer-linux-platform` |
-| Penguin Solutions 🌐 | Sr. System Engineer | draft | — | 자체 채용홈 (SuccessFactors) | — (보류 — GLG 판단) | `penguin-solutions--sr-system-engineer` |
+| Bear Robotics | Systems Software Engineer (Linux Platform) | submitted | **2026-08-09** | **Breezy HR** (자체 보드) | Embedded 2쪽 **파일 하나만** + 커버레터 2,762자·경험요약 912자(textarea) + **구조화 경력 3건·학력 3건 직접 입력** · ⛔ 깊이 문서는 칸이 있었으나 GLG 판단으로 안 냄 | `bear-robotics--systems-software-engineer-linux-platform` |
+| Penguin Solutions 🌐 | Sr. System Engineer | draft | — | 자체 채용홈 (SuccessFactors) · 🔴 **옛 URL 은 filled — 새 req `2027`(`…/1408533400/`) 로 교체, 2026-08-09 확인** | — (컷 미정) | `penguin-solutions--sr-system-engineer` |
 | Sonatus 🌐 | Staff DevOps Engineer | ready | — | **LinkedIn Easy Apply** | Embedded | `sonatus--staff-devops-engineer` |
-| Telit Cinterion 🌐 | Edge AI Software Engineer | ready | — | **Paylocity** (자체 보드) | Embedded | `telit-cinterion--edge-ai-software-engineer` |
+| Telit Cinterion 🌐 | Edge AI Software Engineer | submitted | **2026-08-09** | **Paylocity** (자체 보드) · 3단계 위저드 · SMS 동의 필수 · 🔴 **업로드가 곧 이력서 자동 파싱** | Embedded 2쪽 + **Embedded Experience Detail 3쪽** (`Upload Additional Files` 10MB 선택 칸 · 2026-08-09 신규 확보) | `telit-cinterion--edge-ai-software-engineer` |
 | AIRS Medical | AX Engineer | rejected | 2026-07-30 · **서류전형 불합격 통보 2026-08-06** | 그리팅 (자체 도메인) | DevEx + Competency + Portfolio | `airs-medical--ax-engineer` |
 | GE HealthCare 🌐 | Senior Software Engineer | draft | — | **Workday** (공식 외부 사이트) | 미정 — Systems Software 컷 판단 | `ge-healthcare--senior-software-engineer` |
 | XCENA (엑시나) | System Software 계열 — **회사 스캔 23건** | held | — | 그리팅 (자체 도메인) | — (목록만 · GLG: "너무 시스템") | `xcena--system-software` |
@@ -46,9 +46,9 @@
 | NHN | LLM 기술 개발 (LLM / Agent) — **NHN 2번째 건** | draft | — | **`careers.nhn.com`** — ⚠ **로그인 필요** | AI Engineer + **포트폴리오 필수** | `nhn--llm-technology-development-llm-agent` |
 | 카카오헬스케어 (Kakao Healthcare) | [경력] AI Agent Engineer | replied | 2026-07-30 · **서류합격 2026-08-06** · 🔴 스크리닝 인터뷰(비대면 30분) 일정 조율 대기 | **자체 채용홈** `recruit.kakaohealthcare.com` (ninehire 화이트라벨) | **합본 20쪽 한 파일** (이력서 3 + Competency 5 + Portfolio 12) — 폼 슬롯이 하나뿐 · 커버레터는 칸 없음 | `kakao-healthcare--ai-agent-engineer` |
 | 카카오뱅크 (Kakao Bank) | **인재풀 등록** — 지원분야 `Platform Development` | submitted | 2026-07-30 | **`kakaobank.recruiter.co.kr`** (recruiter.co.kr) · 접수 ~2026-12-31 | AI Engineer + Competency + Portfolio + 공개 좌표 2 | `kakao-bank--talent-pool-platform-development` |
-| 카카오뱅크 (Kakao Bank) | **데이터 엔지니어 - Data Warehouse** (`260510`, 마감 2026-08-06) | ready | — | **`recruit.kakaobank.com`** 개편 채용홈 → 폼은 `kakaobank.recruiter.co.kr` | ✅ **AI Engineer** + Competency(경력기술서 란) + Portfolio(포트폴리오 란) · ✅ **자기소개서 2문항 작성 완료** (952자·879자, `answers.md`) · **GLG 제출 대기** | `kakao-bank--data-engineer-data-warehouse` |
+| 카카오뱅크 (Kakao Bank) | **데이터 엔지니어 - Data Warehouse** (`260510`, 마감 2026-08-06) | closed | — · **마감 미제출 확인 2026-08-09** | **`recruit.kakaobank.com`** 개편 채용홈 → 폼은 `kakaobank.recruiter.co.kr` | AI Engineer + Competency(경력기술서 란) + Portfolio(포트폴리오 란) · 자기소개서 2문항 작성 완료(952자·879자, `answers.md`) — **다음 공고에 추천 경로와 함께 재사용 검토** | `kakao-bank--data-engineer-data-warehouse` |
 | IGNITE | AI Developer | submitted | **2026-08-01** | 회사 자체 ATS (ninehire, `ignite.ninehire.site` · 상시) · 지원경로 `채용포털` | **이력서+경력기술서 8쪽 합본** + Portfolio 12쪽 + **실제 서술형 260·286·260자** | `ignite--ai-developer` |
-| Wonderful 🌐 | Forward Deployed Engineer (South Korea) | ready | — | Ashby (가입 불필요) | FDE (기존 PDF 재사용) | `wonderful--forward-deployed-engineer` |
+| Wonderful 🌐 | Forward Deployed Engineer (South Korea) | submitted | **2026-08-09** | Ashby (가입 불필요) | FDE 3쪽만 — **폼이 Name·Email·Resume 셋뿐** (선택 첨부·서술형 칸 없음) | `wonderful--forward-deployed-engineer` |
 
 ---
 
@@ -90,6 +90,10 @@
 
 | 08-01 | **경력 ⚠칸 6건이 한 번에 닫혔다** | 업스테이지 폼의 「부서·직급·정확한 월」이 *「SSOT 에 없다」* 로 6칸 막혀 있었다. **없던 게 아니라 안 본 것이다** — 07-31 서류합격 뒤 GLG 가 오토에버에 **직접 입력한 값**이 `submit/KimJunghan_AutoEver_Detail_Form.md` 에 그대로 있었다(개발팀·프로 / 계약직·분산컴퓨팅연구실·박사과정연구원 / 부서 미제출·공동창업자). ⭐ **제출 스냅샷은 증언이자 다음 건의 입력값이다.** 그리고 그 대조에서 **`FAQ.md` §3 이 틀린 것이 드러났다** — 성균관대를 「2018 – 2022.06 · 4년 4개월」로 적어 뒀는데 실제 제출값은 **2017.08 – 2022.07 · 5년** 이다. 「2018 시작」은 NEMO-UX 법인 종료(2017.08) 직후로 이어지는 연속을 **끊어 놓는 값**이었다. **추정으로 채운 SSOT 는 실측이 오면 진다** |
 | 08-01 | **NEMO-UX 는 값이 둘이다** | GLG: *「법인은 2년이고 앞에 준비했던 기간에 대한 이야기니까 그렇게 적어둬 헷갈리지 않게.」* → 구조화 경력 칸은 **2015.08 – 2017.08**(법인 재직), 이력서·서사는 **2013 – 2017**(준비 포함). **둘 다 사실이고 모순이 아니다** — 칸이 무엇을 묻는지로 고른다. 구조화 폼에 2013 을 쓰면 **재직하지 않은 기간을 재직으로 신고**하는 것이 되고, 이력서를 2015.08 로 줄이면 실제로 한 일이 사라진다. `FAQ.md` §3 에 표로 박았다 |
+
+| 08-09 | **임베디드 조준 깊이 문서** (텔레칩스가 드러냈다) | 🔴 **07-29 원칙4 가 케이스 폴더의 깊이 문서를 건너뛰었다.** 그때 이력서 6컷과 `dossier/` 3문서는 훑었는데 **`deepx--linux-bsp-engineer/experience-detail.md` 는 안 봤다** — 거기 부팅 45.4→5.8초 · 메모리 816→246MiB · 코드 공유 96% 가 지금도 살아 있다. 나간 문서라 **고치지 않는다**. 08-01 FAQ §9 예문 사고와 **같은 계열**이다: 규칙을 고칠 때 **사본이 어디까지 퍼졌는지**를 세지 않으면 사본이 이긴다. → 새로 뜬 임베디드 깊이 문서는 그 자리를 **「진단·롤백 기준·성문화한 승격 정책」**으로 바꿨고(*고친 것은 업스트림 릴리스였다*를 문서가 직접 말한다), **`build.sh` 안에 원칙4 게이트를 박아** 수치가 되돌아오면 빌드가 죽게 했다. ⭐ **중립판으로 썼기 때문에 한 산출물이 세 건(텔레칩스 포트폴리오 **필수** · Bear `기타 첨부` · Telit `Upload Additional Files`)을 동시에 연다** — 조준판이었다면 셋 다 따로 떠야 했다. `stage.py` `SLOT` 에 `_Experience_Detail` 을 넣어 세트 README 가 **어느 칸인지 말하게** 했다(빈 `—` 는 08-01 IGNITE 계약이 다시 열리는 자리다) |
+
+| 08-09 | **Bear Robotics (제출)** | 🔴 **폼이 이력서를 파싱해 구조화 경력 6줄을 스스로 채워 놨고, 그 값이 SSOT 와 어긋났다.** 한 회사가 세 재직으로 쪼개져 **셋 다 퇴사 처리**됐고, **국책과제 발주 기관(IITP)이 고용주**로, **교환연구 9개월이 별도 재직**으로 올라가 있었으며, **이력서의 서사 연도(2013)가 구조화 칸에** 들어가 있었다 — `FAQ.md` §3 이 *「재직하지 않은 기간을 재직으로 신고하는 것」* 이라고 못 박은 바로 그 값이다. 정작 **5년짜리 계약직 재직은 통째로 빠져** 있었다. **제출 직전에 잡았다.** ⭐ 08-01 의 *「제출 스냅샷은 다음 건의 입력값이다」* 가 **읽는 쪽**이었다면 이건 **쓰는 쪽**이다 — 스냅샷을 갖고 있어도 **폼이 먼저 채워 놓으면 대조를 안 한다.** → 계약: **자동 채워진 구조화 경력은 값이 아니라 초안이다.** 채운 주체가 누구든(「전에 내가 넣었겠지」 금지) 제출 전 SSOT 와 한 줄씩 대조하고, **고치기 전에 GLG 승인을 받는다**(재직 신고는 사람의 값이다). `AGENTS.md` §외부 ATS 에 절로 올렸다. 부수 계약 둘 — **재직 중인 회사는 종료일을 비운다**(파서는 오늘 날짜를 퇴사일로 넣는다), **DOM 의 `required` 를 사람에게 「필수」라고 전하지 않는다**(EEOC 가 `ng-required` 인데 화면 문구는 *requested, not required*) |
 
 **읽는 법 — 이 표가 말하는 한 가지**: 실패는 그 건의 실수로 끝나지 않고 **스크립트·게이트·계약
 중 하나로 올라간다.** 올라가지 않은 교훈은 반드시 재발한다(08-01 IGNITE 두 행이 그 증거다).

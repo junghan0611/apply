@@ -46,3 +46,16 @@ applications/*/build/*.pdf
 
 # 한 장짜리 md → PDF 산출물 (정본은 md, 재현은 그 폴더 `build.sh`)
 applications/*/KimJunghan_*.pdf
+
+# 증명사진 — 얼굴 이미지는 git 히스토리에 넣지 않는다 (2026-08-09)
+#
+# PRIVATE 저장소이므로 회사명·답변·연락처는 담지만, **얼굴 사진은 다른 종류의 값**이다.
+# 한 번 커밋되면 히스토리에서 지우기 어렵고, 이 저장소는 언젠가 allowlist 로 공개 트리를
+# 뜨는 것을 계획하고 있다(`PUBLICATION.md`). 그때 실수 하나가 얼굴을 내보낸다.
+#
+# 그래서 PDF 와 같은 계약을 쓴다 — **파일은 `submit/` 에 두어 노트북에서 바로 올리고,
+# git 에는 지문(`MANIFEST.sha256`)과 재현 경로(그 건 `submission.md`)만 남긴다.**
+# 원본은 `[private path removed]` 에 있고 크롭 명령이 그 건 기록에 적혀 있다.
+applications/*/submit/*.jpg
+applications/*/submit/*.jpeg
+applications/*/submit/*.png

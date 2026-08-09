@@ -1,0 +1,24 @@
+The hardest part of developer experience is not the first API call. It is the second week, when
+someone is building something real and the example no longer covers their case. That gap is where
+I have spent my working life, and it is why I am applying.
+
+I build agent tooling and then live inside it. One skill definition fans out to five different
+agent harnesses; the memory layer that sits under them combines vector and full-text retrieval and
+was split out as its own axis so no single harness owns it. These are not demos I assembled for a
+portfolio. They are the tools I use to do my daily work, which means I hit the sharp edges the same
+way a developer building on your API does, and I fix them because I have to.
+
+Alongside that, I have written in Korean for the Korean developer community for years. My garden at
+notes.junghanacs.com holds tutorials, concept notes, and failure write-ups published on a steady
+rhythm, dated as they were written. Building demos, writing the tutorial, and standing in front of
+the local community are three jobs in this posting; for me they have been one habit.
+
+That is also why the Korean requirement reads differently to me than a language checkbox. Ecosystem
+work in Korea is not translated documentation. It is knowing which questions Korean developers
+actually ask first, and I have been answering those questions in public in Korean the whole time.
+
+One signal from outside my own repositories: two patches I wrote to fix Korean and CJK input
+composition were reviewed and merged into an Emacs terminal project I do not own
+(github.com/dakra/ghostel, PR #343 and #510).
+
+My work is public and dated: github.com/junghan0611, notes.junghanacs.com, ax.junghanacs.com.

@@ -1,0 +1,31 @@
+# 폼에 그대로 붙여넣을 본문 — 생성: applications/stage.py
+# 정본은 answers.md (근거·검수 메모는 그쪽에 있다). 손으로 고치지 않는다.
+
+## 문항 1 — 경력요약 (폼 8번 · 필수 · 10,000자)
+# 1824자 (공백 포함)
+
+[요약]
+Linux 임베디드 제품을 하드웨어 bring-up 부터 양산까지 두 번 끝까지 수행했습니다. 최근에는 ARMv7/glibc(vendor sysroot) 기반 제품 코어를 RISC-V(SG2000)/static musl 로 포팅하고, 보드 차이가 제품 로직에 새지 않도록 board HAL 을 분리했습니다. 대학원에서는 비휘발성 메모리 파일시스템과 가상화 환경 NUMA lock 성능을 연구해 커널 계층이 낯선 어휘가 아닙니다.
+지원 자격 4개 중 Linux Kernel debugging / Embedded board bring-up / 관련 전공 학사 이상 3개를 충족하며, bootloader(LK·U-Boot) 포팅과 production kernel driver 개발 경험은 없습니다. 이 경계는 첨부한 경력기술서 마지막 절에 그대로 적어 두었습니다.
+
+[임베디드 시스템 · 보드]
+Embedded board bring-up (하드웨어팀 협업, 미완성 보드 단계부터) / 크로스 아키텍처 포팅 ARMv7 → RISC-V(SG2000) / static musl 유저랜드 전환 / board HAL 추출 및 보드 의존성 격리 / ARM · RISC-V 크로스 툴체인 / Yocto Project 이미지 빌드 / AOSP(Android 15) 기반 제품 통합 / RK3576 · RPi5 · Hailo-8 NPU · EFR32MG24 · ESP32-H2 실장 경험
+
+[펌웨어 · 드라이버 경계]
+Zigbee 게이트웨이 펌웨어 개발 및 양산 / legacy C Zigbee SDK 를 Zig type-safe FFI 경계로 격리 / 드라이버-프로토콜-클라우드 계층을 관통하는 단일 상태기계(HubState) 설계 / 24시간 aging 테스트 자동화 / 실기기 다중 허브 fan-out 검증 / OTA 및 monotonic versioning 기반 shadow 동기화 / mTLS 브로커와 AWS IoT 이중 백엔드를 동일 펌웨어 바이너리로 지원
+
+[커널 · 시스템 소프트웨어]
+Linux Kernel debugging 및 계측 기반 성능 진단 (CPU 상태 · 부팅 · resident memory) / 비휘발성 메모리(NVM) 파일시스템 연구 / 가상화 환경 NUMA lock 성능 연구 (성균관대 분산컴퓨팅연구실, Virginia Tech COSMOSS Lab 교환연구) / 릴리스 승격 정책 성문화 (2버전 점프 금지 · 비운영 타깃 24시간 스테이징 · 이상 신호 시 중단)
+
+[제품 전체 수명주기]
+NEMO-UX 공동창업 — 대형 터치 디스플레이용 Linux 기반 OS 개발, 하드웨어 통합 · OS 커스터마이징 · 애플리케이션 개발 · 양산 / 스마트홈 게이트웨이 제품 양산 / 고객사 SDK 딜리버리 (버전 관리되는 AAR 패키징, 고객 네임스페이스)
+
+[언어 · 도구]
+C / Zig / Go / Python / Bash / Nix / Git / Yocto / CMake · 크로스컴파일 / Docker / 선언형 인프라(NixOS 4대 머신)
+
+[수상]
+2010 한국 소프트웨어 공모대전 국무총리상 — 모바일 가상화 소프트웨어
+
+[경계 — 먼저 밝힙니다]
+bootloader(LK · U-Boot) 포팅 경험 없음 / device tree 신규 플랫폼 작성·최적화 경험 없음 / production kernel driver 개발 경험 없음 (커널 계층 이력은 연구입니다) / Assembly 실무 경험 없음 / JTAG · ETM · SWD 미사용 / Hypervisor · Virtual platform · SOC Emulator · ASPICE 경험 없음 / 팹리스의 칩 검증 및 불량 분석은 인접 영역이며 보유 경험이 아닙니다
+

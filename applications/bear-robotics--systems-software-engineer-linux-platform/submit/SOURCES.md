@@ -9,7 +9,7 @@
 빌드가 지문과 어긋나면 *무엇이* 달라졌는지는 말해 주지 않는다 — 재현 경로는 아래다.
 
 - ⭐ **재현점은 이 파일이 담긴 커밋이다.** 그 커밋에 org 정본이 함께 들어 있다 —
-  `git log --oneline -- <이 파일>` 로 찾고 `git show <커밋>:dossier/competency.org` 로 꺼낸다.
+  `git log --oneline -- <이 파일>` 로 찾고 해당 산출물의 dossier 정본 org를 `git show`로 꺼낸다.
   (커밋 SHA 를 여기 박지 않는다. 박으면 커밋할 때마다 이 파일이 갱신되는 순환이 생긴다.)
 
 ```bash

@@ -6,7 +6,7 @@
 | 지원일 | — |
 | 경로 | **Ashby** — 가입 불필요 (지원 URL HTTP 200 확인, 2026-07-28) |
 | 첨부 컷 | **DevEx** (`resume/build/KimJunghan_Resume_Developer_Experience_Engineer.pdf`, 3쪽) |
-| 추가 첨부 | ⚠ **슬롯 미실측 — 폼에 선택 첨부칸이 있으면 올린다** · `dossier/build/KimJunghan_AX_Competency.pdf` (경력·역량기술서 5쪽) · `dossier/build/KimJunghan_AX_Portfolio.pdf` (포트폴리오 12쪽) |
+| 추가 첨부 | ⛔ **없다 — 폼 실측 완료 (2026-08-09).** 파일 슬롯이 `Resume` 하나뿐. 대신 **`Additional Information` 서술형**이 있어 깊이 문서 대신 **공개 좌표 URL**로 몬다 |
 | 공고 URL | https://jobs.ashbyhq.com/openai/[uuid removed] |
 | **지원 URL** | https://jobs.ashbyhq.com/openai/[uuid removed]/application |
 | 조직 | `Go To Market` / `Developer Experience` (Ashby 보드 표기) · 근무지 서울 |
@@ -28,6 +28,44 @@
 
 **⚠ 업로드 직전 파일명을 눈으로 확인한다.** 여섯 컷 중 **DevEx 컷을 처음 쓰는 건**이다.
 
+## ✅ 폼 스키마 — 브라우저 실측 (2026-08-09, 읽기 전용)
+
+지원 URL `…/[uuid removed]/application` · **로그인 불필요**
+
+> 🔴 **폼 상단 경고 — 지원 횟수 제한이 있다.**
+> *"we have set up limits for applications across roles. Candidates may not apply more than
+> 5 times in any 180 day span."* → **OpenAI 는 180일에 5건까지다.** 아무 자리나 눌러 보는
+> 회사가 아니고, 이 한 칸을 DevEx 에 쓰는 선택이다. 다른 OpenAI 공고를 같이 내려면 이 제한을 먼저 센다.
+
+| 칸 | 필수 | 값 |
+|---|---|---|
+| `Autofill from resume` | — | 쓰지 않는다 |
+| **Legal Name** (*여권/신분증 표기 그대로*) | ✅ | ✅ **`Junghan Kim`** (GLG 확정 2026-08-09 — `FAQ.md` §1 영문명과 같다) |
+| Preferred Name | 선택 | Junghan |
+| Email | ✅ | [email removed] |
+| **Resume** (파일 1개) | ✅ | `submit/KimJunghan_Resume_Developer_Experience_Engineer.pdf` |
+| **Phone Number** | ✅ | GLG 직접 (Git 미보존) |
+| Where are you currently located? | 선택 | Seoul, South Korea |
+| **When can you start a new role?** | ✅ | `FAQ.md` §4 — **「Negotiable — within 4 weeks of offer」** |
+| `Are you authorized to work in the country where the job is located?` | Yes/No | **Yes** |
+| `Are you able to work from a local office three days per week?` | Yes/No | ✅ **Yes** (GLG 확정 2026-08-09 — 서울 오피스 주 3일 출근 가능) |
+| `Will you now or in the future require sponsorship…?` | Yes/No | **No** |
+| **`Additional Information`** (서술형, 선택) | 선택 | ⭐ **여기가 커버레터 자리다** — 아래 |
+| `I confirm I have read…` 확인 체크박스 | — | **GLG 가 읽고 체크** (허위기재 시 불이익 · 전 직장 기밀 미제출 서약) |
+| reCAPTCHA | — | 폼에 붙어 있다 |
+
+- ⭐ **`Additional Information` 은 이 건에서 가장 중요한 칸이다.** 기존 기록의 *「칸이 있으면
+  반드시 쓴다 — 콘텐츠·전파가 직무 자체라 글 한 편이 곧 샘플이다」* 가 그대로 적용된다.
+  칸이 묻는 것은 **`your motivation to apply or additional context`** 이므로
+  §왜 이 직무였는가 를 **영문 지원 동기**로 줄이고, 깊이 문서를 못 올리는 대신
+  `notes.junghanacs.com` · `ax.junghanacs.com` · `github.com/junghan0611` **공개 좌표를 본문에 싣는다.**
+  → **초안 작성 완료: `cover-letter.md` §붙여넣을 본문** (2026-08-09, 영문 약 340단어).
+  **GLG 승인 전이며 아직 어디에도 붙여넣지 않았다.** 승인 뒤 `stage.py` 가
+  `submit/cover-letter.txt` 로 뽑는다(커버레터 계약 그대로).
+- ⛔ 희망연봉을 묻지 않는다. 학위·연차 질문도 없다.
+- ⚠ **공고의 「APAC 출장 ~30%」를 폼이 묻지 않는다.** 대신 **주 3일 오피스**를 묻는다 —
+  실제로 걸리는 조건이 출장 비율이 아니라 **상주 근무 형태**였다.
+
 ## 폼에 답한 질문
 
 | 질문 | 답 | 출처 |
@@ -44,7 +82,9 @@
 | 이직 사유 | ✅ **확정 문장 있음** — `FAQ.md` §7 (`resume/body.org` Summary 축) | `FAQ.md` §7 |
 | **한국어 능력** | 모국어 — 공고가 요구하는 조건이고 **이 자리에서는 강점이다** | `FAQ.md` §6 |
 | **영어 수준** | 기술 문서·비동기 협업 능숙. 상시 회의·발표 영어는 과장하지 않는다 | `FAQ.md` §6 |
-| **APAC 출장 ~30% 수용?** | ⚠ **비율만 GLG 확정 필요.** 출장 자체는 ✅ 가능으로 닫혔다(2026-07-29, `FAQ.md` §4). 남은 것은 **APAC ~30%** 를 받아들일지다 | 이 건에서 새로 생긴 질문 |
+| **APAC 출장 ~30% 수용?** | ⚠ 비율 미확정이나 **폼이 묻지 않는다**(2026-08-09 실측) — 면접 질문으로 남는다 | 이 건에서 새로 생긴 질문 |
+| **주 3일 오피스 출근 가능?** | ✅ **Yes** (GLG 확정 2026-08-09). 출장 비율보다 이쪽이 실제 제약이었고, 그 제약을 받는다 | 2026-08-09 폼 실측 |
+| **Legal Name 표기** | ✅ **`Junghan Kim`** (GLG 확정 2026-08-09) | 2026-08-09 폼 실측 |
 
 > 사전에 없던 질문은 여기 적고 **`FAQ.md` 에도 추가한다.**
 > OpenAI Ashby 폼은 서술형 칸이 여러 개일 수 있다. 실제 폼을 열어 확인하고 이 표를 채운다.
@@ -76,3 +116,7 @@ GLG 는 그 셋이 이미 한 축이다.
   지원 URL HTTP 200 확인. 컷 **DevEx** 확정. 상태 `ready` — **GLG 노트북에서 제출 대기**.
 - [2026-07-28] **보류.** GLG 판단 — 외국계 두 건(Cohere · OpenAI)은 이번 배치에서 뺀다.
   더 현실적인 곳부터 낸다. 준비물은 그대로 살아 있으니 되살릴 때 이 파일부터 읽는다.
+- [2026-08-09] **보류를 푸는 판.** Ashby 보드 생존 확인(`isListed=true` · `FullTime` ·
+  `Seoul, South Korea` · 게시 2026-05-13 그대로). 폼 실측으로 셋이 드러났다 —
+  **① 180일 5건 지원 제한 ② `Additional Information` 서술형(커버레터 자리) ③ 주 3일 오피스 질문.**
+  ⛔ 선택 첨부 슬롯은 없다. 상태는 아직 `ready` — **제출하지 않았다.**

@@ -5,6 +5,7 @@
 
 | 파일 | 폼의 어느 칸 |
 |---|---|
+| `KimJunghan_Embedded_Experience_Detail.pdf` | 포트폴리오 / 추가 첨부 (3쪽) — **임베디드 축** 깊이 문서. ⚠ AX 축 문서(`_Competency`·`_Portfolio`)와 섞지 않는다 |
 | `KimJunghan_Resume_Embedded_Software_Engineer.pdf` | 이력서 (필수) |
 
 생성: `applications/stage.py` · 손으로 고치지 않는다.
