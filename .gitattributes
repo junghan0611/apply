@@ -1,0 +1,2 @@
+# Preserve externally received assignment bytes exactly.
+applications/*/assignment/*.csv binary
