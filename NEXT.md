@@ -18,9 +18,9 @@
 
 # ACTIVE — 다음 제출 큐
 
-- **IGNITE** — 2026-08-12 코딩테스트·실무형 과제 안내 수신. 과제는 전달 뒤 1주일(기록상
-  2026-08-19). 코딩테스트 메일의 「12일 (토)」는 가까운 달력상 2026-09-12이나 확인 전 미확정이다.
-  원본은 이 저장소가 보존하고, 수행은 PRIVATE repo `<private assignment repo>`의 첫 케이스가 맡는다.
+- **IGNITE** — 실무형 과제 자료(PDF+ZIP) 2026-08-19 제출 완료. 코딩테스트 메일의 「12일 (토)」는
+  가까운 달력상 2026-09-12이나 확인 전 미확정 — 실제 수신 시각·3일 접속 종료 시각을 아직 확인해야 한다.
+  원본·수행은 PRIVATE repo `<private assignment repo>`의 `<private case path>`.
 - **Sonatus** — 다음 재개점. Easy Apply 5단계와 저장 이력서 함정을 `applications/sonatus--staff-devops-engineer/submission.md` §다음 한 걸음에서 확인한다.
 - **Telechips** — 필수 포트폴리오·경력요약 1,976자·영어 `중`·증명사진까지 준비됨. 다음에는 폼에서 구조화 경력/학력을 AutoEver 스냅샷·`FAQ.md` §3과 한 줄씩 대조한다.
 - **Penguin Solutions** — 새 req 2027 URL로 복구됨; 컷 미정.
@@ -30,6 +30,8 @@
 
 # RECENT
 
+- [2026-08-19] **Upstage 서류전형 합격.** 다음 전형은 알고리즘 코딩 테스트. `LEDGER.md`와 건별 기록을 `replied`로 갱신했다.
+- [2026-08-19] **IGNITE 실무형 과제 자료 제출 완료.** PRIVATE repo `<private assignment repo>`의 `<private case path>`에서 문서(PDF, 최대 3장) + 결과물(zip) 두 파일을 자료제출 경로로 냈다.
 - [2026-08-13] **카카오헬스케어 종료:** 영상 스크리닝 인터뷰 후 불합격. `LEDGER.md`와 건별 기록을 `rejected`로 닫았다.
 - [2026-08-12] **IGNITE 다음 전형:** 코딩테스트와 1주일 실무형 과제 안내를 받았고, UUID로 바뀐 첨부 3개의 원래 파일명을 복구했다.
 - [2026-08-09] **제출 5건:** MakinaRocks(FDE AI Agent) — 이력서·역량기술서·포트폴리오 3슬롯; Wonderful(FDE); Cohere(FDE Agentic Platform, 완료 화면 `Remote`); Telit(이력서+임베디드 깊이 문서); Bear Robotics(이력서+커버레터·경험요약 textarea).
