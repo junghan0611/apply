@@ -151,6 +151,10 @@ gs -dNOPAUSE -dBATCH -dQUIET -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress \
 - [2026-08-19] **실무형 과제 자료 제출 완료.** PRIVATE repo `<private assignment repo>`의
   `<private case path>`에서 문서(PDF, 최대 3장 이내) `KimJunghan_IGNITE_AI_FDE.pdf`
   와 결과물 `KimJunghan_IGNITE_AI_FDE.zip`을 안내된 `자료제출` 경로로 냈다.
+- [2026-08-19] **실무형 과제 패스.** 다음 전형으로 1차 온라인 면접이 확정됐다.
+- [2026-08-20] **1차 온라인 면접 일정 확정.** 2026-08-24(월) 17:00–18:00, 화상(Google Meet
+  `meet.google.com/[meeting code removed]`). 면접관 다대일, 직무·경험·사전과제 진행과정 질의 위주,
+  별도 준비 사항 없음. 시작 3분 전 접속 대기 안내.
 - [2026-08-13] **범용 과제 작업면 분리.** 특정 회사 과제명이 아니라 젛문가의 반복 가능한 현장
   문제·증거·보고서 파이프라인을 소유하는 PRIVATE repo `<private assignment repo>`를 만들었다. 이 건은
   그곳의 `<private case path>`가 수행하고, 이 파일은 전형 상태와 최종 제출 지문만 회수한다.

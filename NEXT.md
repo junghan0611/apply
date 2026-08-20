@@ -7,8 +7,15 @@
 
 현재 좌표: 2 완료 → 3 승인 대기 → 4 후속
 
-# NOW — OpenAI 한 건을 먼저 판정
+# NOW — IGNITE 1차 면접(08-24) 준비 + OpenAI 판정
 
+- **IGNITE 1차 온라인 면접 확정** — 2026-08-24(월) 17:00–18:00, Google Meet
+  `meet.google.com/[meeting code removed]`. 다대일, 직무·경험·사전과제 진행과정 질의 위주. 별도 준비 사항
+  없음(회사 안내). 실무형 과제는 패스 확정. 원본·수행 자료는 PRIVATE repo `<private assignment repo>`의
+  `<private case path>` — 면접 전 자기 제출물(과제·서술형 답)을 복기해 둔다.
+  회사 조사(현대차/기아 DT 파트너 구조, HMG 프로젝트, 기술스택, 외부평판, 역질문 후보)는
+  `applications/ignite--ai-developer/company-research.md`에 정리해 뒀다.
+- **Upstage 코딩테스트 제출 완료(08-20)** — 다음 전형 대기, 일정 안내 아직 없음.
 - **Current:** OpenAI `Developer Experience Engineer (Seoul)`은 `ready`; 폼·답·영문 291단어 Additional Information이 모두 준비됐다.
 - **Next:** GLG가 **180일 최대 5건 지원 제한**을 확인해 이 칸을 DevEx에 쓸지 결정 → 승인하면 브라우저에서 제출 → `LEDGER.md`·건별 `submission.md`·실제 제출 세트/지문을 함께 닫고 `applications/check.py`.
 - **확정값:** Legal Name `Junghan Kim` · 주 3일 로컬 오피스 `Yes` · 스폰서 `No` · 입사 가능일 `Negotiable — within 4 weeks of offer`.
@@ -30,6 +37,9 @@
 
 # RECENT
 
+- [2026-08-20] **Upstage 알고리즘 코딩 테스트 제출 완료.** 다음 스테이지로 이어질 예정.
+- [2026-08-20] **IGNITE 1차 온라인 면접 확정** — 2026-08-24(월) 17:00–18:00, Google Meet. 실무형
+  과제는 패스 확정.
 - [2026-08-19] **Upstage 서류전형 합격.** 다음 전형은 알고리즘 코딩 테스트. `LEDGER.md`와 건별 기록을 `replied`로 갱신했다.
 - [2026-08-19] **IGNITE 실무형 과제 자료 제출 완료.** PRIVATE repo `<private assignment repo>`의 `<private case path>`에서 문서(PDF, 최대 3장) + 결과물(zip) 두 파일을 자료제출 경로로 냈다.
 - [2026-08-13] **카카오헬스케어 종료:** 영상 스크리닝 인터뷰 후 불합격. `LEDGER.md`와 건별 기록을 `rejected`로 닫았다.
