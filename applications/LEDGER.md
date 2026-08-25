@@ -31,7 +31,7 @@
 | 42dot | Senior AI Agent Engineer (Intelligence Service) | rejected | 2026-07-30 · **불합격 통보 2026-08-07** | Ashby (가입 불필요) | **이력서+경력기술서 8쪽 합본** + Portfolio 12쪽(전용 칸) + **Motivation 805자** | `42dot--senior-ai-agent-engineer-intelligence-service` |
 | MakinaRocks | [FDE] AI Agent Application Engineer | submitted | **2026-08-09** | 그리팅 (자체 도메인) — **신형 지원폼** · 이메일 인증 게이트 | FDE + **경력기술서 5쪽 + 포트폴리오 12쪽** (전용 슬롯 3개에 1:1) | `makinarocks--ai-agent-application-engineer-fde` |
 | SOCAR | Platform Engineer | rejected | 2026-07-30 · **불합격 통보 2026-08-04** | 그리팅 (자체 도메인) | DevEx + Portfolio 12쪽 | `socar--platform-engineer` |
-| Upstage | AI Engineer - Agents | replied | **2026-08-01** · **서류전형 합격 2026-08-19** · **코딩테스트 제출 완료 2026-08-20** | 그리팅 (자체 도메인) | AI Engineer + **국문 자기소개서 2쪽** + 포트폴리오 12쪽 | `upstage--ai-engineer-agents` |
+| Upstage | AI Engineer - Agents | interview | **2026-08-01** · **서류전형 합격 2026-08-19** · **코딩테스트 제출 완료 2026-08-20** · **면접 예정 2026-08-25** | 그리팅 (자체 도메인) | AI Engineer + **국문 자기소개서 2쪽** + 포트폴리오 12쪽 | `upstage--ai-engineer-agents` |
 | FriendliAI | Software Engineer - AI Agents | submitted | 2026-07-30 | Ashby (가입 불필요) | AI Engineer (⛔ 폼에 첨부 슬롯 1개 — 깊이 문서 칸 없음) | `friendliai--software-engineer-ai-agents` |
 | Toss | AI Engineer (Platform) | rejected | 2026-07-30 · **불합격 통보 2026-08-04** | **토스 자체 채용홈** | **이력서+경력기술서 8쪽 합본** · 경력 3건 직접 입력 · ⛔ 커버레터 칸 없음 | `toss--ai-engineer-platform` |
 | Bear Robotics | Systems Software Engineer (Linux Platform) | submitted | **2026-08-09** | **Breezy HR** (자체 보드) | Embedded 2쪽 **파일 하나만** + 커버레터 2,762자·경험요약 912자(textarea) + **구조화 경력 3건·학력 3건 직접 입력** · ⛔ 깊이 문서는 칸이 있었으나 GLG 판단으로 안 냄 | `bear-robotics--systems-software-engineer-linux-platform` |
@@ -47,7 +47,7 @@
 | 카카오헬스케어 (Kakao Healthcare) | [경력] AI Agent Engineer | rejected | 2026-07-30 · **서류합격 2026-08-06** · **영상 스크리닝 인터뷰 후 불합격 확인 2026-08-13** | **자체 채용홈** `recruit.kakaohealthcare.com` (ninehire 화이트라벨) | **합본 20쪽 한 파일** (이력서 3 + Competency 5 + Portfolio 12) — 폼 슬롯이 하나뿐 · 커버레터는 칸 없음 | `kakao-healthcare--ai-agent-engineer` |
 | 카카오뱅크 (Kakao Bank) | **인재풀 등록** — 지원분야 `Platform Development` | submitted | 2026-07-30 | **`kakaobank.recruiter.co.kr`** (recruiter.co.kr) · 접수 ~2026-12-31 | AI Engineer + Competency + Portfolio + 공개 좌표 2 | `kakao-bank--talent-pool-platform-development` |
 | 카카오뱅크 (Kakao Bank) | **데이터 엔지니어 - Data Warehouse** (`260510`, 마감 2026-08-06) | closed | — · **마감 미제출 확인 2026-08-09** | **`recruit.kakaobank.com`** 개편 채용홈 → 폼은 `kakaobank.recruiter.co.kr` | AI Engineer + Competency(경력기술서 란) + Portfolio(포트폴리오 란) · 자기소개서 2문항 작성 완료(952자·879자, `answers.md`) — **다음 공고에 추천 경로와 함께 재사용 검토** | `kakao-bank--data-engineer-data-warehouse` |
-| IGNITE | AI Developer | interview | **2026-08-01** · **코딩테스트·실무형 과제 안내 2026-08-12** · **실무형 과제 제출 완료(패스) 2026-08-19** · **1차 온라인 면접 확정 2026-08-24 17:00–18:00** | 회사 자체 ATS (ninehire, `ignite.ninehire.site` · 상시) · 지원경로 `채용포털` | **이력서+경력기술서 8쪽 합본** + Portfolio 12쪽 + **실제 서술형 260·286·260자** | `ignite--ai-developer` |
+| IGNITE | AI Developer | closed | **2026-08-01** · **코딩테스트·실무형 과제 안내 2026-08-12** · **실무형 과제 제출 완료(패스) 2026-08-19** · **1차 온라인 면접 완료 2026-08-24** · **GLG 후속 전형 불참 결정 2026-08-25** | 회사 자체 ATS (ninehire, `ignite.ninehire.site` · 상시) · 지원경로 `채용포털` | **이력서+경력기술서 8쪽 합본** + Portfolio 12쪽 + **실제 서술형 260·286·260자** | `ignite--ai-developer` |
 | Wonderful 🌐 | Forward Deployed Engineer (South Korea) | submitted | **2026-08-09** | Ashby (가입 불필요) | FDE 3쪽만 — **폼이 Name·Email·Resume 셋뿐** (선택 첨부·서술형 칸 없음) | `wonderful--forward-deployed-engineer` |
 
 ---

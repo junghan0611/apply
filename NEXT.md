@@ -7,27 +7,20 @@
 
 현재 좌표: 2 완료 → 3 승인 대기 → 4 후속
 
-# NOW — IGNITE 1차 면접(08-24) 준비 + OpenAI 판정
+# NOW — Upstage 면접(08-25) + IGNITE 종료 결정
 
-- **IGNITE 1차 온라인 면접 확정** — 2026-08-24(월) 17:00–18:00, Google Meet
-  `meet.google.com/[meeting code removed]`. 다대일, 직무·경험·사전과제 진행과정 질의 위주. 별도 준비 사항
-  없음(회사 안내). 실무형 과제는 패스 확정. 원본·수행 자료는 PRIVATE repo `<private assignment repo>`의
-  `<private case path>` — 면접 전 자기 제출물(과제·서술형 답)을 복기해 둔다.
-  회사 조사(현대차/기아 DT 파트너 구조, HMG 프로젝트, 기술스택, 외부평판, 역질문 후보)는
-  `applications/ignite--ai-developer/company-research.md`에 정리해 뒀다.
-- **Upstage 코딩테스트 제출 완료(08-20)** — 다음 전형 대기, 일정 안내 아직 없음.
-- **Current:** OpenAI `Developer Experience Engineer (Seoul)`은 `ready`; 폼·답·영문 291단어 Additional Information이 모두 준비됐다.
+- **Upstage / AI Engineer - Agents 면접은 오늘(2026-08-25) 예정.** 이미 낸 이력서·자기소개서·포트폴리오와 제품 체험 평가의 사실 경계를 유지한다. 면접 시각·접속 정보는 이 저장소에 회수돼 있지 않으므로 메일·캘린더 원문을 정본으로 확인한다.
+- **IGNITE / AI Developer 1차 온라인 면접은 2026-08-24 완료.** 공식 결과는 아직 미수신이지만, GLG가 후속 전형에는 참여하지 않기로 결정했다. 전국 현장 방문과 대면 조율이 중심인 FDE 역할은 하네스·장기 작업면을 깊게 발전시키는 현재 방향과 맞지 않는다. 연락이 오면 이 결정을 정중히 전달한다.
+- **OpenAI `Developer Experience Engineer (Seoul)`은 `ready`.** 폼·답·영문 291단어 Additional Information이 모두 준비됐다.
 - **Next:** GLG가 **180일 최대 5건 지원 제한**을 확인해 이 칸을 DevEx에 쓸지 결정 → 승인하면 브라우저에서 제출 → `LEDGER.md`·건별 `submission.md`·실제 제출 세트/지문을 함께 닫고 `applications/check.py`.
 - **확정값:** Legal Name `Junghan Kim` · 주 3일 로컬 오피스 `Yes` · 스폰서 `No` · 입사 가능일 `Negotiable — within 4 weeks of offer`.
 - **Blocker:** GLG의 OpenAI 건별 최종 승인 하나.
-- **Read:** `applications/openai--developer-experience-engineer-seoul/{submission.md,cover-letter.md,submit/README.md}`.
+- **Read:** `applications/upstage--ai-engineer-agents/{submission.md,answers.md,submit/}` · `applications/openai--developer-experience-engineer-seoul/{submission.md,cover-letter.md,submit/README.md}`.
 - **Do not touch:** 제출 완료 건의 실제 `submit/` 스냅샷을 재빌드·덮어쓰지 않는다. 최종 Submit·개인/법적 값·동의는 GLG가 건별로 한다.
 
 # ACTIVE — 다음 제출 큐
 
-- **IGNITE** — 실무형 과제 자료(PDF+ZIP) 2026-08-19 제출 완료. 코딩테스트 메일의 「12일 (토)」는
-  가까운 달력상 2026-09-12이나 확인 전 미확정 — 실제 수신 시각·3일 접속 종료 시각을 아직 확인해야 한다.
-  원본·수행은 PRIVATE repo `<private assignment repo>`의 `<private case path>`.
+- **IGNITE** — 2026-08-24 1차 온라인 면접 완료 뒤 GLG가 후속 전형 불참을 결정했다. 공식 결과와 무관하게 이 건은 종료하며, 연락이 오면 정중히 전달한다. 원본·수행은 PRIVATE repo `<private assignment repo>`의 `<private case path>`.
 - **Sonatus** — 다음 재개점. Easy Apply 5단계와 저장 이력서 함정을 `applications/sonatus--staff-devops-engineer/submission.md` §다음 한 걸음에서 확인한다.
 - **Telechips** — 필수 포트폴리오·경력요약 1,976자·영어 `중`·증명사진까지 준비됨. 다음에는 폼에서 구조화 경력/학력을 AutoEver 스냅샷·`FAQ.md` §3과 한 줄씩 대조한다.
 - **Penguin Solutions** — 새 req 2027 URL로 복구됨; 컷 미정.
@@ -38,6 +31,8 @@
 # RECENT
 
 - [2026-08-20] **Upstage 알고리즘 코딩 테스트 제출 완료.** 다음 스테이지로 이어질 예정.
+- [2026-08-25] **Upstage 면접 예정.** 이미 낸 세트와 제품 체험 평가를 정본으로 하며, 일정·접속 정보는 메일·캘린더에서 확인한다.
+- [2026-08-24] **IGNITE 1차 온라인 면접 완료.** 공식 결과 미수신이나 GLG가 후속 전형 불참을 결정했다.
 - [2026-08-20] **IGNITE 1차 온라인 면접 확정** — 2026-08-24(월) 17:00–18:00, Google Meet. 실무형
   과제는 패스 확정.
 - [2026-08-19] **Upstage 서류전형 합격.** 다음 전형은 알고리즘 코딩 테스트. `LEDGER.md`와 건별 기록을 `replied`로 갱신했다.

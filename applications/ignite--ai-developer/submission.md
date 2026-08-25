@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **replied** — 2026-08-01 제출 · **코딩테스트 및 실무형 과제 안내 2026-08-12** |
+| 상태 | **closed** — 2026-08-01 제출 · **실무형 과제 패스 2026-08-19** · **1차 온라인 면접 완료 2026-08-24** · **GLG 후속 전형 불참 결정 2026-08-25**. 공식 결과는 미수신. |
 | 지원일 | **2026-08-01** |
 | 경로 | **회사 자체 ATS (ninehire, `ignite.ninehire.site`)**. Wanted(`wanted.co.kr/wd/366307`)는 같은 내용의 미러 — 원본 쪽으로 낸다 |
 | 첨부 컷 | **AI Engineer** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`, 3쪽) — `FAQ.md` §10 기본값, 기존 컷 재사용(신규 빌드 아님) |
@@ -148,6 +148,8 @@ gs -dNOPAUSE -dBATCH -dQUIET -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress \
 
 ## 이후 기록
 
+- [2026-08-25] **GLG가 후속 전형 불참을 결정했다.** 1차 온라인 면접(2026-08-24) 뒤 공식 결과는 아직 받지 않았으며, 이 종료 상태는 불합격 통보가 아니라 지원자 측 결정이다. 전국 현장 방문과 대면 조율이 중심인 FDE 역할은 하네스·장기 작업면을 깊게 발전시키는 현재 방향과 맞지 않는다. 연락이 오면 이 결정을 정중히 전달한다.
+- [2026-08-24] **1차 온라인 면접 완료.** Google Meet 다대일 면접에서 직무·경험·사전과제 진행과정을 다뤘다.
 - [2026-08-19] **실무형 과제 자료 제출 완료.** PRIVATE repo `<private assignment repo>`의
   `<private case path>`에서 문서(PDF, 최대 3장 이내) `KimJunghan_IGNITE_AI_FDE.pdf`
   와 결과물 `KimJunghan_IGNITE_AI_FDE.zip`을 안내된 `자료제출` 경로로 냈다.
