@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # NHN AX 제출문서 — Org SSOT → ODT → PDF / Markdown 빌드
 #
-# 이 저장소(~/repos/gh/apply/nhn)는 private이다. 제출본은 채용사에 직접 업로드하므로
-# 고객사·사내 사실을 담을 수 있다. 공개면(ax.junghanacs.com)과는 별개 트랙.
+# 이 저장소는 공개다. 제출본 자체는 채용사에 직접 업로드하고 여기에는 두지 않으며,
+# 고객사·사내 비밀·내부 endpoint·미검수 내부 도해는 소스에 넣지 않는다.
+# 공개 경계는 PUBLICATION.md 가, 무엇이 이미 제거됐는지는 docs/HISTORY-REDACTION.md 가 쥔다.
+# 공개면(ax.junghanacs.com)과는 별개 트랙.
 #
 # 파이프라인 — 하나의 Org 정본이 두 표면으로 갈라진다:
 #
@@ -43,12 +45,15 @@ STAGE=".package/KimJunghan_AX_Evidence_Package"
 # poppler(pdftotext·pdfinfo)·pandoc 해결 순서 — 이 순서 덕에 패키지된 run.sh 가 절대경로 없이도 돈다:
 #   (1) PATH 에 있으면 그대로  (2) 로컬 AX flake 가 있으면 경유  (3) 둘 다 없으면 필요한 패키지를 안내.
 # AX_FLAKE 기본값은 package 조립 시 비워져 배포본에 절대경로가 남지 않는다.
-AX_FLAKE="${AX_FLAKE:-~/repos/gh/junghan0611/apply/ax}"
+AX_FLAKE="${AX_FLAKE:-$HOME/repos/gh/junghan0611/apply/ax}"
 
+# 🔴 기본값에 `~` 를 쓰지 않는다. 큰따옴표 안의 `~` 는 펴지지 않아서 경로가 리터럴
+# `~/doomemacs` 가 되고, 디렉터리가 실제로 있어도 `[[ -d ]]` 가 늘 거짓이 된다.
+# 의존성이 갖춰진 기계에서 `check` 가 빨간불이 나던 자리다(2026-08-27 실측).
 # 부트스트랩: straight build 있는 코어를 EMACSDIR로. proposal-export.el 이 스스로 탐지도
 # 하지만 결정성을 위해 여기서 고정한다(호스트 daemon 코어 = ~/.emacs.d → doomemacs).
-export EMACSDIR="${EMACSDIR:-~/doomemacs}"
-export DOOMDIR="${DOOMDIR:-~/repos/gh/doomemacs-config}"
+export EMACSDIR="${EMACSDIR:-$HOME/doomemacs}"
+export DOOMDIR="${DOOMDIR:-$HOME/repos/gh/doomemacs-config}"
 
 GREEN='\033[0;32m'; RED='\033[0;31m'; BLUE='\033[0;34m'; YELLOW='\033[1;33m'; NC='\033[0m'
 info() { echo -e "${BLUE}[INFO]${NC} $*"; }
@@ -82,18 +87,25 @@ declare -A FINAL=(
 
 cmd_check() {
   command -v emacs       >/dev/null && ok "emacs: $(emacs --version | head -1)" || { err "emacs 없음"; exit 1; }
-  command -v libreoffice >/dev/null && ok "libreoffice 있음"                     || { err "libreoffice 없음"; exit 1; }
+  # libreoffice 는 ODT→DOC 한 걸음에만 쓴다. 그런데 그 트랙의 스타일 마스터
+  # (reference.odt) 는 공개 저장소에 없다 — 다른 문서 바이너리와 함께 뺐다. 즉 공개
+  # 저장소의 ODT 는 어차피 프로젝트 스타일이 아니다. 그걸로 `check` 를 죽이면
+  # 아래 reference.odt 처리에서 이미 피하기로 한 상태 — 문서화된 진입점이 늘 빨간불이라
+  # 아무도 안 보는 상태 — 를 도구 쪽에서 그대로 만든다. 없으면 말하고 넘어가고,
+  # 실제로 DOC 을 만들 때 build_odt 가 멈춘다.
+  command -v libreoffice >/dev/null && ok "libreoffice 있음" \
+    || info "libreoffice 없음 — DOC 변환 한 걸음만 못 한다(PDF·Markdown·ODT 는 무관)."
   command -v python3     >/dev/null && ok "python3: $(python3 --version)"        || { err "python3 없음"; exit 1; }
   [[ -f "$EXPORT_EL" ]] && ok "proposal-export.el 있음"                          || { err "$EXPORT_EL 없음"; exit 1; }
-  [[ -f "$PIPE/templates/reference.odt" ]] && ok "reference.odt 있음"            || { err "reference.odt 없음"; exit 1; }
-  [[ -f "$PIPE/templates/ieee.csl" ]] && ok "ieee.csl 있음"                      || { err "ieee.csl 없음"; exit 1; }
-  [[ -f "$DIR/references.bib" ]] && ok "references.bib 있음"                     || { err "references.bib 없음"; exit 1; }
-  [[ -d "$EMACSDIR/.local/straight" ]] && ok "Doom core: $EMACSDIR"             || { err "straight build 없음: $EMACSDIR"; exit 1; }
-  # 스타일 마스터가 본문을 들고 있지 않은지 본다. reference.odt 는 한글 제안서를 저장해
-  # 만든 것이라 한때 그 제안서 전체(본문 10만 자·이미지 48장·9MB)를 담고 있었다. ox-odt 는
-  # styles.xml 만 꺼내므로 산출물은 멀쩡했고, 그래서 아무도 눈치채지 못한 채 그 문서가
-  # package ZIP 에 실려 나갔다. 용량이 아니라 유출이라, 조용히 되살아나면 안 되는 종류다.
-  local ref_body; ref_body="$(python3 - "$PIPE/templates/reference.odt" <<'PY'
+  # 공개 저장소에는 이 스타일 마스터가 없다 — 다른 문서 바이너리와 함께 뺐다
+  # (docs/HISTORY-REDACTION.md). 없다고 게이트를 죽이면 clone 한 사람은 문서화된
+  # `./run.sh check` 가 늘 빨간불이라 아무도 안 보게 된다. 없으면 그 사실을 말하고 넘어간다.
+  #
+  # 🔴 잔재 검사도 **이 분기 안에** 둔다. 없는 파일에 zipfile 을 열면 명령 치환이 비0 으로
+  # 끝나고 `set -e` 가 check 를 죽여서, 위에서 봐준 것이 아홉 줄 뒤에 그대로 무효가 된다.
+  if [[ -f "$PIPE/templates/reference.odt" ]]; then
+    ok "reference.odt 있음"
+    local ref_body; ref_body="$(python3 - "$PIPE/templates/reference.odt" <<'PY'
 import re, sys, zipfile
 with zipfile.ZipFile(sys.argv[1]) as z:
     body = z.read("content.xml").decode("utf-8", "replace") if "content.xml" in z.namelist() else ""
@@ -101,8 +113,16 @@ with zipfile.ZipFile(sys.argv[1]) as z:
 print(len(re.sub(r"\s+", "", re.sub(r"<[^>]+>", "", body))) + images * 1000)
 PY
 )"
-  [[ "$ref_body" -eq 0 ]] && ok "reference.odt 스타일 전용 (본문·이미지 없음)" \
-    || { err "reference.odt 에 원본 문서 잔재가 있습니다 — pipeline/strip_reference_odt.py 를 돌리세요"; exit 1; }
+    [[ "$ref_body" -eq 0 ]] && ok "reference.odt 스타일 전용 (본문·이미지 없음)" \
+      || { err "reference.odt 에 원본 문서 잔재가 있습니다 — pipeline/strip_reference_odt.py 를 돌리세요"; exit 1; }
+  else
+    # 실측(2026-08-27): 없어도 ox-odt 는 자기 기본 템플릿으로 ODT 를 만들어 낸다.
+    # 못 도는 게 아니라 **활자·스타일 계약이 안 지켜진 ODT** 가 나온다 — 그쪽이 더 조용한 실패다.
+    info "reference.odt 없음 — 공개 저장소의 정상 상태다. ODT 는 나오지만 프로젝트 스타일 마스터가 아니라 ox-odt 기본 스타일로 조판된다(PDF·Markdown 트랙은 무관)."
+  fi
+  [[ -f "$PIPE/templates/ieee.csl" ]] && ok "ieee.csl 있음"                      || { err "ieee.csl 없음"; exit 1; }
+  [[ -f "$DIR/references.bib" ]] && ok "references.bib 있음"                     || { err "references.bib 없음"; exit 1; }
+  [[ -d "$EMACSDIR/.local/straight" ]] && ok "Doom core: $EMACSDIR"             || { err "straight build 없음: $EMACSDIR"; exit 1; }
   info "ax flake 경유 도구 점검(pandoc/pdftotext)…"
   AXRUN pandoc --version >/dev/null 2>&1 && ok "pandoc (ax flake)"              || warn "pandoc 확인 실패"
   AXRUN pdftotext -v      >/dev/null 2>&1 && ok "pdftotext/pdfinfo (ax flake)"  || warn "poppler 확인 실패"
@@ -167,6 +187,8 @@ build_pdf() {
   # ODT 트랙은 PDF 를 내지 않는다. 조판 정본은 build_tex 가 만들고, 이쪽은 받는 쪽이
   # 열어서 고칠 수 있는 문서를 맡는다 — 그래서 DOC 까지 같이 낸다. HWP 는 이 DOC 을
   # 한글에서 열어 저장하는 마지막 한 걸음이라 자동화 대상에서 뺀다(변환기가 없다).
+  command -v libreoffice >/dev/null \
+    || { err "[$key] libreoffice 없음 — DOC 변환 단계다. PDF·Markdown 트랙은 이것 없이 돈다"; exit 1; }
   info "[$key] odt → doc (libreoffice headless)"
   libreoffice -env:UserInstallation="file:///tmp/lo_submission_$1" \
     --headless --convert-to doc "$odt" --outdir "$DIR" >/dev/null 2>&1
@@ -180,7 +202,14 @@ build_pdf() {
 # images/master(생성 원본) → images(문서가 참조하는 판). 원본은 지우지 않는다 —
 # 이미지 생성은 비결정적이라 같은 프롬프트로 같은 그림이 다시 나오지 않는다.
 cmd_images() {
-  [[ -d "$DIR/images/master" ]] || { err "$DIR/images/master 없음 — 생성 원본을 여기에 둡니다"; exit 1; }
+  # 공개 저장소에는 도해가 없다. 내부 아키텍처 도해는 공개 권리를 따로 판정해야 하는
+  # 물건이라 history 전체에서 제거했다(docs/HISTORY-REDACTION.md). 생성 원본을 가진
+  # 사람만 이 단계를 돌린다 — 없다고 해서 빌드가 깨진 것은 아니다.
+  [[ -d "$DIR/images/master" ]] || {
+    info "[images] $DIR/images/master 없음 — 공개 저장소의 정상 상태다. 건너뛴다."
+    info "         도해가 필요하면 생성 원본을 그 자리에 두고 다시 부른다."
+    return 0
+  }
   info "[images] 생성 원본 → 문서용으로 축소·양자화"
   python3 "$PIPE/optimize_images.py" "$DIR/images/master" "$DIR/images"
 }

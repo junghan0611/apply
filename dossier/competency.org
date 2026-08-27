@@ -199,8 +199,9 @@ Java, Python, Go 등 1개 이상의 언어로 BE 시스템 개발 운영 경험?
 #+name: fig-ax-layer
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-[[file:images/company-ax-layer.png]]
-
+#+begin_quote
+[diagram removed at publication — see docs/HISTORY-REDACTION.md]
+#+end_quote
 * 1 — 개인지식관리에서 에이전트 인프라로
 :PROPERTIES:
 :CUSTOM_ID: pkm-infra

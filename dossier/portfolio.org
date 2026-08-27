@@ -85,8 +85,9 @@
 #+name: fig-company-ax
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-[[file:images/company-ax-arch.png]]
-
+#+begin_quote
+[diagram removed at publication — see docs/HISTORY-REDACTION.md]
+#+end_quote
 - =voscli= — 「무엇이 얼마나 일어났는가」를 맡습니다. VOC·상담 데이터의 기간·단위·포함 정책을 고정해 집계가 질문마다 흔들리지 않게 하고, 집계 결과의 판단 근거를 개별 상담까지 역추적합니다. 운영팀이 매일 아침 읽습니다 [사내]
 - =incidentcli= — 「언제 무슨 순서로 일어났는가」를 맡습니다. 운영 장애·VOC·디바이스 로그·런타임 데이터를 하나의 KST 시간축으로 회수·정렬하고, VOC → 디바이스 → 런타임으로 이어지는 사슬을 잇습니다 [사내] [cite:@note-incidentcli]
 - *비서실장(COS) 에이전트* — 제 회사 업무 자체를 얹은 작업면입니다. 트랙, 오너, 결정, 원장(ledger)을 들고 있습니다 [사내]
@@ -132,8 +133,9 @@
 #+name: fig-openclaw
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-[[file:images/openclaw-ops.png]]
-
+#+begin_quote
+[diagram removed at publication — see docs/HISTORY-REDACTION.md]
+#+end_quote
 *핵심 판단 ① — 회귀를 재현하고, 한 단계가 아니라 정확한 판으로 되돌렸습니다.* 2026-04-28 정오에 상류 판을 올린 직후 응답 지연이 급증했습니다. 클린 부팅에서도 재현해 설정 오류 가설을 배제한 뒤, *약 한 시간 만에 롤백을 결정했습니다.* 이때 되돌린 곳이 *직전 판이 아니라 이미 검증된 마지막 정상판(2026.4.23)* 이라는 점이 이 판단의 핵심입니다 — 직전 판도 이미 같은 계열의 변경을 안고 있었기 때문입니다 [운영 기록].
 
 *핵심 판단 ② — 복구와 규칙을 분리하지 않았습니다.* 롤백 커밋과 *같은 분에* 운영 정책을 문서로 남겼습니다. 그 전날에도 «게이트웨이 경고(WARN)는 전부 오류로 취급하고, 조사 전에는 준비 완료라고 선언하지 않는다»는 규칙을 이미 적어 두었습니다. *규칙이 사고 뒤에 급조된 것이 아니라 운영하면서 쌓인 것입니다* [운영 기록].
@@ -173,8 +175,9 @@
 #+name: fig-andenken
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-[[file:images/andenken-rag.png]]
-
+#+begin_quote
+[diagram removed at publication — see docs/HISTORY-REDACTION.md]
+#+end_quote
 *핵심 판단 ① — 검색 알고리즘보다 기억의 소유 경계를 먼저 나눴습니다.* 세션과 공개 지식베이스를 별도 트랙으로 인덱싱하고, LanceDB [cite:@lancedb] 위에서 벡터와 전문검색(BM25 [cite:@bm25-robertson]) 점수를 정규화해 합칩니다 [cite:@qwen3-embedding]. 두 자료를 하나의 원본으로 합치지 않는 것이 요점입니다 — 출처가 다르면 갱신 주기와 신뢰도도 다릅니다.
 
 *핵심 판단 ② — 한국어 RAG가 실패하는 자리를 3층으로 메웠습니다.* «보편 학문에 대한 문서»라는 질의를 예로 들면:
@@ -224,14 +227,16 @@
 #+name: fig-entwurf-hero
 #+attr_odt: :width 11.5
 #+attr_latex: :width 0.76\linewidth
-[[file:images/entwurf-hero.png]]
-
+#+begin_quote
+[diagram removed at publication — see docs/HISTORY-REDACTION.md]
+#+end_quote
 #+caption: 주소 가능한 시민은 서로 다른 레일로 들어오고, 외부 송신자의 기여까지 협업의 판단은 세션 밖 durable state에 남는다
 #+name: fig-lineage
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-[[file:images/platform-lineage.png]]
-
+#+begin_quote
+[diagram removed at publication — see docs/HISTORY-REDACTION.md]
+#+end_quote
 *서로의 대화록·인증·런타임을 소유하지 않습니다.* 정체성(garden id)만으로 서로를 호출하고, 기층은 *주소만 나릅니다.* 그래서 하네스마다 들어오는 레일이 다릅니다 — 통일하지 않은 것이 설계입니다.
 
 | 하네스 | 어떻게 들어오나 | 시민 유형 |
@@ -281,8 +286,9 @@ Codex는 아직 이 표에 없습니다. 외부 MCP 호스트로 브리지를 �
 #+name: fig-product
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-[[file:images/product-stack.png]]
-
+#+begin_quote
+[diagram removed at publication — see docs/HISTORY-REDACTION.md]
+#+end_quote
 ** 허브 — 계약에 없던 두 층을 채워 제품으로 내보냈습니다
 
 [사내] *이 프로젝트는 제가 처음부터 설계한 것이 아니라 긴급하게 넘겨받은 것입니다.* 2025년 9월 말, 진행 중이던 게이트웨이 프로젝트를 인수인계로 받았습니다. 받은 다음 날 빌드와 보드 접속, 클라우드 연동을 하나씩 검증하며 «지금 무엇이 실제로 도는가»를 확인했고, 그 위에서 레거시 C를 Zig로 옮기는 전환 전략을 세웠습니다 [운영 기록].

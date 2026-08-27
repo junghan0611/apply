@@ -136,7 +136,7 @@ for f in resume/build/*.pdf; do mutool draw -F txt "$f" | grep -nE '96%|163|2,94
 
 | 무엇 | 어디 |
 |---|---|
-| 검증된 사실·수치·계보 | `~/repos/gh/junghan0611/apply/MATERIAL.md` |
+| 검증된 사실·수치·계보 | `MATERIAL.md` (프로필 repo `junghan0611/junghan0611`의 `apply/` — **이 저장소가 아니다**) |
 | 공개 이력서 SSOT (영문) | 가든 `20260318T183247` — §junghan0611 깃허브 프로파일 이력서 |
 | 자기소개 서사 | 가든 `20230814T142800` |
 | 기업용 하네스 좌표 (FDE 컷의 논지) | 가든 `20231018T221900` |
@@ -149,9 +149,9 @@ for f in resume/build/*.pdf; do mutool draw -F txt "$f" | grep -nE '96%|163|2,94
 
 ## 경계
 
-- **연락처·공개 입구는 이메일·GitHub·AX 증거면·가든·LinkedIn 다섯뿐이다.** 전화번호와 주소는
-  넣지 않았다. 넣을지는 GLG가 결정한다(링크드인 첨부는 채용담당자 외에도 열람 범위가 넓을 수
-  있다). 순서와 검증 계약은 위 §구조의 `\cvheader` 설명이 정본이다.
+- **공개 source의 입구는 GitHub·AX 증거면·가든·LinkedIn뿐이다.** 이메일·전화번호·주소는 넣지
+  않는다. 실제 제출본에 필요한 이메일은 private build 입력으로만 주입하고 public Git에 값이나
+  산출물을 남기지 않는다. 순서와 검증 계약은 위 §구조의 `\cvheader` 설명이 정본이다.
 - 추천인 실명, 지원 경로, 회사 내부 식별자, 고객 식별자, 자격증명은 넣지 않는다.
 - 회사 실명(GoQual)은 공개 이력서에 이미 있으므로 그대로 쓴다.
 - **직접 쓰지 않은 기술을 썼다고 쓰지 않는다.** 능력(self-owned)과 수용(third-party)과

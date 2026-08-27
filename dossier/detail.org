@@ -89,8 +89,9 @@
 *구조(텍스트).* 업무 원천(디바이스 로그·상담·사내 문서·클라우드 이벤트) → 읽기 전용 수집 → 정규화된 시간축·집계 계층 → 도메인 담당자의 질의 표면. *변경 경로는 없습니다.*
 
 #+caption: 원천은 그대로 두고 좁은 읽기 경로만 내며, 자격증명은 경로 밖 별도 금고에 둔다
-[[file:images/company-ax-arch.png]]
-
+#+begin_quote
+[diagram removed at publication — see docs/HISTORY-REDACTION.md]
+#+end_quote
 *=voscli= — 「무엇이 얼마나 일어났는가」.* 상담 데이터의 기간·단위·포함 정책을 고정해 집계가 질문마다 흔들리지 않게 하고, 집계의 근거를 개별 상담 id까지 역추적합니다. 1년치 원자료(330일)를 backfill해 운영자·봇 워크스페이스가 =git pull= 만으로 씁니다. 운영팀 일상 사용에 진입했습니다.
 
 *=incidentcli= — 「언제 무슨 순서로 일어났는가」.* 운영 장애·상담·디바이스 로그·런타임 데이터를 *하나의 KST 단일 시간축* 으로 회수·정렬합니다. 수집기 9종(알림 채널, API 모니터 DB, git trace, 이벤트 버스, 내부 콘솔, CI/CD, 클라우드 감사로그, DMS, 디바이스 로그)의 출력을 SPEC envelope로 검증하고, 인시던트 기록은 append-only입니다.
@@ -162,8 +163,9 @@ clj -M:run suggest-signals --anomaly anom-001   # 잔차를 다음 가설로
 *맥락.* 개인이 운영하는 배포라 별도 운영 조직이나 전담자가 없습니다. 따라서 «버전 올리기»는 릴리즈 노트를 읽는 일이 아니라 *상류 변경이 이 배포에 미칠 영향을 해석하고 승격 여부를 결정하는* 일입니다. ARM(aarch64) 클라우드 인스턴스 위 Docker, 메신저 다중 채널, 봇 4대를 상시 운용합니다.
 
 #+caption: 되돌리는 손과 원장에 적는 손이 같은 순간에 움직이고, 되돌아간 곳은 직전 판이 아니라 이미 검증된 판이다
-[[file:images/openclaw-ops.png]]
-
+#+begin_quote
+[diagram removed at publication — see docs/HISTORY-REDACTION.md]
+#+end_quote
 ** 인시던트 시간축 — 공개 커밋으로 검증됩니다 [공개]
 
 | 시각(KST) | 무엇을 했나 | 확인 경로 |
@@ -307,8 +309,9 @@ clj -M:run stats              # 트리플·매핑 규모
 ** 시민 레일 — 통일하지 않은 것이 설계입니다
 
 #+caption: 주소 가능한 시민은 서로 다른 레일로 들어오고, 판단은 세션 밖 durable state에 남는다
-[[file:images/platform-lineage.png]]
-
+#+begin_quote
+[diagram removed at publication — see docs/HISTORY-REDACTION.md]
+#+end_quote
 | 하네스 | 어떻게 들어오나 | 시민 유형 |
 |--------+-----------------+-----------|
 | pi | 컨트롤 소켓 어댑터 | socket-citizen |
@@ -377,8 +380,9 @@ pnpm install && pnpm check          # 타입·린트·게이트 묶음
 *검증 질문.* /«에이전트와 함께 이 속도로 만들었다»는 주장이 한 번의 좋은 날이 아니라 지속이었음을 어떻게 확인하는가?/ → *월별 분포를 그대로 엽니다. 집중 구간과 지속 구간이 함께 있습니다.*
 
 #+caption: 물려받은 아래층과 새로 채운 위층의 이음매, 배포처가 갈려도 하나인 계약, 그리고 비워 둔 다음 작업대
-[[file:images/product-stack.png]]
-
+#+begin_quote
+[diagram removed at publication — see docs/HISTORY-REDACTION.md]
+#+end_quote
 ** 인수인계로 열립니다 [사내] [운영 기록]
 
 *이 프로젝트는 제가 처음부터 설계한 것이 아니라 긴급하게 넘겨받은 것입니다.* 2025-09-29에 진행 중이던 게이트웨이 프로젝트를 인수인계로 받았고, *다음 날(09-30)* 빌드·보드 접속·클라우드 연동을 하나씩 검증하며 «지금 무엇이 실제로 도는가»를 확인한 뒤 레거시 C를 Zig로 옮기는 전환 전략을 세웠습니다.

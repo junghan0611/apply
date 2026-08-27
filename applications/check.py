@@ -185,9 +185,51 @@ def field(text, name):
 	return m.group(1) if m else ""
 
 
+PRIVATE_ARTIFACT_GLOBS = (
+	# 공개 저장소가 소유하지 않는 물건. history 에서도 제거했다 —
+	# 다시 들어오는 경로는 대개 "한 번만 예외로" 로 시작한다.
+	("**/*.pdf", "생성 문서 바이너리"),
+	("**/*.odt", "생성 문서 바이너리"),
+	("**/*.zip", "아카이브"),
+	("**/assignment/*", "회사가 준 과제 원본"),
+	("**/referral.md", "추천서 원문"),
+	("**/*_Detail_Form.md", "완성된 지원 폼(법적·신원 값)"),
+	("**/*_Applicant_Form.md", "완성된 지원 폼(법적·신원 값)"),
+)
+
+
+def public_faults(root: Path) -> list[str]:
+	"""공개 계약: private artifact 가 저장소 안에 없다.
+
+	원본 바이트 대조(`digest_faults`)는 private 보관면의 불변식이고, 공개면에서는
+	**파일이 없는 것이 정상**이다. 그쪽은 이미 「있는 파일만 비교」로 통과한다.
+	여기서 보는 것은 반대 방향 — 있으면 안 되는 것이 다시 들어왔는가.
+	"""
+	out = []
+	seen: set[Path] = set()
+	for pattern, why in PRIVATE_ARTIFACT_GLOBS:
+		# `pathlib.glob` 은 대소문자를 가린다 — `x.PDF` 가 `**/*.pdf` 에 안 걸린다.
+		# 확장자 규칙은 소문자로 정규화해서 직접 본다. 게이트가 대문자 하나로 뚫리면
+		# 그건 게이트가 아니라 관습이다.
+		if pattern.startswith("**/*."):
+			suffix = pattern[len("**/*"):].lower()
+			hits = (p for p in root.rglob("*") if p.is_file() and p.suffix.lower() == suffix)
+		else:
+			hits = root.glob(pattern)
+		for hit in sorted(hits):
+			if ".git/" in str(hit) or hit in seen:
+				continue
+			seen.add(hit)
+			out.append(f"{hit.relative_to(root)}: {why} — 공개 저장소에 두지 않는다")
+	return out
+
+
 def main():
 	deep = "--deep" in sys.argv[1:]
+	public = "--public" in sys.argv[1:]
 	fails = []
+	if public:
+		fails += public_faults(ROOT.parent if ROOT.name == "applications" else ROOT)
 	checked = 0
 	deep_seen = 0
 	fails += list(unknown_status_rows(LEDGER.read_text()))
@@ -233,6 +275,7 @@ def main():
 			print("  " + item, file=sys.stderr)
 		return 1
 	tail = f" · 깊이 문서 {deep_seen}개 조준 검사 통과" if deep else ""
+	tail += " · 공개 계약(private artifact 부재) 통과" if public else ""
 	print(f"ok — LEDGER/submission/submit {checked}건 일치{tail}")
 	return 0
 

@@ -8,14 +8,16 @@ The goal is not to automate judgment or mass-submit generic résumés. The goal 
 claim traceable, every target deliberate, every submission recoverable, and every irreversible
 browser action human-owned.
 
-> **Repository status:** this is a **private operations repository** and stays that way while the
-> work is live. It deliberately keeps company names, application answers, and submitted artifacts —
-> filtering them during the work would make the work impossible.
+> **Repository status:** public. This began as a private operations repository and ran that way
+> through every application it records. In August 2026 its whole history — every commit, not a
+> squashed snapshot — was rewritten to remove what could not be published, and the result is what
+> you are reading.
 >
-> This README is written as if for an eventual public reader, because the intended story is
-> "here is how the record was kept." That publication is a **later, separate track**; nothing in
-> day-to-day work should be shaped by it. When that day comes, read
-> [`PUBLICATION.md`](PUBLICATION.md) — the current Git history is never the thing that gets published.
+> So the record is real but not complete, and the gap is deliberate. Personal data, third-party
+> personal data, received assignments, internal diagrams, and the submitted binaries are gone;
+> the companies, the answers, the rejections, and the judgment errors are not.
+> [`docs/HISTORY-REDACTION.md`](docs/HISTORY-REDACTION.md) states what was removed and by what
+> method, and [`PUBLICATION.md`](PUBLICATION.md) is the contract that governs it.
 
 ## The loop
 
@@ -50,6 +52,11 @@ The boundaries are as important as the arrows:
 | Submission operations | `applications/` | JD snapshot, form answers, uploaded-file snapshot, outcome ledger | `applications/LEDGER.md` |
 | Dossier launcher | `dossier/` | competency statement, portfolio, and evidence package from one org corpus | `dossier/AGENTS.md` |
 | Handoff | `NEXT.md` | the next concrete move, not a backlog or history archive | `NEXT.md` |
+
+The narrative documents — this file, `PUBLICATION.md`, `docs/`, the license files — are in English.
+The operating contracts the agents actually follow, the root `AGENTS.md` and one per lane, are in
+Korean, because that is the language the work was done in. Translating them would mean maintaining
+two versions of a contract, and a contract that drifts is worse than one you have to translate.
 
 ## Multi-agent collaboration
 
@@ -98,8 +105,11 @@ applications/check.py
 # Rebuild and inspect all résumé cuts
 (cd resume && ./run.sh all)
 
-# Before any public extraction
-./scripts/check-public.sh /path/to/public-export
+# Publication gate — this repository's own history, not an export tree
+./scripts/check-public.sh --repo .
+
+# Application ledger plus the public-contract invariant
+applications/check.py --public
 ```
 
 `linkedin-jobs` uses an undocumented public LinkedIn guest endpoint. It is best-effort, rate-limited,
@@ -109,14 +119,33 @@ contract and limitations.
 ## Privacy and publication
 
 The private workspace intentionally preserves company names, application answers, and submitted
-artifacts. That is incompatible with making the current Git history public. A `.gitignore` change or
-file deletion does not erase old commits.
+artifacts. That is incompatible with publishing this object database as it stands. A `.gitignore`
+change or a file deletion does not erase old commits.
 
-The public release therefore follows three rules:
+The published record is therefore the **whole decision history, sanitized** — not a single-commit
+allowlist export. This repository **is** that sanitized result, not a plan for one. Four rules produced it:
 
-1. Export from an explicit allowlist into a clean tree.
-2. Start public history from that sanitized tree; do not expose this private object database.
-3. Run the publication gate and manually review the result before creating a public remote.
+1. Rewrite every reachable commit, blob, path, and identity field with `git-filter-repo`, keeping
+   commit count, topology, timestamps, and messages intact. Preservation is verified, not assumed.
+2. Remove what cannot be published — personal data, third-party personal data, compensation figures,
+   received assignments, raw third-party copies, submitted binaries — and record the *categories and
+   method* of every removal, never the values.
+3. Push the sanitized history into a **new, private** object database and re-verify it from a clean
+   clone; never flip this private repository's own object database to public.
+4. Run the publication gate and read every file manually before the visibility change.
 
-See [`PUBLICATION.md`](PUBLICATION.md). License selection and the final public repository name remain
-human decisions.
+See [`PUBLICATION.md`](PUBLICATION.md). The final visibility change remains a human decision, and it
+is effectively irreversible: once public, third-party archives and caches hold independent copies.
+
+## Licensing
+
+- Software, scripts, tests, build definitions, and configuration: **MIT** — [`LICENSE`](LICENSE).
+- Reusable method documentation and public-safe operating contracts: **CC-BY-4.0** —
+  [`LICENSES/CC-BY-4.0.txt`](LICENSES/CC-BY-4.0.txt).
+- Personal résumé wording, application answers, and actual career records: **no reuse license**
+  (`LicenseRef-Personal-Record`).
+- Exact path mapping: [`LICENSING.md`](LICENSING.md); reserved and third-party material:
+  [`NOTICE.md`](NOTICE.md).
+
+The licenses do not grant privacy, publicity, trademark, or employment-confidentiality rights, and
+do not relicense third-party job postings, received assignments, or quoted company material.
