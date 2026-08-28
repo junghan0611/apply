@@ -149,3 +149,12 @@ is effectively irreversible: once public, third-party archives and caches hold i
 
 The licenses do not grant privacy, publicity, trademark, or employment-confidentiality rights, and
 do not relicense third-party job postings, received assignments, or quoted company material.
+
+## Author
+
+This project is maintained by **Junghan Kim (김정한, GLG)**.
+
+- [Digital garden](https://notes.junghanacs.com/)
+- [Homepage](https://junghanacs.com/)
+- [GitHub profile](https://github.com/junghan0611)
+- [LinkedIn](https://www.linkedin.com/in/junghan-kim-1489a4306)

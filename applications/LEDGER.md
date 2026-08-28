@@ -94,6 +94,20 @@
 | 08-09 | **임베디드 조준 깊이 문서** (텔레칩스가 드러냈다) | 🔴 **07-29 원칙4 가 케이스 폴더의 깊이 문서를 건너뛰었다.** 그때 이력서 6컷과 `dossier/` 3문서는 훑었는데 **`deepx--linux-bsp-engineer/experience-detail.md` 는 안 봤다** — 거기 부팅 45.4→5.8초 · 메모리 816→246MiB · 코드 공유 96% 가 지금도 살아 있다. 나간 문서라 **고치지 않는다**. 08-01 FAQ §9 예문 사고와 **같은 계열**이다: 규칙을 고칠 때 **사본이 어디까지 퍼졌는지**를 세지 않으면 사본이 이긴다. → 새로 뜬 임베디드 깊이 문서는 그 자리를 **「진단·롤백 기준·성문화한 승격 정책」**으로 바꿨고(*고친 것은 업스트림 릴리스였다*를 문서가 직접 말한다), **`build.sh` 안에 원칙4 게이트를 박아** 수치가 되돌아오면 빌드가 죽게 했다. ⭐ **중립판으로 썼기 때문에 한 산출물이 세 건(텔레칩스 포트폴리오 **필수** · Bear `기타 첨부` · Telit `Upload Additional Files`)을 동시에 연다** — 조준판이었다면 셋 다 따로 떠야 했다. `stage.py` `SLOT` 에 `_Experience_Detail` 을 넣어 세트 README 가 **어느 칸인지 말하게** 했다(빈 `—` 는 08-01 IGNITE 계약이 다시 열리는 자리다) |
 
 | 08-09 | **Bear Robotics (제출)** | 🔴 **폼이 이력서를 파싱해 구조화 경력 6줄을 스스로 채워 놨고, 그 값이 SSOT 와 어긋났다.** 한 회사가 세 재직으로 쪼개져 **셋 다 퇴사 처리**됐고, **국책과제 발주 기관(IITP)이 고용주**로, **교환연구 9개월이 별도 재직**으로 올라가 있었으며, **이력서의 서사 연도(2013)가 구조화 칸에** 들어가 있었다 — `FAQ.md` §3 이 *「재직하지 않은 기간을 재직으로 신고하는 것」* 이라고 못 박은 바로 그 값이다. 정작 **5년짜리 계약직 재직은 통째로 빠져** 있었다. **제출 직전에 잡았다.** ⭐ 08-01 의 *「제출 스냅샷은 다음 건의 입력값이다」* 가 **읽는 쪽**이었다면 이건 **쓰는 쪽**이다 — 스냅샷을 갖고 있어도 **폼이 먼저 채워 놓으면 대조를 안 한다.** → 계약: **자동 채워진 구조화 경력은 값이 아니라 초안이다.** 채운 주체가 누구든(「전에 내가 넣었겠지」 금지) 제출 전 SSOT 와 한 줄씩 대조하고, **고치기 전에 GLG 승인을 받는다**(재직 신고는 사람의 값이다). `AGENTS.md` §외부 ATS 에 절로 올렸다. 부수 계약 둘 — **재직 중인 회사는 종료일을 비운다**(파서는 오늘 날짜를 퇴사일로 넣는다), **DOM 의 `required` 를 사람에게 「필수」라고 전하지 않는다**(EEOC 가 `ng-required` 인데 화면 문구는 *requested, not required*) |
+| Nota | AI SW Engineer (America Tech) | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `nota--ai-sw-engineer-america-tech` |
+| Nua | AI Agent 엔지니어 | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `nua--ai-agent` |
+| BHSN | AI Engineer (3년 이상) | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `bhsn--ai-engineer-3` |
+| Dnotitia | [Product] AI Agent Development Engineer | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `dnotitia--product-ai-agent-development-engineer` |
+| IDS&Trust | AI Agent Platform Engineer | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `ids-trust--ai-agent-platform-engineer` |
+| Moreh | AI System SW Engineer | submitted | 2026-08-24 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `moreh--ai-system-sw-engineer` |
+| Levit | [쇼포트] AI Engineer (3년 이상) | submitted | 2026-08-18 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) · **담당자 메시지 도착 2026-08-21(ninehire, 내용 미확인)** | `levit--ai-engineer-3` |
+| Skelter Labs | Applied AI Technical Engineer (ML) | submitted | 2026-08-18 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `skelter-labs--applied-ai-technical-engineer-ml` |
+| Specter | AI Engineer | closed | 2026-08-18 · **서류합격 2026-08-21** · **AI면접(Effy) 요청 2026-08-21, 리마인드 2026-08-22, 마감 2026-08-23 23:00** · **GLG 미응시로 전형 종료(2026-08-28 판단)** | Remember 쉽게 지원 → 자체 AI면접(Effy) | 리멤버 프로필 (오토에버 시점 이력서 기준) | `specter--ai-engineer` |
+| Elice | [엘리스] AI Engineer (Platform) | submitted | 2026-08-18 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `elice--ai-engineer-platform` |
+| Korea Networks | AI Agent Engineer | rejected | 2026-08-09 · **불합격 통보 2026-08-17** | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `korea-networks--ai-agent-engineer` |
+| Answers Lab Korea | AI Agent PM | rejected | 2026-08-10 · **불합격 통보 2026-08-12** | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `answers-lab-korea--ai-agent-pm` |
+| Cosmax | [코스맥스] AX혁신팀 | submitted | 2026-08-09 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `cosmax--ax` |
+| Dorco | Robot Control Development Engineer | submitted | 2026-08-04 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) · **회사 요청 2026-08-07: 자체 채용홈페이지 재지원 요망, 미이행** | `dorco--robot-control-development-engineer` |
 
 **읽는 법 — 이 표가 말하는 한 가지**: 실패는 그 건의 실수로 끝나지 않고 **스크립트·게이트·계약
 중 하나로 올라간다.** 올라가지 않은 교훈은 반드시 재발한다(08-01 IGNITE 두 행이 그 증거다).
