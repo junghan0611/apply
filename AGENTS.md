@@ -9,6 +9,23 @@ GitHub `junghan0611/apply`는 공개 저장소다. 회사·직무·지원 답변
 정확한 공개 경계와 history 정제 방식은 `PUBLICATION.md`, 라이선스는 `LICENSING.md`가 정본이다.
 raw 폼과 법적 값은 private Org가 소유하며 이 저장소에 사본을 만들지 않는다.
 
+## 담당자 문서 — 제목이 아니라 denote id 로 기억한다
+
+| 무엇 | denote id | 사는 곳 |
+|---|---|---|
+| **담당자 문서** (이 리포의 공개 얼굴) | `20260331T172313` | `~/org/botlog/` |
+| **곁노트** — 이 리포의 「왜」 층 (autholog) | `20230725T102900` | `~/org/notes/` |
+
+- **제목으로 찾지 않는다.** 제목·슬러그·태그·파일명은 하루에도 바뀌고 `#+identifier` 만 안 움직인다.
+  2026-09-04 에 이 노트가 개명되며 넷이 전부 바뀌었고, 제목으로 유도한 순회는 그 사이 `후보 없음`
+  이라 답했다. **어느 노트가 담당자 문서인가는 GLG 의 판정이지 유도할 사실이 아니다.**
+- **읽는 자리는 `~/org/botlog/` 의 org 원본이다.** `notes/content/` 로 내보내진 md 는 한 주기 늦으므로
+  판정 근거로 쓰지 않는다.
+- **곁노트를 담당자 문서에 흡수하지 않는다.** 「왜」(원석)와 「어떻게」(담당자 문서)는 이웃으로 둔다.
+- 읽기는 `denotecli read <id> --outline` 으로 뼈대부터. 쓰기는 `botlog` 스킬
+  (`agent-denote-add-history` / `agent-denote-add-heading`). 내용을 실제로 고쳤으면
+  `agent-denote-set-front-matter` 로 `:hugo_lastmod` 도장을 찍는다 — 히스토리 한 줄은 로그이지 수정이 아니다.
+
 ## 여기부터 읽는다
 
 1. `NEXT.md` — 지금 할 한 걸음.
