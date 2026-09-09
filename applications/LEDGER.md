@@ -100,7 +100,7 @@
 | BHSN | AI Engineer (3년 이상) | rejected | 2026-08-27 · **불합격 통보 2026-09-02** | Remember 쉽게 지원 | 미실측 | `bhsn--ai-engineer-3` |
 | Dnotitia | [Product] AI Agent Development Engineer | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `dnotitia--product-ai-agent-development-engineer` |
 | IDS&Trust | AI Agent Platform Engineer | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `ids-trust--ai-agent-platform-engineer` |
-| Moreh | AI System SW Engineer | submitted | 2026-08-24 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `moreh--ai-system-sw-engineer` |
+| Moreh | AI System SW Engineer | rejected | 2026-08-24 · **불합격 통보 2026-09-09** | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `moreh--ai-system-sw-engineer` |
 | Levit | [쇼포트] AI Engineer (3년 이상) | submitted | 2026-08-18 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) · **담당자 메시지 도착 2026-08-21(ninehire, 내용 미확인)** | `levit--ai-engineer-3` |
 | Skelter Labs | Applied AI Technical Engineer (ML) | submitted | 2026-08-18 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `skelter-labs--applied-ai-technical-engineer-ml` |
 | Specter | AI Engineer | closed | 2026-08-18 · **서류합격 2026-08-21** · **AI면접(Effy) 요청 2026-08-21, 리마인드 2026-08-22, 마감 2026-08-23 23:00** · **GLG 미응시로 전형 종료(2026-08-28 판단)** | Remember 쉽게 지원 → 자체 AI면접(Effy) | 리멤버 프로필 (오토에버 시점 이력서 기준) | `specter--ai-engineer` |
