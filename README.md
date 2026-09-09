@@ -1,5 +1,10 @@
 # apply — evidence-first, human-governed application operations
 
+> **⚔️ OFFENSE MODE — since 2026-09-09.** Target criteria widened: industry and company size are
+> no longer filters, and embedded/systems roles are back in scope alongside the AI-axis roles.
+> Volume and reach now outweigh narrow fit. The evidence-first, human-final-submit contract below
+> is unchanged — only the target aperture is wider.
+
 `apply` is a working system for turning one verified career corpus into job-specific documents,
 searching public job listings, submitting through heterogeneous ATS forms, and preserving exactly
 what was sent.
