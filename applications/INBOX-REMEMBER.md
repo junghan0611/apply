@@ -102,3 +102,57 @@ FDE) · 채널코퍼레이션/채널톡(FDE) · 슈퍼브에이아이(FDE, 둘 �
    브라우저에서 다시 훑어야 한다.
 4. `AI·데이터` 나머지 태그(`MLOps`·`데이터 엔지니어`)와 `SW개발` 하위 `DevOps`·`클라우드
    엔지니어`로 키워드를 넓히면 44건보다 더 나올 수 있다 — 아직 안 해봤다.
+
+## 리멤버 재스캔 (2026-09-09) — OFFENSE MODE, GLG 브라우저 로그인 세션
+
+`README.md` 상단 배너대로 산업·회사 규모 필터를 풀고 재스캔했다. 이번엔 08-04 의 "수동 브라우저
+스캔 폐오클릭" 사고를 피하려고 **목록 카드는 스크린샷으로만 훑고, 본문을 볼 때는 `get_page_text`로
+공고 상세 페이지 텍스트를 통째로 읽었다** — "지원하기"·"간편 지원" 버튼은 어느 화면에서도 클릭하지
+않았다.
+
+직무 필터를 `AI·데이터 > AI·ML·DL`·`AI·데이터 > MLOps`·`SW개발 > 백엔드`·`SW개발 > 임베디드`·
+`SW개발 > DevOps` 다섯 개로 좁히고, 검색어를 `Forward Deployed`·`에이전트`·`MCP`(0건) 순으로
+바꿔가며 훑었다(`Forward Deployed` 25건, `에이전트` 10건). `LEDGER.md`·`INBOX.md`·
+`INBOX-WANTED.md`·이 파일의 기존 행과 대조해 새 회사·새 req만 남겼다.
+
+### 본문 다 읽고 판정한 것 — 신규 (담당업무 근거)
+
+| 회사 | 직무 | 경력 | Agent/AI 축 적합도 | 비고 | 리멤버 ID |
+|---|---|---|---|---|---|
+| **파트리지시스템즈** | Forward Deployed Engineer | 2년+ | ⭐⭐ **정면.** 국내 유일 피지컬 AI 데이터옵스(databahn) — 고객 현장 센서·영상·로그 데이터로 AI/Data 문제 정의→PoC→제품화까지 FDE 원형. 우대사항에 LLM/VLM·RAG·Agent 프로토타입 명시 | `331625` |
+| **스켈터랩스** | Forward Deployment Engineer (FDE/AI Engineer) | 3-10년 | ⭐⭐ LLM·RAG·Knowledge Graph 기반 End-to-End 설계부터 풀스택 구현·현장 배포까지. LangGraph·Prompting 명시. ⚠ 같은 회사 다른 직무(Applied AI Technical Engineer, ML)는 이미 `submitted`(`skelter-labs--applied-ai-technical-engineer-ml`) — 이 FDE 건은 별개 req | `332849` |
+| **모레(Moreh)** | AI Agent System Engineer | 2-5년 | ⭐⭐ 멀티 에이전트 오케스트레이션(Supervisor-Worker, Planner-Executor), 인지-추론-계획-실행 폐루프, **A2A·MCP·LangGraph 우대사항에 정면 명시**. ⚠ 같은 회사 이미 셋 — LLM Platform Engineer(`375108`, wanted)·NPU System SW Engineer(`382920`, wanted)는 후보, AI System SW Engineer(Remember)는 `rejected`(09-09 통보) — 이 건이 Agent 축으로는 가장 강하다 | `329027` |
+| 베슬에이아이코리아 | Forward Deployed Engineer | 3년+ | ⭐ GPU Cloud 기업의 고객대면 기술지원 FDE(Pre-sales·PoC·Onboarding). AI/ML 워크로드 이해는 요구하지만 엔지니어링보다 고객 기술지원 축에 가깝다 | `332652` |
+| 코리아포트원 | FDE(Forward Deployed Engineer, 3년이상) | 3년+ | ⭐ Commerce Ops FDE, Kotlin/백엔드 중심 재무·정산 자동화. AI Agent·Agentic Workflow는 **우대사항**일 뿐. ⚠ 같은 회사 AI Agent Engineer(5년+, `327365`/wanted `375404`)가 이미 더 강한 후보로 올라와 있다 — 중복 회사, 다른 req | `327362` |
+| 플리토 | 에이전트 엔지니어(로봇 데이터) 경력 | 3-7년 | ⭐ 로봇 모방학습(imitation learning)용 데이터 파이프라인 구축·검증이 핵심, 에이전트 프레임워크는 우대사항. ⚠ 같은 회사 에이전트 엔지니어(LLM플랫폼)(`331387`/wanted `378676`)가 이미 더 정면인 후보 — 중복 회사, 다른 req | `331385` |
+| 파인크로스(샤이샤이샤이) | [샤이샤이샤이] AI 에이전트 개발자 경력직 | 1년+ | ⭐ 소형 D2C 스킨케어 브랜드(광노화 스킨케어) — 마케팅·SCM·재무 반복업무를 AI 에이전트로 자동화하는 사내 자동화 엔지니어. **offense mode 전형**(작은 회사·비AI 업종이지만 담당업무는 AI 에이전트 축 정면) | `338612` |
+
+### 제목만 확인, 본문 미확인 — 신규 (다음에 이어서 읽는다)
+
+| 회사 | 직무 | 경력 | 비고 | 리멤버 ID |
+|---|---|---|---|---|
+| 인포시즈 | Forward Deployed Engineer | 1-5년 | ⚠ 같은 회사 Sr. FDE(5-15년, `322136`)와 별개 req — 주니어 레벨 신설 | 미확인 |
+| 마키나락스 | Forward Deployed Engineer - LLM(창원)·LLM Quantization·Lead(창원)·LLM(서초)·Vision(Defect...) | 다양 | ⚠ 같은 회사 FDE(AI Agent Application Engineer)가 이미 `submitted` — 5개 다른 req가 동시에 열려 있다. 공격적으로 채용 중인 신호 | 미확인 |
+| 인핸스(Enhans) | Forward Deployed Engineer (경력3~7년)·(대전/계약직)·(신입가능)·(재무/SCM) | 다양 | ⚠ 같은 회사 FDE(7년이상, `325034`)는 이미 `rejected`(2026-08-04) — 나머지 4개는 다른 req. `AGENTS.md` 재지원 판단 필요 | 미확인 |
+| 위즈코어(주) | [제조 AX 플랫폼] 임베디드 개발자 | 5-15년 | offense mode 순수 임베디드 신규 후보(서울/성동구) | 미확인 |
+| 마이클(MYCLE) | Data Engineering | 5년+ | 데이터 엔지니어 신규(경기/성남시) | 미확인 |
+| 와탭랩스(WhaTap) | Kubernetes 에이전트 개발자 / 모바일 에이전트 개발 | 5-20년 | DevOps·모바일 축 에이전트 개발, 두 건 동시 노출(서울/서초구) | 미확인 |
+| 대동애그테크 | 영농 에이전트 및 스마트파밍 플랫폼 백엔드 개발자 | 5년+ | 농업 도메인이지만 에이전트 축(서울/서초구, **마감 임박**) | 미확인 |
+
+### 판정 보류/제외
+
+- **[헤드헌팅] 대기업 AI 엔지니어(LLM·에이전트·RAG)**(`338512`, 프로써치코리아 헤드헌팅) · **[헤드헌팅] AI 투자 리서치 및 에이전트 플랫폼**(FDE 검색에 2건 중복 노출) — `organization.headhunter` 표시, `INBOX.md` §Harper 판정 기준대로 제외
+- **카카오페이증권 AI 에이전트 기획자(시니어)** · **오로라월드 [디지털혁신팀 웹/AI 에이전트 기획 담당]** — 타이틀이 `기획자`/`기획 담당`으로 엔지니어 축이 아니다(`AGENTS.md` 한화·큐빅 PM/기획직과 같은 판정)
+- **CJ올리브영 Forward Deployed AI Engineer** — 08-04 배치에 이미 있음(중간 판정), 중복 스킵
+
+### 다음 한 걸음
+
+1. 이번 배치 정면 후보 셋 — **파트리지시스템즈·스켈터랩스·모레(AI Agent System Engineer)** — GLG 가
+   열 것을 고른다. 셋 다 리멤버 간편지원 경로이니 `./new.sh` 전에 회사 자체 채용페이지가 따로
+   있는지부터 확인한다.
+2. 마키나락스·인핸스는 **한 회사에 동시에 여러 req가 열려 있다** — 어느 것을 낼지, 혹은 재지원
+   정책(인핸스는 한 건 이미 rejected)을 GLG 가 정한다.
+3. "제목만 확인" 임베디드·데이터엔지니어·DevOps 신규 4건(위즈코어·마이클·와탭랩스·대동애그테크)은
+   본문을 아직 안 읽었다 — 이어서 읽는다.
+4. `MCP` 키워드는 이 5개 카테고리 필터에서 0건이었다 — 카테고리를 더 넓히거나(`솔루션아키텍트`·
+   `테크니컬아키텍트`) 키워드 없이 카테고리만으로 다시 훑으면 다를 수 있다.

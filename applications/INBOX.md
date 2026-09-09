@@ -475,3 +475,65 @@ SLAM(우아한형제들·Sequor) · 기구 설계(두산) · 시뮬레이션(NVI
 
 - **원티드**: `INBOX-WANTED.md` (2026-08-04 스캔 · 264건 필터 · 통과 18건)
 - **리멤버**: `INBOX-REMEMBER.md` (2026-08-04 스캔 · `remember.js` API 축 · 809건 수집 → 담당업무 통과 207건 → 제목까지 정면 44건 · 본문 다 읽은 최정면 4건)
+
+---
+
+## 추가 수확 — 2026-09-09 (OFFENSE MODE · LinkedIn 외부)
+
+2026-09-09 에 공개된 현재 지원 페이지를 다시 읽었다. 아래는 이미 원장 또는 이 INBOX에
+있는 회사와, 마감·오류로 확인된 페이지를 뺀 신규 후보다. 근무지는 선호 순위일 뿐 필터가
+아니다.
+
+| 회사 | 권고 직무 (원제목) | 근무지 · 형태 | 컷 | 경로 · 현재 확인 | 정면 근거 · 주의 |
+|---|---|---|---|---|---|
+| **Zoyi (채널톡)** | **DevOps Engineer** | 서울 강남 · 고용형태 미확인 | DevEx | [Lever 공개 지원 페이지](https://jobs.lever.co/zoyi/56661820-4c76-4ded-b1cd-7bad478d192d) · **열림** | 내부 개발자 플랫폼·셀프서비스 배포/관측, GitHub Actions·ArgoCD·AWS·Kubernetes·Terraform을 직접 운영한다. Kubernetes 프로덕션 운영과 IaC 구현은 필수 — 단순 서버 운영 자리가 아니다. |
+| **CLO Virtual Fashion** | **DevOps Engineer** | 서울 · 고용형태 미확인 | DevEx | [Lever 공개 지원 페이지](https://jobs.lever.co/clovirtualfashion/d602cb3c-b7ab-42aa-918e-785af30aa608) · **열림** | CI/CD, Kubernetes/Docker, Terraform/Ansible, Datadog, 서비스 보안과 DR을 맡는다. 개발·운영·배포 환경 개선과 지식 공유가 명시돼 DevEx 축으로 읽힌다. |
+| **Coupang (쿠팡)** | **Staff Backend Engineer (Orchestration Platform)** | 서울 · 정규직 (수습 12주) | DevEx | [Coupang 공식 채용 페이지](https://www.coupang.jobs/en/jobs/8168878/staff-backend-engineer-orchestration-platform/) · **열림** | Airflow·Genie·Kubernetes·ArgoCD·Terraform 기반 job scheduling/execution 플랫폼과 셀프서비스 도구를 주도한다. **대규모 인프라 10년 이상** 및 Kubernetes/Airflow 전문성이 하드 게이트다. |
+| **NexIn Technology (넥스인테크놀로지)** | **AI Core Engineer - RAG & LLM(신입/3년차이상)** | 서울 중구 · 신입·경력 | AI | [JobKorea 지원 페이지](https://www.jobkorea.co.kr/Recruit/GI_Read/49667205?Oem_Code=C1) · **D-4** (회사 공고 목록에서 2026-09-09 확인) | LangChain·vLLM 기반 RAG/LLM 직무다. 신입도 받지만 3년 이상 경력자를 함께 받으므로 AI Engineer 컷으로 접근 가능하다. |
+| **Match Group (Tinder Seoul Studios)** | **Senior Software Engineer, Backend — Seoul Studios (Tinder Seoul)** | 서울 · 주 3일 출근 하이브리드 · 고용형태 미확인 | SWE | [Lever 공개 지원 페이지](https://jobs.lever.co/matchgroup/ef27d211-c82d-4b28-acf4-b9154784a906) · **열림** | 저지연 분산 백엔드의 설계·운영과 배포까지 맡는 서울 글로벌 제품팀이다. Java/Kotlin 또는 동등한 백엔드 역량, **5년 이상**, Kubernetes·클라우드·스트리밍 경험이 요구된다. AI/임베디드가 아닌 일반 SWE 축임을 분명히 둔다. |
+
+### ljobs.py — LinkedIn guest API, 라운드 1·2 (2026-09-09, offense mode)
+
+`.claude/skills/linkedin-jobs/`의 `ljobs.py`로 카드 수집(9개 쿼리) → 중복제거 110건 →
+`enrich --keep-body` → `rank`. 라운드 2는 임베디드·펌웨어·BSP·대기업 키워드(Samsung Electronics·
+LG Electronics·SK hynix·Hyundai Mobis·Naver·Kakao 등)를 추가해 124건을 더 모았다. 아래는
+본문까지 읽고 담당업무를 확인한 것만이다.
+
+| 회사 | 직무 | 근무지 | 비고 |
+|---|---|---|---|
+| **HITS** | AI Agent Engineer | 강남역 | AI 신약개발 멀티에이전트 시스템. Mid-Senior·정규직. 라운드1 최상위 |
+| **delight.ai (Sendbird)** | Software Engineer, AI Agent | 서울 | 컨택센터 AI 에이전트 전문 피벗 회사. 담당업무 전체가 agent |
+| **delight.ai (Sendbird)** | Machine Learning Engineer | 서울 | 위와 같은 회사, ML 리서치 축 |
+| **DALPHA** | Forward Deployed Engineer | 서울 | AI 컨설팅사, FDE가 Agent/Ontology/파이프라인 설계 전담 |
+| **PLAiF (플라잎)** | Forward Deployed Robotics Engineer | 본사/울산 | AI 양팔로봇 제조현장 배치. Physical AI + FDE + 로봇 |
+| **Laplacian Robotics** | Forward Deployed Engineer / Robot Fleet Platform Engineer | 성남(분당) | Physical AI 웨어하우스 플랫폼. 비자 불필요 |
+| **LG AI Research** | Backend Software Engineer | 서울 마곡 | ChatEXAONE/AI Agent/RAG 백엔드 |
+| ⚠ **Toss** | AI Engineer (Brain, AIOC) | 서울 | 음성·텍스트 AI 에이전트 두뇌. 토스 본체는 07-30 다른 직무로 이미 `rejected` |
+| ⚠ **Cohere** | FDE, Infrastructure Specialist (South Korea) | 서울 | 같은 회사 FDE(Agentic Platform)가 이미 `submitted`(08-09) — 다른 req |
+| **Toss Bank** | AIOps Platform Engineer | 서울 | 토스뱅크는 별도 법인. AI/LLM 연동 담당업무 명시 |
+| **Hyundai Motor Company (Robotics Lab)** | 5개 롤 — Mobile Robot SW/Localization/Nav, Articulated Robot System SW·Circuit·양산 | 의왕 | 대기업, 로봇 SW 다수 동시 오픈(offense mode) |
+| ⚠ **Hyundai AutoEver (SDx)** | Platform Developer - Robot / Backend Developer - Robot·Smart Factory | 강남 | 같은 회사 AI Agent Engineer 건은 이미 `closed`(전형 철회) — 다른 부문(SDx) |
+| ⚠ **FuriosaAI** | Senior SW Engineer, Runtime / Systems SW Engineer, PPT(화성) | 서울/화성 | 같은 회사 Agent System Developer가 이미 `submitted` — 순수 시스템 롤 |
+| **Rebellions** | NPU Firmware Engineer (Command Processor) | 성남 | 순수 임베디드(offense mode) |
+| **NVIDIA** | Senior System Software Engineer - Automotive | 서울 | 대기업 |
+| **Qualcomm** | AI Compute Systems Engineer, up to Staff | 서울 | 대기업 |
+| **AUMOVIO (Continental 분사)** | SW Engineer – Orin/Thor ADAS | 성남 | 임베디드/오토모티브 |
+| ⚠ **Sonatus** | Staff SW Engineer - Customer Integration | 서울 | 같은 회사가 이미 LEDGER `ready`(Staff DevOps Engineer, 다른 req) |
+| **Palantir** | Forward Deployed SW Engineer, New Grad - Commercial | 서울 | FDE 원조 회사. "New Grad" 표기는 실제 연차요건 본문 재확인 필요 |
+| **HARMAN** | Principal Engineer, Visual Experience Lead | 서울 | 대기업 |
+| **SAP** | Platform Engineer (풀스택) | 서울 | 대기업 |
+
+### exa-search — LinkedIn 리크루터 포스트 축 (2026-09-09, offense mode)
+
+`ljobs.py` guest API가 못 잡는 「개인/리크루터가 올린 채용 글」 축을 exa-search로 훑었다.
+공식 채용 보드가 아니므로 지원 전 회사 공식 채용홈에서 열림 여부·원문을 다시 확인한다.
+
+| 회사 | 직무 | 근무지 | 출처 · 주의 |
+|---|---|---|---|
+| **엔라이튼 (ENlighten)** | RTU 펌웨어 엔지니어 (Embedded) | 서울 | CTO 본인 포스트. VPP/EMS 태양광 발전소 RTU 7,500대 통합. 순수 임베디드 축(offense mode). `ljobs.py` 라운드2에서도 같은 회사가 독립적으로 잡혔다(교차 확인) |
+| **Quectel** | Automotive Software Application Engineer | 경기 | 회사 공식 채용. Embedded Linux/QNX, 5G/GNSS/Wi-Fi 등 자동차 모듈 기술지원. 임베디드 축(offense mode) |
+| ⚠ 회사명 미상 (AI 반도체 LPU 설계 기업) | Device Driver Engineer | 서울 강남 | 리크루터 익명 포스트(Vertu Solution). AI 가속기 PCIe Linux 커널 드라이버. 회사명 확인 전엔 지원 불가 — 원문에 단서 없음 |
+| ⚠ 회사명 미상 (코스닥 상장, 차량 SW 플랫폼) | Classic AUTOSAR Engineer | 판교 | 리크루터 익명 포스트(PPC 컨설턴트). AUTOSAR/MCU 제어기, 판교. 회사명 확인 전엔 지원 불가 |
+
+⚠ 두 건은 리크루터가 회사명을 가렸다 — 연락해서 회사명을 확인해야 다음 단계(공식 채용홈 대조)로
+갈 수 있다. GLG가 원하면 그 리크루터 포스트에 댓글/DM으로 문의하는 건 사람 소관이다.

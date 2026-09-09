@@ -95,3 +95,58 @@ C,C++(900).
 - 위 표에서 GLG 가 고르면 `./new.sh` 로 건을 만든다. **원티드 지원 폼은 아직 실측하지 않았다** —
   원티드 자체 지원(합격보상금 경로)과 회사 자체 ATS 중 어느 쪽으로 낼지는 건별로 정한다.
 - 표의 `본문?` 두 건(애자일소다)은 낼 후보가 되면 본문부터 확인한다.
+
+---
+
+## 추가 수확 — 2026-09-09 (OFFENSE MODE)
+
+`README.md` 상단 배너대로 산업·회사 규모 필터를 풀고 다시 스캔했다(`scan` 기본 9개 카테고리
+전체, 1,638건). 임베디드·DevOps·펌웨어 축도 이번엔 통과시킨다. 아래는 담당업무를 직접 읽고
+남긴 것만이다 — 제목 거름망만 거친 나머지는 올리지 않았다.
+
+| 회사 | 직무 | 경력 | 왜 통과인가 (담당업무 근거) | wanted id |
+|---|---|---|---|---|
+| 에스투더블유(S2W) | FDE (AI Platform Engineering) | 3-8년 | 온톨로지 스토어·에이전틱 런타임·LAM 기반 「의사결정 OS」 코어를 직접 설계. GLG 축과 정면 | 365961 |
+| 팀카이 | FDE (Forward Deployed Engineer) | 연차무관(LLM 빌드 경험) | 고객사별 에이전트 인스턴스 구축→현장 상주→로그 기반 튜닝. FDE 원형과 정확히 일치 | 369739 |
+| 데이원컴퍼니 | [Day1 AI Deployment Company] FDE | 연차무관 | 고객사 상주, Prototype→Production 전 과정, 전사 자산화까지 FDE 정석 | 383391 |
+| 지니파이 | 사내 AX 리드 / FDE (5년~) | 5년+ | 사내를 고객 삼는 FDE — 에이전트 워크플로·SSOT·MCP 구축. FDE 정의와 정확 일치 | 383849 |
+| 멘타트 | Forward Deployed Engineer (FDE) | 연차무관 | 로펌·금융 온프레미스 vLLM/SGLang 서빙+ACL 연동, 망분리 환경 FDE | 381184 |
+| 부스터스 | Forward Deployed Engineer (FDE) | 연차무관 | 커머스 도메인 FDE, Claude Code 전사 도입 환경에서 현장 재설계 | 382343 |
+| 큐픽스 | 머신러닝 엔지니어(LLM, ML, RAG, AI Agent) | 3년+ | LangGraph 멀티에이전트·멀티모달 RAG, 공간지능 도메인 특화 에이전트 | 373064 |
+| 마드라스체크(플로우) | [AI Work Agent 플로우] FDE | 4년+ | MCP 도구 서버+AI Agent 기능 개발, 고객 도입까지 겸장 | 379774 |
+| 콘센트릭스서비스코리아 | LLM/Agent Engineer (과/차장급) | 4-8년 | LangGraph Multi-Agent Workflow 아키텍처 설계·리딩, 세션/메모리/폴백 전체 | 379871 |
+| 위시드 | MLOps / AI 에이전트 개발자 | 2-5년 | 폐쇄망 환경 온프레미스 LLM Agent + MLOps 인프라를 처음부터 설계 | 382306 |
+| 미리비트 | Data Engineer & Local LLM AI Agent Engineer | 3년+ | 로컬 LLM(GLM/Kimi) 서빙+멀티에이전트 오케스트레이션, 데이터파이프라인 겸장 | 382386 |
+| 워트인텔리전스 | Senior AI Engineer (LLM / NLP / MLOps) | 5년+ | RAG/Agent/Search 설계+평가체계 구축+프로젝트 기술 리딩 | 383713 |
+| 비상교육 | Lead DevOps/AI Platform Engineer | 10년+ | AI 플랫폼 전체 아키텍처 리드, MSA·GitOps·DevSecOps. 대기업급 리드 자리(offense mode) | 375022 |
+| 오픈엣지테크놀로지 | NPU Firmware Engineer (전문연구요원 가능) | 2년+ | NPU 연산 커널·펌웨어 검증·FuSa. 순수 임베디드 축(offense mode로 신규 편입) | 365239 |
+| 소울아트 | System Software Engineer (Embedded AI) | 연차무관 | Edge AI 통합, 네이티브 프로그램. 순수 임베디드 축(offense mode) | 350980 |
+| ⚠ 모레(Moreh) | LLM Platform Engineer | 2-8년 | Inference Gateway·K8s Operator·Observability, Rust/Go LLM 서빙 플랫폼 | 375108 |
+| ⚠ 모레(Moreh) | NPU System Software Engineer (Firmware/Driver) | 2-8년 | NPU 런타임/드라이버, Linux Kernel-Mode Driver, 화성 임베디드 시스템 | 382920 |
+| ⚠ 원프레딕트(onepredict) | LLMOps Engineer | 3년+ | vLLM/Triton 추론 서빙, 폐쇄망 GPU 최적화 | 381443 |
+| ⚠ 콕스웨이브(Coxwave) | [AX AgentX] 데이터 엔지니어(RAG/LLM Pipeline) | 3-7년 | ETL+벡터DB 인덱싱+LLMOps 환경. LinkedIn(`4438204315`)에서도 같은 자리로 이미 본 적 있다 | 383356 |
+
+⚠ 표시 셋은 **동일 회사 재지원**이다 — 모레는 09-09에 다른 직무(AI System SW Engineer, Remember
+경로)로 이미 `rejected` 처리됐고, 원프레딕트는 09-01에 다른 직무(Embedded Software Developer,
+그리팅 경로)로 이미 `submitted` 상태다. `AGENTS.md` §한 회사 한 직무는 기본 전략이지 법이
+아니다 — offense mode에서 낼지는 GLG 판단.
+
+이번 라운드는 카테고리 필터(직무 카테고리 9개 + AI/임베디드/플랫폼 축 정규식)로 1,638건 →
+709건(제목 통과) → 위 18건(본문까지 읽고 정면으로 남긴 것)으로 좁혔다. 나머지 691건은
+제목만 통과했을 뿐 본문 미확인 — 스캔 원본은 `/tmp/ljobs/wanted-scan.json`(리포에 넣지 않음,
+하루 지나면 틀린 파일이라는 원칙은 `INBOX-WANTED.md` 상단과 같다).
+
+### 2차 (같은 스캔, 다음 점수대 8건 추가 확인)
+
+| 회사 | 직무 | 경력 | 왜 통과인가 (담당업무 근거) | wanted id |
+|---|---|---|---|---|
+| 비스텔리젼스 | Forward Deployed Engineer (FDE) | 3년+ | Ontology Modeling + Agent Enablement — Palantir식 FDE 정의와 정확히 겹친다(semantic layer·permission model·reasoning path 설계) | 384457 |
+| 오토메타 | AI Agent Engineer (AI 에이전트 엔지니어) | 3-10년 | Agent turn loop·tool 계약·guardrail·LLM provider abstraction. GLG 축 정면 | 384691 |
+| 퓨쳐스콜레 | Platform Engineer Lead (DevOps) | 8년+ | AWS+K8s+Terraform 플랫폼 전체 리드, 데이터 파이프라인까지 겸장 | 371498 |
+| 트위닛 | [뷰티컨시어지] LLM/Agent Engineer | 2년+ | Knowledge System+RAG+Context/Memory 기반 Agent 개발 | 383456 |
+| 더씨에스알 | AI 엔지니어 (LLM·RAG) | 1-5년 | RAG 파이프라인+LLM 서빙, ⚠ 자기소개서 사전질문(RAG 환각 지표) 필수 | 385276 |
+| 현대그린푸드 | AI 데이터 엔지니어 (AX 과제 기획 및 MLOps) | 5-7년 | AWS MLOps+MCP Server 파이프라인, 대기업(offense mode) | 384142 |
+| 카이트다이나믹스 | 임베디드 펌웨어 및 제어 엔지니어 | 4-10년 | 로보틱스 MCU 펌웨어+모션제어. 순수 임베디드 축(offense mode) | 384224 |
+| 리주비놀 | 로봇 제어 및 펌웨어 개발 엔지니어 | 3-10년 | 로봇팔 경로계획+MCU 펌웨어. 순수 임베디드 축(offense mode) | 382219 |
+
+총 26건(1차 18 + 2차 8)이 이번 offense-mode 스캔에서 본문까지 확인된 신규 후보다.
