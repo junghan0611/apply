@@ -95,10 +95,11 @@
 
 | 08-09 | **Bear Robotics (제출)** | 🔴 **폼이 이력서를 파싱해 구조화 경력 6줄을 스스로 채워 놨고, 그 값이 SSOT 와 어긋났다.** 한 회사가 세 재직으로 쪼개져 **셋 다 퇴사 처리**됐고, **국책과제 발주 기관(IITP)이 고용주**로, **교환연구 9개월이 별도 재직**으로 올라가 있었으며, **이력서의 서사 연도(2013)가 구조화 칸에** 들어가 있었다 — `FAQ.md` §3 이 *「재직하지 않은 기간을 재직으로 신고하는 것」* 이라고 못 박은 바로 그 값이다. 정작 **5년짜리 계약직 재직은 통째로 빠져** 있었다. **제출 직전에 잡았다.** ⭐ 08-01 의 *「제출 스냅샷은 다음 건의 입력값이다」* 가 **읽는 쪽**이었다면 이건 **쓰는 쪽**이다 — 스냅샷을 갖고 있어도 **폼이 먼저 채워 놓으면 대조를 안 한다.** → 계약: **자동 채워진 구조화 경력은 값이 아니라 초안이다.** 채운 주체가 누구든(「전에 내가 넣었겠지」 금지) 제출 전 SSOT 와 한 줄씩 대조하고, **고치기 전에 GLG 승인을 받는다**(재직 신고는 사람의 값이다). `AGENTS.md` §외부 ATS 에 절로 올렸다. 부수 계약 둘 — **재직 중인 회사는 종료일을 비운다**(파서는 오늘 날짜를 퇴사일로 넣는다), **DOM 의 `required` 를 사람에게 「필수」라고 전하지 않는다**(EEOC 가 `ng-required` 인데 화면 문구는 *requested, not required*) |
 | 09-04 | **원티드·그리팅 5건 사후 회수** (리멤버 14건에 이어 두 번째) | 🔴 **「낼 때 남긴다」가 플랫폼 경로에서 두 번째로 깨졌다.** 08-28 에 리멤버 14건을 사후 회수하면서 *「내고 나서 기록하려 하면 남지 않는다」* 를 규율로 적었는데, 09-01 에 낸 원티드 4건·그리팅 1건이 **나흘 뒤 Gmail 에서 다시 사후 회수**됐다. 08-28 의 교훈은 문장으로만 올라갔고 **아무 게이트에도 내려가지 않았다** — 08-01 IGNITE 행과 같은 계열이다(계약은 새 건에 자동으로 붙지 않는다). 회수로 남은 것은 회사명·직무명·지원일 셋뿐이고 **공고 원문·URL·첨부 컷은 전부 잃었다.** ⭐ **첨부 컷은 같은 날 GLG 진술 한 줄로 닫혔다** — *「정보가 없으면 다 그냥 내가 앱에서 올린 거야. 앱에서 제출한 것들은 다 같은 이력정보를 넣어서 하거든.」* **앱 경로에는 컷이라는 선택지 자체가 없다.** 에이전트가 「미확인」이라 적은 것은 옳았지만(추정으로 채우면 다음 건이 그 추정을 물려받는다), 물어야 할 것은 *「어느 컷인가」* 가 아니라 *「컷을 고르는 경로였는가」* 였다. → 계약: **앱 원클릭 경로는 첨부 컷이 아니라 프로필 한 벌을 쓴다.** 잃은 것은 컷이 아니라 **공고 원문·URL** 이고, 그것만이 사후 복원 불가능한 값이다 |
+| 09-16 | **리멤버·원티드 6건 사후 회수 + 결과 2건 갱신** (세 번째) | Gmail 을 09-01 이후로 다시 훑어 **Remember & Company · Beyond Honeycomb · Gint · CDRI · 쿤텍(NS사업그룹) · Spoonlabs 6건**을 새로 세웠고, **Dnotitia · OnePredict** 는 이미 있던 `submitted` 행에 불합격 통보를 얹어 `rejected` 로 닫았다. 09-04 계약(**앱 원클릭 경로 = 첨부 컷 아니라 프로필 한 벌**)이 이번에도 그대로 적용돼 새 게이트는 필요 없었다. ⭐ **새로 드러난 경계 하나** — **Spoonlabs 건은 지원완료 알림 메일이 아예 없었다.** 결과 메일만 있고 지원일·정확한 채널(Remember 인지 Wanted 인지)을 가릴 근거가 없어 **둘 다 미확인으로 남겼다** — GLG 의 「목록에 없으면 리멤버나 원티드」 진술은 *둘 중 하나*라는 진술이지 *어느 쪽*이라는 진술이 아니므로, 추정으로 하나를 골라 적지 않는다. 같은 회사의 2026-04 지원 이력(다른 직무, 이 저장소 추적 시작 전)과도 혼동하지 않는다. 또한 **Beyond Honeycomb** 은 일반 지원이 아니라 **회사가 먼저 보낸 스카웃 제안을 GLG 가 수락**한 케이스라 지원완료 알림 자체가 없는 유형이었고, **쿤텍(NS사업그룹)** 은 이미 있던 `coontec--embedded-sw-fw-engineer`(EC사업그룹)와 **같은 회사 다른 사업그룹·다른 직무**라 별도 건으로 세웠다(`AGENTS.md` §기록 규율) |
 | Nota | AI SW Engineer (America Tech) | rejected | 2026-08-27 · **불합격 통보 2026-09-03** | Remember 쉽게 지원 | 미실측 | `nota--ai-sw-engineer-america-tech` |
 | Nua | AI Agent 엔지니어 | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `nua--ai-agent` |
 | BHSN | AI Engineer (3년 이상) | rejected | 2026-08-27 · **불합격 통보 2026-09-02** | Remember 쉽게 지원 | 미실측 | `bhsn--ai-engineer-3` |
-| Dnotitia | [Product] AI Agent Development Engineer | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `dnotitia--product-ai-agent-development-engineer` |
+| Dnotitia | [Product] AI Agent Development Engineer | rejected | 2026-08-27 · **불합격 통보 2026-09-16** | Remember 쉽게 지원 | 미실측 | `dnotitia--product-ai-agent-development-engineer` |
 | IDS&Trust | AI Agent Platform Engineer | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `ids-trust--ai-agent-platform-engineer` |
 | Moreh | AI System SW Engineer | rejected | 2026-08-24 · **불합격 통보 2026-09-09** | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `moreh--ai-system-sw-engineer` |
 | Levit | [쇼포트] AI Engineer (3년 이상) | submitted | 2026-08-18 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) · **담당자 메시지 도착 2026-08-21(ninehire, 내용 미확인)** | `levit--ai-engineer-3` |
@@ -113,7 +114,13 @@
 | Daou Tech (다우기술) | AI 개발 | submitted | 2026-09-01 | 원티드 (Wanted) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `daou-tech--ai-development` |
 | COONTEC (쿤텍) | [EC사업그룹 개발팀] 임베디드 SW / FW 개발자 3~15년 | submitted | 2026-09-01 | 원티드 (Wanted) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `coontec--embedded-sw-fw-engineer` |
 | Seers Technology (씨어스) | AI Developer / Engineer | submitted | 2026-09-01 | 원티드 (Wanted) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `seers-technology--ai-developer-engineer` |
-| OnePredict (원프레딕트) | Embedded Software Developer | submitted | 2026-09-01 | 그리팅 (원프레딕트 채용홈) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `onepredict--embedded-software-developer` |
+| OnePredict (원프레딕트) | Embedded Software Developer | rejected | 2026-09-01 · **불합격 통보 2026-09-10** | 그리팅 (원프레딕트 채용홈) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `onepredict--embedded-software-developer` |
+| Remember & Company (리멤버앤컴퍼니) | AI Agent Engineer | rejected | 2026-09-11 · **불합격 통보 2026-09-16** | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `remember-company--ai-agent-engineer` |
+| Beyond Honeycomb (비욘드허니컴) | Robot Platform Developer | rejected | 미확인(스카웃 제안 수락) · **불합격 통보 2026-09-14** | Remember 스카웃 제안 수락 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `beyond-honeycomb--robot-platform-developer` |
+| Gint (긴트) | 임베디드소프트웨어 개발자 | submitted | 2026-09-15 | 원티드 (Wanted) → 그리팅 (자체 채용홈, 이중 통보) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `gint--embedded-software-engineer` |
+| CDRI (씨디알아이) | AI Engineer (Agentic AI) | submitted | 2026-09-11 | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `cdri--ai-engineer-agentic-ai` |
+| COONTEC (쿤텍, NS사업그룹) | [쿤텍 NS사업그룹] AI 개발자 | submitted | 2026-09-11 | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `coontec-ns--ai-developer` |
+| Spoonlabs (스푼랩스) | Machine Learning Engineer (TTS) | rejected | 미확인 · **불합격 통보 2026-09-16** | Remember 또는 Wanted (경로 미확인 — 지원완료 메일 없음) | 플랫폼 프로필 (앱 제출 공통 이력정보로 추정) | `spoonlabs--machine-learning-engineer-tts` |
 
 **읽는 법 — 이 표가 말하는 한 가지**: 실패는 그 건의 실수로 끝나지 않고 **스크립트·게이트·계약
 중 하나로 올라간다.** 올라가지 않은 교훈은 반드시 재발한다(08-01 IGNITE 두 행이 그 증거다).
