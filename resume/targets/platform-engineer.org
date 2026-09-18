@@ -1,0 +1,57 @@
+# 타깃 컷 — Platform / Infrastructure Engineer
+#
+# 선언형 인프라·운영 정책의 입구. 「에이전트를 만든다」가 아니라 「인프라를 선언하고 운영
+# 정책으로 지킨다」로 앞세운다. Kubernetes·모델 서빙·관측성 도구는 body.org 에 증거가
+# 없으므로 이름조차 쓰지 않는다 — 있는 것만 말한다.
+#
+# 빌드:  ./run.sh target platform-engineer
+
+#+cv_pdf_name: KimJunghan_Resume_Platform_Engineer
+#+CV_GOQUAL_MODULES: ai-infra
+#+CV_INDEPENDENT_MODULES: platform-operations entwurf agent-config
+#+EXCLUDE_TAGS: catalog corpus
+
+#+INCLUDE: "../pipeline/preamble.org"
+
+#+begin_export latex
+\cvheader{Platform Engineer — Declarative Infrastructure and Operational Policy}
+#+end_export
+
+* Summary
+
+I run infrastructure as declared state and defend it with written policy rather than tribal
+memory. A self-hosted multi-agent harness on Oracle Cloud ARM survived repeated upstream releases
+because a latency regression was instrumented back to a spinning gateway process, the rollback
+target was chosen on evidence rather than recency, and the policy that followed — no two-version
+jumps, stage on a non-production host for 24h+ before promotion, responsiveness as the SLO — is
+dated in public commit history. The same discipline runs the GPU cluster and container services
+behind it: declarative NixOS across every machine and source-to-binary provenance on every built
+CLI.
+
+My operating scope is self-hosted hosts and services, not multi-tenant Kubernetes or managed-cloud
+platform operations.
+
+* Core Competencies
+
+- @@latex:\cvlabel{Declarative Infrastructure}@@ — NixOS across 4 machines, reproducible builds,
+  and source revision / source-tree digest / binary SHA-256 provenance on every built CLI.
+- @@latex:\cvlabel{Infra for AI Workloads}@@ — GPU cluster (3x RTX 5080), 17 containerized Docker
+  services, PostgreSQL/pgvector, embedding and reranking served in-house rather than rented.
+- @@latex:\cvlabel{Operational Policy}@@ — upstream tracking, staged promotion, regression
+  instrumentation, rollback-on-evidence, and an SLO written down before an incident, not after.
+- @@latex:\cvlabel{Data Pipelines}@@ — Airbyte connectors into PostgreSQL JSONB, Cloudflare Zero
+  Trust perimeter, n8n workflow orchestration (40+ node workflows).
+- @@latex:\cvlabel{Boundary-Respecting Dispatch}@@ — a published id-addressing substrate that lets
+  systems reach each other without owning one another's auth or transcript — no OAuth proxying.
+
+* Public Evidence — Run It, Read the Policy, Check the Provenance
+
+- *Declarative host layer* — [[https://github.com/junghan0611/nixos-config][github.com/junghan0611/nixos-config]] is the live configuration
+  for 4 machines and 17+ Docker services.
+- *Reproducible build and provenance* — [[https://github.com/junghan0611/agent-config][github.com/junghan0611/agent-config]] records source
+  revision, source-tree digest, and installed-binary SHA-256 for every built CLI; =./run.sh env=
+  reports drift instead of letting it accumulate silently.
+- *Dispatch boundary* — [[https://github.com/junghan0611/entwurf][github.com/junghan0611/entwurf]] is installable from npm
+  (=npm install -g @junghanacs/entwurf=) with a deterministic =entwurf check-bridge= check.
+
+#+INCLUDE: "../body.org" :minlevel 1

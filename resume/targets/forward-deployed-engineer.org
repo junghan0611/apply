@@ -18,11 +18,10 @@
 
 * Summary
 
-The request I keep receiving from other teams is not "build me a dashboard." It is "make this run
-without depending on me." I begin with the domain owner: the units, periods, inclusion rules, source
-systems, and failure conditions their work actually obeys. Then I build a read-only evidence path or
-a bounded agent surface in their language, with every figure traceable to its source record and a
-stop condition when the contract breaks.
+I build evidence contracts before I build anything else: the units, periods, inclusion rules, source
+systems, and failure conditions a domain owner's data actually obeys. From that contract I build a
+read-only evidence path or a bounded agent surface in their language, with every figure traceable to
+its source record and a stop condition when the contract breaks.
 
 Two such workbenches are in daily company use: one over customer-support data and one aligning a
 platform catalog, device logs, and runtime state on a single time axis. I can cross the boundary
@@ -32,8 +31,8 @@ can inspect rather than a conversation only its author understands.
 
 * Core Competencies
 
-- @@latex:\cvlabel{Domain-Owner Deployment}@@ — operational language discovery, live-system
-  integration, evidence contracts, read-only paths, stop conditions, and recoverable hand-offs.
+- @@latex:\cvlabel{Evidence Contracts}@@ — operational language discovery, live-system
+  integration, read-only paths, stop conditions, and recoverable hand-offs.
 - @@latex:\cvlabel{Legacy and Operational Data}@@ — support data, platform catalogs, device logs,
   runtime mirrors, PostgreSQL/JSONB, and one explicit KST time axis.
 - @@latex:\cvlabel{Agent Work Surfaces}@@ — conversations converted into durable work items with
@@ -49,9 +48,9 @@ can inspect rather than a conversation only its author understands.
   conversation → issue → owner review → hand-back. Its README separates dispatch, triage, human
   judgment, and implementation instead of calling every automated transition "done."
 - *Falsifiable quantitative method* — [[https://github.com/junghan0611/abductcli][github.com/junghan0611/abductcli]] records working and
-  non-working parts, 24 tests/88 assertions, and a claim-versus-verified-data path. Run
+  non-working parts and a claim-versus-verified-data path. Run
   =./run.sh test= and =clj -M:run pipeline=. It is the public method precursor, not company data.
-- *Whole-system proof* — [[https://github.com/junghan0611/homeagent-config][github.com/junghan0611/homeagent-config]] exposes the Go/Flutter/Matter/Yocto
+- *Public implementation and build entry* — [[https://github.com/junghan0611/homeagent-config][github.com/junghan0611/homeagent-config]] exposes the Go/Flutter/Matter/Yocto
   implementation and build entries (=./run.sh go-build=, =flutter-server=, =bundle=). Private
   deployments remain labeled as experience; this public repository is not used to impersonate them.
 
