@@ -96,6 +96,7 @@
 | 08-09 | **Bear Robotics (제출)** | 🔴 **폼이 이력서를 파싱해 구조화 경력 6줄을 스스로 채워 놨고, 그 값이 SSOT 와 어긋났다.** 한 회사가 세 재직으로 쪼개져 **셋 다 퇴사 처리**됐고, **국책과제 발주 기관(IITP)이 고용주**로, **교환연구 9개월이 별도 재직**으로 올라가 있었으며, **이력서의 서사 연도(2013)가 구조화 칸에** 들어가 있었다 — `FAQ.md` §3 이 *「재직하지 않은 기간을 재직으로 신고하는 것」* 이라고 못 박은 바로 그 값이다. 정작 **5년짜리 계약직 재직은 통째로 빠져** 있었다. **제출 직전에 잡았다.** ⭐ 08-01 의 *「제출 스냅샷은 다음 건의 입력값이다」* 가 **읽는 쪽**이었다면 이건 **쓰는 쪽**이다 — 스냅샷을 갖고 있어도 **폼이 먼저 채워 놓으면 대조를 안 한다.** → 계약: **자동 채워진 구조화 경력은 값이 아니라 초안이다.** 채운 주체가 누구든(「전에 내가 넣었겠지」 금지) 제출 전 SSOT 와 한 줄씩 대조하고, **고치기 전에 GLG 승인을 받는다**(재직 신고는 사람의 값이다). `AGENTS.md` §외부 ATS 에 절로 올렸다. 부수 계약 둘 — **재직 중인 회사는 종료일을 비운다**(파서는 오늘 날짜를 퇴사일로 넣는다), **DOM 의 `required` 를 사람에게 「필수」라고 전하지 않는다**(EEOC 가 `ng-required` 인데 화면 문구는 *requested, not required*) |
 | 09-04 | **원티드·그리팅 5건 사후 회수** (리멤버 14건에 이어 두 번째) | 🔴 **「낼 때 남긴다」가 플랫폼 경로에서 두 번째로 깨졌다.** 08-28 에 리멤버 14건을 사후 회수하면서 *「내고 나서 기록하려 하면 남지 않는다」* 를 규율로 적었는데, 09-01 에 낸 원티드 4건·그리팅 1건이 **나흘 뒤 Gmail 에서 다시 사후 회수**됐다. 08-28 의 교훈은 문장으로만 올라갔고 **아무 게이트에도 내려가지 않았다** — 08-01 IGNITE 행과 같은 계열이다(계약은 새 건에 자동으로 붙지 않는다). 회수로 남은 것은 회사명·직무명·지원일 셋뿐이고 **공고 원문·URL·첨부 컷은 전부 잃었다.** ⭐ **첨부 컷은 같은 날 GLG 진술 한 줄로 닫혔다** — *「정보가 없으면 다 그냥 내가 앱에서 올린 거야. 앱에서 제출한 것들은 다 같은 이력정보를 넣어서 하거든.」* **앱 경로에는 컷이라는 선택지 자체가 없다.** 에이전트가 「미확인」이라 적은 것은 옳았지만(추정으로 채우면 다음 건이 그 추정을 물려받는다), 물어야 할 것은 *「어느 컷인가」* 가 아니라 *「컷을 고르는 경로였는가」* 였다. → 계약: **앱 원클릭 경로는 첨부 컷이 아니라 프로필 한 벌을 쓴다.** 잃은 것은 컷이 아니라 **공고 원문·URL** 이고, 그것만이 사후 복원 불가능한 값이다 |
 | 09-16 | **리멤버·원티드 6건 사후 회수 + 결과 2건 갱신** (세 번째) | Gmail 을 09-01 이후로 다시 훑어 **Remember & Company · Beyond Honeycomb · Gint · CDRI · 쿤텍(NS사업그룹) · Spoonlabs 6건**을 새로 세웠고, **Dnotitia · OnePredict** 는 이미 있던 `submitted` 행에 불합격 통보를 얹어 `rejected` 로 닫았다. 09-04 계약(**앱 원클릭 경로 = 첨부 컷 아니라 프로필 한 벌**)이 이번에도 그대로 적용돼 새 게이트는 필요 없었다. ⭐ **새로 드러난 경계 하나** — **Spoonlabs 건은 지원완료 알림 메일이 아예 없었다.** 결과 메일만 있고 지원일·정확한 채널(Remember 인지 Wanted 인지)을 가릴 근거가 없어 **둘 다 미확인으로 남겼다** — GLG 의 「목록에 없으면 리멤버나 원티드」 진술은 *둘 중 하나*라는 진술이지 *어느 쪽*이라는 진술이 아니므로, 추정으로 하나를 골라 적지 않는다. 같은 회사의 2026-04 지원 이력(다른 직무, 이 저장소 추적 시작 전)과도 혼동하지 않는다. 또한 **Beyond Honeycomb** 은 일반 지원이 아니라 **회사가 먼저 보낸 스카웃 제안을 GLG 가 수락**한 케이스라 지원완료 알림 자체가 없는 유형이었고, **쿤텍(NS사업그룹)** 은 이미 있던 `coontec--embedded-sw-fw-engineer`(EC사업그룹)와 **같은 회사 다른 사업그룹·다른 직무**라 별도 건으로 세웠다(`AGENTS.md` §기록 규율) |
+| 09-18 | **terra 교차검수로 22건 중 5건을 `held` 로 내렸다** | 시스템 축 22건 생성 직후 terra 가 JD 원문 대 이력서 컷 대조에서 5건의 필수요건-증거 불일치를 잡았다 — **위즈코어**(온프레미스 K8s 플랫폼, `platform-engineer` 컷이 그 규모 K8s 운영을 명시적으로 부인) · **큐픽스**(CV/BIM/3D 공간지능, 코퍼스에 증거 0) · **비스텔리젼스**(FDE, 중심이 고객별 PoC/커스텀 구현인데 시스템 문장 하나로 서비스 축 판정이 안 뒤집힘) · **퓨쳐스콜레**(Platform Lead, AWS 직접설계+production K8s+8년) · **비상교육**(Lead DevOps/AI Platform, 10년+K8s+하이브리드 클라우드). **새 축이 하나 더 필요하다는 뜻이다** — `AGENTS.md` §시스템 축은 *무엇을 만드는 자리인가*만 가르고, 이번에 드러난 것은 *그 자리가 요구하는 필수요건마다 직접 공개 증거가 있는가*다: 직접 증거 0 → hold, 1 → reach(의식적으로 소수만), 2 이상 → 선행 큐. **판정 기준은 「시스템 축이어도 필수요건에 직접 증거 입구가 0이면 낸다가 아니다」다.** 행은 지우지 않는다 — 5건 모두 `held`로 폴더·원장 행을 유지하고 각 `submission.md`에 JD 행 번호와 함께 근거를 남겼다(불합격도 이력이다, `AGENTS.md` §기록 닫힘) |
 | Nota | AI SW Engineer (America Tech) | rejected | 2026-08-27 · **불합격 통보 2026-09-03** | Remember 쉽게 지원 | 미실측 | `nota--ai-sw-engineer-america-tech` |
 | Nua | AI Agent 엔지니어 | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `nua--ai-agent` |
 | BHSN | AI Engineer (3년 이상) | rejected | 2026-08-27 · **불합격 통보 2026-09-02** | Remember 쉽게 지원 | 미실측 | `bhsn--ai-engineer-3` |
@@ -121,6 +122,28 @@
 | CDRI (씨디알아이) | AI Engineer (Agentic AI) | submitted | 2026-09-11 | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `cdri--ai-engineer-agentic-ai` |
 | COONTEC (쿤텍, NS사업그룹) | [쿤텍 NS사업그룹] AI 개발자 | submitted | 2026-09-11 | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `coontec-ns--ai-developer` |
 | Spoonlabs (스푼랩스) | Machine Learning Engineer (TTS) | rejected | 미확인 · **불합격 통보 2026-09-16** | Remember 또는 Wanted (경로 미확인 — 지원완료 메일 없음) | 플랫폼 프로필 (앱 제출 공통 이력정보로 추정) | `spoonlabs--machine-learning-engineer-tts` |
+| Autometa | AI Agent Engineer | draft | — | 원티드 | AI Engineer | `autometa--ai-agent-engineer` |
+| Dakicloud Korea | Senior Engineer (Agent Native Cloud / AI Agent) | draft | — | 원티드 | AI Engineer | `dakicloud-korea--senior-engineer-agent-native-cloud-ai-agent` |
+| Miribit | Data Engineer & Local LLM AI Agent Engineer | draft | — | 원티드 | — | `miribit--data-engineer-local-llm-ai-agent-engineer` |
+| Wished | MLOps / AI Agent Developer | draft | — | 원티드 | — | `wished--mlops-ai-agent-developer` |
+| Simplatform | AI Agent & LLM Engineer Senior | draft | — | 원티드 | AI Engineer | `simplatform--ai-agent-llm-engineer-senior` |
+| Agilesoda | AI Agent Platform Engineer | draft | — | 원티드 | — | `agilesoda--ai-agent-platform-engineer` |
+| Beauty Selection | [AX Dept] Forward Deployed Engineer | draft | — | 원티드 | FDE | `beauty-selection--ax-dept-forward-deployed-engineer` |
+| ATCI | Software Engineer (AI Agent) | draft | — | 원티드 | AI Engineer | `atci--software-engineer-ai-agent` |
+| Concentrix Services Korea | LLM/Agent Engineer | draft | — | 원티드 | AI Engineer | `concentrix-services-korea--llm-agent-engineer` |
+| LinqAlpha | Forward Deployed Engineer | draft | — | 원티드 | — | `linqalpha--forward-deployed-engineer` |
+| Wizcore | Onprem K8s Platform Engineer Senior | held | — | 리멤버 | — | `wizcore--onprem-k8s-platform-engineer-senior` |
+| Macaron Factory | Platform Engineering | draft | — | 리멤버 | — | `macaron-factory--platform-engineering` |
+| Visang Education | Lead DevOps AI Platform Engineer | held | — | 원티드 | — | `visang-education--lead-devops-ai-platform-engineer` |
+| Futureschole | Platform Engineer Lead DevOps | held | — | 원티드 | — | `futureschole--platform-engineer-lead-devops` |
+| Whatap Labs | Kubernetes Agent Developer | draft | — | 리멤버 | — | `whatap-labs--kubernetes-agent-developer` |
+| Openedges Technology | NPU Firmware Engineer | draft | — | 원티드 | — | `openedges-technology--npu-firmware-engineer` |
+| Soulart | System Software Engineer Embedded AI | draft | — | 원티드 | — | `soulart--system-software-engineer-embedded-ai` |
+| Kite Dynamics | Embedded Firmware and Controls Engineer | draft | — | 원티드 | — | `kite-dynamics--embedded-firmware-and-controls-engineer` |
+| Rejubinol | Robot Control and Firmware Development Engineer | draft | — | 원티드 | — | `rejubinol--robot-control-and-firmware-development-engineer` |
+| Cupix | Machine Learning Engineer Spatial Intelligence | held | — | 원티드 | — | `cupix--machine-learning-engineer-spatial-intelligence` |
+| Bistelligence | Forward Deployed Engineer | held | — | 원티드 | — | `bistelligence--forward-deployed-engineer` |
+| Mentat | Forward Deployed Engineer | draft | — | 원티드 | — | `mentat--forward-deployed-engineer` |
 
 **읽는 법 — 이 표가 말하는 한 가지**: 실패는 그 건의 실수로 끝나지 않고 **스크립트·게이트·계약
 중 하나로 올라간다.** 올라가지 않은 교훈은 반드시 재발한다(08-01 IGNITE 두 행이 그 증거다).
@@ -202,4 +225,14 @@
   4/5 질문 「경력 2년 이상 또는 석사 이상」은 **Yes**.
   - ⚠ **지역 기준 미달** — 근무지가 서울 마포구 DMC다. GLG 기준(성남·판교·강남권)에서
     벗어난다. 내용 적합도는 중상(`JD.md` §판단)이나 **낼지 말지는 GLG 판단이다.**
+
+- ⚠ **회사 영문 슬러그 불확실성 — 시스템 축 22건 (2026-09-18)** — 22건 생성 시 **회사 영문
+  슬러그를 한글 음차로 추정**했다. 공식 영문명 대조는 안 했다.
+  - **확신 있는 것** — OpenEdges Technology · Cupix · BISTelligence · AgileSoda · LinqAlpha ·
+    WhaTap Labs · Visang Education (실명으로 알려진 회사).
+  - **추정** — Autometa · Dakicloud Korea · Miribit · Wished · Simplatform · ATCI ·
+    Macaron Factory · Futureschole · Soulart · Kite Dynamics · Rejubinol.
+  - **제출 전에 회사 공식 채용 페이지에서 확인해 고친다.** ⚠ 슬러그는 지금 바꾸지 않는다 —
+    폴더명을 고치면 `LEDGER.md` 행·`submission.md`·`check.py`가 함께 움직여야 하고, 지금은
+    그 churn을 살 이유가 없다. **제출 직전에 한 번에 고친다.**
     내지 않기로 하면 이 건은 `closed`로 바꾸고 `_archive/`로 옮긴다.
