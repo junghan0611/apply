@@ -150,3 +150,110 @@ C,C++(900).
 | 리주비놀 | 로봇 제어 및 펌웨어 개발 엔지니어 | 3-10년 | 로봇팔 경로계획+MCU 펌웨어. 순수 임베디드 축(offense mode) | 382219 |
 
 총 26건(1차 18 + 2차 8)이 이번 offense-mode 스캔에서 본문까지 확인된 신규 후보다.
+
+---
+
+## 생존 실측 — 2026-09-18 (09-09 후보 전수 + 08-04 배치)
+
+09-09 스캔의 26건과 08-04 배치 19건, 총 45건의 `GET /api/v4/jobs/<id>` `job.status` 를
+그대로 읽었다(로그인 없음, 판정 아님 — 원티드가 말한 값). **9일 기다린 값이 여기 있다.**
+
+### ⛔ 닫힌 것 — 9건 (기다려서 잃었다)
+
+| 회사 | 직무 | status | wanted id | 잃은 값 |
+|---|---|---|---|---|
+| **에스투더블유(S2W)** | FDE (AI Platform Engineering) | `close` | 365961 | 09-09 배치에서 **「GLG 축과 정면」으로 1번**이었다. 온톨로지 스토어·에이전틱 런타임·LAM 의사결정 OS |
+| **콕스웨이브** | [AX AgentX] 데이터 엔지니어(RAG/LLM) | `close` | 383356 | LinkedIn(`4438204315`)에도 떠 있던 건 — 그쪽도 함께 확인 필요 |
+| 현대그린푸드 | AI 데이터 엔지니어(AX·MLOps) | `close` | 384142 | 마감일 `2026-09-13` 이 실제로 닫혔다 |
+| 원프레딕트 | LLMOps Engineer | `close` | 381443 | 재지원 후보였음 |
+| 애자일소다 | AI Agent Platform Project Leader(금융) | `close` | 374919 | 본문 미확인인 채로 닫혔다 |
+| 플리토 | 에이전트 엔지니어(LLM플랫폼) | `close` | 378676 | 마감 `2026-08-16` — 08-04 배치에서 이미 예고돼 있었다 |
+| 위밋모빌리티 | FDE — 물류 AI 솔루션 | `close` | 373420 | *「모두 Claude Code 로 일한다」* 고 JD 에 박혀 있던 건 |
+| 포트로직스 | FDE | `close` | 376783 | 마감 `2026-08-31` — 08-04 배치에서 예고돼 있었다 |
+| 티맵모빌리티 | AI Agent SDK Engineer | `close` | 370246 | Vision/음성 축이라 애초에 플래그돼 있던 건 |
+
+`draft` 2건 — **구글** FDE GenAI(365263) · **아마존** Sr FDE DL Architect(360075). 원티드 면에서는
+목록에 안 나온다는 뜻이고, 회사 자체 보드가 정본이므로 **원티드 status 로 죽었다고 판정하지 않는다.**
+
+### ✅ 아직 열린 것 — 34건. 마감일이 붙은 셋이 먼저다
+
+| 마감 | 회사 | 직무 | wanted id |
+|---|---|---|---|
+| 🔴 **2026-09-18 (오늘)** | 트위닛 | [뷰티컨시어지] LLM/Agent Engineer | 383456 |
+| 🟠 2026-09-25 | 모레(Moreh) | NPU System SW Engineer (FW/Driver) | 382920 |
+| 🟠 2026-09-30 | 워트인텔리전스 | Senior AI Engineer (LLM/NLP/MLOps) | 383713 |
+| 🟡 2026-10-31 | 마드라스체크(플로우) | [AI Work Agent 플로우] FDE | 379774 |
+
+나머지 30건은 `due_time` 이 null 이다 — **마감일이 없다는 뜻이지 상시 채용이라는 보장이 아니다**
+(이 파일 §API 지도). 위 9건이 전부 null 이거나 이미 지난 마감이었다는 것이 그 증거다.
+
+### 이 실측이 말하는 것
+
+09-09 에 본문까지 읽어 정면으로 판정한 후보가 **9일 동안 케이스가 되지 못했고, 그 사이 정면 1번이
+닫혔다.** `INBOX.md` 에 남는 것은 후보이지 지원이 아니다. 읽은 다음의 한 걸음이 `./new.sh` 로
+가지 않으면 읽기의 값은 시간과 함께 감가한다 — `NEXT.md` RAIL 5 번(「낼 때 남긴다」)의 반대 방향
+실패다. 이쪽은 **낼 것을 안 내서** 잃었다.
+
+---
+
+## 시스템 축 재분류 — 2026-09-18
+
+판정 기준은 `AGENTS.md` §시스템 축 (2026-09-18 GLG). §생존 실측이 잡은 34건 활성 중 35개
+wanted id(애자일소다 항목 하나가 두 id 를 안고 있어 34행 34건이 35 id 로 펼쳐진다)를
+`wanted.py detail` 로 전부 다시 읽고, 담당업무 원문을 인용해 판정했다. 등급이 아니라 인용이
+근거다 — 회사 소개의 「AI 기반」류는 근거로 쓰지 않았다.
+
+### ✅ 시스템 축 — 낸다
+
+| 회사 | 직무 | id | 담당업무 인용 (판정 근거) |
+|---|---|---|---|
+| 링크알파(LinqAlpha) | FDE | 375859 | 「인프라부터 백엔드까지 직접 구현합니다... 에이전트가 도는 실행 환경(노드·Pod·스토리지, warm pool, 오토스케일링)까지 — 데모가 아니라 프로덕션 파이프라인을 직접 짭니다.」 |
+| 심플랫폼 | AI Agent & LLM Engineer | 368678 | 「AI Agent Orchestration 플랫폼의 아키텍처를 설계하고 구축을 주도합니다. (멀티 에이전트 오케스트레이션, RAG, MCP 연동 등)」 |
+| 다키클라우드코리아 | 시니어 엔지니어(Agent Native Cloud) | 371314 | 「자율 AI 에이전트 런타임(에이전트 루프, 툴 디스패치, 세션·정책·감사 파이프라인) 설계 및 구현... LLM 게이트웨이(멀티 프로바이더 추상화)... 샌드박스 실행 환경」 |
+| 애자일소다 | AI Agent Platform Engineer | 374789 | 「Kubernetes 기반의 AI Agent 실행·운영 환경을 구축하고... Agent 개발용 공통 라이브러리·도구를 설계하고 개발합니다.」 |
+| 뷰티셀렉션 | [AX Dept] FDE | 378781 | 「여러 Agent가 업무를 나눠 맡고 조율하는 멀티에이전트 아키텍처 설계 — 역할 정의부터 통신 프로토콜(A2A 등), 실행 결과 검증까지... 권한과 감사 경계를 코드로 정의」 |
+| 에이티씨아이 | Software Engineer(AI Agent부문) | 349626 | 「Agent 간 통신 및 orchestration 로직 설계 (state, memory, context 관리)... DevOps workflow 자동화 Agent 개발」 |
+| 큐픽스 | 머신러닝 엔지니어(공간지능) | 373064 | 「BIM 도면과 현장 360° 캡처를 LLM/VLM이 비교·판단하는 도메인 특화 에이전트를 설계하고 개발합니다... LangGraph 기반 멀티 에이전트 워크플로우를 설계」 — 자사 제품 축, 고객 요청 구현이 아니다 |
+| 콘센트릭스서비스코리아 | LLM/Agent Engineer | 379871 | 「LangGraph 기반 Multi-Agent Workflow 핵심 아키텍처 설계 및 고도화... 복잡한 세션 상태 관리, 단기/장기 메모리 통합 설계, 정교한 Fallback/Retry 및 에러 복구 파이프라인 구축」 |
+| 위시드 | MLOps/AI 에이전트 개발자 | 382306 | 「폐쇄망 환경에 적합한 전체 개발·인프라 아키텍처 설계... 온프레미스 LLM 기반 AI Agent 설계 및 개발... 폐쇄망 환경의 패키지·의존성·이미지·모델 관리 체계 구축」 |
+| 미리비트 | Data Engineer & Local LLM AI Agent Engineer | 382386 | 「GLM, Kimi 등 로컬 LLM을 활용한 AI Agent 시스템 설계·개발·배포... 로컬 모델 서빙 환경 구축 및 최적화 (vLLM, SGLang, llama.cpp 등)... Multi-agent 오케스트레이션, Planning, Memory, State 관리」 |
+| 비상교육 | Lead DevOps/AI Platform Engineer | 375022 | 「AI 플랫폼의 전체 아키텍처를 설계... API 설계를 표준화하고, API Gateway 전략을 수립합니다... GitOps 기반 배포 체계를 설계합니다.」 |
+| 모레(Moreh) | LLM Platform Engineer | 375108 | 「Performance Gateway 개발... Inference Autopilot 개발 — 서비스 구성(Preset)을 선언적으로 관리하는 Kubernetes Operator를 설계·개발... High-Fidelity Observability 구축」 |
+| 모레(Moreh) | NPU System SW Engineer(FW/Driver) | 382920 | 「저수준 Runtime과 User-Mode Driver 공동 개발... Linux Kernel-Mode Driver와 PCIe, MMIO, DMA, Interrupt, IOMMU 기반 Host–Device 인터페이스 공동 개발」 — 🟠 마감 2026-09-25 |
+| 오픈엣지테크놀로지 | NPU Firmware Engineer | 365239 | 「신경망 연산자별 NPU 연산 Kernel 개발... Firmware에 대한 검증, 성능 Profile 분석 및 최적화... 기능 안전(FuSa) 대응」 — 임베디드 축, AI 이름은 없으나 커널/펌웨어라 시스템 축 |
+| 소울아트 | System Software Engineer(Embedded AI) | 350980 | 「Station을 위해 개발되는 다양한 프로그램을 통합합니다... 임베디드 환경에 맡는 보안 환경을 설계합니다... Edge AI 통합 경험」 |
+| 오토메타 | AI Agent Engineer | 384691 | 「AI agent의 turn loop, tool-use flow, streaming 응답, error recovery 설계 및 개선... tool 계약 관리 (schema, versioning, 권한, scope)... 다양한 LLM provider abstraction 운영」 — 가장 정면 |
+| 퓨쳐스콜레 | Platform Engineer Lead(DevOps) | 371498 | 「Kubernetes 기반 컨테이너 오케스트레이션 환경을 설계하고 운영합니다... CI/CD 파이프라인을 고도화... 관측성(Observability) 체계를 설계」 — AI 이름은 없으나 플랫폼 리드가 게이트웨이·오케스트레이션·관측성 정의와 겹친다 |
+| 카이트다이나믹스 | 임베디드 펌웨어 및 제어 엔지니어 | 384224 | 「MCU 및 Embedded Processor 기반 실시간 소프트웨어 개발... Fault Detection, Safety Logic 및 Recovery 기능 개발」 — 순수 임베디드(offense mode), AI 축 없음 |
+| 리주비놀 | 로봇 제어 및 펌웨어 개발 엔지니어 | 382219 | 「MCU 기반 모터 및 센서 제어 펌웨어 개발... 모터 드라이버, 센서 및 상위 제어 시스템 간 인터페이스 개발」 — 순수 임베디드(offense mode), AI 축 없음 |
+
+### ⛔ 서비스 축 — 거른다
+
+| 회사 | 직무 | id | 담당업무 인용 (판정 근거) |
+|---|---|---|---|
+| 채널코퍼레이션 | [채널톡] FDE | 324639 | 「고객사 현장(데이터, 프로세스, 조직 구조 등)을 깊이 이해하고, 실제 문제를 정확히 진단한 뒤, 빠르게 해결 방안을 설계·구현·검증하여 즉각적인 비즈니스 임팩트를 만드는 역할」 |
+| 슈퍼브에이아이(Superb AI) | FDE(5년 이상) | 377073 | 「현장마다 다른 하드웨어·카메라 환경을 고려하여, 정확도와 비용을 함께 최적화한 솔루션을 배포합니다.」 — 고객 현장별 모델 적용, 런타임/게이트웨이 아님 |
+| 클리카(CLIKA) | Forward Deployed AI Engineer – Robotics | 376851 | 「국내 기업 및 공공기관의 AI SI, PoC, Pilot 프로젝트를 기술적으로 수행합니다... 고객의 요청과 피드백을 내부 개발팀이 실행할 수 있는 기술 요구사항으로 정리합니다.」 |
+| 팀카이 | FDE | 369739 | 「고객사 에이전트를 빌드합니다... 담당 고객사의 도메인·시스템·정책에 맞는 에이전트 1 instance를 구축합니다.」 — 고객사별 인스턴스 반복 빌드가 핵심 |
+| 데이원컴퍼니 | [Day1] FDE | 383391 | 「고객사 상주: 현장의 실제 업무 흐름·데이터·시스템을 파악하고 기술적 해결책을 정의... Prototype부터 Production까지 AI 애플리케이션의 신속한 설계·구현·배포」 |
+| 부스터스 | FDE | 382343 | 「수기·엑셀로 흩어져 있던 업무를 시스템과 데이터 파이프라인으로 전환해요... 현장에서 검증된 것을 플랫폼 표준으로 승격시켜요.」 — LLM/Agent 언급 없음, Claude Code 는 도구로만 쓰고 사내 업무 앱 구현이 핵심 |
+| 더씨에스알 | AI 엔지니어(LLM·RAG) | 385276 | 「LLM 응답 품질 개선: LLM API 기반 프롬프트·컨텍스트 설계, 환각 제어, 응답 품질 개선... API 백엔드 연동: FastAPI로 AI 생성 모듈을 안정적으로 서빙」 — 매출 기능(RAG 제품) 구현, 런타임/게이트웨이 설계 아님 |
+
+### ⚠ 애매 — GLG가 고른다
+
+| 회사 | 직무 | id | 시스템 쪽 문장 | 서비스 쪽 문장 |
+|---|---|---|---|---|
+| 오픈에이아이(OpenAI) | FDE - Seoul | 370620 | 「Build full-stack systems that deliver customer value... Codify working patterns into tools, playbooks, or building blocks that others can use.」 | 「Embed closely with customer teams, understand their needs, and guide adoption of what you build.」 — ⚠ 원장에 OpenAI DevEx(`ready`)가 이미 있다 |
+| 코리아포트원 | AI Agent Engineer | 375404 | 「LLM, RAG, Agent, Workflow를 조합해 에이전트를 직접 설계하고 프로덕션까지 구현해... 핸즈온으로 만드는 역할입니다」 | 「결제/정산 도메인의 고객·현업 문제를 듣고, "이걸 AI 에이전트로 어떻게 풀 것인가"를 설계 단계부터 판단합니다」 |
+| 투모로로보틱스 | Physical AI FDE | 357998 | 「실제 운영 환경에서 발생하는 이슈를 분석하고 로봇 동작, 소프트웨어, 통신, 시스템, 운영 구조를 개선」 | 「고객별 요구사항과 환경 차이를 반영한 개발 및 기술 적용」 |
+| 지니파이 | 사내 AX 리드/FDE | 383849 | 「업무 지식을 매일 수집해 에이전트가 함께 쓰는 SSOT로 관리... 외부 SaaS와 내부 데이터에 접근하는 API와 MCP 제공」 | 「사내에서 검증한 에이전트, SSOT, 평가 방식을 기업 AI 교육과 도입 서비스로 확장합니다.」 |
+| 멘타트 | FDE | 381184 | 「vLLM, SGLang 기반 LLM·임베딩·리랭커 서빙 스택과 GPU 클러스터 구성 및 운영」 | 「고객과 협력하여 비즈니스 과제를 정의하고, AI 기반 해결 방안 설계... 프로젝트 전 과정을 주도적으로 관리하며 고객 요구사항을 기술적 결과물로 구체화」 |
+| 마드라스체크(플로우) | [AI Work Agent] FDE | 379774 | 「repattern AI 제품 개발(40%): MCP 도구 서버 및 검색 연동, AI Agent 기능 개발」 | 「기존 flow 고객사 도입(40%): 기존 flow 고객 환경에 repattern AI 구축 및 적용, 고객 데이터·권한 구조에 맞춘 Agent 품질 튜닝」 — 🟡 마감 2026-10-31 |
+| 워트인텔리전스 | Senior AI Engineer | 383713 | 「RAG, Agent, 검색 등 AI 시스템 설계 및 구현... 문제 정의부터 모델 적용 및 서비스화까지 End-to-End 개발」 | 「단순 모델 개발을 넘어... 실제 서비스 임팩트를 만들어낼 수 있는 엔지니어를 찾습니다.」 — 런타임/게이트웨이도 고객요청 구현도 아닌 ML 리서치+서비스화 성격 |
+| 비스텔리젼스 | FDE | 384457 | 「Agent가 사용할 수 있는 semantic layer, business object model, permission model, workflow model을 설계합니다... Agent의 reasoning path, tool usage, execution boundary, human-in-the-loop 조건을 정의합니다.」 | 「고객별 PoC, 파일럿, 프로덕션 배포 전략을 설계하고 실행합니다... 고객별 커스텀 구현을 확장 가능한 플랫폼 기능으로 전환합니다.」 |
+| 트위닛 | [뷰티컨시어지] LLM/Agent Engineer | 383456 | 「구조화 데이터, 문서, 검색 인덱스 등을 연결하고 RAG, Knowledge Graph, Ontology 등의 기술을 활용하여... Knowledge Retrieval 기술 개발」 | 「제품·AI·Backend 팀과 협업하여 분석, 검색, 추천, 시뮬레이션 등 다양한 기능을 하나의 AI 기반 사용자 경험으로 연결」 — 🔴 마감 오늘(2026-09-18) |
+
+### 확인 못 한 것
+
+- 없음 — §생존 실측이 `close`/`draft`로 표시한 11건(닫힘 9 + draft 2)은 이번 재분류에서 제외했다. `job.status` 자체가 활성 여부이지 시스템/서비스 판정이 아니므로 다시 부르지 않았다.
+- LinkedIn·Remember 채널은 이번 세션에서 손대지 못했다 — 아래 보고 참고.
