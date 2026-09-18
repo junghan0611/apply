@@ -77,6 +77,27 @@ fi
 # 구분자는 `#` 이다 — 패턴 안에 `|` 와 `/` 가 둘 다 있어서 `s|…|…|` 로는 sed 가 못 읽는다.
 SSH_NEUTRALIZE='s#(^|[^A-Za-z0-9._%+-])((ssh://)?git@[A-Za-z0-9.-]+[:/])#\1<ssh-remote>/#g'
 
+# ── 무해 형태 무해화 (2026-09-18) ────────────────────────────────────────────
+# 패턴을 느슨하게 하지 않는다. 느슨하게 하면 진짜가 와도 못 알아본다. 대신 **공개 서비스가
+# 만든 형태**만 스캔 전에 지운다. 각 줄이 무엇을 왜 지우는지 아래 self-test 가 반증한다.
+#
+# 2026-09-18 에 이 넷이 게이트를 실패시켰고 전부 무해였다:
+#   <회사슬러그> at greetinghr.com   ATS(그리팅) 발신 시스템 주소 — 사람 주소가 아니다
+#   noreply at anthropic.com         커밋 트레일러
+#   ... at users.noreply.github.com  GitHub noreply
+#   jobs.lever.co/<org>/<uuid>       Lever **공개 공고** URL 의 posting id
+#
+# ⚠ 이 주석과 아래 픽스처는 **리터럴을 쓰지 않는다.** 이 파일도 스캔 대상이라
+#   예시를 그대로 적으면 게이트가 자기 자신에게 걸린다(2026-09-18 실측).
+#
+# ⚠ uuid 규칙은 **공개 공고 URL 안에 있을 때만** 지운다. 맨 UUID 는 계속 걸린다 —
+# 이 범주가 원래 잡으려던 것은 *지원자 개인화 ATS 토큰*이지 공개 공고 id 가 아니다.
+BENIGN_NOREPLY='s#[A-Za-z0-9._%+-]+@users\.noreply\.github\.com#<noreply>#g'
+BENIGN_NOREPLY2='s#(^|[^A-Za-z0-9._%+-])no-?reply@[A-Za-z0-9.-]+\.[A-Za-z]{2,}#\1<noreply>#g'
+# ATS 발신 도메인 allowlist — 실제로 마주친 것만 넣는다. 추측으로 늘리지 않는다.
+BENIGN_ATS='s#[A-Za-z0-9._%+-]+@(greetinghr\.com)#<ats-sender>#g'
+BENIGN_LEVER='s#(jobs\.lever\.co/[A-Za-z0-9._-]+/)[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}#\1<posting-id>#g'
+
 neutralize() {
 	case "${1:-}" in
 	scripts/check-public.sh|scripts/check-public-repo.sh)
@@ -89,7 +110,9 @@ neutralize() {
 			-e "/^scan 'private 운영 표식' '[^']*'\$/d"
 		;;
 	*)
-		sed -E -e "$SSH_NEUTRALIZE"
+		sed -E -e "$SSH_NEUTRALIZE" \
+			-e "$BENIGN_NOREPLY" -e "$BENIGN_NOREPLY2" \
+			-e "$BENIGN_ATS" -e "$BENIGN_LEVER"
 		;;
 	esac
 }
@@ -117,6 +140,32 @@ fi
 if printf '%s\n' "$_selfline" | neutralize scripts/check-public.sh | grep -q .; then
 	_selftest_fail '스캐너 자신의 패턴 선언 줄이 남는다'
 fi
+# 무해화 allowlist 가 **너무 많이 지우지는 않는지** 반증한다. 지우는 쪽만 검사하면
+# 규칙이 조용히 넓어져도 초록불이 된다.
+_benign_ok() { printf '%s\n' "$1" | neutralize other/ordinary-file.md; }
+_uuid_bare='56661820-4c76-4ded''-b1cd-7bad478d192d'
+_uuid_lever="jobs.lever.co/zoyi/$_uuid_bare"
+_ats_ok='gint''@greetinghr.com'
+_ats_other='recruiter''@some-company.co.kr'
+_nr='noreply''@anthropic.com'
+
+if _benign_ok "$_ats_ok" | grep -Fq '@greetinghr.com'; then
+	_selftest_fail 'ATS 발신 주소를 무해화하지 못했다'
+fi
+if ! _benign_ok "$_ats_other" | grep -Fq '@some-company.co.kr'; then
+	_selftest_fail 'allowlist 밖 이메일까지 삼킨다'
+fi
+if _benign_ok "$_nr" | grep -Fq '@anthropic.com'; then
+	_selftest_fail 'noreply 를 무해화하지 못했다'
+fi
+if _benign_ok "$_uuid_lever" | grep -Fq "$_uuid_bare"; then
+	_selftest_fail 'Lever 공개 공고 id 를 무해화하지 못했다'
+fi
+if ! _benign_ok "$_uuid_bare" | grep -Fq "$_uuid_bare"; then
+	_selftest_fail '맨 UUID 까지 삼킨다 — 개인화 토큰을 놓치게 된다'
+fi
+unset _uuid_bare _uuid_lever _ats_ok _ats_other _nr
+
 unset _mail _embedded _ssh _selfline _n
 
 # rg 종료 코드: 0=매치, 1=매치 없음, 2 이상=오류. 오류를 "없음"으로 읽지 않는다.

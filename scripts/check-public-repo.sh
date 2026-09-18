@@ -73,13 +73,21 @@ deny_path '세션 발췌·raw 제3자 복제'        '(provider-turn|-raw)[^/]*\
 deny_path '로컬 상태 스냅샷'                '^\.timeline-|settings\.local\.json$'
 
 # ── 2. commit ident ─────────────────────────────────────────────────────
-# 기준은 "옛 주소가 0건"이 아니라 **전수가 noreply** 다. 세지 않은 주소가 남는 것이
+# 기준은 "옛 주소가 0건"이 아니라 **전수가 허용된 신원** 이다. 세지 않은 주소가 남는 것이
 # 옛 주소가 남는 것보다 조용하다.
-nonnoreply=$(git log --all --format='%ae%n%ce' | grep -vc 'users\.noreply\.github\.com' || true)
-if [ "$nonnoreply" -gt 0 ]; then
-	bad "commit ident — noreply 가 아닌 필드 $nonnoreply 개"
+#
+# 2026-09-18 GLG: 아래 IDENT_ALLOW 의 개인 주소는 숨기는 주소가 아니라 **공개하기로 한 신원**이다.
+# 이 저장소는 공개 이력서와 연락처를 싣는 면이고, 같은 사람의 커밋 author 만 가리는 것은
+# 일관되지 않는다. 그래서 「noreply 전수」가 아니라 **allowlist 전수**로 기준을 바꾼다.
+#
+# ⚠ allowlist 는 **GLG 가 공개하기로 한 주소만** 담는다. 여기에 주소를 더하는 것은 그 주소를
+# 공개 신원으로 선언하는 일이다 — 에이전트가 조용히 늘리지 않는다.
+IDENT_ALLOW='users\.noreply\.github\.com|^junghanacs@gmail\.com$'
+nonallowed=$(git log --all --format='%ae%n%ce' | grep -vcE "$IDENT_ALLOW" || true)
+if [ "$nonallowed" -gt 0 ]; then
+	bad "commit ident — allowlist 밖 필드 $nonallowed 개"
 else
-	ok 'commit ident 전수 noreply'
+	ok 'commit ident 전수 allowlist'
 fi
 
 # ── 3. reachable blob 내용 ──────────────────────────────────────────────
@@ -109,6 +117,27 @@ SSH_NEUTRALIZE='s#(^|[^A-Za-z0-9._%+-])((ssh://)?git@[A-Za-z0-9.-]+[:/])#\1<ssh-
 # 지운다. 다른 경로에는 줄 삭제 규칙을 쓰지 않는다 — 아무 파일에나 `scan '…' ` 접두사를
 # 붙여 값을 숨기는 길을 열어 주지 않기 위해서다. 형태도 실측대로 좁힌다 — 줄머리에서
 # 시작해 따옴표 리터럴로 끝나는 그 네 줄만이다. 뒤에 무언가 덧붙이면 지워지지 않는다.
+# ── 무해 형태 무해화 (2026-09-18) ────────────────────────────────────────────
+# 패턴을 느슨하게 하지 않는다. 느슨하게 하면 진짜가 와도 못 알아본다. 대신 **공개 서비스가
+# 만든 형태**만 스캔 전에 지운다. 각 줄이 무엇을 왜 지우는지 아래 self-test 가 반증한다.
+#
+# 2026-09-18 에 이 넷이 게이트를 실패시켰고 전부 무해였다:
+#   <회사슬러그> at greetinghr.com   ATS(그리팅) 발신 시스템 주소 — 사람 주소가 아니다
+#   noreply at anthropic.com         커밋 트레일러
+#   ... at users.noreply.github.com  GitHub noreply
+#   jobs.lever.co/<org>/<uuid>       Lever **공개 공고** URL 의 posting id
+#
+# ⚠ 이 주석과 아래 픽스처는 **리터럴을 쓰지 않는다.** 이 파일도 스캔 대상이라
+#   예시를 그대로 적으면 게이트가 자기 자신에게 걸린다(2026-09-18 실측).
+#
+# ⚠ uuid 규칙은 **공개 공고 URL 안에 있을 때만** 지운다. 맨 UUID 는 계속 걸린다 —
+# 이 범주가 원래 잡으려던 것은 *지원자 개인화 ATS 토큰*이지 공개 공고 id 가 아니다.
+BENIGN_NOREPLY='s#[A-Za-z0-9._%+-]+@users\.noreply\.github\.com#<noreply>#g'
+BENIGN_NOREPLY2='s#(^|[^A-Za-z0-9._%+-])no-?reply@[A-Za-z0-9.-]+\.[A-Za-z]{2,}#\1<noreply>#g'
+# ATS 발신 도메인 allowlist — 실제로 마주친 것만 넣는다. 추측으로 늘리지 않는다.
+BENIGN_ATS='s#[A-Za-z0-9._%+-]+@(greetinghr\.com)#<ats-sender>#g'
+BENIGN_LEVER='s#(jobs\.lever\.co/[A-Za-z0-9._-]+/)[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}#\1<posting-id>#g'
+
 neutralize() {
 	case "${1:-}" in
 	scripts/check-public.sh|scripts/check-public-repo.sh)
@@ -121,7 +150,9 @@ neutralize() {
 			-e "/^scan 'private 운영 표식' '[^']*'\$/d"
 		;;
 	*)
-		sed -E -e "$SSH_NEUTRALIZE"
+		sed -E -e "$SSH_NEUTRALIZE" \
+			-e "$BENIGN_NOREPLY" -e "$BENIGN_NOREPLY2" \
+			-e "$BENIGN_ATS" -e "$BENIGN_LEVER"
 		;;
 	esac
 }
@@ -152,6 +183,32 @@ fi
 if printf '%s\n' "$_selfline" | neutralize scripts/check-public-repo.sh | grep -q .; then
 	_selftest_fail '스캐너 자신의 패턴 선언 줄이 남는다'
 fi
+# 무해화 allowlist 가 **너무 많이 지우지는 않는지** 반증한다. 지우는 쪽만 검사하면
+# 규칙이 조용히 넓어져도 초록불이 된다.
+_benign_ok() { printf '%s\n' "$1" | neutralize other/ordinary-file.md; }
+_uuid_bare='56661820-4c76-4ded''-b1cd-7bad478d192d'
+_uuid_lever="jobs.lever.co/zoyi/$_uuid_bare"
+_ats_ok='gint''@greetinghr.com'
+_ats_other='recruiter''@some-company.co.kr'
+_nr='noreply''@anthropic.com'
+
+if _benign_ok "$_ats_ok" | grep -Fq '@greetinghr.com'; then
+	_selftest_fail 'ATS 발신 주소를 무해화하지 못했다'
+fi
+if ! _benign_ok "$_ats_other" | grep -Fq '@some-company.co.kr'; then
+	_selftest_fail 'allowlist 밖 이메일까지 삼킨다'
+fi
+if _benign_ok "$_nr" | grep -Fq '@anthropic.com'; then
+	_selftest_fail 'noreply 를 무해화하지 못했다'
+fi
+if _benign_ok "$_uuid_lever" | grep -Fq "$_uuid_bare"; then
+	_selftest_fail 'Lever 공개 공고 id 를 무해화하지 못했다'
+fi
+if ! _benign_ok "$_uuid_bare" | grep -Fq "$_uuid_bare"; then
+	_selftest_fail '맨 UUID 까지 삼킨다 — 개인화 토큰을 놓치게 된다'
+fi
+unset _uuid_bare _uuid_lever _ats_ok _ats_other _nr
+
 unset _mail _embedded _ssh _selfline _n
 
 objects=$(mktemp); blobs=$(mktemp); body=$(mktemp)
