@@ -124,26 +124,27 @@
 | Spoonlabs (스푼랩스) | Machine Learning Engineer (TTS) | rejected | 미확인 · **불합격 통보 2026-09-16** | Remember 또는 Wanted (경로 미확인 — 지원완료 메일 없음) | 플랫폼 프로필 (앱 제출 공통 이력정보로 추정) | `spoonlabs--machine-learning-engineer-tts` |
 | Autometa | AI Agent Engineer | draft | — | 원티드 | AI Engineer | `autometa--ai-agent-engineer` |
 | Dakicloud Korea | Senior Engineer (Agent Native Cloud / AI Agent) | draft | — | 원티드 | AI Engineer | `dakicloud-korea--senior-engineer-agent-native-cloud-ai-agent` |
-| Miribit | Data Engineer & Local LLM AI Agent Engineer | draft | — | 원티드 | — | `miribit--data-engineer-local-llm-ai-agent-engineer` |
-| Wished | MLOps / AI Agent Developer | draft | — | 원티드 | — | `wished--mlops-ai-agent-developer` |
+| Miribit | Data Engineer & Local LLM AI Agent Engineer | draft | — | 원티드 | AI Engineer | `miribit--data-engineer-local-llm-ai-agent-engineer` |
+| Wished | MLOps / AI Agent Developer | draft | — | 원티드 | Platform Engineer | `wished--mlops-ai-agent-developer` |
 | Simplatform | AI Agent & LLM Engineer Senior | draft | — | 원티드 | AI Engineer | `simplatform--ai-agent-llm-engineer-senior` |
-| Agilesoda | AI Agent Platform Engineer | draft | — | 원티드 | — | `agilesoda--ai-agent-platform-engineer` |
+| Agilesoda | AI Agent Platform Engineer | draft | — | 원티드 | Platform Engineer | `agilesoda--ai-agent-platform-engineer` |
 | Beauty Selection | [AX Dept] Forward Deployed Engineer | draft | — | 원티드 | FDE | `beauty-selection--ax-dept-forward-deployed-engineer` |
 | ATCI | Software Engineer (AI Agent) | draft | — | 원티드 | AI Engineer | `atci--software-engineer-ai-agent` |
 | Concentrix Services Korea | LLM/Agent Engineer | draft | — | 원티드 | AI Engineer | `concentrix-services-korea--llm-agent-engineer` |
-| LinqAlpha | Forward Deployed Engineer | draft | — | 원티드 | — | `linqalpha--forward-deployed-engineer` |
+| LinqAlpha | Forward Deployed Engineer | draft | — | 원티드 | Platform Engineer | `linqalpha--forward-deployed-engineer` |
 | Wizcore | Onprem K8s Platform Engineer Senior | held | — | 리멤버 | — | `wizcore--onprem-k8s-platform-engineer-senior` |
-| Macaron Factory | Platform Engineering | draft | — | 리멤버 | — | `macaron-factory--platform-engineering` |
+| Macaron Factory | Platform Engineering | draft | — | 리멤버 | Platform Engineer | `macaron-factory--platform-engineering` |
 | Visang Education | Lead DevOps AI Platform Engineer | held | — | 원티드 | — | `visang-education--lead-devops-ai-platform-engineer` |
 | Futureschole | Platform Engineer Lead DevOps | held | — | 원티드 | — | `futureschole--platform-engineer-lead-devops` |
-| Whatap Labs | Kubernetes Agent Developer | draft | — | 리멤버 | — | `whatap-labs--kubernetes-agent-developer` |
-| Openedges Technology | NPU Firmware Engineer | draft | — | 원티드 | — | `openedges-technology--npu-firmware-engineer` |
-| Soulart | System Software Engineer Embedded AI | draft | — | 원티드 | — | `soulart--system-software-engineer-embedded-ai` |
-| Kite Dynamics | Embedded Firmware and Controls Engineer | draft | — | 원티드 | — | `kite-dynamics--embedded-firmware-and-controls-engineer` |
-| Rejubinol | Robot Control and Firmware Development Engineer | draft | — | 원티드 | — | `rejubinol--robot-control-and-firmware-development-engineer` |
+| Whatap Labs | Kubernetes Agent Developer | draft | — | 리멤버 | Platform Engineer | `whatap-labs--kubernetes-agent-developer` |
+| Openedges Technology | NPU Firmware Engineer | draft | — | 원티드 | Embedded SW Engineer | `openedges-technology--npu-firmware-engineer` |
+| Soulart | System Software Engineer Embedded AI | draft | — | 원티드 | Embedded SW Engineer | `soulart--system-software-engineer-embedded-ai` |
+| Kite Dynamics | Embedded Firmware and Controls Engineer | draft | — | 원티드 | Embedded SW Engineer | `kite-dynamics--embedded-firmware-and-controls-engineer` |
+| Rejubinol | Robot Control and Firmware Development Engineer | draft | — | 원티드 | Embedded SW Engineer | `rejubinol--robot-control-and-firmware-development-engineer` |
 | Cupix | Machine Learning Engineer Spatial Intelligence | held | — | 원티드 | — | `cupix--machine-learning-engineer-spatial-intelligence` |
 | Bistelligence | Forward Deployed Engineer | held | — | 원티드 | — | `bistelligence--forward-deployed-engineer` |
-| Mentat | Forward Deployed Engineer | draft | — | 원티드 | — | `mentat--forward-deployed-engineer` |
+| Mentat | Forward Deployed Engineer | draft | — | 원티드 | Platform Engineer | `mentat--forward-deployed-engineer` |
+| AlphaChips (㈜알파칩스) | Embedded Software Engineer | draft | — | 추천 경로 (리멤버 제안 수락 → 이메일 회신 제출) | Embedded SW Engineer + 지정 `.docx` 양식 | `alphachips--embedded-software-engineer` |
 
 **읽는 법 — 이 표가 말하는 한 가지**: 실패는 그 건의 실수로 끝나지 않고 **스크립트·게이트·계약
 중 하나로 올라간다.** 올라가지 않은 교훈은 반드시 재발한다(08-01 IGNITE 두 행이 그 증거다).
