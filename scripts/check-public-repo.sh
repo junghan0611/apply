@@ -137,6 +137,13 @@ BENIGN_NOREPLY2='s#(^|[^A-Za-z0-9._%+-])no-?reply@[A-Za-z0-9.-]+\.[A-Za-z]{2,}#\
 # ATS 발신 도메인 allowlist — 실제로 마주친 것만 넣는다. 추측으로 늘리지 않는다.
 BENIGN_ATS='s#[A-Za-z0-9._%+-]+@(greetinghr\.com)#<ats-sender>#g'
 BENIGN_LEVER='s#(jobs\.lever\.co/[A-Za-z0-9._-]+/)[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}#\1<posting-id>#g'
+# 소유자 본인의 **공개 연락처** — 2026-09-20 GLG 결정: 「내 이메일 다 넣어도 된다. 내꺼 다
+# 공개된거야.」 이력서 PDF 의 연락처 줄이 이 주소를 싣고 소스는 `resume/pipeline/preamble.org`다.
+# 이 규칙이 없으면 게이트가 **제출본의 연락처를 유출로 신고**한다.
+# ⚠ local-part 를 변수로 쪼개 둔다 — 이 파일도 스캔 대상이라 리터럴을 이어 적으면 자기 자신에게 걸린다.
+# ⚠ 좁게 유지한다. 다른 gmail 주소는 계속 걸려야 하고, 아래 self-test 가 그것을 반증한다.
+OWNER_MAIL_LOCAL='junghanacs'
+BENIGN_OWNER="s#${OWNER_MAIL_LOCAL}@gmail\\.com#<owner-contact>#g"
 
 neutralize() {
 	case "${1:-}" in
@@ -152,7 +159,7 @@ neutralize() {
 	*)
 		sed -E -e "$SSH_NEUTRALIZE" \
 			-e "$BENIGN_NOREPLY" -e "$BENIGN_NOREPLY2" \
-			-e "$BENIGN_ATS" -e "$BENIGN_LEVER"
+			-e "$BENIGN_ATS" -e "$BENIGN_LEVER" -e "$BENIGN_OWNER"
 		;;
 	esac
 }
@@ -200,6 +207,16 @@ if ! _benign_ok "$_ats_other" | grep -Fq '@some-company.co.kr'; then
 fi
 if _benign_ok "$_nr" | grep -Fq '@anthropic.com'; then
 	_selftest_fail 'noreply 를 무해화하지 못했다'
+fi
+
+# 소유자 공개 연락처 규칙 — 잡아야 할 것을 잡고, 남의 gmail 은 그대로 두는지 양쪽을 본다.
+_owner_mail="${OWNER_MAIL_LOCAL}"'@gmail.com'
+_other_gmail='someone-else''@gmail.com'
+if _benign_ok "$_owner_mail" | grep -Fq '@gmail.com'; then
+	_selftest_fail '소유자 공개 연락처를 무해화하지 못했다'
+fi
+if ! _benign_ok "$_other_gmail" | grep -Fq '@gmail.com'; then
+	_selftest_fail '소유자 규칙이 다른 gmail 주소까지 삼킨다'
 fi
 if _benign_ok "$_uuid_lever" | grep -Fq "$_uuid_bare"; then
 	_selftest_fail 'Lever 공개 공고 id 를 무해화하지 못했다'
