@@ -1,0 +1,136 @@
+# 제출 기록 — 엑시나(XCENA) / SW 임베디드 시스템 BSP 엔지니어
+
+| 항목 | 값 |
+|---|---|
+| 상태 | **submitted** — 2026-09-20 GLG 가 그리팅 폼에서 직접 제출했다. 개인 3칸·동의·Submit 은 사람이 했고 값은 저장하지 않는다 |
+| 지원일 | **2026-09-20** |
+| 경로 | **그리팅** (자체 도메인 `xcena.career.greetinghr.com`) — 회원가입 불필요. LinkedIn `4458140839` 에서 offsite 로 나온다 |
+| 첨부 컷 | **Embedded Software Engineer** (`resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`) |
+| 추가 첨부 | **국문 자기소개서 2쪽** (`submit/KimJunghan_CoverLetter_KO.pdf`) — 폼의 「자기소개서」 칸(**선택**) |
+| 공고 URL | https://xcena.career.greetinghr.com/ko/o/110624 · 폼 https://xcena.career.greetinghr.com/en/o/110624/apply |
+| 원장 대조 | `LEDGER.md` 에 **XCENA 행이 이미 있다** — `held`, 폴더 `xcena--system-software`. 그것은 **회사 스캔 23건 지도**이고 한 공고의 지원 건이 아니다. 이 폴더가 그 지도에서 **실제로 내는 첫 건**이다 |
+
+## 🔴 held → 이 건을 연다 (2026-09-20 GLG override)
+
+2026-07-28 에 XCENA 를 `held` 로 둔 사유는 **적합도가 아니라 지향**이었다:
+
+> *「perf ftrace 이런건 커널 드라이버 작업할때 파일시스템 튜닝할때 하는거야. 별로 관심은 없다.
+> (…) 너무 시스템 가니까 재미없어 보인다.」*
+
+2026-09-20 GLG 가 명시로 뒤집었다:
+
+> *「내 전공분야 시스템이라서 지원해보려고해.」*
+
+- **회사 스캔 폴더(`xcena--system-software`)의 상태는 `held` 로 둔다.** 23건 중 이 한 건만 연다.
+  그 폴더의 「되살린다면」 표는 2026-07-28 판정이고, 이 건은 그 표의 5순위였다.
+- ⚠ **그 5순위 판정의 근거 하나가 지금은 틀리다.** 거기 적힌 「연차 5년 이상」은 7월 리비전 값이고,
+  **현재 공고 본문에는 연차 줄이 없다.** 폼 헤더에만 `Experienced 3 years or more` 로 있다.
+  JD 가 개정됐고 부트로더·Secure Boot 도 필수에서 **우대로 내려갔다.**
+- LinkedIn 상 **1촌 1명 · 동문 1명** 이 있다(GLG 확인). 회사 스캔 폴더가 적어 둔
+  「51명 규모, 리퍼럴 무게가 크다」와 맞는다 — **폼보다 그쪽이 빠를 수 있다.**
+
+## 낸 것
+
+- [x] **이력서 (필수)** — `submit/KimJunghan_Resume_Embedded_Software_Engineer.pdf` (2쪽 · 30.4 kB)
+  — 폼에 보인 파일명·크기로 확인. 지문 `2e5120e3…` (`MANIFEST.sha256`)
+- [x] **자기소개서 (선택)** — `submit/KimJunghan_CoverLetter_KO.pdf` (2쪽 · 43 kB). `./build.sh` 가 낸다.
+  지문 `a9d6898c…`
+- [x] **Name · Email Address(+Confirm) · Phone Number** — **GLG 가 폼에서 직접 입력했다. 값은 저장하지 않는다**
+- [x] **필수 동의** — 사람이 완료
+- [x] **Submit** — **GLG 가 눌렀다.** 에이전트는 업로드까지만 했다
+
+## 폼 — 실측 (2026-09-20, `/en/o/110624/apply` 직접 열어 확인)
+
+| 섹션 | 칸 | 필수 | 비고 |
+|---|---|---|---|
+| Basic information | Name | ✅ | |
+| | Email Address + `Confirm email` 버튼 | ✅ | 확인 버튼이 따로 있다 |
+| | Phone Number (`🇰🇷 +82` 드롭다운 + 번호) | ✅ | |
+| Application Documents | **이력서** — 「PDF 형식으로 올려주세요」 | ✅ | dropzone 1개 |
+| | **자기소개서** — 「PDF 형식으로 올려주세요」 | ⬜ **선택** | 별표 없음 |
+| Terms | 개인정보 수집·이용 동의 | ✅ **(Required)** | |
+| | 선택 개인정보 수집·이용 동의 | ✅ **(Required)** | ⚠ 처음엔 `(Optional)` 이었다. **첨부를 올리는 순간 `(Required)` 로 바뀐다** — 이력서·자기소개서가 「선택 개인정보」에 해당하기 때문. 2026-09-20 업로드 직후 실측 | |
+| | 제3자 제공 동의 | ⬜ (Optional) | |
+| | `Agree to all` | — | 한 번에 켜는 토글 |
+
+- 🟢 **서술형 입력 칸이 0개다.** 학력·경력 테이블, 연봉 칸, 지원경로 드롭다운도 **없다.**
+  이 저장소가 연 폼 중 가장 짧다.
+- ⚠ **`boards.py` 의 `docsInfo` 는 필수/선택을 구분하지 않는다.** 그래서 회사 스캔 폴더가
+  「전 포지션이 이력서+자기소개서 **필수**」라고 적었지만 **이 공고는 자기소개서가 선택**이다.
+  폼을 열어야 알 수 있었다. 다른 XCENA 건을 되살릴 때 같은 오독을 하지 않는다.
+- ⚠ 폼의 `Homepage` 링크가 **`metisx.com`** 으로 간다 — 사명 변경 전 이름이 템플릿에 남은 것.
+
+## 제출 순서 (GLG)
+
+1. https://xcena.career.greetinghr.com/en/o/110624/apply 를 연다 (한국어 페이지도 같은 폼).
+2. Name · Email(+Confirm email 누름) · Phone.
+3. **이력서** dropzone ← `submit/KimJunghan_Resume_Embedded_Software_Engineer.pdf`
+4. **자기소개서** dropzone ← `submit/KimJunghan_CoverLetter_KO.pdf`
+5. **올리기 직전 보이는 파일명을 확인한다** (`AGENTS.md` §산출물 안전).
+6. **필수 동의 2칸**(개인정보 수집·이용 + 선택 개인정보 수집·이용 — 첨부를 올리면 둘째가 필수가 된다). 제3자 제공 동의는 선택이고 GLG 판단.
+7. Submit.
+
+## 왜 이 회사인가 (이 건의 글)
+
+### 시스템 축 — ✅ 논란 없음 (`AGENTS.md` §시스템 축)
+
+주요 업무 5줄이 **전부** 부트로더·커널 포팅·장치 드라이버·인터페이스 드라이버다.
+「고객 요청을 받아 앱·기능 구현」이나 「사내 업무 자동화」가 **한 줄도 없다.**
+2026-09-09 offense mode override 를 쓸 필요조차 없는, 정면 시스템 보직이다.
+
+### 요건 매트릭스 — 선행 큐 (직접 공개 증거 2)
+
+자격요건 3줄에서 뽑았다(`AGENTS.md` §둘째 축 · 담당업무가 아니라 자격요건에서 뽑는다).
+표는 `JD.md` §판정에 있다. 요지: 전공 축과 BSP 축이 각각 직접 공개 증거를 가지고,
+C/C++ 는 재직 사실이다.
+
+### 이 건이 세운 사실 — 증거의 출처가 `body.org` 가 아니다
+
+2026-09-20 에 이 건의 판정이 한 번 뒤집혔다. 첫 판정은 `resume/body.org` grep 으로
+「부트로더 0 · 커널 0 · I2C/UART/DRAM 0 · CXL 0 · NVMe 0」을 세고 **알파칩스와 같은
+「증거 밖 bring-up 자리」** 라고 보고했다. GLG 가 두 출처를 지목해 뒤집었다:
+
+| 출처 | 무엇이 있나 |
+|---|---|
+| `~/sync/org/notes/20250317T150522` (연구 실적 기록) | **NVM 블록 디바이스 드라이버**(KSC 2018 우수논문상) · **NVM 쓰기 증폭 감소**(KCC 2019 우수논문상) · **비휘발성 메모리 인덱스 성능 분석**(KCC 2020 최우수논문상) · **NUMA PM 자료구조 노드 리플리케이션**(KCC 2021 우수논문상 · 한국정보과학회논문지 2022) · **커널 레벨 장치 가상화**(정보과학회논문지 2013) · 등록 특허 8건 |
+| `github.com/junghan0611/homeagent-config` | **`bsp/`** — fsbl→opensbi→u-boot→커널→rootfs→freertos 전 계층 재현 빌드. SG2000 **Cortex-A53 arm64 레인 flash-and-go**(v2026.7.24, 두 번째 보드 재현) · `cvi_board_memmap.{h,conf,ld,txt}` 가 u-boot·커널·FreeRTOS 링커의 단일 좌표계 · DTS 실측으로 `gpio-keys` 부재 판정 · SoC 메일박스 C906L FreeRTOS 코프로세서 |
+
+🔴 **교훈 — `body.org` 는 이력서의 SSOT 이지 경력의 SSOT 가 아니다.** 이력서 컷에 없다는
+사실은 「이력서가 그 축을 안 싣는다」를 뜻하지 「경력에 없다」를 뜻하지 않는다.
+증거 grep 은 `body.org` 하나로 끝내지 않는다 — 공개 저장소와 `~/org` 의 실적 기록을 같이 본다.
+이 교훈은 `AGENTS.md` 에 올릴 후보다(아직 안 올렸다).
+
+### 남은 구멍 — 이력서 컷이 이 JD 를 안 받는다
+
+⚠ **`Embedded Software Engineer` 컷은 Matter/Zigbee/Yocto 제품 축으로 짜여 있다.**
+Summary 첫 문단이 Zigbee 게이트웨이 양산이고, `homeagent-config` 도 **Go/Flutter/Matter/Yocto**
+쪽 빌드 엔트리만 인용한다 — **`bsp/` 부트 체인은 컷에 없다.** 대학원 축은
+`Sungkyunkwan University — Distributed Computing Lab` 한 줄(「non-volatile memory filesystems
+and NUMA lock performance」)이 전부이고 **수상·논문·특허는 이력서에 없다.**
+
+즉 첫 관문(빠른 스캔)에서 이 지원자는 **「IoT 제품 엔지니어」로 읽히지 「BSP·부트체인」으로
+읽히지 않는다.** 2026-09-20 제출본은 **그 간극을 자기소개서가 메우는 구성**이다 —
+§2 가 주요 업무 5줄에 하나씩 대고, §4 가 없는 것을 먼저 적는다.
+
+**GLG 판정 대기**: `body.org` 에 연구 실적 블록(수상·논문 — 제3자 기록이라 §숫자 허용 범위)과
+`homeagent-config` 의 부트 체인 줄을 넣고 Embedded 컷을 재빌드할지. 넣으면 **알파칩스 건도
+같이 이득**이다. 이번 제출을 막지는 않는다.
+
+## 이후 기록
+
+- [2026-09-20] 건 생성. LinkedIn `4458140839` → 그리팅 `xcena/110624` 로 동정. 폼 직접 열어
+  실측(서술형 0 · 자기소개서 선택). 자기소개서 2쪽 빌드. `held` override 기록.
+- [2026-09-20] **자기소개서를 GLG 가 다시 썼다.** 「주요 업무 대조 · 지금 하는 일 · 없는 것」 세 절을
+  지우고 자신의 자기소개 글을 넣었다 — *「나는 뭐 안해봤습니다 이런거 적는 곳이 아니라 나는 어떤
+  인간인가 서술하고, 직무에 대한 이야기랑, 입사후 의견을 적으면 좋을것같아.」* 최종 구성은
+  **자기소개 → 왜 이 자리인가 → 입사 후**. 「없는 것」 절이 사라진 것은 계약 위반이 아니다 —
+  §진실과 증거는 「없는 것을 있다고 하지 않는다」이지 「없는 것을 반드시 적는다」가 아니고,
+  terra 교차검수가 남은 문장 어디에도 CXL·NVMe·Secure Boot 수행 주장이 없음을 확인했다.
+- [2026-09-20] 🔴 **제출 직전에 이메일 결함이 잡혔다 — GLG 가 PDF 를 눈으로 열어서.** history 정제가
+  `resume/pipeline/preamble.org` 와 **`resume/run.sh` 의 검사문을 같이 치환**해서, 빌드된 이력서
+  7종 전부 연락처 자리에 리터럴 `[email removed]` 가 조판됐고 게이트는 「이메일 노출 ok」로
+  통과시켰다. 기존 제출본 33개는 정제 이전 스냅샷이라 무사했다. 게이트를 placeholder 하드 실패 +
+  실주소 형식 검사 두 겹으로 바꾸고 **회귀 테스트로 잡히는 것까지 확인**했다.
+- [2026-09-20] **제출 완료.** 에이전트가 두 PDF 를 dropzone 에 올리고 폼에 보인 파일명을 확인했다.
+  개인 3칸·동의·Submit 은 GLG 가 했다. ⚠ 업로드 직후 **둘째 동의가 `(Optional)` → `(Required)` 로
+  바뀌는 것**을 실측했다(§폼 표에 반영).

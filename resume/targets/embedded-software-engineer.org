@@ -12,45 +12,54 @@
 #+INCLUDE: "../pipeline/preamble.org"
 
 #+begin_export latex
-\cvheader{Embedded Software Engineer — Firmware and Protocols That Shipped}
+\cvheader{Embedded Software Engineer — Boot Chain, Firmware, and Protocols}
 #+end_export
 
 * Summary
 
 I take embedded products from silicon to shipping. Most recently: a Zigbee/Wi-Fi gateway written in
 Zig and shipped to mass production, with a legacy C SDK isolated behind type-safe FFI, one explicit
-state machine, and 24-hour aging automation. When the contract stopped at firmware, I built the Go
+state machine, and aging-test automation. When the contract stopped at firmware, I built the Go
 server and Flutter companion app and delivered one protocol over two interchangeable backends — AWS
 IoT for connected deployments and a local mTLS broker for closed networks — without changing the
 firmware.
 
 The next port moved from ARMv7/glibc and a vendor sysroot to RISC-V on static musl, extracted a board
-HAL, delegated Zigbee transport to Zigbee2MQTT, and removed seven hardcoded device handlers. In
-parallel, one Go Matter-hub codebase runs on both RPi5 + Hailo-8 NPU/Yocto and RK3576/Android. AI
-appears here as an engineering tool and deployable edge workload, not as a claim of model-training
-expertise.
+HAL, delegated Zigbee transport to Zigbee2MQTT, and removed hardcoded device handlers. In
+parallel, one Go Matter-hub codebase runs on both RPi5 + Hailo-8 NPU/Yocto and RK3576/Android.
+Underneath the product work is a reproducible open-source boot chain — bootloader through kernel to
+FreeRTOS on a dual-ISA SoC — that traces back to graduate research on the memory hierarchy: NVM
+block device drivers, write-amplification reduction, and NUMA-aware persistent-memory data
+structures. AI appears here as an engineering tool and deployable edge workload, not as a claim of
+model-training expertise.
 
 * Core Competencies
 
 - @@latex:\cvlabel{Embedded Linux and Firmware}@@ — Zig and C, ARM and RISC-V, Yocto, static musl,
   board HAL, cross-compilation, deterministic state machines, and mass production.
+- @@latex:\cvlabel{BSP and Boot Chain}@@ — Buildroot, U-Boot, OpenSBI, device tree, FreeRTOS
+  coprocessor bring-up, board memory-map coordination across bootloader/kernel/RTOS linkers.
 - @@latex:\cvlabel{IoT Protocols}@@ — Matter, Thread/OTBR/RCP, Zigbee and Zigbee2MQTT, MQTT and mTLS,
   AWS IoT, BLE commissioning, and versioned device shadows.
 - @@latex:\cvlabel{Portability and Productization}@@ — one core across boards and backends, explicit
   hardware boundaries, real-device fan-out tests, server and app delivered with the firmware.
-- @@latex:\cvlabel{Edge AI}@@ — on-device sLLM and NPU deployment across accelerator families;
-  local-first control loops on constrained hardware.
-- @@latex:\cvlabel{AI-Assisted Verification}@@ — agents used for aging automation and bounded parallel
-  development, with tests and reproducible builds as the acceptance surface.
+- @@latex:\cvlabel{Edge AI Stack Feasibility}@@ — evaluating whether a Yocto/Buildroot build stack
+  reaches LLM configuration, assessing the feasibility of embedded model tuning on a local GPU
+  server, and on-device sLLM/NPU deployment across accelerator families.
 
 * Public Evidence — Build Surface and Honest Boundary
 
-- *Open implementation* — [[https://github.com/junghan0611/homeagent-config][github.com/junghan0611/homeagent-config]] contains the Go/Flutter/Matter/Yocto
-  system and its build entries: =./run.sh go-build=, =flutter-server=, and =bundle=.
-- *Cross-build reasoning* — [[https://github.com/junghan0611/homeagent-config/blob/main/docs/YOCTO.md][github.com/junghan0611/homeagent-config/blob/main/docs/YOCTO.md]] records npm/Yocto dependency failures,
-  target-architecture QA, shrinkwrap policy, and the commands used to reproduce and clear failures.
+- *Boot chain* — [[https://github.com/junghan0611/homeagent-config/tree/main/bsp][github.com/junghan0611/homeagent-config/bsp]] builds a dual-ISA SoC's full boot
+  chain (fsbl → OpenSBI → U-Boot → kernel → rootfs → FreeRTOS) from public sources and a pinned
+  public SDK; the build injects the committed board and Buildroot defconfigs (=./bsp/build.sh=,
+  =./bsp/flash-emmc.sh=). [[https://github.com/junghan0611/homeagent-config/blob/main/docs/TARGET_DEVICE.md][docs/TARGET_DEVICE.md]] documents the board memory map as a single
+  generated source feeding the bootloader, kernel, and FreeRTOS linker; [[https://github.com/junghan0611/homeagent-config/blob/main/docs/DUO-S-BUTTONS.md][docs/DUO-S-BUTTONS.md]]
+  establishes by DTS inspection, not assumption, that the board carries no gpio-keys node.
+- *Product implementation* — [[https://github.com/junghan0611/homeagent-config][github.com/junghan0611/homeagent-config]]'s Go/Flutter/Matter/Yocto
+  system and build entries: =./run.sh go-build=, =flutter-server=, =bundle=.
 - *Boundary* — the mass-production SKS firmware and customer data are private. HomeAgent is a public,
-  adjacent implementation that verifies the Matter/Go/Flutter/Yocto work; it is not offered as proof
-  of the private shipment claim. That claim remains attributable employment experience.
+  adjacent implementation that verifies the boot-chain and Matter/Go/Flutter/Yocto work; it is not
+  offered as proof of the private shipment claim. That claim remains attributable employment
+  experience.
 
 #+INCLUDE: "../body.org" :minlevel 1

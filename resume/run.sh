@@ -162,13 +162,24 @@ cmd_verify() {
 		if grep -qiE 'noexport|생성 프롬프트|IMAGE PROMPT|TODO|검토 메모' <<<"$txt"; then
 			err "  :noexport 내용 누출 의심"; fail=1; else ok "  :noexport 누출 없음"; fi
 		# 연락 경로가 없는 이력서는 이력서가 아니다.
-		grep -q '[email removed]' <<<"$txt"   && ok "  이메일 노출" || { err "  이메일 안 보임"; fail=1; }
+		# 2026-09-20: history 정제(docs/HISTORY-REDACTION.md)가 이메일을 `[email removed]`로
+		# 치환할 때 이 검사문의 grep 패턴과 preamble.org 소스가 같이 치환됐다. 그 결과 검사가
+		# 「placeholder가 있으면 통과」로 뒤집혀 세 번의 게이트 통과가 전부 거짓이었다 — GLG가
+		# 빌드된 PDF를 직접 열어서 잡았다. 그래서 여기는 실주소 형태를 요구하고, placeholder
+		# 문자열 자체는 하드 실패로 잡는다.
+		if grep -q '\[email removed\]' <<<"$txt"; then
+			err "  이메일 자리에 redaction placeholder(\`[email removed]\`) 노출 — 소스 정제됨"; fail=1
+		elif grep -qE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}' <<<"$txt"; then
+			ok "  이메일 노출"
+		else
+			err "  이메일 안 보임"; fail=1
+		fi
 		grep -q 'github.com/junghan0611' <<<"$txt" && ok "  GitHub URL 노출" || { err "  GitHub URL 안 보임"; fail=1; }
 		grep -qi 'linkedin.com/in/' <<<"$txt"      && ok "  LinkedIn URL 노출" || { err "  LinkedIn URL 안 보임"; fail=1; }
 		# 공개 증거면. 이력서가 주장하는 것을 읽는 사람이 건너가 확인할 자리다 — 연락처 줄에서
 		# 조용히 빠지면 제출본 전체가 그 자리를 잃는데 다른 검사는 아무것도 말하지 않는다.
 		grep -q 'ax.junghanacs.com' <<<"$txt"      && ok "  AX 증거면 URL 노출" || { err "  ax.junghanacs.com 안 보임"; fail=1; }
-		grep -q 'notes.junghanacs.com' <<<"$txt"   && ok "  가든 URL 노출" || { err "  notes.junghanacs.com 안 보임"; fail=1; }
+		grep -qE '(^|[^.])junghanacs\.com' <<<"$txt" && ok "  가든 URL 노출" || { err "  junghanacs.com 안 보임"; fail=1; }
 		# 공개 증거가 PDF 텍스트에도 보여야 한다. 숨은 링크 annotation만 있으면 사람은 눌러도
 		# ATS/상대 에이전트가 추출한 텍스트에서는 사라질 수 있으므로 URL 자체를 보인다.
 		if grep -q 'Public Evidence' <<<"$txt"; then

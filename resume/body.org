@@ -43,8 +43,8 @@ agent and attach it to the person who owns the domain.
 
 - *SKS Hub* — Zigbee/Wi-Fi gateway firmware in Zig, *shipped to mass production*. Rewrote a
   legacy C Zigbee SDK integration behind Zig's type-safe FFI layer; deterministic state machine
-  (single =HubState=, pure =transition()=) across driver, protocol, and cloud layers; 24-hour
-  aging-test automation with an AI agent as pair programmer.
+  (single =HubState=, pure =transition()=) across driver, protocol, and cloud layers; aging-test
+  automation with an AI agent as pair programmer.
 - *Productization the original contract did not cover* — built the server (Go) and companion app
   (Flutter) myself, turning a firmware deliverable into a whole product. One protocol served by
   two interchangeable backends (AWS IoT for connected deployments, a local mTLS broker for closed
@@ -53,7 +53,7 @@ agent and attach it to the person who owns the domain.
 - *Next-generation hub* — moved the port target from ARMv7/glibc with a vendor sysroot to RISC-V
   (SG2000) on statically linked musl; extracted a board HAL so the hub core no longer knows what
   board it runs on; delegated Zigbee transport to Zigbee2MQTT (EFR32MG24); went device-agnostic by
-  dropping seven hardcoded device-type handlers.
+  dropping hardcoded device-type handlers.
 
 *** On-Device AI Smart Home Hub (2025.09 – Present)
 :PROPERTIES:
@@ -77,8 +77,8 @@ agent and attach it to the person who owns the domain.
 :END:
 
 - Built GPU cluster infrastructure: 3× RTX 5080, NixOS, 10G network, 17 Docker services.
-- Designed a hierarchical AI agent system on n8n (40+ node workflows) over Supabase pgvector;
-  served the embedding and reranking stages directly rather than renting them.
+- Designed a hierarchical AI agent system on n8n over Supabase pgvector; served the embedding and
+  reranking stages directly rather than renting them.
 - Data pipelines: Airbyte connectors for Channel.io, Notion, and JIRA into PostgreSQL JSONB;
   internal portal behind Cloudflare Zero Trust.
 
@@ -125,7 +125,7 @@ expansion through a personal vocabulary graph, and recall tracking for consolida
 :CUSTOM_ID: agent-config
 :END:
 
-PKM-native stack of 40+ agent skills over notes, agenda, bibliography, health data, and git history,
+PKM-native stack of agent skills over notes, agenda, bibliography, health data, and git history,
 plus a 3-layer cross-lingual retrieval design. Built CLI artifacts carry source revision, source-tree
 digest, and installed-binary SHA-256 provenance.
 
@@ -153,7 +153,6 @@ not a demo-format conversion.
 :CUSTOM_ID: digital-garden
 :END:
 
-2,200+ published pages backed by 3,500+ org-mode notes and 1,600+ consecutive days of journaling.
 Human and agents read the same org-agenda through 10 path-guarded Elisp APIs over an emacsclient
 socket: one interface, three consumers (local Emacs, cloud bots, public web). Designed *ROSSE*, the
 IndieWeb POSSE pattern inverted — raw writing is struck outside where polish cannot reach it,
@@ -170,12 +169,21 @@ days cross-reference on one timestamp scheme.
 
 ** Sungkyunkwan University — Distributed Computing Lab @@latex:\cvwhen{2018 – 2022}@@
 
-- Research on non-volatile memory filesystems and NUMA lock performance in virtualized environments.
+- Systems research on the memory hierarchy: a filesystem-aware NVM block device driver (Best
+  Paper, KSC 2018), an NVM-based write-amplification reduction scheme for distributed storage
+  (Best Paper, KCC 2019), a persistent-memory index performance analysis (Best Paper, KCC 2020),
+  and NUMA-aware node replication for persistent-memory data structures (Best Paper, KCC 2021;
+  Journal of KIISE, 2022).
+- Earlier: a NUMA-based lock performance analysis in virtualized environments (Best Presentation
+  Award, KCC 2020) and an in-kernel device virtualization framework shortening the virtual I/O
+  path (Best Presentation Award, KCC 2012; Journal of KIISE, 2013); granted domestic patents in
+  virtualization and binary instrumentation.
 - Virginia Tech COSMOSS Lab, exchange researcher (2019.07 – 2020.03).
 
 ** NEMO-UX — Co-founder @@latex:\cvwhen{2013 – 2017}@@
 
-- Built a Linux-based large-format touch display OS for commercial and education markets.
+- Built a Linux-based large-format touch display OS for commercial and education markets, with
+  Yocto as the build system.
 - Full embedded product lifecycle: hardware integration, OS customization, application development,
   and mass production. The startup failed; the habit of taking a product from silicon to shipping
   did not.
@@ -200,16 +208,16 @@ Evidence that does not depend on my own account — each item is an action someo
 | Project | What it is | Stack |
 |---------+------------+-------|
 | [[https://github.com/junghan0611/entwurf][entwurf]] | Dispatch substrate — harnesses address one another by id | TypeScript |
-| [[https://github.com/junghan0611/homeagent-config][homeagent-config]] | Matter hub with on-device sLLM, one Go binary, two boards | Go · Flutter · Yocto |
-| [[https://github.com/junghan0611/agent-config][agent-config]] | PKM-native memory and harness stack, 40+ agent skills | TypeScript |
+| [[https://github.com/junghan0611/homeagent-config][homeagent-config]] | Matter hub with on-device sLLM; reproducible SoC boot chain (bootloader→kernel→FreeRTOS) | Go · Flutter · Buildroot · Yocto |
+| [[https://github.com/junghan0611/agent-config][agent-config]] | PKM-native memory and harness stack, agent skills | TypeScript |
 | [[https://github.com/junghan0611/andenken][andenken]] | Semantic memory — embedding, LanceDB, hybrid cross-lingual retrieval | TS · GraalVM |
 | [[https://github.com/junghan0611/forge-config][forge-config]] | Forgejo connector — durable, reviewable agent traces on work items | TypeScript |
 | [[https://github.com/junghan0611/memex-kb][memex-kb]] | Korean document toolchain — HWPX/scanned PDF/EPUB → Org → office | Nix · Python · Elisp |
-| [[https://github.com/junghan0611/nixos-config][nixos-config]] | Declarative NixOS across 4 machines, 17+ Docker services | Nix |
+| [[https://github.com/junghan0611/nixos-config][nixos-config]] | Declarative NixOS across 4 machines, Docker services | Nix |
 | [[https://github.com/junghan0611/doomemacs-config][doomemacs-config]] | Emacs agent-server, shared org-agenda, path-guarded Elisp APIs | Elisp |
 | [[https://github.com/junghan0611/geworfen][geworfen]] | Public timeline and existence-data WebTUI for the garden | Clojure · GraalVM |
 | [[https://github.com/junghan0611/abductcli][abductcli]] | Quantitative abduction — anomaly → signal → memo → evaluation | Clojure |
-| [[https://github.com/junghan0611/dictcli][dictcli]] | Personal vocabulary graph — 3,900+ triples, Korean↔English | Clojure · GraalVM |
+| [[https://github.com/junghan0611/dictcli][dictcli]] | Personal vocabulary graph, Korean↔English | Clojure · GraalVM |
 | [[https://github.com/junghan0611/GLG-Mono][GLG-Mono]] | Korean monospace font, IBM Plex Mono + Sans KR, full Unicode | FontForge |
 
 * Technical Stack
@@ -220,7 +228,7 @@ Evidence that does not depend on my own account — each item is an action someo
 |--------+--------------|
 | Languages | Go · Clojure · Zig · C · TypeScript · Elisp · Nix · Bash · Python |
 | Agent and AI | Agent harnesses (Claude Code, Codex, pi) · ACP · MCP · A2A · embedding retrieval · LanceDB · hybrid RAG · sLLM workflows · NPU deployment · Ollama |
-| Embedded and IoT | ARM Linux · RISC-V · Yocto · static musl · board HAL · Matter · Thread · Zigbee · Zigbee2MQTT · MQTT · OTBR · AWS IoT · mTLS |
+| Embedded and IoT | ARM Linux · RISC-V · Buildroot · U-Boot · OpenSBI · device tree · FreeRTOS · Yocto · static musl · board HAL · Matter · Thread · Zigbee · Zigbee2MQTT · MQTT · OTBR · AWS IoT · mTLS |
 | Backend and Infra | NixOS · Docker · GPU cluster · PostgreSQL · pgvector · n8n · Airbyte · Cloudflare Zero Trust · GraalVM native-image |
 | Interface and Docs | Flutter · React · A2UI · SSE · JSON-RPC 2.0 · REST · Emacs/Org-mode · Denote · Pandoc · =XeLaTeX= |
 

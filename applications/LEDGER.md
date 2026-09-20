@@ -40,7 +40,8 @@
 | Telit Cinterion 🌐 | Edge AI Software Engineer | submitted | **2026-08-09** | **Paylocity** (자체 보드) · 3단계 위저드 · SMS 동의 필수 · 🔴 **업로드가 곧 이력서 자동 파싱** | Embedded 2쪽 + **Embedded Experience Detail 3쪽** (`Upload Additional Files` 10MB 선택 칸 · 2026-08-09 신규 확보) | `telit-cinterion--edge-ai-software-engineer` |
 | AIRS Medical | AX Engineer | rejected | 2026-07-30 · **서류전형 불합격 통보 2026-08-06** | 그리팅 (자체 도메인) | DevEx + Competency + Portfolio | `airs-medical--ax-engineer` |
 | GE HealthCare 🌐 | Senior Software Engineer | draft | — | **Workday** (공식 외부 사이트) | 미정 — Systems Software 컷 판단 | `ge-healthcare--senior-software-engineer` |
-| XCENA (엑시나) | System Software 계열 — **회사 스캔 23건** | held | — | 그리팅 (자체 도메인) | — (목록만 · GLG: "너무 시스템") | `xcena--system-software` |
+| XCENA (엑시나) | System Software 계열 — **회사 스캔 23건** | held | — | 그리팅 (자체 도메인) | — (목록만 · 2026-07-28 `held`) · ⚠ 실제 지원 건은 아래 BSP 행 | `xcena--system-software` |
+| XCENA (엑시나) | **SW 임베디드 시스템 BSP 엔지니어** (경력 3년+) | submitted | **2026-09-20** | **그리팅** `xcena/110624` (로그인 없음) | Embedded + **국문 자기소개서 2쪽** (`submit/`) — 서술형 칸 없음 | `xcena--embedded-system-bsp-engineer` |
 | Holiday Robotics | Forward Deployed Robotics Engineer (3–8년) | submitted | 2026-07-30 | 자체 채용홈 `holiday-robotics.com` (로그인 없음) | FDE + **커버레터** | `holiday-robotics--forward-deployed-robotics-engineer` |
 | Hanwha Vision (한화비전) | AI Agent Architecture Lead (석사+10년, Director) | submitted | 2026-07-30 | **ninehire** `6NDP9uTE` (로그인 없음) | AI Engineer + **전용 포트폴리오 합본 18쪽** (`submit/`) — 서술형 칸 없음 | `hanwha-vision--ai-agent-architecture-lead` |
 | NHN | LLM 기술 개발 (LLM / Agent) — **NHN 2번째 건** | draft | — | **`careers.nhn.com`** — ⚠ **로그인 필요** | AI Engineer + **포트폴리오 필수** | `nhn--llm-technology-development-llm-agent` |

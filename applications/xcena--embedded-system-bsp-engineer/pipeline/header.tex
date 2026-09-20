@@ -1,0 +1,41 @@
+% 국문 자기소개서 조판 선언.
+%
+% pandoc 기본 템플릿이 fontspec 으로 라틴 활자를 세운 뒤 여기가 끼어든다. xetexko 가
+% 스크립트를 갈라 한글에만 한글 조판 규칙(줄바꿈·자간)을 적용한다. 이게 없으면 한글이
+% 라틴 규칙으로 짜여 어절 중간이 아니라 공백에서만 끊기고, 오른쪽 끝이 심하게 들쭉날쭉해진다.
+\usepackage{xetexko}
+\setmainhangulfont{Pretendard}[Ligatures=TeX]
+\setsanshangulfont{Pretendard}
+
+% 홑따옴표(’)는 여기서 쓰지 않는다. xetexko 가 그것을 라틴 글자로 보고 한글과의 사이에
+% 스크립트 간 여백을 넣어 '실패' 가 ' 실패 ' 로 벌어진다. 이 판의 xetexko 에는 그 여백을
+% 끄는 hangulpunctuations 스위치가 없으므로(\xetexkosetup 미정의), 본문에서 홑따옴표 대신
+% 한글 낫표 「 」 를 쓴다. 낫표는 CJK 문장부호라 한글 활자로 짜이고 여백이 생기지 않는다.
+% 큰따옴표(“ ”)는 실제 발화 인용에만 쓰며, 조판상 문제 없음을 확인했다.
+
+% 한자는 Pretendard 에 글리프가 없다. 본문에 한자를 쓰지 않지만, 인용문에 섞여 들어와도
+% PDF 에 빈칸으로 찍히지 않도록 대체를 잡아 둔다.
+\setmainhanjafont{D2Coding}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{accent}{HTML}{1B3A57}
+\definecolor{muted}{HTML}{5A6672}
+
+% 표제 위계. 자기소개서는 절이 다섯 개뿐이라 번호를 크게 두지 않고 색으로만 가른다.
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries\color{accent}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{12pt plus 2pt minus 2pt}{5pt}
+
+% 들여쓰기 대신 문단 사이 여백. 국문 문서에서 첫 줄 들여쓰기와 여백을 같이 쓰면
+% 문단 경계가 두 번 표시된다.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4.5pt plus 1.5pt minus 0.5pt}
+\linespread{1.14}
+
+% 판면을 몇 pt 넘긴 줄 하나 때문에 문장을 고쳐 쓰는 일이 없게 마지막 줄에 신축을 허용한다.
+\setlength{\emergencystretch}{1.2em}
+
+% 머리말 블록(연락처)을 본문 활자보다 작게, 색을 죽여 둔다.
+\usepackage{quoting}
+\quotingsetup{vskip=6pt,leftmargin=0pt,rightmargin=0pt,indentfirst=false}
+\renewenvironment{quote}{\begin{quoting}\small\color{muted}}{\end{quoting}}
