@@ -120,7 +120,7 @@
 | Remember & Company (리멤버앤컴퍼니) | AI Agent Engineer | rejected | 2026-09-11 · **불합격 통보 2026-09-16** | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `remember-company--ai-agent-engineer` |
 | Beyond Honeycomb (비욘드허니컴) | Robot Platform Developer | rejected | 미확인(스카웃 제안 수락) · **불합격 통보 2026-09-14** | Remember 스카웃 제안 수락 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `beyond-honeycomb--robot-platform-developer` |
 | Gint (긴트) | 임베디드소프트웨어 개발자 | submitted | 2026-09-15 | 원티드 (Wanted) → 그리팅 (자체 채용홈, 이중 통보) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `gint--embedded-software-engineer` |
-| CDRI (씨디알아이) | AI Engineer (Agentic AI) | submitted | 2026-09-11 | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `cdri--ai-engineer-agentic-ai` |
+| CDRI (씨디알아이) | AI Engineer (Agentic AI) | rejected | 2026-09-11 · **불합격 통보 2026-09-23** | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `cdri--ai-engineer-agentic-ai` |
 | COONTEC (쿤텍, NS사업그룹) | [쿤텍 NS사업그룹] AI 개발자 | submitted | 2026-09-11 | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `coontec-ns--ai-developer` |
 | Spoonlabs (스푼랩스) | Machine Learning Engineer (TTS) | rejected | 미확인 · **불합격 통보 2026-09-16** | Remember 또는 Wanted (경로 미확인 — 지원완료 메일 없음) | 플랫폼 프로필 (앱 제출 공통 이력정보로 추정) | `spoonlabs--machine-learning-engineer-tts` |
 | Autometa | AI Agent Engineer | draft | — | 원티드 | AI Engineer | `autometa--ai-agent-engineer` |
@@ -145,7 +145,7 @@
 | Cupix | Machine Learning Engineer Spatial Intelligence | held | — | 원티드 | — | `cupix--machine-learning-engineer-spatial-intelligence` |
 | Bistelligence | Forward Deployed Engineer | held | — | 원티드 | — | `bistelligence--forward-deployed-engineer` |
 | Mentat | Forward Deployed Engineer | draft | — | 원티드 | Platform Engineer | `mentat--forward-deployed-engineer` |
-| AlphaChips (㈜알파칩스) | Embedded Software Engineer | draft | — | 추천 경로 (리멤버 제안 수락 → 이메일 회신 제출) | Embedded SW Engineer + 지정 `.docx` 양식 | `alphachips--embedded-software-engineer` |
+| AlphaChips (㈜알파칩스) | Embedded Software Engineer | closed | — · **2026-09-23 GLG 진행하지 않기로 결정(제출 전)** | 추천 경로 (리멤버 제안 수락 → 이메일 회신 제출) | 미제출 — 지정 `.docx` 양식 요구 | `alphachips--embedded-software-engineer` |
 
 **읽는 법 — 이 표가 말하는 한 가지**: 실패는 그 건의 실수로 끝나지 않고 **스크립트·게이트·계약
 중 하나로 올라간다.** 올라가지 않은 교훈은 반드시 재발한다(08-01 IGNITE 두 행이 그 증거다).
