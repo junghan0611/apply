@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **submitted** — 2026-07-30 **제출 완료** |
+| 상태 | **rejected — 2026-09-29 불합격 통보** |
 | 지원일 | **2026-07-30** |
 | 경로 | **Ashby** — 가입 불필요 |
 | 첨부 컷 | **AI Engineer** (`resume/build/KimJunghan_Resume_AI_Engineer.pdf`, 3쪽) |
@@ -95,6 +95,7 @@ execution, memory abstraction, 그리고 CLI·SDK.
 
 ## 이후 기록
 
+- [2026-09-29] **불합격 통보.** Greenhouse 발신 메일 「[FuriosaAI] Regarding your Application」(Software Engineer, Agent System Developer)에서 「we will not be pursuing further」라고 알렸다. 사유·후속 안내 없음. (Gmail `1a0eb446031c30e7`)
 - [2026-07-28] 건 생성. 지원 경로 확인 — **Ashby**(`jobs.ashbyhq.com/furiosa-ai/...`), 가입 불필요.
   회사 채용페이지 `furiosa.ai/careers/software-agentsystem` 이 Ashby 로 넘긴다.
 - [2026-07-28] 컷 **AI Engineer** 확정. JD 대조·경계를 `JD.md` §판단에 기록. 상태 `ready`.

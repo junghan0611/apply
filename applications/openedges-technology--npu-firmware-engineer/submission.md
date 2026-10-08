@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | draft — **폼 실측 완료 · 컷 확정.** GLG 가 컷 PDF 를 원티드 [이력서] 탭에 올리면 `ready` |
+| 상태 | **closed — 2026-10-08 공고 마감 확인** |
 | 지원일 | — |
 | 경로 | **원티드 자체 지원** (`wd/365239`) — `out_link: null` 실측 (2026-09-18) |
 | 첨부 컷 | **Embedded Software Engineer** (`resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`) — 컷의 「Edge AI — on-device sLLM and NPU deployment across accelerator families」가 이 JD 의 NPU 축과 직접 대응한다 |
@@ -45,6 +45,7 @@ NPU 특화 경험은 아니다. 정직하게 경계로 남긴다.
 
 ## 이후 기록
 
+- [2026-10-08] **공고 마감 확인.** 원티드 공개 API `jobs/365239` 가 `status=close` 를 돌려줬다. 제출 전 종료라 `closed`.
 - [2026-09-18] 건 생성. `JD.md`에 원티드 본문 보존. 제출본 컷·폼 실측은 4-B 단계.
 - [2026-09-18] **4-B 폼 실측.** 지원 경로를 `out_link` 로 확정(원티드 자체 지원)하고, 폼 구조는
   15건 공유 정본 `applications/WANTED-APPLY-FORM.md` 로 분리했다. 남은 미실측은 지원 모달 내부

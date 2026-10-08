@@ -22,7 +22,7 @@
 | DEEPX | AI Agent Workflow Automation Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | AI Engineer + 경력기술서 통합 (7쪽) | `deepx--ai-agent-workflow-automation-engineer` |
 | DEEPX | Linux BSP Engineer | submitted | 2026-07-28 | 그리팅 (자체 도메인) | Embedded + 경력기술서 통합 (5쪽) | `deepx--linux-bsp-engineer` |
 | Enhans | Forward Deployed Engineer (7년 이상) | rejected | 2026-07-28 · **불합격 통보 2026-08-04** | ninehire (자체 채용홈) | FDE | `enhans--forward-deployed-engineer` |
-| FuriosaAI | Agent System Developer | submitted | 2026-07-30 | Ashby (자체 채용페이지 경유) | AI Engineer + Portfolio 12쪽 + **Career Summary 1,351자** | `furiosaai--agent-system-developer` |
+| FuriosaAI | Agent System Developer | rejected | 2026-07-30 · **불합격 통보 2026-09-29** | Ashby (자체 채용페이지 경유) | AI Engineer + Portfolio 12쪽 + **Career Summary 1,351자** | `furiosaai--agent-system-developer` |
 | Lunit | (Seoul) Senior AX Engineer | rejected | 2026-07-30 · **불합격 통보 2026-08-04** | **Workable** (자체 채용홈) | AI Engineer + Portfolio 12쪽 + **문의칸 답** | `lunit--senior-ax-engineer` |
 | Cohere | Forward Deployed Engineer, Agentic Platform (Korea) | submitted | **2026-08-09** | Ashby (가입 불필요) · 🔴 **`Location Type: Remote`** (제출 화면에서 처음 보였다) | FDE 3쪽만 — 폼에 선택 첨부·서술형 칸 없음 | `cohere--forward-deployed-engineer-agentic-platform-korea` |
 | OpenAI | Developer Experience Engineer (Seoul) | ready | — | Ashby (가입 불필요) | DevEx | `openai--developer-experience-engineer-seoul` |
@@ -41,7 +41,7 @@
 | AIRS Medical | AX Engineer | rejected | 2026-07-30 · **서류전형 불합격 통보 2026-08-06** | 그리팅 (자체 도메인) | DevEx + Competency + Portfolio | `airs-medical--ax-engineer` |
 | GE HealthCare 🌐 | Senior Software Engineer | draft | — | **Workday** (공식 외부 사이트) | 미정 — Systems Software 컷 판단 | `ge-healthcare--senior-software-engineer` |
 | XCENA (엑시나) | System Software 계열 — **회사 스캔 23건** | held | — | 그리팅 (자체 도메인) | — (목록만 · 2026-07-28 `held`) · ⚠ 실제 지원 건은 아래 BSP 행 | `xcena--system-software` |
-| XCENA (엑시나) | **SW 임베디드 시스템 BSP 엔지니어** (경력 3년+) | submitted | **2026-09-20** | **그리팅** `xcena/110624` (로그인 없음) | Embedded + **국문 자기소개서 2쪽** (`submit/`) — 서술형 칸 없음 | `xcena--embedded-system-bsp-engineer` |
+| XCENA (엑시나) | **SW 임베디드 시스템 BSP 엔지니어** (경력 3년+) | interview | **2026-09-20** · **1차 화상인터뷰 요청 2026-10-01 · 일정 확정 2026-10-02 · 면접 2026-10-13(화) 10:00(GLG 보고)** | **그리팅** `xcena/110624` (로그인 없음) | Embedded + **국문 자기소개서 2쪽** (`submit/`) — 서술형 칸 없음 | `xcena--embedded-system-bsp-engineer` |
 | Holiday Robotics | Forward Deployed Robotics Engineer (3–8년) | submitted | 2026-07-30 | 자체 채용홈 `holiday-robotics.com` (로그인 없음) | FDE + **커버레터** | `holiday-robotics--forward-deployed-robotics-engineer` |
 | Hanwha Vision (한화비전) | AI Agent Architecture Lead (석사+10년, Director) | submitted | 2026-07-30 | **ninehire** `6NDP9uTE` (로그인 없음) | AI Engineer + **전용 포트폴리오 합본 18쪽** (`submit/`) — 서술형 칸 없음 | `hanwha-vision--ai-agent-architecture-lead` |
 | NHN | LLM 기술 개발 (LLM / Agent) — **NHN 2번째 건** | draft | — | **`careers.nhn.com`** — ⚠ **로그인 필요** | AI Engineer + **포트폴리오 필수** | `nhn--llm-technology-development-llm-agent` |
@@ -99,21 +99,21 @@
 | 09-16 | **리멤버·원티드 6건 사후 회수 + 결과 2건 갱신** (세 번째) | Gmail 을 09-01 이후로 다시 훑어 **Remember & Company · Beyond Honeycomb · Gint · CDRI · 쿤텍(NS사업그룹) · Spoonlabs 6건**을 새로 세웠고, **Dnotitia · OnePredict** 는 이미 있던 `submitted` 행에 불합격 통보를 얹어 `rejected` 로 닫았다. 09-04 계약(**앱 원클릭 경로 = 첨부 컷 아니라 프로필 한 벌**)이 이번에도 그대로 적용돼 새 게이트는 필요 없었다. ⭐ **새로 드러난 경계 하나** — **Spoonlabs 건은 지원완료 알림 메일이 아예 없었다.** 결과 메일만 있고 지원일·정확한 채널(Remember 인지 Wanted 인지)을 가릴 근거가 없어 **둘 다 미확인으로 남겼다** — GLG 의 「목록에 없으면 리멤버나 원티드」 진술은 *둘 중 하나*라는 진술이지 *어느 쪽*이라는 진술이 아니므로, 추정으로 하나를 골라 적지 않는다. 같은 회사의 2026-04 지원 이력(다른 직무, 이 저장소 추적 시작 전)과도 혼동하지 않는다. 또한 **Beyond Honeycomb** 은 일반 지원이 아니라 **회사가 먼저 보낸 스카웃 제안을 GLG 가 수락**한 케이스라 지원완료 알림 자체가 없는 유형이었고, **쿤텍(NS사업그룹)** 은 이미 있던 `coontec--embedded-sw-fw-engineer`(EC사업그룹)와 **같은 회사 다른 사업그룹·다른 직무**라 별도 건으로 세웠다(`AGENTS.md` §기록 규율) |
 | 09-18 | **terra 교차검수로 22건 중 5건을 `held` 로 내렸다** | 시스템 축 22건 생성 직후 terra 가 JD 원문 대 이력서 컷 대조에서 5건의 필수요건-증거 불일치를 잡았다 — **위즈코어**(온프레미스 K8s 플랫폼, `platform-engineer` 컷이 그 규모 K8s 운영을 명시적으로 부인) · **큐픽스**(CV/BIM/3D 공간지능, 코퍼스에 증거 0) · **비스텔리젼스**(FDE, 중심이 고객별 PoC/커스텀 구현인데 시스템 문장 하나로 서비스 축 판정이 안 뒤집힘) · **퓨쳐스콜레**(Platform Lead, AWS 직접설계+production K8s+8년) · **비상교육**(Lead DevOps/AI Platform, 10년+K8s+하이브리드 클라우드). **새 축이 하나 더 필요하다는 뜻이다** — `AGENTS.md` §시스템 축은 *무엇을 만드는 자리인가*만 가르고, 이번에 드러난 것은 *그 자리가 요구하는 필수요건마다 직접 공개 증거가 있는가*다: 직접 증거 0 → hold, 1 → reach(의식적으로 소수만), 2 이상 → 선행 큐. **판정 기준은 「시스템 축이어도 필수요건에 직접 증거 입구가 0이면 낸다가 아니다」다.** 행은 지우지 않는다 — 5건 모두 `held`로 폴더·원장 행을 유지하고 각 `submission.md`에 JD 행 번호와 함께 근거를 남겼다(불합격도 이력이다, `AGENTS.md` §기록 닫힘) |
 | Nota | AI SW Engineer (America Tech) | rejected | 2026-08-27 · **불합격 통보 2026-09-03** | Remember 쉽게 지원 | 미실측 | `nota--ai-sw-engineer-america-tech` |
-| Nua | AI Agent 엔지니어 | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `nua--ai-agent` |
+| Nua | AI Agent 엔지니어 | closed | 2026-08-27 · **서류 검토 기간 만료로 전형 종료 2026-10-02** | Remember 쉽게 지원 | 미실측 | `nua--ai-agent` |
 | BHSN | AI Engineer (3년 이상) | rejected | 2026-08-27 · **불합격 통보 2026-09-02** | Remember 쉽게 지원 | 미실측 | `bhsn--ai-engineer-3` |
 | Dnotitia | [Product] AI Agent Development Engineer | rejected | 2026-08-27 · **불합격 통보 2026-09-16** | Remember 쉽게 지원 | 미실측 | `dnotitia--product-ai-agent-development-engineer` |
-| IDS&Trust | AI Agent Platform Engineer | submitted | 2026-08-27 | Remember 쉽게 지원 | 미실측 | `ids-trust--ai-agent-platform-engineer` |
+| IDS&Trust | AI Agent Platform Engineer | closed | 2026-08-27 · **서류 검토 기간 만료로 전형 종료 2026-10-02** | Remember 쉽게 지원 | 미실측 | `ids-trust--ai-agent-platform-engineer` |
 | Moreh | AI System SW Engineer | rejected | 2026-08-24 · **불합격 통보 2026-09-09** | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `moreh--ai-system-sw-engineer` |
 | Levit | [쇼포트] AI Engineer (3년 이상) | submitted | 2026-08-18 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) · **담당자 메시지 도착 2026-08-21(ninehire, 내용 미확인)** | `levit--ai-engineer-3` |
-| Skelter Labs | Applied AI Technical Engineer (ML) | submitted | 2026-08-18 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `skelter-labs--applied-ai-technical-engineer-ml` |
+| Skelter Labs | Applied AI Technical Engineer (ML) | closed | 2026-08-18 · **서류 검토 기간 만료로 전형 종료 2026-09-18** | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `skelter-labs--applied-ai-technical-engineer-ml` |
 | Specter | AI Engineer | closed | 2026-08-18 · **서류합격 2026-08-21** · **AI면접(Effy) 요청 2026-08-21, 리마인드 2026-08-22, 마감 2026-08-23 23:00** · **GLG 미응시로 전형 종료(2026-08-28 판단)** | Remember 쉽게 지원 → 자체 AI면접(Effy) | 리멤버 프로필 (오토에버 시점 이력서 기준) | `specter--ai-engineer` |
 | Elice | [엘리스] AI Engineer (Platform) | rejected | 2026-08-18 · **서류합격·폰 스크리닝 안내 2026-08-28** · **폰 스크리닝 2026-09-03 15:30** · **불합격 통보 2026-09-04** | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `elice--ai-engineer-platform` |
 | Korea Networks | AI Agent Engineer | rejected | 2026-08-09 · **불합격 통보 2026-08-17** | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `korea-networks--ai-agent-engineer` |
 | Answers Lab Korea | AI Agent PM | rejected | 2026-08-10 · **불합격 통보 2026-08-12** | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `answers-lab-korea--ai-agent-pm` |
-| Cosmax | [코스맥스] AX혁신팀 | submitted | 2026-08-09 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `cosmax--ax` |
+| Cosmax | [코스맥스] AX혁신팀 | closed | 2026-08-09 · **서류합격 2026-09-28 · 1차 실무면접 일정 확정 안내 2026-09-28 · GLG 면접 불참 결정(회사에 전달) 2026-10-08 보고** | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) | `cosmax--ax` |
 | Dorco | Robot Control Development Engineer | submitted | 2026-08-04 | Remember 쉽게 지원 | 리멤버 프로필 (오토에버 시점 이력서 기준) · **회사 요청 2026-08-07: 자체 채용홈페이지 재지원 요망, 미이행** | `dorco--robot-control-development-engineer` |
 | SuperBin (수퍼빈) | 로봇 SW 엔지니어 | submitted | 2026-09-01 | 원티드 (Wanted) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `superbin--robot-sw-engineer` |
-| Daou Tech (다우기술) | AI 개발 | submitted | 2026-09-01 | 원티드 (Wanted) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `daou-tech--ai-development` |
+| Daou Tech (다우기술) | AI 개발 | rejected | 2026-09-01 · **불합격 통보 2026-10-01** | 원티드 (Wanted) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `daou-tech--ai-development` |
 | COONTEC (쿤텍) | [EC사업그룹 개발팀] 임베디드 SW / FW 개발자 3~15년 | submitted | 2026-09-01 | 원티드 (Wanted) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `coontec--embedded-sw-fw-engineer` |
 | Seers Technology (씨어스) | AI Developer / Engineer | submitted | 2026-09-01 | 원티드 (Wanted) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `seers-technology--ai-developer-engineer` |
 | OnePredict (원프레딕트) | Embedded Software Developer | rejected | 2026-09-01 · **불합격 통보 2026-09-10** | 그리팅 (원프레딕트 채용홈) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `onepredict--embedded-software-developer` |
@@ -138,7 +138,7 @@
 | Visang Education | Lead DevOps AI Platform Engineer | held | — | 원티드 | — | `visang-education--lead-devops-ai-platform-engineer` |
 | Futureschole | Platform Engineer Lead DevOps | held | — | 원티드 | — | `futureschole--platform-engineer-lead-devops` |
 | Whatap Labs | Kubernetes Agent Developer | draft | — | 리멤버 | Platform Engineer | `whatap-labs--kubernetes-agent-developer` |
-| Openedges Technology | NPU Firmware Engineer | draft | — | 원티드 | Embedded SW Engineer | `openedges-technology--npu-firmware-engineer` |
+| Openedges Technology | NPU Firmware Engineer | closed | — · **공고 마감 확인 2026-10-08**(원티드 API `status=close`) | 원티드 | Embedded SW Engineer | `openedges-technology--npu-firmware-engineer` |
 | Soulart | System Software Engineer Embedded AI | draft | — | 원티드 | Embedded SW Engineer | `soulart--system-software-engineer-embedded-ai` |
 | Kite Dynamics | Embedded Firmware and Controls Engineer | draft | — | 원티드 | Embedded SW Engineer | `kite-dynamics--embedded-firmware-and-controls-engineer` |
 | Rejubinol | Robot Control and Firmware Development Engineer | draft | — | 원티드 | Embedded SW Engineer | `rejubinol--robot-control-and-firmware-development-engineer` |
@@ -146,6 +146,18 @@
 | Bistelligence | Forward Deployed Engineer | held | — | 원티드 | — | `bistelligence--forward-deployed-engineer` |
 | Mentat | Forward Deployed Engineer | draft | — | 원티드 | Platform Engineer | `mentat--forward-deployed-engineer` |
 | AlphaChips (㈜알파칩스) | Embedded Software Engineer | closed | — · **2026-09-23 GLG 진행하지 않기로 결정(제출 전)** | 추천 경로 (리멤버 제안 수락 → 이메일 회신 제출) | 미제출 — 지정 `.docx` 양식 요구 | `alphachips--embedded-software-engineer` |
+| AhnLab | [경력] Linux 개발 | submitted | 2026-09-19 | LinkedIn 간편 지원 | 미확인 (LinkedIn 프로필 기본 이력서) | `ahnlab--linux` |
+| Doosan Robotics | Full-Stack Developer | rejected | 2026-09-19 · **불합격 통보 추정 2026-09-22**(템플릿 근거, 본문 미확인) | LinkedIn 간편 지원 | 미확인 (LinkedIn 프로필 기본 이력서) | `doosan-robotics--full-stack-developer` |
+| LTS Group | Embedded Engineer | submitted | 2026-09-19 | LinkedIn 간편 지원 | 미확인 (LinkedIn 프로필 기본 이력서) | `lts-group--embedded-engineer` |
+| Gaudio Lab (가우디오랩) | AI Audio SDK Software Engineer | submitted | 2026-09-19 | LinkedIn 간편 지원 | 미확인 (LinkedIn 프로필 기본 이력서) | `gaudio-lab--ai-audio-sdk-software-engineer` |
+| Laplacian Robotics | Robotics Software Engineer | submitted | 2026-09-19 | LinkedIn 간편 지원 → Workable 확인 메일 | 미확인 (LinkedIn 프로필 기본 이력서) | `laplacian-robotics--robotics-software-engineer` |
+| Rebellions | Embedded Software Engineer - NPU/RTOS & Embedded Linux | draft | — | 그리팅 (rebellions.career.greetinghr.com) — 헤드헌터 제안 경로도 열려 있음 | — | `rebellions--embedded-software-engineer-npu-rtos-embedded-linux` |
+| Sierratek (시에리텍) | Embedded Linux 개발자 (모뎀 BSP) | draft | — | 원티드 (Wanted) 자체 지원 | — | `sierratek--embedded-linux-bsp` |
+| Bitsensing (비트센싱) | [RND] Firmware Engineer | draft | — | 원티드 (Wanted) 자체 지원 | — | `bitsensing--rnd-firmware-engineer` |
+| Tesla | Linux Kernel Engineer, Tesla AI, Seoul | draft | — | 원티드 (Wanted) 자체 지원 | — | `tesla--linux-kernel-engineer-tesla-ai-seoul` |
+| Bos Semiconductors (보스반도체) | ML Systems Runtime Engineer | draft | — | 원티드 (Wanted) 자체 지원 | — | `bos-semiconductors--ml-systems-runtime-engineer` |
+| Pebblesquare (페블스퀘어) | Embedded Firmware Engineer | draft | — | 원티드 (Wanted) 자체 지원 | — | `pebblesquare--embedded-firmware-engineer` |
+| HyperAccel | SoC Firmware Engineer | draft | — | 그리팅 (hyperaccel.career.greetinghr.com) | — | `hyperaccel--soc-firmware-engineer` |
 
 **읽는 법 — 이 표가 말하는 한 가지**: 실패는 그 건의 실수로 끝나지 않고 **스크립트·게이트·계약
 중 하나로 올라간다.** 올라가지 않은 교훈은 반드시 재발한다(08-01 IGNITE 두 행이 그 증거다).
