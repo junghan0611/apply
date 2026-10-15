@@ -80,7 +80,11 @@ What each category means:
   repository grants could cure that.
 - `employer-diagram` — internal architecture and product-stack diagrams. Whether these may be
   published is an employment-confidentiality question, not a personal-data question, and it is not one
-  a scanner can answer. They were removed rather than left pending.
+  a scanner can answer. They were removed rather than left pending. This describes the original
+  history rewrite, not a permanent ban on all later diagrams. On 2026-10-15 GLG approved restoring
+  seven individually reviewed portfolio concept images as a new change; provenance and review
+  records live in `dossier/images/README.md`, with the current boundary in `PUBLICATION.md`.
+  The original removal counts above do not change.
 - `dense-pii-form` — completed application forms carrying legal and identity fields. Redacting these
   line by line would leave a document that is mostly holes and still re-identifiable from what remains.
 - `third-party-referral` — a recommendation letter. Consent to submit it to one employer is not

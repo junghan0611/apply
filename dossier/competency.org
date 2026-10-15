@@ -21,7 +21,7 @@
     \href{mailto:junghanacs@gmail.com}{junghanacs@gmail.com} \textperiodcentered\
     \href{https://github.com/junghan0611}{github.com/junghan0611} \textperiodcentered\
     \href{https://ax.junghanacs.com}{ax.junghanacs.com}\newline
-    \href{https://notes.junghanacs.com}{notes.junghanacs.com} \textperiodcentered\
+    \href{https://www.junghanacs.com}{www.junghanacs.com} \textperiodcentered\
     \href{https://www.linkedin.com/in/junghan-kim-1489a4306}{linkedin.com/in/junghan-kim-1489a4306}}%
 }
 \maketitle
@@ -38,7 +38,7 @@
 #+begin_export odt
 <text:p text:style-name="OrgSubtitle">모델 역량을 조직의 작업면으로 — Agent Engineering과 에이전트 플랫폼 운영</text:p>
 <text:p text:style-name="OrgCenter">김정한 (Junghan Kim) · PKM-AI Harness Engineer · From Embedded Systems to Shared Agent Work Surfaces · <text:a xlink:type="simple" xlink:href="mailto:junghanacs@gmail.com">junghanacs@gmail.com</text:a></text:p>
-<text:p text:style-name="OrgCenter"><text:a xlink:type="simple" xlink:href="https://github.com/junghan0611">github.com/junghan0611</text:a> · <text:a xlink:type="simple" xlink:href="https://ax.junghanacs.com">ax.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://notes.junghanacs.com">notes.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://www.linkedin.com/in/junghan-kim-1489a4306">linkedin.com/in/junghan-kim-1489a4306</text:a></text:p>
+<text:p text:style-name="OrgCenter"><text:a xlink:type="simple" xlink:href="https://github.com/junghan0611">github.com/junghan0611</text:a> · <text:a xlink:type="simple" xlink:href="https://ax.junghanacs.com">ax.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://www.junghanacs.com">www.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://www.linkedin.com/in/junghan-kim-1489a4306">linkedin.com/in/junghan-kim-1489a4306</text:a></text:p>
 #+end_export
 
 * 히스토리 :noexport:
@@ -199,9 +199,8 @@ Java, Python, Go 등 1개 이상의 언어로 BE 시스템 개발 운영 경험?
 #+name: fig-ax-layer
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-#+begin_quote
-[diagram removed at publication — see docs/HISTORY-REDACTION.md]
-#+end_quote
+[[file:images/company-ax-layer.png]]
+
 * 1 — 개인지식관리에서 에이전트 인프라로
 :PROPERTIES:
 :CUSTOM_ID: pkm-infra
@@ -262,7 +261,7 @@ VOC와 상담 데이터를 다루는 =voscli= 프로젝트는 에이전트가 �
 :CUSTOM_ID: engineering
 :END:
 
-제 엔지니어링은 임베디드 펌웨어에서 시작했지만 거기서 멈추지 않았습니다. 자원이 제한된 ARM Linux 장치의 Zig 펌웨어를 맡았는데, *계약은 펌웨어였고 펌웨어만 나가면 제품이 되지 않았습니다.* 서버와 앱 두 층이 비어 있어서 Go 서버와 Flutter 앱을 직접 만들었고, 연결형에는 AWS IoT를 폐쇄망에는 로컬 백엔드를 두되 *펌웨어는 양쪽에 수정 없이 그대로 나가게* 했습니다. 그 허브는 양산 출하됐습니다 [사내] [cite:@note-iam-hub;@note-embedded-memory]. 지금은 클라우드 없이 도는 Matter 허브에 온디바이스 AI를 얹어, 하나의 Go 코드베이스에서 Yocto Linux와 Android 두 타깃을 냅니다 [cite:@repo-homeagent-config].
+제 엔지니어링은 임베디드 펌웨어에서 시작했지만 거기서 멈추지 않았습니다. 자원이 제한된 ARM Linux 장치의 Zig 펌웨어를 맡아 *제품화하고 양산 출하까지 냈습니다* [사내] [cite:@note-iam-hub;@note-embedded-memory]. 계약과 양산 대상은 펌웨어였고, 제품의 서버·앱은 외부 업체가 맡았습니다. 이후 개인 탐구로 그 펌웨어에 대응하는 Go 서버와 Flutter 앱을 직접 만들어, 연결형에는 AWS IoT를 폐쇄망에는 로컬 백엔드를 두되 *펌웨어는 양쪽에 수정 없이 그대로 붙게* 하며 펌웨어 계약의 종단 검증을 넓혔습니다 — 납품물이 아니라 검증용 프로토타입입니다. 지금은 클라우드 없이 도는 Matter 허브에 온디바이스 AI를 얹어, 하나의 Go 코드베이스에서 Yocto Linux와 Android 두 타깃을 냅니다 [cite:@repo-homeagent-config].
 
 *이 축은 제가 에이전트와 함께 얼마나 만들 수 있는지를 가장 정직하게 드러내는 자리이기도 합니다.* 출하일이 정해져 있고 물건이 실제로 나가야 끝나기 때문입니다. 허브 펌웨어·프로토콜·클라우드 연동 층을 가로질러 Claude와 짝 프로그래밍으로 한 축을 냈고, 온디바이스 허브에서는 *3-에이전트 병렬 세션을 파일 충돌 없이* 돌렸습니다. 언제 무엇을 했는지는 날짜와 커밋으로 남아 있습니다 [운영 기록]. 사람은 PM이자 오케스트레이터로 작업 경계·순서·검수·최종 선택을 소유했습니다. *충돌이 없었던 것은 모델이 똑똑해서가 아니라 작업 경계를 미리 갈라 뒀기 때문입니다* — 이 문서가 처음부터 말한 «경계를 먼저 계약으로 만든다»가 제품 개발에서 그대로 나타난 자리입니다.
 
@@ -317,6 +316,16 @@ VOC와 상담 데이터를 다루는 =voscli= 프로젝트는 에이전트가 �
 :END:
 
 #+print_bibliography:
+
+* 문서 판 이력
+:PROPERTIES:
+:CUSTOM_ID: revision-history
+:END:
+
+- *2026-08-01 보존본* — 그날 빌드해 보존한 판입니다. 이 이력의 기준점입니다.
+- *2026-10-15 수선판* — 도해 복원(깊이 문서 세트 7장 중 이 문서 1장) · 참고문헌을 이 문서가 선언한 서지로 격리해 일부 항목 표기가 그 서지 기준으로 바뀜 · 허브 양산 펌웨어와 후속 개인 검증 프로토타입의 경계 구분 · 1쪽 대표 URL을 www.junghanacs.com 으로 변경 · 빌드 검사 보강.
+
+본문 서사(2026-07 기준)를 2026-10 현재로 갱신하는 작업은 이 판에 포함되지 않았습니다.
 
 * COMMENT 이미지 생성 프롬프트와 검토 메모 :noexport:
 

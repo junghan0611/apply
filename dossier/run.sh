@@ -28,6 +28,7 @@
 # 사용법:
 #   ./run.sh check         # 의존성 점검 + 소스 연락처 대조
 #   ./run.sh contact       # 소스 연락처만 대조 (정본 이메일 · 정제 자리표시)
+#   ./run.sh figures       # 소스 도해만 대조 (export 범위 자리표시 0 · 참조 파일 존재)
 #   ./run.sh competency    # ① 역량·성과 기술서 (PDF + ODT/DOC)
 #   ./run.sh portfolio     # ② 포트폴리오 (PDF + ODT/DOC)
 #   ./run.sh detail        # ③ competency·portfolio·detail Markdown 3종
@@ -116,8 +117,16 @@ owner_email() {
     info "연락처 정본: $origin" >&2
   fi
   [[ "$email" != *"$REDACTED_EMAIL"* ]] || { err "연락처 정본이 정제 자리표시다: $origin"; return 1; }
-  [[ "$email" =~ ^${EMAIL_RE}$ ]] || { err "연락처 정본에서 이메일을 읽지 못했다(「$email」): $origin"; return 1; }
+  # 실패 메시지에 읽은 값을 싣지 않는다 — 정본이 아닌 값은 누구의 주소인지 모른다.
+  [[ "$email" =~ ^${EMAIL_RE}$ ]] || { err "연락처 정본에서 이메일 형식을 읽지 못했다: $origin"; return 1; }
   printf '%s\n' "$email"
+}
+
+# 이메일을 토큰으로 찾는 ERE. 부분 문자열로 찾으면 정본 주소를 품은 다른 주소
+# (앞뒤에 글자가 더 붙은 것)도 「정본 노출」로 통과한다. 문장 끝 마침표는 허용한다.
+email_token_re() {
+  local esc; esc="$(printf '%s' "$1" | sed 's/[][\.*^$+?(){}|]/\\&/g')"
+  printf '(^|[^A-Za-z0-9._%%+-])%s([^A-Za-z0-9._%%+-]|$|\\.([^A-Za-z0-9]|$))' "$esc"
 }
 
 # 소스 연락처 대조 — 빌드 전에 멈춘다. 재빌드한 뒤 PDF 에서 발견하면 이미 늦다.
@@ -129,11 +138,13 @@ cmd_contact() {
     if grep -qF "$REDACTED_EMAIL" "$DIR/$f"; then
       err "  $f: 이메일 자리에 정제 자리표시 — $(grep -nF "$REDACTED_EMAIL" "$DIR/$f" | cut -d: -f1 | paste -sd, -)행"; fail=1
     fi
-    # #+email 과 모든 mailto 는 정본 주소 그 자체여야 한다.
-    # 값은 줄 끝까지 — `$2` 로 자르면 `[email removed]` 가 `[email` 로 잘려 진단이 틀린다.
-    bad="$( { awk 'tolower($1)=="#+email:"{sub(/^[^:]*:[ \t]*/, ""); sub(/[ \t]+$/, ""); print}' "$DIR/$f"
-              grep -oE 'mailto:[^"}]+' "$DIR/$f" | sed 's/^mailto://'; } | grep -vxF "$email" || true)"
-    [[ -z "$bad" ]] || { err "  $f: 정본과 다른 연락처 — $(paste -sd, - <<<"$bad")"; fail=1; }
+    # #+email 과 모든 mailto 는 정본 주소 그 자체여야 한다. 어긋난 값 자체는 출력하지 않고
+    # 행 번호만 댄다. 값은 줄 끝까지 — `$2` 로 자르면 진단이 틀린다.
+    bad="$(awk -v e="$email" '
+      tolower($1)=="#+email:" { v=$0; sub(/^[^:]*:[ \t]*/, "", v); sub(/[ \t]+$/, "", v); if (v != e) print NR; next }
+      { s=$0; while (match(s, /mailto:[^"}]+/)) { if (substr(s, RSTART+7, RLENGTH-7) != e) { print NR; break }
+                                                     s=substr(s, RSTART+RLENGTH) } }' "$DIR/$f" | sort -un | paste -sd, -)"
+    [[ -z "$bad" ]] || { err "  $f: 정본과 다른 연락처 — ${bad}행"; fail=1; }
     grep -qiE '^#\+email:' "$DIR/$f" || { err "  $f: #+email 없음"; fail=1; }
   done
   [[ $fail -eq 0 ]] && ok "소스 연락처 = 정본 ($email)" || { err "소스 연락처 대조 실패"; return 1; }
@@ -144,12 +155,87 @@ email_gate() {
   local txt="$1" email="$2"
   if [[ "$txt" == *"$REDACTED_EMAIL"* ]]; then
     err "  이메일 자리에 정제 자리표시(\`$REDACTED_EMAIL\`) 노출 — 소스가 정제된 채 빌드됐다"; return 1
-  elif grep -qF "$email" <<<"$txt"; then
+  elif grep -qE "$(email_token_re "$email")" <<<"$txt"; then
     ok "  이메일 노출 ($email)"
   elif grep -qE "$EMAIL_RE" <<<"$txt"; then
     err "  정본과 다른 이메일만 보인다 — 정본: $email"; return 1
   else
     err "  이메일 안 보임"; return 1
+  fi
+}
+
+# ── 도해 ──────────────────────────────────────────────────────────────────────
+# 2026-10-15: 공개 전환 때 도해 블록이 `[diagram removed at publication …]` 인용으로 바뀐 채
+# 남아 있었고, 재빌드하니 그 문구가 PDF·MD 에 그대로 찍혔는데 verify 는 통과했다 — 이미지·캡션
+# 검사가 warn 뿐이었다. 그래서 (1) export 범위의 정제 자리표시는 어떤 것이든 하드 실패이고,
+# (2) 기대 그림 수는 소스가 정한다: `:noexport:`·COMMENT 서브트리와 주석·예제 블록 밖의
+# `[[file:images/…]]` 링크 수. 산출물은 그 수와 맞아야 하고, 기대가 0 이면 0 도 정상이다.
+REDACTED_RE='\[[^]]*removed[^]]*\]'
+
+# export 범위 스캔 — `ref <경로>` 와 `placeholder <행>` 을 한 줄씩 낸다.
+export_scan() {
+  python3 - "$1" <<'PY'
+import re, sys
+skip = None; block = False
+for no, line in enumerate(open(sys.argv[1], encoding="utf-8"), 1):
+	m = re.match(r"^(\*+)\s+(.*)$", line)
+	if m:
+		level, title = len(m.group(1)), m.group(2)
+		if skip is not None and level <= skip:
+			skip = None
+		if skip is None and (":noexport:" in title or title.startswith("COMMENT")):
+			skip = level
+		continue
+	if skip is not None:
+		continue
+	if re.match(r"^\s*#\+begin_(comment|example)\b", line, re.I):
+		block = True; continue
+	if re.match(r"^\s*#\+end_(comment|example)\b", line, re.I):
+		block = False; continue
+	if block or re.match(r"^\s*#(\s|$)", line):
+		continue
+	for ref in re.findall(r"\[\[file:(?:\./)?(images/[^]\[]+?)\]", line):
+		print("ref", ref)
+	if re.search(r"\[[^]\[]*removed[^]\[]*\]", line):
+		print("placeholder", no)
+PY
+}
+
+# 소스 도해 대조 — 빌드 전에 멈춘다. 자리표시 0, 참조한 파일은 전부 있어야 한다.
+cmd_figures() {
+  local f fail=0 scan refs missing holes total=0
+  for f in "${CONTACT_SOURCES[@]}"; do
+    [[ -f "$DIR/$f" ]] || continue
+    scan="$(export_scan "$DIR/$f")" || { err "  $f: export 범위 스캔 실패"; fail=1; continue; }
+    holes="$(awk '$1=="placeholder"{print $2}' <<<"$scan" | paste -sd, -)"
+    [[ -z "$holes" ]] || { err "  $f: export 범위에 정제 자리표시 — ${holes}행"; fail=1; }
+    refs="$(awk '$1=="ref"{print $2}' <<<"$scan")"
+    missing=""
+    while IFS= read -r r; do
+      if [[ -n "$r" && ! -f "$DIR/$r" ]]; then missing+="${missing:+, }$r"; fi
+    done <<<"$refs"
+    [[ -z "$missing" ]] || { err "  $f: 참조한 도해 파일 없음 — $missing"; fail=1; }
+    total=$((total + $(grep -c . <<<"$refs" || true)))
+  done
+  [[ $fail -eq 0 ]] && ok "소스 도해 — 자리표시 0 · 참조 ${total}건 전부 있음" || { err "소스 도해 대조 실패"; return 1; }
+}
+
+# 기대 그림 수 — 그 소스의 export 범위 이미지 링크 수. 파일 수는 중복 참조를 하나로 센다.
+expected_figures() { export_scan "$1" | awk '$1=="ref"' | wc -l; }
+expected_files()   { export_scan "$1" | awk '$1=="ref"{print $2}' | sort -u | wc -l; }
+
+# 산출물 텍스트의 도해 — 자리표시 하드 실패, 캡션 「그림 N.」 수가 기대와 같아야 한다.
+figure_gate() {
+  local txt="$1" want="$2" got
+  if grep -qE "$REDACTED_RE" <<<"$txt"; then
+    err "  정제 자리표시가 산출물에 찍혔다 — $(grep -cE "$REDACTED_RE" <<<"$txt")곳"; return 1
+  fi
+  # 0건이면 grep 이 1 로 끝나고 pipefail·set -e 가 함수를 죽인다 — 그림 없는 문서가 정상이어야 한다.
+  got="$( { grep -oE '그림 [0-9]+\.' <<<"$txt" || true; } | sort -u | wc -l)"
+  if [[ "$got" -eq "$want" ]]; then
+    ok "  도해 캡션 ${got}/${want}"
+  else
+    err "  도해 캡션 ${got}개 — 소스 기대 ${want}개"; return 1
   fi
 }
 
@@ -195,6 +281,7 @@ PY
   AXRUN pandoc --version >/dev/null 2>&1 && ok "pandoc (ax flake)"              || warn "pandoc 확인 실패"
   AXRUN pdftotext -v      >/dev/null 2>&1 && ok "pdftotext/pdfinfo (ax flake)"  || warn "poppler 확인 실패"
   cmd_contact || exit 1
+  cmd_figures || exit 1
 }
 
 # org → tex → xelatex, build/<FINAL>.pdf 로.
@@ -370,8 +457,19 @@ cmd_verify() {
     # 공개 증거면. 이 깊이 문서는 gitignore 된 제출본이라 받는 사람이 공개면으로 건너갈 자리가
     # 여기 말고 없다. 연락처 줄에서 빠지면 조용히 사라지므로 산출물 텍스트에서 직접 확인한다.
     grep -q 'ax.junghanacs.com' <<<"$txt" && ok "  AX 증거면 URL 노출" || { warn "  ax.junghanacs.com 안 보임"; fail=1; }
-    # 캡션 번호
-    grep -qE '표 [0-9]|그림 [0-9]' <<<"$txt" && ok "  캡션 연번(표/그림 N) 존재" || warn "  캡션 연번 없음(이미지/표 미포함이면 정상)"
+    # 대표 URL(2026-10-15 GLG). 1쪽 연락처 줄의 홈페이지 자리다 — 가든 URL 은 본문·참고문헌이 쥔다.
+    grep -q 'www\.junghanacs\.com' <<<"$txt" && ok "  대표 URL(www.junghanacs.com) 노출" || { err "  www.junghanacs.com 안 보임"; fail=1; }
+    # 문서 판 이력은 맨 뒤에 export 돼야 한다 — :noexport: 서브트리 뒤로 숨으면 소스에는 있고 산출물엔 없다.
+    # 조판·추출에 따라 한글 사이 공백이 빠지므로 공백을 지우고 본다.
+    grep -q '문서판이력' <<<"${txt// /}" && ok "  문서 판 이력 있음" || { err "  문서 판 이력이 산출물에 없다"; fail=1; }
+    # 도해 — 정제 자리표시 하드 실패, 캡션 수와 실제 이미지 수가 소스 기대량과 맞아야 한다.
+    local want_figs want_files pdf_imgs
+    want_figs="$(expected_figures "$DIR/$key.org")"
+    want_files="$(expected_files "$DIR/$key.org")"
+    figure_gate "$txt" "$want_figs" || fail=1
+    pdf_imgs="$( { AXRUN pdfimages -list "$pdf" 2>/dev/null || true; } | awk 'NR>2 && $3=="image"' | wc -l)"
+    if [[ "$pdf_imgs" -ge "$want_files" ]]; then ok "  PDF 이미지 ${pdf_imgs}장 (소스 파일 ${want_files}개)"
+    else err "  PDF 이미지 ${pdf_imgs}장 — 소스가 참조한 파일 ${want_files}개보다 적다"; fail=1; fi
     # 편집면(ODT/DOC)도 산출물이다. PDF 만 보고 통과시키면 받는 쪽이 여는 문서가 검사 밖에 남는다.
     local odt="$BUILD/$base.odt"
     if [[ -f "$odt" ]]; then
@@ -386,25 +484,35 @@ cmd_verify() {
       local odt_xml; odt_xml="$(unzip -p "$odt" content.xml 2>/dev/null)"
       grep -q 'ax.junghanacs.com' <<<"$odt_xml" && ok "  ODT AX 증거면 URL 노출" \
         || { err "  ODT 에 ax.junghanacs.com 안 보임"; fail=1; }
-      # 이미지가 참조만 되고 실제로 안 담기면 받는 쪽에서 빈 상자로 열린다.
+      grep -q 'https://www\.junghanacs\.com' <<<"$odt_xml" && ok "  ODT 대표 URL 노출" \
+        || { err "  ODT 에 www.junghanacs.com 안 보임"; fail=1; }
+      grep -qE "$REDACTED_RE" <<<"$odt_xml" && { err "  ODT 에 정제 자리표시가 찍혔다"; fail=1; }
+      # 이미지가 참조만 되고 실제로 안 담기면 받는 쪽에서 빈 상자로 열린다. 기대량은 소스가 정한다.
       local imgs; imgs="$(unzip -l "$odt" 2>/dev/null | grep -cE 'Images/|Pictures/' || true)"
-      [[ "$imgs" -gt 0 ]] && ok "  ODT 이미지 내부 임베드 ${imgs}장" || warn "  ODT 에 임베드된 이미지 없음"
+      if [[ "$imgs" -ge "$want_files" ]]; then ok "  ODT 이미지 내부 임베드 ${imgs}장 (소스 파일 ${want_files}개)"
+      else err "  ODT 임베드 ${imgs}장 — 소스가 참조한 파일 ${want_files}개보다 적다"; fail=1; fi
     else
       err "  $odt 없음 — 편집면이 빠졌다"; fail=1
     fi
     [[ -f "$BUILD/$base.doc" ]] || { err "  $BUILD/$base.doc 없음"; fail=1; }
   done
-  local label md
+  local label md want got
   for label in Competency Portfolio Detail; do
     md="$BUILD/KimJunghan_AX_${label}.md"
     if [[ -f "$md" ]]; then
       echo "── KimJunghan_AX_${label}.md ──"
+      grep -qE "$REDACTED_RE" "$md" && { err "  정제 자리표시가 찍혔다 — $(grep -cE "$REDACTED_RE" "$md")곳"; fail=1; }
+      want="$(expected_figures "$DIR/${label,,}.org")"
+      got="$( { grep -oE '<img src="images/|\]\(images/' "$md" || true; } | wc -l)"
+      if [[ "$got" -eq "$want" ]]; then ok "  도해 ${got}/${want}"
+      else err "  도해 ${got}개 — 소스 기대 ${want}개"; fail=1; fi
       grep -qiE 'noexport|IMAGE PROMPT|생성 프롬프트|검토 메모' "$md" \
         && { warn "  :noexport 누출 의심"; fail=1; } || ok "  :noexport 누출 없음"
       grep -q 'github.com/junghan0611' "$md" && ok "  자체 프로젝트 공개 링크 존재" || warn "  공개 링크 없음"
       # 상세 MD까지 세 문서 모두가 공개 증거면을 가리킨다는 계약을 산출물에서 확인한다.
       grep -q 'ax.junghanacs.com' "$md" && ok "  AX 증거면 URL 노출" \
         || { err "  $md 에 ax.junghanacs.com 안 보임"; fail=1; }
+      grep -q '문서 판 이력' "$md" && ok "  문서 판 이력 있음" || { err "  $md 에 문서 판 이력이 없다"; fail=1; }
     else
       err "  $md 없음"; fail=1
     fi
@@ -445,6 +553,8 @@ cmd_package() {
   done < <(find "$DIR/images" -maxdepth 1 -type f \
     \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' \) -print0)
   [[ $image_count -gt 0 ]] || warn "images/ 비어있음 (이미지 생성 전)"
+  # 출처·공개 판정 기록도 그림과 같이 간다 — 받는 쪽이 그림을 증거로 오독하지 않게.
+  [[ -f "$DIR/images/README.md" ]] && cp "$DIR/images/README.md" "$S/images/"
   cp "$DIR/references.bib" "$S/"
   cp "$DIR/run.sh"         "$S/run.sh"
   # 파이프라인 전체를 넣는다. 산출물만 보내면 "이 문서가 예쁘다" 로 끝나지만, 변환기와
@@ -453,7 +563,11 @@ cmd_package() {
   cp "$PIPE/proposal-export.el" "$PIPE/latex-export.el" "$PIPE/preamble.org" \
      "$PIPE/odt_postprocess.py" "$PIPE/set_reference_font.py" \
      "$PIPE/optimize_images.py" "$PIPE/strip_reference_odt.py" "$S/pipeline/"
-  cp "$PIPE/templates/ieee.csl" "$PIPE/templates/reference.odt" "$S/pipeline/templates/"
+  cp "$PIPE/templates/ieee.csl" "$S/pipeline/templates/"
+  # 스타일 마스터는 공개 저장소에 없다(cmd_check 참조). 있으면 싣고, 없으면 그 사실을 말한다 —
+  # 없는 파일을 cp 하면 set -e 가 패키지 조립 전체를 죽인다.
+  if [[ -f "$PIPE/templates/reference.odt" ]]; then cp "$PIPE/templates/reference.odt" "$S/pipeline/templates/"
+  else info "reference.odt 없음 — 패키지에도 싣지 않는다(ODT 는 ox-odt 기본 스타일)"; fi
   # flake.nix 가 조판 클래스(acmart)·한글 엔진(xetexko)·활자(Pretendard·D2Coding)를
   # 빌드 입력으로 고정하고, flake.lock 이 그 nixpkgs 를 특정 리비전에 묶는다. lock 이
   # 빠지면 받는 쪽은 "같은 선언"만 받고 "같은 입력"은 못 받는다 — 활자와 texlive 판이
@@ -501,16 +615,17 @@ cd "$DIR"
 case "${1:-all}" in
   check)      cmd_check ;;
   contact)    cmd_contact ;;
-  competency) cmd_contact; build_tex competency; build_pdf competency ;;
-  portfolio)  cmd_contact; build_tex portfolio;  build_pdf portfolio ;;
-  detail)     cmd_contact; cmd_detail ;;
+  figures)    cmd_figures ;;
+  competency) cmd_contact; cmd_figures; build_tex competency; build_pdf competency ;;
+  portfolio)  cmd_contact; cmd_figures; build_tex portfolio;  build_pdf portfolio ;;
+  detail)     cmd_contact; cmd_figures; cmd_detail ;;
   images)     cmd_images ;;
-  all)        cmd_contact
+  all)        cmd_contact; cmd_figures
               build_tex competency; build_pdf competency
               build_tex portfolio;  build_pdf portfolio
               cmd_detail; cmd_verify ;;
   verify)     cmd_verify ;;
   package)    cmd_package ;;
   clean)      cmd_clean ;;
-  *) echo "사용법: ./run.sh {check|contact|competency|portfolio|detail|images|all|verify|package|clean}"; exit 1 ;;
+  *) echo "사용법: ./run.sh {check|contact|figures|competency|portfolio|detail|images|all|verify|package|clean}"; exit 1 ;;
 esac

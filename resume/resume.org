@@ -7,7 +7,7 @@
 # 빌드:  ./run.sh base     (또는 ./run.sh all)
 
 #+cv_pdf_name: KimJunghan_Resume
-#+EXCLUDE_TAGS: catalog corpus
+#+EXCLUDE_TAGS: noexport catalog corpus
 
 #+INCLUDE: "pipeline/preamble.org"
 

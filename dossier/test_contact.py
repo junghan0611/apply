@@ -70,8 +70,9 @@ def main():
 			fails.append(f"{name}: exit {code} (기대 {'0' if ok else '≠0'})\n    {out.strip()[-300:]}")
 		elif needle and needle not in out:
 			fails.append(f"{name}: 출력에 「{needle}」 없음\n    {out.strip()[-300:]}")
-		elif absent and absent in out:
-			fails.append(f"{name}: 출력에 「{absent}」 가 있으면 안 된다")
+		# 실패 출력에 정본이 아닌 값이 실리면 안 된다 — needle 판정과 별개로 늘 본다.
+		if absent and absent in out:
+			fails.append(f"{name}: 출력에 정본이 아닌 값이 실렸다")
 
 	with tempfile.TemporaryDirectory() as td:
 		d = tree(Path(td))
@@ -88,7 +89,7 @@ def main():
 		with tempfile.TemporaryDirectory() as td:
 			d = tree(Path(td))
 			edit(d / f, old, new)
-			expect(name, *contact(d), ok=False, needle=needle)
+			expect(name, *contact(d), ok=False, needle=needle, absent=other)
 
 	# 정본이 있는데 못 읽으면 실패 — 패키지 폴백으로 숨기지 않는다.
 	with tempfile.TemporaryDirectory() as td:
@@ -121,7 +122,12 @@ def main():
 		expect("PDF 정본 주소", *gate(d, f"김정한 {email} github.com/junghan0611", email), ok=True)
 		expect("PDF 자리표시", *gate(d, f"김정한 {PLACEHOLDER} github.com", email), ok=False, needle="자리표시")
 		expect("PDF 자리표시+정본", *gate(d, f"{email}\n{PLACEHOLDER}", email), ok=False, needle="자리표시")
-		expect("PDF 다른 주소만", *gate(d, f"김정한 {other}", email), ok=False, needle="정본과 다른")
+		expect("PDF 다른 주소만", *gate(d, f"김정한 {other}", email), ok=False, needle="정본과 다른", absent=other)
+		# 토큰 경계 — 정본을 품은 다른 주소는 정본 노출이 아니다. 문장 끝 마침표·괄호는 정본이다.
+		expect("PDF 앞에 글자 붙은 주소", *gate(d, f"김정한 x{email}", email), ok=False, needle="정본과 다른")
+		expect("PDF 뒤에 도메인 붙은 주소", *gate(d, f"김정한 {email}.evil", email), ok=False, needle="정본과 다른")
+		expect("PDF 문장 끝 마침표", *gate(d, f"연락: {email}.", email), ok=True)
+		expect("PDF 괄호 안", *gate(d, f"({email})", email), ok=True)
 		expect("PDF 주소 없음", *gate(d, "김정한 github.com/junghan0611", email), ok=False, needle="안 보임")
 
 	n = len(cases)
@@ -130,7 +136,7 @@ def main():
 		for f in fails:
 			print("  " + f)
 		return 1
-	print(f"ok {n}/{n} — 소스 대조 · 실패 주입 {len(injections)} · 정본 3 · 패키지 폴백 2 · 산출물 판정 5")
+	print(f"ok {n}/{n} — 소스 대조 · 실패 주입 {len(injections)} · 정본 3 · 패키지 폴백 2 · 산출물 판정 9")
 	return 0
 
 

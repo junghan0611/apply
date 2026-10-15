@@ -8,7 +8,7 @@
 #+cv_pdf_name: KimJunghan_Resume_Forward_Deployed_Engineer
 #+CV_GOQUAL_MODULES: domain-agents smart-hub ai-infra
 #+CV_INDEPENDENT_MODULES: forge-config corpus-tools agent-config entwurf platform-operations
-#+EXCLUDE_TAGS: validation catalog corpus
+#+EXCLUDE_TAGS: noexport validation catalog corpus
 
 #+INCLUDE: "../pipeline/preamble.org"
 

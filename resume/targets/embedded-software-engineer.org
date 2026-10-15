@@ -7,7 +7,7 @@
 
 #+cv_pdf_name: KimJunghan_Resume_Embedded_Software_Engineer
 #+CV_GOQUAL_MODULES: smart-hub on-device-ai ai-infra
-#+EXCLUDE_TAGS: independent validation catalog corpus
+#+EXCLUDE_TAGS: noexport independent validation catalog corpus
 
 #+INCLUDE: "../pipeline/preamble.org"
 

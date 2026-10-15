@@ -21,7 +21,7 @@
     \href{mailto:junghanacs@gmail.com}{junghanacs@gmail.com} \textperiodcentered\
     \href{https://github.com/junghan0611}{github.com/junghan0611} \textperiodcentered\
     \href{https://ax.junghanacs.com}{ax.junghanacs.com}\newline
-    \href{https://notes.junghanacs.com}{notes.junghanacs.com} \textperiodcentered\
+    \href{https://www.junghanacs.com}{www.junghanacs.com} \textperiodcentered\
     \href{https://www.linkedin.com/in/junghan-kim-1489a4306}{linkedin.com/in/junghan-kim-1489a4306}}%
 }
 \maketitle
@@ -38,7 +38,7 @@
 #+begin_export odt
 <text:p text:style-name="OrgSubtitle">모델 역량을 조직의 작업면으로</text:p>
 <text:p text:style-name="OrgCenter">김정한 (Junghan Kim) · PKM-AI Harness Engineer · From Embedded Systems to Shared Agent Work Surfaces · <text:a xlink:type="simple" xlink:href="mailto:junghanacs@gmail.com">junghanacs@gmail.com</text:a></text:p>
-<text:p text:style-name="OrgCenter"><text:a xlink:type="simple" xlink:href="https://github.com/junghan0611">github.com/junghan0611</text:a> · <text:a xlink:type="simple" xlink:href="https://ax.junghanacs.com">ax.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://notes.junghanacs.com">notes.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://www.linkedin.com/in/junghan-kim-1489a4306">linkedin.com/in/junghan-kim-1489a4306</text:a></text:p>
+<text:p text:style-name="OrgCenter"><text:a xlink:type="simple" xlink:href="https://github.com/junghan0611">github.com/junghan0611</text:a> · <text:a xlink:type="simple" xlink:href="https://ax.junghanacs.com">ax.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://www.junghanacs.com">www.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://www.linkedin.com/in/junghan-kim-1489a4306">linkedin.com/in/junghan-kim-1489a4306</text:a></text:p>
 #+end_export
 
 역량·성과 기술서가 개인지식관리에서 조직의 에이전트 작업면까지 이어 온 방향을 설명했다면, 이 포트폴리오는 그 방향이 실제 프로젝트에서 어떻게 작동했는지 보여줍니다. 아래 다섯 프로젝트는 서로 다른 자리에서 하나의 축 — *모델의 능력을 실제 문서·도구·결정으로 옮기고, 조직이 이어받을 수 있게 하는 Agent Engineering* — 을 증명합니다. 다섯을 같은 질문으로 읽습니다 — *어떤 문제가 있었고, 어디까지 소유했으며, 어떤 경계를 그었고, 운영 후 무엇이 달라졌고, 다음 사람은 어디서 이어받는가.*
@@ -85,9 +85,8 @@
 #+name: fig-company-ax
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-#+begin_quote
-[diagram removed at publication — see docs/HISTORY-REDACTION.md]
-#+end_quote
+[[file:images/company-ax-arch.png]]
+
 - =voscli= — 「무엇이 얼마나 일어났는가」를 맡습니다. VOC·상담 데이터의 기간·단위·포함 정책을 고정해 집계가 질문마다 흔들리지 않게 하고, 집계 결과의 판단 근거를 개별 상담까지 역추적합니다. 운영팀이 매일 아침 읽습니다 [사내]
 - =incidentcli= — 「언제 무슨 순서로 일어났는가」를 맡습니다. 운영 장애·VOC·디바이스 로그·런타임 데이터를 하나의 KST 시간축으로 회수·정렬하고, VOC → 디바이스 → 런타임으로 이어지는 사슬을 잇습니다 [사내] [cite:@note-incidentcli]
 - *비서실장(COS) 에이전트* — 제 회사 업무 자체를 얹은 작업면입니다. 트랙, 오너, 결정, 원장(ledger)을 들고 있습니다 [사내]
@@ -133,9 +132,8 @@
 #+name: fig-openclaw
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-#+begin_quote
-[diagram removed at publication — see docs/HISTORY-REDACTION.md]
-#+end_quote
+[[file:images/openclaw-ops.png]]
+
 *핵심 판단 ① — 회귀를 재현하고, 한 단계가 아니라 정확한 판으로 되돌렸습니다.* 2026-04-28 정오에 상류 판을 올린 직후 응답 지연이 급증했습니다. 클린 부팅에서도 재현해 설정 오류 가설을 배제한 뒤, *약 한 시간 만에 롤백을 결정했습니다.* 이때 되돌린 곳이 *직전 판이 아니라 이미 검증된 마지막 정상판(2026.4.23)* 이라는 점이 이 판단의 핵심입니다 — 직전 판도 이미 같은 계열의 변경을 안고 있었기 때문입니다 [운영 기록].
 
 *핵심 판단 ② — 복구와 규칙을 분리하지 않았습니다.* 롤백 커밋과 *같은 분에* 운영 정책을 문서로 남겼습니다. 그 전날에도 «게이트웨이 경고(WARN)는 전부 오류로 취급하고, 조사 전에는 준비 완료라고 선언하지 않는다»는 규칙을 이미 적어 두었습니다. *규칙이 사고 뒤에 급조된 것이 아니라 운영하면서 쌓인 것입니다* [운영 기록].
@@ -171,13 +169,12 @@
 
 *소유 범위.* 세션·지식베이스 인덱싱, 하이브리드 검색, 한↔영 질의 확장, 회수 추적과 에이전트 도구 표면을 설계·구현했습니다.
 
-#+caption: 운영 중인 핵심은 세션·가든 두 트랙을 벡터와 전문검색으로 회수해 하나의 검색 표면으로 내는 계층이다
+#+caption: 운영 중인 핵심은 세션·가든 두 트랙을 벡터와 전문검색으로 회수해 하나의 검색 표면으로 내는 계층이다 — 반투명 아치(DREAM ROADMAP)로 그린 다음 계층은 아직 구현하지 않았다
 #+name: fig-andenken
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-#+begin_quote
-[diagram removed at publication — see docs/HISTORY-REDACTION.md]
-#+end_quote
+[[file:images/andenken-rag.png]]
+
 *핵심 판단 ① — 검색 알고리즘보다 기억의 소유 경계를 먼저 나눴습니다.* 세션과 공개 지식베이스를 별도 트랙으로 인덱싱하고, LanceDB [cite:@lancedb] 위에서 벡터와 전문검색(BM25 [cite:@bm25-robertson]) 점수를 정규화해 합칩니다 [cite:@qwen3-embedding]. 두 자료를 하나의 원본으로 합치지 않는 것이 요점입니다 — 출처가 다르면 갱신 주기와 신뢰도도 다릅니다.
 
 *핵심 판단 ② — 한국어 RAG가 실패하는 자리를 3층으로 메웠습니다.* «보편 학문에 대한 문서»라는 질의를 예로 들면:
@@ -223,20 +220,18 @@
 
 *오케스트레이션의 주체는 사람입니다.* =entwurf= 는 에이전트 군단을 대신 지휘하는 숨은 상위 에이전트가 아니라, 사람이 선택한 형제 세션을 주소로 찾아 연결하는 기층입니다. 사람은 문제·우선순위·최종 판단을 소유하고, 각 하네스는 자기 런타임과 기억을 유지한 채 협력합니다. 아래 첫 그림은 저장소 README의 존재 관계 개념도입니다 — *오케스트레이터인 사람과, 노동자가 아니라 독립된 형제로 참여하는 에이전트들.* 그림 속 개별 모델명은 지원 현황표가 아니며, 실제 현재 경계는 이어지는 아키텍처 그림과 표에 적었습니다.
 
-#+caption: 사람이 오케스트레이터로 판단과 우선순위를 소유하고, 서로 다른 하네스는 독립된 형제로 협력한다 — entwurf README 리드 이미지
+#+caption: 사람이 오케스트레이터로 판단과 우선순위를 소유하고, 서로 다른 하네스는 독립된 형제로 협력한다 — 개념 일러스트, 2026-07 판 entwurf README 의 대표 그림(현재 README 대표 그림과 다르다)
 #+name: fig-entwurf-hero
 #+attr_odt: :width 11.5
 #+attr_latex: :width 0.76\linewidth
-#+begin_quote
-[diagram removed at publication — see docs/HISTORY-REDACTION.md]
-#+end_quote
-#+caption: 주소 가능한 시민은 서로 다른 레일로 들어오고, 외부 송신자의 기여까지 협업의 판단은 세션 밖 durable state에 남는다
+[[file:images/entwurf-hero.png]]
+
+#+caption: 주소 가능한 시민은 서로 다른 레일로 들어오고, 외부 송신자의 기여까지 협업의 판단은 세션 밖 durable state에 남는다 — 2026-07 시점 개념도
 #+name: fig-lineage
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-#+begin_quote
-[diagram removed at publication — see docs/HISTORY-REDACTION.md]
-#+end_quote
+[[file:images/platform-lineage.png]]
+
 *서로의 대화록·인증·런타임을 소유하지 않습니다.* 정체성(garden id)만으로 서로를 호출하고, 기층은 *주소만 나릅니다.* 그래서 하네스마다 들어오는 레일이 다릅니다 — 통일하지 않은 것이 설계입니다.
 
 | 하네스 | 어떻게 들어오나 | 시민 유형 |
@@ -269,31 +264,32 @@ Codex는 아직 이 표에 없습니다. 외부 MCP 호스트로 브리지를 �
 
 *확인 지점.* [공개] entwurf [cite:@repo-entwurf] · 외부 기여 PR [cite:@pr-entwurf-40] · forge-config [cite:@repo-forge-config].
 
-* 프로젝트 5 — 펌웨어에서 제품까지: 에이전트와 함께 실제로 출하한 세로축
+* 프로젝트 5 — 펌웨어에서 제품까지: 에이전트와 함께한 펌웨어 제품화와 종단 검증
 :PROPERTIES:
 :CUSTOM_ID: p5
 :END:
 
-/기간 2025-09–현재 (공동창업 이력 2013–2017) · 소유 범위 펌웨어·서버·앱·제품 통합 · 스택 Zig, Go, Flutter, Yocto·Android, Matter·Thread·Zigbee, AWS IoT/
+/기간 2025-09–현재 (공동창업 이력 2013–2017) · 소유 범위 허브 펌웨어 제품화·양산, 검증용 서버·앱 프로토타입(개인 탐구) · 스택 Zig, Go, Flutter, Yocto·Android, Matter·Thread·Zigbee, AWS IoT/
 
-*한 줄 명제.* *에이전트를 짝으로 두고, 펌웨어에서 서버·앱·클라우드까지의 세로축을 직접 만들어 양산까지 보냈습니다.*
+*한 줄 명제.* *에이전트를 짝으로 두고 허브 펌웨어를 양산까지 보냈고, 검증용 서버·앱을 직접 만들어 그 펌웨어 계약을 클라우드 종단까지 확인했습니다.*
 
 *맥락과 문제.* 에이전트 플랫폼도 결국 프로세스·네트워크·데이터·권한·물리 장치 위에서 동작합니다. 아래 시스템의 제약과 실패 방식을 모르면 그 위의 경계도 제대로 그을 수 없습니다. 그리고 이 축은 제가 «에이전트와 함께 얼마나 만들 수 있는가»를 가장 정직하게 드러내는 자리이기도 합니다 — 출하일이 정해져 있고, 물건이 실제로 나가야 끝나기 때문입니다.
 
 *소유 범위.* 대형 터치 디스플레이용 Linux 플랫폼의 공동창업·양산 경험에서 시작해, 지금은 두 개의 제품 축을 들고 있습니다 — 양산 출하한 Zigbee/Wi-Fi 허브와, 온디바이스 AI를 얹은 오픈소스 Matter 허브입니다.
 
-#+caption: 장치에서 서버·앱·클라우드와 폐쇄망까지 이어지는 제품 경계를 알아야 그 위의 AX 경계도 정확히 그을 수 있다
+#+caption: 장치에서 서버·앱·클라우드와 폐쇄망까지 이어지는 제품 경계를 알아야 그 위의 AX 경계도 정확히 그을 수 있다 — 세 층의 경계를 설명하는 개념도이며, 세 층 전부를 양산·납품했다는 뜻이 아니다
 #+name: fig-product
 #+attr_odt: :width 12.5
 #+attr_latex: :width 0.82\linewidth
-#+begin_quote
-[diagram removed at publication — see docs/HISTORY-REDACTION.md]
-#+end_quote
-** 허브 — 계약에 없던 두 층을 채워 제품으로 내보냈습니다
+[[file:images/product-stack.png]]
+
+/그림의 경계 — 회사 계약과 양산 출하 범위는 허브 펌웨어입니다. 그림의 Go 서버·Flutter 앱 층은 그 펌웨어가 실제로 맞물리는지 검증하려고 제가 직접 만든 세트이고, 실제 서비스용 서버·앱은 외부 업체가 맡았습니다./
+
+** 허브 — 펌웨어를 양산까지 내보내고, 계약 밖 두 층으로 종단을 검증했습니다
 
 [사내] *이 프로젝트는 제가 처음부터 설계한 것이 아니라 긴급하게 넘겨받은 것입니다.* 2025년 9월 말, 진행 중이던 게이트웨이 프로젝트를 인수인계로 받았습니다. 받은 다음 날 빌드와 보드 접속, 클라우드 연동을 하나씩 검증하며 «지금 무엇이 실제로 도는가»를 확인했고, 그 위에서 레거시 C를 Zig로 옮기는 전환 전략을 세웠습니다 [운영 기록].
 
-계약은 Zigbee/Wi-Fi 게이트웨이 *펌웨어* 였습니다. 그런데 펌웨어만 나가면 제품이 되지 않습니다. 서버가 없고 앱이 없었습니다 — 계약서에 없던 두 층이 비어 있었습니다. *그래서 Go 서버와 Flutter 앱을 직접 만들었습니다.* 없으면 제품이 아니었기 때문입니다.
+계약과 양산 대상은 Zigbee/Wi-Fi 게이트웨이 *펌웨어* 였고, 제품의 서버·앱은 외부 업체가 맡았습니다. 그 펌웨어 계약이 서버·앱 끝까지 정말 맞물리는지는 펌웨어만으로는 확인되지 않습니다. *그래서 이후 개인 탐구로 그 펌웨어에 대응하는 Go 서버와 Flutter 앱을 직접 만들어 종단 검증을 넓혔습니다* — 납품물이 아니라 검증용 프로토타입입니다.
 
 - *펌웨어는 C가 아니라 Zig* — 레거시 C Zigbee SDK를 Zig의 타입 안전 FFI 층 뒤로 밀어 넣고, 상태를 =HubState= 하나로 모아 전이를 순수 함수 =transition()= 으로 갈랐습니다. *결정론적 상태 기계여야 사람이든 에이전트든 이 코드를 믿고 고칠 수 있습니다.*
 - *프로토콜 하나, 백엔드 둘* — 연결형 배포에는 AWS IoT, 폐쇄망에는 로컬 백엔드를 씁니다. *펌웨어는 양쪽에 수정 없이 그대로 나갑니다.*
@@ -374,6 +370,16 @@ Codex는 아직 이 표에 없습니다. 외부 MCP 호스트로 브리지를 �
 :END:
 
 #+print_bibliography:
+
+* 문서 판 이력
+:PROPERTIES:
+:CUSTOM_ID: revision-history
+:END:
+
+- *2026-08-01 보존본* — 그날 빌드해 보존한 판입니다. 이 이력의 기준점입니다.
+- *2026-10-15 수선판* — 도해 복원(깊이 문서 세트 7장 중 이 문서 6장)과 캡션의 시점·구현 경계 명시 · 허브 양산 펌웨어와 후속 개인 검증 프로토타입의 경계 구분 · 1쪽 대표 URL을 www.junghanacs.com 으로 변경 · 빌드 검사 보강.
+
+본문 서사(2026-07 기준)를 2026-10 현재로 갱신하는 작업은 이 판에 포함되지 않았습니다.
 
 * COMMENT 이미지 생성 프롬프트와 검토 메모                          :noexport:
 

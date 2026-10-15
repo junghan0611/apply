@@ -9,7 +9,7 @@
 #+cv_pdf_name: KimJunghan_Resume_Platform_Engineer
 #+CV_GOQUAL_MODULES: ai-infra
 #+CV_INDEPENDENT_MODULES: platform-operations entwurf agent-config
-#+EXCLUDE_TAGS: catalog corpus
+#+EXCLUDE_TAGS: noexport catalog corpus
 
 #+INCLUDE: "../pipeline/preamble.org"
 

@@ -45,7 +45,8 @@ including the public-safe versions of:
 - the operating contracts: the root `AGENTS.md` and every lane `AGENTS.md`
   (`applications/`, `resume/`, `dossier/`), along with `dossier/README.md`,
   `dossier/PORTFOLIO-PLAN.md`, and the `*.package.md` files;
-- prose-only skill and pipeline documentation.
+- prose-only skill and pipeline documentation;
+- `dossier/images/README.md`, the image provenance and publication-review ledger (not the images).
 
 These are covered by the paths named above, not by an inline marker; no `SPDX-License-Identifier`
 header is required in them. A document elsewhere in the tree may opt in by carrying that header.
@@ -65,6 +66,8 @@ Unless a file explicitly opts into CC-BY-4.0, no reuse license is granted for:
 - cover letters, self-introductions, application answers, interview narratives, and submitted-form
   records under `applications/`;
 - personal career claims and application-facing prose in `dossier/*.org`;
+- portfolio concept images in `dossier/images/*.png`, restored after publication review: no reuse
+  license is granted by this repository, and public availability does not imply MIT or CC-BY terms;
 - operational handoffs containing personal decisions, including `NEXT.md`.
 
 These records are public so the process can be inspected, not so another person can reuse the

@@ -182,6 +182,26 @@
 
 (message "[Proposal] Bibliography initialized: %S" org-cite-global-bibliography)
 
+;; 문서가 `#+bibliography:' 를 선언하면 그 파일만 쓴다 (2026-10-15).
+;;
+;; 위에서 얹은 개인 서지(config-bibfiles)는 대화형 편집용이다. org-cite 는 문서 서지와 전역
+;; 서지를 합쳐 키를 찾으므로, 같은 키가 개인 서지에도 있으면 저장소의 references.bib 대신
+;; 그쪽 항목이 렌더된다 — 실측: 저자가 빠지고 references.bib 에 없는 열람일이 붙었다. 같은
+;; 소스가 빌드하는 기계마다 다른 문서가 되는 것이라, 문서가 서지를 선언했으면 전역을 비운다.
+;; export 사본 버퍼에 버퍼 로컬로 건다 — latex-export.el 도 이 파일을 싣으므로 두 트랙 공통이다.
+(defun proposal--document-bibliography-only (&rest _)
+  "Export 버퍼가 #+bibliography 를 선언했으면 전역 서지를 버퍼 로컬로 비운다."
+  (when (save-excursion
+          (goto-char (point-min))
+          (let ((case-fold-search t))
+            (re-search-forward "^[ \t]*#\\+bibliography:" nil t)))
+    (setq-local org-cite-global-bibliography nil)
+    (message "[Proposal] 문서 서지만 사용 (전역 서지 비움)")))
+(add-hook (if (boundp 'org-export-before-parsing-functions)
+              'org-export-before-parsing-functions
+            'org-export-before-parsing-hook)
+          #'proposal--document-bibliography-only)
+
 ;;;; ODT Export Settings
 
 ;; reference.odt 스타일 마스터

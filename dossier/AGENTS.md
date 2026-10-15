@@ -88,6 +88,37 @@ JD 적합성, 차별성, 본인의 판단과 소유 범위, 검증 가능성, �
 - 역량기술서는 대표 이미지 1장, 포트폴리오는 주요 프로젝트별 이미지 약 1장을 목표로 한다.
 - 최종 PDF에 이미지를 임베드하고, 상세 MD에서는 상대경로와 충분한 alt/텍스트 설명을 함께 제공한다.
 
+### 공개 판정이 있는 그림만 들인다 (2026-10-15)
+
+- `images/` 의 파일은 `images/README.md` 의 행과 1:1 이다 — 출처 · sha256 · 공개 판정(누가·언제)이
+  없는 그림은 두지 않는다. 공개 게이트도 그 일곱 경로만 예외로 둔다(정본은 루트 공개 정책).
+- **그림은 개념도다.** 캡션이 그림의 증명 상한을 말한다. 미구현 계층을 그렸으면 미구현이라고,
+  시점이 지난 그림이면 그 시점을, 세 층을 그렸지만 일부만 출하했으면 그 경계를 캡션이나 바로 옆
+  문장이 적는다. 그림을 비공개 배포·운영 실적의 증거로 내세우지 않는다.
+- 2026-08-27 공개 전환 때 도해 블록이 `[diagram removed at publication …]` 인용으로 바뀐 채
+  남아 있었고, 재빌드하니 그 문구가 PDF·MD 에 찍혔는데 verify 는 통과했다. 그래서:
+  - `./run.sh figures` — export 범위(`:noexport:`·COMMENT 서브트리, 주석·예제 블록 밖)의 정제
+    자리표시 `[… removed …]` 는 하드 실패, 참조한 `images/` 파일이 없으면 실패. `check` 와 모든
+    빌드 명령이 먼저 부른다.
+  - `verify` — 산출물마다 자리표시 하드 실패, PDF 캡션 「그림 N.」 수 · MD 이미지 수 = 소스 기대량
+    (export 범위 이미지 링크 수), PDF 이미지(`pdfimages`)·ODT 임베드 ≥ 참조 파일 수. 기대가 0 이면
+    0 도 정상이다.
+  - 회귀: `./test_figures.py`.
+
+## 서지 — 문서가 선언한 bib 만 쓴다 (2026-10-15)
+
+`pipeline/proposal-export.el` 은 Doom 설정의 개인 서지(`config-bibfiles`)를 전역으로 얹는다(대화형
+편집용). org-cite 는 문서 서지와 전역 서지를 합쳐 키를 찾으므로, 같은 키가 개인 서지에 있으면
+`references.bib` 대신 그 항목이 렌더됐다 — 2026-10-15 재빌드에서 저자가 빠지고 `references.bib`
+에 없는 열람일이 붙었다. **같은 소스가 빌드하는 기계마다 다른 문서가 되는 것이다.**
+
+- 문서가 `#+bibliography:` 를 선언하면 export 사본 버퍼에서 전역 서지를 버퍼 로컬로 비운다
+  (`proposal--document-bibliography-only`, export 직전 훅). `latex-export.el` 도 같은 파일을 싣으므로
+  PDF·ODT 두 트랙 공통이다. Markdown 트랙(pandoc)은 원래 `--bibliography=references.bib` 만 쓴다.
+- 회귀: `./test_bibliography.py` — `ORG_DIRECTORY` 를 같은 키의 가짜 개인 서지가 든 임시 디렉터리로
+  바꿔 「다른 기계」를 흉내 내고, 문서 서지만 렌더되는지와 두 환경의 `.tex` 가 같은지 본다. Emacs·Doom
+  코어가 필요하다.
+
 ## 숫자 — 자가 측정 수치를 쓰지 않는다 (2026-07-29 GLG)
 
 `AGENTS.md` §불변식 §숫자 가 정본, 세부는 `PORTFOLIO-PLAN.md` §수치 원칙 **v4**.
@@ -121,8 +152,8 @@ v3 는 성능 수치만 뺐는데 **v4 는 자가 측정 작업량 수치까지 
 
 ## 서버에서 PDF 가 나온다 — LibreOffice 는 PDF 경로가 아니다 (2026-07-30)
 
-`./run.sh check` 는 `libreoffice 없음` 으로 **exit 1** 하지만, **조판 정본 PDF 는 xelatex
-(`build_tex`)가 만든다**(`run.sh:167` 주석). LibreOffice 는 ODT→DOC 트랙 전용이다.
+`./run.sh check` 는 `libreoffice 없음` 을 정보로만 알리고 넘어간다(예전 판은 exit 1 이었다).
+**조판 정본 PDF 는 xelatex(`build_tex`)가 만든다.** LibreOffice 는 ODT→DOC 트랙 전용이다.
 
 - 오라클 서버에서 `./run.sh competency` · `./run.sh portfolio` 는 **PDF 까지 정상 생성**된다.
   마지막 `doc` 변환에서 `EXIT=127` 이 나지만 **PDF 는 이미 나와 있다.**
@@ -143,6 +174,21 @@ v3 는 성능 수치만 뺐는데 **v4 는 자가 측정 작업량 수치까지 
   빠지는 일을 막는다.
   ⚠ 연락처 줄은 다섯 항목이라 **한 줄에 안 들어간다.** `ax` 뒤에 `\newline` 을 넣어 두 줄로
   가른 상태이며, 이걸 지우면 `Overfull \hbox` 로 LinkedIn URL 이 판면 밖으로 나간다.
+- **연락처 줄의 홈페이지 자리는 대표 URL `https://www.junghanacs.com` 이다** (2026-10-15 GLG, 표시는
+  `www.junghanacs.com`). 두 표면(`\affiliation` · ODT `OrgCenter`)이 같아야 하고 verify 가 PDF 텍스트와
+  ODT 에서 확인한다. 본문·참고문헌이 가리키는 가든 URL(`notes.junghanacs.com`, `@live-garden`)은 기술
+  근거라 이 자리와 별개다 — 일괄 치환하지 않는다.
+
+## 문서 판 이력 — 세 문서 맨 뒤 (2026-10-15)
+
+`competency.org` · `portfolio.org` · `detail.org` 는 `* 참고자료` 뒤, `* COMMENT … :noexport:` 앞에
+`* 문서 판 이력` 을 둔다. 판은 날짜로 부른다(「2026-10-15 수선판」) — 저장소 릴리즈 태그와 섞지 않는다.
+
+- 적는 것은 **그 문서에 실제로 일어난 변경 범위와 날짜**뿐이다. 자평·작업량 수치는 쓰지 않는다.
+- 기준점은 2026-08-01 보존본이다(그날 빌드해 보존한 판 — 「최초 작성」이 아니다).
+- 본문 현재화가 빠진 판이면 그 사실을 한 줄로 적는다.
+- verify 가 PDF·MD 산출물에서 「문서 판 이력」을 확인한다 — `:noexport:` 뒤로 숨으면 소스에는 있고
+  산출물엔 없다.
 
 ## 연락처 — 정본은 resume 표제 블록이다 (2026-10-15)
 
@@ -154,7 +200,10 @@ v3 는 성능 수치만 뺐는데 **v4 는 자가 측정 작업량 수치까지 
 - `./run.sh contact` — 소스 대조. `check` 와 모든 빌드 명령(`competency`·`portfolio`·`detail`·`all`)이
   먼저 부른다. 정제 자리표시 `[email removed]` 는 어디 있든 하드 실패, `#+email`·`mailto` 가 정본과
   다르면 실패.
-- `verify` — PDF 텍스트에 자리표시가 보이면 하드 실패, 통과 조건은 형식이 아니라 **정본 주소 그 자체**.
+- `verify` — PDF 텍스트에 자리표시가 보이면 하드 실패, 통과 조건은 형식이 아니라 **정본 주소 그 자체**를
+  토큰으로 찾는 것이다(앞뒤에 주소 글자가 더 붙은 다른 주소는 정본 노출이 아니다).
+- 실패 메시지는 어긋난 값을 싣지 않는다 — 파일·행 번호만 댄다. 정본이 아닌 값은 누구의 주소인지 모른다.
+  공개 승인된 정본 주소는 통과 메시지에 그대로 나온다.
 - 정본 해석: `resume/` 가 있으면 반드시 그 파일에서 읽고, 못 읽으면 실패한다. `competency.org`
   `#+email` 폴백은 **`resume/` 자체가 없을 때(패키지 실행)만** 탄다.
 - 회귀: `./test_contact.py` — 임시 사본 트리에서 자리표시·다른 주소·정본 파싱 불가·패키지 폴백을

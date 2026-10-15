@@ -8,7 +8,7 @@
 #+cv_pdf_name: KimJunghan_Resume_Software_Engineer
 #+CV_GOQUAL_MODULES: smart-hub domain-agents on-device-ai ai-infra
 #+CV_INDEPENDENT_MODULES: platform-operations entwurf agent-config corpus-tools memex-kb
-#+EXCLUDE_TAGS: catalog corpus
+#+EXCLUDE_TAGS: noexport catalog corpus
 
 #+INCLUDE: "../pipeline/preamble.org"
 
