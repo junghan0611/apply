@@ -1,6 +1,6 @@
 #+title: 역량·성과·포트폴리오 상세 — 검증과 인터뷰용 원문
 #+author: 김정한 (Junghan Kim)
-#+email: [email removed]
+#+email: junghanacs@gmail.com
 #+language: ko
 #+options: toc:t num:nil author:nil date:nil broken-links:t
 #+bibliography: references.bib

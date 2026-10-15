@@ -26,7 +26,8 @@
 #   문서가 나온다. pandoc·poppler 는 PATH 우선, 없으면 ax flake 경유(AXRUN).
 #
 # 사용법:
-#   ./run.sh check         # 의존성 점검
+#   ./run.sh check         # 의존성 점검 + 소스 연락처 대조
+#   ./run.sh contact       # 소스 연락처만 대조 (정본 이메일 · 정제 자리표시)
 #   ./run.sh competency    # ① 역량·성과 기술서 (PDF + ODT/DOC)
 #   ./run.sh portfolio     # ② 포트폴리오 (PDF + ODT/DOC)
 #   ./run.sh detail        # ③ competency·portfolio·detail Markdown 3종
@@ -85,6 +86,73 @@ declare -A FINAL=(
   [portfolio]="KimJunghan_AX_Portfolio"
 )
 
+# ── 연락처 ────────────────────────────────────────────────────────────────────
+# 소유자 이메일의 정본은 resume/pipeline/preamble.org 표제 블록의 mailto 다(2026-09-20 공개
+# opt-in). 이 디렉터리의 소스는 증거 패키지가 resume/ 없이 혼자 돌아야 해서 같은 주소를 사본으로
+# 쥔다 — 사본을 없애지 못하는 대신 정본과 대조해 묶는다.
+#
+# 2026-10-15: history 정제가 소스의 주소와 이 파일의 검사 패턴을 같은 `[email removed]` 로
+# 바꿔 놓아, verify 가 「자리표시가 보이면 이메일 노출 ok」로 뒤집혀 있었다(resume 은 09-20 에
+# 같은 사고를 고쳤다). 그래서 자리표시는 어디서 보이든 하드 실패이고, 통과 조건은 형식이 아니라
+# **정본 주소 그 자체**다.
+OWNER_SSOT="$DIR/../resume/pipeline/preamble.org"
+EMAIL_RE='[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}'
+REDACTED_EMAIL='[email removed]'
+CONTACT_SOURCES=(competency.org portfolio.org detail.org)
+
+# 정본 이메일 한 줄을 stdout 으로. 메시지는 stderr — 명령 치환으로 받는 함수다.
+# resume/ 가 있는데 정본을 못 읽으면 실패다. 패키지 폴백은 resume/ 자체가 없을 때만 —
+# 폴백이 파싱 실패를 덮으면 정본이 깨진 것을 아무도 모른다.
+owner_email() {
+  local email origin
+  if [[ -d "$DIR/../resume" ]]; then
+    origin="$OWNER_SSOT"
+    [[ -f "$OWNER_SSOT" ]] || { err "연락처 정본 없음: $OWNER_SSOT"; return 1; }
+    email="$(grep -m1 -oE 'mailto:[^}]+' "$OWNER_SSOT" || true)"
+    email="${email#mailto:}"
+  else
+    origin="$DIR/competency.org #+email (resume/ 없음 — 패키지 실행으로 본다)"
+    email="$(awk 'tolower($1)=="#+email:"{sub(/^[^:]*:[ \t]*/, ""); sub(/[ \t]+$/, ""); print; exit}' "$DIR/competency.org" 2>/dev/null || true)"
+    info "연락처 정본: $origin" >&2
+  fi
+  [[ "$email" != *"$REDACTED_EMAIL"* ]] || { err "연락처 정본이 정제 자리표시다: $origin"; return 1; }
+  [[ "$email" =~ ^${EMAIL_RE}$ ]] || { err "연락처 정본에서 이메일을 읽지 못했다(「$email」): $origin"; return 1; }
+  printf '%s\n' "$email"
+}
+
+# 소스 연락처 대조 — 빌드 전에 멈춘다. 재빌드한 뒤 PDF 에서 발견하면 이미 늦다.
+cmd_contact() {
+  local email f fail=0 bad
+  email="$(owner_email)" || return 1
+  for f in "${CONTACT_SOURCES[@]}"; do
+    [[ -f "$DIR/$f" ]] || continue
+    if grep -qF "$REDACTED_EMAIL" "$DIR/$f"; then
+      err "  $f: 이메일 자리에 정제 자리표시 — $(grep -nF "$REDACTED_EMAIL" "$DIR/$f" | cut -d: -f1 | paste -sd, -)행"; fail=1
+    fi
+    # #+email 과 모든 mailto 는 정본 주소 그 자체여야 한다.
+    # 값은 줄 끝까지 — `$2` 로 자르면 `[email removed]` 가 `[email` 로 잘려 진단이 틀린다.
+    bad="$( { awk 'tolower($1)=="#+email:"{sub(/^[^:]*:[ \t]*/, ""); sub(/[ \t]+$/, ""); print}' "$DIR/$f"
+              grep -oE 'mailto:[^"}]+' "$DIR/$f" | sed 's/^mailto://'; } | grep -vxF "$email" || true)"
+    [[ -z "$bad" ]] || { err "  $f: 정본과 다른 연락처 — $(paste -sd, - <<<"$bad")"; fail=1; }
+    grep -qiE '^#\+email:' "$DIR/$f" || { err "  $f: #+email 없음"; fail=1; }
+  done
+  [[ $fail -eq 0 ]] && ok "소스 연락처 = 정본 ($email)" || { err "소스 연락처 대조 실패"; return 1; }
+}
+
+# 산출물 텍스트의 이메일 — 자리표시는 하드 실패, 정본 주소가 그대로 보여야 통과.
+email_gate() {
+  local txt="$1" email="$2"
+  if [[ "$txt" == *"$REDACTED_EMAIL"* ]]; then
+    err "  이메일 자리에 정제 자리표시(\`$REDACTED_EMAIL\`) 노출 — 소스가 정제된 채 빌드됐다"; return 1
+  elif grep -qF "$email" <<<"$txt"; then
+    ok "  이메일 노출 ($email)"
+  elif grep -qE "$EMAIL_RE" <<<"$txt"; then
+    err "  정본과 다른 이메일만 보인다 — 정본: $email"; return 1
+  else
+    err "  이메일 안 보임"; return 1
+  fi
+}
+
 cmd_check() {
   command -v emacs       >/dev/null && ok "emacs: $(emacs --version | head -1)" || { err "emacs 없음"; exit 1; }
   # libreoffice 는 ODT→DOC 한 걸음에만 쓴다. 그런데 그 트랙의 스타일 마스터
@@ -126,6 +194,7 @@ PY
   info "ax flake 경유 도구 점검(pandoc/pdftotext)…"
   AXRUN pandoc --version >/dev/null 2>&1 && ok "pandoc (ax flake)"              || warn "pandoc 확인 실패"
   AXRUN pdftotext -v      >/dev/null 2>&1 && ok "pdftotext/pdfinfo (ax flake)"  || warn "poppler 확인 실패"
+  cmd_contact || exit 1
 }
 
 # org → tex → xelatex, build/<FINAL>.pdf 로.
@@ -237,7 +306,8 @@ cmd_detail() {
 
 # 산출물 검수 — 페이지수, 캡션 번호, :noexport 누출, 연락처/URL.
 cmd_verify() {
-  local fail=0
+  local fail=0 email
+  email="$(owner_email)" || return 1
   for key in competency portfolio; do
     local base="${FINAL[$key]}" pdf="$BUILD/${FINAL[$key]}.pdf"
     [[ -f "$pdf" ]] || { err "$pdf 없음 — verify 는 산출물이 있어야 성립한다"; fail=1; continue; }
@@ -246,13 +316,14 @@ cmd_verify() {
     # nix develop 경유 poppler가 드물게 성공 코드와 빈 stdout 또는 첫 페이지가 빠진 출력을 돌려준 적이
     # 있다. 후자는 본문이 남아 있으므로 빈 출력 검사만으로는 통과해, 이메일·URL 경고가 실행마다
     # 옮겨 다닌다. 모든 제출 PDF의 1쪽에 있어야 하는 이메일을 sentinel로 삼아 한 번 재시도한다.
-    if [[ -z "${txt//[[:space:]]/}" || "$txt" != *"[email removed]"* ]]; then
+    # sentinel 은 정본 주소다 — 자리표시를 sentinel 로 두면 정제된 PDF 가 「1쪽 있음」으로 읽힌다.
+    if [[ -z "${txt//[[:space:]]/}" || "$txt" != *"$email"* ]]; then
       sleep 0.2
       txt="$(AXRUN pdftotext -layout "$pdf" - 2>/dev/null || true)"
     fi
     # Poppler 재시도 뒤에도 첫 페이지가 빠지면, 이 호스트에 있는 Ghostscript txtwrite로 판독을
     # 폴백한다. PDF 본문 검사 자체를 건너뛰는 것이 아니라 다른 추출기로 같은 sentinel을 확인한다.
-    if [[ -z "${txt//[[:space:]]/}" || "$txt" != *"[email removed]"* ]] && command -v gs >/dev/null; then
+    if [[ -z "${txt//[[:space:]]/}" || "$txt" != *"$email"* ]] && command -v gs >/dev/null; then
       local gs_txt
       gs_txt="$(gs -q -sDEVICE=txtwrite -o - "$pdf" 2>/dev/null || true)"
       # Poppler의 본문·캡션 레이아웃과 Ghostscript의 1쪽 헤더가 서로 보완된다. 어느 한쪽이
@@ -260,9 +331,11 @@ cmd_verify() {
       txt+=$'\n'
       txt+="$gs_txt"
     fi
-    if [[ -z "${txt//[[:space:]]/}" || "$txt" != *"[email removed]"* ]]; then
-      err "  PDF 텍스트 추출 실패(2회 Poppler + Ghostscript 첫 페이지 누락): $pdf"; fail=1; continue
+    if [[ -z "${txt//[[:space:]]/}" ]]; then
+      err "  PDF 텍스트 추출 실패(2회 Poppler + Ghostscript): $pdf"; fail=1; continue
     fi
+    # 본문은 읽혔는데 정본 주소가 없으면 추출 실패가 아니라 연락처 실패다 — 아래 email_gate 가
+    # 자리표시·다른 주소·부재를 구분해 말한다. 여기서 `continue` 하면 그 구분이 사라진다.
     local pages; pages="$(AXRUN pdfinfo "$pdf" 2>/dev/null | awk '/^Pages/{print $2}')"
     echo "── $base.pdf (${pages}p) ──"
     # 판면 크기. 제출처가 A4 를 전제하므로 letterpaper 로 새는 것은 통과시키지 않는다.
@@ -292,7 +365,7 @@ cmd_verify() {
     if grep -qiE 'noexport|생성 프롬프트|IMAGE PROMPT|TODO|검토 메모' <<<"$txt"; then warn "  :noexport 내용 누출 의심"; fail=1; else ok "  :noexport 누출 없음"; fi
     # 연락처 + 대표 URL. set -o pipefail 아래에서 `echo "$txt" | grep -q`는 grep 조기 종료 뒤
     # echo가 SIGPIPE로 실패해 거짓 경고를 낼 수 있으므로 here-string으로 검사한다.
-    grep -q '[email removed]' <<<"$txt" && ok "  이메일 노출" || { warn "  이메일 안 보임"; fail=1; }
+    email_gate "$txt" "$email" || fail=1
     grep -q 'github.com/junghan0611' <<<"$txt" && ok "  GitHub URL 노출" || { warn "  GitHub URL 안 보임"; fail=1; }
     # 공개 증거면. 이 깊이 문서는 gitignore 된 제출본이라 받는 사람이 공개면으로 건너갈 자리가
     # 여기 말고 없다. 연락처 줄에서 빠지면 조용히 사라지므로 산출물 텍스트에서 직접 확인한다.
@@ -421,18 +494,23 @@ cmd_package() {
   info "ZIP 내용:"; ( cd "$S" && find . -type f | LC_ALL=C sort | sed 's#^\./#    #' )
 }
 
+# `source run.sh` 는 함수만 싣는다 — 회귀 검사(test_contact.py)가 email_gate 를 직접 부른다.
+if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then return 0; fi
+
 cd "$DIR"
 case "${1:-all}" in
   check)      cmd_check ;;
-  competency) build_tex competency; build_pdf competency ;;
-  portfolio)  build_tex portfolio;  build_pdf portfolio ;;
-  detail)     cmd_detail ;;
+  contact)    cmd_contact ;;
+  competency) cmd_contact; build_tex competency; build_pdf competency ;;
+  portfolio)  cmd_contact; build_tex portfolio;  build_pdf portfolio ;;
+  detail)     cmd_contact; cmd_detail ;;
   images)     cmd_images ;;
-  all)        build_tex competency; build_pdf competency
+  all)        cmd_contact
+              build_tex competency; build_pdf competency
               build_tex portfolio;  build_pdf portfolio
               cmd_detail; cmd_verify ;;
   verify)     cmd_verify ;;
   package)    cmd_package ;;
   clean)      cmd_clean ;;
-  *) echo "사용법: ./run.sh {check|competency|portfolio|detail|images|all|verify|package|clean}"; exit 1 ;;
+  *) echo "사용법: ./run.sh {check|contact|competency|portfolio|detail|images|all|verify|package|clean}"; exit 1 ;;
 esac

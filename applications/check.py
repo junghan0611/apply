@@ -10,7 +10,9 @@
   실제로 2026-07-30 아침 AIRS 조준판이 그대로 남아 있었다. 사람이 눈으로 볼 수 없는 사고라
   기계가 잡는다.
 """
-from pathlib import Path
+from collections import Counter
+from fnmatch import fnmatchcase
+from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import sys
@@ -198,38 +200,89 @@ PRIVATE_ARTIFACT_GLOBS = (
 )
 
 
-def public_faults(root: Path) -> list[str]:
-	"""공개 계약: private artifact 가 저장소 안에 없다.
+def private_kind(rel: str) -> str | None:
+	"""저장소 상대 경로가 private artifact 범주에 들면 그 범주를, 아니면 None."""
+	p = PurePosixPath(rel)
+	for pattern, why in PRIVATE_ARTIFACT_GLOBS:
+		tail = pattern.removeprefix("**/")
+		if tail.startswith("*.") and "/" not in tail:
+			# `pathlib.glob` 은 대소문자를 가린다 — `x.PDF` 가 `**/*.pdf` 에 안 걸린다.
+			# 확장자 규칙은 소문자로 정규화해서 직접 본다. 게이트가 대문자 하나로 뚫리면
+			# 그건 게이트가 아니라 관습이다.
+			if p.suffix.lower() == tail[1:].lower():
+				return why
+		elif "/" in tail:
+			# `assignment/*` — 그 디렉터리 아래면 깊이와 무관하게 private 이다.
+			head, leaf = tail.rsplit("/", 1)
+			if any(fnmatchcase(a, head) for a in p.parts[:-1]) and fnmatchcase(p.name, leaf):
+				return why
+		elif fnmatchcase(p.name, tail):
+			return why
+	return None
+
+
+def git_paths(root: Path, *args: str) -> list[str] | None:
+	"""`git ls-files -z` 경로 목록. git 이 없거나 비정상 종료하면 None — 빈 목록과 구분한다."""
+	try:
+		out = subprocess.run(
+			["git", "-C", str(root), "ls-files", "-z", *args],
+			capture_output=True, timeout=60,
+		)
+	except (FileNotFoundError, subprocess.SubprocessError):
+		return None
+	if out.returncode != 0:
+		return None
+	return [p for p in out.stdout.decode("utf-8", "surrogateescape").split("\0") if p]
+
+
+def public_faults(root: Path) -> tuple[list[str], list[str]]:
+	"""공개 계약: private artifact 가 **공개 후보 집합** 안에 없다. (실패, 정보) 를 돌려준다.
 
 	원본 바이트 대조(`digest_faults`)는 private 보관면의 불변식이고, 공개면에서는
 	**파일이 없는 것이 정상**이다. 그쪽은 이미 「있는 파일만 비교」로 통과한다.
 	여기서 보는 것은 반대 방향 — 있으면 안 되는 것이 다시 들어왔는가.
+
+	공개 후보 = git 추적 파일 + 추적 안 됐지만 ignore 되지도 않은 파일(다음 `git add .` 에
+	실릴 것). **gitignore 된 로컬 사본은 공개 후보가 아니다** — 업로드한 바로 그 파일을 두는
+	private 제출 보관면이 이 작업 트리 안의 `submit/` 이고(`.gitignore`), 그것을 실패로 세면
+	게이트가 늘 빨간불이라 아무도 안 보게 된다(2026-10-15 실측: 58건 전부 그쪽이었다).
+	ignore 된 쪽은 실패가 아니라 범주별 건수로만 알린다.
+
+	⚠ 이것은 **작업 트리 게이트**다. history 와 blob 전수는 `scripts/check-public.sh` 가 본다 —
+	여기를 통과했다고 history 가 깨끗하다는 뜻이 아니다.
 	"""
+	notes = []
+	candidates = git_paths(root, "--cached", "--others", "--exclude-standard")
+	if candidates is None:
+		# git 목록을 못 얻으면 무엇이 공개 후보인지 모른다. 좁히지 않고 파일시스템 전체를
+		# 본다 — 모르는 채 통과시키는 쪽으로 기울지 않는다(fail-closed).
+		notes.append("git 목록을 얻지 못해 파일시스템 전체를 공개 후보로 본다(fail-closed)")
+		candidates = [
+			p.relative_to(root).as_posix() for p in root.rglob("*")
+			if p.is_file() and ".git" not in p.relative_to(root).parts
+		]
 	out = []
-	seen: set[Path] = set()
-	for pattern, why in PRIVATE_ARTIFACT_GLOBS:
-		# `pathlib.glob` 은 대소문자를 가린다 — `x.PDF` 가 `**/*.pdf` 에 안 걸린다.
-		# 확장자 규칙은 소문자로 정규화해서 직접 본다. 게이트가 대문자 하나로 뚫리면
-		# 그건 게이트가 아니라 관습이다.
-		if pattern.startswith("**/*."):
-			suffix = pattern[len("**/*"):].lower()
-			hits = (p for p in root.rglob("*") if p.is_file() and p.suffix.lower() == suffix)
-		else:
-			hits = root.glob(pattern)
-		for hit in sorted(hits):
-			if ".git/" in str(hit) or hit in seen:
-				continue
-			seen.add(hit)
-			out.append(f"{hit.relative_to(root)}: {why} — 공개 저장소에 두지 않는다")
-	return out
+	for rel in sorted(set(candidates)):
+		why = private_kind(rel)
+		if why:
+			out.append(f"{rel}: {why} — 공개 저장소에 두지 않는다")
+	ignored = git_paths(root, "--others", "--ignored", "--exclude-standard")
+	if ignored:
+		kinds = Counter(k for k in map(private_kind, ignored) if k)
+		if kinds:
+			detail = " · ".join(f"{k} {n}" for k, n in sorted(kinds.items()))
+			notes.append(f"로컬 private 보관면(gitignored) {sum(kinds.values())}건 — 공개 후보 아님: {detail}")
+	return out, notes
 
 
 def main():
 	deep = "--deep" in sys.argv[1:]
 	public = "--public" in sys.argv[1:]
 	fails = []
+	notes = []
 	if public:
-		fails += public_faults(ROOT.parent if ROOT.name == "applications" else ROOT)
+		public_fails, notes = public_faults(ROOT.parent if ROOT.name == "applications" else ROOT)
+		fails += public_fails
 	checked = 0
 	deep_seen = 0
 	fails += list(unknown_status_rows(LEDGER.read_text()))
@@ -269,13 +322,15 @@ def main():
 			deep_seen += len(list((dirpath / "submit").glob(f"{DEPTH_DOC}*.pdf")))
 			fails += leaks
 
+	for note in notes:
+		print(f"[info] {note}", file=sys.stderr)
 	if fails:
 		print(f"FAIL {len(fails)} — {checked}건 검사", file=sys.stderr)
 		for item in fails:
 			print("  " + item, file=sys.stderr)
 		return 1
 	tail = f" · 깊이 문서 {deep_seen}개 조준 검사 통과" if deep else ""
-	tail += " · 공개 계약(private artifact 부재) 통과" if public else ""
+	tail += " · 공개 후보(추적+미추적·비ignore)에 private artifact 없음" if public else ""
 	print(f"ok — LEDGER/submission/submit {checked}건 일치{tail}")
 	return 0
 

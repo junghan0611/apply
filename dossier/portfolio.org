@@ -1,6 +1,6 @@
 #+title: 포트폴리오 — 모델 역량을 조직의 작업면으로
 #+author: 김정한 (Junghan Kim)
-#+email: [email removed]
+#+email: junghanacs@gmail.com
 #+language: ko
 #+options: toc:nil num:nil author:nil date:nil broken-links:t
 #+bibliography: references.bib
@@ -18,7 +18,7 @@
   \institution{PKM-AI Harness Engineer \textperiodcentered\ From Embedded Systems to Shared Agent Work Surfaces}%
   \country{Republic of Korea}%
   \institution{\unskip\newline\normalfont
-    \href{mailto:[email removed]}{[email removed]} \textperiodcentered\
+    \href{mailto:junghanacs@gmail.com}{junghanacs@gmail.com} \textperiodcentered\
     \href{https://github.com/junghan0611}{github.com/junghan0611} \textperiodcentered\
     \href{https://ax.junghanacs.com}{ax.junghanacs.com}\newline
     \href{https://notes.junghanacs.com}{notes.junghanacs.com} \textperiodcentered\
@@ -37,7 +37,7 @@
 # 문단 스타일(OrgSubtitle·OrgCenter)을 직접 지정한다 — reference.odt 가 그 정의를 쥔다.
 #+begin_export odt
 <text:p text:style-name="OrgSubtitle">모델 역량을 조직의 작업면으로</text:p>
-<text:p text:style-name="OrgCenter">김정한 (Junghan Kim) · PKM-AI Harness Engineer · From Embedded Systems to Shared Agent Work Surfaces · <text:a xlink:type="simple" xlink:href="mailto:[email removed]">[email removed]</text:a></text:p>
+<text:p text:style-name="OrgCenter">김정한 (Junghan Kim) · PKM-AI Harness Engineer · From Embedded Systems to Shared Agent Work Surfaces · <text:a xlink:type="simple" xlink:href="mailto:junghanacs@gmail.com">junghanacs@gmail.com</text:a></text:p>
 <text:p text:style-name="OrgCenter"><text:a xlink:type="simple" xlink:href="https://github.com/junghan0611">github.com/junghan0611</text:a> · <text:a xlink:type="simple" xlink:href="https://ax.junghanacs.com">ax.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://notes.junghanacs.com">notes.junghanacs.com</text:a> · <text:a xlink:type="simple" xlink:href="https://www.linkedin.com/in/junghan-kim-1489a4306">linkedin.com/in/junghan-kim-1489a4306</text:a></text:p>
 #+end_export
 

@@ -41,7 +41,7 @@
 | AIRS Medical | AX Engineer | rejected | 2026-07-30 · **서류전형 불합격 통보 2026-08-06** | 그리팅 (자체 도메인) | DevEx + Competency + Portfolio | `airs-medical--ax-engineer` |
 | GE HealthCare 🌐 | Senior Software Engineer | draft | — | **Workday** (공식 외부 사이트) | 미정 — Systems Software 컷 판단 | `ge-healthcare--senior-software-engineer` |
 | XCENA (엑시나) | System Software 계열 — **회사 스캔 23건** | held | — | 그리팅 (자체 도메인) | — (목록만 · 2026-07-28 `held`) · ⚠ 실제 지원 건은 아래 BSP 행 | `xcena--system-software` |
-| XCENA (엑시나) | **SW 임베디드 시스템 BSP 엔지니어** (경력 3년+) | interview | **2026-09-20** · **1차 화상인터뷰 요청 2026-10-01 · 일정 확정 2026-10-02 · 면접 2026-10-13(화) 10:00(GLG 보고)** | **그리팅** `xcena/110624` (로그인 없음) | Embedded + **국문 자기소개서 2쪽** (`submit/`) — 서술형 칸 없음 | `xcena--embedded-system-bsp-engineer` |
+| XCENA (엑시나) | **SW 임베디드 시스템 BSP 엔지니어** (경력 3년+) | interview | **2026-09-20** · **1차 화상인터뷰 요청 2026-10-01 · 일정 확정 2026-10-02 · 면접 2026-10-13(화) 10:00 · 결과 대기(2026-10-15 GLG 보고)** | **그리팅** `xcena/110624` (로그인 없음) | Embedded + **국문 자기소개서 2쪽** (`submit/`) — 서술형 칸 없음 | `xcena--embedded-system-bsp-engineer` |
 | Holiday Robotics | Forward Deployed Robotics Engineer (3–8년) | submitted | 2026-07-30 | 자체 채용홈 `holiday-robotics.com` (로그인 없음) | FDE + **커버레터** | `holiday-robotics--forward-deployed-robotics-engineer` |
 | Hanwha Vision (한화비전) | AI Agent Architecture Lead (석사+10년, Director) | submitted | 2026-07-30 | **ninehire** `6NDP9uTE` (로그인 없음) | AI Engineer + **전용 포트폴리오 합본 18쪽** (`submit/`) — 서술형 칸 없음 | `hanwha-vision--ai-agent-architecture-lead` |
 | NHN | LLM 기술 개발 (LLM / Agent) — **NHN 2번째 건** | draft | — | **`careers.nhn.com`** — ⚠ **로그인 필요** | AI Engineer + **포트폴리오 필수** | `nhn--llm-technology-development-llm-agent` |

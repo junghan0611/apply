@@ -24,6 +24,15 @@
   gone    4xx/5xx (429 는 제외 — 아래)
   limited 429. 상대가 긁는 것을 막은 것이지 공고가 죽은 것이 아니다
   ?       네트워크 실패. 다시 돌린다
+  invalid 대상 항목 자체가 깨졌다 — 요청을 보내지 않았다. TARGETS 를 고친다
+  error   이 도구가 그 한 건에서 예외로 멈췄다. 공고 상태는 모른다
+
+## 한 건이 전체를 죽이지 않는다 — 2026-10-15 실패에서 나온 규칙
+
+history 정제(`docs/HISTORY-REDACTION.md`)가 Ashby posting id 를 `[uuid removed]` 로 바꿔
+두었고, 그 URL 이 `urllib` 안에서 `InvalidURL` 을 던져 **스물두 건 전체가 한 줄도 못 찍고
+죽었다.** 그래서 대상은 요청 전에 검증하고(`invalid`), 그래도 새는 예외는 그 행에만
+가둔다(`error`). 둘 다 **성공으로 치지 않는다** — 열림을 확인하지 못한 것은 열림이 아니다.
 """
 
 from __future__ import annotations
@@ -33,6 +42,7 @@ import json
 import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 
 UA = (
@@ -169,9 +179,43 @@ ADAPTERS = {
 	"plain": check_plain,
 }
 
+# history 정제가 남긴 자리표시 — `[uuid removed]` · `[email removed]` 류.
+REDACTED = re.compile(r"\[[^\]]*removed[^\]]*\]", re.I)
+ASHBY_URL = re.compile(r"https://jobs\.ashbyhq\.com/[^/]+/[0-9a-f-]{36}(/|$)")
+
+
+def target_fault(url: str, ats: str) -> str | None:
+	"""요청을 보내기 전에 대상 항목이 성립하는지 본다. 깨졌으면 이유를, 아니면 None."""
+	if ats not in ADAPTERS:
+		return f"ATS 키 「{ats}」 에 어댑터가 없다"
+	m = REDACTED.search(url)
+	if m:
+		return f"URL 에 정제 자리표시 「{m.group(0)}」 — 원본 URL 을 다시 받아 TARGETS 를 고친다"
+	try:
+		parts = urllib.parse.urlsplit(url)
+	except ValueError as e:
+		return f"URL 파싱 실패 ({e})"
+	if parts.scheme not in ("http", "https") or not parts.netloc:
+		return f"URL 에 http(s) 스킴/호스트가 없다 ({url[:60]})"
+	if re.search(r"[\s<>\"\[\]]", url):
+		return "URL 에 공백이나 허용되지 않는 문자가 있다"
+	if ats == "ashby" and not ASHBY_URL.match(url):
+		return "Ashby URL 에서 슬러그/posting id(36자) 를 못 뽑는다"
+	return None
+
 
 def probe(item: tuple[str, str, str]) -> tuple[str, str, str, str]:
 	name, url, ats = item
+	fault = target_fault(url, ats)
+	if fault:
+		return (name, ats, "invalid", fault)
+	try:
+		return _probe(name, url, ats)
+	except Exception as e:  # noqa: BLE001 — 한 건의 예외를 그 행에 가둔다
+		return (name, ats, "error", f"{type(e).__name__}: {str(e)[:80]}")
+
+
+def _probe(name: str, url: str, ats: str) -> tuple[str, str, str, str]:
 	f = fetch(url)
 	if isinstance(f, str):
 		if f == "HTTP 429":
@@ -193,22 +237,32 @@ def main() -> int:
 	with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
 		rows = list(pool.map(probe, targets))
 
-	mark = {"open": "✅", "closed": "⛔", "gone": "⛔", "http": "·", "limited": "🔒", "?": "⚠"}
+	mark = {"open": "✅", "closed": "⛔", "gone": "⛔", "http": "·", "limited": "🔒", "?": "⚠",
+	        "invalid": "✖", "error": "✖"}
 	width = max(len(r[0]) for r in rows)
 	for name, ats, verdict, note in rows:
 		print(f"{mark[verdict]} {name.ljust(width)}  {verdict.ljust(8)} {ats:<10} {note}")
 
 	dead = [r for r in rows if r[2] in ("closed", "gone")]
+	broken = [r for r in rows if r[2] in ("invalid", "error")]
 	print()
 	print(f"{len(rows)}건 · 열림확인 {sum(1 for r in rows if r[2] == 'open')} · "
 	      f"미판정 {sum(1 for r in rows if r[2] == 'http')} · "
 	      f"닫힘 {len(dead)} · 차단 {sum(1 for r in rows if r[2] == 'limited')} · "
-	      f"미상 {sum(1 for r in rows if r[2] == '?')}")
+	      f"미상 {sum(1 for r in rows if r[2] == '?')} · "
+	      f"무효 {len(broken)}")
 	if dead:
-		print("\n⛔ 닫힌 건 — 제출 전에 원장을 `closed` 로 고친다:")
+		# 닫힌 것은 **채용 요청**이지 **전형 결과**가 아니다. 이미 낸 건은 공고가 내려가도
+		# 전형이 계속된다 — 이 출력으로 결과 원장을 자동으로 고치지 않는다(2026-10-15).
+		print("\n⛔ 닫힌 공고 — 아직 내지 않은 건이면 제출 후보에서 다시 판정한다.")
+		print("   이미 낸 건(submitted 이후)의 원장 상태는 이것으로 바꾸지 않는다 — 전형 결과가 아니다:")
 		for name, _, _, note in dead:
 			print(f"   {name} — {note}")
-	return 1 if dead else 0
+	if broken:
+		print("\n✖ 확인하지 못한 건 — 열림이 아니다. 대상 항목(TARGETS)이나 이 도구를 고친다:")
+		for name, _, verdict, note in broken:
+			print(f"   {name} [{verdict}] — {note}")
+	return 1 if dead or broken else 0
 
 
 if __name__ == "__main__":

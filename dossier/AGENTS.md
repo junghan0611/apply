@@ -144,6 +144,25 @@ v3 는 성능 수치만 뺐는데 **v4 는 자가 측정 작업량 수치까지 
   ⚠ 연락처 줄은 다섯 항목이라 **한 줄에 안 들어간다.** `ax` 뒤에 `\newline` 을 넣어 두 줄로
   가른 상태이며, 이걸 지우면 `Overfull \hbox` 로 LinkedIn URL 이 판면 밖으로 나간다.
 
+## 연락처 — 정본은 resume 표제 블록이다 (2026-10-15)
+
+소유자 이메일의 정본은 `resume/pipeline/preamble.org` 표제 블록의 `mailto` 다. 이 레인의 소스
+(`competency.org`·`portfolio.org` 의 `#+email`·LaTeX `\href`·ODT `xlink:href`, `detail.org` 의
+`#+email`)는 같은 주소의 **사본**이다 — 증거 패키지가 `resume/` 없이 혼자 돌아야 해서 없애지 못한다.
+대신 `run.sh` 가 정본과 대조해 묶는다.
+
+- `./run.sh contact` — 소스 대조. `check` 와 모든 빌드 명령(`competency`·`portfolio`·`detail`·`all`)이
+  먼저 부른다. 정제 자리표시 `[email removed]` 는 어디 있든 하드 실패, `#+email`·`mailto` 가 정본과
+  다르면 실패.
+- `verify` — PDF 텍스트에 자리표시가 보이면 하드 실패, 통과 조건은 형식이 아니라 **정본 주소 그 자체**.
+- 정본 해석: `resume/` 가 있으면 반드시 그 파일에서 읽고, 못 읽으면 실패한다. `competency.org`
+  `#+email` 폴백은 **`resume/` 자체가 없을 때(패키지 실행)만** 탄다.
+- 회귀: `./test_contact.py` — 임시 사본 트리에서 자리표시·다른 주소·정본 파싱 불가·패키지 폴백을
+  주입한다. 실파일과 `build/` 는 건드리지 않는다.
+- 왜: history 정제가 소스 주소와 verify 의 검사 패턴을 같은 자리표시로 바꿔, verify 가
+  「자리표시가 보이면 이메일 노출 ok」로 뒤집혀 있었다. resume 은 09-20 에 같은 사고를 고쳤고 이
+  레인에는 남아 있었다.
+
 ## 공개 경계
 
 - 이 저장소는 공개다. 고객사 비밀·내부 endpoint·원시 데이터·개인정보·법적 값은 쓰지 않는다.
