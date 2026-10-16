@@ -167,6 +167,10 @@ applications/wanted.py tags                   # 직무 카테고리 id
 
 ## 5. 문서 파이프라인 — 사실 한 벌에서 타깃마다 **생성**한다
 
+**2026-10-16:** 현재 편집 원문은 `resume/body.org`, dossier는 `docs/samples/dossier/`에 보관한
+독립 과거 샘플이다. 옛 `dossier/build` 첨부·제출 지문은 보존하되 샘플을 현재 정본이나
+자동 재빌드 선행조건으로 쓰지 않는다. GLG의 추가 글 검수와 제출 승인은 생성 시스템 검수와 별개다.
+
 같은 문장을 여섯 군데 깔아 둔 이력서 폴더는 흔하다. 이 리포는 반대로 간다 — **사실은 한 벌이고
 타깃은 렌더된다.** 파이프라인 자체가 이 리포의 기술적 주장이므로 여기를 무너뜨리면 주장이 사라진다.
 
@@ -320,7 +324,7 @@ applications/alive.py                  # 제출 직전 공고 생존 — 아래 
 ```bash
 python3 applications/test_alive.py
 python3 applications/test_check.py
-python3 dossier/test_contact.py
+python3 docs/samples/dossier/test_contact.py
 ```
 실패주입은 임시 사본에서 수행한다. 공고 마감은 지원 전 후보 재판정 근거이지 이미 제출한 전형 결과를 자동 `closed`로 바꾸는 근거가 아니다.
 

@@ -87,7 +87,7 @@ raw 폼과 법적 값은 private Org가 소유하며 이 저장소에 사본을 
 | 탐색 | `.claude/skills/linkedin-jobs/` | 공개 카드 · 포스트, 원문 요건, 근무지 확신도, 랭킹 근거, 추천 컷 | 로그인, 개인 필드, 제출 |
 | 문서 | `resume/` | 공통 사실·국문/영문 표현, 이력서·시스템 포트폴리오 뷰, 직무별 선택·순서, 공개 근거와 PDF | ATS 상태, 지원 원장 |
 | 제출 | `applications/` | JD 요약·출처, 공개 가능한 답변, 업로드 지문, 상태 원장 | raw 폼·법적 값·실제 업로드 바이너리 |
-| **dossier 발사대** | `dossier/` | 역량기술서 · 포트폴리오 · 증거패키지 생성, 면접 앵커 | 현재 지원 큐 |
+| 과거 dossier 샘플 | `docs/samples/dossier/` | 독립 장문 문서·생성기 역사 자료 | 현재 경력 정본·자동 제출 입력 |
 | 메타 검수 | 루트 문서 · `scripts/` | 계약, 모순 검사, 핸드오프 | 남의 레인 구현을 말없이 다시 여는 것 |
 
 한 에이전트가 "도와준다"며 다른 레인을 편집하지 않는다. 체크포인트나 발견한 구멍을 레인 담당에게
@@ -114,8 +114,8 @@ raw 폼과 법적 값은 private Org가 소유하며 이 저장소에 사본을 
 동등성·자동 동기화까지 코드가 보장하지 않으므로 판 이력의 대조 목록을 함께 갱신한다.
 
 확인하지 않은 사실은 지어내지 않는다. 외부 `MATERIAL.md`·연구 기록·공개 코드 등은 원문을 열어
-판독하는 입력이며, 오래된 소재가 더 최신인 정본을 자동으로 덮지 않는다. 기존 `dossier/`는
-독립 장문 문서 세트로 보존하며 `body.org`와 자동 동기화되지 않는다. 이 구조 변경은 베이스 전체
+판독하는 입력이며, 오래된 소재가 더 최신인 정본을 자동으로 덮지 않는다. 기존 dossier는
+`docs/samples/dossier/`에 독립 과거 샘플로 보관하며 `body.org`와 자동 동기화되지 않는다. 이 구조 변경은 베이스 전체
 현재화나 모든 주장 검증이 끝났다는 뜻이 아니다. `:noexport:`는 산출물 제외이지 공개 Git의 비밀 보관 기능이 아니다.
 ⚠ `MATERIAL.md` 는 **이 저장소에 없다.** 프로필 repo 쪽 파일이고, 이 저장소를 clone 한 사람은
 갖고 있지 않다. 여기서 찾다가 「없으니 지어내도 된다」로 가지 않는다 — 없으면 GLG 에게 요청한다.
@@ -356,7 +356,7 @@ terra 교차검수가 이 구분을 되돌려 놓았다.
 - **사건의 시간축**: 날짜 · 시각 · 커밋 SHA · PR 번호. 공개 커밋은 클릭 가능한 링크로 단다.
   **숫자를 뺀 자리는 이것으로 대신한다.**
 
-세부 규칙은 `applications/FAQ.md` §원칙 4 와 `dossier/PORTFOLIO-PLAN.md` §수치 원칙 v4.
+세부 규칙은 `applications/FAQ.md` §원칙 4 와 보관 샘플 `docs/samples/dossier/PORTFOLIO-PLAN.md` §수치 원칙 v4.
 
 ### 정보가 부족할 때 남기는 요청
 
@@ -417,8 +417,10 @@ applications/check.py
 # 이력서 빌드와 PDF 검사
 (cd resume && ./run.sh all && ./run.sh verify)
 
-# dossier 발사대 — dossier/ 를 건드릴 때만
-(cd dossier && ./run.sh check && ./run.sh all && ./run.sh verify)
+# 보관 샘플을 바꿀 때만 — renderer 전체 실행은 현행 제출의 전제조건이 아니다
+python3 docs/samples/dossier/test_contact.py
+python3 docs/samples/dossier/test_figures.py
+python3 docs/samples/dossier/test_bibliography.py
 
 # 공고가 아직 열려 있는가 (제출 직전)
 applications/alive.py

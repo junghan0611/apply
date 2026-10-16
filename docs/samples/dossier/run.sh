@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# NHN AX 제출문서 — Org SSOT → ODT → PDF / Markdown 빌드
+# 보관한 NHN-origin AX 문서 샘플 — Org → ODT → PDF / Markdown 예제
+# 현재 경력 정본은 루트 resume/body.org. 이 예제는 /tmp 소스 사본에서만 실행한다.
+# 연락처 정본 대조는 repo 구조를 유지한 사본에서 한다. 폴더만 복사하면 옛 패키지 폴백이다.
 #
 # 이 저장소는 공개다. 제출본 자체는 채용사에 직접 업로드하고 여기에는 두지 않으며,
 # 고객사·사내 비밀·내부 endpoint·미검수 내부 도해는 소스에 넣지 않는다.
@@ -96,7 +98,8 @@ declare -A FINAL=(
 # 바꿔 놓아, verify 가 「자리표시가 보이면 이메일 노출 ok」로 뒤집혀 있었다(resume 은 09-20 에
 # 같은 사고를 고쳤다). 그래서 자리표시는 어디서 보이든 하드 실패이고, 통과 조건은 형식이 아니라
 # **정본 주소 그 자체**다.
-OWNER_SSOT="$DIR/../resume/pipeline/preamble.org"
+SAMPLE_REPO_ROOT="$(cd "$DIR/../../.." && pwd)"
+OWNER_SSOT="$SAMPLE_REPO_ROOT/resume/pipeline/preamble.org"
 EMAIL_RE='[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}'
 REDACTED_EMAIL='[email removed]'
 CONTACT_SOURCES=(competency.org portfolio.org detail.org)
@@ -106,7 +109,7 @@ CONTACT_SOURCES=(competency.org portfolio.org detail.org)
 # 폴백이 파싱 실패를 덮으면 정본이 깨진 것을 아무도 모른다.
 owner_email() {
   local email origin
-  if [[ -d "$DIR/../resume" ]]; then
+  if [[ -d "$SAMPLE_REPO_ROOT/resume" ]]; then
     origin="$OWNER_SSOT"
     [[ -f "$OWNER_SSOT" ]] || { err "연락처 정본 없음: $OWNER_SSOT"; return 1; }
     email="$(grep -m1 -oE 'mailto:[^}]+' "$OWNER_SSOT" || true)"

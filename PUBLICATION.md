@@ -88,9 +88,10 @@ private archive는 public repo의 branch가 아니며 절대 공개하지 않는
 
 GLG가 이 저장소에도 공개 가능한 이미지를 담고 dossier를 수선하도록 승인했다. 최초 history 정제의 도해 제거 기록은 유지하되, 제거를 모든 미래 이미지의 영구 금지로 해석하지 않는다. 공개 가능한 파일은 내용·권리·주장 범위를 개별 판독한 뒤 새 변경으로 추가한다.
 
-이번 범위는 `dossier/images/README.md`에 출처·SHA-256·판독 기록을 둔 PNG 7장뿐이다. 프로필 저장소에서 공개 판정된 5장과 기존 ODT에서 회수해 육안 검토한 entwurf 개념도 2장이다. 개인/조직 경계·제품 계층을 설명하는 개념도이지 비공개 배포의 증거가 아니다. 미구현 계층과 과거 시점은 캡션에 표시한다.
+이번 범위는 `docs/samples/dossier/images/README.md`에 출처·SHA-256·판독 기록을 둔 PNG 7장뿐이다(10/15 당시 위치는 `dossier/images/`). 프로필 저장소에서 공개 판정된 5장과 기존 ODT에서 회수해 육안 검토한 entwurf 개념도 2장이다. 개인/조직 경계·제품 계층을 설명하는 개념도이지 비공개 배포의 증거가 아니다. 미구현 계층과 과거 시점은 캡션에 표시한다.
 
-- history 게이트는 해당 PNG의 **정확한 파일명 7개**와 판독 README만 예외로 둔다. 같은 폴더의 임의 이미지·`master/`·옛 `nhn/images/`는 계속 차단한다.
+- 2026-10-16 GLG가 dossier 소스를 `docs/samples/dossier/`로 보관하도록 결정했다. 기존 로컬 build/submit은 옮기지 않으며, 현재 경력 편집 정본은 `resume/body.org`다. 샘플은 과거 독립 문서이지 resume의 자동 파생본이 아니다.
+- history 게이트는 해당 PNG의 **정확한 파일명 7개**와 판독 README만 예외로 둔다. 같은 7장에 대해 옛 경로와 새 샘플 경로만 허용하며, 그림 내용·공개 승인·이용권 범위는 바뀌지 않는다. 같은 폴더의 임의 이미지·`master/`·옛 `nhn/images/`는 계속 차단한다.
 - 이미지가 공개 가능하다는 판단은 담당자가 내용을 읽고 GLG 승인 범위를 확인하는 절차다. 파일명 allowlist나 텍스트 스캐너가 그 판단을 대신하지 않는다.
 - 내부 endpoint·고객 식별자·비공개 도해의 일괄 복원은 승인하지 않았다. 제출 PDF/ODT/ZIP을 공개 Git에 넣지 않는 계약도 유지한다.
 - 공개는 재사용 라이선스 부여와 다르다. 이미지의 이용 조건은 `LICENSING.md`를 따른다.
@@ -267,10 +268,10 @@ committer timestamp, subject, parent 수. mismatch 0이어야 하고, 달라진 
 - 홈 디렉터리 리터럴(`$HOME` 를 편 형태) 절대경로 0건;
 - 보상 키워드 43 path 전수 판독에서 확인된 개인 숫자 연봉값 0건이 정제본에서도 유지되는가;
 - `gitleaks`와 `trufflehog` 통과 또는 근거가 기록된 false positive만 존재
-  (`dossier/pipeline/templates/ieee.csl`의 upstream 기여자 이메일은 **지우지 말고** 근거와 함께
+  (`docs/samples/dossier/pipeline/templates/ieee.csl`의 upstream 기여자 이메일은 **지우지 말고** 근거와 함께
   allowlist한다 — 지우면 저작자 표시가 깨져 CC-BY-SA 위반이 된다);
 - 스캐너 미설치/오류는 실패;
-- linkedin-jobs 회귀, `applications/check.py`(public 모드), resume/dossier source build;
+- linkedin-jobs 회귀, `applications/check.py`(public 모드), resume source build와 보관 샘플의 관련 회귀 검사(샘플 renderer 전체 실행은 현행 제출의 전제조건이 아님);
 - 깨진 private path 링크와 공개 URL 검사;
 - `docs/HISTORY-REDACTION.md`의 범주·방법·건수가 실제 rewrite 입력과 일치하는지 대조.
 

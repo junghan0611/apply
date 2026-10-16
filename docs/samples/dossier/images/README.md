@@ -1,5 +1,9 @@
 # dossier/images — 깊이 문서 도해 7장의 출처와 공개 판정
 
+> 2026-10-16: 이 판정표와 같은 PNG 7장을 `docs/samples/dossier/images/`로 보관했다.
+> 바이트·공개 승인·이용권은 바뀌지 않았으며 현재 경력 정본은 루트 `resume/body.org`다.
+> 아래 재도입·제거 경로는 당시의 기록이다.
+
 이 디렉터리의 PNG 는 `competency.org` · `portfolio.org` · `detail.org` 가 `[[file:images/…]]` 로
 참조하는 도해다. 공개 전환(2026-08-27) 때 history 에서 제거됐다가(`docs/HISTORY-REDACTION.md`
 §employer-diagram) **2026-10-15 에 건별 재검토를 거쳐 다시 들였다.** 무엇을 근거로 다시 들였는지가

@@ -1,9 +1,10 @@
 # AGENTS.md — resume/ (국문·영문 이력서 · 포트폴리오 · 타깃별 컷 생성기)
 
 이 디렉터리는 **공고에 첨부하는 이력서·포트폴리오 PDF**를 국문·영문으로 만든다. 2026-10-16 부터
-국문 기본판(시스템 SW 직무 공통)도 여기서 나온다 — 사실 정본은 `body.org` 한 벌이다. NHN 제출
-레인(`../dossier/`)과 목적이 다르다. 저쪽은 공고 하나에 조준한 3종 세트고, 이쪽은 **공통 프레임
-하나에서 타깃별 컷을 뽑는 발사대**다. 하루에 열 곳을 내는 흐름을 전제한다.
+국문 기본판(시스템 SW 직무 공통)도 여기서 나온다 — 사실 정본은 `body.org` 한 벌이다.
+독립 과거 dossier는 `../docs/samples/dossier/`에 보관한 샘플이며 현재 경력 정본이 아니다.
+이 레인이 국문·영문 이력서와 시스템 포트폴리오의 **공통 프레임과 선택 뷰**를 소유한다.
+구조 검수와 GLG의 글 검수·실제 제출 승인은 별개다.
 
 ---
 
@@ -68,7 +69,7 @@ GLG: 「틈틈이 생각하고 업데이트할 하나의 문서는 Org 에 있�
 **`ax.junghanacs.com`**(공개 증거면) → **`www.junghanacs.com`**(대표 홈페이지, 2026-10-15 GLG 결정) → LinkedIn.
 `run.sh` 의 verify 가 **빌드된 PDF 텍스트에서 다섯을 직접 확인**하고 하나라도 없으면 실패한다
 (2026-08-01). 링크 annotation 만 살아 있고 텍스트에서 빠지는 경우가 있어 소스가 아니라
-산출물을 본다 — 같은 이유로 `dossier/run.sh` 도 `ax.junghanacs.com` 을 검사한다.
+산출물을 본다 — 같은 이유로 보관 샘플 `docs/samples/dossier/run.sh`도 `ax.junghanacs.com` 을 검사한다.
 항목을 늘리면 **줄 폭부터 실측한다**(로그의 `Overfull \hbox`).
 
 ## 배열 원칙 — 먼저 통과시키고, 다음에 믿게 한다
@@ -196,7 +197,7 @@ for f in resume/build/*.pdf; do mutool draw -F txt "$f" | grep -nE '96%|163|2,94
   경계(not used)를 섞지 않는다. 특히 AI 컷은 모델 학습 전문가를 주장하지 않는다.
 - **`A2A` 는 스택에 유지한다 (2026-07-28 GLG 확정).** 지우지 말 것 — 한 번 "구현 증거 없음"
   으로 판단해 삭제됐다가 되돌렸다. 근거는 `home agent-config` / `edge agent-config` 세트의
-  **카드 교환·상태머신 실험**이고, `dossier/detail.org` §A2A · `dossier/portfolio.org` 가 인용과 함께
+  **카드 교환·상태머신 실험**이고, 보관 샘플 `docs/samples/dossier/detail.org` §A2A · `docs/samples/dossier/portfolio.org` 가 인용과 함께
   이미 「실험 단계입니다」로 적어 두었다.
   **경계**: 규격 구현 경험은 없다. 스택 표에 낱말로 올리는 것까지가 정직한 범위이고,
   서술문에서는 「실험·설계 단계, 규격 구현 아님」을 반드시 같이 말한다

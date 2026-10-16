@@ -15,7 +15,7 @@ configuration, and executable examples, including:
 
 - `.claude/skills/linkedin-jobs/` code and tests (not prose-only documentation);
 - `scripts/`;
-- executable `.py`, `.js`, `.sh`, and `.el` files under `applications/`, `resume/`, and `dossier/`;
+- executable `.py`, `.js`, `.sh`, and `.el` files under `applications/`, `resume/`, and `docs/samples/dossier/`;
 - `flake.nix`, `flake.lock`, LaTeX/build configuration, and repository configuration authored here.
 
 The Emacs Lisp provenance note and compatibility boundary are recorded in [`NOTICE.md`](NOTICE.md).
@@ -43,10 +43,10 @@ including the public-safe versions of:
 
 - `README.md`, `PUBLICATION.md`, and `docs/`;
 - the operating contracts: the root `AGENTS.md` and every lane `AGENTS.md`
-  (`applications/`, `resume/`, `dossier/`), along with `dossier/README.md`,
-  `dossier/PORTFOLIO-PLAN.md`, and the `*.package.md` files;
+  (`applications/`, `resume/`, `docs/samples/dossier/`), along with the archived sample's `README.md`,
+  `PORTFOLIO-PLAN.md`, and `*.package.md` files;
 - prose-only skill and pipeline documentation;
-- `dossier/images/README.md`, the image provenance and publication-review ledger (not the images).
+- `docs/samples/dossier/images/README.md`, the image provenance and publication-review ledger (not the images).
 
 These are covered by the paths named above, not by an inline marker; no `SPDX-License-Identifier`
 header is required in them. A document elsewhere in the tree may opt in by carrying that header.
@@ -62,11 +62,13 @@ Notice: [`NOTICE.md`](NOTICE.md)
 
 Unless a file explicitly opts into CC-BY-4.0, no reuse license is granted for:
 
-- résumé facts and wording in `resume/body.org`, `resume/resume.org`, and `resume/targets/`;
+- career facts and application-facing wording in `resume/*.org` and `resume/targets/`, including
+  Korean/English résumé and portfolio views (not the build configuration under `resume/pipeline/`);
 - cover letters, self-introductions, application answers, interview narratives, and submitted-form
   records under `applications/`;
-- personal career claims and application-facing prose in `dossier/*.org`;
-- portfolio concept images in `dossier/images/*.png`, restored after publication review: no reuse
+- personal career claims and application-facing prose in `docs/samples/dossier/*.org`; the general
+  documentation grant for `docs/` does not override this narrower personal-record rule;
+- portfolio concept images in `docs/samples/dossier/images/*.png`, restored after publication review: no reuse
   license is granted by this repository, and public availability does not imply MIT or CC-BY terms;
 - operational handoffs containing personal decisions, including `NEXT.md`.
 
@@ -75,9 +77,13 @@ applicant's words as their own.
 
 ## Third-party material — original terms or no repository grant
 
-- `dossier/pipeline/templates/ieee.csl`: `CC-BY-SA-3.0`; see
+The archived `docs/samples/dossier/references.bib` is bibliographic metadata, not reusable method
+prose. Moving it under `docs/` does not extend the CC-BY documentation grant to it; applicable
+rights remain with the original sources, and this repository grants no additional license.
+
+- `docs/samples/dossier/pipeline/templates/ieee.csl`: `CC-BY-SA-3.0`; see
   [`LICENSES/CC-BY-SA-3.0.txt`](LICENSES/CC-BY-SA-3.0.txt) and the file's inline `<rights>` metadata.
-- `dossier/pipeline/templates/reference.odt` is **not in this repository.** It is an ODT style
+- `docs/samples/dossier/pipeline/templates/reference.odt` is **not in this repository.** It is an ODT style
   master, and it was removed with the other document binaries at publication; see
   [`NOTICE.md`](NOTICE.md). It is the author's own file, not third-party material — it is listed
   here only because the build scripts still name it.

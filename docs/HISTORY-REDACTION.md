@@ -83,7 +83,9 @@ What each category means:
   a scanner can answer. They were removed rather than left pending. This describes the original
   history rewrite, not a permanent ban on all later diagrams. On 2026-10-15 GLG approved restoring
   seven individually reviewed portfolio concept images as a new change; provenance and review
-  records live in `dossier/images/README.md`, with the current boundary in `PUBLICATION.md`.
+  records now live in `docs/samples/dossier/images/README.md`, with the current boundary in
+  `PUBLICATION.md`. On 2026-10-16 the same tracked sources moved to this sample location; old
+  generated/submitted files and the original removal counts were not changed.
   The original removal counts above do not change.
 - `dense-pii-form` — completed application forms carrying legal and identity fields. Redacting these
   line by line would leave a document that is mostly holes and still re-identifiable from what remains.
@@ -128,7 +130,8 @@ path, and 2 third-party personal names were replaced with category markers such 
 `[email removed]`. The same expressions were applied to commit messages.
 
 4 email addresses were **kept**: the upstream contributor credits inside
-`dossier/pipeline/templates/ieee.csl`. That file is CC-BY-SA-3.0, and stripping its attribution to
+`dossier/pipeline/templates/ieee.csl` (now `docs/samples/dossier/pipeline/templates/ieee.csl`).
+That file is CC-BY-SA-3.0, and stripping its attribution to
 satisfy a privacy scan would trade one violation for another. Any scanner run against this repository
 should expect those and allowlist them with this reason recorded.
 

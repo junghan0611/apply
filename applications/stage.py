@@ -101,7 +101,10 @@ def cuts_of(text: str) -> list[Path]:
 
 
 def source_org(pdf: Path) -> list[Path]:
-	"""이 PDF 를 만드는 org 정본만 고른다.
+	"""이 PDF 에 대응하는 소스만 고른다.
+
+	AX 문서 소스는 2026-10-16 보관한 샘플이다. 옛 dossier/build 경로의 로컬 PDF와
+	과거 첨부 기록은 유지하되 소스 위치만 보관 경로로 해석한다. 새 경력 정본은 resume/body.org다.
 
 	⚠ 레인 전체(dossier 의 org 둘)를 보면 **과잉 판정**이 난다 — `competency.org` 만 고쳐도
 	`Portfolio` 가 낡았다고 한다. 그러면 3.8MB 를 헛되게 다시 굽고, 「또 낡음」 피로가 쌓여
@@ -109,9 +112,9 @@ def source_org(pdf: Path) -> list[Path]:
 	"""
 	name = pdf.stem
 	if name == "KimJunghan_AX_Competency":
-		return [ROOT / "dossier/competency.org"]
+		return [ROOT / "docs/samples/dossier/competency.org"]
 	if name == "KimJunghan_AX_Portfolio":
-		return [ROOT / "dossier/portfolio.org"]
+		return [ROOT / "docs/samples/dossier/portfolio.org"]
 	if name.startswith("KimJunghan_Resume_"):
 		target = name[len("KimJunghan_Resume_") :].lower().replace("_", "-")
 		return [ROOT / "resume/body.org", ROOT / f"resume/targets/{target}.org"]
@@ -124,14 +127,10 @@ def is_stale(pdf: Path) -> bool:
 	막으려는 사고는 하나다: **`dossier/build/` 는 git 밖이라 노트북에 앞 회사 조준판이
 	남아 있고**, `git pull` 로 새 org 를 받아도 재빌드하지 않으면 그것이 그대로 깔린다.
 
-	⛔ **tracked 이력서 컷에는 쓰지 않는다** (2026-07-30 GPT 재검 P0-A).
-	git 은 커밋 시각을 복원하지 않고 **checkout 순간의 mtime** 을 준다. 같은 커밋에서 PDF 와
-	org 가 함께 갱신돼도 경로 정렬상 `resume/build/*.pdf` 가 `resume/targets/*.org` 보다 먼저
-	써지면 **PDF 가 stale 로 오판**된다. 그러면 노트북 `git pull` 직후 `stage.py` 가 이력서
-	재빌드를 요구하고, 「resume 빌드는 선택」이라는 §0 과 정면으로 충돌한다 —
-	**카페에서 막힌다.** tracked 쌍의 일치는 같은 커밋의 원자성이 보증한다.
-	(mtime 으로 tracked source/output 일치를 판정하지 않는다. 필요해지면 build provenance
-	hash 를 넣는다.)
+	이력서 컷 제외는 과거 tracked PDF의 checkout mtime 오판을 피하던 예외다
+	(2026-07-30 P0-A). 공개 history 정제 뒤 PDF는 비추적이므로 그 원자성 전제는 더 이상
+	성립하지 않는다. 현재 동작은 아직 resume 낡음을 판정하지 않으며 provenance 수선은
+	별도 감사 사항이다. 이 샘플 이동에서 그 보장까지 수리했다고 해석하지 않는다.
 	"""
 	if DEPTH_MARK not in pdf.name:
 		return False
@@ -326,43 +325,41 @@ def stage(case: Path) -> tuple[str, list[str], list[str]]:
 def sources_doc(case: Path, present: list[str]) -> str:
 	"""PDF 는 git 에 없다. 무엇으로 이 세트를 다시 만드는지 여기 적는다."""
 	needs_resume = any("_Resume_" in n for n in present)
-	needs_competency = any("_Competency" in n for n in present)
-	needs_portfolio = any("_Portfolio" in n for n in present)
+	needs_competency = "KimJunghan_AX_Competency.pdf" in present
+	needs_portfolio = "KimJunghan_AX_Portfolio.pdf" in present
 
 	lines = [
 		f"# 이 세트를 어떻게 다시 만드나 — {case.name}",
 		"",
-		"**새 깊이 PDF(`KimJunghan_AX_*`)는 git 에 없다** (`.gitignore`). 산출물이고 정본은 org 다.",
-		"이력서 컷과 제출 완료 건의 옛 스냅샷은 **이미 tracked 라 `git pull` 로 온다** —",
-		"「PDF 가 아예 없다」는 절대명제가 아니다.",
+		"**생성 PDF는 git 에 없다** (`.gitignore`). clone/pull만으로 제출 파일이 오지 않는다.",
+		"실제 제출 원본은 private 보관면에 유지하고, 새 문서는 검토된 소스에서 생성한다.",
+		"과거 AX 문서 소스는 `docs/samples/dossier/`에 보관한 샘플이지 현재 경력 정본이 아니다.",
 		"",
 		"`MANIFEST.sha256` 은 **그때 낸 파일의 identity commitment** 다. 파일이 있으면",
 		"**바이트 동일 여부를 판정**하고, 없으면 증언만 보존한다. 원본을 버린 뒤 비결정적",
 		"빌드가 지문과 어긋나면 *무엇이* 달라졌는지는 말해 주지 않는다 — 재현 경로는 아래다.",
 		"",
 		"- ⭐ **재현점은 이 파일이 담긴 커밋이다.** 그 커밋에 org 정본이 함께 들어 있다 —",
-		"  `git log --oneline -- <이 파일>` 로 찾고 해당 산출물의 dossier 정본 org를 `git show`로 꺼낸다.",
+		"  `git log --oneline -- <이 파일>` 로 당시 입력을 찾는다. 소스 보존과 과거 바이트 재현 보장은 별개다.",
 		"  (커밋 SHA 를 여기 박지 않는다. 박으면 커밋할 때마다 이 파일이 갱신되는 순환이 생긴다.)",
 		"",
 		"```bash",
 	]
 	if needs_resume:
-		lines.append("(cd resume   && ./run.sh all)        # 이력서 여섯 컷")
-	if needs_competency:
-		lines.append("(cd dossier && ./run.sh competency)   # 5쪽 — xelatex 경로")
-	if needs_portfolio:
-		lines.append("(cd dossier && ./run.sh portfolio)    # 12쪽 — LibreOffice 불필요")
+		lines.append("(cd resume && ./run.sh all)        # 현행 국문·영문 뷰")
+	if needs_competency or needs_portfolio:
+		lines.append("# 과거 AX 입력: docs/samples/dossier/README.md — 샘플 재빌드를 자동 후속으로 실행하지 않는다")
 	lines += [
-		"applications/stage.py                 # 세트를 다시 깐다 (누출·낡음을 스스로 검사한다)",
+		f"applications/stage.py {case.name}     # 선택한 건만, 제출 전 별도 검수·승인",
 		"applications/check.py --deep          # 전체 게이트 — 조준 누출 + 지문 대조",
 		"```",
 		"",
 	]
 	if needs_competency or needs_portfolio:
 		lines += [
-			"⚠ **깊이 문서는 회사 중립판이어야 한다.** dossier 정본의 프롤로그 첫 문장이",
-			"조준 자리다. 다른 건을 조준한 채로 빌드하면 **그 회사 이름이 이 건에 실려 나간다.**",
-			"`./check.py --deep` 이 그것을 잡는다.",
+			"⚠ **과거 AX 자료는 보관 샘플이다.** 새 지원에서 재사용하려면 GLG가 내용과 지원처 중립 여부를",
+			"별도로 검토한다. 현재 경력 수정은 `resume/body.org`에서 하며 샘플을 자동 동기화하지 않는다.",
+			"`applications/check.py --deep`은 기존 제출 세트의 조준 누출을 검사한다.",
 			"",
 		]
 	lines.append("생성: `applications/stage.py` · 손으로 고치지 않는다.\n")

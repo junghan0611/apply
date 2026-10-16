@@ -24,13 +24,13 @@ relicense job-posting quotations, company form wording, API documentation excerp
 product names, trademarks, received assignments, or linked material. Those remain under their
 original terms.
 
-- `dossier/pipeline/templates/ieee.csl` identifies the Zotero IEEE CSL style and declares
+- `docs/samples/dossier/pipeline/templates/ieee.csl` identifies the Zotero IEEE CSL style and declares
   [CC-BY-SA-3.0](LICENSES/CC-BY-SA-3.0.txt) in its own `<rights>` metadata. That license governs the
   file; preserve its contributor metadata.
-- `dossier/pipeline/templates/reference.odt` is **absent from this repository.** It is an ODT style
+- `docs/samples/dossier/pipeline/templates/reference.odt` is **absent from this repository.** It is an ODT style
   master that the build uses to carry fonts and paragraph styles, and it went out with the other
   document binaries at publication. Its own tooling
-  (`dossier/pipeline/strip_reference_odt.py`) records that it was produced by saving one of the
+  (`docs/samples/dossier/pipeline/strip_reference_odt.py`) records that it was produced by saving one of the
   author's own documents from LibreOffice, so it is the author's file rather than third-party
   material; it is named here so that a reader who meets the reference in the build scripts knows
   why it is missing and does not go looking for a license that never applied.
@@ -41,13 +41,13 @@ original terms.
 
 ## Emacs Lisp provenance
 
-`dossier/pipeline/latex-export.el` records in its own header that the class wiring came from the same
+`docs/samples/dossier/pipeline/latex-export.el` records in its own header that the class wiring came from the same
 author's `ax` build script, and the lineage continues through `memex-kb/scripts/paper_build.el` and
 `jacobian-lens/survey/build.el`. All three sources were inspected locally on 2026-08-27:
 `ax/build.el` is tracked as `apply/ax/build.el` in the author's `junghan0611` GitHub profile repository;
 `memex-kb/scripts/paper_build.el` has one author and no repository license; and
 `jacobian-lens/survey/build.el` has one author under the repository's Apache-2.0 `LICENSE`.
-`dossier/pipeline/proposal-export.el` likewise records that its Doom loading pattern came from the
+`docs/samples/dossier/pipeline/proposal-export.el` likewise records that its Doom loading pattern came from the
 same author's `doomemacs-config/bin/denote-export.el`; that source was inspected and its history also
 has only the same author.
 

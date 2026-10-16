@@ -15,7 +15,7 @@ import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-SSOT = HERE.parent / "resume" / "pipeline" / "preamble.org"
+SSOT = HERE.parents[2] / "resume" / "pipeline" / "preamble.org"
 SOURCES = ("competency.org", "portfolio.org", "detail.org")
 PLACEHOLDER = "[email removed]"
 
@@ -26,9 +26,9 @@ def ssot_email() -> str:
 
 
 def tree(td: Path, with_resume: bool = True) -> Path:
-	"""dossier/ 와 resume/pipeline/preamble.org 의 사본 트리."""
-	d = td / "dossier"
-	d.mkdir()
+	"""docs/samples/dossier/ 와 resume/pipeline/preamble.org 의 사본 트리."""
+	d = td / "docs" / "samples" / "dossier"
+	d.mkdir(parents=True)
 	shutil.copy2(HERE / "run.sh", d / "run.sh")
 	for f in SOURCES:
 		shutil.copy2(HERE / f, d / f)

@@ -61,21 +61,24 @@ deny_path '생성 문서 바이너리(pdf/odt/zip)' '\.(pdf|odt|zip|docx?|xlsx?|
 # 도해는 경로 두 개로만 막으면 다음 사람이 다른 폴더에 넣는 순간 다시 샌다. 이미지는
 # 확장자로 전역 차단하고, 공개해도 되는 것만 이름으로 연다.
 # 2026-10-15 GLG: 검토한 포트폴리오 개념도 7장을 재도입한다. 폴더 전체를 열지 않는다.
-# provenance·공개 판정·시점 경계는 dossier/images/README.md. master/·옛 nhn/는 계속 차단한다.
-DOSSIER_IMAGE_ALLOW='^dossier/images/(company-ax-layer|company-ax-arch|openclaw-ops|andenken-rag|entwurf-hero|platform-lineage|product-stack)\.png$'
-DOSSIER_IMAGE_DOC='^dossier/images/README\.md$'
+# 10/16 샘플 보관: 같은 7장의 새 경로와 history 의 옛 경로만 허용한다(추가 이미지 승인 아님).
+# provenance 는 docs/samples/dossier/images/README.md. master/·옛 nhn/는 계속 차단한다.
+DOSSIER_IMAGE_ALLOW='^(dossier|docs/samples/dossier)/images/(company-ax-layer|company-ax-arch|openclaw-ops|andenken-rag|entwurf-hero|platform-lineage|product-stack)\.png$'
+DOSSIER_IMAGE_DOC='^(dossier|docs/samples/dossier)/images/README\.md$'
 # 허용과 거부 양방향 self-test — 경로를 넓히다 미검토 도해까지 허용하지 않도록 한다.
-for _image in company-ax-layer company-ax-arch openclaw-ops andenken-rag entwurf-hero platform-lineage product-stack; do
-	printf '%s\n' "dossier/images/$_image.png" | grep -qE "$DOSSIER_IMAGE_ALLOW" || { bad '도해 allowlist self-test: 검토본 차단'; exit 2; }
+for _prefix in dossier docs/samples/dossier; do
+	for _image in company-ax-layer company-ax-arch openclaw-ops andenken-rag entwurf-hero platform-lineage product-stack; do
+		printf '%s\n' "$_prefix/images/$_image.png" | grep -qE "$DOSSIER_IMAGE_ALLOW" || { bad '도해 allowlist self-test: 검토본 차단'; exit 2; }
+	done
 done
-for _image in dossier/images/unreviewed.png dossier/images/master/product-stack.png nhn/images/product-stack.png dossier/images/product-stack.jpg dossier/images/product-stack.png.bak dossier/images/PRODUCT-STACK.PNG; do
+for _image in dossier/images/unreviewed.png dossier/images/master/product-stack.png nhn/images/product-stack.png dossier/images/product-stack.jpg dossier/images/product-stack.png.bak dossier/images/PRODUCT-STACK.PNG docs/samples/dossier/images/unreviewed.png docs/samples/dossier/images/master/product-stack.png docs/samples/dossier/images/product-stack.jpg docs/samples/dossier/images/product-stack.png.bak docs/samples/dossier/images/PRODUCT-STACK.PNG docs/samples/other/images/product-stack.png; do
 	if printf '%s\n' "$_image" | grep -qE "$DOSSIER_IMAGE_ALLOW|$DOSSIER_IMAGE_DOC"; then
 		bad '도해 allowlist self-test: 미검토 경로 허용'; exit 2
 	fi
 done
-unset _image
+unset _image _prefix
 deny_path '이미지 파일'                     '\.(png|jpe?g|gif|svg|webp|bmp|tiff?)$' "^(docs/assets/|README-assets/)|$DOSSIER_IMAGE_ALLOW"
-deny_path '미검토 도해 경로'                '^(dossier|nhn)/images/' "$DOSSIER_IMAGE_ALLOW|$DOSSIER_IMAGE_DOC"
+deny_path '미검토 도해 경로'                '^(dossier|nhn|docs/samples/dossier)/images/' "$DOSSIER_IMAGE_ALLOW|$DOSSIER_IMAGE_DOC"
 deny_path '받은 과제 원본'                  '/assignment/'
 deny_path '로그인 뒤 자동화 코드'           '(^|/)remember\.js$'
 deny_path '완성된 지원 폼'                  '(_Detail_Form|_Applicant_Form)\.md$'

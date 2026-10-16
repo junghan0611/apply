@@ -55,7 +55,7 @@ The boundaries are as important as the arrows:
 | Discovery | `.claude/skills/linkedin-jobs/` | public guest search, detail enrichment, location evidence, explainable ranking | `SKILL.md` |
 | Document launcher | `resume/` | shared facts and Korean/English wording → résumé and systems-portfolio views | `resume/body.org` |
 | Submission operations | `applications/` | JD snapshot, form answers, uploaded-file snapshot, outcome ledger | `applications/LEDGER.md` |
-| Dossier launcher | `dossier/` | independent long-form competency, portfolio and detail documents; not an automatic upstream of the résumé | `dossier/AGENTS.md` |
+| Archived dossier sample | `docs/samples/dossier/` | historical independent long-form documents and build example; not an active career source | `docs/samples/dossier/README.md` |
 | Handoff | `NEXT.md` | the next concrete move, not a backlog or history archive | `NEXT.md` |
 
 The narrative documents — this file, `PUBLICATION.md`, `docs/`, the license files — are in English.
@@ -79,8 +79,9 @@ systems/BSP selection, not every English module.
 A correction discovered while tailoring should return to the common source. One file does **not**
 prove translation equivalence or automatically synchronize every résumé/portfolio phrasing; the
 source's review checklist records deliberate differences and places to reconcile. External career
-material and the independent `dossier/` documents remain evidence/editorial inputs, not hidden
-automatic includes. `noexport` excludes rendered content, not files or history from this public repository.
+material and the [archived dossier sample](docs/samples/dossier/) remain evidence/editorial inputs,
+not hidden automatic includes. The sample is independently authored, not generated from the résumé.
+Only tracked sources moved; existing local `dossier/build/` and submitted snapshots were preserved. `noexport` excludes rendered content, not files or history from this public repository.
 
 The generation structure has been checked, and GLG has reviewed the document layout. **The prose
 still requires further GLG review.** This systems checkpoint does not mean the entire career base

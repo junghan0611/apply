@@ -1,5 +1,9 @@
 .DS_Store
 .idea
+
+# 2026-10-16: tracked dossier sources moved to docs/samples/dossier/.
+# Preserve the old local build/package/cache directory without publishing its artifacts.
+/dossier/
 *.log
 tmp/
 
@@ -21,16 +25,14 @@ __pycache__/
 # 재빌드마다 히스토리에 새 blob 이 쌓인다.
 #
 # ⭐ 그럼 「그때 무엇을 냈는가」는 무엇이 증언하나 — **두 파일이 git 에 남는다**:
-#   · `submit/MANIFEST.sha256` — 그때 나간 PDF 의 지문. 재현본이 같은지 검증까지 된다
+#   · `submit/MANIFEST.sha256` — 그때 나간 PDF 의 지문. 보관한 파일의 바이트 동일 여부를 판정한다
 #   · `submit/SOURCES.md`      — 어느 org·어느 명령으로 재현하는지 (stage.py 가 생성)
 # 옛 `nhn/build/` 결함(낸 파일이 git 에 없음)과 다르다. 그때는 지문도 재현 경로도 없었다.
 #
-# ⚠ gitignore 는 **이미 추적 중인 파일에 무효**다. 그래서 실제 효과는 이렇다:
-#   · 막히는 것  = 새로 늘어나는 PDF — 특히 3.8MB `KimJunghan_AX_Portfolio.pdf` 11건
-#   · 남는 것    = 이미 tracked 인 이력서 컷(27건, 37KB 씩)과 제출 완료 건의 스냅샷
-# **그대로 둔다.** 「지저분」의 주범은 3.8MB 쪽이고, 남은 이력서 PDF 는
-# **노트북에서 빌드가 실패했을 때의 폴백 자산**이다(`SUBMIT-QUEUE.md` §0).
-# 히스토리를 다시 쓰지 않는다.
+# gitignore 는 이미 tracked 인 파일에는 무효다. 다만 공개 history 정제 이후 현재 PDF 는
+# 모두 비추적 산출물이다. 예전 private 운영판의 「tracked 27건 폴백」 설명은 현재 계약이 아니다.
+# clone/pull 로 PDF 가 오지 않으므로 새 문서는 소스에서 생성하고, 실제 제출 원본은 private 에
+# 보존한다. 이번 샘플 보관은 과거 지문이나 보관 파일을 덮어쓰거나 history 를 재작성하지 않는다.
 applications/*/submit/*.pdf
 
 # 합본·중간 산출물 PDF — 위와 같은 이유다 (2026-07-30)
@@ -41,7 +43,7 @@ applications/*/submit/*.pdf
 # **PDF 라는 사실은 같다.** 재현은 각 건 `submission.md` §합본 재현 의 `gs` 한 줄이고,
 # 입력 지문은 `submit/MANIFEST.sha256` 에 있다.
 #
-# ⚠ `deepx--*/build/experience-detail.pdf` 는 **이미 tracked** 라 그대로 남는다.
+# 과거 DEEPX 제출 파일도 현재는 private 보관본과 지문을 유지하며 Git 바이너리로 싣지 않는다.
 applications/*/build/*.pdf
 
 # 한 장짜리 md → PDF 산출물 (정본은 md, 재현은 그 폴더 `build.sh`)
@@ -49,9 +51,9 @@ applications/*/KimJunghan_*.pdf
 
 # 증명사진 — 얼굴 이미지는 git 히스토리에 넣지 않는다 (2026-08-09)
 #
-# PRIVATE 저장소이므로 회사명·답변·연락처는 담지만, **얼굴 사진은 다른 종류의 값**이다.
-# 한 번 커밋되면 히스토리에서 지우기 어렵고, 이 저장소는 언젠가 allowlist 로 공개 트리를
-# 뜨는 것을 계획하고 있다(`PUBLICATION.md`). 그때 실수 하나가 얼굴을 내보낸다.
+# 공개 저장소에는 회사명·공개 가능한 답변과 허용한 본인 이메일을 남길 수 있지만,
+# **얼굴 사진은 private 보관면**이다. 한 번 공개되면 삭제해도 회수가 아니므로 처음부터
+# Git 후보에서 제외한다. 현재 공개 history 계약은 PUBLICATION.md 를 따른다.
 #
 # 그래서 PDF 와 같은 계약을 쓴다 — **파일은 `submit/` 에 두어 노트북에서 바로 올리고,
 # git 에는 지문(`MANIFEST.sha256`)과 재현 경로(그 건 `submission.md`)만 남긴다.**
