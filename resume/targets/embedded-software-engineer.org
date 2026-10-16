@@ -6,46 +6,44 @@
 # 빌드:  ./run.sh target embedded-software-engineer
 
 #+cv_pdf_name: KimJunghan_Resume_Embedded_Software_Engineer
+#+CV_LANG: en
 #+CV_GOQUAL_MODULES: smart-hub on-device-ai ai-infra
-#+EXCLUDE_TAGS: noexport independent validation catalog corpus
+#+EXCLUDE_TAGS: noexport independent validation catalog corpus research selfintro portfolio
 
 #+INCLUDE: "../pipeline/preamble.org"
 
 #+begin_export latex
-\cvheader{Embedded Software Engineer — Boot Chain, Firmware, and Protocols}
+\cvheader{Systems Software Engineer — BSP / Kernel}
 #+end_export
 
 * Summary
 
-I take embedded products from silicon to shipping. Most recently: a Zigbee/Wi-Fi gateway written in
-Zig and shipped to mass production, with a legacy C SDK isolated behind type-safe FFI, one explicit
-state machine, and aging-test automation. When the contract stopped at firmware, I built the Go
-server and Flutter companion app and delivered one protocol over two interchangeable backends — AWS
-IoT for connected deployments and a local mTLS broker for closed networks — without changing the
-firmware.
+My foundation is systems software: NVM block device drivers, persistent-memory data structures,
+NUMA behaviour, and in-kernel device virtualization. Earlier research includes coauthored work on
+MyAV, a mobile virtual machine monitor, and para-virtualized / exitless I/O. I now connect that
+kernel and virtualization background to public SDK-based BSP builds: SG2000 boot-chain
+configuration and a captured RISC-V Linux / Buildroot boot on a Milk-V Duo S.
 
-The next port moved from ARMv7/glibc and a vendor sysroot to RISC-V on static musl, extracted a board
-HAL, delegated Zigbee transport to Zigbee2MQTT, and removed hardcoded device handlers. In
-parallel, one Go Matter-hub codebase runs on both RPi5 + Hailo-8 NPU/Yocto and RK3576/Android.
-Underneath the product work is a reproducible open-source boot chain — bootloader through kernel to
-FreeRTOS on a dual-ISA SoC — that traces back to graduate research on the memory hierarchy: NVM
-block device drivers, write-amplification reduction, and NUMA-aware persistent-memory data
-structures. AI appears here as an engineering tool and deployable edge workload, not as a claim of
-model-training expertise.
+I have also taken Linux-based embedded products through hardware integration and mass production.
+Recent work includes Zigbee gateway firmware in Zig/C with a type-safe vendor-SDK boundary,
+deterministic state transitions and aging-test automation; board HAL extraction across an
+ARMv7/glibc to RISC-V/static-musl port; and Yocto / Android platform integration. Personal Go/Flutter
+prototypes extend firmware verification, not company server/app delivery. My focus is reliable
+board-to-product integration, repeatable test tools, and clear hand-offs across hardware and
+software teams.
 
 * Core Competencies
 
-- @@latex:\cvlabel{Embedded Linux and Firmware}@@ — Zig and C, ARM and RISC-V, Yocto, static musl,
-  board HAL, cross-compilation, deterministic state machines, and mass production.
-- @@latex:\cvlabel{BSP and Boot Chain}@@ — Buildroot, U-Boot, OpenSBI, device tree, FreeRTOS
-  coprocessor bring-up, board memory-map coordination across bootloader/kernel/RTOS linkers.
+- @@latex:\cvlabel{Kernel and Virtualization Research}@@ — NVM block drivers, in-kernel device
+  virtualization, virtual I/O paths, and NUMA / persistent-memory behaviour.
+- @@latex:\cvlabel{BSP and Boot Chain}@@ — public SDK-based Buildroot, U-Boot and OpenSBI builds;
+  board/device-tree configuration, captured RISC-V Linux boot, and RTOS command-queue driver probe.
 - @@latex:\cvlabel{IoT Protocols}@@ — Matter, Thread/OTBR/RCP, Zigbee and Zigbee2MQTT, MQTT and mTLS,
   AWS IoT, BLE commissioning, and versioned device shadows.
-- @@latex:\cvlabel{Portability and Productization}@@ — one core across boards and backends, explicit
-  hardware boundaries, real-device fan-out tests, server and app delivered with the firmware.
-- @@latex:\cvlabel{Edge AI Stack Feasibility}@@ — evaluating whether a Yocto/Buildroot build stack
-  reaches LLM configuration, assessing the feasibility of embedded model tuning on a local GPU
-  server, and on-device sLLM/NPU deployment across accelerator families.
+- @@latex:\cvlabel{Embedded Linux and Product Integration}@@ — Zig/C, ARM and RISC-V, Yocto,
+  Android, static musl, board HAL, cross-compilation, and firmware mass production.
+- @@latex:\cvlabel{Test Tools and Reliability}@@ — aging-test automation, real-device fan-out,
+  firmware instrumentation, reproducible image-build inputs, and evidence-backed hand-offs.
 
 * Public Evidence — Build Surface and Honest Boundary
 
@@ -57,9 +55,10 @@ model-training expertise.
   establishes by DTS inspection, not assumption, that the board carries no gpio-keys node.
 - *Product implementation* — [[https://github.com/junghan0611/homeagent-config][github.com/junghan0611/homeagent-config]]'s Go/Flutter/Matter/Yocto
   system and build entries: =./run.sh go-build=, =flutter-server=, =bundle=.
-- *Boundary* — the mass-production SKS firmware and customer data are private. HomeAgent is a public,
-  adjacent implementation that verifies the boot-chain and Matter/Go/Flutter/Yocto work; it is not
-  offered as proof of the private shipment claim. That claim remains attributable employment
-  experience.
+- *Measured boot and boundary* — [[https://github.com/junghan0611/homeagent-config/tree/main/captures/duos-riscv64-firstboot-20260714T182449%2B0900][dated Duo S firstboot capture]] records RISC-V Linux / Buildroot boot
+  and the RTOS command-queue driver probe, not complete RTOS or application validation. The SDK
+  build is not a new-SoC bootloader port or production kernel-driver delivery. The mass-production
+  firmware and customer delivery remain attributable employment experience, not claims proven by
+  the adjacent public repository.
 
 #+INCLUDE: "../body.org" :minlevel 1

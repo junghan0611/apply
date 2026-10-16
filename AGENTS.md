@@ -53,7 +53,7 @@ raw 폼과 법적 값은 private Org가 소유하며 이 저장소에 사본을 
 | 이 건의 공개 원문 요약 · 판단 · 답변 · 첨부 지문은 무엇인가 | 해당 `JD.md` · `submission.md` · `submit/MANIFEST.sha256` |
 | 아직 케이스가 아닌 후보와 출처 흔적은 무엇인가 | `applications/INBOX.md` |
 | 반복 폼 값과 아직 사람 결정이 필요한 값은 무엇인가 | `applications/FAQ.md` |
-| 이력서 문장의 사실 · 수치 · 시간 계보는 무엇인가 | `MATERIAL.md` (프로필 repo `junghan0611/junghan0611`의 `apply/` — **이 저장소가 아니다**) · `resume/body.org` |
+| 경력·연구·자기소개·포트폴리오 문장과 판 이력은 어디서 고치는가 | **`resume/body.org`** — 공통 사실·메타와 국문/영문 표현 |
 | 직무별로 무엇을 선택하고 어떤 순서로 보이는가 | `resume/targets/*.org` |
 | 공고를 어떻게 찾고 원문을 어떻게 확인하는가 | `.claude/skills/linkedin-jobs/SKILL.md` |
 
@@ -85,7 +85,7 @@ raw 폼과 법적 값은 private Org가 소유하며 이 저장소에 사본을 
 | 레인 | 위치 | 소유 | 소유하지 않음 |
 |---|---|---|---|
 | 탐색 | `.claude/skills/linkedin-jobs/` | 공개 카드 · 포스트, 원문 요건, 근무지 확신도, 랭킹 근거, 추천 컷 | 로그인, 개인 필드, 제출 |
-| 문서 | `resume/` | 검증된 사실 모듈, 직무별 선택 · 순서, 공개 증거 입구, 재현 가능한 PDF | ATS 상태, 지원 원장 |
+| 문서 | `resume/` | 공통 사실·국문/영문 표현, 이력서·시스템 포트폴리오 뷰, 직무별 선택·순서, 공개 근거와 PDF | ATS 상태, 지원 원장 |
 | 제출 | `applications/` | JD 요약·출처, 공개 가능한 답변, 업로드 지문, 상태 원장 | raw 폼·법적 값·실제 업로드 바이너리 |
 | **dossier 발사대** | `dossier/` | 역량기술서 · 포트폴리오 · 증거패키지 생성, 면접 앵커 | 현재 지원 큐 |
 | 메타 검수 | 루트 문서 · `scripts/` | 계약, 모순 검사, 핸드오프 | 남의 레인 구현을 말없이 다시 여는 것 |
@@ -101,14 +101,22 @@ raw 폼과 법적 값은 private Org가 소유하며 이 저장소에 사본을 
 | 한 건의 정확한 기록 | `applications/<회사>--<직무>/submission.md` |
 | 재사용 폼 · 면접 응답 | `applications/FAQ.md` |
 | 후보 큐 | `applications/INBOX.md` |
-| 이력서 **사실** | `resume/body.org` |
-| 이력서 **표현** | `resume.org`, `resume/targets/*.org` |
+| 경력·연구·공통 자기소개·시스템 포트폴리오 원문 | **`resume/body.org`** — 공통 ID·기간·역할, 국문/영문 본문과 판 이력 |
+| 기본·직무별 **뷰** | `resume/resume.org`(국문), `resume/resume-en.org`(영문), `resume/portfolio-ko.org`, `resume/targets/*.org` |
 | 탐색 거동 | `.claude/skills/linkedin-jobs/SKILL.md` |
 | 다음 한 걸음 | `NEXT.md` |
-| 검증된 사실 · 수치 · 계보 | `MATERIAL.md` (프로필 repo `junghan0611/junghan0611`의 `apply/` — **이 저장소가 아니다**) |
+| 과거 소재·사실 회수 입력 | 프로필 repo `junghan0611/junghan0611`의 `apply/MATERIAL.md` — 이 저장소 밖의 자료이며 렌더 정본·자동 갱신 경로가 아님 |
 
-**사실은 한 벌이고, 뷰는 선택 · 배열만 한다.** 강조하고 싶다는 이유로 경력 사실을 타깃 파일에
-복사하지 않는다. 지어내지 말고 `MATERIAL.md` 를 참조한다 — 실제 파일을 열어 확인한 사실만 거기 있다.
+**평소 고칠 입구는 `resume/body.org`다(2026-10-16 GLG 확정).** 공통 사실·기간·역할과 국문/영문 표현,
+재사용 자기소개·프로젝트 설명·판 이력을 이 파일에서 관리한다. `#+begin_ko`·`#+begin_en`은 뷰의
+`#+CV_LANG`으로 선택한다. 뷰는 선택·배열·짧은 요약·조판, 케이스는 지원동기·계획·제출 기록을 쥔다.
+회사별 교정 중 공통 사실이 바뀌면 정본으로 회수한다. 두 언어 문장과 경력/포트폴리오 표현의
+동등성·자동 동기화까지 코드가 보장하지 않으므로 판 이력의 대조 목록을 함께 갱신한다.
+
+확인하지 않은 사실은 지어내지 않는다. 외부 `MATERIAL.md`·연구 기록·공개 코드 등은 원문을 열어
+판독하는 입력이며, 오래된 소재가 더 최신인 정본을 자동으로 덮지 않는다. 기존 `dossier/`는
+독립 장문 문서 세트로 보존하며 `body.org`와 자동 동기화되지 않는다. 이 구조 변경은 베이스 전체
+현재화나 모든 주장 검증이 끝났다는 뜻이 아니다. `:noexport:`는 산출물 제외이지 공개 Git의 비밀 보관 기능이 아니다.
 ⚠ `MATERIAL.md` 는 **이 저장소에 없다.** 프로필 repo 쪽 파일이고, 이 저장소를 clone 한 사람은
 갖고 있지 않다. 여기서 찾다가 「없으니 지어내도 된다」로 가지 않는다 — 없으면 GLG 에게 요청한다.
 

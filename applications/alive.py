@@ -62,7 +62,7 @@ TARGETS = [
 	("MakinaRocks", "https://makinarocks.career.greetinghr.com/ko/o/214041", "greeting"),
 	("AIRS Medical", "https://airsmed.career.greetinghr.com/ko/o/216673", "greeting"),
 	("SOCAR", "https://socar.career.greetinghr.com/ko/o/220124", "greeting"),
-	("Telechips", "https://careers.telechips.com/job_posting/iSXmKnRT", "ninehire"),
+	("Telechips", "https://careers.telechips.com/job_posting/Re4LUYvK", "ninehire"),
 	("Bear Robotics", "https://bear-robotics.breezy.hr/p/5d59d1cd221e-systems-software-engineer-linux-platform/apply", "plain"),
 	("Telit Cinterion", "https://recruiting.paylocity.com/recruiting/jobs/Details/4158364/TELIT-IOT-PLATFORMS-LLC/Edge-AI-Software-Engineer", "plain"),
 	("Sonatus", "https://www.linkedin.com/jobs/view/4380679251/", "plain"),

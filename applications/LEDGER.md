@@ -26,7 +26,7 @@
 | Lunit | (Seoul) Senior AX Engineer | rejected | 2026-07-30 · **불합격 통보 2026-08-04** | **Workable** (자체 채용홈) | AI Engineer + Portfolio 12쪽 + **문의칸 답** | `lunit--senior-ax-engineer` |
 | Cohere | Forward Deployed Engineer, Agentic Platform (Korea) | submitted | **2026-08-09** | Ashby (가입 불필요) · 🔴 **`Location Type: Remote`** (제출 화면에서 처음 보였다) | FDE 3쪽만 — 폼에 선택 첨부·서술형 칸 없음 | `cohere--forward-deployed-engineer-agentic-platform-korea` |
 | OpenAI | Developer Experience Engineer (Seoul) | ready | — | Ashby (가입 불필요) | DevEx | `openai--developer-experience-engineer-seoul` |
-| Telechips | [판교] Embedded S/W Engineer (BSP Driver) | ready | — | 자체 채용홈 (ninehire 화이트라벨) | Embedded + **Embedded Experience Detail 3쪽** (포트폴리오 **필수** 칸 · 2026-08-09 신규 빌드) | `telechips--embedded-sw-engineer` |
+| Telechips | [판교] BSP Driver Engineer | draft | — | 자체 채용홈 · **10/16 GLG 지정 Re4LUYvK**, 현행 폼 실측 완료 | **BSP 직무 전환 후 새 패킷 검수 중** — 합본3p·포트2p 검토판, private 인적정보·최종 세트 검수 전. 다른 공고의 과거 ready는 건별 역사절에 보존 | `telechips--embedded-sw-engineer` |
 | Reflection AI 🌐 | FDE, Lead - AI Engineer (Seoul) | submitted | 2026-07-30 | Ashby (가입 불필요) | FDE 3쪽만 — **영문 폼이라 국문 깊이 문서를 붙이지 않았다** | `reflection-ai--forward-deployed-engineer-lead-ai-engineer` |
 | 42dot | Senior AI Agent Engineer (Intelligence Service) | rejected | 2026-07-30 · **불합격 통보 2026-08-07** | Ashby (가입 불필요) | **이력서+경력기술서 8쪽 합본** + Portfolio 12쪽(전용 칸) + **Motivation 805자** | `42dot--senior-ai-agent-engineer-intelligence-service` |
 | MakinaRocks | [FDE] AI Agent Application Engineer | submitted | **2026-08-09** | 그리팅 (자체 도메인) — **신형 지원폼** · 이메일 인증 게이트 | FDE + **경력기술서 5쪽 + 포트폴리오 12쪽** (전용 슬롯 3개에 1:1) | `makinarocks--ai-agent-application-engineer-fde` |

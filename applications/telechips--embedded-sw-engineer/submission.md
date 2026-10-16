@@ -1,18 +1,67 @@
-# 제출 기록 — Telechips (텔레칩스) / [판교 사옥] Embedded S/W Engineer
+# 제출 기록 — Telechips (텔레칩스) / [판교 사옥] BSP Driver Engineer
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **ready — 지원 재개** (2026-10-15 GLG: 다음 지원은 BSP · 현재 공고·폼 및 제출 패킷 갱신 검수 전, 아직 미제출) |
+| 상태 | **draft — BSP 직무 전환 후 새 패킷 검수 중, 미제출** (이전 `ready`는 `iSXmKnRT` 당시의 문서 준비 상태였다 — 아래 §이후 기록) |
 | 지원일 | — |
-| 경로 | **자체 채용홈** `careers.telechips.com` (ninehire 화이트라벨) — 가입 불필요 |
-| 첨부 컷 | **Embedded** (`resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`, 2쪽) |
-| 추가 첨부 | **`submit/KimJunghan_Embedded_Experience_Detail.pdf` (3쪽)** — 폼 11번 **포트폴리오(필수)** 칸. `./build.sh` 로 재현. **`stage.py` 가 옮기지 않는다**(그 정규식은 `resume/build`·`dossier/build` 만 읽는다) — DEEPX 선례대로 `build.sh` 가 `submit/` 에 직접 놓는다 |
-| 공고 URL | https://careers.telechips.com/job_posting/iSXmKnRT |
-| **지원 URL** | https://careers.telechips.com/job_posting/iSXmKnRT/apply |
+| 경로 | **자체 채용홈** `careers.telechips.com` — 10/16 가입 없이 폼 표시 확인, `applicantLoginEnabled=false` |
+| 이력서 칸 | **국문 합본 1개** — `application-telechips.org`(지원처층: 동기·계획·생년월일 마커)가 `resume/resume.org`(국문 기본 뷰)를 INCLUDE → `KimJunghan_Telechips_Application.pdf` |
+| 포트폴리오 칸 | **국문 1개** — `resume/portfolio-ko.org`(지원처 중립 국문 뷰) → `KimJunghan_Systems_BSP_Portfolio.pdf` |
+| 편집 입구 | **`resume/body.org` 하나** — 국문 블록이 먼저, 영문 블록이 이웃. 뷰·지원처층은 고르기·배열·짧은 요약뿐 |
+| 재현 | `./build.sh review <새 /tmp 폴더>` · `./build.sh final <새 폴더> < (생년월일)` — 기본 출력 경로 없음, `submit/`·`build/` 아래 쓰기 거절, 비어 있지 않은 폴더 거절. 회귀검사 `./test_build.sh` |
+| 공고 URL | https://careers.telechips.com/job_posting/Re4LUYvK |
+| **지원 URL** | https://careers.telechips.com/job_posting/Re4LUYvK/apply — 10/16 국문 기본판·`?lang=en` 둘 다 직접 실측 |
 | 근무지 | **텔레칩스 판교사옥** — 경기 성남시 수정구 금토로80번길 27 |
-| 조건 | 정규직 · 경력 **3~15년** · 마감 **상시** · 직군 `Automotive Embedded S/W` |
+| 조건 | 경력 **4~15년**(공고 데이터 `career.range` 4~15) · 정규직 · 판교사옥 · 주 5일 · `deadlineType=until_filled`(채용 시 마감) · 직군 「Automotive Embedded S/W」 |
 
-## 낸 것
+## 현재 준비 — 2026-10-16
+
+**아직 미제출이다.** GLG가 지정한 대상은 `Re4LUYvK`의 **BSP Driver Engineer**다. 작업 초기에 기존 `iSXmKnRT` 공고를 읽어 「현행 요건 변경」이라고 설명했으나 다른 공고였다. 그 C/C++ 대조는 철회한다. 지정 공고는 Exa livecrawl 요청으로 대조해 GLG 제공 본문과 일치를 확인했다.
+
+| 필수요건 — 4개 중 2개 이상 | 제시할 근거 | 판독·경계 |
+|---|---|---|
+| 관련 전공 학사 이상 | 컴퓨터공학 석사·박사과정 수료 | 충족. 상세 증빙은 GLG |
+| bootloader / Kernel device driver 개발 | NVM 블록 디바이스 드라이버 연구(제1저자), 공개 SDK 기반 SG2000 부트체인 빌드·보드 설정 | 연구 개발과 공개 SDK 작업. 신규 SoC bootloader 포팅·양산 커널 드라이버 유지보수로 넓히지 않음 |
+| Linux Kernel debugging skill | 바이너리 변환 커널 분석기·드라이버 오류 격리 동적 컴파일러 공동연구(2011), 부팅 로그 판독·펌웨어 계측·문제 재현 | 논문 목록은 참여 근거다. 코드 기여 범위는 원문 미대조 |
+| Embedded board bring-up | Linux 제품 하드웨어 통합·양산(NEMO-UX), 게이트웨이 양산, Duo S RISC-V·ARM64 자체 이미지 부팅 기록 | 재직 사실과 공개 실보드 기록을 구분 |
+
+우대사항 중 **하이퍼바이저**는 커널 내부 장치 가상화(제1저자 논문)·MyAV·exitless I/O·중첩 가상화 연구로, **Yocto**는 NEMO-UX 제품과 공개 레이어 meta-homeagent(소스 열람 기준, 레이어 실빌드는 이번에 측정하지 않음)로 잇는다. 학술 연구와 상용 하이퍼바이저 납품은 문서마다 한 번만 구분한다. 칩 검증·불량 분석을 이미 수행한 것으로 쓰지 않는다.
+
+### 2026-10-16 GLG 방향 — 국문 2파일, 시스템 직무 기본판
+
+- **업로드는 두 파일, 둘 다 국문**이다. 이력서 칸 합본 하나(인적정보·학력 + 경력기술 + 자기소개서, 연봉 제외)와 포트폴리오 하나.
+- 두 문서는 이 건 한 번이 아니라 **시스템 직무 공통 기본판**이다. GLG가 직접 다듬는다.
+- **정본은 Org다(10/16 09:19 GLG).** 편집 입구는 `resume/body.org` 하나이고, 국문 기본 뷰 `resume/resume.org`·국문 포트폴리오 뷰 `resume/portfolio-ko.org`가 그 안에서 고르고 배열한다. 이 폴더의 `application-telechips.org`는 지원처 이름·동기·계획과 생년월일 마커만 담는다. 소스가 여럿이어도 업로드 PDF는 둘이다.
+- 기본 뷰·포트폴리오·사실 정본은 지원처 중립이다(지원처 이름·조준 문장 0 — `build.sh`가 검사). GoQual·NEMO-UX·대학·공개 프로젝트 같은 실적 주체 이름은 남긴다.
+- 연구·가상화·부트체인·Yocto·실보드·양산·시험 도구가 주인공이고, AI/에이전트 서사는 국문 블록에서 덜어냈다. 의도한 두 언어 차이는 `resume/body.org` §판 이력의 대조 목록이 쥔다.
+- 영문 이력서 7컷은 보존한다(영문 베이스는 `resume/resume-en.org`로 옮겼고 산출 이름 `KimJunghan_Resume`은 그대로). 코디의 10/16 오전 검토판과 Opus의 Markdown 검토판 v1은 소재로 검토 폴더에 보존했다.
+- 10/16 오전 Markdown 초안(`application.md`·`application-telechips.md`·`cover-letter.md`)은 Org로 옮긴 뒤 지웠고, `experience-detail.md`·`pipeline/header.tex`는 커밋된 판으로 되돌려 역사 자료로 남겼다(새 조판은 읽지 않는다). 초안 원문은 private 검토 폴더 `telechips-org-base-v2/material/`에 지문과 함께 있다.
+
+### 현행 BSP 폼 실측 — 2026-10-16
+
+코디가 Linux Chrome 새 프로필로 `?lang=en` 폼을, Opus가 별도 Chrome 탭으로 국문 기본 폼과 `?lang=en`을 읽었다. 둘 다 입력·업로드·동의·제출 버튼 클릭은 하지 않았다. 필수 표시(`EditableLabel__RequiredMark`) 15개 — 이름·생년월일·이메일·연락처·지원경로·학력·경력·경력요약·사진·이력서·포트폴리오·장애·보훈·병역·영어 수준.
+
+| 자료·항목 | 이번 폼에서 직접 확인한 요구 |
+|---|---|
+| 이력서 | 「인적정보(생년월일/학력), 경력기술서, 자기소개서를 포함한 **하나의 파일**」, 「연봉정보는 필히 제외」, **50MB 이하**, 「업로드한 문서는 PDF 파일로 자동 변환」 → 우리가 PDF로 올려 조판을 통제한다 |
+| 포트폴리오 | 「이력서 외에 본인의 프로젝트 수행내역/직무능력을 표현할 수 있는 자료」, **필수**, 50MB 이하, PDF 자동 변환 |
+| 경력요약 | 「간결한 용어로 설명」, 예시는 용어 나열(`BSP Kernel Driver 개발 / …`), **0/10,000** 카운터. 후보는 `answers.md` 문항 1 |
+| 경력사항 | 「총 경력사항을 상세하게 기입」, 일부만 기재하면 불이익 가능. 항목마다 회사명·입사일·퇴사일·재직중·고용형태·직급/직책·근무부서·**담당업무(서술 칸)**. 담당업무 후보는 `answers.md` 문항 2–4, 기간·직급·부서 값은 사람이 private 원본으로 입력 |
+| 사진 | jpg/jpeg/png, 권장 **250×300**. 기존 private 보관본 사용 후보, 아직 업로드하지 않음 |
+| 영어 수준 | 상·중·하 설명 표시. GLG가 08/09 확정한 「중」 |
+| 동의 — **언어판마다 다르다** | **국문(기본)판**: 민감정보 「필수」, 그 블록에 거부 가능 문장 없음. 「동의를 하지 않더라도 지원서 제출이 가능」 문장은 인재풀(선택) 블록에만 있음. 민감정보 보유 3년(최종 탈락 후 5일 내 파기), 인재풀 3년. **영문판**: 민감정보 Required 밑에 「optional… can still be submitted without consent」, 인재풀 5년. 코디의 영문판 관측(Required 표제 vs 거부 가능 본문)은 그 판의 사실로 유지한다. **GLG는 실제로 제출할 국문판 원문을 기준으로 선택한다** |
+
+### 남은 사람 결정·private 값
+
+1. 생년월일 — 합본 PDF에 필요. GLG가 private 원본 경로를 지정하면 `final` 빌드에 표준입력으로 값만 연결한다(원본 경로·값은 Git·로그에 남기지 않음). 지정 전에는 review만.
+2. 학력 학과 정식 명칭·경력 기간 — 기본판은 `resume/body.org` 연 단위를 따른다. 연구실 기간이 문서는 「2018 – 2022」, `FAQ.md` §3 구조화 값은 「2017.08 – 2022.07」이다. 폼 구조화 칸과 PDF가 다르게 읽히지 않는지 GLG 확인.
+3. 「2010 소프트웨어 공모전 국무총리상」 대회 정식 명칭 — 출처는 `resume/body.org`의 영문 표기뿐이다.
+4. 사진 선택, 동의 선택(국문판 기준), 지원경로 드롭다운 값.
+5. 최종 업로드·Submit은 GLG.
+
+원본 build/submit과 기존 지문은 보존한다. 폴더 개편·전체 stage 실행·제출·commit/push는 이 준비의 자동 후속이 아니다.
+
+## 과거 준비 기록 — `iSXmKnRT` 당시 (현 대상에 적용 금지)
 
 - [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`
       (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`)
@@ -33,7 +82,7 @@
 > 뿐이라 조준부를 바꿔 재빌드해야 하고, 선례는 `../deepx--*/build.sh`(이력서 컷 +
 > `experience-detail.md` → `pdfunite`) 다. **NEXT.md 에 남겼다.**
 
-## 폼 실측 — 2026-08-01 (지원 URL 을 열어 DOM 으로 확인)
+## 과거 다른 공고의 폼 실측 — 2026-08-01 (`iSXmKnRT`, 현 대상에 적용 금지)
 
 **예상이 틀렸다. 이 폼은 15개 항목이 전부 필수다.** 오른쪽 사이드바가 「전체 15개 항목」을
 빨간 점으로 세고, DOM 의 `EditableLabel__RequiredMark` 가 15개 전부 렌더된다.
@@ -65,6 +114,12 @@ ninehire 는 화이트라벨이라 **회사마다 폼을 따로 짠다 — 건�
 산출 `submit/KimJunghan_Embedded_Experience_Detail.pdf` **3쪽**. AX Portfolio 12쪽을
 그대로 내는 것은 지금도 이 자리의 답이 아니다.
 
+> 2026-10-16: 지금의 `build.sh`는 Org 정본에서 국문 두 서류를 만들고 `experience-detail.md`·
+> `pipeline/header.tex`를 읽지 않는다. 커밋된 `experience-detail.md`는 공개 정제로 연락처가 placeholder로
+> 바뀌었고 그 뒤 철회된 서버·앱 주장을 담고 있어, 08-09 업로드 PDF를 바이트 그대로 다시 만들지 않는다.
+> 당시 제출물의 근거는 `submit/MANIFEST.sha256` 지문과 private 보관본이다. 이 두 파일과
+> `git show 93e6187:applications/telechips--embedded-sw-engineer/build.sh`는 역사 자료다.
+
 **DEEPX 판을 그대로 복사하지 않았다.** 두 가지를 바꿨다.
 
 1. **자가 측정 수치를 걷어냈다** (2026-07-29 GLG 원칙4). DEEPX 판 §3 에 부팅 45.4→5.8초 ·
@@ -85,10 +140,10 @@ ninehire 는 화이트라벨이라 **회사마다 폼을 따로 짠다 — 건�
 | 질문 | 답 | 출처 |
 |---|---|---|
 | 이름 / 영문명 | 김정한 / Junghan Kim | `FAQ.md` §1 |
-| 이메일 | [email removed] | `FAQ.md` §1 |
+| 이메일 | junghanacs@gmail.com (정본: `resume/pipeline/preamble.org`) | `FAQ.md` §1 |
 | 연락처 | **GLG 직접 입력** (문서에 값 없음) | `FAQ.md` §1 |
 | GitHub / 포트폴리오 URL | https://github.com/junghan0611 | `FAQ.md` §1 |
-| 총 경력 | **8+ years** — 요건 `3~15년` 통과 | `FAQ.md` §3 |
+| 총 경력 | **8+ years** — 당시 `iSXmKnRT` 요건 `3~15년` 통과. 현 `Re4LUYvK` 는 4~15년, 같은 값으로 통과 | `FAQ.md` §3 |
 | 최종 학력 | 석사 보유 — 요건 `학사 이상` 통과 | `FAQ.md` §3 |
 | 병역·보훈·장애 등 법적 값 | **브라우저에서 GLG 직접 입력. Git 에 저장하지 않는다** | `FAQ.md` §5 |
 | 희망 연봉 | ✅ **「면접 후 협의」** — 숫자를 강제하는 폼에서만 GLG 가 직접 입력 (Git 에 숫자를 적지 않는다) | `FAQ.md` §4 |
@@ -100,7 +155,7 @@ ninehire 는 화이트라벨이라 **회사마다 폼을 따로 짠다 — 건�
 > ⛔ **2026-08-01 실측으로 깨졌다.** 위 §폼 실측 참조 — 15개 항목 전부 필수이고
 > **경력요약 10,000자 · 구조화 경력 · 증명사진 · 포트폴리오**를 받는다. 이 표는 폼의 절반도 못 덮는다.
 
-## 왜 이 직무였는가
+## 당시 판단 — 왜 이 직무였는가 (2026-07~08, 현행 요건 대조 아님)
 
 **Telechips 채용홈에 82건이 걸려 있지만 실제로 열려 있는 것은 3건뿐이다** — 그중 GLG 축에
 걸리는 것은 이 하나다(나머지 둘은 `SoC Design Engineer(경력)` · `BD & Marketing Manager`).
@@ -119,6 +174,10 @@ ninehire 는 화이트라벨이라 **회사마다 폼을 따로 짠다 — 건�
 보드 bring-up 이다.
 
 ## 이후 기록
+
+- [2026-10-16] **Org 정본으로 회수(GLG 09:19, 코디 경유).** 국문·영문을 `resume/body.org` 한 벌에 두고(국문 블록 먼저, 영문 이웃, 기간·ID 공통 속성), 정본마다 `#+CV_LANG`으로 고른다. 국문 기본 뷰 `resume/resume.org`·영문 베이스 `resume/resume-en.org`·국문 포트폴리오 `resume/portfolio-ko.org`를 두고, 이 건은 `application-telechips.org` 지원처층만 가진다. 영문 7컷 PDF 텍스트는 전후 같음을 측정했다. `build.sh`는 Org에서 두 업로드 PDF를 만들도록 다시 썼고 `test_build.sh` 23건·`resume/test_language.sh` 28건 실패 주입 통과. Markdown 초안은 소재로 보존 후 지웠다. upload·Submit 0회.
+- [2026-10-16] **국문 2파일 기본판으로 전환(GLG 지시, 코디 경유).** `application.md`(회사 중립 합본 본문)·`application-telechips.md`(지원처층)·`experience-detail.md`(회사 중립 포트폴리오)를 작성했다. 연구 실적 원본에서 제목·저자 순서·수상 행을 대조해 가상화 제1저자 연구, 커널 분석 공동연구, 수상(2012·2019·2020·2021)을 보강했다. 한국소프트웨어종합학술대회 논문의 연도는 원본 안에서 두 값이 보여 적지 않았다. 다중 허브 fan-out은 회사 펌웨어가 아니라 개인 검증 프로토타입 쪽 사실이라 그쪽으로 옮겼다. `build.sh`를 다시 썼다 — 기본 출력 경로를 없애 `submit/` 덮어쓰기를 막고, 생년월일 빌드 마커·검토본/제출본 구분·정본 이메일·placeholder·연봉·지원처 이름 검사를 넣었다. `test_build.sh` 실패 주입 22건 통과. 상태는 코디 LEDGER와 맞춰 `draft`. 검토판은 private 검토 폴더에만 있고 upload·Submit 0회.
+- [2026-10-16] **GLG가 Re4LUYvK BSP Driver Engineer를 정확한 대상으로 지정했다.** 초기 조회 iSXmKnRT는 다른 공고였다. 공고·요건 대조를 정정하고 과거 폼 기록을 현재 폼으로 상속하지 않는다. 국문 자기소개 초안 추가, 공통 사실 모듈·base/Software/Embedded Summary 및 건별 깊이 문서의 회사 펌웨어/개인 검증 프로토타입 경계 정정에 착수했다. 새 PDF·제출 세트는 아직 만들지 않았으며 기존 산출물·지문을 보존한다.
 
 - [2026-10-15] **GLG가 다음 지원을 Telechips BSP로 지정했다.** 시스템 SW 축을 유지하고 이 건을 선행한다. 08-01 보류 및 08-09 재개 계보는 남긴다. 기존 `ready`는 당시 준비 상태이며, 지금 바로 제출 가능하다는 새 검증은 아니다. 공식 공고·폼을 다시 확인하고, 현재 Embedded 컷·임베디드 깊이 문서·경력요약을 자격요건에 대조한 뒤 제출 패킷을 갱신한다. 상시 공고가 여전히 열려 있다는 것은 GLG 보고이며 이번 작업에서 라이브 재측정하지 않았다. 연락망·개인 대화·비공개 지원 배경은 이 파일에 담지 않는다.
 - [2026-07-28] GLG 지목으로 건 생성. LinkedIn `4431589221` 에서 본문 원문 채집.
@@ -156,7 +215,7 @@ ninehire 는 화이트라벨이라 **회사마다 폼을 따로 짠다 — 건�
 | 1 | **경력요약 10,000자** (폼 8번) | ✅ *「임베디드 관련 내 이력들로 적으면 되거든」* → **에이전트·AX 축을 한 줄도 넣지 않았다.** 폼 예시가 용어 나열형이라 나열을 골격으로 쓰되 맨 위에 두 줄 요약을 뒀다 | `answers.md` §문항 1 → `submit/answers.txt` (**1,976자** · 상한 10,000) |
 | 2 | **영어 활용 수준** (폼 15번) | ✅ **「중」** | `FAQ.md` §6 에 확정으로 박았다 — 국문 3단 척도가 나오는 폼은 전부 이 값 |
 | 3 | **증명사진** (폼 9번) | ✅ GLG 가 원본 지정 | 아래 §증명사진 |
-| 4 | 생년월일·연락처·장애·보훈·병역 | **브라우저에서 GLG 직접** — Git 에 값을 두지 않는다 | 값의 SSOT 는 `../hyundai-autoever--ai-agent-engineer/submit/KimJunghan_AutoEver_Detail_Form.md` |
+| 4 | 생년월일·연락처·장애·보훈·병역 | **브라우저에서 GLG 직접** — Git 에 값을 두지 않는다 | ~~값의 SSOT 는 `../hyundai-autoever--ai-agent-engineer/submit/KimJunghan_AutoEver_Detail_Form.md`~~ — 2026-10-16 정정: 그 파일은 공개 전환 때 제거됐다(`docs/HISTORY-REDACTION.md` §dense-pii-form). 법적 값 원본은 GLG가 지정하는 private 면이며, 다른 건의 폼을 입력 원본으로 쓰지 않는다 |
 
 ### 증명사진
 

@@ -1,56 +1,53 @@
-# 영문 이력서 — 베이스 정본 (타깃 중립)
+# 국문 이력서 — 국문 기본 뷰 (시스템 SW 직무 공통, 지원처 중립)
 #
-# 링크드인 첨부용 공개 입구다. "무엇이든 하는 사람"이 아니라 펌웨어에서 책임 있는 에이전트
-# 루프까지 하나의 세로축을 소유하는 시스템 엔지니어로 말한다. 타깃 공고에는 targets/*.org를
-# 우선한다. 경력 사실은 body.org 한 벌이고, 이 파일은 선택·배열·증거 입구만 쥔다.
+# 2026-10-16 GLG: 국문 기본판은 케이스 Markdown 이 아니라 body.org 와 이 파일로 회수한다.
+# 이력서 · 경력기술서 · 자기소개서를 한 파일로 받는 국내 폼의 기본판이다. 사실은 body.org 의
+# 국문 블록이 쥐고, 이 파일은 선택 · 배열 · 짧은 요약 · 공개 증거 입구만 쥔다.
+# 지원처 이름 · 지원 동기 · 생년월일은 여기 두지 않는다 — applications/<건>/ 의 지원처층이
+# 이 파일을 INCLUDE 하고 그 건에만 필요한 것을 덧붙인다.
+# 영문 베이스는 resume-en.org 다(산출 이름 KimJunghan_Resume 유지).
 #
-# 빌드:  ./run.sh base     (또는 ./run.sh all)
+# 빌드:  ./run.sh base     (국문·영문 베이스 둘 다, 또는 ./run.sh ko · ./run.sh all)
 
-#+cv_pdf_name: KimJunghan_Resume
-#+EXCLUDE_TAGS: noexport catalog corpus
+#+cv_pdf_name: KimJunghan_CV_KO
+#+CV_LANG: ko
+#+CV_GOQUAL_MODULES: smart-hub on-device-ai
+#+EXCLUDE_TAGS: noexport independent validation catalog corpus stack portfolio
 
 #+INCLUDE: "pipeline/preamble.org"
 
 #+begin_export latex
-\cvheader{Agent Platform \& Systems Engineer — Firmware to Agent Loops}
+\cvheaderko{시스템 소프트웨어 엔지니어 — BSP · 커널 · 임베디드 Linux}
 #+end_export
 
-* Summary
+* 요약
 
-I build the joints between humans, AI agents, and real systems. At one end: a Zigbee hub written in
-Zig and shipped to mass production, with the Go server and Flutter app I built on top of it. At the
-other: an npm-published dispatch substrate that connects agent harnesses without taking ownership of
-their transcripts, authentication, or runtime. The middle is protocols, services, semantic memory,
-deployment, and a reproducible NixOS/Emacs environment where humans and agents share tools, an
-inspectable timeline, and explicit boundaries.
+커널 장치 가상화와 비휘발성 메모리 드라이버를 연구했고, Yocto 기반 Linux 디스플레이 제품과
+Zigbee/Wi-Fi 게이트웨이 펌웨어를 양산까지 맡았습니다. 지금은 SG2000 부트체인을 공개 SDK로 재현
+빌드하고 RISC-V·ARM64 실보드 부팅을 기록합니다. 보드 의존성과 제품 로직을 나누고, 같은
+조건에서 다시 확인할 수 있는 빌드와 시험을 남기는 것을 일의 기준으로 삼습니다.
 
-I build before claiming expertise: make a small vertical work, find where it breaks, preserve the
-evidence, and turn the recovery into a reproducible tool, gate, or operating policy. My current
-focus is the system around models — harnesses, memory, permissions, evidence, and hand-offs — not
-foundation-model training. The next boundary is carrying what I learned from personal memory and
-long-running agent collaboration into enterprise data, governance, workflow, and domain ownership.
+* 역량과 근거
 
-* Core Competencies
+| 역량                   | 근거                                                                                   |
+|------------------------+----------------------------------------------------------------------------------------|
+| 커널 드라이버 · 메모리 | 비휘발성 메모리 블록 디바이스 드라이버 연구, NUMA · 영속 메모리 자료구조 연구         |
+| 가상화 · 하이퍼바이저  | 커널 내부 장치 가상화(제1저자 논문), MyAV · exitless I/O · 중첩 가상화 공동연구       |
+| 커널 분석 · 디버깅     | 바이너리 변환 커널 분석기 · 드라이버 오류 격리 공동연구, 부팅 로그 판독 · 문제 재현   |
+| 부트체인 · bring-up    | SG2000 FSBL → OpenSBI → U-Boot → Linux → FreeRTOS 공개 SDK 빌드, 실보드 부팅 기록      |
+| Yocto · Embedded Linux | Yocto 기반 디스플레이 제품 양산, 공개 Yocto 레이어(커널 bbappend · 머신 설정 · DTS)   |
+| 아키텍처 · 이식        | ARMv7/glibc에서 RISC-V/static musl로 허브 코어 이식, board HAL 분리                    |
+| 양산 · 시험            | Zigbee/Wi-Fi 게이트웨이 펌웨어 양산, 장시간 aging 시험 자동화                          |
 
-- @@latex:\cvlabel{Agent Harness Engineering}@@ — dispatch, identity, auth boundaries, session
-  continuity, delegation contracts, upstream version operations, and rollback policy.
-- @@latex:\cvlabel{AI Agent Systems}@@ — domain-owner agents, evidence contracts, review loops, and
-  multi-agent development sessions with a human as PM.
-- @@latex:\cvlabel{Knowledge Engineering}@@ — embedding and hybrid retrieval, cross-lingual search,
-  recall tracking, Org/Denote knowledge graphs, and Korean document toolchains.
-- @@latex:\cvlabel{Systems and Embedded Engineering}@@ — Go/Clojure services; Zig/C firmware; ARM and
-  RISC-V Linux; Matter/Thread/Zigbee; product delivery through mass production.
-- @@latex:\cvlabel{Human-Computer Interaction}@@ — shared timelines, fenced work surfaces, durable
-  hand-offs, and interfaces for people who do not write code.
+* 공개 증거
 
-* Public Evidence — Start Here
-
-- *Physical system* — [[https://github.com/junghan0611/homeagent-config][github.com/junghan0611/homeagent-config]] exposes the Go/Flutter/Matter/Yocto
-  implementation and build entries: =./run.sh go-build=, =flutter-server=, and =bundle=.
-- *Agent boundary* — [[https://github.com/junghan0611/entwurf][github.com/junghan0611/entwurf]] is installable from npm; =entwurf check-bridge=
-  probes its bridge without backend credentials. An outside contributor extended it in [[https://github.com/junghan0611/entwurf/pull/40][PR #40]].
-- *Memory and provenance* — [[https://github.com/junghan0611/andenken][github.com/junghan0611/andenken]] publishes search/quality/doctor entry points;
-  [[https://github.com/junghan0611/agent-config][github.com/junghan0611/agent-config]] records source revision, source-tree digest, and installed
-  binary SHA-256. Private employer systems are labeled as experience, not public proof.
+- *SG2000 부트체인* — [[https://github.com/junghan0611/homeagent-config/tree/main/bsp][github.com/junghan0611/homeagent-config/tree/main/bsp]]:
+  공개 SDK 고정 리비전, 보드 · Buildroot 설정, 빌드 진입점.
+- *실보드 부팅 기록* — [[https://github.com/junghan0611/homeagent-config/tree/main/captures][github.com/junghan0611/homeagent-config/tree/main/captures]]:
+  RISC-V(2026-07-14) · ARM64(2026-07-23) firstboot 캡처.
+- *Yocto 레이어* — [[https://github.com/junghan0611/homeagent-config/tree/main/yocto][github.com/junghan0611/homeagent-config/tree/main/yocto]]:
+  meta-homeagent.
+- 양산 펌웨어와 고객 SDK 인도는 비공개 재직 수행이며, 위 공개 저장소는 그것을 증명하는
+  자료가 아닙니다.
 
 #+INCLUDE: "body.org" :minlevel 1

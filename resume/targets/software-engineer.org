@@ -6,9 +6,10 @@
 # 빌드:  ./run.sh target software-engineer
 
 #+cv_pdf_name: KimJunghan_Resume_Software_Engineer
+#+CV_LANG: en
 #+CV_GOQUAL_MODULES: smart-hub domain-agents on-device-ai ai-infra
 #+CV_INDEPENDENT_MODULES: platform-operations entwurf agent-config corpus-tools memex-kb
-#+EXCLUDE_TAGS: noexport catalog corpus
+#+EXCLUDE_TAGS: noexport catalog corpus research selfintro portfolio
 
 #+INCLUDE: "../pipeline/preamble.org"
 
@@ -19,8 +20,8 @@
 * Summary
 
 I work across one vertical rather than collecting disconnected stacks. At the physical end: a
-Zigbee hub in Zig, shipped to mass production, with the Go server and Flutter app I built when the
-original contract stopped at firmware. At the agent end: a published dispatch substrate whose
+Zigbee hub in Zig, shipped to mass production, followed by personal Go/Flutter prototypes to verify
+its protocol contract rather than deliver the company's server and app. At the agent end: a published dispatch substrate whose
 boundary was extended by a contributor I had never met. Between them are protocols, services,
 deployment, semantic retrieval, reproducible NixOS environments, and explicit operational gates.
 

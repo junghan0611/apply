@@ -6,9 +6,10 @@
 # 빌드:  ./run.sh target ai-engineer
 
 #+cv_pdf_name: KimJunghan_Resume_AI_Engineer
+#+CV_LANG: en
 #+CV_GOQUAL_MODULES: domain-agents ai-infra on-device-ai smart-hub
 #+CV_INDEPENDENT_MODULES: platform-operations entwurf andenken agent-config forge-config corpus-tools
-#+EXCLUDE_TAGS: noexport catalog corpus
+#+EXCLUDE_TAGS: noexport catalog corpus research selfintro portfolio
 
 #+INCLUDE: "../pipeline/preamble.org"
 

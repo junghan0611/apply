@@ -124,15 +124,33 @@
 #+latex_header:   \begin{minipage}[b]{0.30\linewidth}\raggedleft\footnotesize\color{muted}%
 #+latex_header:     김정한 · GLG · 힣\\ Suwon, South Korea%
 #+latex_header:   \end{minipage}\\[5pt]%
+#+latex_header:   \cvcontactline}
+#+latex_header: \newcommand{\cvcontactline}{%
 #+latex_header:   {\color{rulegray}\hrule height 0.8pt}\vspace{4pt}%
 #+latex_header:   {\footnotesize\raggedright\setlength{\emergencystretch}{2em}%
 #+latex_header:     \href{mailto:junghanacs@gmail.com}{junghanacs@gmail.com} \textcolor{rulegray}{\textbar}\
 #+latex_header:     \href{https://github.com/junghan0611}{github.com/junghan0611} \textcolor{rulegray}{\textbar}\
 #+latex_header:     \href{https://ax.junghanacs.com}{ax.junghanacs.com} \textcolor{rulegray}{\textbar}\
-#+latex_header:     \href{https://junghanacs.com}{junghanacs.com} \textcolor{rulegray}{\textbar}\
+#+latex_header:     \href{https://www.junghanacs.com}{www.junghanacs.com} \textcolor{rulegray}{\textbar}\
 #+latex_header:     \href{https://www.linkedin.com/in/junghan-kim-1489a4306}{linkedin.com/in/junghan-kim-1489a4306}\par%
 #+latex_header:   }\vspace{6pt}%
 #+latex_header: }
+
+# 국문 뷰의 표제 블록. 이름 크기·연락처 줄은 영문과 같고, 큰 이름과 병기만 언어가 바뀐다.
+# \cvpersonal 은 기본이 비어 있다. 지원처층(applications/<건>/)이 생년월일처럼 그 건에만
+# 필요한 인적 정보 한 줄을 넣을 때만 정의한다 — 공통 뷰에는 개인 법적 값을 두지 않는다.
+# 지원처층은 INCLUDE 앞에서 \def 로 먼저 정의하므로 여기는 \providecommand 다(이미 있으면 그대로 둔다).
+#+latex_header: \providecommand*{\cvpersonal}{}
+#+latex_header: \newcommand{\cvheaderko}[1]{%
+#+latex_header:   \begin{minipage}[b]{0.68\linewidth}%
+#+latex_header:     {\sffamily\bfseries\Huge\color{accent}김정한}\\[3pt]%
+#+latex_header:     {\sffamily\large #1}%
+#+latex_header:   \end{minipage}\hfill
+#+latex_header:   \begin{minipage}[b]{0.30\linewidth}\raggedleft\footnotesize\color{muted}%
+#+latex_header:     Junghan Kim · GLG · 힣\\ 경기 수원%
+#+latex_header:     \ifx\cvpersonal\empty\else\\ \cvpersonal\fi%
+#+latex_header:   \end{minipage}\\[5pt]%
+#+latex_header:   \cvcontactline}
 
 # 기간·부가 정보를 소절 제목 오른쪽 끝에 앉히는 매크로. Org 헤딩 안에서 @@latex:\cvwhen{...}@@
 # 으로 부른다. 정렬을 문서마다 손으로 맞추지 않기 위해 한 자리에 둔다.

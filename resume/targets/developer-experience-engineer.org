@@ -6,9 +6,10 @@
 # 빌드:  ./run.sh target developer-experience-engineer
 
 #+cv_pdf_name: KimJunghan_Resume_Developer_Experience_Engineer
+#+CV_LANG: en
 #+CV_GOQUAL_MODULES: domain-agents ai-infra on-device-ai
 #+CV_INDEPENDENT_MODULES: agent-config memex-kb forge-config digital-garden entwurf corpus-tools
-#+EXCLUDE_TAGS: noexport catalog corpus
+#+EXCLUDE_TAGS: noexport catalog corpus research selfintro portfolio
 
 #+INCLUDE: "../pipeline/preamble.org"
 

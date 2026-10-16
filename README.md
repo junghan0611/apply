@@ -1,11 +1,11 @@
 # apply — evidence-first, human-governed application operations
 
-> **⚔️ OFFENSE MODE — since 2026-09-09.** Target criteria widened: industry and company size are
-> no longer filters, and embedded/systems roles are back in scope alongside the AI-axis roles.
-> Volume and reach now outweigh narrow fit. The evidence-first, human-final-submit contract below
-> is unchanged — only the target aperture is wider.
+> **Current batch — systems software (2026-10-08 GLG decision).** BSP, bootloader, kernel/driver,
+> firmware, RTOS and runtime roles are the current focus; AI/AX/FDE applications are paused, not
+> erased. Earlier targeting decisions remain in `AGENTS.md`. The evidence-first, human-final-submit
+> contract is unchanged.
 
-`apply` is a working system for turning one verified career corpus into job-specific documents,
+`apply` is a working system for turning one human-maintained career corpus into job-specific documents,
 searching public job listings, submitting through heterogeneous ATS forms, and preserving exactly
 what was sent.
 
@@ -19,7 +19,7 @@ browser action human-owned.
 > you are reading.
 >
 > So the record is real but not complete, and the gap is deliberate. Personal data, third-party
-> personal data, received assignments, internal diagrams, and the submitted binaries are gone;
+> personal data, received assignments, unreviewed confidential diagrams, and submitted binaries are gone;
 > the companies, the answers, the rejections, and the judgment errors are not.
 > [`docs/HISTORY-REDACTION.md`](docs/HISTORY-REDACTION.md) states what was removed and by what
 > method, and [`PUBLICATION.md`](PUBLICATION.md) is the contract that governs it.
@@ -53,15 +53,38 @@ The boundaries are as important as the arrows:
 | Lane | Path | Responsibility | SSOT |
 |---|---|---|---|
 | Discovery | `.claude/skills/linkedin-jobs/` | public guest search, detail enrichment, location evidence, explainable ranking | `SKILL.md` |
-| Document launcher | `resume/` | one fact corpus → role-specific résumé cuts | `resume/body.org` |
+| Document launcher | `resume/` | shared facts and Korean/English wording → résumé and systems-portfolio views | `resume/body.org` |
 | Submission operations | `applications/` | JD snapshot, form answers, uploaded-file snapshot, outcome ledger | `applications/LEDGER.md` |
-| Dossier launcher | `dossier/` | competency statement, portfolio, and evidence package from one org corpus | `dossier/AGENTS.md` |
+| Dossier launcher | `dossier/` | independent long-form competency, portfolio and detail documents; not an automatic upstream of the résumé | `dossier/AGENTS.md` |
 | Handoff | `NEXT.md` | the next concrete move, not a backlog or history archive | `NEXT.md` |
 
 The narrative documents — this file, `PUBLICATION.md`, `docs/`, the license files — are in English.
 The operating contracts the agents actually follow, the root `AGENTS.md` and one per lane, are in
 Korean, because that is the language the work was done in. Translating them would mean maintaining
 two versions of a contract, and a contract that drifts is worse than one you have to translate.
+
+## Edit the career source, not another company copy
+
+The everyday editing entry is **[`resume/body.org`](resume/body.org)**. It contains shared module
+IDs and periods, Korean/English wording, reusable research and project descriptions, and an Org
+revision-history section. A view chooses `#+CV_LANG: ko` or `en` and selects modules; missing
+translations fail instead of silently falling back. The new Korean views currently translate the
+systems/BSP selection, not every English module.
+
+- `resume/resume.org`: company-neutral Korean application base.
+- `resume/resume-en.org` and `resume/targets/*.org`: the existing English base and role cuts.
+- `resume/portfolio-ko.org`: Korean systems portfolio from the same body.
+- Application folders: employer-specific motivation, packaging, form answers and frozen submission records.
+
+A correction discovered while tailoring should return to the common source. One file does **not**
+prove translation equivalence or automatically synchronize every résumé/portfolio phrasing; the
+source's review checklist records deliberate differences and places to reconcile. External career
+material and the independent `dossier/` documents remain evidence/editorial inputs, not hidden
+automatic includes. `noexport` excludes rendered content, not files or history from this public repository.
+
+The generation structure has been checked, and GLG has reviewed the document layout. **The prose
+still requires further GLG review.** This systems checkpoint does not mean the entire career base
+is current or that an application is ready to submit. See `NEXT.md` and the per-application record.
 
 ## Multi-agent collaboration
 
@@ -107,7 +130,10 @@ python3 -m py_compile \
 # Application ledger ↔ target record ↔ uploaded snapshot
 applications/check.py
 
-# Rebuild and inspect all résumé cuts
+# Language selection and end-to-end PDF exclusion tests (isolated temporary copies)
+bash resume/test_language.sh
+
+# Rebuild and inspect Korean base/portfolio plus the existing English cuts
 (cd resume && ./run.sh all)
 
 # Publication gate — this repository's own history, not an export tree

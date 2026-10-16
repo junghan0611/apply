@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
-# 영문 이력서 — Org 정본 → XeLaTeX → PDF
+# 이력서·포트폴리오 — Org 정본 → XeLaTeX → PDF (국문·영문)
 #
-# 하나의 공통 사실원(body.org)과 여러 개의 타깃 정본(resume.org, targets/*.org)이 한 벌의
-# 조판 선언을 공유한다. 경력 사실은 body.org에서만 고치고, 타깃은 CV_*_MODULES로 선택·순서,
-# 자기 직무 언어, 공개 증거 입구를 쥔다 — 사실 SSOT와 표시 SSOT를 혼동하지 않는다.
+# 하나의 공통 사실원(body.org, 국문·영문 블록)과 여러 정본(뷰)이 한 벌의 조판 선언을 공유한다.
+# 경력 사실은 body.org에서만 고치고, 뷰는 #+CV_LANG 으로 언어를, CV_*_MODULES·EXCLUDE_TAGS 로
+# 선택·순서를, 짧은 요약과 공개 증거 입구를 쥔다 — 사실 SSOT와 표시 SSOT를 혼동하지 않는다.
 #
-#   resume.org ─┐
-#   targets/*.org ┼→ latex-export.el(org→tex) → xelatex → build/<name>.pdf
-#                 └   article · A4 · Pretendard/D2Coding
+#   resume.org (국문 기본) ─┐
+#   resume-en.org (영문 베이스) ┤
+#   portfolio-ko.org (국문 포트) ┼→ latex-export.el(org→tex, 언어 선택) → xelatex → build/<name>.pdf
+#   targets/*.org (영문 컷) ─────┘   article · A4 · Pretendard/D2Coding
 #
 # 도구 출처: emacs 는 호스트 전역(NixOS). 조판(texlive)과 활자(Pretendard·D2Coding)는 이
 #   디렉터리의 flake devshell 이 쥔다 — 활자가 다르면 같은 소스에서 다른 문서가 나온다.
@@ -16,9 +17,10 @@
 #
 # 사용법:
 #   ./run.sh check              # 도구·활자 점검
-#   ./run.sh base               # 베이스 이력서 (타깃 중립)
+#   ./run.sh base               # 베이스 이력서 둘 (국문 resume.org · 영문 resume-en.org)
+#   ./run.sh ko                 # 국문 둘 (resume.org · portfolio-ko.org)
 #   ./run.sh target ai-engineer # targets/ai-engineer.org 한 장
-#   ./run.sh all                # 베이스 + targets/*.org 전부 + 검수
+#   ./run.sh all                # 정본 전부 + 검수 (기대 산출물 집합까지)
 #   ./run.sh verify             # 산출물 검수
 #   ./run.sh clean              # 중간산물 정리
 set -euo pipefail
@@ -43,6 +45,17 @@ NIXRUN() {
 		err "nix 없음 — PDF 조판은 flake devshell(texlive·Pretendard·D2Coding)이 필요합니다."; return 127; }
 	( cd "$DIR" && nix develop 'path:.' --command "$@" )
 }
+
+# 이 레인의 정본(뷰) 전부. 국문 기본 뷰(resume.org)·영문 베이스(resume-en.org)·국문 포트폴리오
+# (portfolio-ko.org)·영문 타깃 컷(targets/*.org). verify 는 이 목록이 정하는 산출물 집합을 기대한다.
+views() {
+	local t
+	echo "$DIR/resume.org"; echo "$DIR/resume-en.org"; echo "$DIR/portfolio-ko.org"
+	for t in "$DIR"/targets/*.org; do [[ -f "$t" ]] && echo "$t"; done
+}
+
+# 정본이 고른 언어(#+CV_LANG). 언어 선택 자체의 계약은 pipeline/latex-export.el 이 강제한다.
+lang_of() { grep -m1 -i '^#+CV_LANG:' "$1" 2>/dev/null | sed 's/^#+[Cc][Vv]_[Ll][Aa][Nn][Gg]:[[:space:]]*//' || true; }
 
 # 정본이 스스로 정하는 산출물 이름. 파일명에서 유추하지 않는다 — ai-engineer 를
 # "Ai_Engineer" 로 만들지 않기 위해서다.
@@ -115,10 +128,19 @@ build_one() {
 }
 
 cmd_verify() {
-	local fail=0 pdf base txt
+	local fail=0 pdf base txt view lang
+	local -A lang_by_pdf=()
+	# 기대 산출물 집합 — 정본마다 PDF 한 장. 빠진 것은 실패, 정본 없는 PDF(낡은 이름)도 실패다.
+	while IFS= read -r view; do
+		base="$(pdf_name_of "$view")" || { fail=1; continue; }
+		lang_by_pdf[$base]="$(lang_of "$view")"
+		[[ -f "$BUILD/$base.pdf" ]] || { err "  기대 산출물 없음: $base.pdf ($(basename "$view"))"; fail=1; }
+	done < <(views)
 	shopt -s nullglob
 	for pdf in "$BUILD"/*.pdf; do
 		base="$(basename "$pdf" .pdf)"
+		lang="${lang_by_pdf[$base]:-}"
+		[[ -n "$lang" ]] || { err "  정본 없는 PDF(낡은 산출물?): $base.pdf"; fail=1; continue; }
 		txt="$(NIXRUN pdftotext -layout "$pdf" - 2>/dev/null || true)"
 		# nix 경유 poppler 가 드물게 성공 코드와 빈 stdout 을 돌려준 적이 있다. 빈 텍스트로
 		# 검사하면 통과 여부가 실행마다 옮겨 다닌다. 한 번 재시도하고도 비면 검수를 수행한
@@ -131,7 +153,7 @@ cmd_verify() {
 		fi
 		local pages psize
 		pages="$(NIXRUN pdfinfo "$pdf" 2>/dev/null | awk '/^Pages/{print $2}')"
-		echo "── $base.pdf (${pages}p) ──"
+		echo "── $base.pdf (${pages}p, $lang) ──"
 		# A4. 이력서를 인쇄하는 쪽은 A4 를 전제한다. article 은 기본이 letterpaper 라
 		# geometry 호출이 빠지면 조용히 되돌아간다 — 페이지는 나오고 여백만 달라져서
 		# 눈으로는 잘 안 잡힌다. pdfinfo 는 A4(595.276 x 841.89pt)를 정수로 반올림해
@@ -167,6 +189,10 @@ cmd_verify() {
 		# 「placeholder가 있으면 통과」로 뒤집혀 세 번의 게이트 통과가 전부 거짓이었다 — GLG가
 		# 빌드된 PDF를 직접 열어서 잡았다. 그래서 여기는 실주소 형태를 요구하고, placeholder
 		# 문자열 자체는 하드 실패로 잡는다.
+		# 정제 흔적은 이메일 자리 말고도 나온다. 특정 리터럴이 아니라 형식으로 잡는다.
+		if grep -qiE '\[[^]]*(removed|redacted)[^]]*\]|removed at publication' <<<"$txt"; then
+			err "  정제 placeholder 노출"; fail=1
+		fi
 		if grep -q '\[email removed\]' <<<"$txt"; then
 			err "  이메일 자리에 redaction placeholder(\`[email removed]\`) 노출 — 소스 정제됨"; fail=1
 		elif grep -qE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}' <<<"$txt"; then
@@ -179,22 +205,29 @@ cmd_verify() {
 		# 공개 증거면. 이력서가 주장하는 것을 읽는 사람이 건너가 확인할 자리다 — 연락처 줄에서
 		# 조용히 빠지면 제출본 전체가 그 자리를 잃는데 다른 검사는 아무것도 말하지 않는다.
 		grep -q 'ax.junghanacs.com' <<<"$txt"      && ok "  AX 증거면 URL 노출" || { err "  ax.junghanacs.com 안 보임"; fail=1; }
-		grep -qE '(^|[^.])junghanacs\.com' <<<"$txt" && ok "  가든 URL 노출" || { err "  junghanacs.com 안 보임"; fail=1; }
+		grep -qF 'www.junghanacs.com' <<<"$txt" && ok "  대표 홈페이지 URL 노출" || { err "  대표 홈페이지 URL 안 보임"; fail=1; }
 		# 공개 증거가 PDF 텍스트에도 보여야 한다. 숨은 링크 annotation만 있으면 사람은 눌러도
 		# ATS/상대 에이전트가 추출한 텍스트에서는 사라질 수 있으므로 URL 자체를 보인다.
-		if grep -q 'Public Evidence' <<<"$txt"; then
-			local evidence_links
-			evidence_links="$(echo "$txt" | grep -o 'github.com/junghan0611/' | wc -l)"
-			[[ "$evidence_links" -ge 2 ]] && ok "  공개 증거 URL ${evidence_links}개" \
-				|| { err "  공개 증거 URL 2개 미만"; fail=1; }
+		local evidence_links ko
+		evidence_links="$(grep -o 'github.com/junghan0611/' <<<"$txt" | wc -l)"
+		[[ "$evidence_links" -ge 2 ]] && ok "  공개 증거 URL ${evidence_links}개" \
+			|| { err "  공개 증거 URL 2개 미만"; fail=1; }
+		ko="$(grep -oP '[가-힣]' <<<"$txt" | wc -l)"
+		if [[ "$lang" == en ]]; then
+			grep -q 'Public Evidence' <<<"$txt" && ok "  Public Evidence 절" || { err "  Public Evidence 절 안 보임"; fail=1; }
+			# body.org 에 국문 블록이 함께 산다. 이름 병기(김정한·GLG·힣)를 넘는 한글은 국문 블록이
+			# 영문 컷으로 샌 것이다 — 2026-10-16 부터 경고가 아니라 실패다.
+			[[ "$ko" -le 12 ]] && ok "  영문 문서 (한글 ${ko}자 — 이름 병기 범위)" \
+				|| { err "  한글 ${ko}자 — 국문 블록이 영문 컷으로 샜다"; fail=1; }
 		else
-			err "  Public Evidence 절 안 보임"; fail=1
+			[[ "$ko" -ge 300 ]] && ok "  국문 문서 (한글 ${ko}자)" || { err "  한글 ${ko}자 — 국문 문서가 아니다"; fail=1; }
+			# 반대 방향 누출: 영문 절 표제가 국문 뷰에 나오면 TITLE_KO 대체나 제외 태그가 빠진 것이다.
+			if grep -qE 'Experience|Education and Awards|Third-Party Validation|Selected Open Source|Technical Stack|Working Corpus|Independent Work' <<<"$txt"; then
+				err "  영문 절 표제가 국문 문서에 샜다"; fail=1
+			else
+				ok "  영문 절 표제 누출 없음"
+			fi
 		fi
-		# 한국어 텍스트가 섞여 들어가지 않았는지. 영문 이력서다 — 이름 병기(김정한·힣)와
-		# 도시명만 허용하고, 문장이 통째로 한국어면 컷을 잘못 만든 것이다.
-		local ko; ko="$(echo "$txt" | grep -oP '[가-힣]' | wc -l)"
-		[[ "$ko" -le 12 ]] && ok "  영문 문서 (한글 ${ko}자 — 이름 병기 범위)" \
-			|| { warn "  한글 ${ko}자 — 영문 이력서에 한국어 문장이 섞였는지 확인"; }
 	done
 	shopt -u nullglob
 	[[ $fail -eq 0 ]] && ok "verify 통과" || { err "verify 실패 — 위 항목 확인"; return 1; }
@@ -209,17 +242,15 @@ cmd_clean() {
 cd "$DIR"
 case "${1:-all}" in
 	check)  cmd_check ;;
-	base)   build_one "$DIR/resume.org" ;;
+	base)   build_one "$DIR/resume.org"; build_one "$DIR/resume-en.org" ;;
+	ko)     build_one "$DIR/resume.org"; build_one "$DIR/portfolio-ko.org" ;;
 	target)
 		[[ -n "${2:-}" ]] || { err "사용법: ./run.sh target <name>  (targets/<name>.org)"; exit 1; }
 		build_one "$DIR/targets/$2.org" ;;
 	all)
-		build_one "$DIR/resume.org"
-		shopt -s nullglob
-		for t in "$DIR"/targets/*.org; do build_one "$t"; done
-		shopt -u nullglob
+		while IFS= read -r v; do build_one "$v"; done < <(views)
 		cmd_verify ;;
 	verify) cmd_verify ;;
 	clean)  cmd_clean ;;
-	*) echo "사용법: ./run.sh {check|base|target <name>|all|verify|clean}"; exit 1 ;;
+	*) echo "사용법: ./run.sh {check|base|ko|target <name>|all|verify|clean}"; exit 1 ;;
 esac

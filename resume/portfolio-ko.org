@@ -1,0 +1,19 @@
+# 국문 포트폴리오 — 시스템 SW · BSP (지원처 중립)
+#
+# 2026-10-16 GLG: 「이력서 외에 프로젝트 수행내역/직무능력을 표현할 자료」 칸에 내는 국문
+# 포트폴리오의 정본이다. 프로젝트 설명은 body.org 의 :research: · :portfolio: 절이 쥐고, 이
+# 파일은 고르기 · 배열 · 표제만 쥔다. 지원처 이름 · 조준 문장을 넣지 않는다.
+#
+# 빌드:  ./run.sh ko     (또는 ./run.sh all)
+
+#+cv_pdf_name: KimJunghan_Portfolio_KO
+#+CV_LANG: ko
+#+EXCLUDE_TAGS: noexport experience education stack validation catalog corpus selfintro
+
+#+INCLUDE: "pipeline/preamble.org"
+
+#+begin_export latex
+\cvheaderko{시스템 소프트웨어 · BSP 포트폴리오}
+#+end_export
+
+#+INCLUDE: "body.org" :minlevel 1

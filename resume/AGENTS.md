@@ -1,6 +1,7 @@
-# AGENTS.md — resume/ (영문 이력서 · 타깃별 컷 생성기)
+# AGENTS.md — resume/ (국문·영문 이력서 · 포트폴리오 · 타깃별 컷 생성기)
 
-이 디렉터리는 **링크드인과 해외·국내 공고에 첨부하는 영문 이력서 PDF**를 만든다. NHN 제출
+이 디렉터리는 **공고에 첨부하는 이력서·포트폴리오 PDF**를 국문·영문으로 만든다. 2026-10-16 부터
+국문 기본판(시스템 SW 직무 공통)도 여기서 나온다 — 사실 정본은 `body.org` 한 벌이다. NHN 제출
 레인(`../dossier/`)과 목적이 다르다. 저쪽은 공고 하나에 조준한 3종 세트고, 이쪽은 **공통 프레임
 하나에서 타깃별 컷을 뽑는 발사대**다. 하루에 열 곳을 내는 흐름을 전제한다.
 
@@ -9,15 +10,49 @@
 ## 구조 — 사실은 한 벌, 선택·순서·증거 입구는 컷마다
 
 ```
-resume.org              베이스 정본 (링크드인 첨부용 공개 입구)
-targets/<slug>.org      타깃 컷 — 서사 · 역량 · 공개 증거 · body 모듈 선택/순서
-body.org                사실 모듈 한 벌 — 경력 · 프로젝트 · 검증 · 스택 · 학력
-pipeline/preamble.org   조판 선언 (article · A4 · Pretendard/D2Coding · 색 · 표제 위계)
-pipeline/latex-export.el  org → tex + CV_*_MODULES 선택/배열
-run.sh                  빌드 · 검수
+body.org                사실 정본 한 벌 — 국문·영문 블록 · 공통 헤딩/ID/기간 · §판 이력(noexport)
+resume.org              국문 기본 뷰 (시스템 SW 직무 공통, 지원처 중립) → KimJunghan_CV_KO.pdf
+resume-en.org           영문 베이스 뷰 (링크드인 첨부용 공개 입구) → KimJunghan_Resume.pdf
+portfolio-ko.org        국문 포트폴리오 뷰 (지원처 중립) → KimJunghan_Portfolio_KO.pdf
+targets/<slug>.org      영문 타깃 컷 — 서사 · 역량 · 공개 증거 · body 모듈 선택/순서
+pipeline/preamble.org   조판 선언 (article · A4 · Pretendard/D2Coding · 색 · 표제 위계 · \cvheader/\cvheaderko)
+pipeline/latex-export.el  org → tex + CV_*_MODULES 선택/배열 + 제외 + 언어 선택
+run.sh                  빌드 · 검수 (기대 산출물 집합 · 언어별 검사)
+test_language.sh        언어 선택·제외 계약 실패 주입 (/tmp 사본, tex·PDF 끝단)
 flake.nix / flake.lock  texlive · 활자를 빌드 입력으로 고정
-build/*.pdf             산출물 (PDF 만 git 추적 — 다른 기계에서 바로 첨부하기 위해)
+build/*.pdf             로컬 산출물 (gitignored — 다른 기계에서는 소스에서 새로 빌드)
 ```
+
+### 국문·영문 한 벌 — 언어 선택 계약 (2026-10-16 GLG)
+
+GLG: 「틈틈이 생각하고 업데이트할 하나의 문서는 Org 에 있어 히스토리 담고 업데이트해야」. 그래서
+국문 기본판을 케이스 Markdown 이나 별도 파일로 두지 않고 `body.org` 에 영문과 나란히 둔다.
+
+- **정본마다 `#+CV_LANG: ko|en` 이 필수다.** 없거나, 다른 값이거나, 두 값이면 export 가 멈춘다.
+- **공통은 한 곳:** 헤딩·`:CUSTOM_ID:`·기간(`:CV_WHEN:` 제목 오른쪽, `:CV_PERIOD:` 괄호). 국문에서
+  `Present` 만 `현재` 로 바뀐다. 표제의 다른 언어는 `:TITLE_KO:`/`:TITLE_EN:`, 원문 표제 언어는
+  최상위 헤딩의 `:TITLE_LANG:`(상속)이 밝힌다.
+- **본문은 `#+begin_ko` 먼저, 이웃에 `#+begin_en`.** 블록 밖 문장은 `TITLE_LANG` 언어로 본다. 고른
+  언어의 표제·블록이 없으면 다른 언어로 메우지 않고 멈춘다. 언어 구분용 헤딩은 만들지 않는다 —
+  모듈 선택이 부모 바로 아래 헤딩마다 `CUSTOM_ID` 를 요구하고, 그런 헤딩은 PDF 에 표제로 샌다.
+- **블록 구조는 전체를 먼저 본다:** 짝 틀림·미닫힘·중복·ko/en 밖 두 글자 블록은 고르지 않은
+  모듈에 있어도 멈춘다. **번역 요구는 내보낼 것에만 한다:** 모듈 선택 뒤 제외 태그 서브트리를 직접
+  지우고(그래서 검토 메모·corpus 에 번역을 요구하지 않는다) 그다음 언어를 고른다.
+- **`#+EXCLUDE_TAGS` 를 적었다면 `noexport` 가 있어야 한다.** 키워드가 noexport 바인딩을 덮는 것을
+  2026-10-15 감사에서 실측했다. 이제 빠지면 export 가 멈춘다.
+- **정본 파일에서 `#+INCLUDE: "body.org"` 뒤에는 최상위 헤딩만 둔다.** 그 뒤의 키워드·본문은 body 의
+  마지막 헤딩 섹션에 붙고, 그 헤딩이 그 뷰에서 제외되면 함께 지워진다(2026-10-16 실측).
+- **두 언어가 같은 사실을 말하는지는 코드가 보장하지 않는다.** 한쪽을 고치면 다른 쪽을 같이 보고,
+  의도한 차이는 `body.org` §판 이력의 대조 목록에 남긴다.
+- 국문 전용 절은 태그 `research`·`selfintro`·`portfolio` 이고 영문 정본은 이 셋을 제외한다. 국문 뷰가
+  빼는 영문 전용 절은 `independent`·`validation`·`catalog`·`corpus`·`stack`(포트폴리오는 `experience`·
+  `education`·`selfintro` 도) 이다.
+- **국문은 시스템/BSP 직무용 선택 범위이지 영문 전체의 번역이 아니다.** 국문 블록이 없는 영문 전용:
+  GoQual 아래 `domain-agents`·`ai-infra`, Independent Work 전체, Third-Party Validation, Selected Open
+  Source, Technical Stack, Working Corpus. 국문 뷰는 이것들을 고르지 않거나 태그로 뺀다. 국문 뷰가
+  고르면 `TITLE_KO` 누락으로 export 가 멈춘다(`test_language.sh` 「국문 블록 없는 모듈 선택」).
+- 지원처 이름·지원 동기·생년월일은 `body.org`·뷰에 두지 않는다. `applications/<건>/` 의 지원처층
+  org 가 국문 기본 뷰를 INCLUDE 하고 덧붙인다(선례: `telechips--embedded-sw-engineer/application-telechips.org`).
 
 **한 벌 원칙은 사실에 적용하지, 표시 순서에 적용하지 않는다.** 경력·수치·프로젝트 설명은
 `body.org` 한 곳에만 있다. 각 프로젝트 헤딩은 `CUSTOM_ID`를 가지며 타깃 정본의
@@ -30,7 +65,7 @@ build/*.pdf             산출물 (PDF 만 git 추적 — 다른 기계에서 �
 
 **연락처 줄은 컷이 쥐지 않는다 — `pipeline/preamble.org` 의 `\cvheader` 한 자리다.**
 다섯 항목이 순서대로 들어간다: 이메일 → `github.com/junghan0611` →
-**`ax.junghanacs.com`**(조준된 공개 증거면) → `notes.junghanacs.com`(가든) → LinkedIn.
+**`ax.junghanacs.com`**(공개 증거면) → **`www.junghanacs.com`**(대표 홈페이지, 2026-10-15 GLG 결정) → LinkedIn.
 `run.sh` 의 verify 가 **빌드된 PDF 텍스트에서 다섯을 직접 확인**하고 하나라도 없으면 실패한다
 (2026-08-01). 링크 annotation 만 살아 있고 텍스트에서 빠지는 경우가 있어 소스가 아니라
 산출물을 본다 — 같은 이유로 `dossier/run.sh` 도 `ax.junghanacs.com` 을 검사한다.
@@ -96,10 +131,13 @@ GLG가 공고를 건네면 이 순서로 만든다. 5분이면 끝난다.
 
 | 무엇 | 입도 | 예 |
 |---|---|---|
-| 현직·최근 경력 (`\cvwhen`) | **연.월** | `2025.06 – Present` |
-| 지난 경력 · 학력 · 창업 (`\cvwhen`) | **연** | `2013 – 2017`, `2018 – 2022` |
-| 프로젝트 하위 헤딩 | **연.월** | `2025.09 – Present`, `2025.06 – 2025.09` |
+| 현직·최근 경력 (`:CV_WHEN:` → `\cvwhen`) | **연.월** | `2025.06 – Present` |
+| 지난 경력 · 학력 · 창업 (`:CV_WHEN:` → `\cvwhen`) | **연** | `2013 – 2017`, `2018 – 2022` |
+| 프로젝트 하위 헤딩 (`:CV_PERIOD:` → 괄호) | **연.월** | `2025.09 – Present`, `2025.06 – 2025.09` |
 | 짧은 파견 · 교환 (본문 괄호) | **연.월** | `2019.07 – 2020.03` |
+
+2026-10-16 부터 기간은 헤딩 제목이 아니라 `body.org` 의 속성(`:CV_WHEN:`·`:CV_PERIOD:`) 한 곳에 적고,
+export 가 언어에 맞춰 제목에 붙인다(국문은 `Present` → `현재`).
 
 규칙 셋:
 
@@ -149,9 +187,9 @@ for f in resume/build/*.pdf; do mutool draw -F txt "$f" | grep -nE '96%|163|2,94
 
 ## 경계
 
-- **공개 source의 입구는 GitHub·AX 증거면·가든·LinkedIn뿐이다.** 이메일·전화번호·주소는 넣지
-  않는다. 실제 제출본에 필요한 이메일은 private build 입력으로만 주입하고 public Git에 값이나
-  산출물을 남기지 않는다. 순서와 검증 계약은 위 §구조의 `\cvheader` 설명이 정본이다.
+- **공개 연락처는 `pipeline/preamble.org`가 소유한다.** GLG가 공개 허용한 본인 이메일을
+  리터럴로 사용하며 private 주입 경로는 없다. 전화번호·상세 주소·법적 값은 넣지 않는다.
+  생성 PDF는 gitignored다. 순서와 검증 계약은 위 §구조의 `\cvheader` 설명이 정본이다.
 - 추천인 실명, 지원 경로, 회사 내부 식별자, 고객 식별자, 자격증명은 넣지 않는다.
 - 회사 실명(GoQual)은 공개 이력서에 이미 있으므로 그대로 쓴다.
 - **직접 쓰지 않은 기술을 썼다고 쓰지 않는다.** 능력(self-owned)과 수용(third-party)과
@@ -175,13 +213,29 @@ for f in resume/build/*.pdf; do mutool draw -F txt "$f" | grep -nE '96%|163|2,94
 
 ```bash
 ./run.sh check                 # 도구·활자 점검
-./run.sh base                  # 베이스 이력서
-./run.sh target ai-engineer    # 타깃 컷 하나
-./run.sh all                   # 전부 + 검수
-./run.sh verify                # A4 · 활자누락 · 판면초과 · 분량 · 연락처 · 별표누출
+./run.sh base                  # 베이스 둘 — 국문 resume.org · 영문 resume-en.org
+./run.sh ko                    # 국문 둘 — resume.org · portfolio-ko.org
+./run.sh target ai-engineer    # 영문 타깃 컷 하나
+./run.sh all                   # 정본 전부 + 검수
+./run.sh verify                # 기대 산출물 집합 · A4 · 활자누락 · 판면초과 · 분량 · 연락처 · 별표누출
+                               #   · 정제 placeholder · 언어별(영문 한글 ≤12자 / 국문 한글 ≥300자·영문 절 표제 0)
 ./run.sh clean                 # 중간산물 정리 (PDF 는 유지)
+./test_language.sh             # 언어 선택·제외 계약 실패 주입 (/tmp 사본)
 ```
+
+`verify` 는 `build/` 의 PDF 마다 그것을 낸 정본(`#+cv_pdf_name`)을 찾는다. 정본이 없는 PDF(낡은
+이름)와 정본이 있는데 PDF 가 없는 경우는 둘 다 실패다.
+
+⚠ **`verify` 전체를 고친 것이 아니다.** 2026-10-16 에 바뀐 것은 기대 산출물 집합, 언어별 한글 검사(영문
+≤12자는 경고에서 실패로, 국문 ≥300자·영문 절 표제 0), 형식 정제 placeholder 뿐이다. 2026-10-15 감사에서
+찾은 다음은 그대로 남아 있다:
+- 쪽수를 못 읽어 빈 값이면 「분량 쪽」으로 통과하는 경로(G1).
+- 이메일을 `preamble.org` 의 정본 주소와 대조하지 않는다 — 형식만 본다(G3).
+- 대상이 0건인 grep 이 `pipefail` 로 메시지 없이 끝나는 경로(G4).
+- 소스가 PDF 보다 새로운지(G8) — 이미 있는 PDF 의 텍스트만 본다.
+지원 업로드 서류는 케이스의 `build.sh` 가 따로 엄격 검사한다(선례: `applications/telechips--embedded-sw-engineer/`).
 
 조판은 언제나 flake devshell 을 경유한다(`nix develop 'path:.'`). 호스트 texlive 와 활자가
 다르면 같은 소스에서 다른 문서가 나오기 때문이다. **처음 도는 기계에서는 devshell 을
-세우는 데 몇 분이 걸린다** — 그래서 `build/*.pdf` 를 git 으로 추적한다.
+세우는 데 몇 분이 걸린다.** `build/*.pdf`는 gitignored이며 clone·pull 뒤에는 빌드가 필요하다.
+Org 변환은 현재 호스트 `emacs -Q`를 사용하므로 flake가 변환기까지 고정한다고 해석하지 않는다.

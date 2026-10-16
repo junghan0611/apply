@@ -1,0 +1,58 @@
+# 영문 이력서 — 영문 베이스 뷰 (타깃 중립). 2026-10-16 까지 resume.org 였다 — resume.org 는 이제 국문 기본 뷰다.
+# 산출 이름 KimJunghan_Resume 는 그대로다(지원 기록·stage 가 이 이름을 가리킨다).
+#
+# 링크드인 첨부용 공개 입구다. "무엇이든 하는 사람"이 아니라 펌웨어에서 책임 있는 에이전트
+# 루프까지 하나의 세로축을 소유하는 시스템 엔지니어로 말한다. 타깃 공고에는 targets/*.org를
+# 우선한다. 경력 사실은 body.org 한 벌이고, 이 파일은 선택·배열·증거 입구만 쥔다.
+#
+# 빌드:  ./run.sh base     (국문·영문 베이스 둘 다, 또는 ./run.sh all)
+
+#+cv_pdf_name: KimJunghan_Resume
+#+CV_LANG: en
+#+EXCLUDE_TAGS: noexport catalog corpus research selfintro portfolio
+
+#+INCLUDE: "pipeline/preamble.org"
+
+#+begin_export latex
+\cvheader{Agent Platform \& Systems Engineer — Firmware to Agent Loops}
+#+end_export
+
+* Summary
+
+I build the joints between humans, AI agents, and real systems. At one end: a Zigbee hub written in
+Zig and shipped to mass production, followed by personal Go/Flutter prototypes for end-to-end
+verification rather than company server/app delivery. At the other: an npm-published dispatch substrate that connects agent harnesses without taking ownership of
+their transcripts, authentication, or runtime. The middle is protocols, services, semantic memory,
+deployment, and a reproducible NixOS/Emacs environment where humans and agents share tools, an
+inspectable timeline, and explicit boundaries.
+
+I build before claiming expertise: make a small vertical work, find where it breaks, preserve the
+evidence, and turn the recovery into a reproducible tool, gate, or operating policy. My current
+focus is the system around models — harnesses, memory, permissions, evidence, and hand-offs — not
+foundation-model training. The next boundary is carrying what I learned from personal memory and
+long-running agent collaboration into enterprise data, governance, workflow, and domain ownership.
+
+* Core Competencies
+
+- @@latex:\cvlabel{Agent Harness Engineering}@@ — dispatch, identity, auth boundaries, session
+  continuity, delegation contracts, upstream version operations, and rollback policy.
+- @@latex:\cvlabel{AI Agent Systems}@@ — domain-owner agents, evidence contracts, review loops, and
+  multi-agent development sessions with a human as PM.
+- @@latex:\cvlabel{Knowledge Engineering}@@ — embedding and hybrid retrieval, cross-lingual search,
+  recall tracking, Org/Denote knowledge graphs, and Korean document toolchains.
+- @@latex:\cvlabel{Systems and Embedded Engineering}@@ — Go/Clojure services; Zig/C firmware; ARM and
+  RISC-V Linux; Matter/Thread/Zigbee; product delivery through mass production.
+- @@latex:\cvlabel{Human-Computer Interaction}@@ — shared timelines, fenced work surfaces, durable
+  hand-offs, and interfaces for people who do not write code.
+
+* Public Evidence — Start Here
+
+- *Physical system* — [[https://github.com/junghan0611/homeagent-config][github.com/junghan0611/homeagent-config]] exposes the Go/Flutter/Matter/Yocto
+  implementation and build entries: =./run.sh go-build=, =flutter-server=, and =bundle=.
+- *Agent boundary* — [[https://github.com/junghan0611/entwurf][github.com/junghan0611/entwurf]] is installable from npm; =entwurf check-bridge=
+  probes its bridge without backend credentials. An outside contributor extended it in [[https://github.com/junghan0611/entwurf/pull/40][PR #40]].
+- *Memory and provenance* — [[https://github.com/junghan0611/andenken][github.com/junghan0611/andenken]] publishes search/quality/doctor entry points;
+  [[https://github.com/junghan0611/agent-config][github.com/junghan0611/agent-config]] records source revision, source-tree digest, and installed
+  binary SHA-256. Private employer systems are labeled as experience, not public proof.
+
+#+INCLUDE: "body.org" :minlevel 1
