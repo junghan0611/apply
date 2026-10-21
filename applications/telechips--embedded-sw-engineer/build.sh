@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# build.sh — 텔레칩스 BSP 국문 업로드 서류 두 장을 Org 정본에서 만든다.
+# build.sh — 텔레칩스 Embedded S/W Engineer 국문 업로드 서류 두 장을 Org 정본에서 만든다.
 #
 #   ./build.sh review <새 출력 폴더>              검토본 — 생년월일 칸은 「검토본 — 미기입」
 #   ./build.sh final  <새 출력 폴더> < (생년월일)  제출본 — 생년월일 한 줄을 표준입력으로만 받는다

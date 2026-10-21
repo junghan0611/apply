@@ -1,4 +1,4 @@
-# 국문 포트폴리오 — 시스템 SW · BSP (지원처 중립)
+# 국문 포트폴리오 — 임베디드 Linux 플랫폼 · BSP (지원처 중립)
 #
 # 2026-10-16 GLG: 「이력서 외에 프로젝트 수행내역/직무능력을 표현할 자료」 칸에 내는 국문
 # 포트폴리오의 정본이다. 프로젝트 설명은 body.org 의 :research: · :portfolio: 절이 쥐고, 이
@@ -13,7 +13,7 @@
 #+INCLUDE: "pipeline/preamble.org"
 
 #+begin_export latex
-\cvheaderko{시스템 소프트웨어 · BSP 포트폴리오}
+\cvheaderko{임베디드 Linux 플랫폼 포트폴리오}
 #+end_export
 
 #+INCLUDE: "body.org" :minlevel 1

@@ -1,57 +1,44 @@
 # RAIL — 현재 좌표
 
-> **베이스 전체 현재화 완료가 아니다.** 오늘은 제출을 서두르지 않고 Org 정본 구조를 잡은 뒤 GLG가 글을 직접 읽고 다듬는다(2026-10-16 GLG).
+- [x] **1. 공개 게이트·기록 수선과 문서 복원** — `v2026.10.15` / `7544374`, 후속 `93e6187`
+- [x] **2. 국문/영문 Org 정본·국문 BSP 뷰 검수와 샘플 보관** — `37dfe8b`·`139fef7` main 푸시 완료
+- [x] **3. 현재 Linux 중심 검토판 검증** — GLG가 검증판 commit/push 명시 승인, 재배열 전 기준점으로 기록
+- [ ] **4. 텍스트를 중요도·기술적 의미 순으로 재배열** ← CURRENT: 기준판 커밋·푸시 뒤 별도 후속으로 진행
+- [ ] **5. 새 문안·private 최종본 검토 후 사람 제출** ← PAUSED: 현재 draft·미제출
 
-- [x] **1. 공개 게이트·기록 수선과 dossier 복원** — `v2026.10.15` / `7544374`, 후속 `93e6187` main 푸시 완료
-- [x] **2. Telechips BSP 대상으로 전환·폼 실측·국문 초안** — `Re4LUYvK`, 국문 업로드 2파일
-- [x] **3. 한 body.org의 국문/영문 정본·뷰 연결 검수** — 코디 독립 검사 완료, GLG가 문서를 보고 틀에 동의
-- [x] **4. 시스템 커밋 → dossier 샘플 보관 별도 커밋** — 시스템 `37dfe8b`와 이번 샘플 이행 변경을 분리. 푸시하지 않음
-- [ ] **5. GLG 문장 교정·private 반영·제출 결정** ← CURRENT: 구조는 유지하고 GLG가 글을 더 검수. 당장 제출하지 않음
-
-현재 좌표: 국문 Org 구조·독립 검사·GLG 틀 확인 완료 → 시스템/글 편집을 나눠 두 커밋 → GLG 문장 편집 → 추후 제출 결정. XCENA는 10/13 면접 후 결과 대기라는 10/15 GLG 보고가 마지막 확인이다.
+현재 좌표: 구조 검수·푸시 완료 → **10/21 GLG 지정으로 BSP Driver에서 원래 Embedded S/W Engineer로 회귀** → 현재 검토판 검증·푸시 → 기술적 의미 중심의 문안 재배열 → GLG 최종 검토·제출 결정. 사내 추천 경로는 더 추진하지 않으며 추천인 허락 대기를 현재 blocker로 남기지 않는다. 두 공고의 요건·폼·과거 ready를 혼동하지 않는다. 베이스 전체 현재화·모든 주장 감사 완료라는 뜻은 아니다.
 
 # NOW
 
-- **고칠 문서:** **`resume/body.org` 하나**. 공통 ID·기간·역할, 국문 `#+begin_ko` / 영문 `#+begin_en`, 연구·공통 자기소개·시스템 포트폴리오 설명과 `* 판 이력 :noexport:`를 쥔다. GLG가 일상적으로 생각을 보태고 이력을 남길 입구다. 반대 언어로 무음 대체하지 않는다.
-- **뷰:** `resume/resume.org`(국문 기본 → `KimJunghan_CV_KO`), `resume/resume-en.org`(영문 기본 → 기존 `KimJunghan_Resume` 유지), `resume/portfolio-ko.org`(국문 포트), `resume/targets/*.org`(기존 영문6컷). 선택·배열·짧은 요약·조판을 쥔다. 케이스 `application-telechips.org`는 지원동기·계획·생년월일 빌드 마커만 쥔다. 국문은 현재 시스템/BSP 선택 모듈부터 번역했으며 모든 영문 모듈의 국문화 완료는 아니다.
-- **주의:** 같은 파일이어도 두 언어 문장·경력/포트 표현의 동등성은 자동 보장이 아니다. `body.org` 판 이력의 대조 목록을 함께 고친다. `noexport`는 PDF 제외이며 공개 Git의 비밀 보관 기능이 아니다. 외부 MATERIAL·기존 dossier는 입력/독립 문서이지 자동 동기화 경로가 아니다.
-- **분담·동결:** Opus `20261015T091218-d7b57d`가 `resume/**`와 Telechips 케이스 구현을 소유하고 09:56 v2 완료 후 편집 동결했다. 코디는 root 계약·스킬·NEXT·LEDGER·alive 타깃·독립 검증 소유. GLG가 원문을 편집하기 시작했으므로 추가 자동 개작 전 충돌 확인한다.
-- **다음 한 걸음:** 시스템을 `37dfe8b`로 커밋했고 공개 history 검사도 통과했다. tracked `dossier/`32개를 `docs/samples/dossier/`로 옮겨 README·공개 예외·라이선스·샘플 연락처 테스트·legacy staging 소스 위치를 맞췄다. 연락처19/도해10/서지5·staging경로6·기록94/깊이24·원본PDF50불변 검사를 통과했고 별도 샘플 보관 커밋으로 기록한다. 독립 과거 문서 샘플이지 resume에서 파생된 파일로 설명하지 않는다. 로컬 ignored build/submit 보존, 푸시하지 않는다. 그 뒤 GLG가 `body.org`를 읽고 문장·강조 순서를 고친다. 수정 요청이 오면 정본에 반영하고 새 /tmp 사본으로 두 국문 PDF에 어떻게 나오는지 확인한다. 지금의 틀은 GLG가 좋다고 확인했고 당장 제출하지 않는다. 구조는 한 파일+공통 메타+언어 블록으로 결정됐으며 Markdown을 장기 정본으로 두지 않는다. PDF 2파일·Org 본문을 user Emacs에 열었다.
-- **최신 검토판(로컬, clone에 없음):** `~/.local/state/apply-review/20261016/telechips-org-base-v2/REVIEW.md`. `review/`에 국문 합본3p·포트2p·폼 답변4개, `resume-views/`에 지원처 중립 국문2뷰. 합본 생년월일은 「검토본 — 미기입」이며 업로드용 최종본이 아니다. 3쪽째 지원동기만 남는 판면은 글 검토 뒤 결정한다.
-- **검증 상태:** 코디도 v2 동결 사본에서 언어28/28·케이스23/23·전체9PDF 빌드/verify·영문7컷 텍스트 동일·국문2PDF 텍스트 검사를 통과했다. 기존274개 산출물 해시와 원본PDF50개 해시/mtime 불변. 첫 실행은 `bash test_build.sh`의 Nix 재진입 경로로127 종료했으나 문서화된 `./test_build.sh`로 같은 사본의 남은 검사를 통과했다. 호출 경로 수정이지 본문/코드 수정이 아니다. 영수증: 로컬 `org-base-v2-independent-verification.md`.
-- **권한:** GLG가 오늘 변경의 시스템 커밋과 이어지는 dossier 샘플 보관 커밋을 명시 요청했다. **두 로컬 커밋만 승인, push/tag/릴리즈·stage·업로드·Submit 승인 없음.** 원본 `resume/build`·`dossier/build`·건별 build/submit을 보존하고 새 렌더는 /tmp 사본에서만 한다. 생년월일·정확한 개인값은 지금 구조 검토의 선행조건이 아니다.
-
-## Telechips — 대상·폼·판독
-
-- GLG가 기존 Embedded S/W Engineer `iSXmKnRT`에서 **BSP Driver Engineer `Re4LUYvK`**로 더 집중하려고 변경했다. 초기 코디의 「같은 공고가 바뀌었다」 설명은 철회. 본문·필수요건은 `applications/telechips--embedded-sw-engineer/JD.md`, 폼 실측·판단은 `submission.md`.
-- 경력4~15년, 자격4중2(관련학위 / bootloader·kernel driver / kernel debugging / board bring-up). 연구·가상화·BSP·Yocto·실보드 → 양산·검증도구·하드웨어 협업을 전면화한다. 도구/AI 활용자 서사는 국문 기본판에서 덜되 수행 책임·사실을 왜곡하지 않는다.
-- 지정 `/apply`에서 필수표시15개, 경력요약10,000자, **이력서 합본(생년월일·학력·경력기술·자기소개, 연봉 제외) + 별도 포트폴리오**, 각50MB 미만을 직접 확인. 국문 민감정보 동의는 필수, 인재풀은 선택. 영문판의 거부 가능 문장·인재풀 보유기간 차이는 별도 관측으로 보존한다. 선택은 GLG.
-- 현재 `draft` — 지원 대상이 바뀌어 새 패킷 검수 중. 이전 ready는 역사절로 보존. 법적·인적 원본을 타건 폼에서 복사하지 않는다. 사진·구조화 학력/경력·동의는 최종 단계에 사람이 확인한다.
-
-## 사실·확인사항
-
-- **GLG 확정:** 회사 계약·양산 대상은 Zigbee 허브 펌웨어. 제품 서버·앱은 외부 업체, 후속 Go/Flutter는 개인 검증 프로토타입. 인간 동료·에이전트와 협력하며 아키텍처·개발을 주도한다. 실기기 다중 허브 fan-out은 개인 프로토타입 쪽 사실이다.
-- **읽은 근거:** 연구 실적 Org `20250317T150522`의 논문·수상 목록. In-kernel device virtualization 제1저자, MyAV·exitless I/O·중첩 가상화 공동연구. 논문 전문·개별 코드 기여는 오늘 재검증하지 않았다. PM 인덱스2020 최우수는 v1 PDF에도 정확히 있었음 — 코디의 불일치 진단은 재대조로 철회.
-- **공개 부트:** Duo S RISC-V 07/14 Linux·Buildroot·RTOS command-queue probe, ARM64 07/23 aarch64 Linux·eMMC 부팅 캡처를 코디도 읽었다. RTOS/앱/무선 전체 완료로 확대하지 않는다. Yocto 레이어는 소스 열람이며 이번에 실빌드하지 않았다. 네트워크 식별자는 복제하지 않는다.
-- **유지할 경계:** Matter SDK 통합·인도/인증 대비 하네스는 인증 취득 완료 아님. COS가 전한 x86 NixOS ISO·서비스 통합은 랩 단계이며 현장 확대 계획을 운영 실적으로 쓰지 않는다. 회사명·리포명은 자동 비밀이 아니며 이름/관계/내부기술을 나눠 판단한다.
-- **나중에 확인:** 연구실 기간 body 연도와 FAQ 구조화 값 차이(직함 「박사과정연구원」은 FAQ의 GLG 확정표에서 확인), KSC 발표 목록/수상 행의 연도 차이(본문 연도 생략), 국무총리상 대회 정식 명칭. 미확인 값을 채우지 않는다.
-
-## 잔여 수선 — 이번 구조 검수와 혼동하지 않는다
-
-- `resume/run.sh verify`의 쪽수 빈값·정본 이메일 대조·0건 grep 진단, source/PDF provenance와 `applications/stage.py` 낡음 판정은 아직 별도 감사 사항. 케이스 빌더의 엄격 검사와 모든 레인의 완전 수선을 혼동하지 않는다.
-- root AGENTS/케이스에 남은 「직무 선택 기준이 history에 없었다」 오진 정정: `e6cb617:applications/AGENTS.md`에는 기준1~4가 실재, 실제 결함은 절 이름 변경 후 참조 단절. July28→Sep18은52일이다.
-- 기존 dossier는 이제 `docs/samples/dossier/`에 보관한 독립 과거 샘플이다. root `dossier/`의 ignored build/package/cache는 private 로컬 보존용으로 남고 clean clone에는 없다. 과거 첨부 경로·지문은 보존, 샘플은 새 제출의 활성 입력 아님. 국문 기본판은 맞췄지만 최근 작업 전체의 의미·수행·공개 근거 회수는 끝나지 않았다. 홈페이지·가든 개편을 지원의 전제조건으로 키우지 않는다. 대표 공개 입구는 `https://www.junghanacs.com`.
-- 후보/보류 큐는 원장 우선: reach4건 선택, 같은 회사 복수직무(Rebellions/HyperAccel), Wanted 폼 후속은 지금 작업 아님. AI/AX/FDE는 이번 배치에서 재개하지 않는다. 상세 과거 큐는 `applications/INBOX.md`·원장·git 이력 참조.
+- **대상·상태:** https://careers.telechips.com/job_posting/iSXmKnRT **Embedded S/W Engineer**(10/21 GLG 직접 지정), 기존 폴더 `applications/telechips--embedded-sw-engineer/`를 잇는다. `draft`, 미제출. `Re4LUYvK` BSP 준비 이력은 보존하되 현 타깃은 아니다. 이전 임베디드 공고의 과거 ready도 재검수 없이 되살리지 않는다. 사내 추천 선택을 고정하지 않고 새 지원경로는 GLG가 선택한다. 실명·사적 관계·법적 값은 public 파일에 기록하지 않는다.
+- **다음 한 걸음:** GLG가 10/21 **PDF 검증 통과 후 현재 변경의 커밋·푸시**를 명시 요청했다. 검토판 `review-linux-104616/`는 합본3쪽·포트2쪽. Opus 최종 동결 보고: 케이스23/23·언어28/28·9PDF 빌드/verify 통과, 영문7컷은 NEMO와 embedded 요약만 변경, 원본 출력 보존. 코디도 빌드입력9/9 현재 파일 일치·산출지문6/6을 직접 확인했다. 코디가 국문 PDF 전5쪽을 렌더해 직접 시각 검수했고 잘림·겹침은 관측하지 않았다. 현재 검증판만 커밋·푸시해 기준점으로 남기며 문안 재배열은 그 커밋에 섞지 않는다. 업로드용 final/DOB 반영과 지원 제출은 별개다.
+- **푸시 뒤 후속:** GLG의 면접 경험을 반영해 현재 이력서·포트·폼 문장과 근거를 대조하고 **중요도 → 기술적 의미 → 본인 판단·소유 범위 → 세부 구현 근거** 순으로 재배열한다. 큰 시스템 문제와 선택 이유가 먼저 읽히고 개별 기술명은 하위 근거가 되게 한다. 사실·한계는 유지하되 불필요하게 미시적인 문구가 전체 대화의 출발점이 되지 않도록 한다. 아직 이 후속 개작은 시작하지 않았다.
+- **검토 사본:** 로컬 `~/.local/state/apply-review/20261021/telechips-embedded-sw/`의 `CAREER-SUMMARY-v2.md`(1,009자)·`MOTIVATION-v2.md`는 미확정 읽기용 사본. 새 경력요약은 아직 `answers.md`에 미반영이며 문항1은 NEMO만 정정한 구판1,220자다. 같은 폴더 README에서 출력과 후보를 구분한다. 이전910자/지원동기MD·09시대 PDF는 NEMO 정정 전 사용 중단, 과거 출력은 보존한다. 코디는 지정 공고 원문과 조준·root/원장/alive, 옆 Opus는 Chrome 현행 폼과 케이스 구현을 맡는다. 담당업무·자격·폼을 재측정해 국문 경력요약 MD와 지원동기·계획을 새 대상에 맞추고, 새 날짜 폴더로 검토판을 만든다. **10/18 `telechips-upload/`의 CAREER-SUMMARY·PDF는 이전 BSP 검토안으로 보존하며 그대로 제출하지 않는다.** 국문 합본+국문 포트 2파일 원칙을 유지하되 현재 폼 슬롯을 확인한다. 최종 합본의 private 생년월일·실제 PDF·지문은 별도 검증한다.
+- **10/18 사람 선택:** 사진은 GLG가 폼에 올린 원본 그대로 유지하며 교체를 재권고하지 않는다. PDF 연구실 표기는 **2018–2022 유지**(2017년 창업 종료와 연도 구분). 이 두 결정은 Opus의 13:40 전달을 상속; 구조화 입사일까지 바꾸라는 뜻으로 확대하지 않는다. FAQ §3의 기존 확정 구조화 값과 별개로 폼 날짜가 새로 확정되면 기록한다.
+- **읽을 곳·편집 정본:** 공통 사실·국문/영문 경력·연구·자기소개·포트는 `resume/body.org`. 기본 뷰는 `resume/resume.org`·`resume/resume-en.org`·`resume/portfolio-ko.org`·`resume/targets/*.org`. 지원동기·계획·DOB 마커는 케이스 `application-telechips.org`, 폼 답변은 `answers.md`, 제출 요구·판단은 `submission.md`. 로컬 사본을 정본처럼 편집하지 않는다.
+- **분담·권한:** Opus `20261015T091218-d7b57d`는 Chrome·resume/케이스, 코디는 root/NEXT/원장·독립 점검. 10/21 GLG가 옆 Opus를 다시 불렀다고 했고 코디는 인수를 요청했다. 10/18 브라우저 입력은 과거 보고이며 새 폼에 자동 복사하거나 현재 보존을 보장하지 않는다. 개인값은 읽어 복제하지 않는다. 이번 요청은 직무 재조준·준비이며 **Submit·동의·추천인 기재 승인 아님**. 10/21 GLG가 검증 통과 후 **현재판 commit/push만 승인**했으며 tag/릴리즈·후속 재배열판 추가 push 승인은 아니다. 새 타깃 최종 패킷 검수 전에는 ready로 올리지 않는다.
 
 # RECENT
 
-- **10/16:** 시스템 상태는 `37dfe8b`로 먼저 커밋하고 dossier 샘플 보관·README/경로 계약은 별도 변경으로 나눴다. 원본 build/submit과 이미지7장 바이트를 보존했다. Org 언어 선택 이행과 국문 시스템 기본판의 구조·독립 검수 완료, GLG가 틀에 동의했다. 내용 검토는 계속한다. `body.org`는 평소 편집 입구, 회사별 문서는 작은 지원처층·제출 기록. GLG는 지금 제출하지 않고 구조가 잡힌 뒤 글을 직접 다듬기로 했다.
-- **10/15:** `v2026.10.15`는 게이트·기록·자기수선 출발점(`7544374`). 후속 dossier 이미지7장 복원·서지/도해/연락처 검사·대표 URL·판 이력·resume noexport7줄을 `93e6187`로 승인받아 푸시. 제출 스냅샷·기존 build 불변. 새 릴리즈는 만들지 않았다.
-- **10/15:** XCENA 10/13 면접 진행·결과 대기 확인. 예전 지원 상태는 `applications/LEDGER.md`와 건별 `submission.md`가 소유한다.
+- **10/21 검증 기준판:** 합본3쪽·포트2쪽 생성, 케이스23/23·언어28/28·9PDF all/verify 통과는 Opus 최종 동결 보고. 코디는 입력9/9·산출6/6 지문과 국문 전5쪽 시각 검수 완료. 국문 단독 CV는 2→3쪽으로 늘었고 후속 판면 검토 대상이다. GLG가 이 판 검증 후 commit/push를 요청했으며, 이후 별도 작업은 세부 기술명 나열보다 시스템 문제·설계 판단·기술적 의미가 먼저 읽히는 재배열이다. 제출 상태는 draft 그대로다.
+- **10/21 GLG 사실 정정·관점 변경:** NEMO-UX는 실패한 창업과 Linux OS·앱 프로토타이핑 경험이며 양산 아님. Linux 활용·NixOS/Yocto/Buildroot 재현 환경·플랫폼/애플리케이션/AI 응용을 중심으로 본다. FAQ의 재사용 서사와 body·국문/영문·뷰·케이스에 회수했다(코디 직접 diff와 Opus 동결 보고 대조). 이번 명시 사실 정정으로 영어 컷 NEMO 부분도 바뀌어야 하므로 이전 텍스트 불변 검사를 그대로 요구하지 않는다.
+- **10/21 타깃 변경:** GLG가 원래 Embedded S/W Engineer `iSXmKnRT`를 다시 지정했다. `Re4LUYvK` BSP에 제출한 것은 없으며 해당 준비는 역사로 남긴다. 사내 추천 경로 추진 중단, Exa livecrawl 요청(task 2887, exit 0)으로 원문 재확인: 업무 Kernel BSP/Linux·Android Framework/Platform·Application, 필수 C/C++ 중급·Embedded System 경험, 경력3–15년. 오푸스 10/21 Chrome 보고도 수신: `in_progress/open_ended`, 필수15·경력요약10,000자·합본/포트 각50MB·자소서는 합본 안에 포함, 입력0. 일반 HTTP429는 재시도하지 않았다. 제3자의 채용 의사·평가를 추정해 공개 기록에 쓰지 않는다.
+- **10/21:** GLG 요청으로 원격 `1961da5`를 fast-forward하고 기존 로컬 수정4개를 재적용했다. `LEDGER.md`는 충돌 없이 자동 통합. 원격의 XCENA 불합격(10/20)·쿤텍 NS 검토기간 만료 종료(10/16)와 로컬 Telechips 준비 기록을 함께 보존했다. patch·stash 복구본 보존, 새 commit/push 없음. `applications/check.py --deep --public` 94건/깊이24 통과.
+- **10/18:** GLG가 추천인 기재 허락을 기다리므로 제출 대신 자료 준비로 목표를 명확히 했다. 오푸스의 당일 Chrome 실측(13:21): 공고 열림, 기존 필수15·경력요약10,000자·경력별 담당업무·국문 합본/포트 각50MB 요구 동일, 추가 작문 문항 없음. 이력서 파일에 자기소개 포함, 연봉 제외. 원본 사진은 로컬 Git 제외했고 개인 보관면에 250×300 정제 사본도 만들었으나 GLG는 웹에 올린 원본 유지 선택.
+- **10/18 검증:** Opus의 새 `/tmp/telechips-review-131755` 빌드 성공·10/16판과 PDF 추출 텍스트/답변4개 동일 보고를 상속. 코디는 로컬 패킷으로 복사한 PDF2/답변4의 `SHA256SUMS` 모두 OK를 직접 확인. 사진250×300·24,614B·시각검수 직접 확인. 코디 단독 `pdfinfo`는 PATH 부재로 실행 안 됐으며 쪽수는 Opus 보고를 상속. 제출 완료 영수증은 없다.
+- **10/16:** `37dfe8b` 국문/영문 Org 시스템과 `139fef7` dossier 샘플 보관을 분리해 푸시. 독립 동결 사본에서 언어28·케이스23·9PDF 빌드/verify, 영문7컷 텍스트 동일, 기존274개 산출물/원본PDF50개 불변 확인. 상세 영수증은 아래 로컬 기록 참조. 구조는 GLG 동의, 글 검수와 실제 제출은 별개다.
+
+# LEDGER — 유지할 경계와 별도 잔여
+
+- 지원 상태 전체는 `applications/LEDGER.md`, 정확한 한 건은 케이스 `submission.md`. 실제 업로드 파일은 private 보관, public에는 이름·source·지문만. 원본 build/submit·과거 제출 지문을 덮지 않는다. raw 폼·법적 값은 private Org의 한 벌, 타건 폼으로 사본을 만들지 않는다.
+- 회사 납품은 Zigbee 허브 펌웨어, 제품 서버·앱은 외부 업체, 후속 Go/Flutter는 개인 검증 프로토타입. Matter SDK 인도와 인증 취득을 혼동하지 않는다. 신규 SoC 포팅·양산 드라이버 유지보수 전체 수행으로 연구/공개 SDK 작업을 확대하지 않는다. RISC-V·ARM64 부팅 캡처는 RTOS·앱·무선 전체 검증 증거가 아니다.
+- 연구 실적 원본 `20250317T150522`은 논문·저자 순서·수상 목록을 읽은 근거이며 논문 전문/개별 코드 기여 감사는 미완. KSC 연도 차이는 국문에서 연도 생략, 국무총리상 대회 정식 명칭은 미확인. 연구실 PDF 연도는 위 10/18 선택을 따른다.
+- `resume/run.sh verify`의 쪽수 빈값·정본 이메일 대조·0건 grep 진단, source/PDF provenance와 `stage.py` 낡음 판정은 별도 수선. 케이스 빌더 검사와 전체 파이프라인 완전 수선을 혼동하지 않는다. 과거 「직무 선택 기준이 history에 없었다」 진단은 `e6cb617:applications/AGENTS.md`로 철회됐으며 절 이름 변경 뒤 참조 단절이 실제 결함이다.
+- dossier는 `docs/samples/dossier/`의 독립 과거 샘플이며 현재 정본이 아니다. root `dossier/` ignored 산출물은 로컬 보존용. 홈페이지 개편·다른 후보 일괄 stage·AI/AX/FDE 재개는 이번 준비의 전제조건이 아니다. 후보는 `INBOX.md`·원장부터 본다. XCENA BSP는 10/20 불합격, 쿤텍 NS AI 개발자는 10/16 검토기간 만료로 종료됐다(10/21 수신 `1961da5`의 원장·각 submission 기록). 쿤텍의 별도 임베디드 건과 혼동하지 않는다.
 
 ## 영수증·읽을 곳
 
-- `.claude/skills/apply/SKILL.md` · root/레인 `AGENTS.md` · `resume/body.org` 맨 위 편집 안내
-- `~/.local/state/apply-review/20261016/`: `org-language-stage1-verification.md`, `telechips-org-base-v2/REVIEW.md`, 이전 v1·코디 검토판. 이전 길어진 NEXT는 `NEXT-before-org-v2-handoff.md`로 로컬 보존했다.
-- `~/.local/state/apply-review/20261015/`: Opus/Grok/COS 감사·근거 영수증. 로컬 자료는 clone에 없으며 검증 수준을 함께 전달한다.
-- 코드 검사는 **새 /tmp 사본**에서 `bash resume/test_language.sh`, `resume/run.sh all`, 케이스 `test_build.sh`·`build.sh review`. 원장/공개 후보는 `applications/check.py --deep --public`. history 게이트는 현재 미커밋 파일 전체 검사와 다르다.
+- `.claude/skills/apply/SKILL.md` · root/레인 `AGENTS.md` · 해당 케이스 `submission.md`
+- 로컬 `~/.local/state/apply-review/20261018/telechips-upload/README.md` · **`CAREER-SUMMARY.md`(840자 새 검토안, 미확정)** · `FORM-ANSWERS.md`(기존판4블록) · `review-only/SHA256SUMS`. 새 경력요약은 GLG 검토 후에만 `answers.md`로 회수·재생성한다.
+- 로컬 `~/.local/state/apply-review/20261016/`: `org-base-v2-independent-verification.md`, `dossier-archive-verification.md`, `telechips-org-base-v2/REVIEW.md`. 10/18 이전 NEXT는 `20261018/NEXT-before-referral-preparation.md`에 보존.
+- 다음 변경 검사는 새 사본에서 케이스 `./test_build.sh`·`./build.sh review <새 폴더>`, 기록은 `applications/check.py --deep --public`. 과거 history 검사 통과를 현재 미커밋 변경 검사로 대체하지 않는다.

@@ -1,8 +1,12 @@
 # 폼 텍스트 칸 후보 — 시스템 SW·BSP 국문 기본판
 
-대상 폼: Telechips `Re4LUYvK` [판교 사옥] BSP Driver Engineer (2026-10-16 GLG 지정).
+대상 폼: Telechips `iSXmKnRT` [판교 사옥] Embedded S/W Engineer (2026-10-21 GLG 지정으로 회귀, 같은 날 폼 재실측).
+10/16~18 대상은 `Re4LUYvK` BSP Driver Engineer였다. **아래 문항 1 본문은 그때의 BSP 대상판 그대로다.**
+이 공고용 첫 경력요약 검토안은 10/21 GLG 사실 정정(NEMO-UX는 양산이 아니라 스타트업 프로토타입) 전 안이라 사용 중단이고,
+새 안을 기다린다. 그 사이 문항 1·4의 NEMO-UX 양산 표현만 정정했다. 나머지 본문은 그대로다.
 이 파일은 **폼이 직접 묻는 텍스트 칸**만 담는다 — 경력요약(10,000자 카운터)과 경력사항 항목마다의
-담당업무 칸. 업로드 문서의 본문 정본은 `application.md`·`experience-detail.md` 다.
+담당업무 칸. 업로드 문서의 본문 정본은 `../../resume/body.org`(경력·연구·자기소개·포트폴리오 국문 블록)와
+`application-telechips.org`(지원 동기·입사 후 계획)다. `experience-detail.md` 는 역사 자료이며 새 빌드가 읽지 않는다.
 `build.sh` 가 아래 「## 문항 …」 + `text` 블록을 순서대로 `form-01.txt …` 로 뽑고 글자 수를 찍는다(`../stage.py` 의 `answer_blocks()` 와 같은 계약).
 붙여넣은 뒤 폼 카운터로 다시 확인한다. 입력 완료 기록이 아니다.
 
@@ -12,7 +16,7 @@
 
 ```text
 [요약]
-컴퓨터공학 석사·박사과정 수료. 커널·가상화·비휘발성 메모리 시스템 소프트웨어 연구와 Linux 임베디드 제품의 하드웨어 통합·양산 경험. 공개 SDK 기반 SG2000 부트체인 재현 빌드, Yocto 레이어, RISC-V·ARM64 실보드 부팅 기록.
+컴퓨터공학 석사·박사과정 수료. 커널·가상화·비휘발성 메모리 시스템 소프트웨어 연구와 스타트업 Linux 터치 디스플레이 프로토타이핑, 게이트웨이 펌웨어 양산 경험. 공개 SDK 기반 SG2000 부트체인 재현 빌드, Yocto 레이어, RISC-V·ARM64 실보드 부팅 기록.
 
 [커널·드라이버·메모리 연구]
 비휘발성 메모리 블록 디바이스 드라이버(제1저자, 우수논문상) / 비휘발성 메모리 기반 분산 스토리지 쓰기 증폭 감소(제1저자, 우수논문상) / 비휘발성 메모리 인덱스 성능 분석(최우수논문상) / NUMA 환경 PM 자료구조 노드 리플리케이션(제1저자, 정보과학회논문지) / 가상화 환경 NUMA 락 성능 분석 / F2FS 일관성 검사기 분석 / Virginia Tech COSMOSS Lab 방문연구원
@@ -24,7 +28,7 @@
 SG2000 FSBL·OpenSBI·U-Boot·Linux·Buildroot·FreeRTOS 공개 SDK 재현 빌드 / 보드·Buildroot 설정 관리 / RISC-V·ARM64 실보드 부팅 기록 / Yocto 레이어(커널 bbappend·머신 설정·DTS·wic) / ARM·RISC-V 크로스 툴체인 / board HAL 분리
 
 [제품 개발·양산]
-NEMO-UX 공동창업 — Yocto 기반 Linux 대형 터치 디스플레이 OS, 하드웨어 통합·OS 커스터마이징·양산
+NEMO-UX 공동창업(스타트업, 2017 사업 종료) — Yocto 기반 Linux 대형 터치 디스플레이 OS·애플리케이션 프로토타이핑, 하드웨어 통합·OS 커스터마이징
 Zigbee/Wi-Fi 게이트웨이 펌웨어(Zig/C) 양산 / 레거시 C SDK 타입 안전 FFI 격리 / 결정적 상태 전이 설계 / ARMv7에서 RISC-V static musl로 허브 코어 이식
 Matter 월패드 SDK 통합 — RK3576·Android 15·ESP32-H2 Thread RCP, Android SDK(AAR) 인도
 
@@ -55,14 +59,14 @@ Matter 월패드 SDK 통합 — RK3576·Android 15·ESP32-H2 Thread RCP, Android
 ## 문항 4 — 경력사항 담당업무 · NEMO-UX
 
 ```text
-공동창업, Linux 기반 대형 터치 디스플레이 제품 개발
-- Yocto 기반 상업·교육용 대형 터치 디스플레이 OS 개발
-- 하드웨어 통합, OS 커스터마이징, 애플리케이션 개발, 양산
+공동창업, Linux 기반 대형 터치 디스플레이 프로토타입 개발
+- Yocto 기반 대형 터치 디스플레이 Linux OS·애플리케이션 프로토타이핑
+- 하드웨어 통합, OS 커스터마이징, 애플리케이션 개발 (2017년 사업 종료)
 - 다중 사용자 윈도잉 시스템·다중 GPU 디스플레이 시스템 연구 발표
 ```
 
 ## 작성 근거
 
-- 사실 계보는 `application.md` 머리 주석과 같다 — `resume/body.org`, `FAQ.md` §2–3, 대학원 연구 실적 원본(제목·저자 순서·수상 행만 대조, 논문 본문·코드 기여는 미대조), homeagent-config 공개 소스·캡처.
+- 사실 계보 — `resume/body.org`(국문 블록·`* 판 이력` 대조 목록), `FAQ.md` §2–3, 대학원 연구 실적 원본(제목·저자 순서·수상 행만 대조, 논문 본문·코드 기여는 미대조), homeagent-config 공개 소스·캡처.
 - 2026-10-16 GLG 방향: 연구·가상화·Yocto·실보드·양산·시험 도구를 앞에 두고 AI/에이전트 서사는 이 국문 기본판에서 덜어낸다. 자가 측정 수치는 넣지 않았다.
 - 한국소프트웨어종합학술대회 논문의 연도는 원본 안에서 두 값이 보여 확정 전까지 적지 않는다.

@@ -35,6 +35,14 @@
 - 영문 본문은 문장 변경 없이 #+begin_en 으로 감쌌고, 기간은 :CV_WHEN:·:CV_PERIOD: 로 옮겼다. 영문 7컷 PDF 텍스트가 전후 같음을 측정했다.
 - 국문 소재는 applications/telechips--embedded-sw-engineer/ 의 10/16 검토판 v1(application.md·experience-detail.md)이다.
 
+** 2026-10-21 — NEMO-UX는 양산이 아니다 (GLG 사실 정정)
+- GLG(10/21, 코디 경유): NEMO-UX 「양산」 표현은 부적절하다. 실패한 스타트업이고 프로젝트 프로토타이핑 수준이었다. 스타트업 경험으로 정리하고, 임베디드 쪽에서는 Linux 활용 경험을 강조한다.
+- 확정: NEMO-UX는 공동창업 스타트업의 대형 터치 디스플레이 Linux OS·애플리케이션 프로토타입이며 양산하지 않았다. 스타트업은 2017년에 사업을 종료했다(GLG 10/18 「폐업을 2017」). 양산 미달을 사업 종료의 원인으로 잇지 않는다 — GLG가 정한 인과가 아니다. 「상업·교육용」 「양산」 「제품 전 주기」 「실리콘에서 출하」 「mass production」 「silicon to shipping」을 두 언어에서 걷었다.
+- 고친 자리: NEMO-UX 경력(ko·en), 자기소개 「연구를 보드와 제품으로 옮긴 경험」·「일하는 방식」, 포트폴리오 pf-yocto, 국문 뷰 resume.org 요약·역량표, 영문 컷 targets/embedded-software-engineer.org 요약 한 문장. 「일하는 방식」의 하드웨어 통합·양산 주도는 게이트웨이 펌웨어로 한정했다.
+- 그대로 둔 것: 현직 SKS 게이트웨이 펌웨어 양산(두 언어), 연구 실적의 NEMOSHELL·다중 GPU 디스플레이 발표.
+- 같은 날 GLG 관점(코디 경유): 임베디드에서는 Linux 활용을 앞세운다 — NixOS·Yocto·Buildroot로 재현 가능한 Linux 플랫폼과 그 위의 애플리케이션, AI 응용까지. 국문 pf-yocto를 「재현 가능한 Linux 플랫폼 — NixOS · Yocto · Buildroot」로 넓혀 pf-bsp 앞으로 옮기고 NixOS 실사용 구성(근거: nixos-config README의 소유 범위·현재 기준선·패키지 정책·롤백 경계)과 Buildroot 코어 레인을 넣었다. 국문 자기소개에 NixOS와 HomeAgent 응용 층 문장을 더했다. 프로필 존재를 모든 장비의 같은 generation 배포로, Hailo/sLLM 통합 실험을 양산 검증으로 넓히지 않는다. 영문은 이 관점 변경을 받지 않았다(의도한 차이).
+- 국문 on-device-ai의 HomeAgent는 「Linux 기반 Matter 허브 플랫폼·온디바이스 AI 통합 실험」으로, 이번에 공개 README(RPi5·Yocto·Hailo origin 레인이 matter.js·OTBR·Go 컨트롤러·Flutter UI·Hailo/sLLM 실험을 거쳤다는 서술)로 확인한 구성만 골랐다. 이전 국문의 「온디바이스 AI 에이전트를 둔」 「하나의 Go 코드베이스가 RK3576(Android)에서 돈다」는 이번에 근거를 대조하지 못했을 뿐 거짓으로 판정한 것이 아니다. 영문 블록은 그대로 두었다 — 두 언어의 경험 단계가 다르게 읽히면 통합 실험 범위로 맞출지 GLG가 정한다. RK3576·Android 15 월패드의 CHIP C++ SDK·AAR 인도는 별도 고객 과제의 재직 사실로 그대로다.
+
 ** 두 언어 대조 목록 — 의도한 차이와 함께 고칠 자리
 - 스마트홈 허브(smart-hub): 국문은 「AI 에이전트를 페어 프로그래머로」를 뺐다(GLG 10/16, 국문 시스템 기본판에서 AI 서사를 덜어냄).
 - HomeAgent(on-device-ai): 국문은 「세 에이전트 병렬·사람은 PM」 문장을 뺐다(같은 이유).
@@ -43,6 +51,7 @@
 - 한국소프트웨어종합학술대회 논문 연도: 원본 발표 목록 2019, 수상 행 2018-12-19. 두 언어 모두 연도를 적지 않는다.
 - 같은 사실의 국문 표현이 두 자리에 있다: smart-hub ↔ 「게이트웨이 양산 펌웨어와 시험 도구」, on-device-ai의 Matter 월패드 ↔ 「Yocto · Embedded Linux 제품」, NEMO-UX ↔ 같은 절. 하나를 고치면 다른 쪽도 본다.
 - 회사 납품은 펌웨어, Go 서버·Flutter 앱은 개인 검증 프로토타입 — 두 언어 모두 이 경계로 쓴다. 실기기 다중 허브 fan-out은 프로토타입 쪽 사실이다.
+- 양산은 SKS 게이트웨이 펌웨어에만 쓴다. NEMO-UX는 두 언어 모두 「스타트업 프로토타입, 2017년 사업 종료」이다(10/21). 국문 자기소개·pf-yocto는 국문 전용 절이라 영문 짝이 없고, 영문 짝은 NEMO-UX 경력 en 블록과 embedded 컷 요약이다.
 
 * Experience :experience:
 :PROPERTIES:
@@ -127,9 +136,9 @@ agent and attach it to the person who owns the domain.
 :END:
 
 #+begin_ko
-- *HomeAgent* — 온디바이스 AI 에이전트를 둔 오픈소스 Matter 허브입니다. 하나의 Go 코드베이스가
-  RPi5 + Hailo-8 NPU(Yocto)와 RK3576(Android)에서 돌고 Flutter가 셸입니다. matterjs 브리지로
-  Matter/Thread BLE 커미셔닝을, OTBR 연동을 다뤘습니다.
+- *HomeAgent* — Linux 기반 오픈소스 Matter 허브 플랫폼에서 온디바이스 AI 통합을 실험했습니다.
+  RPi5 + Hailo-8 NPU(Yocto) 레인에서 Go 컨트롤러·Flutter UI·matter.js·OTBR를 통합하고, matterjs
+  브리지로 Matter/Thread BLE 커미셔닝을 다뤘습니다.
 - *Matter 월패드 (고객 과제)* — RK3576·Android 15와 ESP32-H2 Thread RCP 구성에서 AOSP 네이티브
   CHIP C++ SDK와 ot-daemon을 통합하고, 버전 관리되는 Android SDK(AAR)로 고객 네임스페이스에
   인도했습니다.
@@ -302,17 +311,15 @@ days cross-reference on one timestamp scheme.
 :END:
 
 #+begin_ko
-- Yocto를 빌드 시스템으로 쓰는 상업·교육용 대형 터치 디스플레이 Linux OS를 개발했습니다.
-- 하드웨어 통합, OS 커스터마이징, 애플리케이션 개발, 양산까지 임베디드 제품 전 주기를
-  맡았습니다. 창업은 실패했지만, 제품을 실리콘에서 출하까지 가져가는 습관은 남았습니다.
+- 공동창업한 스타트업에서 Yocto를 빌드 시스템으로 쓰는 대형 터치 디스플레이용 Linux OS와
+  애플리케이션을 프로토타이핑했고, 하드웨어 통합과 OS 커스터마이징을 맡았습니다.
+- 스타트업은 2017년에 사업을 종료했습니다.
 #+end_ko
 
 #+begin_en
-- Built a Linux-based large-format touch display OS for commercial and education markets, with
-  Yocto as the build system.
-- Full embedded product lifecycle: hardware integration, OS customization, application development,
-  and mass production. The startup failed; the habit of taking a product from silicon to shipping
-  did not.
+- Co-founded a startup that prototyped a Linux OS and applications for large-format touch displays,
+  with Yocto as the build system; handled hardware integration and OS customization.
+- The startup ended operations in 2017.
 #+end_en
 
 * Third-Party Validation :validation:
@@ -491,11 +498,15 @@ I/O 경로를 줄이는 연구를 했고, 모바일 가상머신 모니터 MyAV�
 ** 연구를 보드와 제품으로 옮긴 경험
 
 #+begin_ko
-NEMO-UX를 공동창업해 Yocto 기반 Linux 터치 디스플레이 제품을 하드웨어 통합부터 양산까지
-맡았습니다. 지금은 스마트홈 게이트웨이 펌웨어를 Zig로 개발해 양산했고, 허브 코어를 ARMv7에서
+스타트업 NEMO-UX를 공동창업해 대형 터치 디스플레이용 Linux OS와 애플리케이션을 Yocto로
+프로토타이핑했고 하드웨어 통합과 OS 커스터마이징을 맡았습니다. 스타트업은 2017년에 사업을
+종료했습니다. 지금은 스마트홈 게이트웨이 펌웨어를 Zig로 개발해 양산했고, 허브 코어를 ARMv7에서
 RISC-V로 옮기면서 board HAL을 분리했습니다. 공개 저장소에서는 SG2000의 부트체인을 공개 SDK로
 재현 빌드하고, RISC-V와 ARM64 두 레인에서 자체 이미지가 실제 보드에서 부팅되는 것을
-기록했습니다.
+기록했습니다. 운영체제와 개발 환경도 NixOS로 선언해 같은 입력에서 다시 세울 수 있게 관리합니다.
+보드 위 Linux에서 멈추지 않고, 공개 저장소 HomeAgent에서는 그 위에 Go 서비스·Flutter UI·Matter
+통합과 RPi5·Hailo 온디바이스 AI 통합 실험을 올리며 Linux 플랫폼과 애플리케이션, AI 응용을 한
+구조로 고민해 왔습니다.
 #+end_ko
 
 ** 일하는 방식
@@ -503,9 +514,39 @@ RISC-V로 옮기면서 board HAL을 분리했습니다. 공개 저장소에서�
 #+begin_ko
 문제가 사라졌다고 말하기보다 같은 조건에서 다시 확인할 수 있게 만드는 것을 중요하게
 생각합니다. 빌드 입력과 SDK 리비전을 고정하고, 부팅 로그와 시험 결과를 날짜와 함께 남기고,
-보드 의존성과 제품 로직을 나눕니다. 제품의 하드웨어 통합과 양산을 거치며 아키텍처와 구현을
-직접 주도했고, 로그와 시험 결과로 원인을 좁혀 왔습니다. 다음 사람이 같은 문제를 재현하고
+보드 의존성과 제품 로직을 나눕니다. 게이트웨이 펌웨어의 하드웨어 통합과 양산을 거치며 아키텍처와
+구현을 직접 주도했고, 로그와 시험 결과로 원인을 좁혀 왔습니다. 다음 사람이 같은 문제를 재현하고
 이어받을 수 있도록 판단 근거를 문서로 남깁니다.
+#+end_ko
+
+* 재현 가능한 Linux 플랫폼 — NixOS · Yocto · Buildroot :portfolio:
+:PROPERTIES:
+:TITLE_LANG: ko
+:CUSTOM_ID: pf-yocto
+:END:
+
+#+begin_ko
+Linux를 한 번 부팅시키는 데서 끝내지 않고, 같은 입력에서 다시 세울 수 있는 플랫폼으로 다룹니다.
+운영체제와 개발 환경은 NixOS로, 임베디드 이미지는 Yocto와 Buildroot로 선언하고, 그 위의
+애플리케이션과 AI 응용까지 이어서 봅니다. 세 도구는 맡는 층이 다릅니다.
+
+- *NixOS 실사용 구성* — 데스크톱·홈 서버·클라우드 VM의 운영체제와 사용자 환경, 개발 도구,
+  자체 운영 서비스 구성을 NixOS·home-manager로 선언합니다. 입력은 =flake.lock= 으로 고정하고
+  프로젝트마다 devShell로 도구 버전을 나누며, 시스템 구성은 generation으로 되돌립니다.
+- *공개 Yocto 레이어 meta-homeagent (RPi5 고사양 레인)* — RPi5 커널 설정 조각(Hailo NPU),
+  RK3588S 보드의 머신 설정·DTS·커널 bbappend, wic 이미지 구성을 담은 레이어입니다. 레시피는
+  네트워크 없이 재현되는 오프라인 빌드를 원칙으로 하며, 그 정책을 =docs/YOCTO.md= 에 남겼습니다.
+- *Buildroot 코어 레인 (SG2000)* — 최소 허브 이미지는 Buildroot로 만듭니다. 부트체인과 실보드
+  부팅 기록은 다음 절에 있습니다.
+- *Matter 월패드 SDK 통합 (재직 중 고객 과제)* — RK3576·Android 15와 ESP32-H2 Thread RCP
+  구성에서 AOSP 네이티브 CHIP C++ SDK와 ot-daemon을 통합하고, 버전 관리되는 Android SDK(AAR)로
+  인도했습니다.
+- *NEMO-UX 공동창업 (2013 – 2017)* — 스타트업에서 Yocto를 빌드 시스템으로 쓰는 대형 터치
+  디스플레이용 Linux OS와 애플리케이션을 프로토타이핑했고, 하드웨어 통합과 OS 커스터마이징을
+  맡았습니다. 스타트업은 2017년에 사업을 종료했습니다.
+
+공개 입구: [[https://github.com/junghan0611/nixos-config][github.com/junghan0611/nixos-config]] ·
+[[https://github.com/junghan0611/homeagent-config/tree/main/yocto][github.com/junghan0611/homeagent-config/tree/main/yocto]]
 #+end_ko
 
 * 공개 BSP — SG2000 부트체인과 실보드 부팅 :portfolio:
@@ -532,26 +573,6 @@ Buildroot 설정을 저장소에 두어 빌드 때 주입합니다. 한 다이�
 공개 입구: [[https://github.com/junghan0611/homeagent-config/tree/main/bsp][github.com/junghan0611/homeagent-config/tree/main/bsp]] ·
 [[https://github.com/junghan0611/homeagent-config/tree/main/captures/duos-riscv64-firstboot-20260714T182449%2B0900][RISC-V 부팅 기록]] ·
 [[https://github.com/junghan0611/homeagent-config/tree/main/captures/duos-arm64-firstboot-20260723T170600%2B0900][ARM64 부팅 기록]]
-#+end_ko
-
-* Yocto · Embedded Linux 제품 :portfolio:
-:PROPERTIES:
-:TITLE_LANG: ko
-:CUSTOM_ID: pf-yocto
-:END:
-
-#+begin_ko
-- *NEMO-UX 공동창업 (2013 – 2017)* — Yocto를 빌드 시스템으로 쓰는 상업·교육용 대형 터치
-  디스플레이 Linux OS를 개발했습니다. 하드웨어 통합, OS 커스터마이징, 애플리케이션 개발,
-  양산까지 제품 전 주기를 맡았습니다.
-- *공개 Yocto 레이어 meta-homeagent* — RPi5 커널 설정 조각(Hailo NPU), RK3588S 보드의 머신
-  설정·DTS·커널 bbappend, wic 이미지 구성을 담은 레이어입니다. 레시피는 네트워크 없이 재현되는
-  오프라인 빌드를 원칙으로 하며, 그 정책을 =docs/YOCTO.md= 에 남겼습니다.
-- *Matter 월패드 SDK 통합 (재직 중 고객 과제)* — RK3576·Android 15와 ESP32-H2 Thread RCP
-  구성에서 AOSP 네이티브 CHIP C++ SDK와 ot-daemon을 통합하고, 버전 관리되는 Android SDK(AAR)로
-  인도했습니다.
-
-공개 입구: [[https://github.com/junghan0611/homeagent-config/tree/main/yocto][github.com/junghan0611/homeagent-config/tree/main/yocto]]
 #+end_ko
 
 * 게이트웨이 양산 펌웨어와 시험 도구 :portfolio:

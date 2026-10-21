@@ -150,7 +150,7 @@ if (cd "$c" && ./run.sh ko >/dev/null 2>&1 && ./run.sh target embedded-software-
 	check 'PDF 영문 컷에 국문 센티넬 없음' '! grep -q QZXKO1 <<<"$en_txt"'
 	check 'PDF 세 문서에 noexport·corpus 센티넬 없음' '! grep -qE "QZXNOEXPORT|QZXCORPUS" <<<"$ko_txt$pf_txt$en_txt"'
 	check 'PDF 국문 모듈 순서 = 정본 목록(smart-hub → on-device-ai)' \
-		'[ "$(grep -n -m1 "스마트홈 허브" <<<"$ko_txt" | cut -d: -f1)" -lt "$(grep -n -m1 "온디바이스" <<<"$ko_txt" | cut -d: -f1)" ]'
+		'[ "$(grep -n -m1 "^스마트홈 허브 — " <<<"$ko_txt" | cut -d: -f1)" -lt "$(grep -n -m1 "^온디바이스 AI 스마트홈 허브" <<<"$ko_txt" | cut -d: -f1)" ]'
 	check 'PDF 국문 문서에 블록 표지·속성 이름 없음' '! grep -qE "begin_(ko|en)|end_(ko|en)|TITLE_(LANG|KO|EN)|CV_(PERIOD|WHEN|LANG)" <<<"$ko_txt$pf_txt"'
 	check 'PDF 포트폴리오에 경력·자기소개 절 없음(제외 태그)' '! grep -qE "^ *(경력|자기소개)$" <<<"$pf_txt"'
 else

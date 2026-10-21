@@ -1,20 +1,107 @@
-# 제출 기록 — Telechips (텔레칩스) / [판교 사옥] BSP Driver Engineer
+# 제출 기록 — Telechips (텔레칩스) / [판교 사옥] Embedded S/W Engineer
 
 | 항목 | 값 |
 |---|---|
-| 상태 | **draft — BSP 직무 전환 후 새 패킷 검수 중, 미제출** (이전 `ready`는 `iSXmKnRT` 당시의 문서 준비 상태였다 — 아래 §이후 기록) |
+| 상태 | **draft — 대상 `iSXmKnRT`로 회귀(10/21), NEMO-UX 사실 정정 반영(10/21), 새 경력요약 검토안 대기·지원 동기 초안 GLG 검토 대기, 최종 합본 PDF 미빌드, 미제출** (§2026-10-21 회귀. 08월의 `ready`는 그때의 문서 준비 상태였고 오늘 되살리지 않는다 — 아래 §이후 기록) |
 | 지원일 | — |
-| 경로 | **자체 채용홈** `careers.telechips.com` — 10/16 가입 없이 폼 표시 확인, `applicantLoginEnabled=false` |
+| 경로 | **자체 채용홈** `careers.telechips.com` — 10/21 가입 없이 폼 표시 확인, `applicantLoginEnabled=false`. 지원경로 드롭다운 값은 GLG가 새로 고른다 |
 | 이력서 칸 | **국문 합본 1개** — `application-telechips.org`(지원처층: 동기·계획·생년월일 마커)가 `resume/resume.org`(국문 기본 뷰)를 INCLUDE → `KimJunghan_Telechips_Application.pdf` |
 | 포트폴리오 칸 | **국문 1개** — `resume/portfolio-ko.org`(지원처 중립 국문 뷰) → `KimJunghan_Systems_BSP_Portfolio.pdf` |
 | 편집 입구 | **`resume/body.org` 하나** — 국문 블록이 먼저, 영문 블록이 이웃. 뷰·지원처층은 고르기·배열·짧은 요약뿐 |
 | 재현 | `./build.sh review <새 /tmp 폴더>` · `./build.sh final <새 폴더> < (생년월일)` — 기본 출력 경로 없음, `submit/`·`build/` 아래 쓰기 거절, 비어 있지 않은 폴더 거절. 회귀검사 `./test_build.sh` |
-| 공고 URL | https://careers.telechips.com/job_posting/Re4LUYvK |
-| **지원 URL** | https://careers.telechips.com/job_posting/Re4LUYvK/apply — 10/16 국문 기본판·`?lang=en` 둘 다 직접 실측 |
+| 공고 URL | https://careers.telechips.com/job_posting/iSXmKnRT |
+| **지원 URL** | https://careers.telechips.com/job_posting/iSXmKnRT/apply — 10/21 국문 기본판 직접 실측 |
 | 근무지 | **텔레칩스 판교사옥** — 경기 성남시 수정구 금토로80번길 27 |
-| 조건 | 경력 **4~15년**(공고 데이터 `career.range` 4~15) · 정규직 · 판교사옥 · 주 5일 · `deadlineType=until_filled`(채용 시 마감) · 직군 「Automotive Embedded S/W」 |
+| 조건 | 경력 **3~15년**(공고 데이터 `career.range` 3~15) · 정규직 · 판교사옥 · 주 5일 · `deadlineType=open_ended`(상시 모집) · 직군 「Automotive Embedded S/W」 |
 
-## 현재 준비 — 2026-10-16
+## 2026-10-21 회귀 — 원래 Embedded S/W Engineer 공고로
+
+**아직 미제출이고 `draft`다.** GLG가 10/21 09:04 지원 직무를 `Re4LUYvK` BSP Driver Engineer에서 원래
+공고 `iSXmKnRT` Embedded S/W Engineer로 되돌렸다. 사내 추천 경로 추진은 중단했고 10/18의 「사내 추천」
+고정도 풀었다. 지원경로는 GLG가 새로 고른다. 10/16~18 BSP 준비 기록은 아래 절에 그대로 둔다.
+
+**공고·폼 실측 (09:05–09:10, Opus 새 Chrome 탭, 입력·선택·동의·업로드·제출 0 — 지원경로 드롭다운은 열어 읽고 선택 없이 닫았다)**
+
+- 공고: 제목 「[판교 사옥] Embedded S/W Engineer」, 공고 데이터 `status=in_progress`·`closedAt=null`·`open_ended`, `updatedAt` 2026-07-14, 경력 3~15. 코디의 Exa livecrawl(`max-age-hours=0`) 본문과 담당업무·지원자격이 일치했다. 인용은 `JD.md`.
+- 15칸 모두 필수(사이드바 빨간 점): 이름·생년월일·이메일·연락처·지원경로·학력·경력·경력요약·증명사진·이력서·포트폴리오·장애·보훈·병역·영어 활용 수준.
+- 서술 칸은 둘이다. 경력요약 **0/10,000**(「간결한 용어로 설명」, 예시는 `BSP Kernel Driver 개발 / Verilog HDL 능숙 / PCB Artwork` 같은 용어 나열)과 경력 항목별 담당업무(글자 제한 없음). 자기소개서·지원동기 칸은 없어서 자기소개서는 이력서 파일 안에 둔다.
+- 경력 구조화 칸: 회사명·입사일·퇴사일·재직중·고용형태·직급/직책·근무부서·담당업무. 「총 경력사항을 상세하게 기입」, 일부만 적으면 불이익이 있을 수 있다고 적혀 있다.
+- 파일: 이력서 1개(「인적정보(생년월일/학력), 경력기술서, 자기소개서를 포함한 하나의 파일」, 「연봉정보는 필히 제외」)와 포트폴리오(필수), 각 50MB 이하·PDF 자동 변환. 증명사진 jpg/jpeg/png, 권장 250×300. `input[type=file]` 0개 — 업로드는 GLG가 직접 한다.
+- 지원경로 선택지 10개: 회사 채용홈페이지 · 채용포털(잡코리아/사람인) · Linkedin · 사내 추천 · 리멤버 · 원티드 · 헤드헌터 · HR컨택 · 외부 교육기관 · 기타.
+- 동의(국문판): 민감정보 **필수**(지원 후 3년, 최종 탈락 후 5일 내 파기), 인재풀 **선택**(3년). 「동의를 하지 않더라도 지원서 제출이 가능」 문장은 인재풀 블록에만 있다 — 08-01 기록의 「동의 2건 모두 거부해도 제출 가능」과 다르다.
+- 폼 구성은 10/16 BSP 폼 기록과 같은 목록으로 읽혔지만, 위 값은 이 공고에서 따로 잰 것이다.
+
+**07~08 판단과의 차이.** 아래 §당시 판단의 「자격 4줄 중 3줄이 정면」은 오늘 공식 본문의 지원자격 2줄과
+다르다. 이 공고의 요건 근거로 물려받지 않는다. 원인은 추정하지 않는다.
+
+**지원자격 대조 — 필수 2개 (검토 중, 판정 아님)**
+
+| 지원자격 | 제시할 근거 | 경계 |
+|---|---|---|
+| C/C++ 언어 중급이상 | 레거시 C Zigbee SDK 연동·FFI 격리(재직), AOSP 네이티브 CHIP C++ SDK·ot-daemon 통합(재직 중 고객 과제), 비휘발성 메모리 블록 디바이스 드라이버 연구 | SDK 연동·통합 기록만으로 「중급 이상 충족」을 자동 판정하지 않는다. GLG가 직접 구현·디버깅한 범위를 검토한다 |
+| Embedded System 개발 경험 | 게이트웨이 펌웨어 양산(재직), 스타트업 NEMO-UX의 Yocto Linux 터치 디스플레이 프로토타입(양산 아님), SG2000 RISC-V·ARM64 실보드 부팅 공개 기록 | 재직 수행 사실과 공개 기록을 구분한다 |
+
+담당업무 세 줄(BSP Driver / Linux·Android Framework / Platform·Application)은 필수요건으로 세지 않는다.
+Android SDK 통합을 Framework 자체 개발로 넓히지 않고, 개인 Go/Flutter 검증 프로토타입을 회사 양산품으로
+쓰지 않는다. 경력 연차는 `FAQ.md` §3의 8+ years를 물려받은 값이며 오늘 다시 재지 않았다.
+
+**10/16~18 준비에서 이어받는 것과 아닌 것**
+
+| 항목 | 10/21 처리 |
+|---|---|
+| 국문 2파일 체계(합본 + 포트폴리오)와 `build.sh` 계약 | 그대로 |
+| 증명사진 원본 유지(10/18 GLG) | 그대로. 사진 파일은 Git 밖 |
+| 합본 PDF의 연구실 표기 2018 – 2022(10/18 GLG) | 그대로. 폼 구조화 칸의 연구실 입사일은 여전히 정하지 않았다 |
+| 공통 뷰 제목·포트폴리오 파일명 | 국문 뷰·포트폴리오 표제는 Linux 플랫폼 관점으로 바꿨다(10/21 GLG 관점). 포트폴리오 산출 파일명 `KimJunghan_Systems_BSP_Portfolio.pdf`만 호환을 위해 유지한다. 공통 정본 `body.org`는 NEMO-UX 사실 정정과 국문 Linux 플랫폼 관점 확장이 들어갔다(§이후 기록 10/21) |
+| 경력요약(`answers.md` 문항 1) | 본문은 10/18판에서 NEMO-UX 양산 표현만 정정한 1,220자다 — 이 공고용 새 경력요약이 아니다. 첫 검토안(910자)은 사실 정정 전 안이라 **사용 중단**이고, Linux 플랫폼 중심 v2(1,009자)가 작성돼 GLG 확정을 기다린다. v2는 문항 1에 아직 반영하지 않았고, 확정 뒤 회수해 다시 빌드한다 |
+| 담당업무 3개(문항 2–4) | 문항 2·3은 그대로다. 문항 4(NEMO-UX)는 양산 표현을 정정했다(167자) |
+| 지원 동기·입사 후 계획(`application-telechips.org`) | 이 공고의 담당업무에 맞춘 **초안**으로 고쳐 썼다. GLG 검토 대기이며 확정·제출 문안이 아니다. BSP판은 커밋 이력(`139fef7`)에 있다 |
+| BSP 폼 실측·「사내 추천」 고정·추천인 칸 | 이어받지 않는다 |
+
+**남은 것**
+
+1. GLG 검토 — Linux 플랫폼 중심 경력요약 v2(1,009자), 지원 동기·입사 후 계획 초안.
+2. 확정 뒤 v2를 문항 1로 회수하고 검토본 재빌드.
+3. 지원경로 선택, 폼 구조화 연구실 입사일 결정.
+4. 최종 합본 PDF 빌드(생년월일)와 지문 검증.
+5. 브라우저 입력·동의·업로드(값은 private 원본에서 사람이 넣는다), GLG 최종 검토와 건별 Submit 승인.
+
+## 2026-10-18 준비 — `Re4LUYvK` 대상, 추천인 기재 허락 대기 (10/21 대상 변경으로 종료)
+
+**아직 미제출이고 `ready`도 아니다.** GLG는 지원경로를 「사내 추천」으로 내려 하고, 추천인 기재 허락을
+받는 중이다. 그동안 폼에 넣을 것을 모두 준비해 두는 것이 이날의 목표다(GLG 13:43 정정 — 즉시 제출이
+아니다). 추천인 이름·관계·입력값은 이 저장소에 적지 않는다.
+
+**공고·폼 재실측 (13:16, Opus 별도 Chrome 탭, 입력·선택·동의·업로드·제출 0)**
+
+- 열림: 제목 「[판교 사옥] BSP Driver Engineer」, 공고 데이터 `status=in_progress`·`closedAt=null`·`until_filled`, `updatedAt` 2026-09-06(10/16 이후 변경 없음).
+- 폼은 10/16 실측과 같다. 서술 칸은 경력요약(0/10,000)과 경력 항목별 담당업무(카운터·글자 제한 없음) 둘뿐이고, 자기소개서·지원동기 칸이 없어 자기소개서는 이력서 파일 안에 둔다. `input[type=file]` 0개 — 업로드는 GLG가 직접 한다.
+- 지원경로 선택지 10개: 회사 채용홈페이지 · 채용포털(잡코리아/사람인) · Linkedin · 사내 추천 · 리멤버 · 원티드 · 헤드헌터 · HR컨택 · 외부 교육기관 · 기타. 「사내 추천」을 고르면 「추천인 이름」 칸이 새로 생긴다.
+
+**준비된 것**
+
+| 슬롯 | 상태 |
+|---|---|
+| 이력서 — 국문 합본 3쪽 | 검토본만 있다. 현 HEAD `139fef7` 재빌드가 10/16 검토본과 `pdftotext -layout` 바이트 동일. **최종본은 아직 없다** — 생년월일을 표준입력으로 받아야 나오므로 GLG가 별도 터미널에서 `./build.sh final <새 빈 폴더>`를 실행하고 새 지문으로 검증한다 |
+| 포트폴리오 — 국문 2쪽 | review/final 입력이 같아(`build.sh` 85–106행은 합본의 생년월일 칸·파일명만 가른다) 검토 빌드 파일이 그대로 업로드 후보다 |
+| 경력요약 · 담당업무 3개 | `answers.md` 문항 1–4 → `form-01…04.txt` 1,176 / 399 / 226 / 144자, 10/16과 바이트 동일 |
+| 증명사진 | GLG가 원본을 첨부하고 웹 미리보기를 확인한 뒤 **원본 유지**로 정했다(10/18). 같은 날 만든 250×300 사본은 쓰지 않는다. 사진 파일은 Git 밖 |
+
+**10/18 GLG 결정**
+
+- 합본 PDF의 연구실 재직 표기는 **2018 – 2022 유지** — 「폐업을 2017했으니까 연도 구분하면 좋겠어」. NEMO-UX(2013 – 2017)와 연도가 겹치지 않게 하는 PDF 표기 선택이며 소스 편집은 없다. 폼 구조화 칸의 연구실 입사일은 이 결정에 포함되지 않았고 아직 정하지 않았다(`FAQ.md` §3 정정 블록은 실제 제출값 2017.08).
+
+**남은 것**
+
+1. 추천인 기재 허락 → 「추천인 이름」 칸.
+2. 폼 구조화 연구실 입사일 결정.
+3. 최종 합본 PDF 빌드(생년월일 반영)와 지문 검증.
+4. 브라우저 입력 — 학력·경력 3항목·서술 4칸·장애/보훈/병역·영어 「중」·동의(민감정보 필수, 인재풀 선택). 값은 private 원본에서 사람이 넣는다.
+5. GLG 최종 검토와 건별 Submit 승인.
+
+로컬 업로드 패킷(사진·검토본·서술 4개)은 private 면에 코디가 보관하며 제출 완료 기록이 아니다.
+
+## 2026-10-16 준비 — `Re4LUYvK` BSP Driver Engineer (10/21 대상 변경, 현 대상에 적용 금지)
 
 **아직 미제출이다.** GLG가 지정한 대상은 `Re4LUYvK`의 **BSP Driver Engineer**다. 작업 초기에 기존 `iSXmKnRT` 공고를 읽어 「현행 요건 변경」이라고 설명했으나 다른 공고였다. 그 C/C++ 대조는 철회한다. 지정 공고는 Exa livecrawl 요청으로 대조해 GLG 제공 본문과 일치를 확인했다.
 
@@ -37,7 +124,7 @@
 - 영문 이력서 7컷은 보존한다(영문 베이스는 `resume/resume-en.org`로 옮겼고 산출 이름 `KimJunghan_Resume`은 그대로). 코디의 10/16 오전 검토판과 Opus의 Markdown 검토판 v1은 소재로 검토 폴더에 보존했다.
 - 10/16 오전 Markdown 초안(`application.md`·`application-telechips.md`·`cover-letter.md`)은 Org로 옮긴 뒤 지웠고, `experience-detail.md`·`pipeline/header.tex`는 커밋된 판으로 되돌려 역사 자료로 남겼다(새 조판은 읽지 않는다). 초안 원문은 private 검토 폴더 `telechips-org-base-v2/material/`에 지문과 함께 있다.
 
-### 현행 BSP 폼 실측 — 2026-10-16
+### BSP 폼 실측 — 2026-10-16
 
 코디가 Linux Chrome 새 프로필로 `?lang=en` 폼을, Opus가 별도 Chrome 탭으로 국문 기본 폼과 `?lang=en`을 읽었다. 둘 다 입력·업로드·동의·제출 버튼 클릭은 하지 않았다. 필수 표시(`EditableLabel__RequiredMark`) 15개 — 이름·생년월일·이메일·연락처·지원경로·학력·경력·경력요약·사진·이력서·포트폴리오·장애·보훈·병역·영어 수준.
 
@@ -61,7 +148,7 @@
 
 원본 build/submit과 기존 지문은 보존한다. 폴더 개편·전체 stage 실행·제출·commit/push는 이 준비의 자동 후속이 아니다.
 
-## 과거 준비 기록 — `iSXmKnRT` 당시 (현 대상에 적용 금지)
+## 과거 준비 기록 — `iSXmKnRT` 08월 당시 (현 패킷 아님)
 
 - [ ] **이력서 PDF** — `resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`
       (절대경로: `~/repos/gh/apply/resume/build/KimJunghan_Resume_Embedded_Software_Engineer.pdf`)
@@ -82,7 +169,7 @@
 > 뿐이라 조준부를 바꿔 재빌드해야 하고, 선례는 `../deepx--*/build.sh`(이력서 컷 +
 > `experience-detail.md` → `pdfunite`) 다. **NEXT.md 에 남겼다.**
 
-## 과거 다른 공고의 폼 실측 — 2026-08-01 (`iSXmKnRT`, 현 대상에 적용 금지)
+## 과거 폼 실측 — 2026-08-01 (`iSXmKnRT` 당시, 현행은 §2026-10-21 재실측)
 
 **예상이 틀렸다. 이 폼은 15개 항목이 전부 필수다.** 오른쪽 사이드바가 「전체 15개 항목」을
 빨간 점으로 세고, DOM 의 `EditableLabel__RequiredMark` 가 15개 전부 렌더된다.
@@ -143,7 +230,7 @@ ninehire 는 화이트라벨이라 **회사마다 폼을 따로 짠다 — 건�
 | 이메일 | junghanacs@gmail.com (정본: `resume/pipeline/preamble.org`) | `FAQ.md` §1 |
 | 연락처 | **GLG 직접 입력** (문서에 값 없음) | `FAQ.md` §1 |
 | GitHub / 포트폴리오 URL | https://github.com/junghan0611 | `FAQ.md` §1 |
-| 총 경력 | **8+ years** — 당시 `iSXmKnRT` 요건 `3~15년` 통과. 현 `Re4LUYvK` 는 4~15년, 같은 값으로 통과 | `FAQ.md` §3 |
+| 총 경력 | **8+ years**(물려받은 값, 10/21 재측정 아님) — `iSXmKnRT` 요건 `3~15년`(10/21 재확인) 통과. 10/16~18 대상 `Re4LUYvK` 는 4~15년 | `FAQ.md` §3 |
 | 최종 학력 | 석사 보유 — 요건 `학사 이상` 통과 | `FAQ.md` §3 |
 | 병역·보훈·장애 등 법적 값 | **브라우저에서 GLG 직접 입력. Git 에 저장하지 않는다** | `FAQ.md` §5 |
 | 희망 연봉 | ✅ **「면접 후 협의」** — 숫자를 강제하는 폼에서만 GLG 가 직접 입력 (Git 에 숫자를 적지 않는다) | `FAQ.md` §4 |
@@ -175,6 +262,8 @@ ninehire 는 화이트라벨이라 **회사마다 폼을 따로 짠다 — 건�
 
 ## 이후 기록
 
+- [2026-10-21] **NEMO-UX 사실 정정(GLG 10:38, 코디 경유).** NEMO-UX는 양산이 아니라 공동창업 스타트업의 Linux 터치 디스플레이 프로토타입이며, 스타트업은 2017년에 사업을 종료했다. 공통 정본 `resume/body.org`(경력 ko·en, 자기소개 두 절, pf-yocto, 판 이력)와 국문 뷰 `resume/resume.org`(요약·역량표), 영문 컷 `resume/targets/embedded-software-engineer.org` 요약 한 문장, 이 건의 `answers.md` 문항 1·4와 `application-telechips.org` 첫 문단을 고쳤다. 양산은 현직 게이트웨이 펌웨어에만 남겼다. 이 공고용 첫 경력요약 검토안은 정정 전 안이라 사용 중단이다. 위 §2026-10-16 준비의 BSP 대조표에 남은 「NEMO-UX 양산」은 그때의 기록이며 현행 사실이 아니다. 같은 날 GLG 관점(재현 가능한 Linux 플랫폼 — NixOS·Yocto·Buildroot — 과 그 위 애플리케이션·AI 응용)으로 국문 뷰 표제·요약·역량표, 포트폴리오 표제와 Linux 플랫폼 절, 국문 자기소개, 지원 동기 초안을 고쳤다(영문은 NEMO-UX 정정만). `resume/test_language.sh`의 모듈 순서 검사는 요약에 「온디바이스」가 먼저 나오며 오탐이 나서 두 모듈 표제 줄에 고정했다(순서를 뒤집으면 여전히 실패함을 확인). 검증: 케이스 review exit 0(합본 3쪽·포트 2쪽), `test_build.sh` 23/23, `test_language.sh` 28/28, `/tmp` 사본 HEAD 대비 전체 빌드에서 영문 7컷의 변화는 NEMO-UX 블록과 embedded 요약 한 문장뿐, `run.sh verify` 통과. 국문 CV 단독본은 2쪽에서 3쪽이 됐다. upload·Submit 0회.
+- [2026-10-21] **대상 `iSXmKnRT`로 회귀(GLG 09:04, 코디 경유).** 사내 추천 경로 추진을 중단했고 「사내 추천」 고정을 풀었다. Opus가 Chrome으로 공고·국문 폼을 읽기 전용으로 재실측했다(§2026-10-21 회귀). `JD.md`를 이 공고의 담당업무 3줄·지원자격 2줄로 갱신하고 BSP 절은 §이전 대상으로 보존했다. 이 파일의 머리표·옛 절 표제, `answers.md` 머리의 대상 표기, `build.sh` 머리 주석을 고쳤다(로직 변경 0). `application-telechips.org` 동기·계획 두 문단은 이 공고 담당업무에 맞춘 초안으로 고쳐 썼고 GLG 검토 대기다. 문항 1–4 본문과 공통 정본 `body.org`는 바꾸지 않았다. 새 검토 빌드는 private 검토 폴더에 있고 합본에서는 동기·계획 절만 바뀌었다. 포트폴리오와 서술 4개는 10/18 검토본과 텍스트 동일하며, 경력요약 txt는 구판이다. `test_build.sh` 23건 통과, upload·Submit 0회.
 - [2026-10-16] **Org 정본으로 회수(GLG 09:19, 코디 경유).** 국문·영문을 `resume/body.org` 한 벌에 두고(국문 블록 먼저, 영문 이웃, 기간·ID 공통 속성), 정본마다 `#+CV_LANG`으로 고른다. 국문 기본 뷰 `resume/resume.org`·영문 베이스 `resume/resume-en.org`·국문 포트폴리오 `resume/portfolio-ko.org`를 두고, 이 건은 `application-telechips.org` 지원처층만 가진다. 영문 7컷 PDF 텍스트는 전후 같음을 측정했다. `build.sh`는 Org에서 두 업로드 PDF를 만들도록 다시 썼고 `test_build.sh` 23건·`resume/test_language.sh` 28건 실패 주입 통과. Markdown 초안은 소재로 보존 후 지웠다. upload·Submit 0회.
 - [2026-10-16] **국문 2파일 기본판으로 전환(GLG 지시, 코디 경유).** `application.md`(회사 중립 합본 본문)·`application-telechips.md`(지원처층)·`experience-detail.md`(회사 중립 포트폴리오)를 작성했다. 연구 실적 원본에서 제목·저자 순서·수상 행을 대조해 가상화 제1저자 연구, 커널 분석 공동연구, 수상(2012·2019·2020·2021)을 보강했다. 한국소프트웨어종합학술대회 논문의 연도는 원본 안에서 두 값이 보여 적지 않았다. 다중 허브 fan-out은 회사 펌웨어가 아니라 개인 검증 프로토타입 쪽 사실이라 그쪽으로 옮겼다. `build.sh`를 다시 썼다 — 기본 출력 경로를 없애 `submit/` 덮어쓰기를 막고, 생년월일 빌드 마커·검토본/제출본 구분·정본 이메일·placeholder·연봉·지원처 이름 검사를 넣었다. `test_build.sh` 실패 주입 22건 통과. 상태는 코디 LEDGER와 맞춰 `draft`. 검토판은 private 검토 폴더에만 있고 upload·Submit 0회.
 - [2026-10-16] **GLG가 Re4LUYvK BSP Driver Engineer를 정확한 대상으로 지정했다.** 초기 조회 iSXmKnRT는 다른 공고였다. 공고·요건 대조를 정정하고 과거 폼 기록을 현재 폼으로 상속하지 않는다. 국문 자기소개 초안 추가, 공통 사실 모듈·base/Software/Embedded Summary 및 건별 깊이 문서의 회사 펌웨어/개인 검증 프로토타입 경계 정정에 착수했다. 새 PDF·제출 세트는 아직 만들지 않았으며 기존 산출물·지문을 보존한다.

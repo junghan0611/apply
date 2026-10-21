@@ -24,7 +24,8 @@ MyAV, a mobile virtual machine monitor, and para-virtualized / exitless I/O. I n
 kernel and virtualization background to public SDK-based BSP builds: SG2000 boot-chain
 configuration and a captured RISC-V Linux / Buildroot boot on a Milk-V Duo S.
 
-I have also taken Linux-based embedded products through hardware integration and mass production.
+I co-founded a startup that prototyped a Yocto-based Linux touch-display OS through hardware
+integration; the startup ended operations in 2017.
 Recent work includes Zigbee gateway firmware in Zig/C with a type-safe vendor-SDK boundary,
 deterministic state transitions and aging-test automation; board HAL extraction across an
 ARMv7/glibc to RISC-V/static-musl port; and Yocto / Android platform integration. Personal Go/Flutter
