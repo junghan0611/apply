@@ -1,21 +1,30 @@
-# 이 세트를 어떻게 다시 만드나 — telechips--embedded-sw-engineer
+# 이 세트를 어떻게 다시 만드나 — telechips--embedded-sw-engineer (2026-10-22 제출)
 
-**새 깊이 PDF(`KimJunghan_AX_*`)는 git 에 없다** (`.gitignore`). 산출물이고 정본은 org 다.
-이력서 컷과 제출 완료 건의 옛 스냅샷은 **이미 tracked 라 `git pull` 로 온다** —
-「PDF 가 아예 없다」는 절대명제가 아니다.
-
-`MANIFEST.sha256` 은 **그때 낸 파일의 identity commitment** 다. 파일이 있으면
-**바이트 동일 여부를 판정**하고, 없으면 증언만 보존한다. 원본을 버린 뒤 비결정적
-빌드가 지문과 어긋나면 *무엇이* 달라졌는지는 말해 주지 않는다 — 재현 경로는 아래다.
-
-- ⭐ **재현점은 이 파일이 담긴 커밋이다.** 그 커밋에 org 정본이 함께 들어 있다 —
-  `git log --oneline -- <이 파일>` 로 찾고 해당 산출물의 dossier 정본 org를 `git show`로 꺼낸다.
-  (커밋 SHA 를 여기 박지 않는다. 박으면 커밋할 때마다 이 파일이 갱신되는 순환이 생긴다.)
+두 PDF 와 `form-0N.txt` 는 케이스 `build.sh` 가 Org 정본에서 만든다. 재현점은 이 파일이 담긴 커밋이다.
 
 ```bash
-(cd resume   && ./run.sh all)        # 이력서 여섯 컷
-applications/stage.py                 # 세트를 다시 깐다 (누출·낡음을 스스로 검사한다)
-applications/check.py --deep          # 전체 게이트 — 조준 누출 + 지문 대조
+cd applications/telechips--embedded-sw-engineer
+./build.sh review <새 빈 폴더>                 # 검토본 — 생년월일 칸 비움
+./build.sh final  <새 빈 폴더> < (생년월일)    # 제출본 — 생년월일은 표준입력으로만
+./test_build.sh                               # 실패 주입 회귀검사
 ```
 
-생성: `applications/stage.py` · 손으로 고치지 않는다.
+제출 빌드에 들어간 입력 9개의 지문(빌드가 남긴 `SOURCES.sha256` 그대로). 경로는 `resume/`가
+저장소 루트 기준, 나머지는 이 케이스 폴더 기준이다.
+
+```text
+007ae45275ca171e6f2413db05b350875c526ee31f92513c0ec0be79ad73da56  application-telechips.org
+e1a49a875290e779ebb0e1f5f9e9e8525af3b4afe82f118725d881a500727f5f  answers.md
+06b838784902120e7c9bba7e49bea745f0559283124661d08c312f58c3b00085  build.sh
+8e9e9635ef7234eef7d629b6eae7218f2fa33efd20d5ddf9552b5f16ee2d8e08  resume/body.org
+ab1e4d38783741b8d02b6752e707ffd0ba37a51607f256b69eac53839b0049b6  resume/resume.org
+a401cfbd72e6931ec5eb2d7e7939a57d69bf06c8cfaa5528bfcd09083168b047  resume/portfolio-ko.org
+ed5a8f5edee2229f80fc26e1de28f214457a8e9914710bc6533e49ff2ff90b29  resume/pipeline/latex-export.el
+3b9ee75b96171b9688adc3f58a59b3df0c0bdb040de6f8c74c581c852aa54ca8  resume/pipeline/preamble.org
+bb1090d48393f6d3b78bb1f05e762eca74b7e6251f8f373dcc92a4afa8a484ad  resume/flake.lock
+```
+
+- PDF 는 바이트 재현이 아니다. 빌드마다 끝 트레일러의 `/ID` 가 달라진다. 같은 입력이면 `pdftotext`
+  결과가 같다(10/22 검토본과 10/21 검토본 대조로 측정).
+- 경력요약·담당업무 txt 는 같은 입력에서 바이트까지 같다.
+- 사진은 빌드 산출물이 아니다. 원본을 그대로 올렸다.

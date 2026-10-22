@@ -13,6 +13,16 @@ The goal is not to automate judgment or mass-submit generic résumés. The goal 
 claim traceable, every target deliberate, every submission recoverable, and every irreversible
 browser action human-owned.
 
+## How to Read This Public Record
+
+This is a working record, not a showcase of successful applications. The work may be uneven, and the ledger may contain rejection after rejection. I am prepared to keep trying through hundreds of rejections. Keeping the attempts, mistakes, corrections and outcomes visible is part of the same practice as my [digital garden](https://notes.junghanacs.com/): leave a trace of the path taken, not just a polished account of where it led.
+
+Across [nixos-config](https://github.com/junghan0611/nixos-config), [entwurf](https://github.com/junghan0611/entwurf), [andenken](https://github.com/junghan0611/andenken) and [agent-config](https://github.com/junghan0611/agent-config), I keep returning to reproducibility, memory, evaluation, boundaries, collaboration and coexistence. `apply` cannot be an exception simply because the stakes are personal or the outcomes disappointing. These commitments have to hold in the work itself, not only in projects that look successful.
+
+This is also a shared discipline for the agents and me. What do we actually know? What is ours to publish? What must remain private? Where does permission end? We keep asking these questions while doing real work, drawing and repairing the boundary together. I am practising that judgment too, not merely asking agents to follow a rule. The difficulty of maintaining a public record without exposing what should be protected is part of the work, not an inconvenience to bypass by putting everything in Git.
+
+Public does not mean complete disclosure. The decision history stays visible; personal and legal values, third-party material we have no right to publish, confidential information and actual submission binaries stay outside it. Nor does visibility prove quality: claims still need evidence, errors still need correction, and success is not guaranteed.
+
 > **Repository status:** public. This began as a private operations repository and ran that way
 > through every application it records. In August 2026 its whole history — every commit, not a
 > squashed snapshot — was rewritten to remove what could not be published, and the result is what
