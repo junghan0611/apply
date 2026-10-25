@@ -27,6 +27,17 @@
 | Cohere | Forward Deployed Engineer, Agentic Platform (Korea) | submitted | **2026-08-09** | Ashby (가입 불필요) · 🔴 **`Location Type: Remote`** (제출 화면에서 처음 보였다) | FDE 3쪽만 — 폼에 선택 첨부·서술형 칸 없음 | `cohere--forward-deployed-engineer-agentic-platform-korea` |
 | OpenAI | Developer Experience Engineer (Seoul) | ready | — | Ashby (가입 불필요) | DevEx | `openai--developer-experience-engineer-seoul` |
 | Telechips | [판교] Embedded S/W Engineer | submitted | **2026-10-22** | 자체 채용홈 · **iSXmKnRT** · GLG 제출 완료 보고 · 사내 추천 경로는 추진하지 않음 | **국문 합본3쪽 + Linux 플랫폼 포트2쪽**, 경력요약775자·담당업무3개. 실제 업로드본은 private 보관·공개 지문으로 추적. 전체 입력 원문은 private Denote `20250514T162018`의 10/22 해당 절 | `telechips--embedded-sw-engineer` |
+| 나라스페이스테크놀로지 | [기술] 임베디드 엔지니어 (경력2년▲) | submitted | 2026-10-24 | 리멤버 · 접수 메일 확인 | 범용261025 합본3쪽·포트2쪽으로 수정 제출 완료(GLG 10/25 보고), 최초 지문 보존 | `naraspace--embedded-engineer` |
+| 모컨 | 임베디드 개발자 | submitted | 2026-10-24 | 리멤버 · 접수 메일 확인 | 범용261025 합본3쪽·포트2쪽으로 수정 제출 완료(GLG 10/25 보고), 최초 지문 보존 | `mocon--embedded-developer` |
+| OnePredict (원프레딕트) | Embedded Software Developer — 재지원 | submitted | 2026-10-24 | 리멤버 · 접수 메일 확인 · 9/10 불합격과 별도 건 | 범용261025 합본3쪽·포트2쪽으로 수정 제출 완료(GLG 10/25 보고), 최초 지문 보존 | `onepredict--embedded-software-developer--2` |
+| 씨드로닉스 | 임베디드 SW 개발/운영 | submitted | 2026-10-24 | 리멤버 · 접수 메일 확인 | 범용261025 합본3쪽·포트2쪽으로 수정 제출 완료(GLG 10/25 보고), 최초 지문 보존 | `seadronix--embedded-sw-development-operations` |
+| 엣지크로스 | Agentic AI 엔지니어(3년이상) | submitted | 2026-10-24 | 리멤버 · 접수 메일 확인 | 범용261025 합본3쪽·포트2쪽으로 수정 제출 완료(GLG 10/25 보고), 최초 지문 보존 | `edgecross--agentic-ai-engineer` |
+| 플라잎 | Robot System Engineer | submitted | 2026-10-24 | 원티드 · 접수 메일 확인 | 범용261025 합본3쪽·포트2쪽으로 수정 제출 완료(GLG 10/25 보고), 최초 지문 보존 | `plaif--robot-system-engineer` |
+| 씨메스로보틱스 | 시스템 소프트웨어 엔지니어 | submitted | 2026-10-24 | 원티드 · 접수 메일 확인 | 범용261025 합본3쪽·포트2쪽으로 수정 제출 완료(GLG 10/25 보고), 최초 지문 보존 | `cmes-robotics--system-software-engineer` |
+| 협성기전 | 연구소 Firmware 개발 엔지니어 (경력) | submitted | 2026-10-25 | 잡코리아 · 접수 메일 본문 확인 | 범용261025 합본3쪽·포트2쪽으로 수정 제출 완료(GLG 10/25 보고), 최초 지문 보존 | `hyupsung--firmware-engineer` |
+| 세미파이브 | Embedded Software Engineer | submitted | 2026-10-25 | 잡코리아 · 접수 메일 본문 확인 | 범용261025 합본3쪽·포트2쪽으로 수정 제출 완료(GLG 10/25 보고), 최초 지문 보존 | `semifive--embedded-software-engineer` |
+| 현대제이콤 | 소프트웨어 개발 (경력) | submitted | 2026-10-25 | 잡코리아 · 접수 메일 본문 확인 | 범용261025 합본3쪽·포트2쪽으로 수정 제출 완료(GLG 10/25 보고), 최초 지문 보존 | `hyundai-jcom--software-developer` |
+| 에이텍모빌리티 | Embedded Linux BSP 개발 (판교) | submitted | 2026-10-25 | 잡코리아 · 접수 메일 본문 확인 · 06:14 KST | 범용261025 합본3쪽·포트2쪽으로 수정 제출 완료(GLG 10/25 보고), 최초 지문 보존 | `atec-mobility--embedded-linux-bsp` |
 | Reflection AI 🌐 | FDE, Lead - AI Engineer (Seoul) | submitted | 2026-07-30 | Ashby (가입 불필요) | FDE 3쪽만 — **영문 폼이라 국문 깊이 문서를 붙이지 않았다** | `reflection-ai--forward-deployed-engineer-lead-ai-engineer` |
 | 42dot | Senior AI Agent Engineer (Intelligence Service) | rejected | 2026-07-30 · **불합격 통보 2026-08-07** | Ashby (가입 불필요) | **이력서+경력기술서 8쪽 합본** + Portfolio 12쪽(전용 칸) + **Motivation 805자** | `42dot--senior-ai-agent-engineer-intelligence-service` |
 | MakinaRocks | [FDE] AI Agent Application Engineer | submitted | **2026-08-09** | 그리팅 (자체 도메인) — **신형 지원폼** · 이메일 인증 게이트 | FDE + **경력기술서 5쪽 + 포트폴리오 12쪽** (전용 슬롯 3개에 1:1) | `makinarocks--ai-agent-application-engineer-fde` |
@@ -119,7 +130,7 @@
 | OnePredict (원프레딕트) | Embedded Software Developer | rejected | 2026-09-01 · **불합격 통보 2026-09-10** | 그리팅 (원프레딕트 채용홈) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `onepredict--embedded-software-developer` |
 | Remember & Company (리멤버앤컴퍼니) | AI Agent Engineer | rejected | 2026-09-11 · **불합격 통보 2026-09-16** | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `remember-company--ai-agent-engineer` |
 | Beyond Honeycomb (비욘드허니컴) | Robot Platform Developer | rejected | 미확인(스카웃 제안 수락) · **불합격 통보 2026-09-14** | Remember 스카웃 제안 수락 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `beyond-honeycomb--robot-platform-developer` |
-| Gint (긴트) | 임베디드소프트웨어 개발자 | submitted | 2026-09-15 | 원티드 (Wanted) → 그리팅 (자체 채용홈, 이중 통보) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `gint--embedded-software-engineer` |
+| Gint (긴트) | 임베디드소프트웨어 개발자 | rejected | 2026-09-15 · **불합격 통보 2026-10-20** | 원티드 (Wanted) → 그리팅 (자체 채용홈, 이중 통보) | 플랫폼 프로필 (앱 제출 공통 이력정보) | `gint--embedded-software-engineer` |
 | CDRI (씨디알아이) | AI Engineer (Agentic AI) | rejected | 2026-09-11 · **불합격 통보 2026-09-23** | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `cdri--ai-engineer-agentic-ai` |
 | COONTEC (쿤텍, NS사업그룹) | [쿤텍 NS사업그룹] AI 개발자 | closed | 2026-09-11 · **서류 검토 기간 만료로 전형 종료 2026-10-16** | Remember 쉽게 지원 | 플랫폼 프로필 (앱 제출 공통 이력정보) | `coontec-ns--ai-developer` |
 | Spoonlabs (스푼랩스) | Machine Learning Engineer (TTS) | rejected | 미확인 · **불합격 통보 2026-09-16** | Remember 또는 Wanted (경로 미확인 — 지원완료 메일 없음) | 플랫폼 프로필 (앱 제출 공통 이력정보로 추정) | `spoonlabs--machine-learning-engineer-tts` |
